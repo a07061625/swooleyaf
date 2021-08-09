@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of UnbindServerlessSlb
+ *
  * @method string getIntranet()
  * @method string getAppId()
  * @method string getInternet()
@@ -30,6 +32,7 @@ class UnbindServerlessSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $intranet
+     *
      * @return $this
      */
     public function setIntranet($intranet)
@@ -42,6 +45,7 @@ class UnbindServerlessSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -54,6 +58,7 @@ class UnbindServerlessSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $internet
+     *
      * @return $this
      */
     public function setInternet($internet)

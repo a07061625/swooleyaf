@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeRecommendInstanceType
+ *
  * @method string getResourceOwnerId()
  * @method string getInstancePpsRx()
  * @method string getMemory()
@@ -45,6 +47,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +60,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instancePpsRx
+     *
      * @return $this
      */
     public function setInstancePpsRx($instancePpsRx)
@@ -69,6 +73,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $memory
+     *
      * @return $this
      */
     public function setMemory($memory)
@@ -81,6 +86,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instancePpsTx
+     *
      * @return $this
      */
     public function setInstancePpsTx($instancePpsTx)
@@ -93,6 +99,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ioOptimized
+     *
      * @return $this
      */
     public function setIoOptimized($ioOptimized)
@@ -105,6 +112,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $networkType
+     *
      * @return $this
      */
     public function setNetworkType($networkType)
@@ -117,6 +125,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $scene
+     *
      * @return $this
      */
     public function setScene($scene)
@@ -129,6 +138,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceBandwidthTx
+     *
      * @return $this
      */
     public function setInstanceBandwidthTx($instanceBandwidthTx)
@@ -141,6 +151,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $cores
+     *
      * @return $this
      */
     public function setCores($cores)
@@ -153,6 +164,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceBandwidthRx
+     *
      * @return $this
      */
     public function setInstanceBandwidthRx($instanceBandwidthRx)
@@ -165,6 +177,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskCategory
+     *
      * @return $this
      */
     public function setSystemDiskCategory($systemDiskCategory)
@@ -177,6 +190,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -189,6 +203,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceChargeType
+     *
      * @return $this
      */
     public function setInstanceChargeType($instanceChargeType)
@@ -201,6 +216,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $maxPrice
+     *
      * @return $this
      */
     public function setMaxPrice($maxPrice)
@@ -213,6 +229,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -225,6 +242,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -236,7 +254,6 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceTypeFamily
      * @return $this
      */
     public function setInstanceTypeFamilys(array $instanceTypeFamily)
@@ -251,6 +268,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -263,6 +281,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $spotStrategy
+     *
      * @return $this
      */
     public function setSpotStrategy($spotStrategy)
@@ -275,6 +294,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $priorityStrategy
+     *
      * @return $this
      */
     public function setPriorityStrategy($priorityStrategy)
@@ -287,6 +307,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceFamilyLevel
+     *
      * @return $this
      */
     public function setInstanceFamilyLevel($instanceFamilyLevel)
@@ -299,6 +320,7 @@ class RecommendInstanceTypeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)

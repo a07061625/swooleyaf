@@ -1,14 +1,18 @@
 <?php
+
 namespace AliOpen\Eci;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Class DeleteContainerGroupRequest
+ *
  * @author    Alibaba Cloud SDK <sdk-team@alibabacloud.com>
  * @copyright 2019 Alibaba Group
  * @license   http://www.apache.org/licenses/LICENSE-2.0  Apache License 2.0
- * @link      https://github.com/aliyun/aliyun-openapi-php-sdk
+ *
+ * @see      https://github.com/aliyun/aliyun-openapi-php-sdk
+ *
  * @method string getResourceOwnerId()
  * @method string getContainerGroupId()
  * @method string getResourceOwnerAccount()
@@ -32,6 +36,7 @@ class DeleteContainerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +49,7 @@ class DeleteContainerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $containerGroupId
+     *
      * @return $this
      */
     public function setContainerGroupId($containerGroupId)
@@ -56,6 +62,7 @@ class DeleteContainerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -68,6 +75,7 @@ class DeleteContainerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -80,6 +88,7 @@ class DeleteContainerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

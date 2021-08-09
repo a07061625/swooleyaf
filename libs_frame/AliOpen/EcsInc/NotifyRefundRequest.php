@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of NotifyRefund
+ *
  * @method string getRefundExtendParams()
  * @method string getResourceOwnerId()
  * @method string getInstanceId()
@@ -33,6 +35,7 @@ class NotifyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $refundExtendParams
+     *
      * @return $this
      */
     public function setRefundExtendParams($refundExtendParams)
@@ -45,6 +48,7 @@ class NotifyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +61,7 @@ class NotifyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -69,6 +74,7 @@ class NotifyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $refundType
+     *
      * @return $this
      */
     public function setRefundType($refundType)
@@ -81,6 +87,7 @@ class NotifyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -93,6 +100,7 @@ class NotifyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $orderId
+     *
      * @return $this
      */
     public function setOrderId($orderId)
@@ -105,6 +113,7 @@ class NotifyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -116,7 +125,6 @@ class NotifyRefundRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $orderIdss
      * @return $this
      */
     public function setOrderIdss(array $orderIdss)
@@ -131,6 +139,7 @@ class NotifyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -143,6 +152,7 @@ class NotifyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)

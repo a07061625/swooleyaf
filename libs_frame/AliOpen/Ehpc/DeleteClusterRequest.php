@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteCluster
+ *
  * @method string getReleaseInstance()
  * @method string getClusterId()
  */
@@ -20,6 +22,7 @@ class DeleteClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $releaseInstance
+     *
      * @return $this
      */
     public function setReleaseInstance($releaseInstance)
@@ -32,6 +35,7 @@ class DeleteClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

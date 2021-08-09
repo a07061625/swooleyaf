@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeCopyProgressAtOrigin
+ *
  * @method string getTag4Value()
  * @method string getResourceId()
  * @method string getResourceOwnerId()
@@ -40,6 +42,7 @@ class DescribeCopyProgressAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $tag4Value
+     *
      * @return $this
      */
     public function setTag4Value($tag4Value)
@@ -52,6 +55,7 @@ class DescribeCopyProgressAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceId
+     *
      * @return $this
      */
     public function setResourceId($resourceId)
@@ -64,6 +68,7 @@ class DescribeCopyProgressAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -76,6 +81,7 @@ class DescribeCopyProgressAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $tag2Key
+     *
      * @return $this
      */
     public function setTag2Key($tag2Key)
@@ -88,6 +94,7 @@ class DescribeCopyProgressAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $tag5Key
+     *
      * @return $this
      */
     public function setTag5Key($tag5Key)
@@ -100,6 +107,7 @@ class DescribeCopyProgressAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -112,6 +120,7 @@ class DescribeCopyProgressAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -124,6 +133,7 @@ class DescribeCopyProgressAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $fromRegionNo
+     *
      * @return $this
      */
     public function setFromRegionNo($fromRegionNo)
@@ -136,6 +146,7 @@ class DescribeCopyProgressAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $tag3Key
+     *
      * @return $this
      */
     public function setTag3Key($tag3Key)
@@ -148,6 +159,7 @@ class DescribeCopyProgressAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -160,6 +172,7 @@ class DescribeCopyProgressAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -172,6 +185,7 @@ class DescribeCopyProgressAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $tag5Value
+     *
      * @return $this
      */
     public function setTag5Value($tag5Value)
@@ -184,6 +198,7 @@ class DescribeCopyProgressAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $tag1Key
+     *
      * @return $this
      */
     public function setTag1Key($tag1Key)
@@ -196,6 +211,7 @@ class DescribeCopyProgressAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $tag1Value
+     *
      * @return $this
      */
     public function setTag1Value($tag1Value)
@@ -208,6 +224,7 @@ class DescribeCopyProgressAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $tag2Value
+     *
      * @return $this
      */
     public function setTag2Value($tag2Value)
@@ -220,6 +237,7 @@ class DescribeCopyProgressAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $tag4Key
+     *
      * @return $this
      */
     public function setTag4Key($tag4Key)
@@ -232,6 +250,7 @@ class DescribeCopyProgressAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $tag3Value
+     *
      * @return $this
      */
     public function setTag3Value($tag3Value)

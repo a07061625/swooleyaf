@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ResetNodes
+ *
  * @method array getInstances()
  * @method string getClusterId()
  */
@@ -19,7 +21,6 @@ class ResetNodesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instance
      * @return $this
      */
     public function setInstances(array $instance)
@@ -34,6 +35,7 @@ class ResetNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

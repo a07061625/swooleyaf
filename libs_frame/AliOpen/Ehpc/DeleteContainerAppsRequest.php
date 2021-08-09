@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteContainerApps
+ *
  * @method array getContainerApps()
  */
 class DeleteContainerAppsRequest extends RpcAcsRequest
@@ -18,7 +20,6 @@ class DeleteContainerAppsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $containerApp
      * @return $this
      */
     public function setContainerApps(array $containerApp)

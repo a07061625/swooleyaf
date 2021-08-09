@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteLaunchTemplateVersion
+ *
  * @method string getLaunchTemplateName()
  * @method string getResourceOwnerId()
  * @method array getDeleteVersions()
@@ -30,6 +32,7 @@ class LaunchTemplateVersionDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $launchTemplateName
+     *
      * @return $this
      */
     public function setLaunchTemplateName($launchTemplateName)
@@ -42,6 +45,7 @@ class LaunchTemplateVersionDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -53,7 +57,6 @@ class LaunchTemplateVersionDeleteRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $deleteVersion
      * @return $this
      */
     public function setDeleteVersions(array $deleteVersion)
@@ -68,6 +71,7 @@ class LaunchTemplateVersionDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $launchTemplateId
+     *
      * @return $this
      */
     public function setLaunchTemplateId($launchTemplateId)
@@ -80,6 +84,7 @@ class LaunchTemplateVersionDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -92,6 +97,7 @@ class LaunchTemplateVersionDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +110,7 @@ class LaunchTemplateVersionDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

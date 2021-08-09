@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DeployApplication
+ *
  * @method string getBuildPackId()
  * @method string getComponentIds()
  * @method string getAppId()
@@ -39,6 +41,7 @@ class DeployApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $buildPackId
+     *
      * @return $this
      */
     public function setBuildPackId($buildPackId)
@@ -51,6 +54,7 @@ class DeployApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $componentIds
+     *
      * @return $this
      */
     public function setComponentIds($componentIds)
@@ -63,6 +67,7 @@ class DeployApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -75,6 +80,7 @@ class DeployApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $imageUrl
+     *
      * @return $this
      */
     public function setImageUrl($imageUrl)
@@ -87,6 +93,7 @@ class DeployApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -99,6 +106,7 @@ class DeployApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $batchWaitTime
+     *
      * @return $this
      */
     public function setBatchWaitTime($batchWaitTime)
@@ -111,6 +119,7 @@ class DeployApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $batch
+     *
      * @return $this
      */
     public function setBatch($batch)
@@ -123,6 +132,7 @@ class DeployApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $appEnv
+     *
      * @return $this
      */
     public function setAppEnv($appEnv)
@@ -135,6 +145,7 @@ class DeployApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $warUrl
+     *
      * @return $this
      */
     public function setWarUrl($warUrl)
@@ -147,6 +158,7 @@ class DeployApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $packageVersion
+     *
      * @return $this
      */
     public function setPackageVersion($packageVersion)
@@ -159,6 +171,7 @@ class DeployApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $desc
+     *
      * @return $this
      */
     public function setDesc($desc)
@@ -171,6 +184,7 @@ class DeployApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $deployType
+     *
      * @return $this
      */
     public function setDeployType($deployType)

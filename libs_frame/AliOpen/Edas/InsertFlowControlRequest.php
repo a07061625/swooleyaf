@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of InsertFlowControl
+ *
  * @method string getConsumerAppId()
  * @method string getGranularity()
  * @method string getRuleType()
@@ -36,6 +38,7 @@ class InsertFlowControlRequest extends RoaAcsRequest
 
     /**
      * @param string $consumerAppId
+     *
      * @return $this
      */
     public function setConsumerAppId($consumerAppId)
@@ -48,6 +51,7 @@ class InsertFlowControlRequest extends RoaAcsRequest
 
     /**
      * @param string $granularity
+     *
      * @return $this
      */
     public function setGranularity($granularity)
@@ -60,6 +64,7 @@ class InsertFlowControlRequest extends RoaAcsRequest
 
     /**
      * @param string $ruleType
+     *
      * @return $this
      */
     public function setRuleType($ruleType)
@@ -72,6 +77,7 @@ class InsertFlowControlRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -84,6 +90,7 @@ class InsertFlowControlRequest extends RoaAcsRequest
 
     /**
      * @param string $urlVar
+     *
      * @return $this
      */
     public function setUrlVar($urlVar)
@@ -96,6 +103,7 @@ class InsertFlowControlRequest extends RoaAcsRequest
 
     /**
      * @param string $serviceName
+     *
      * @return $this
      */
     public function setServiceName($serviceName)
@@ -108,6 +116,7 @@ class InsertFlowControlRequest extends RoaAcsRequest
 
     /**
      * @param string $threshold
+     *
      * @return $this
      */
     public function setThreshold($threshold)
@@ -120,6 +129,7 @@ class InsertFlowControlRequest extends RoaAcsRequest
 
     /**
      * @param string $strategy
+     *
      * @return $this
      */
     public function setStrategy($strategy)
@@ -132,6 +142,7 @@ class InsertFlowControlRequest extends RoaAcsRequest
 
     /**
      * @param string $methodName
+     *
      * @return $this
      */
     public function setMethodName($methodName)

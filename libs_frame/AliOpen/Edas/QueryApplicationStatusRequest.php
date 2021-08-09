@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of QueryApplicationStatus
+ *
  * @method string getAppId()
  */
 class QueryApplicationStatusRequest extends RoaAcsRequest
@@ -24,6 +26,7 @@ class QueryApplicationStatusRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

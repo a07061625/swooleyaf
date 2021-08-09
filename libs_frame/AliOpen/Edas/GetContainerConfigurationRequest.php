@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of GetContainerConfiguration
+ *
  * @method string getAppId()
  * @method string getGroupId()
  */
@@ -25,6 +27,7 @@ class GetContainerConfigurationRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -37,6 +40,7 @@ class GetContainerConfigurationRequest extends RoaAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetCloudMetricLogs
+ *
  * @method string getAggregationType()
  * @method string getFilter()
  * @method string getMetricCategories()
@@ -27,6 +29,7 @@ class GetCloudMetricLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $aggregationType
+     *
      * @return $this
      */
     public function setAggregationType($aggregationType)
@@ -39,6 +42,7 @@ class GetCloudMetricLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $filter
+     *
      * @return $this
      */
     public function setFilter($filter)
@@ -51,6 +55,7 @@ class GetCloudMetricLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $metricCategories
+     *
      * @return $this
      */
     public function setMetricCategories($metricCategories)
@@ -63,6 +68,7 @@ class GetCloudMetricLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $metricScope
+     *
      * @return $this
      */
     public function setMetricScope($metricScope)
@@ -75,6 +81,7 @@ class GetCloudMetricLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $from
+     *
      * @return $this
      */
     public function setFrom($from)
@@ -87,6 +94,7 @@ class GetCloudMetricLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -99,6 +107,7 @@ class GetCloudMetricLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $to
+     *
      * @return $this
      */
     public function setTo($to)
@@ -111,6 +120,7 @@ class GetCloudMetricLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $aggregationInterval
+     *
      * @return $this
      */
     public function setAggregationInterval($aggregationInterval)
@@ -123,6 +133,7 @@ class GetCloudMetricLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $reverse
+     *
      * @return $this
      */
     public function setReverse($reverse)

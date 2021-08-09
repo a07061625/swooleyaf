@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerMonitorDataDescribeInstance
+ *
  * @method string getResourceOwnerId()
  * @method string getstartTime()
  * @method string getaliUid()
@@ -34,6 +36,7 @@ class InnerMonitorDataDescribeInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class InnerMonitorDataDescribeInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setstartTime($startTime)
@@ -58,6 +62,7 @@ class InnerMonitorDataDescribeInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -70,6 +75,7 @@ class InnerMonitorDataDescribeInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setperiod($period)
@@ -82,6 +88,7 @@ class InnerMonitorDataDescribeInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -94,6 +101,7 @@ class InnerMonitorDataDescribeInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -106,6 +114,7 @@ class InnerMonitorDataDescribeInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setendTime($endTime)
@@ -118,6 +127,7 @@ class InnerMonitorDataDescribeInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -130,6 +140,7 @@ class InnerMonitorDataDescribeInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -142,6 +153,7 @@ class InnerMonitorDataDescribeInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $metrics
+     *
      * @return $this
      */
     public function setmetrics($metrics)
@@ -154,6 +166,7 @@ class InnerMonitorDataDescribeInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)

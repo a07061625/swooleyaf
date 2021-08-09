@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeEvents
+ *
  * @method string getEventId()
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
@@ -36,6 +38,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $eventId
+     *
      * @return $this
      */
     public function setEventId($eventId)
@@ -48,6 +51,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -60,6 +64,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -72,6 +77,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -84,6 +90,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $planTime
+     *
      * @return $this
      */
     public function setPlanTime($planTime)
@@ -96,6 +103,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setAliUid($aliUid)
@@ -108,6 +116,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $expireTime
+     *
      * @return $this
      */
     public function setExpireTime($expireTime)
@@ -120,6 +129,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceId
+     *
      * @return $this
      */
     public function setResourceId($resourceId)
@@ -132,6 +142,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -144,6 +155,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -156,6 +168,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $eventType
+     *
      * @return $this
      */
     public function setEventType($eventType)
@@ -168,6 +181,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setBid($bid)
@@ -180,6 +194,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

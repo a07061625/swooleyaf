@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of ListCluster
+ *
  * @method string getLogicalRegionId()
  */
 class ListClusterRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class ListClusterRequest extends RoaAcsRequest
 
     /**
      * @param string $logicalRegionId
+     *
      * @return $this
      */
     public function setLogicalRegionId($logicalRegionId)

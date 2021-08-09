@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of ListHistoryDeployVersion
+ *
  * @method string getAppId()
  */
 class ListHistoryDeployVersionRequest extends RoaAcsRequest
@@ -24,6 +26,7 @@ class ListHistoryDeployVersionRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

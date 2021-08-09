@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListInstalledSoftware
+ *
  * @method string getClusterId()
  */
 class ListInstalledSoftwareRequest extends RpcAcsRequest
@@ -19,6 +21,7 @@ class ListInstalledSoftwareRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

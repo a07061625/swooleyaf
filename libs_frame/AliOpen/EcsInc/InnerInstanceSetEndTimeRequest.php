@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerInstanceSetEndTime
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -38,6 +40,7 @@ class InnerInstanceSetEndTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +53,7 @@ class InnerInstanceSetEndTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -62,6 +66,7 @@ class InnerInstanceSetEndTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -74,6 +79,7 @@ class InnerInstanceSetEndTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -86,6 +92,7 @@ class InnerInstanceSetEndTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setendTime($endTime)
@@ -98,6 +105,7 @@ class InnerInstanceSetEndTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -110,6 +118,7 @@ class InnerInstanceSetEndTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setresourceType($resourceType)
@@ -122,6 +131,7 @@ class InnerInstanceSetEndTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -134,6 +144,7 @@ class InnerInstanceSetEndTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -146,6 +157,7 @@ class InnerInstanceSetEndTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $caller
+     *
      * @return $this
      */
     public function setcaller($caller)
@@ -158,6 +170,7 @@ class InnerInstanceSetEndTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceName
+     *
      * @return $this
      */
     public function setinstanceName($instanceName)
@@ -170,6 +183,7 @@ class InnerInstanceSetEndTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $appKey
+     *
      * @return $this
      */
     public function setappKey($appKey)
@@ -182,6 +196,7 @@ class InnerInstanceSetEndTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -194,6 +209,7 @@ class InnerInstanceSetEndTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -206,6 +222,7 @@ class InnerInstanceSetEndTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

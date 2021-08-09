@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RunCommand
+ *
  * @method string getResourceOwnerId()
  * @method string getWorkingDir()
  * @method string getDescription()
@@ -40,6 +42,7 @@ class CommandRunRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -52,6 +55,7 @@ class CommandRunRequest extends RpcAcsRequest
 
     /**
      * @param string $workingDir
+     *
      * @return $this
      */
     public function setWorkingDir($workingDir)
@@ -64,6 +68,7 @@ class CommandRunRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -76,6 +81,7 @@ class CommandRunRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -88,6 +94,7 @@ class CommandRunRequest extends RpcAcsRequest
 
     /**
      * @param string $commandContent
+     *
      * @return $this
      */
     public function setCommandContent($commandContent)
@@ -100,6 +107,7 @@ class CommandRunRequest extends RpcAcsRequest
 
     /**
      * @param string $timeout
+     *
      * @return $this
      */
     public function setTimeout($timeout)
@@ -112,6 +120,7 @@ class CommandRunRequest extends RpcAcsRequest
 
     /**
      * @param string $frequency
+     *
      * @return $this
      */
     public function setFrequency($frequency)
@@ -124,6 +133,7 @@ class CommandRunRequest extends RpcAcsRequest
 
     /**
      * @param string $contentEncoding
+     *
      * @return $this
      */
     public function setContentEncoding($contentEncoding)
@@ -136,6 +146,7 @@ class CommandRunRequest extends RpcAcsRequest
 
     /**
      * @param string $keepCommand
+     *
      * @return $this
      */
     public function setKeepCommand($keepCommand)
@@ -148,6 +159,7 @@ class CommandRunRequest extends RpcAcsRequest
 
     /**
      * @param string $timed
+     *
      * @return $this
      */
     public function setTimed($timed)
@@ -160,6 +172,7 @@ class CommandRunRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -172,6 +185,7 @@ class CommandRunRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -184,6 +198,7 @@ class CommandRunRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -195,7 +210,6 @@ class CommandRunRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceId
      * @return $this
      */
     public function setInstanceIds(array $instanceId)
@@ -210,6 +224,7 @@ class CommandRunRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -222,6 +237,7 @@ class CommandRunRequest extends RpcAcsRequest
 
     /**
      * @param string $parameters
+     *
      * @return $this
      */
     public function setParameters($parameters)
@@ -234,6 +250,7 @@ class CommandRunRequest extends RpcAcsRequest
 
     /**
      * @param string $enableParameter
+     *
      * @return $this
      */
     public function setEnableParameter($enableParameter)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeResourceModificationCapacity
+ *
  * @method string getResourceOwnerId()
  * @method string getTargetInstanceType()
  * @method string getMigrateAcrossZone()
@@ -33,6 +35,7 @@ class DescribeResourceModificationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class DescribeResourceModificationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $targetInstanceType
+     *
      * @return $this
      */
     public function setTargetInstanceType($targetInstanceType)
@@ -57,6 +61,7 @@ class DescribeResourceModificationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $migrateAcrossZone
+     *
      * @return $this
      */
     public function setMigrateAcrossZone($migrateAcrossZone)
@@ -69,6 +74,7 @@ class DescribeResourceModificationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $targetSystemDiskCategory
+     *
      * @return $this
      */
     public function setTargetSystemDiskCategory($targetSystemDiskCategory)
@@ -81,6 +87,7 @@ class DescribeResourceModificationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setAliUid($aliUid)
@@ -93,6 +100,7 @@ class DescribeResourceModificationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -105,6 +113,7 @@ class DescribeResourceModificationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -117,6 +126,7 @@ class DescribeResourceModificationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -128,7 +138,6 @@ class DescribeResourceModificationCapacityRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceIds
      * @return $this
      */
     public function setInstanceIds(array $instanceIds)
@@ -143,6 +152,7 @@ class DescribeResourceModificationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setBid($bid)

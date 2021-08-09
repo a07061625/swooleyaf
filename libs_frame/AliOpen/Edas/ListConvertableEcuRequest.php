@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of ListConvertableEcu
+ *
  * @method string getclusterId()
  */
 class ListConvertableEcuRequest extends RoaAcsRequest
@@ -24,6 +26,7 @@ class ListConvertableEcuRequest extends RoaAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setclusterId($clusterId)

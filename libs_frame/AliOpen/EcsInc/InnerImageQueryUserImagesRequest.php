@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerImageQueryUserImages
+ *
  * @method string getResourceOwnerId()
  * @method string getImageId()
  * @method string getResourceOwnerAccount()
@@ -42,6 +44,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -54,6 +57,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -66,6 +70,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -78,6 +83,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -90,6 +96,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $osTypeId
+     *
      * @return $this
      */
     public function setosTypeId($osTypeId)
@@ -102,6 +109,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -114,6 +122,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -126,6 +135,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $regionIndexId
+     *
      * @return $this
      */
     public function setregionIndexId($regionIndexId)
@@ -138,6 +148,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -150,6 +161,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -162,6 +174,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $imageName
+     *
      * @return $this
      */
     public function setimageName($imageName)
@@ -174,6 +187,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNo
+     *
      * @return $this
      */
     public function setpageNo($pageNo)
@@ -186,6 +200,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $isPublic
+     *
      * @return $this
      */
     public function setisPublic($isPublic)
@@ -198,6 +213,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setpageSize($pageSize)
@@ -210,6 +226,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotNo
+     *
      * @return $this
      */
     public function setsnapshotNo($snapshotNo)
@@ -222,6 +239,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -234,6 +252,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -246,6 +265,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -258,6 +278,7 @@ class InnerImageQueryUserImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setstatus($status)

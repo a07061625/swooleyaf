@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeJob
+ *
  * @method string getJobId()
  * @method string getClusterId()
  */
@@ -20,6 +22,7 @@ class DescribeJobRequest extends RpcAcsRequest
 
     /**
      * @param string $jobId
+     *
      * @return $this
      */
     public function setJobId($jobId)
@@ -32,6 +35,7 @@ class DescribeJobRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

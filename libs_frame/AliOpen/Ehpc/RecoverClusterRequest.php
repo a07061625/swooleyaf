@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RecoverCluster
+ *
  * @method string getImageId()
  * @method string getOsTag()
  * @method string getClientVersion()
@@ -25,6 +27,7 @@ class RecoverClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -37,6 +40,7 @@ class RecoverClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $osTag
+     *
      * @return $this
      */
     public function setOsTag($osTag)
@@ -49,6 +53,7 @@ class RecoverClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $clientVersion
+     *
      * @return $this
      */
     public function setClientVersion($clientVersion)
@@ -61,6 +66,7 @@ class RecoverClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $accountType
+     *
      * @return $this
      */
     public function setAccountType($accountType)
@@ -73,6 +79,7 @@ class RecoverClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $schedulerType
+     *
      * @return $this
      */
     public function setSchedulerType($schedulerType)
@@ -85,6 +92,7 @@ class RecoverClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -97,6 +105,7 @@ class RecoverClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $imageOwnerAlias
+     *
      * @return $this
      */
     public function setImageOwnerAlias($imageOwnerAlias)

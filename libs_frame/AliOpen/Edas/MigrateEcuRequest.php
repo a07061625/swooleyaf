@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of MigrateEcu
+ *
  * @method string getInstanceIds()
  * @method string getLogicalRegionId()
  */
@@ -29,6 +31,7 @@ class MigrateEcuRequest extends RoaAcsRequest
 
     /**
      * @param string $instanceIds
+     *
      * @return $this
      */
     public function setInstanceIds($instanceIds)
@@ -41,6 +44,7 @@ class MigrateEcuRequest extends RoaAcsRequest
 
     /**
      * @param string $logicalRegionId
+     *
      * @return $this
      */
     public function setLogicalRegionId($logicalRegionId)

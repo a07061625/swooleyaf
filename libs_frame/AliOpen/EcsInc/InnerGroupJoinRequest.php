@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerGroupJoin
+ *
  * @method string getecsInstanceId()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -37,6 +39,7 @@ class InnerGroupJoinRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsInstanceId
+     *
      * @return $this
      */
     public function setecsInstanceId($ecsInstanceId)
@@ -49,6 +52,7 @@ class InnerGroupJoinRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -61,6 +65,7 @@ class InnerGroupJoinRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -73,6 +78,7 @@ class InnerGroupJoinRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -85,6 +91,7 @@ class InnerGroupJoinRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -97,6 +104,7 @@ class InnerGroupJoinRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcInstanceId
+     *
      * @return $this
      */
     public function setvpcInstanceId($vpcInstanceId)
@@ -109,6 +117,7 @@ class InnerGroupJoinRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -121,6 +130,7 @@ class InnerGroupJoinRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -133,6 +143,7 @@ class InnerGroupJoinRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -145,6 +156,7 @@ class InnerGroupJoinRequest extends RpcAcsRequest
 
     /**
      * @param string $async
+     *
      * @return $this
      */
     public function setasync($async)
@@ -157,6 +169,7 @@ class InnerGroupJoinRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -169,6 +182,7 @@ class InnerGroupJoinRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -181,6 +195,7 @@ class InnerGroupJoinRequest extends RpcAcsRequest
 
     /**
      * @param string $groupNo
+     *
      * @return $this
      */
     public function setgroupNo($groupNo)
@@ -193,6 +208,7 @@ class InnerGroupJoinRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

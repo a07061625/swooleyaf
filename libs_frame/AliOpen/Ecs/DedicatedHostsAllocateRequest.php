@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AllocateDedicatedHosts
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getDescription()
@@ -45,6 +47,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +60,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -69,6 +73,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -81,6 +86,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -93,6 +99,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $actionOnMaintenance
+     *
      * @return $this
      */
     public function setActionOnMaintenance($actionOnMaintenance)
@@ -104,7 +111,6 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -120,6 +126,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostType
+     *
      * @return $this
      */
     public function setDedicatedHostType($dedicatedHostType)
@@ -132,6 +139,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $autoRenewPeriod
+     *
      * @return $this
      */
     public function setAutoRenewPeriod($autoRenewPeriod)
@@ -144,6 +152,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -156,6 +165,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $quantity
+     *
      * @return $this
      */
     public function setQuantity($quantity)
@@ -168,6 +178,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostName
+     *
      * @return $this
      */
     public function setDedicatedHostName($dedicatedHostName)
@@ -180,6 +191,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -192,6 +204,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -204,6 +217,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $autoReleaseTime
+     *
      * @return $this
      */
     public function setAutoReleaseTime($autoReleaseTime)
@@ -216,6 +230,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -228,6 +243,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $periodUnit
+     *
      * @return $this
      */
     public function setPeriodUnit($periodUnit)
@@ -240,6 +256,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $autoRenew
+     *
      * @return $this
      */
     public function setAutoRenew($autoRenew)
@@ -252,6 +269,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $networkAttributesSlbUdpTimeout
+     *
      * @return $this
      */
     public function setNetworkAttributesSlbUdpTimeout($networkAttributesSlbUdpTimeout)
@@ -264,6 +282,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -276,6 +295,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPlacement
+     *
      * @return $this
      */
     public function setAutoPlacement($autoPlacement)
@@ -288,6 +308,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $chargeType
+     *
      * @return $this
      */
     public function setChargeType($chargeType)
@@ -300,6 +321,7 @@ class DedicatedHostsAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $networkAttributesUdpTimeout
+     *
      * @return $this
      */
     public function setNetworkAttributesUdpTimeout($networkAttributesUdpTimeout)

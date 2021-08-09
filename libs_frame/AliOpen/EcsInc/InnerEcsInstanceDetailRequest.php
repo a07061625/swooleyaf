@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerEcsInstanceDetail
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -35,6 +37,7 @@ class InnerEcsInstanceDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +50,7 @@ class InnerEcsInstanceDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -59,6 +63,7 @@ class InnerEcsInstanceDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -71,6 +76,7 @@ class InnerEcsInstanceDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -83,6 +89,7 @@ class InnerEcsInstanceDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -95,6 +102,7 @@ class InnerEcsInstanceDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -107,6 +115,7 @@ class InnerEcsInstanceDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -119,6 +128,7 @@ class InnerEcsInstanceDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $async
+     *
      * @return $this
      */
     public function setasync($async)
@@ -131,6 +141,7 @@ class InnerEcsInstanceDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -143,6 +154,7 @@ class InnerEcsInstanceDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -155,6 +167,7 @@ class InnerEcsInstanceDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -167,6 +180,7 @@ class InnerEcsInstanceDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

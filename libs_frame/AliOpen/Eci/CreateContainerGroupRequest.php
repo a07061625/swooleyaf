@@ -1,14 +1,18 @@
 <?php
+
 namespace AliOpen\Eci;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Class CreateContainerGroupRequest
+ *
  * @author    Alibaba Cloud SDK <sdk-team@alibabacloud.com>
  * @copyright 2019 Alibaba Group
  * @license   http://www.apache.org/licenses/LICENSE-2.0  Apache License 2.0
- * @link      https://github.com/aliyun/aliyun-openapi-php-sdk
+ *
+ * @see      https://github.com/aliyun/aliyun-openapi-php-sdk
+ *
  * @method array getContainers()
  * @method string getResourceOwnerId()
  * @method string getMemory()
@@ -46,7 +50,6 @@ class CreateContainerGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $Containers
      * @return $this
      */
     public function setContainers(array $Containers)
@@ -135,6 +138,7 @@ class CreateContainerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -147,6 +151,7 @@ class CreateContainerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $memory
+     *
      * @return $this
      */
     public function setMemory($memory)
@@ -159,6 +164,7 @@ class CreateContainerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -170,7 +176,6 @@ class CreateContainerGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $InitContainers
      * @return $this
      */
     public function setInitContainers(array $InitContainers)
@@ -217,7 +222,6 @@ class CreateContainerGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $ImageRegistryCredentials
      * @return $this
      */
     public function setImageRegistryCredentials(array $ImageRegistryCredentials)
@@ -233,7 +237,6 @@ class CreateContainerGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $Tags
      * @return $this
      */
     public function setTags(array $Tags)
@@ -249,6 +252,7 @@ class CreateContainerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $eipInstanceId
+     *
      * @return $this
      */
     public function setEipInstanceId($eipInstanceId)
@@ -260,7 +264,6 @@ class CreateContainerGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $DnsConfigNameServers
      * @return $this
      */
     public function setDnsConfigNameServers(array $DnsConfigNameServers)
@@ -275,6 +278,7 @@ class CreateContainerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -287,6 +291,7 @@ class CreateContainerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $restartPolicy
+     *
      * @return $this
      */
     public function setRestartPolicy($restartPolicy)
@@ -299,6 +304,7 @@ class CreateContainerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -310,7 +316,6 @@ class CreateContainerGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $DnsConfigOptions
      * @return $this
      */
     public function setDnsConfigOptions(array $DnsConfigOptions)
@@ -326,6 +331,7 @@ class CreateContainerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $cpu
+     *
      * @return $this
      */
     public function setCpu($cpu)
@@ -337,7 +343,6 @@ class CreateContainerGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $DnsConfigSearchs
      * @return $this
      */
     public function setDnsConfigSearchs(array $DnsConfigSearchs)
@@ -352,6 +357,7 @@ class CreateContainerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -364,6 +370,7 @@ class CreateContainerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -375,7 +382,6 @@ class CreateContainerGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $Volumes
      * @return $this
      */
     public function setVolumes(array $Volumes)
@@ -398,6 +404,7 @@ class CreateContainerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $containerGroupName
+     *
      * @return $this
      */
     public function setContainerGroupName($containerGroupName)
@@ -410,6 +417,7 @@ class CreateContainerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)

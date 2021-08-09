@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetVisualServiceStatus
+ *
  * @method string getClusterId()
  */
 class GetVisualServiceStatusRequest extends RpcAcsRequest
@@ -19,6 +21,7 @@ class GetVisualServiceStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

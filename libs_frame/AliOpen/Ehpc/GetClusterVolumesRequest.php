@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetClusterVolumes
+ *
  * @method string getClusterId()
  */
 class GetClusterVolumesRequest extends RpcAcsRequest
@@ -19,6 +21,7 @@ class GetClusterVolumesRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

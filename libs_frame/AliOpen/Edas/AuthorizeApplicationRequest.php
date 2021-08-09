@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of AuthorizeApplication
+ *
  * @method string getAppIds()
  * @method string getTargetUserId()
  */
@@ -29,6 +31,7 @@ class AuthorizeApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $appIds
+     *
      * @return $this
      */
     public function setAppIds($appIds)
@@ -41,6 +44,7 @@ class AuthorizeApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $targetUserId
+     *
      * @return $this
      */
     public function setTargetUserId($targetUserId)

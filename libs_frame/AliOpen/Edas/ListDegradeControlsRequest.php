@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of ListDegradeControls
+ *
  * @method string getAppId()
  */
 class ListDegradeControlsRequest extends RoaAcsRequest
@@ -24,6 +26,7 @@ class ListDegradeControlsRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerSendMessage
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getResourceOwnerAccount()
@@ -29,6 +31,7 @@ class InnerSendMessageRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class InnerSendMessageRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -53,6 +57,7 @@ class InnerSendMessageRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -65,6 +70,7 @@ class InnerSendMessageRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -77,6 +83,7 @@ class InnerSendMessageRequest extends RpcAcsRequest
 
     /**
      * @param string $message
+     *
      * @return $this
      */
     public function setMessage($message)
@@ -89,6 +96,7 @@ class InnerSendMessageRequest extends RpcAcsRequest
 
     /**
      * @param string $shardingKey
+     *
      * @return $this
      */
     public function setShardingKey($shardingKey)

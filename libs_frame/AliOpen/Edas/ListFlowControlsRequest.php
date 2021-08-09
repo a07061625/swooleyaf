@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of ListFlowControls
+ *
  * @method string getAppId()
  */
 class ListFlowControlsRequest extends RoaAcsRequest
@@ -24,6 +26,7 @@ class ListFlowControlsRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

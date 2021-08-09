@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of ListClusterMembers
+ *
  * @method string getPageSize()
  * @method string getCurrentPage()
  * @method string getClusterId()
@@ -26,6 +28,7 @@ class ListClusterMembersRequest extends RoaAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -38,6 +41,7 @@ class ListClusterMembersRequest extends RoaAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -50,6 +54,7 @@ class ListClusterMembersRequest extends RoaAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerDiskReset
+ *
  * @method string getecsInstanceId()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -38,6 +40,7 @@ class InnerDiskResetRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsInstanceId
+     *
      * @return $this
      */
     public function setecsInstanceId($ecsInstanceId)
@@ -50,6 +53,7 @@ class InnerDiskResetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -62,6 +66,7 @@ class InnerDiskResetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -74,6 +79,7 @@ class InnerDiskResetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -86,6 +92,7 @@ class InnerDiskResetRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -98,6 +105,7 @@ class InnerDiskResetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -110,6 +118,7 @@ class InnerDiskResetRequest extends RpcAcsRequest
 
     /**
      * @param string $diskType
+     *
      * @return $this
      */
     public function setdiskType($diskType)
@@ -122,6 +131,7 @@ class InnerDiskResetRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -134,6 +144,7 @@ class InnerDiskResetRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -146,6 +157,7 @@ class InnerDiskResetRequest extends RpcAcsRequest
 
     /**
      * @param string $async
+     *
      * @return $this
      */
     public function setasync($async)
@@ -158,6 +170,7 @@ class InnerDiskResetRequest extends RpcAcsRequest
 
     /**
      * @param string $passwd
+     *
      * @return $this
      */
     public function setpasswd($passwd)
@@ -170,6 +183,7 @@ class InnerDiskResetRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceIds
+     *
      * @return $this
      */
     public function setinstanceIds($instanceIds)
@@ -182,6 +196,7 @@ class InnerDiskResetRequest extends RpcAcsRequest
 
     /**
      * @param string $useImagePasswd
+     *
      * @return $this
      */
     public function setuseImagePasswd($useImagePasswd)
@@ -194,6 +209,7 @@ class InnerDiskResetRequest extends RpcAcsRequest
 
     /**
      * @param string $keepDiskSize
+     *
      * @return $this
      */
     public function setkeepDiskSize($keepDiskSize)
@@ -206,6 +222,7 @@ class InnerDiskResetRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

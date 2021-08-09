@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribePrice
+ *
  * @method string getPriceUnit()
  * @method array getCommoditiess()
  * @method string getChargeType()
@@ -22,6 +24,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $priceUnit
+     *
      * @return $this
      */
     public function setPriceUnit($priceUnit)
@@ -33,7 +36,6 @@ class DescribePriceRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $commodities
      * @return $this
      */
     public function setCommoditiess(array $commodities)
@@ -54,6 +56,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $chargeType
+     *
      * @return $this
      */
     public function setChargeType($chargeType)
@@ -66,6 +69,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $orderType
+     *
      * @return $this
      */
     public function setOrderType($orderType)

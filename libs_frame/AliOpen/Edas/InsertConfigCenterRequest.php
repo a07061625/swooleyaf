@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of InsertConfigCenter
+ *
  * @method string getDataId()
  * @method string getData()
  * @method string getLogicalRegionId()
@@ -31,6 +33,7 @@ class InsertConfigCenterRequest extends RoaAcsRequest
 
     /**
      * @param string $dataId
+     *
      * @return $this
      */
     public function setDataId($dataId)
@@ -43,6 +46,7 @@ class InsertConfigCenterRequest extends RoaAcsRequest
 
     /**
      * @param string $data
+     *
      * @return $this
      */
     public function setData($data)
@@ -55,6 +59,7 @@ class InsertConfigCenterRequest extends RoaAcsRequest
 
     /**
      * @param string $logicalRegionId
+     *
      * @return $this
      */
     public function setLogicalRegionId($logicalRegionId)
@@ -67,6 +72,7 @@ class InsertConfigCenterRequest extends RoaAcsRequest
 
     /**
      * @param string $group
+     *
      * @return $this
      */
     public function setGroup($group)

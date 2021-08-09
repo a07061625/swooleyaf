@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DeployServerlessApplication
+ *
  * @method string getWebContainer()
  * @method string getJarStartArgs()
  * @method string getCommandArgs()
@@ -43,6 +45,7 @@ class DeployServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $webContainer
+     *
      * @return $this
      */
     public function setWebContainer($webContainer)
@@ -55,6 +58,7 @@ class DeployServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $jarStartArgs
+     *
      * @return $this
      */
     public function setJarStartArgs($jarStartArgs)
@@ -67,6 +71,7 @@ class DeployServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $commandArgs
+     *
      * @return $this
      */
     public function setCommandArgs($commandArgs)
@@ -79,6 +84,7 @@ class DeployServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $readiness
+     *
      * @return $this
      */
     public function setReadiness($readiness)
@@ -91,6 +97,7 @@ class DeployServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $batchWaitTime
+     *
      * @return $this
      */
     public function setBatchWaitTime($batchWaitTime)
@@ -103,6 +110,7 @@ class DeployServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $liveness
+     *
      * @return $this
      */
     public function setLiveness($liveness)
@@ -115,6 +123,7 @@ class DeployServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $envs
+     *
      * @return $this
      */
     public function setEnvs($envs)
@@ -127,6 +136,7 @@ class DeployServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $packageVersion
+     *
      * @return $this
      */
     public function setPackageVersion($packageVersion)
@@ -139,6 +149,7 @@ class DeployServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $command
+     *
      * @return $this
      */
     public function setCommand($command)
@@ -151,6 +162,7 @@ class DeployServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $customHostAlias
+     *
      * @return $this
      */
     public function setCustomHostAlias($customHostAlias)
@@ -163,6 +175,7 @@ class DeployServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $jdk
+     *
      * @return $this
      */
     public function setJdk($jdk)
@@ -175,6 +188,7 @@ class DeployServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $jarStartOptions
+     *
      * @return $this
      */
     public function setJarStartOptions($jarStartOptions)
@@ -187,6 +201,7 @@ class DeployServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $minReadyInstances
+     *
      * @return $this
      */
     public function setMinReadyInstances($minReadyInstances)
@@ -199,6 +214,7 @@ class DeployServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $packageUrl
+     *
      * @return $this
      */
     public function setPackageUrl($packageUrl)
@@ -211,6 +227,7 @@ class DeployServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -223,6 +240,7 @@ class DeployServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $imageUrl
+     *
      * @return $this
      */
     public function setImageUrl($imageUrl)

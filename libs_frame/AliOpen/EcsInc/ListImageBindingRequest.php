@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListImageBinding
+ *
  * @method string getResourceOwnerId()
  * @method array getInstanceIds()
  * @method string getResourceOwnerAccount()
@@ -29,6 +31,7 @@ class ListImageBindingRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -40,7 +43,6 @@ class ListImageBindingRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceIds
      * @return $this
      */
     public function setInstanceIds(array $instanceIds)
@@ -55,6 +57,7 @@ class ListImageBindingRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -67,6 +70,7 @@ class ListImageBindingRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -79,6 +83,7 @@ class ListImageBindingRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -91,6 +96,7 @@ class ListImageBindingRequest extends RpcAcsRequest
 
     /**
      * @param string $regionNo
+     *
      * @return $this
      */
     public function setRegionNo($regionNo)

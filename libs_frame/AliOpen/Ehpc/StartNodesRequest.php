@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of StartNodes
+ *
  * @method string getRole()
  * @method array getInstances()
  * @method string getClusterId()
@@ -21,6 +23,7 @@ class StartNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $role
+     *
      * @return $this
      */
     public function setRole($role)
@@ -32,7 +35,6 @@ class StartNodesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instance
      * @return $this
      */
     public function setInstances(array $instance)
@@ -47,6 +49,7 @@ class StartNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of UpdateAccountInfo
+ *
  * @method string getName()
  * @method string getTelephone()
  * @method string getEmail()
@@ -30,6 +32,7 @@ class UpdateAccountInfoRequest extends RoaAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -42,6 +45,7 @@ class UpdateAccountInfoRequest extends RoaAcsRequest
 
     /**
      * @param string $telephone
+     *
      * @return $this
      */
     public function setTelephone($telephone)
@@ -54,6 +58,7 @@ class UpdateAccountInfoRequest extends RoaAcsRequest
 
     /**
      * @param string $email
+     *
      * @return $this
      */
     public function setEmail($email)

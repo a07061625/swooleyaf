@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerMarketplaceImageExpire
+ *
  * @method string getImageInstanceId()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -33,6 +35,7 @@ class InnerMarketplaceImageExpireRequest extends RpcAcsRequest
 
     /**
      * @param string $imageInstanceId
+     *
      * @return $this
      */
     public function setImageInstanceId($imageInstanceId)
@@ -45,6 +48,7 @@ class InnerMarketplaceImageExpireRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +61,7 @@ class InnerMarketplaceImageExpireRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -69,6 +74,7 @@ class InnerMarketplaceImageExpireRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -81,6 +87,7 @@ class InnerMarketplaceImageExpireRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -93,6 +100,7 @@ class InnerMarketplaceImageExpireRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setAliUid($aliUid)
@@ -105,6 +113,7 @@ class InnerMarketplaceImageExpireRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -117,6 +126,7 @@ class InnerMarketplaceImageExpireRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -129,6 +139,7 @@ class InnerMarketplaceImageExpireRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -141,6 +152,7 @@ class InnerMarketplaceImageExpireRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListNodesNoPaging
+ *
  * @method string getHostName()
  * @method string getRole()
  * @method string getClusterId()
@@ -22,6 +24,7 @@ class ListNodesNoPagingRequest extends RpcAcsRequest
 
     /**
      * @param string $hostName
+     *
      * @return $this
      */
     public function setHostName($hostName)
@@ -34,6 +37,7 @@ class ListNodesNoPagingRequest extends RpcAcsRequest
 
     /**
      * @param string $role
+     *
      * @return $this
      */
     public function setRole($role)
@@ -46,6 +50,7 @@ class ListNodesNoPagingRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -58,6 +63,7 @@ class ListNodesNoPagingRequest extends RpcAcsRequest
 
     /**
      * @param string $onlyDetached
+     *
      * @return $this
      */
     public function setOnlyDetached($onlyDetached)

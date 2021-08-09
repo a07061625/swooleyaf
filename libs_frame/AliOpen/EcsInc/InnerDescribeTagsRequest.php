@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerDescribeTags
+ *
  * @method string getResourceOwnerId()
  * @method string getOwnerBid()
  * @method string getPageNumber()
@@ -36,6 +38,7 @@ class InnerDescribeTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +51,7 @@ class InnerDescribeTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerBid
+     *
      * @return $this
      */
     public function setOwnerBid($ownerBid)
@@ -60,6 +64,7 @@ class InnerDescribeTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -72,6 +77,7 @@ class InnerDescribeTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $createBy
+     *
      * @return $this
      */
     public function setCreateBy($createBy)
@@ -84,6 +90,7 @@ class InnerDescribeTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $scope
+     *
      * @return $this
      */
     public function setScope($scope)
@@ -96,6 +103,7 @@ class InnerDescribeTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -107,7 +115,6 @@ class InnerDescribeTagsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tags
      * @return $this
      */
     public function setTags(array $tags)
@@ -123,6 +130,7 @@ class InnerDescribeTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerUid
+     *
      * @return $this
      */
     public function setOwnerUid($ownerUid)
@@ -134,7 +142,6 @@ class InnerDescribeTagsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $resourceIds
      * @return $this
      */
     public function setResourceIds(array $resourceIds)
@@ -149,6 +156,7 @@ class InnerDescribeTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -161,6 +169,7 @@ class InnerDescribeTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -173,6 +182,7 @@ class InnerDescribeTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -185,6 +195,7 @@ class InnerDescribeTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $category
+     *
      * @return $this
      */
     public function setCategory($category)

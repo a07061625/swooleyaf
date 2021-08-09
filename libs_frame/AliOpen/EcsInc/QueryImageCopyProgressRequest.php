@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryImageCopyProgress
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -31,6 +33,7 @@ class QueryImageCopyProgressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class QueryImageCopyProgressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -55,6 +59,7 @@ class QueryImageCopyProgressRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -67,6 +72,7 @@ class QueryImageCopyProgressRequest extends RpcAcsRequest
 
     /**
      * @param string $imageNo
+     *
      * @return $this
      */
     public function setImageNo($imageNo)
@@ -79,6 +85,7 @@ class QueryImageCopyProgressRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setAliUid($aliUid)
@@ -90,7 +97,6 @@ class QueryImageCopyProgressRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tags
      * @return $this
      */
     public function setTags(array $tags)
@@ -106,6 +112,7 @@ class QueryImageCopyProgressRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -118,6 +125,7 @@ class QueryImageCopyProgressRequest extends RpcAcsRequest
 
     /**
      * @param string $imageRegionNo
+     *
      * @return $this
      */
     public function setImageRegionNo($imageRegionNo)

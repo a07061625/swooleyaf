@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of InsertOrUpdateRegion
+ *
  * @method string getHybridCloudEnable()
  * @method string getVpcId()
  * @method string getRegionTag()
@@ -33,6 +35,7 @@ class InsertOrUpdateRegionRequest extends RoaAcsRequest
 
     /**
      * @param string $hybridCloudEnable
+     *
      * @return $this
      */
     public function setHybridCloudEnable($hybridCloudEnable)
@@ -45,6 +48,7 @@ class InsertOrUpdateRegionRequest extends RoaAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -57,6 +61,7 @@ class InsertOrUpdateRegionRequest extends RoaAcsRequest
 
     /**
      * @param string $regionTag
+     *
      * @return $this
      */
     public function setRegionTag($regionTag)
@@ -69,6 +74,7 @@ class InsertOrUpdateRegionRequest extends RoaAcsRequest
 
     /**
      * @param string $regionName
+     *
      * @return $this
      */
     public function setRegionName($regionName)
@@ -81,6 +87,7 @@ class InsertOrUpdateRegionRequest extends RoaAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -93,6 +100,7 @@ class InsertOrUpdateRegionRequest extends RoaAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)

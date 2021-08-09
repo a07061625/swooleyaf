@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of InsertServerlessApplication
+ *
  * @method string getWebContainer()
  * @method string getJarStartArgs()
  * @method string getMemory()
@@ -50,6 +52,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $webContainer
+     *
      * @return $this
      */
     public function setWebContainer($webContainer)
@@ -62,6 +65,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $jarStartArgs
+     *
      * @return $this
      */
     public function setJarStartArgs($jarStartArgs)
@@ -74,6 +78,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $memory
+     *
      * @return $this
      */
     public function setMemory($memory)
@@ -86,6 +91,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $commandArgs
+     *
      * @return $this
      */
     public function setCommandArgs($commandArgs)
@@ -98,6 +104,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $replicas
+     *
      * @return $this
      */
     public function setReplicas($replicas)
@@ -110,6 +117,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $readiness
+     *
      * @return $this
      */
     public function setReadiness($readiness)
@@ -122,6 +130,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $liveness
+     *
      * @return $this
      */
     public function setLiveness($liveness)
@@ -134,6 +143,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $cpu
+     *
      * @return $this
      */
     public function setCpu($cpu)
@@ -146,6 +156,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $envs
+     *
      * @return $this
      */
     public function setEnvs($envs)
@@ -158,6 +169,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $packageVersion
+     *
      * @return $this
      */
     public function setPackageVersion($packageVersion)
@@ -170,6 +182,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $command
+     *
      * @return $this
      */
     public function setCommand($command)
@@ -182,6 +195,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $customHostAlias
+     *
      * @return $this
      */
     public function setCustomHostAlias($customHostAlias)
@@ -194,6 +208,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $deploy
+     *
      * @return $this
      */
     public function setDeploy($deploy)
@@ -206,6 +221,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -218,6 +234,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $jdk
+     *
      * @return $this
      */
     public function setJdk($jdk)
@@ -230,6 +247,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $appDescription
+     *
      * @return $this
      */
     public function setAppDescription($appDescription)
@@ -242,6 +260,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $jarStartOptions
+     *
      * @return $this
      */
     public function setJarStartOptions($jarStartOptions)
@@ -254,6 +273,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $appName
+     *
      * @return $this
      */
     public function setAppName($appName)
@@ -266,6 +286,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $namespaceId
+     *
      * @return $this
      */
     public function setNamespaceId($namespaceId)
@@ -278,6 +299,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $packageUrl
+     *
      * @return $this
      */
     public function setPackageUrl($packageUrl)
@@ -290,6 +312,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -302,6 +325,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $imageUrl
+     *
      * @return $this
      */
     public function setImageUrl($imageUrl)
@@ -314,6 +338,7 @@ class InsertServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $packageType
+     *
      * @return $this
      */
     public function setPackageType($packageType)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CopySystemImage
+ *
  * @method string getTransitId()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -32,6 +34,7 @@ class CopySystemImageRequest extends RpcAcsRequest
 
     /**
      * @param string $transitId
+     *
      * @return $this
      */
     public function setTransitId($transitId)
@@ -44,6 +47,7 @@ class CopySystemImageRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -56,6 +60,7 @@ class CopySystemImageRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -68,6 +73,7 @@ class CopySystemImageRequest extends RpcAcsRequest
 
     /**
      * @param string $toImageName
+     *
      * @return $this
      */
     public function setToImageName($toImageName)
@@ -80,6 +86,7 @@ class CopySystemImageRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,7 +98,6 @@ class CopySystemImageRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $toRegionNoLists
      * @return $this
      */
     public function setToRegionNoLists(array $toRegionNoLists)
@@ -106,6 +112,7 @@ class CopySystemImageRequest extends RpcAcsRequest
 
     /**
      * @param string $toImageDesc
+     *
      * @return $this
      */
     public function setToImageDesc($toImageDesc)
@@ -117,7 +124,6 @@ class CopySystemImageRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tags
      * @return $this
      */
     public function setTags(array $tags)
@@ -133,6 +139,7 @@ class CopySystemImageRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

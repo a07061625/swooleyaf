@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerImageConvert2Product
+ *
  * @method string getResourceOwnerId()
  * @method string getproductCode()
  * @method string getimageId()
@@ -36,6 +38,7 @@ class InnerImageConvert2ProductRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +51,7 @@ class InnerImageConvert2ProductRequest extends RpcAcsRequest
 
     /**
      * @param string $productCode
+     *
      * @return $this
      */
     public function setproductCode($productCode)
@@ -60,6 +64,7 @@ class InnerImageConvert2ProductRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setimageId($imageId)
@@ -72,6 +77,7 @@ class InnerImageConvert2ProductRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -84,6 +90,7 @@ class InnerImageConvert2ProductRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -96,6 +103,7 @@ class InnerImageConvert2ProductRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -108,6 +116,7 @@ class InnerImageConvert2ProductRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -120,6 +129,7 @@ class InnerImageConvert2ProductRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -132,6 +142,7 @@ class InnerImageConvert2ProductRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -144,6 +155,7 @@ class InnerImageConvert2ProductRequest extends RpcAcsRequest
 
     /**
      * @param string $async
+     *
      * @return $this
      */
     public function setasync($async)
@@ -156,6 +168,7 @@ class InnerImageConvert2ProductRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -168,6 +181,7 @@ class InnerImageConvert2ProductRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -180,6 +194,7 @@ class InnerImageConvert2ProductRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

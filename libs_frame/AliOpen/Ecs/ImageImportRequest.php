@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ImportImage
+ *
  * @method array getDiskDeviceMappings()
  * @method string getResourceOwnerId()
  * @method string getDescription()
@@ -35,7 +37,6 @@ class ImageImportRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $diskDeviceMapping
      * @return $this
      */
     public function setDiskDeviceMappings(array $diskDeviceMapping)
@@ -55,6 +56,7 @@ class ImageImportRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -67,6 +69,7 @@ class ImageImportRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -79,6 +82,7 @@ class ImageImportRequest extends RpcAcsRequest
 
     /**
      * @param string $platform
+     *
      * @return $this
      */
     public function setPlatform($platform)
@@ -91,6 +95,7 @@ class ImageImportRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -103,6 +108,7 @@ class ImageImportRequest extends RpcAcsRequest
 
     /**
      * @param string $imageName
+     *
      * @return $this
      */
     public function setImageName($imageName)
@@ -114,7 +120,6 @@ class ImageImportRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -130,6 +135,7 @@ class ImageImportRequest extends RpcAcsRequest
 
     /**
      * @param string $architecture
+     *
      * @return $this
      */
     public function setArchitecture($architecture)
@@ -142,6 +148,7 @@ class ImageImportRequest extends RpcAcsRequest
 
     /**
      * @param string $licenseType
+     *
      * @return $this
      */
     public function setLicenseType($licenseType)
@@ -154,6 +161,7 @@ class ImageImportRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -166,6 +174,7 @@ class ImageImportRequest extends RpcAcsRequest
 
     /**
      * @param string $roleName
+     *
      * @return $this
      */
     public function setRoleName($roleName)
@@ -178,6 +187,7 @@ class ImageImportRequest extends RpcAcsRequest
 
     /**
      * @param string $oSType
+     *
      * @return $this
      */
     public function setOSType($oSType)
@@ -190,6 +200,7 @@ class ImageImportRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

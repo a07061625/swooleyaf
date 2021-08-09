@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetCloudMetricProfiling
+ *
  * @method string getProfilingId()
  * @method string getClusterId()
  */
@@ -20,6 +22,7 @@ class GetCloudMetricProfilingRequest extends RpcAcsRequest
 
     /**
      * @param string $profilingId
+     *
      * @return $this
      */
     public function setProfilingId($profilingId)
@@ -32,6 +35,7 @@ class GetCloudMetricProfilingRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

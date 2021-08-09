@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateDeploymentSet
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getDescription()
@@ -34,6 +36,7 @@ class DeploymentSetCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class DeploymentSetCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -58,6 +62,7 @@ class DeploymentSetCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -70,6 +75,7 @@ class DeploymentSetCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -82,6 +88,7 @@ class DeploymentSetCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -94,6 +101,7 @@ class DeploymentSetCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $deploymentSetName
+     *
      * @return $this
      */
     public function setDeploymentSetName($deploymentSetName)
@@ -106,6 +114,7 @@ class DeploymentSetCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -118,6 +127,7 @@ class DeploymentSetCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $onUnableToRedeployFailedInstance
+     *
      * @return $this
      */
     public function setOnUnableToRedeployFailedInstance($onUnableToRedeployFailedInstance)
@@ -130,6 +140,7 @@ class DeploymentSetCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $granularity
+     *
      * @return $this
      */
     public function setGranularity($granularity)
@@ -142,6 +153,7 @@ class DeploymentSetCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $domain
+     *
      * @return $this
      */
     public function setDomain($domain)
@@ -154,6 +166,7 @@ class DeploymentSetCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $strategy
+     *
      * @return $this
      */
     public function setStrategy($strategy)

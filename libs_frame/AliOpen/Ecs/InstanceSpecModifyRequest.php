@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyInstanceSpec
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getAllowMigrateAcrossZone()
@@ -38,6 +40,7 @@ class InstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +53,7 @@ class InstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -62,6 +66,7 @@ class InstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $allowMigrateAcrossZone
+     *
      * @return $this
      */
     public function setAllowMigrateAcrossZone($allowMigrateAcrossZone)
@@ -74,6 +79,7 @@ class InstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $internetMaxBandwidthOut
+     *
      * @return $this
      */
     public function setInternetMaxBandwidthOut($internetMaxBandwidthOut)
@@ -86,6 +92,7 @@ class InstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskCategory
+     *
      * @return $this
      */
     public function setSystemDiskCategory($systemDiskCategory)
@@ -98,6 +105,7 @@ class InstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -110,6 +118,7 @@ class InstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $temporaryEndTime
+     *
      * @return $this
      */
     public function setTemporaryEndTime($temporaryEndTime)
@@ -122,6 +131,7 @@ class InstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -134,6 +144,7 @@ class InstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -146,6 +157,7 @@ class InstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -158,6 +170,7 @@ class InstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $temporaryInternetMaxBandwidthOut
+     *
      * @return $this
      */
     public function setTemporaryInternetMaxBandwidthOut($temporaryInternetMaxBandwidthOut)
@@ -170,6 +183,7 @@ class InstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $temporaryStartTime
+     *
      * @return $this
      */
     public function setTemporaryStartTime($temporaryStartTime)
@@ -182,6 +196,7 @@ class InstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $async
+     *
      * @return $this
      */
     public function setAsync($async)
@@ -194,6 +209,7 @@ class InstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -206,6 +222,7 @@ class InstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $internetMaxBandwidthIn
+     *
      * @return $this
      */
     public function setInternetMaxBandwidthIn($internetMaxBandwidthIn)

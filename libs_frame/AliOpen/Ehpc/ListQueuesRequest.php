@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListQueues
+ *
  * @method string getClusterId()
  */
 class ListQueuesRequest extends RpcAcsRequest
@@ -19,6 +21,7 @@ class ListQueuesRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

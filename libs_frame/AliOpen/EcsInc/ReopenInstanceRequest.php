@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ReopenInstance
+ *
  * @method string getExpectedReleaseTime()
  * @method string getResourceOwnerId()
  * @method string getInstanceId()
@@ -29,6 +31,7 @@ class ReopenInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $expectedReleaseTime
+     *
      * @return $this
      */
     public function setExpectedReleaseTime($expectedReleaseTime)
@@ -41,6 +44,7 @@ class ReopenInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -53,6 +57,7 @@ class ReopenInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -65,6 +70,7 @@ class ReopenInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -77,6 +83,7 @@ class ReopenInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -89,6 +96,7 @@ class ReopenInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

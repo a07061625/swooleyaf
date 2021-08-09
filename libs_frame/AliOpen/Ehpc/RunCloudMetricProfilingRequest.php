@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RunCloudMetricProfiling
+ *
  * @method string getDuration()
  * @method string getHostName()
  * @method string getProcessId()
@@ -23,6 +25,7 @@ class RunCloudMetricProfilingRequest extends RpcAcsRequest
 
     /**
      * @param string $duration
+     *
      * @return $this
      */
     public function setDuration($duration)
@@ -35,6 +38,7 @@ class RunCloudMetricProfilingRequest extends RpcAcsRequest
 
     /**
      * @param string $hostName
+     *
      * @return $this
      */
     public function setHostName($hostName)
@@ -47,6 +51,7 @@ class RunCloudMetricProfilingRequest extends RpcAcsRequest
 
     /**
      * @param string $processId
+     *
      * @return $this
      */
     public function setProcessId($processId)
@@ -59,6 +64,7 @@ class RunCloudMetricProfilingRequest extends RpcAcsRequest
 
     /**
      * @param string $freq
+     *
      * @return $this
      */
     public function setFreq($freq)
@@ -71,6 +77,7 @@ class RunCloudMetricProfilingRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

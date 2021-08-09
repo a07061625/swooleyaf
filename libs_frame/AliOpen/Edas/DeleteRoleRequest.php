@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DeleteRole
+ *
  * @method string getRoleId()
  */
 class DeleteRoleRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class DeleteRoleRequest extends RoaAcsRequest
 
     /**
      * @param string $roleId
+     *
      * @return $this
      */
     public function setRoleId($roleId)

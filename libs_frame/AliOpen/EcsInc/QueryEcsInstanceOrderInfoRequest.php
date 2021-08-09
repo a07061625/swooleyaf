@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryEcsInstanceOrderInfo
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -30,6 +32,7 @@ class QueryEcsInstanceOrderInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class QueryEcsInstanceOrderInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -54,6 +58,7 @@ class QueryEcsInstanceOrderInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -66,6 +71,7 @@ class QueryEcsInstanceOrderInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $callerBid
+     *
      * @return $this
      */
     public function setcallerBid($callerBid)
@@ -78,6 +84,7 @@ class QueryEcsInstanceOrderInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -90,6 +97,7 @@ class QueryEcsInstanceOrderInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -102,6 +110,7 @@ class QueryEcsInstanceOrderInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $callerUid
+     *
      * @return $this
      */
     public function setcallerUid($callerUid)

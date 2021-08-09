@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerEcsInstanceQueryRegions
+ *
  * @method string getasync()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -34,6 +36,7 @@ class InnerEcsInstanceQueryRegionsRequest extends RpcAcsRequest
 
     /**
      * @param string $async
+     *
      * @return $this
      */
     public function setasync($async)
@@ -46,6 +49,7 @@ class InnerEcsInstanceQueryRegionsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -58,6 +62,7 @@ class InnerEcsInstanceQueryRegionsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -70,6 +75,7 @@ class InnerEcsInstanceQueryRegionsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -82,6 +88,7 @@ class InnerEcsInstanceQueryRegionsRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -94,6 +101,7 @@ class InnerEcsInstanceQueryRegionsRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -106,6 +114,7 @@ class InnerEcsInstanceQueryRegionsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -118,6 +127,7 @@ class InnerEcsInstanceQueryRegionsRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -130,6 +140,7 @@ class InnerEcsInstanceQueryRegionsRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -142,6 +153,7 @@ class InnerEcsInstanceQueryRegionsRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -154,6 +166,7 @@ class InnerEcsInstanceQueryRegionsRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

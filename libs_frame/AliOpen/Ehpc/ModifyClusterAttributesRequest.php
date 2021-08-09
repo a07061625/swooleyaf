@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyClusterAttributes
+ *
  * @method string getName()
  * @method string getDescription()
  * @method string getClusterId()
@@ -21,6 +23,7 @@ class ModifyClusterAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -33,6 +36,7 @@ class ModifyClusterAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -45,6 +49,7 @@ class ModifyClusterAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

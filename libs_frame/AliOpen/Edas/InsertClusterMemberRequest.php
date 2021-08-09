@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of InsertClusterMember
+ *
  * @method string getpassword()
  * @method string getinstanceIds()
  * @method string getclusterId()
@@ -30,6 +32,7 @@ class InsertClusterMemberRequest extends RoaAcsRequest
 
     /**
      * @param string $password
+     *
      * @return $this
      */
     public function setpassword($password)
@@ -42,6 +45,7 @@ class InsertClusterMemberRequest extends RoaAcsRequest
 
     /**
      * @param string $instanceIds
+     *
      * @return $this
      */
     public function setinstanceIds($instanceIds)
@@ -54,6 +58,7 @@ class InsertClusterMemberRequest extends RoaAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setclusterId($clusterId)

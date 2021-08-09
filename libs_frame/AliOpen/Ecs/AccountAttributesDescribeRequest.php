@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeAccountAttributes
+ *
  * @method string getResourceOwnerId()
  * @method array getAttributeNames()
  * @method string getResourceOwnerAccount()
@@ -28,6 +30,7 @@ class AccountAttributesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -39,7 +42,6 @@ class AccountAttributesDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $attributeName
      * @return $this
      */
     public function setAttributeNames(array $attributeName)
@@ -54,6 +56,7 @@ class AccountAttributesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +69,7 @@ class AccountAttributesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -78,6 +82,7 @@ class AccountAttributesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)

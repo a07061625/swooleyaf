@@ -1,14 +1,18 @@
 <?php
+
 namespace AliOpen\Eci;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Class DescribeContainerGroupsRequest
+ *
  * @author    Alibaba Cloud SDK <sdk-team@alibabacloud.com>
  * @copyright 2019 Alibaba Group
  * @license   http://www.apache.org/licenses/LICENSE-2.0  Apache License 2.0
- * @link      https://github.com/aliyun/aliyun-openapi-php-sdk
+ *
+ * @see      https://github.com/aliyun/aliyun-openapi-php-sdk
+ *
  * @method string getResourceOwnerId()
  * @method string getContainerGroupIds()
  * @method string getNextToken()
@@ -39,6 +43,7 @@ class DescribeContainerGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -51,6 +56,7 @@ class DescribeContainerGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $containerGroupIds
+     *
      * @return $this
      */
     public function setContainerGroupIds($containerGroupIds)
@@ -63,6 +69,7 @@ class DescribeContainerGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $nextToken
+     *
      * @return $this
      */
     public function setNextToken($nextToken)
@@ -75,6 +82,7 @@ class DescribeContainerGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $limit
+     *
      * @return $this
      */
     public function setLimit($limit)
@@ -86,7 +94,6 @@ class DescribeContainerGroupsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $Tags
      * @return $this
      */
     public function setTags(array $Tags)
@@ -102,6 +109,7 @@ class DescribeContainerGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -114,6 +122,7 @@ class DescribeContainerGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -126,6 +135,7 @@ class DescribeContainerGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -138,6 +148,7 @@ class DescribeContainerGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -150,6 +161,7 @@ class DescribeContainerGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $containerGroupName
+     *
      * @return $this
      */
     public function setContainerGroupName($containerGroupName)
@@ -162,6 +174,7 @@ class DescribeContainerGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -174,6 +187,7 @@ class DescribeContainerGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

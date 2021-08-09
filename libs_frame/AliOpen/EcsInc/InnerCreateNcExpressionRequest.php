@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerCreateNcExpression
+ *
  * @method string getGrayBid()
  * @method string getGrayAliUid()
  * @method array getEcsInstanceIds()
@@ -28,6 +30,7 @@ class InnerCreateNcExpressionRequest extends RpcAcsRequest
 
     /**
      * @param string $grayBid
+     *
      * @return $this
      */
     public function setGrayBid($grayBid)
@@ -40,6 +43,7 @@ class InnerCreateNcExpressionRequest extends RpcAcsRequest
 
     /**
      * @param string $grayAliUid
+     *
      * @return $this
      */
     public function setGrayAliUid($grayAliUid)
@@ -51,7 +55,6 @@ class InnerCreateNcExpressionRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $ecsInstanceIds
      * @return $this
      */
     public function setEcsInstanceIds(array $ecsInstanceIds)
@@ -66,6 +69,7 @@ class InnerCreateNcExpressionRequest extends RpcAcsRequest
 
     /**
      * @param string $expression
+     *
      * @return $this
      */
     public function setExpression($expression)
@@ -77,7 +81,6 @@ class InnerCreateNcExpressionRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $vSwitchIds
      * @return $this
      */
     public function setVSwitchIds(array $vSwitchIds)

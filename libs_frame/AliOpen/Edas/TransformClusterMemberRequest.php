@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of TransformClusterMember
+ *
  * @method string getPassword()
  * @method string getInstanceIds()
  * @method string getTargetClusterId()
@@ -30,6 +32,7 @@ class TransformClusterMemberRequest extends RoaAcsRequest
 
     /**
      * @param string $password
+     *
      * @return $this
      */
     public function setPassword($password)
@@ -42,6 +45,7 @@ class TransformClusterMemberRequest extends RoaAcsRequest
 
     /**
      * @param string $instanceIds
+     *
      * @return $this
      */
     public function setInstanceIds($instanceIds)
@@ -54,6 +58,7 @@ class TransformClusterMemberRequest extends RoaAcsRequest
 
     /**
      * @param string $targetClusterId
+     *
      * @return $this
      */
     public function setTargetClusterId($targetClusterId)

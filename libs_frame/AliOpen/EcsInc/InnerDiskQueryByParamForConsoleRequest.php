@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerDiskQueryByParamForConsole
+ *
  * @method string getfuzzyDiskName()
  * @method string getResourceOwnerId()
  * @method string getizNo()
@@ -57,6 +59,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $fuzzyDiskName
+     *
      * @return $this
      */
     public function setfuzzyDiskName($fuzzyDiskName)
@@ -69,6 +72,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -81,6 +85,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $izNo
+     *
      * @return $this
      */
     public function setizNo($izNo)
@@ -93,6 +98,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $prePayEcsInstanceIds
+     *
      * @return $this
      */
     public function setprePayEcsInstanceIds($prePayEcsInstanceIds)
@@ -105,6 +111,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $autoSnapshotPolicyId
+     *
      * @return $this
      */
     public function setautoSnapshotPolicyId($autoSnapshotPolicyId)
@@ -117,6 +124,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -129,6 +137,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -141,6 +150,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $excludeStatus
+     *
      * @return $this
      */
     public function setexcludeStatus($excludeStatus)
@@ -153,6 +163,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $diskName
+     *
      * @return $this
      */
     public function setdiskName($diskName)
@@ -165,6 +176,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $deleteAutoSnapshot
+     *
      * @return $this
      */
     public function setdeleteAutoSnapshot($deleteAutoSnapshot)
@@ -177,6 +189,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $diskCategory
+     *
      * @return $this
      */
     public function setdiskCategory($diskCategory)
@@ -189,6 +202,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setpageSize($pageSize)
@@ -201,6 +215,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotNo
+     *
      * @return $this
      */
     public function setsnapshotNo($snapshotNo)
@@ -213,6 +228,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $deleteWithInstance
+     *
      * @return $this
      */
     public function setdeleteWithInstance($deleteWithInstance)
@@ -225,6 +241,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -237,6 +254,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $postPayEcsInstanceIds
+     *
      * @return $this
      */
     public function setpostPayEcsInstanceIds($postPayEcsInstanceIds)
@@ -249,6 +267,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsInstanceId
+     *
      * @return $this
      */
     public function setecsInstanceId($ecsInstanceId)
@@ -261,6 +280,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $enableAutoSnapshot
+     *
      * @return $this
      */
     public function setenableAutoSnapshot($enableAutoSnapshot)
@@ -273,6 +293,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -285,6 +306,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -297,6 +319,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $active
+     *
      * @return $this
      */
     public function setactive($active)
@@ -309,6 +332,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $imageNo
+     *
      * @return $this
      */
     public function setimageNo($imageNo)
@@ -321,6 +345,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $createTimeFrom
+     *
      * @return $this
      */
     public function setcreateTimeFrom($createTimeFrom)
@@ -333,6 +358,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $enableAutomatedSnapshotPolicy
+     *
      * @return $this
      */
     public function setenableAutomatedSnapshotPolicy($enableAutomatedSnapshotPolicy)
@@ -345,6 +371,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $portable
+     *
      * @return $this
      */
     public function setportable($portable)
@@ -357,6 +384,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -369,6 +397,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $diskType
+     *
      * @return $this
      */
     public function setdiskType($diskType)
@@ -381,6 +410,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -393,6 +423,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $tags
+     *
      * @return $this
      */
     public function settags($tags)
@@ -405,6 +436,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $async
+     *
      * @return $this
      */
     public function setasync($async)
@@ -417,6 +449,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceIds
+     *
      * @return $this
      */
     public function setinstanceIds($instanceIds)
@@ -429,6 +462,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNo
+     *
      * @return $this
      */
     public function setpageNo($pageNo)
@@ -441,6 +475,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $createTimeTo
+     *
      * @return $this
      */
     public function setcreateTimeTo($createTimeTo)
@@ -453,6 +488,7 @@ class InnerDiskQueryByParamForConsoleRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setstatus($status)

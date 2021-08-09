@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifySystemEventAttribute
+ *
  * @method string getEventId()
  * @method string getResourceOwnerId()
  * @method string getAliUid()
@@ -31,6 +33,7 @@ class ModifySystemEventAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $eventId
+     *
      * @return $this
      */
     public function setEventId($eventId)
@@ -43,6 +46,7 @@ class ModifySystemEventAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -55,6 +59,7 @@ class ModifySystemEventAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setAliUid($aliUid)
@@ -67,6 +72,7 @@ class ModifySystemEventAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceId
+     *
      * @return $this
      */
     public function setResourceId($resourceId)
@@ -79,6 +85,7 @@ class ModifySystemEventAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -91,6 +98,7 @@ class ModifySystemEventAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $newPlanTime
+     *
      * @return $this
      */
     public function setNewPlanTime($newPlanTime)
@@ -103,6 +111,7 @@ class ModifySystemEventAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -115,6 +124,7 @@ class ModifySystemEventAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $newExpireTime
+     *
      * @return $this
      */
     public function setNewExpireTime($newExpireTime)

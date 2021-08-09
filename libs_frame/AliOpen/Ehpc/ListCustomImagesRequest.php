@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListCustomImages
+ *
  * @method string getBaseOsTag()
  * @method string getImageOwnerAlias()
  */
@@ -20,6 +22,7 @@ class ListCustomImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $baseOsTag
+     *
      * @return $this
      */
     public function setBaseOsTag($baseOsTag)
@@ -32,6 +35,7 @@ class ListCustomImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $imageOwnerAlias
+     *
      * @return $this
      */
     public function setImageOwnerAlias($imageOwnerAlias)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateVirtualBorderRouter
+ *
  * @method string getResourceOwnerId()
  * @method string getCircuitCode()
  * @method string getVlanId()
@@ -38,6 +40,7 @@ class VirtualBorderRouterCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +53,7 @@ class VirtualBorderRouterCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $circuitCode
+     *
      * @return $this
      */
     public function setCircuitCode($circuitCode)
@@ -62,6 +66,7 @@ class VirtualBorderRouterCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $vlanId
+     *
      * @return $this
      */
     public function setVlanId($vlanId)
@@ -74,6 +79,7 @@ class VirtualBorderRouterCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -86,6 +92,7 @@ class VirtualBorderRouterCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -98,6 +105,7 @@ class VirtualBorderRouterCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $peerGatewayIp
+     *
      * @return $this
      */
     public function setPeerGatewayIp($peerGatewayIp)
@@ -110,6 +118,7 @@ class VirtualBorderRouterCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $peeringSubnetMask
+     *
      * @return $this
      */
     public function setPeeringSubnetMask($peeringSubnetMask)
@@ -122,6 +131,7 @@ class VirtualBorderRouterCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $localGatewayIp
+     *
      * @return $this
      */
     public function setLocalGatewayIp($localGatewayIp)
@@ -134,6 +144,7 @@ class VirtualBorderRouterCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $userCidr
+     *
      * @return $this
      */
     public function setUserCidr($userCidr)
@@ -146,6 +157,7 @@ class VirtualBorderRouterCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -158,6 +170,7 @@ class VirtualBorderRouterCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -170,6 +183,7 @@ class VirtualBorderRouterCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -182,6 +196,7 @@ class VirtualBorderRouterCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $physicalConnectionId
+     *
      * @return $this
      */
     public function setPhysicalConnectionId($physicalConnectionId)
@@ -194,6 +209,7 @@ class VirtualBorderRouterCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -206,6 +222,7 @@ class VirtualBorderRouterCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $vbrOwnerId
+     *
      * @return $this
      */
     public function setVbrOwnerId($vbrOwnerId)

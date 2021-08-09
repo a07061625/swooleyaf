@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerModifyInstanceChargeType
+ *
  * @method string getResourceOwnerId()
  * @method string getdryRun()
  * @method string getResourceOwnerAccount()
@@ -37,6 +39,7 @@ class InnerModifyInstanceChargeTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -49,6 +52,7 @@ class InnerModifyInstanceChargeTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $dryRun
+     *
      * @return $this
      */
     public function setdryRun($dryRun)
@@ -61,6 +65,7 @@ class InnerModifyInstanceChargeTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -73,6 +78,7 @@ class InnerModifyInstanceChargeTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -85,6 +91,7 @@ class InnerModifyInstanceChargeTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -97,6 +104,7 @@ class InnerModifyInstanceChargeTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -109,6 +117,7 @@ class InnerModifyInstanceChargeTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $buyerId
+     *
      * @return $this
      */
     public function setbuyerId($buyerId)
@@ -121,6 +130,7 @@ class InnerModifyInstanceChargeTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -133,6 +143,7 @@ class InnerModifyInstanceChargeTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -145,6 +156,7 @@ class InnerModifyInstanceChargeTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $regionNo
+     *
      * @return $this
      */
     public function setregionNo($regionNo)
@@ -157,6 +169,7 @@ class InnerModifyInstanceChargeTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceIds
+     *
      * @return $this
      */
     public function setinstanceIds($instanceIds)
@@ -169,6 +182,7 @@ class InnerModifyInstanceChargeTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -181,6 +195,7 @@ class InnerModifyInstanceChargeTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -193,6 +208,7 @@ class InnerModifyInstanceChargeTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

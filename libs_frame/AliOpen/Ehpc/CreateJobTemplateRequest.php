@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateJobTemplate
+ *
  * @method string getStderrRedirectPath()
  * @method string getArrayRequest()
  * @method string getPackagePath()
@@ -28,6 +30,7 @@ class CreateJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $stderrRedirectPath
+     *
      * @return $this
      */
     public function setStderrRedirectPath($stderrRedirectPath)
@@ -40,6 +43,7 @@ class CreateJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $arrayRequest
+     *
      * @return $this
      */
     public function setArrayRequest($arrayRequest)
@@ -52,6 +56,7 @@ class CreateJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $packagePath
+     *
      * @return $this
      */
     public function setPackagePath($packagePath)
@@ -64,6 +69,7 @@ class CreateJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $variables
+     *
      * @return $this
      */
     public function setVariables($variables)
@@ -76,6 +82,7 @@ class CreateJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -88,6 +95,7 @@ class CreateJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $runasUser
+     *
      * @return $this
      */
     public function setRunasUser($runasUser)
@@ -100,6 +108,7 @@ class CreateJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $stdoutRedirectPath
+     *
      * @return $this
      */
     public function setStdoutRedirectPath($stdoutRedirectPath)
@@ -112,6 +121,7 @@ class CreateJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $reRunable
+     *
      * @return $this
      */
     public function setReRunable($reRunable)
@@ -124,6 +134,7 @@ class CreateJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $priority
+     *
      * @return $this
      */
     public function setPriority($priority)
@@ -136,6 +147,7 @@ class CreateJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $commandLine
+     *
      * @return $this
      */
     public function setCommandLine($commandLine)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyUserGroups
+ *
  * @method string getClusterId()
  * @method array getUsers()
  */
@@ -20,6 +22,7 @@ class ModifyUserGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -31,7 +34,6 @@ class ModifyUserGroupsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $user
      * @return $this
      */
     public function setUsers(array $user)

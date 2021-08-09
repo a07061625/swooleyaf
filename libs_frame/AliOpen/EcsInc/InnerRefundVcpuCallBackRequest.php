@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerRefundVcpuCallBack
+ *
  * @method string getResourceOwnerId()
  * @method string getVcpuTotal()
  * @method string getType()
@@ -32,6 +34,7 @@ class InnerRefundVcpuCallBackRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class InnerRefundVcpuCallBackRequest extends RpcAcsRequest
 
     /**
      * @param string $vcpuTotal
+     *
      * @return $this
      */
     public function setVcpuTotal($vcpuTotal)
@@ -56,6 +60,7 @@ class InnerRefundVcpuCallBackRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -68,6 +73,7 @@ class InnerRefundVcpuCallBackRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setAliUid($aliUid)
@@ -80,6 +86,7 @@ class InnerRefundVcpuCallBackRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -92,6 +99,7 @@ class InnerRefundVcpuCallBackRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +112,7 @@ class InnerRefundVcpuCallBackRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,6 +125,7 @@ class InnerRefundVcpuCallBackRequest extends RpcAcsRequest
 
     /**
      * @param string $isSuccess
+     *
      * @return $this
      */
     public function setIsSuccess($isSuccess)
@@ -127,7 +137,6 @@ class InnerRefundVcpuCallBackRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceIdss
      * @return $this
      */
     public function setInstanceIdss(array $instanceIdss)

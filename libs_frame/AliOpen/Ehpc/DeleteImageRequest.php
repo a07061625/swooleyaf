@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteImage
+ *
  * @method string getContainerType()
  * @method string getClusterId()
  * @method string getRepository()
@@ -22,6 +24,7 @@ class DeleteImageRequest extends RpcAcsRequest
 
     /**
      * @param string $containerType
+     *
      * @return $this
      */
     public function setContainerType($containerType)
@@ -34,6 +37,7 @@ class DeleteImageRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -46,6 +50,7 @@ class DeleteImageRequest extends RpcAcsRequest
 
     /**
      * @param string $repository
+     *
      * @return $this
      */
     public function setRepository($repository)
@@ -58,6 +63,7 @@ class DeleteImageRequest extends RpcAcsRequest
 
     /**
      * @param string $imageTag
+     *
      * @return $this
      */
     public function setImageTag($imageTag)

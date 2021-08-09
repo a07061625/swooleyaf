@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of ListEcsNotInCluster
+ *
  * @method string getVpcId()
  * @method string getNetworkMode()
  */
@@ -25,6 +27,7 @@ class ListEcsNotInClusterRequest extends RoaAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -37,6 +40,7 @@ class ListEcsNotInClusterRequest extends RoaAcsRequest
 
     /**
      * @param string $networkMode
+     *
      * @return $this
      */
     public function setNetworkMode($networkMode)

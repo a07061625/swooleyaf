@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerEcsQueryBySerialNumber
+ *
  * @method string getResourceOwnerId()
  * @method string getserialNumber()
  * @method string getResourceOwnerAccount()
@@ -32,6 +34,7 @@ class InnerEcsQueryBySerialNumberRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class InnerEcsQueryBySerialNumberRequest extends RpcAcsRequest
 
     /**
      * @param string $serialNumber
+     *
      * @return $this
      */
     public function setserialNumber($serialNumber)
@@ -56,6 +60,7 @@ class InnerEcsQueryBySerialNumberRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -68,6 +73,7 @@ class InnerEcsQueryBySerialNumberRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -80,6 +86,7 @@ class InnerEcsQueryBySerialNumberRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -92,6 +99,7 @@ class InnerEcsQueryBySerialNumberRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -104,6 +112,7 @@ class InnerEcsQueryBySerialNumberRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -116,6 +125,7 @@ class InnerEcsQueryBySerialNumberRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -128,6 +138,7 @@ class InnerEcsQueryBySerialNumberRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListCpfsFileSystems
+ *
  * @method string getPageSize()
  * @method string getPageNumber()
  * @method string getFileSystemId()
@@ -21,6 +23,7 @@ class ListCpfsFileSystemsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -33,6 +36,7 @@ class ListCpfsFileSystemsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -45,6 +49,7 @@ class ListCpfsFileSystemsRequest extends RpcAcsRequest
 
     /**
      * @param string $fileSystemId
+     *
      * @return $this
      */
     public function setFileSystemId($fileSystemId)

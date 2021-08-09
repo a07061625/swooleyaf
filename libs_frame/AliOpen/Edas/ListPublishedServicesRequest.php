@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of ListPublishedServices
+ *
  * @method string getAppId()
  */
 class ListPublishedServicesRequest extends RoaAcsRequest
@@ -24,6 +26,7 @@ class ListPublishedServicesRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

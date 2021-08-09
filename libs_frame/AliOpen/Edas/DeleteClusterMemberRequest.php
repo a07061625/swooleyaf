@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DeleteClusterMember
+ *
  * @method string getClusterMemberId()
  * @method string getClusterId()
  */
@@ -29,6 +31,7 @@ class DeleteClusterMemberRequest extends RoaAcsRequest
 
     /**
      * @param string $clusterMemberId
+     *
      * @return $this
      */
     public function setClusterMemberId($clusterMemberId)
@@ -41,6 +44,7 @@ class DeleteClusterMemberRequest extends RoaAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of BindK8sSlb
+ *
  * @method string getSlbId()
  * @method string getSlbProtocol()
  * @method string getPort()
@@ -34,6 +36,7 @@ class BindK8sSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $slbId
+     *
      * @return $this
      */
     public function setSlbId($slbId)
@@ -46,6 +49,7 @@ class BindK8sSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $slbProtocol
+     *
      * @return $this
      */
     public function setSlbProtocol($slbProtocol)
@@ -58,6 +62,7 @@ class BindK8sSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $port
+     *
      * @return $this
      */
     public function setPort($port)
@@ -70,6 +75,7 @@ class BindK8sSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -82,6 +88,7 @@ class BindK8sSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -94,6 +101,7 @@ class BindK8sSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -106,6 +114,7 @@ class BindK8sSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $targetPort
+     *
      * @return $this
      */
     public function setTargetPort($targetPort)

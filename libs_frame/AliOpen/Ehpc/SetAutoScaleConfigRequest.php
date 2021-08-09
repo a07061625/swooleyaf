@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetAutoScaleConfig
+ *
  * @method string getShrinkIdleTimes()
  * @method string getGrowTimeoutInMinutes()
  * @method string getClusterId()
@@ -32,6 +34,7 @@ class SetAutoScaleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $shrinkIdleTimes
+     *
      * @return $this
      */
     public function setShrinkIdleTimes($shrinkIdleTimes)
@@ -44,6 +47,7 @@ class SetAutoScaleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $growTimeoutInMinutes
+     *
      * @return $this
      */
     public function setGrowTimeoutInMinutes($growTimeoutInMinutes)
@@ -56,6 +60,7 @@ class SetAutoScaleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -68,6 +73,7 @@ class SetAutoScaleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $enableAutoGrow
+     *
      * @return $this
      */
     public function setEnableAutoGrow($enableAutoGrow)
@@ -80,6 +86,7 @@ class SetAutoScaleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $spotPriceLimit
+     *
      * @return $this
      */
     public function setSpotPriceLimit($spotPriceLimit)
@@ -92,6 +99,7 @@ class SetAutoScaleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $enableAutoShrink
+     *
      * @return $this
      */
     public function setEnableAutoShrink($enableAutoShrink)
@@ -104,6 +112,7 @@ class SetAutoScaleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $spotStrategy
+     *
      * @return $this
      */
     public function setSpotStrategy($spotStrategy)
@@ -116,6 +125,7 @@ class SetAutoScaleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $maxNodesInCluster
+     *
      * @return $this
      */
     public function setMaxNodesInCluster($maxNodesInCluster)
@@ -128,6 +138,7 @@ class SetAutoScaleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $excludeNodes
+     *
      * @return $this
      */
     public function setExcludeNodes($excludeNodes)
@@ -140,6 +151,7 @@ class SetAutoScaleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $shrinkIntervalInMinutes
+     *
      * @return $this
      */
     public function setShrinkIntervalInMinutes($shrinkIntervalInMinutes)
@@ -151,7 +163,6 @@ class SetAutoScaleConfigRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $queues
      * @return $this
      */
     public function setQueuess(array $queues)
@@ -182,6 +193,7 @@ class SetAutoScaleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $extraNodesGrowRatio
+     *
      * @return $this
      */
     public function setExtraNodesGrowRatio($extraNodesGrowRatio)
@@ -194,6 +206,7 @@ class SetAutoScaleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $growIntervalInMinutes
+     *
      * @return $this
      */
     public function setGrowIntervalInMinutes($growIntervalInMinutes)
@@ -206,6 +219,7 @@ class SetAutoScaleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $growRatio
+     *
      * @return $this
      */
     public function setGrowRatio($growRatio)

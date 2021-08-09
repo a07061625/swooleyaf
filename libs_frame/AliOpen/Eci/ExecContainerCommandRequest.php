@@ -1,14 +1,18 @@
 <?php
+
 namespace AliOpen\Eci;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Class ExecContainerCommandRequest
+ *
  * @author    Alibaba Cloud SDK <sdk-team@alibabacloud.com>
  * @copyright 2019 Alibaba Group
  * @license   http://www.apache.org/licenses/LICENSE-2.0  Apache License 2.0
- * @link      https://github.com/aliyun/aliyun-openapi-php-sdk
+ *
+ * @see      https://github.com/aliyun/aliyun-openapi-php-sdk
+ *
  * @method string getResourceOwnerId()
  * @method string getContainerName()
  * @method string getContainerGroupId()
@@ -34,6 +38,7 @@ class ExecContainerCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +51,7 @@ class ExecContainerCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $containerName
+     *
      * @return $this
      */
     public function setContainerName($containerName)
@@ -58,6 +64,7 @@ class ExecContainerCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $containerGroupId
+     *
      * @return $this
      */
     public function setContainerGroupId($containerGroupId)
@@ -70,6 +77,7 @@ class ExecContainerCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -82,6 +90,7 @@ class ExecContainerCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -94,6 +103,7 @@ class ExecContainerCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -106,6 +116,7 @@ class ExecContainerCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $command
+     *
      * @return $this
      */
     public function setCommand($command)

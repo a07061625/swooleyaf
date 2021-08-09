@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of ListRecentChangeOrder
+ *
  * @method string getAppId()
  */
 class ListRecentChangeOrderRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class ListRecentChangeOrderRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

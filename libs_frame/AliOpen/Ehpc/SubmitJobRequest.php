@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitJob
+ *
  * @method string getStderrRedirectPath()
  * @method string getVariables()
  * @method string getRunasUserPassword()
@@ -35,6 +37,7 @@ class SubmitJobRequest extends RpcAcsRequest
 
     /**
      * @param string $stderrRedirectPath
+     *
      * @return $this
      */
     public function setStderrRedirectPath($stderrRedirectPath)
@@ -47,6 +50,7 @@ class SubmitJobRequest extends RpcAcsRequest
 
     /**
      * @param string $variables
+     *
      * @return $this
      */
     public function setVariables($variables)
@@ -59,6 +63,7 @@ class SubmitJobRequest extends RpcAcsRequest
 
     /**
      * @param string $runasUserPassword
+     *
      * @return $this
      */
     public function setRunasUserPassword($runasUserPassword)
@@ -71,6 +76,7 @@ class SubmitJobRequest extends RpcAcsRequest
 
     /**
      * @param string $postCmdLine
+     *
      * @return $this
      */
     public function setPostCmdLine($postCmdLine)
@@ -83,6 +89,7 @@ class SubmitJobRequest extends RpcAcsRequest
 
     /**
      * @param string $runasUser
+     *
      * @return $this
      */
     public function setRunasUser($runasUser)
@@ -95,6 +102,7 @@ class SubmitJobRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -107,6 +115,7 @@ class SubmitJobRequest extends RpcAcsRequest
 
     /**
      * @param string $reRunable
+     *
      * @return $this
      */
     public function setReRunable($reRunable)
@@ -119,6 +128,7 @@ class SubmitJobRequest extends RpcAcsRequest
 
     /**
      * @param string $priority
+     *
      * @return $this
      */
     public function setPriority($priority)
@@ -131,6 +141,7 @@ class SubmitJobRequest extends RpcAcsRequest
 
     /**
      * @param string $commandLine
+     *
      * @return $this
      */
     public function setCommandLine($commandLine)
@@ -143,6 +154,7 @@ class SubmitJobRequest extends RpcAcsRequest
 
     /**
      * @param string $jobQueue
+     *
      * @return $this
      */
     public function setJobQueue($jobQueue)
@@ -155,6 +167,7 @@ class SubmitJobRequest extends RpcAcsRequest
 
     /**
      * @param string $arrayRequest
+     *
      * @return $this
      */
     public function setArrayRequest($arrayRequest)
@@ -167,6 +180,7 @@ class SubmitJobRequest extends RpcAcsRequest
 
     /**
      * @param string $unzipCmd
+     *
      * @return $this
      */
     public function setUnzipCmd($unzipCmd)
@@ -179,6 +193,7 @@ class SubmitJobRequest extends RpcAcsRequest
 
     /**
      * @param string $packagePath
+     *
      * @return $this
      */
     public function setPackagePath($packagePath)
@@ -191,6 +206,7 @@ class SubmitJobRequest extends RpcAcsRequest
 
     /**
      * @param string $inputFileUrl
+     *
      * @return $this
      */
     public function setInputFileUrl($inputFileUrl)
@@ -203,6 +219,7 @@ class SubmitJobRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -215,6 +232,7 @@ class SubmitJobRequest extends RpcAcsRequest
 
     /**
      * @param string $stdoutRedirectPath
+     *
      * @return $this
      */
     public function setStdoutRedirectPath($stdoutRedirectPath)
@@ -227,6 +245,7 @@ class SubmitJobRequest extends RpcAcsRequest
 
     /**
      * @param string $containerId
+     *
      * @return $this
      */
     public function setContainerId($containerId)

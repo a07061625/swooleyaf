@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryMarketImages
+ *
  * @method string getSupportIoOptimized()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -33,6 +35,7 @@ class QueryMarketImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $supportIoOptimized
+     *
      * @return $this
      */
     public function setSupportIoOptimized($supportIoOptimized)
@@ -45,6 +48,7 @@ class QueryMarketImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +61,7 @@ class QueryMarketImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -69,6 +74,7 @@ class QueryMarketImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNo
+     *
      * @return $this
      */
     public function setPageNo($pageNo)
@@ -81,6 +87,7 @@ class QueryMarketImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $extra
+     *
      * @return $this
      */
     public function setExtra($extra)
@@ -93,6 +100,7 @@ class QueryMarketImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -105,6 +113,7 @@ class QueryMarketImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -117,6 +126,7 @@ class QueryMarketImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -129,6 +139,7 @@ class QueryMarketImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $marketImageCategory
+     *
      * @return $this
      */
     public function setMarketImageCategory($marketImageCategory)
@@ -141,6 +152,7 @@ class QueryMarketImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

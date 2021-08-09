@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddLocalNodes
+ *
  * @method string getNodes()
  * @method string getClusterId()
  */
@@ -20,6 +22,7 @@ class AddLocalNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $nodes
+     *
      * @return $this
      */
     public function setNodes($nodes)
@@ -32,6 +35,7 @@ class AddLocalNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

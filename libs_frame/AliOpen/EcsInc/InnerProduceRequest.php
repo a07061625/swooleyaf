@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerProduce
+ *
  * @method string getResourceOwnerId()
  * @method string getorderIdCallbackToken()
  * @method string getResourceOwnerAccount()
@@ -35,6 +37,7 @@ class InnerProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +50,7 @@ class InnerProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $orderIdCallbackToken
+     *
      * @return $this
      */
     public function setorderIdCallbackToken($orderIdCallbackToken)
@@ -59,6 +63,7 @@ class InnerProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -71,6 +76,7 @@ class InnerProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $orderId
+     *
      * @return $this
      */
     public function setOrderId($orderId)
@@ -83,6 +89,7 @@ class InnerProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -95,6 +102,7 @@ class InnerProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -107,6 +115,7 @@ class InnerProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -119,6 +128,7 @@ class InnerProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -131,6 +141,7 @@ class InnerProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -143,6 +154,7 @@ class InnerProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $orderUid
+     *
      * @return $this
      */
     public function setOrderUid($orderUid)
@@ -155,6 +167,7 @@ class InnerProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $appKey
+     *
      * @return $this
      */
     public function setappKey($appKey)
@@ -167,6 +180,7 @@ class InnerProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

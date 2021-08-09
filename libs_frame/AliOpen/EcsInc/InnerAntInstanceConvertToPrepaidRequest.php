@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerAntInstanceConvertToPrepaid
+ *
  * @method string getResourceOwnerId()
  * @method string getautoPay()
  * @method string getdryRun()
@@ -41,6 +43,7 @@ class InnerAntInstanceConvertToPrepaidRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -53,6 +56,7 @@ class InnerAntInstanceConvertToPrepaidRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setautoPay($autoPay)
@@ -65,6 +69,7 @@ class InnerAntInstanceConvertToPrepaidRequest extends RpcAcsRequest
 
     /**
      * @param string $dryRun
+     *
      * @return $this
      */
     public function setdryRun($dryRun)
@@ -77,6 +82,7 @@ class InnerAntInstanceConvertToPrepaidRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -89,6 +95,7 @@ class InnerAntInstanceConvertToPrepaidRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -101,6 +108,7 @@ class InnerAntInstanceConvertToPrepaidRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -113,6 +121,7 @@ class InnerAntInstanceConvertToPrepaidRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -125,6 +134,7 @@ class InnerAntInstanceConvertToPrepaidRequest extends RpcAcsRequest
 
     /**
      * @param string $buyerId
+     *
      * @return $this
      */
     public function setbuyerId($buyerId)
@@ -137,6 +147,7 @@ class InnerAntInstanceConvertToPrepaidRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -149,6 +160,7 @@ class InnerAntInstanceConvertToPrepaidRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -161,6 +173,7 @@ class InnerAntInstanceConvertToPrepaidRequest extends RpcAcsRequest
 
     /**
      * @param string $regionNo
+     *
      * @return $this
      */
     public function setregionNo($regionNo)
@@ -173,6 +186,7 @@ class InnerAntInstanceConvertToPrepaidRequest extends RpcAcsRequest
 
     /**
      * @param string $duration
+     *
      * @return $this
      */
     public function setduration($duration)
@@ -185,6 +199,7 @@ class InnerAntInstanceConvertToPrepaidRequest extends RpcAcsRequest
 
     /**
      * @param string $convertDataDisk
+     *
      * @return $this
      */
     public function setconvertDataDisk($convertDataDisk)
@@ -197,6 +212,7 @@ class InnerAntInstanceConvertToPrepaidRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceIds
+     *
      * @return $this
      */
     public function setinstanceIds($instanceIds)
@@ -209,6 +225,7 @@ class InnerAntInstanceConvertToPrepaidRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -221,6 +238,7 @@ class InnerAntInstanceConvertToPrepaidRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -233,6 +251,7 @@ class InnerAntInstanceConvertToPrepaidRequest extends RpcAcsRequest
 
     /**
      * @param string $pricingCycle
+     *
      * @return $this
      */
     public function setpricingCycle($pricingCycle)
@@ -245,6 +264,7 @@ class InnerAntInstanceConvertToPrepaidRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

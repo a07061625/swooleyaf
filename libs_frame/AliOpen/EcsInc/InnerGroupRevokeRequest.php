@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerGroupRevoke
+ *
  * @method string getResourceOwnerId()
  * @method string getsourceGroupNo()
  * @method string getportRange()
@@ -45,6 +47,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +60,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceGroupNo
+     *
      * @return $this
      */
     public function setsourceGroupNo($sourceGroupNo)
@@ -69,6 +73,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $portRange
+     *
      * @return $this
      */
     public function setportRange($portRange)
@@ -81,6 +86,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -93,6 +99,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $level
+     *
      * @return $this
      */
     public function setlevel($level)
@@ -105,6 +112,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $ipProtocol
+     *
      * @return $this
      */
     public function setipProtocol($ipProtocol)
@@ -117,6 +125,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -129,6 +138,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceCidrIp
+     *
      * @return $this
      */
     public function setsourceCidrIp($sourceCidrIp)
@@ -141,6 +151,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -153,6 +164,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $nic
+     *
      * @return $this
      */
     public function setnic($nic)
@@ -165,6 +177,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcInstanceId
+     *
      * @return $this
      */
     public function setvpcInstanceId($vpcInstanceId)
@@ -177,6 +190,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -189,6 +203,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $destCidrIp
+     *
      * @return $this
      */
     public function setdestCidrIp($destCidrIp)
@@ -201,6 +216,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -213,6 +229,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -225,6 +242,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $async
+     *
      * @return $this
      */
     public function setasync($async)
@@ -237,6 +255,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceGroupOwnerAliUid
+     *
      * @return $this
      */
     public function setsourceGroupOwnerAliUid($sourceGroupOwnerAliUid)
@@ -249,6 +268,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -261,6 +281,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -273,6 +294,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $groupNo
+     *
      * @return $this
      */
     public function setgroupNo($groupNo)
@@ -285,6 +307,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -297,6 +320,7 @@ class InnerGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $policy
+     *
      * @return $this
      */
     public function setpolicy($policy)

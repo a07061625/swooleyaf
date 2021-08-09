@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerQueryLazyLoadProgress
+ *
  * @method string getResourceOwnerId()
  * @method array getDiskIds()
  * @method string getResourceOwnerAccount()
@@ -28,6 +30,7 @@ class InnerQueryLazyLoadProgressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -39,7 +42,6 @@ class InnerQueryLazyLoadProgressRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $diskIds
      * @return $this
      */
     public function setDiskIds(array $diskIds)
@@ -54,6 +56,7 @@ class InnerQueryLazyLoadProgressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +69,7 @@ class InnerQueryLazyLoadProgressRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -78,6 +82,7 @@ class InnerQueryLazyLoadProgressRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

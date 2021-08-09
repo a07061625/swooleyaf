@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of UpdateJvmConfiguration
+ *
  * @method string getMinHeapSize()
  * @method string getAppId()
  * @method string getGroupId()
@@ -33,6 +35,7 @@ class UpdateJvmConfigurationRequest extends RoaAcsRequest
 
     /**
      * @param string $minHeapSize
+     *
      * @return $this
      */
     public function setMinHeapSize($minHeapSize)
@@ -45,6 +48,7 @@ class UpdateJvmConfigurationRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -57,6 +61,7 @@ class UpdateJvmConfigurationRequest extends RoaAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -69,6 +74,7 @@ class UpdateJvmConfigurationRequest extends RoaAcsRequest
 
     /**
      * @param string $options
+     *
      * @return $this
      */
     public function setOptions($options)
@@ -81,6 +87,7 @@ class UpdateJvmConfigurationRequest extends RoaAcsRequest
 
     /**
      * @param string $maxPermSize
+     *
      * @return $this
      */
     public function setMaxPermSize($maxPermSize)
@@ -93,6 +100,7 @@ class UpdateJvmConfigurationRequest extends RoaAcsRequest
 
     /**
      * @param string $maxHeapSize
+     *
      * @return $this
      */
     public function setMaxHeapSize($maxHeapSize)

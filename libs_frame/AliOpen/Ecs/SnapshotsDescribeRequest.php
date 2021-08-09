@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeSnapshots
+ *
  * @method string getResourceOwnerId()
  * @method string getFilter2Value()
  * @method string getSnapshotIds()
@@ -47,6 +49,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -59,6 +62,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $filter2Value
+     *
      * @return $this
      */
     public function setFilter2Value($filter2Value)
@@ -71,6 +75,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotIds
+     *
      * @return $this
      */
     public function setSnapshotIds($snapshotIds)
@@ -83,6 +88,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $usage
+     *
      * @return $this
      */
     public function setUsage($usage)
@@ -95,6 +101,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotLinkId
+     *
      * @return $this
      */
     public function setSnapshotLinkId($snapshotLinkId)
@@ -107,6 +114,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotName
+     *
      * @return $this
      */
     public function setSnapshotName($snapshotName)
@@ -119,6 +127,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -131,6 +140,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -143,6 +153,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $filter1Key
+     *
      * @return $this
      */
     public function setFilter1Key($filter1Key)
@@ -155,6 +166,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -167,6 +179,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $diskId
+     *
      * @return $this
      */
     public function setDiskId($diskId)
@@ -178,7 +191,6 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -194,6 +206,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dryRun
+     *
      * @return $this
      */
     public function setDryRun($dryRun)
@@ -206,6 +219,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -218,6 +232,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -230,6 +245,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceDiskType
+     *
      * @return $this
      */
     public function setSourceDiskType($sourceDiskType)
@@ -242,6 +258,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $filter1Value
+     *
      * @return $this
      */
     public function setFilter1Value($filter1Value)
@@ -254,6 +271,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $filter2Key
+     *
      * @return $this
      */
     public function setFilter2Key($filter2Key)
@@ -266,6 +284,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -278,6 +297,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -290,6 +310,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $encrypted
+     *
      * @return $this
      */
     public function setEncrypted($encrypted)
@@ -302,6 +323,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotType
+     *
      * @return $this
      */
     public function setSnapshotType($snapshotType)
@@ -314,6 +336,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $kMSKeyId
+     *
      * @return $this
      */
     public function setKMSKeyId($kMSKeyId)
@@ -326,6 +349,7 @@ class SnapshotsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

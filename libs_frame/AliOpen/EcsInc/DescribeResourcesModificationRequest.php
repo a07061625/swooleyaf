@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeResourcesModification
+ *
  * @method string getResourceOwnerId()
  * @method string getMemory()
  * @method string getDataDiskCategory()
@@ -37,6 +39,7 @@ class DescribeResourcesModificationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -49,6 +52,7 @@ class DescribeResourcesModificationRequest extends RpcAcsRequest
 
     /**
      * @param string $memory
+     *
      * @return $this
      */
     public function setMemory($memory)
@@ -61,6 +65,7 @@ class DescribeResourcesModificationRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDiskCategory
+     *
      * @return $this
      */
     public function setDataDiskCategory($dataDiskCategory)
@@ -73,6 +78,7 @@ class DescribeResourcesModificationRequest extends RpcAcsRequest
 
     /**
      * @param string $cores
+     *
      * @return $this
      */
     public function setCores($cores)
@@ -85,6 +91,7 @@ class DescribeResourcesModificationRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskCategory
+     *
      * @return $this
      */
     public function setSystemDiskCategory($systemDiskCategory)
@@ -97,6 +104,7 @@ class DescribeResourcesModificationRequest extends RpcAcsRequest
 
     /**
      * @param string $migrateAcrossZone
+     *
      * @return $this
      */
     public function setMigrateAcrossZone($migrateAcrossZone)
@@ -109,6 +117,7 @@ class DescribeResourcesModificationRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -121,6 +130,7 @@ class DescribeResourcesModificationRequest extends RpcAcsRequest
 
     /**
      * @param string $networkCategory
+     *
      * @return $this
      */
     public function setNetworkCategory($networkCategory)
@@ -133,6 +143,7 @@ class DescribeResourcesModificationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceId
+     *
      * @return $this
      */
     public function setResourceId($resourceId)
@@ -145,6 +156,7 @@ class DescribeResourcesModificationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -157,6 +169,7 @@ class DescribeResourcesModificationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -169,6 +182,7 @@ class DescribeResourcesModificationRequest extends RpcAcsRequest
 
     /**
      * @param string $operationType
+     *
      * @return $this
      */
     public function setOperationType($operationType)
@@ -181,6 +195,7 @@ class DescribeResourcesModificationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -193,6 +208,7 @@ class DescribeResourcesModificationRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationResource
+     *
      * @return $this
      */
     public function setDestinationResource($destinationResource)

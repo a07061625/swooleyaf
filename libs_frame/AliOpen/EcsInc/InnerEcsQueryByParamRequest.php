@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerEcsQueryByParam
+ *
  * @method string getstartOfInternetTx()
  * @method string getecsIds()
  * @method string getResourceOwnerId()
@@ -66,6 +68,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $startOfInternetTx
+     *
      * @return $this
      */
     public function setstartOfInternetTx($startOfInternetTx)
@@ -78,6 +81,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsIds
+     *
      * @return $this
      */
     public function setecsIds($ecsIds)
@@ -90,6 +94,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -102,6 +107,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $izNo
+     *
      * @return $this
      */
     public function setizNo($izNo)
@@ -114,6 +120,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $internetIp
+     *
      * @return $this
      */
     public function setinternetIp($internetIp)
@@ -126,6 +133,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setimageId($imageId)
@@ -138,6 +146,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $ioOptimized
+     *
      * @return $this
      */
     public function setioOptimized($ioOptimized)
@@ -150,6 +159,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -162,6 +172,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcInstanceId
+     *
      * @return $this
      */
     public function setvpcInstanceId($vpcInstanceId)
@@ -174,6 +185,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $notSyncHouyi
+     *
      * @return $this
      */
     public function setnotSyncHouyi($notSyncHouyi)
@@ -186,6 +198,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $imgPc
+     *
      * @return $this
      */
     public function setimgPc($imgPc)
@@ -198,6 +211,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceTypeId
+     *
      * @return $this
      */
     public function setinstanceTypeId($instanceTypeId)
@@ -210,6 +224,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -222,6 +237,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $vswInstanceId
+     *
      * @return $this
      */
     public function setvswInstanceId($vswInstanceId)
@@ -234,6 +250,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $hostname
+     *
      * @return $this
      */
     public function sethostname($hostname)
@@ -246,6 +263,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneNo
+     *
      * @return $this
      */
     public function setzoneNo($zoneNo)
@@ -258,6 +276,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $cores
+     *
      * @return $this
      */
     public function setcores($cores)
@@ -270,6 +289,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $mem
+     *
      * @return $this
      */
     public function setmem($mem)
@@ -282,6 +302,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $bizStatus
+     *
      * @return $this
      */
     public function setbizStatus($bizStatus)
@@ -294,6 +315,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setpageSize($pageSize)
@@ -306,6 +328,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -318,6 +341,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $exclusionEcsIds
+     *
      * @return $this
      */
     public function setexclusionEcsIds($exclusionEcsIds)
@@ -330,6 +354,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -342,6 +367,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $order
+     *
      * @return $this
      */
     public function setorder($order)
@@ -354,6 +380,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDeviceCategory
+     *
      * @return $this
      */
     public function setsystemDeviceCategory($systemDeviceCategory)
@@ -366,6 +393,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $agentId
+     *
      * @return $this
      */
     public function setagentId($agentId)
@@ -378,6 +406,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $imageType
+     *
      * @return $this
      */
     public function setimageType($imageType)
@@ -390,6 +419,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -402,6 +432,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -414,6 +445,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $endOfInternetTx
+     *
      * @return $this
      */
     public function setendOfInternetTx($endOfInternetTx)
@@ -426,6 +458,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -438,6 +471,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $regionIndexId
+     *
      * @return $this
      */
     public function setregionIndexId($regionIndexId)
@@ -450,6 +484,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -462,6 +497,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $regionNo
+     *
      * @return $this
      */
     public function setregionNo($regionNo)
@@ -474,6 +510,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsNetworkType
+     *
      * @return $this
      */
     public function setecsNetworkType($ecsNetworkType)
@@ -486,6 +523,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceIds
+     *
      * @return $this
      */
     public function setinstanceIds($instanceIds)
@@ -498,6 +536,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNo
+     *
      * @return $this
      */
     public function setpageNo($pageNo)
@@ -510,6 +549,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setzoneId($zoneId)
@@ -522,6 +562,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -534,6 +575,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $izId
+     *
      * @return $this
      */
     public function setizId($izId)
@@ -546,6 +588,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setstatus($status)
@@ -558,6 +601,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $intranetIp
+     *
      * @return $this
      */
     public function setintranetIp($intranetIp)
@@ -570,6 +614,7 @@ class InnerEcsQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $orderType
+     *
      * @return $this
      */
     public function setorderType($orderType)

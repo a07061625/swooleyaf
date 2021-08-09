@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateMaintenanceProperty
+ *
  * @method string getResourceOwnerId()
  * @method string getStartTime()
  * @method string getActionOnMaintenance()
@@ -31,6 +33,7 @@ class MaintenancePropertyCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class MaintenancePropertyCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -55,6 +59,7 @@ class MaintenancePropertyCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $actionOnMaintenance
+     *
      * @return $this
      */
     public function setActionOnMaintenance($actionOnMaintenance)
@@ -67,6 +72,7 @@ class MaintenancePropertyCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -79,6 +85,7 @@ class MaintenancePropertyCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,6 +98,7 @@ class MaintenancePropertyCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -103,6 +111,7 @@ class MaintenancePropertyCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -114,7 +123,6 @@ class MaintenancePropertyCreateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceId
      * @return $this
      */
     public function setInstanceIds(array $instanceId)

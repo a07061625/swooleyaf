@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryImageIdByRegion
+ *
  * @method string getResourceOwnerId()
  * @method string getProductCode()
  * @method string getResourceOwnerAccount()
@@ -29,6 +31,7 @@ class QueryImageIdByRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class QueryImageIdByRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $productCode
+     *
      * @return $this
      */
     public function setProductCode($productCode)
@@ -53,6 +57,7 @@ class QueryImageIdByRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -65,6 +70,7 @@ class QueryImageIdByRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -77,6 +83,7 @@ class QueryImageIdByRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $productVersion
+     *
      * @return $this
      */
     public function setProductVersion($productVersion)
@@ -89,6 +96,7 @@ class QueryImageIdByRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

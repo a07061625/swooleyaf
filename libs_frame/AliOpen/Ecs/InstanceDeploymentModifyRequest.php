@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyInstanceDeployment
+ *
  * @method string getResourceOwnerId()
  * @method string getInstanceType()
  * @method string getDeploymentSetId()
@@ -35,6 +37,7 @@ class InstanceDeploymentModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +50,7 @@ class InstanceDeploymentModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -59,6 +63,7 @@ class InstanceDeploymentModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $deploymentSetId
+     *
      * @return $this
      */
     public function setDeploymentSetId($deploymentSetId)
@@ -71,6 +76,7 @@ class InstanceDeploymentModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -83,6 +89,7 @@ class InstanceDeploymentModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -95,6 +102,7 @@ class InstanceDeploymentModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $tenancy
+     *
      * @return $this
      */
     public function setTenancy($tenancy)
@@ -107,6 +115,7 @@ class InstanceDeploymentModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostId
+     *
      * @return $this
      */
     public function setDedicatedHostId($dedicatedHostId)
@@ -119,6 +128,7 @@ class InstanceDeploymentModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -131,6 +141,7 @@ class InstanceDeploymentModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -143,6 +154,7 @@ class InstanceDeploymentModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $force
+     *
      * @return $this
      */
     public function setForce($force)
@@ -155,6 +167,7 @@ class InstanceDeploymentModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $migrationType
+     *
      * @return $this
      */
     public function setMigrationType($migrationType)
@@ -167,6 +180,7 @@ class InstanceDeploymentModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $affinity
+     *
      * @return $this
      */
     public function setAffinity($affinity)

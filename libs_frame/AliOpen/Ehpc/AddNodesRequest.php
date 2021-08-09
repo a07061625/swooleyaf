@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddNodes
+ *
  * @method string getAutoRenewPeriod()
  * @method string getPeriod()
  * @method string getImageId()
@@ -35,6 +37,7 @@ class AddNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $autoRenewPeriod
+     *
      * @return $this
      */
     public function setAutoRenewPeriod($autoRenewPeriod)
@@ -47,6 +50,7 @@ class AddNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -59,6 +63,7 @@ class AddNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -71,6 +76,7 @@ class AddNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $count
+     *
      * @return $this
      */
     public function setCount($count)
@@ -83,6 +89,7 @@ class AddNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -95,6 +102,7 @@ class AddNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $computeSpotStrategy
+     *
      * @return $this
      */
     public function setComputeSpotStrategy($computeSpotStrategy)
@@ -107,6 +115,7 @@ class AddNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $jobQueue
+     *
      * @return $this
      */
     public function setJobQueue($jobQueue)
@@ -119,6 +128,7 @@ class AddNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $imageOwnerAlias
+     *
      * @return $this
      */
     public function setImageOwnerAlias($imageOwnerAlias)
@@ -131,6 +141,7 @@ class AddNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -143,6 +154,7 @@ class AddNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $periodUnit
+     *
      * @return $this
      */
     public function setPeriodUnit($periodUnit)
@@ -155,6 +167,7 @@ class AddNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $autoRenew
+     *
      * @return $this
      */
     public function setAutoRenew($autoRenew)
@@ -167,6 +180,7 @@ class AddNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsChargeType
+     *
      * @return $this
      */
     public function setEcsChargeType($ecsChargeType)
@@ -179,6 +193,7 @@ class AddNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $createMode
+     *
      * @return $this
      */
     public function setCreateMode($createMode)
@@ -191,6 +206,7 @@ class AddNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskSize
+     *
      * @return $this
      */
     public function setSystemDiskSize($systemDiskSize)
@@ -203,6 +219,7 @@ class AddNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -215,6 +232,7 @@ class AddNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -227,6 +245,7 @@ class AddNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $computeSpotPriceLimit
+     *
      * @return $this
      */
     public function setComputeSpotPriceLimit($computeSpotPriceLimit)

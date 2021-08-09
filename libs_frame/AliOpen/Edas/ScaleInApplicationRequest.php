@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of ScaleInApplication
+ *
  * @method string getForceStatus()
  * @method string getAppId()
  * @method string getEccInfo()
@@ -30,6 +32,7 @@ class ScaleInApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $forceStatus
+     *
      * @return $this
      */
     public function setForceStatus($forceStatus)
@@ -42,6 +45,7 @@ class ScaleInApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -54,6 +58,7 @@ class ScaleInApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $eccInfo
+     *
      * @return $this
      */
     public function setEccInfo($eccInfo)

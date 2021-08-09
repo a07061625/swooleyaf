@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeSecurityGroups
+ *
  * @method string getResourceOwnerId()
  * @method string getFuzzyQuery()
  * @method string getSecurityGroupId()
@@ -39,6 +41,7 @@ class SecurityGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -51,6 +54,7 @@ class SecurityGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $fuzzyQuery
+     *
      * @return $this
      */
     public function setFuzzyQuery($fuzzyQuery)
@@ -63,6 +67,7 @@ class SecurityGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -75,6 +80,7 @@ class SecurityGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $isQueryEcsCount
+     *
      * @return $this
      */
     public function setIsQueryEcsCount($isQueryEcsCount)
@@ -87,6 +93,7 @@ class SecurityGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $networkType
+     *
      * @return $this
      */
     public function setNetworkType($networkType)
@@ -99,6 +106,7 @@ class SecurityGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupName
+     *
      * @return $this
      */
     public function setSecurityGroupName($securityGroupName)
@@ -111,6 +119,7 @@ class SecurityGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -123,6 +132,7 @@ class SecurityGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -135,6 +145,7 @@ class SecurityGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -146,7 +157,6 @@ class SecurityGroupsDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -162,6 +172,7 @@ class SecurityGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dryRun
+     *
      * @return $this
      */
     public function setDryRun($dryRun)
@@ -174,6 +185,7 @@ class SecurityGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -186,6 +198,7 @@ class SecurityGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -198,6 +211,7 @@ class SecurityGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -210,6 +224,7 @@ class SecurityGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupIds
+     *
      * @return $this
      */
     public function setSecurityGroupIds($securityGroupIds)
@@ -222,6 +237,7 @@ class SecurityGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)

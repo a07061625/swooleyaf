@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeLaunchTemplateVersions
+ *
  * @method string getLaunchTemplateName()
  * @method string getMaxVersion()
  * @method string getResourceOwnerId()
@@ -36,6 +38,7 @@ class LaunchTemplateVersionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $launchTemplateName
+     *
      * @return $this
      */
     public function setLaunchTemplateName($launchTemplateName)
@@ -48,6 +51,7 @@ class LaunchTemplateVersionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $maxVersion
+     *
      * @return $this
      */
     public function setMaxVersion($maxVersion)
@@ -60,6 +64,7 @@ class LaunchTemplateVersionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -72,6 +77,7 @@ class LaunchTemplateVersionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $defaultVersion
+     *
      * @return $this
      */
     public function setDefaultVersion($defaultVersion)
@@ -84,6 +90,7 @@ class LaunchTemplateVersionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $minVersion
+     *
      * @return $this
      */
     public function setMinVersion($minVersion)
@@ -96,6 +103,7 @@ class LaunchTemplateVersionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -108,6 +116,7 @@ class LaunchTemplateVersionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -120,6 +129,7 @@ class LaunchTemplateVersionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $launchTemplateId
+     *
      * @return $this
      */
     public function setLaunchTemplateId($launchTemplateId)
@@ -132,6 +142,7 @@ class LaunchTemplateVersionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -144,6 +155,7 @@ class LaunchTemplateVersionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -156,6 +168,7 @@ class LaunchTemplateVersionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -167,7 +180,6 @@ class LaunchTemplateVersionsDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $launchTemplateVersion
      * @return $this
      */
     public function setLaunchTemplateVersions(array $launchTemplateVersion)
@@ -182,6 +194,7 @@ class LaunchTemplateVersionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $detailFlag
+     *
      * @return $this
      */
     public function setDetailFlag($detailFlag)

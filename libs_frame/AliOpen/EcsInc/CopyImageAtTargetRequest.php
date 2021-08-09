@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CopyImageAtTarget
+ *
  * @method string getResourceOwnerId()
  * @method string getFromSnapshotListBase64()
  * @method string getImageId()
@@ -38,6 +40,7 @@ class CopyImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +53,7 @@ class CopyImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $fromSnapshotListBase64
+     *
      * @return $this
      */
     public function setFromSnapshotListBase64($fromSnapshotListBase64)
@@ -62,6 +66,7 @@ class CopyImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -74,6 +79,7 @@ class CopyImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -86,6 +92,7 @@ class CopyImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $imageSnapshotMappingsBase64
+     *
      * @return $this
      */
     public function setImageSnapshotMappingsBase64($imageSnapshotMappingsBase64)
@@ -98,6 +105,7 @@ class CopyImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationImageName
+     *
      * @return $this
      */
     public function setDestinationImageName($destinationImageName)
@@ -110,6 +118,7 @@ class CopyImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceMetaMappingsBase64
+     *
      * @return $this
      */
     public function setResourceMetaMappingsBase64($resourceMetaMappingsBase64)
@@ -122,6 +131,7 @@ class CopyImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -134,6 +144,7 @@ class CopyImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationRegionId
+     *
      * @return $this
      */
     public function setDestinationRegionId($destinationRegionId)
@@ -146,6 +157,7 @@ class CopyImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -158,6 +170,7 @@ class CopyImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $fromRegionId
+     *
      * @return $this
      */
     public function setFromRegionId($fromRegionId)
@@ -170,6 +183,7 @@ class CopyImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $fromRegionName
+     *
      * @return $this
      */
     public function setFromRegionName($fromRegionName)
@@ -182,6 +196,7 @@ class CopyImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $fromImageBase64
+     *
      * @return $this
      */
     public function setFromImageBase64($fromImageBase64)
@@ -194,6 +209,7 @@ class CopyImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationRegionPriId
+     *
      * @return $this
      */
     public function setDestinationRegionPriId($destinationRegionPriId)
@@ -206,6 +222,7 @@ class CopyImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationDescription
+     *
      * @return $this
      */
     public function setDestinationDescription($destinationDescription)

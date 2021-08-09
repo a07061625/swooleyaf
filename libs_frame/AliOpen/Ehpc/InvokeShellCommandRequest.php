@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InvokeShellCommand
+ *
  * @method array getInstances()
  * @method string getWorkingDir()
  * @method string getClusterId()
@@ -22,7 +24,6 @@ class InvokeShellCommandRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instance
      * @return $this
      */
     public function setInstances(array $instance)
@@ -37,6 +38,7 @@ class InvokeShellCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $workingDir
+     *
      * @return $this
      */
     public function setWorkingDir($workingDir)
@@ -49,6 +51,7 @@ class InvokeShellCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -61,6 +64,7 @@ class InvokeShellCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $command
+     *
      * @return $this
      */
     public function setCommand($command)
@@ -73,6 +77,7 @@ class InvokeShellCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $timeout
+     *
      * @return $this
      */
     public function setTimeout($timeout)

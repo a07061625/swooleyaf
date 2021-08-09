@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of InsertK8sApplication
+ *
  * @method string getNasId()
  * @method string getRepoId()
  * @method string getInternetTargetPort()
@@ -58,6 +60,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $nasId
+     *
      * @return $this
      */
     public function setNasId($nasId)
@@ -70,6 +73,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $repoId
+     *
      * @return $this
      */
     public function setRepoId($repoId)
@@ -82,6 +86,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $internetTargetPort
+     *
      * @return $this
      */
     public function setInternetTargetPort($internetTargetPort)
@@ -94,6 +99,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $intranetSlbId
+     *
      * @return $this
      */
     public function setIntranetSlbId($intranetSlbId)
@@ -106,6 +112,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $commandArgs
+     *
      * @return $this
      */
     public function setCommandArgs($commandArgs)
@@ -118,6 +125,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $readiness
+     *
      * @return $this
      */
     public function setReadiness($readiness)
@@ -130,6 +138,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $liveness
+     *
      * @return $this
      */
     public function setLiveness($liveness)
@@ -142,6 +151,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $internetSlbPort
+     *
      * @return $this
      */
     public function setInternetSlbPort($internetSlbPort)
@@ -154,6 +164,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $envs
+     *
      * @return $this
      */
     public function setEnvs($envs)
@@ -166,6 +177,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $requestsMem
+     *
      * @return $this
      */
     public function setRequestsMem($requestsMem)
@@ -178,6 +190,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $storageType
+     *
      * @return $this
      */
     public function setStorageType($storageType)
@@ -190,6 +203,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $limitMem
+     *
      * @return $this
      */
     public function setLimitMem($limitMem)
@@ -202,6 +216,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $appName
+     *
      * @return $this
      */
     public function setAppName($appName)
@@ -214,6 +229,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $internetSlbId
+     *
      * @return $this
      */
     public function setInternetSlbId($internetSlbId)
@@ -226,6 +242,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $logicalRegionId
+     *
      * @return $this
      */
     public function setLogicalRegionId($logicalRegionId)
@@ -238,6 +255,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $internetSlbProtocol
+     *
      * @return $this
      */
     public function setInternetSlbProtocol($internetSlbProtocol)
@@ -250,6 +268,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $intranetSlbPort
+     *
      * @return $this
      */
     public function setIntranetSlbPort($intranetSlbPort)
@@ -262,6 +281,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $preStop
+     *
      * @return $this
      */
     public function setPreStop($preStop)
@@ -274,6 +294,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $mountDescs
+     *
      * @return $this
      */
     public function setMountDescs($mountDescs)
@@ -286,6 +307,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $replicas
+     *
      * @return $this
      */
     public function setReplicas($replicas)
@@ -298,6 +320,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $limitCpu
+     *
      * @return $this
      */
     public function setLimitCpu($limitCpu)
@@ -310,6 +333,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -322,6 +346,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $intranetTargetPort
+     *
      * @return $this
      */
     public function setIntranetTargetPort($intranetTargetPort)
@@ -334,6 +359,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $localVolume
+     *
      * @return $this
      */
     public function setLocalVolume($localVolume)
@@ -346,6 +372,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $command
+     *
      * @return $this
      */
     public function setCommand($command)
@@ -358,6 +385,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $intranetSlbProtocol
+     *
      * @return $this
      */
     public function setIntranetSlbProtocol($intranetSlbProtocol)
@@ -370,6 +398,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $imageUrl
+     *
      * @return $this
      */
     public function setImageUrl($imageUrl)
@@ -382,6 +411,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $namespace
+     *
      * @return $this
      */
     public function setNamespace($namespace)
@@ -394,6 +424,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $applicationDescription
+     *
      * @return $this
      */
     public function setApplicationDescription($applicationDescription)
@@ -406,6 +437,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $requestsCpu
+     *
      * @return $this
      */
     public function setRequestsCpu($requestsCpu)
@@ -418,6 +450,7 @@ class InsertK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $postStart
+     *
      * @return $this
      */
     public function setPostStart($postStart)

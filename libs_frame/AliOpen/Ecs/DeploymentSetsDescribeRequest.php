@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDeploymentSets
+ *
  * @method string getResourceOwnerId()
  * @method string getNetworkType()
  * @method string getPageNumber()
@@ -35,6 +37,7 @@ class DeploymentSetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +50,7 @@ class DeploymentSetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $networkType
+     *
      * @return $this
      */
     public function setNetworkType($networkType)
@@ -59,6 +63,7 @@ class DeploymentSetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -71,6 +76,7 @@ class DeploymentSetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $deploymentSetIds
+     *
      * @return $this
      */
     public function setDeploymentSetIds($deploymentSetIds)
@@ -83,6 +89,7 @@ class DeploymentSetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -95,6 +102,7 @@ class DeploymentSetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -107,6 +115,7 @@ class DeploymentSetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -119,6 +128,7 @@ class DeploymentSetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $deploymentSetName
+     *
      * @return $this
      */
     public function setDeploymentSetName($deploymentSetName)
@@ -131,6 +141,7 @@ class DeploymentSetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -143,6 +154,7 @@ class DeploymentSetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $granularity
+     *
      * @return $this
      */
     public function setGranularity($granularity)
@@ -155,6 +167,7 @@ class DeploymentSetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $domain
+     *
      * @return $this
      */
     public function setDomain($domain)
@@ -167,6 +180,7 @@ class DeploymentSetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $strategy
+     *
      * @return $this
      */
     public function setStrategy($strategy)

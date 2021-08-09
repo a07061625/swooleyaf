@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerEcsTransitionModify
+ *
  * @method string getResourceOwnerId()
  * @method string getTransitionTime()
  * @method string getResourceOwnerAccount()
@@ -40,6 +42,7 @@ class InnerEcsTransitionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -52,6 +55,7 @@ class InnerEcsTransitionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $transitionTime
+     *
      * @return $this
      */
     public function setTransitionTime($transitionTime)
@@ -64,6 +68,7 @@ class InnerEcsTransitionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -76,6 +81,7 @@ class InnerEcsTransitionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -88,6 +94,7 @@ class InnerEcsTransitionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -100,6 +107,7 @@ class InnerEcsTransitionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -112,6 +120,7 @@ class InnerEcsTransitionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -124,6 +133,7 @@ class InnerEcsTransitionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -136,6 +146,7 @@ class InnerEcsTransitionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -148,6 +159,7 @@ class InnerEcsTransitionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $networkTransType
+     *
      * @return $this
      */
     public function setNetworkTransType($networkTransType)
@@ -160,6 +172,7 @@ class InnerEcsTransitionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $async
+     *
      * @return $this
      */
     public function setasync($async)
@@ -171,7 +184,6 @@ class InnerEcsTransitionModifyRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceIds
      * @return $this
      */
     public function setInstanceIds(array $instanceIds)
@@ -186,6 +198,7 @@ class InnerEcsTransitionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $requestId
+     *
      * @return $this
      */
     public function setRequestId($requestId)
@@ -198,6 +211,7 @@ class InnerEcsTransitionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setAliUid($aliUid)
@@ -210,6 +224,7 @@ class InnerEcsTransitionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setBid($bid)
@@ -222,6 +237,7 @@ class InnerEcsTransitionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $isExpireTransition
+     *
      * @return $this
      */
     public function setIsExpireTransition($isExpireTransition)
@@ -234,6 +250,7 @@ class InnerEcsTransitionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

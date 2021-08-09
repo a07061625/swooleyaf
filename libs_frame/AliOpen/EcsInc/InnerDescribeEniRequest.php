@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerDescribeEni
+ *
  * @method string getResourceOwnerId()
  * @method string getSecurityGroupId()
  * @method string getType()
@@ -38,6 +40,7 @@ class InnerDescribeEniRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +53,7 @@ class InnerDescribeEniRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -62,6 +66,7 @@ class InnerDescribeEniRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -74,6 +79,7 @@ class InnerDescribeEniRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -86,6 +92,7 @@ class InnerDescribeEniRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -98,6 +105,7 @@ class InnerDescribeEniRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setAliUid($aliUid)
@@ -110,6 +118,7 @@ class InnerDescribeEniRequest extends RpcAcsRequest
 
     /**
      * @param string $networkInterfaceName
+     *
      * @return $this
      */
     public function setNetworkInterfaceName($networkInterfaceName)
@@ -122,6 +131,7 @@ class InnerDescribeEniRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -134,6 +144,7 @@ class InnerDescribeEniRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -146,6 +157,7 @@ class InnerDescribeEniRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -158,6 +170,7 @@ class InnerDescribeEniRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -170,6 +183,7 @@ class InnerDescribeEniRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -182,6 +196,7 @@ class InnerDescribeEniRequest extends RpcAcsRequest
 
     /**
      * @param string $primaryIpAddress
+     *
      * @return $this
      */
     public function setPrimaryIpAddress($primaryIpAddress)
@@ -193,7 +208,6 @@ class InnerDescribeEniRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $networkInterfaceIds
      * @return $this
      */
     public function setNetworkInterfaceIds(array $networkInterfaceIds)
@@ -208,6 +222,7 @@ class InnerDescribeEniRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setBid($bid)

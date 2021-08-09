@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of ScaleServerlessApplication
+ *
  * @method string getReplicas()
  * @method string getAppId()
  */
@@ -29,6 +31,7 @@ class ScaleServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $replicas
+     *
      * @return $this
      */
     public function setReplicas($replicas)
@@ -41,6 +44,7 @@ class ScaleServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

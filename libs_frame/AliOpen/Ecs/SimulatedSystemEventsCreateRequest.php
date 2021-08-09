@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateSimulatedSystemEvents
+ *
  * @method string getResourceOwnerId()
  * @method string getNotBefore()
  * @method string getResourceOwnerAccount()
@@ -30,6 +32,7 @@ class SimulatedSystemEventsCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class SimulatedSystemEventsCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $notBefore
+     *
      * @return $this
      */
     public function setNotBefore($notBefore)
@@ -54,6 +58,7 @@ class SimulatedSystemEventsCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +71,7 @@ class SimulatedSystemEventsCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -78,6 +84,7 @@ class SimulatedSystemEventsCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -89,7 +96,6 @@ class SimulatedSystemEventsCreateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceId
      * @return $this
      */
     public function setInstanceIds(array $instanceId)
@@ -104,6 +110,7 @@ class SimulatedSystemEventsCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $eventType
+     *
      * @return $this
      */
     public function setEventType($eventType)

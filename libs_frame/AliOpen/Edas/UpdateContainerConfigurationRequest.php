@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of UpdateContainerConfiguration
+ *
  * @method string getUseBodyEncoding()
  * @method string getMaxThreads()
  * @method string getURIEncoding()
@@ -34,6 +36,7 @@ class UpdateContainerConfigurationRequest extends RoaAcsRequest
 
     /**
      * @param string $useBodyEncoding
+     *
      * @return $this
      */
     public function setUseBodyEncoding($useBodyEncoding)
@@ -46,6 +49,7 @@ class UpdateContainerConfigurationRequest extends RoaAcsRequest
 
     /**
      * @param string $maxThreads
+     *
      * @return $this
      */
     public function setMaxThreads($maxThreads)
@@ -58,6 +62,7 @@ class UpdateContainerConfigurationRequest extends RoaAcsRequest
 
     /**
      * @param string $uRIEncoding
+     *
      * @return $this
      */
     public function setURIEncoding($uRIEncoding)
@@ -70,6 +75,7 @@ class UpdateContainerConfigurationRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -82,6 +88,7 @@ class UpdateContainerConfigurationRequest extends RoaAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -94,6 +101,7 @@ class UpdateContainerConfigurationRequest extends RoaAcsRequest
 
     /**
      * @param string $httpPort
+     *
      * @return $this
      */
     public function setHttpPort($httpPort)
@@ -106,6 +114,7 @@ class UpdateContainerConfigurationRequest extends RoaAcsRequest
 
     /**
      * @param string $contextPath
+     *
      * @return $this
      */
     public function setContextPath($contextPath)

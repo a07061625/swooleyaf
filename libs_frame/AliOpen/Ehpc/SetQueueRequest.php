@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetQueue
+ *
  * @method string getQueueName()
  * @method array getNodes()
  * @method string getClusterId()
@@ -21,6 +23,7 @@ class SetQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $queueName
+     *
      * @return $this
      */
     public function setQueueName($queueName)
@@ -32,7 +35,6 @@ class SetQueueRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $node
      * @return $this
      */
     public function setNodes(array $node)
@@ -47,6 +49,7 @@ class SetQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyVisualServicePasswd
+ *
  * @method string getPasswd()
  * @method string getRunasUserPassword()
  * @method string getRunasUser()
@@ -22,6 +24,7 @@ class ModifyVisualServicePasswdRequest extends RpcAcsRequest
 
     /**
      * @param string $passwd
+     *
      * @return $this
      */
     public function setPasswd($passwd)
@@ -34,6 +37,7 @@ class ModifyVisualServicePasswdRequest extends RpcAcsRequest
 
     /**
      * @param string $runasUserPassword
+     *
      * @return $this
      */
     public function setRunasUserPassword($runasUserPassword)
@@ -46,6 +50,7 @@ class ModifyVisualServicePasswdRequest extends RpcAcsRequest
 
     /**
      * @param string $runasUser
+     *
      * @return $this
      */
     public function setRunasUser($runasUser)
@@ -58,6 +63,7 @@ class ModifyVisualServicePasswdRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AllocateEipAddress
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getISP()
@@ -32,6 +34,7 @@ class EipAddressAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class EipAddressAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -56,6 +60,7 @@ class EipAddressAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $iSP
+     *
      * @return $this
      */
     public function setISP($iSP)
@@ -68,6 +73,7 @@ class EipAddressAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -80,6 +86,7 @@ class EipAddressAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidth
+     *
      * @return $this
      */
     public function setBandwidth($bandwidth)
@@ -92,6 +99,7 @@ class EipAddressAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +112,7 @@ class EipAddressAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,6 +125,7 @@ class EipAddressAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $activityId
+     *
      * @return $this
      */
     public function setActivityId($activityId)
@@ -128,6 +138,7 @@ class EipAddressAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $internetChargeType
+     *
      * @return $this
      */
     public function setInternetChargeType($internetChargeType)

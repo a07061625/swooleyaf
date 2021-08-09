@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of AuthorizeResourceGroup
+ *
  * @method string getResourceGroupIds()
  * @method string getTargetUserId()
  */
@@ -29,6 +31,7 @@ class AuthorizeResourceGroupRequest extends RoaAcsRequest
 
     /**
      * @param string $resourceGroupIds
+     *
      * @return $this
      */
     public function setResourceGroupIds($resourceGroupIds)
@@ -41,6 +44,7 @@ class AuthorizeResourceGroupRequest extends RoaAcsRequest
 
     /**
      * @param string $targetUserId
+     *
      * @return $this
      */
     public function setTargetUserId($targetUserId)

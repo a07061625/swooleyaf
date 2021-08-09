@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListJobs
+ *
  * @method string getOwner()
  * @method string getPageSize()
  * @method string getClusterId()
@@ -24,6 +26,7 @@ class ListJobsRequest extends RpcAcsRequest
 
     /**
      * @param string $owner
+     *
      * @return $this
      */
     public function setOwner($owner)
@@ -36,6 +39,7 @@ class ListJobsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -48,6 +52,7 @@ class ListJobsRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -60,6 +65,7 @@ class ListJobsRequest extends RpcAcsRequest
 
     /**
      * @param string $state
+     *
      * @return $this
      */
     public function setState($state)
@@ -72,6 +78,7 @@ class ListJobsRequest extends RpcAcsRequest
 
     /**
      * @param string $rerunable
+     *
      * @return $this
      */
     public function setRerunable($rerunable)
@@ -84,6 +91,7 @@ class ListJobsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

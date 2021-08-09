@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CancelAutoSnapshotPolicy
+ *
  * @method string getResourceOwnerId()
  * @method string getdiskIds()
  * @method string getResourceOwnerAccount()
@@ -27,6 +29,7 @@ class AutoSnapshotPolicyCancelRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -39,6 +42,7 @@ class AutoSnapshotPolicyCancelRequest extends RpcAcsRequest
 
     /**
      * @param string $diskIds
+     *
      * @return $this
      */
     public function setdiskIds($diskIds)
@@ -51,6 +55,7 @@ class AutoSnapshotPolicyCancelRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -63,6 +68,7 @@ class AutoSnapshotPolicyCancelRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

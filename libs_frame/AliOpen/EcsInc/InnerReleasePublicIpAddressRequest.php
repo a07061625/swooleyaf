@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerReleasePublicIpAddress
+ *
  * @method string getResourceOwnerId()
  * @method string getDryRun()
  * @method string getResourceOwnerAccount()
@@ -36,6 +38,7 @@ class InnerReleasePublicIpAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +51,7 @@ class InnerReleasePublicIpAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $dryRun
+     *
      * @return $this
      */
     public function setDryRun($dryRun)
@@ -60,6 +64,7 @@ class InnerReleasePublicIpAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -72,6 +77,7 @@ class InnerReleasePublicIpAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -84,6 +90,7 @@ class InnerReleasePublicIpAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -96,6 +103,7 @@ class InnerReleasePublicIpAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -108,6 +116,7 @@ class InnerReleasePublicIpAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -120,6 +129,7 @@ class InnerReleasePublicIpAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -132,6 +142,7 @@ class InnerReleasePublicIpAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $publicIpAddress
+     *
      * @return $this
      */
     public function setPublicIpAddress($publicIpAddress)
@@ -144,6 +155,7 @@ class InnerReleasePublicIpAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -156,6 +168,7 @@ class InnerReleasePublicIpAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -168,6 +181,7 @@ class InnerReleasePublicIpAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -180,6 +194,7 @@ class InnerReleasePublicIpAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

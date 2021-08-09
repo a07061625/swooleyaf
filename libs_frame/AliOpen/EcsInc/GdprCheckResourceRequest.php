@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GdprCheckResource
+ *
  * @method string getCountry()
  * @method string getHid()
  * @method string getLevel()
@@ -37,6 +39,7 @@ class GdprCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $country
+     *
      * @return $this
      */
     public function setCountry($country)
@@ -49,6 +52,7 @@ class GdprCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $hid
+     *
      * @return $this
      */
     public function setHid($hid)
@@ -61,6 +65,7 @@ class GdprCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $level
+     *
      * @return $this
      */
     public function setLevel($level)
@@ -73,6 +78,7 @@ class GdprCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $invoker
+     *
      * @return $this
      */
     public function setInvoker($invoker)
@@ -85,6 +91,7 @@ class GdprCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $message
+     *
      * @return $this
      */
     public function setMessage($message)
@@ -97,6 +104,7 @@ class GdprCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $url
+     *
      * @return $this
      */
     public function setUrl($url)
@@ -109,6 +117,7 @@ class GdprCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $success
+     *
      * @return $this
      */
     public function setSuccess($success)
@@ -121,6 +130,7 @@ class GdprCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $interrupt
+     *
      * @return $this
      */
     public function setInterrupt($interrupt)
@@ -133,6 +143,7 @@ class GdprCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $gmtWakeup
+     *
      * @return $this
      */
     public function setGmtWakeup($gmtWakeup)
@@ -145,6 +156,7 @@ class GdprCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $pk
+     *
      * @return $this
      */
     public function setPk($pk)
@@ -157,6 +169,7 @@ class GdprCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setBid($bid)
@@ -169,6 +182,7 @@ class GdprCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $prompt
+     *
      * @return $this
      */
     public function setPrompt($prompt)
@@ -181,6 +195,7 @@ class GdprCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $taskExtraData
+     *
      * @return $this
      */
     public function setTaskExtraData($taskExtraData)
@@ -193,6 +208,7 @@ class GdprCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $taskIdentifier
+     *
      * @return $this
      */
     public function setTaskIdentifier($taskIdentifier)

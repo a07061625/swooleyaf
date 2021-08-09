@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribePrice
+ *
  * @method string getDataDisk3Size()
  * @method string getResourceOwnerId()
  * @method string getImageId()
@@ -51,6 +53,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk3Size
+     *
      * @return $this
      */
     public function setDataDisk3Size($dataDisk3Size)
@@ -63,6 +66,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -75,6 +79,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -87,6 +92,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk3Category
+     *
      * @return $this
      */
     public function setDataDisk3Category($dataDisk3Category)
@@ -99,6 +105,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $ioOptimized
+     *
      * @return $this
      */
     public function setIoOptimized($ioOptimized)
@@ -111,6 +118,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $internetMaxBandwidthOut
+     *
      * @return $this
      */
     public function setInternetMaxBandwidthOut($internetMaxBandwidthOut)
@@ -123,6 +131,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskCategory
+     *
      * @return $this
      */
     public function setSystemDiskCategory($systemDiskCategory)
@@ -135,6 +144,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk4Category
+     *
      * @return $this
      */
     public function setDataDisk4Category($dataDisk4Category)
@@ -147,6 +157,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk4Size
+     *
      * @return $this
      */
     public function setDataDisk4Size($dataDisk4Size)
@@ -159,6 +170,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $priceUnit
+     *
      * @return $this
      */
     public function setPriceUnit($priceUnit)
@@ -171,6 +183,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $scope
+     *
      * @return $this
      */
     public function setScope($scope)
@@ -183,6 +196,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -195,6 +209,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostType
+     *
      * @return $this
      */
     public function setDedicatedHostType($dedicatedHostType)
@@ -207,6 +222,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk2Category
+     *
      * @return $this
      */
     public function setDataDisk2Category($dataDisk2Category)
@@ -219,6 +235,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk1Size
+     *
      * @return $this
      */
     public function setDataDisk1Size($dataDisk1Size)
@@ -231,6 +248,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -243,6 +261,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $amount
+     *
      * @return $this
      */
     public function setAmount($amount)
@@ -255,6 +274,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -267,6 +287,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -279,6 +300,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk2Size
+     *
      * @return $this
      */
     public function setDataDisk2Size($dataDisk2Size)
@@ -291,6 +313,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -303,6 +326,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -315,6 +339,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk1Category
+     *
      * @return $this
      */
     public function setDataDisk1Category($dataDisk1Category)
@@ -327,6 +352,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskSize
+     *
      * @return $this
      */
     public function setSystemDiskSize($systemDiskSize)
@@ -339,6 +365,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $offeringType
+     *
      * @return $this
      */
     public function setOfferingType($offeringType)
@@ -351,6 +378,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $internetChargeType
+     *
      * @return $this
      */
     public function setInternetChargeType($internetChargeType)
@@ -363,6 +391,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceNetworkType
+     *
      * @return $this
      */
     public function setInstanceNetworkType($instanceNetworkType)
@@ -375,6 +404,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceAmount
+     *
      * @return $this
      */
     public function setInstanceAmount($instanceAmount)

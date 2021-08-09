@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of InsertServiceGroup
+ *
  * @method string getGroupName()
  */
 class InsertServiceGroupRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class InsertServiceGroupRequest extends RoaAcsRequest
 
     /**
      * @param string $groupName
+     *
      * @return $this
      */
     public function setGroupName($groupName)

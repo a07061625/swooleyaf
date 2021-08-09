@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerImageQueryAvailableImgs
+ *
  * @method string getResourceOwnerId()
  * @method string getsnapshotId()
  * @method string getioOptimized()
@@ -53,6 +55,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -65,6 +68,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotId
+     *
      * @return $this
      */
     public function setsnapshotId($snapshotId)
@@ -77,6 +81,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $ioOptimized
+     *
      * @return $this
      */
     public function setioOptimized($ioOptimized)
@@ -89,6 +94,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -101,6 +107,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $isAll
+     *
      * @return $this
      */
     public function setisAll($isAll)
@@ -113,6 +120,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $fuzzyImageName
+     *
      * @return $this
      */
     public function setfuzzyImageName($fuzzyImageName)
@@ -125,6 +133,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -137,6 +146,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $imageOwnerAlias
+     *
      * @return $this
      */
     public function setimageOwnerAlias($imageOwnerAlias)
@@ -149,6 +159,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $imageName
+     *
      * @return $this
      */
     public function setimageName($imageName)
@@ -161,6 +172,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setpageSize($pageSize)
@@ -173,6 +185,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setinstanceType($instanceType)
@@ -185,6 +198,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -197,6 +211,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $quoteType
+     *
      * @return $this
      */
     public function setquoteType($quoteType)
@@ -209,6 +224,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $createEndTime
+     *
      * @return $this
      */
     public function setcreateEndTime($createEndTime)
@@ -221,6 +237,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -233,6 +250,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -245,6 +263,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -257,6 +276,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $userCountryType
+     *
      * @return $this
      */
     public function setuserCountryType($userCountryType)
@@ -269,6 +289,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $osType
+     *
      * @return $this
      */
     public function setosType($osType)
@@ -281,6 +302,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -293,6 +315,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $createStartTime
+     *
      * @return $this
      */
     public function setcreateStartTime($createStartTime)
@@ -305,6 +328,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -317,6 +341,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $tags
+     *
      * @return $this
      */
     public function settags($tags)
@@ -329,6 +354,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $regionNos
+     *
      * @return $this
      */
     public function setregionNos($regionNos)
@@ -341,6 +367,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $async
+     *
      * @return $this
      */
     public function setasync($async)
@@ -353,6 +380,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNo
+     *
      * @return $this
      */
     public function setpageNo($pageNo)
@@ -365,6 +393,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $osBit
+     *
      * @return $this
      */
     public function setosBit($osBit)
@@ -377,6 +406,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -389,6 +419,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $imageIds
+     *
      * @return $this
      */
     public function setimageIds($imageIds)
@@ -401,6 +432,7 @@ class InnerImageQueryAvailableImgsRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setstatus($status)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of StopVisualService
+ *
  * @method string getPort()
  * @method string getClusterId()
  * @method string getCidrIp()
@@ -21,6 +23,7 @@ class StopVisualServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $port
+     *
      * @return $this
      */
     public function setPort($port)
@@ -33,6 +36,7 @@ class StopVisualServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -45,6 +49,7 @@ class StopVisualServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $cidrIp
+     *
      * @return $this
      */
     public function setCidrIp($cidrIp)

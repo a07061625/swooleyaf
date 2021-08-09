@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateLaunchTemplate
+ *
  * @method string getLaunchTemplateName()
  * @method string getResourceOwnerId()
  * @method string getSecurityEnhancementStrategy()
@@ -67,6 +69,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $launchTemplateName
+     *
      * @return $this
      */
     public function setLaunchTemplateName($launchTemplateName)
@@ -79,6 +82,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -91,6 +95,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $securityEnhancementStrategy
+     *
      * @return $this
      */
     public function setSecurityEnhancementStrategy($securityEnhancementStrategy)
@@ -103,6 +108,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $networkType
+     *
      * @return $this
      */
     public function setNetworkType($networkType)
@@ -115,6 +121,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $keyPairName
+     *
      * @return $this
      */
     public function setKeyPairName($keyPairName)
@@ -127,6 +134,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $spotPriceLimit
+     *
      * @return $this
      */
     public function setSpotPriceLimit($spotPriceLimit)
@@ -139,6 +147,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $imageOwnerAlias
+     *
      * @return $this
      */
     public function setImageOwnerAlias($imageOwnerAlias)
@@ -151,6 +160,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -163,6 +173,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $hostName
+     *
      * @return $this
      */
     public function setHostName($hostName)
@@ -175,6 +186,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskIops
+     *
      * @return $this
      */
     public function setSystemDiskIops($systemDiskIops)
@@ -186,7 +198,6 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $templateTag
      * @return $this
      */
     public function setTemplateTags(array $templateTag)
@@ -201,7 +212,6 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -217,6 +227,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -229,6 +240,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $templateResourceGroupId
+     *
      * @return $this
      */
     public function setTemplateResourceGroupId($templateResourceGroupId)
@@ -241,6 +253,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -253,6 +266,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -265,6 +279,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $spotStrategy
+     *
      * @return $this
      */
     public function setSpotStrategy($spotStrategy)
@@ -277,6 +292,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceName
+     *
      * @return $this
      */
     public function setInstanceName($instanceName)
@@ -289,6 +305,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $internetChargeType
+     *
      * @return $this
      */
     public function setInternetChargeType($internetChargeType)
@@ -301,6 +318,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -313,6 +331,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $internetMaxBandwidthIn
+     *
      * @return $this
      */
     public function setInternetMaxBandwidthIn($internetMaxBandwidthIn)
@@ -325,6 +344,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $versionDescription
+     *
      * @return $this
      */
     public function setVersionDescription($versionDescription)
@@ -337,6 +357,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -349,6 +370,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ioOptimized
+     *
      * @return $this
      */
     public function setIoOptimized($ioOptimized)
@@ -361,6 +383,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -373,6 +396,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $internetMaxBandwidthOut
+     *
      * @return $this
      */
     public function setInternetMaxBandwidthOut($internetMaxBandwidthOut)
@@ -385,6 +409,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -397,6 +422,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskCategory
+     *
      * @return $this
      */
     public function setSystemDiskCategory($systemDiskCategory)
@@ -409,6 +435,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -421,6 +448,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $passwordInherit
+     *
      * @return $this
      */
     public function setPasswordInherit($passwordInherit)
@@ -433,6 +461,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -445,6 +474,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceChargeType
+     *
      * @return $this
      */
     public function setInstanceChargeType($instanceChargeType)
@@ -457,6 +487,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $enableVmOsConfig
+     *
      * @return $this
      */
     public function setEnableVmOsConfig($enableVmOsConfig)
@@ -468,7 +499,6 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $networkInterface
      * @return $this
      */
     public function setNetworkInterfaces(array $networkInterface)
@@ -487,6 +517,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -499,6 +530,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -511,6 +543,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskDiskName
+     *
      * @return $this
      */
     public function setSystemDiskDiskName($systemDiskDiskName)
@@ -523,6 +556,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ramRoleName
+     *
      * @return $this
      */
     public function setRamRoleName($ramRoleName)
@@ -535,6 +569,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $autoReleaseTime
+     *
      * @return $this
      */
     public function setAutoReleaseTime($autoReleaseTime)
@@ -547,6 +582,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $spotDuration
+     *
      * @return $this
      */
     public function setSpotDuration($spotDuration)
@@ -558,7 +594,6 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $dataDisk
      * @return $this
      */
     public function setDataDisks(array $dataDisk)
@@ -580,6 +615,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskSize
+     *
      * @return $this
      */
     public function setSystemDiskSize($systemDiskSize)
@@ -592,6 +628,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -604,6 +641,7 @@ class LaunchTemplateCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskDescription
+     *
      * @return $this
      */
     public function setSystemDiskDescription($systemDiskDescription)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerModifyEntityConstraints
+ *
  * @method string getEntityKey()
  * @method string getResourceOwnerId()
  * @method string getEntityProperties()
@@ -31,6 +33,7 @@ class InnerModifyEntityConstraintsRequest extends RpcAcsRequest
 
     /**
      * @param string $entityKey
+     *
      * @return $this
      */
     public function setEntityKey($entityKey)
@@ -43,6 +46,7 @@ class InnerModifyEntityConstraintsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -55,6 +59,7 @@ class InnerModifyEntityConstraintsRequest extends RpcAcsRequest
 
     /**
      * @param string $entityProperties
+     *
      * @return $this
      */
     public function setEntityProperties($entityProperties)
@@ -67,6 +72,7 @@ class InnerModifyEntityConstraintsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -79,6 +85,7 @@ class InnerModifyEntityConstraintsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,6 +98,7 @@ class InnerModifyEntityConstraintsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +111,7 @@ class InnerModifyEntityConstraintsRequest extends RpcAcsRequest
 
     /**
      * @param string $replaceAll
+     *
      * @return $this
      */
     public function setReplaceAll($replaceAll)
@@ -115,6 +124,7 @@ class InnerModifyEntityConstraintsRequest extends RpcAcsRequest
 
     /**
      * @param string $entityType
+     *
      * @return $this
      */
     public function setEntityType($entityType)

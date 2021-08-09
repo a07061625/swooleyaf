@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerQueryInstanceCreatedByProduct
+ *
  * @method string getResourceOwnerId()
  * @method array getPrivateIpAddressess()
  * @method array getAliUidss()
@@ -39,6 +41,7 @@ class InnerQueryInstanceCreatedByProductRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,7 +53,6 @@ class InnerQueryInstanceCreatedByProductRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $privateIpAddressess
      * @return $this
      */
     public function setPrivateIpAddressess(array $privateIpAddressess)
@@ -64,7 +66,6 @@ class InnerQueryInstanceCreatedByProductRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $aliUidss
      * @return $this
      */
     public function setAliUidss(array $aliUidss)
@@ -78,7 +79,6 @@ class InnerQueryInstanceCreatedByProductRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceTypess
      * @return $this
      */
     public function setInstanceTypess(array $instanceTypess)
@@ -93,6 +93,7 @@ class InnerQueryInstanceCreatedByProductRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -105,6 +106,7 @@ class InnerQueryInstanceCreatedByProductRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -117,6 +119,7 @@ class InnerQueryInstanceCreatedByProductRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -129,6 +132,7 @@ class InnerQueryInstanceCreatedByProductRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -141,6 +145,7 @@ class InnerQueryInstanceCreatedByProductRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -152,7 +157,6 @@ class InnerQueryInstanceCreatedByProductRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $publicIpAddressess
      * @return $this
      */
     public function setPublicIpAddressess(array $publicIpAddressess)
@@ -167,6 +171,7 @@ class InnerQueryInstanceCreatedByProductRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -179,6 +184,7 @@ class InnerQueryInstanceCreatedByProductRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -191,6 +197,7 @@ class InnerQueryInstanceCreatedByProductRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -203,6 +210,7 @@ class InnerQueryInstanceCreatedByProductRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -215,6 +223,7 @@ class InnerQueryInstanceCreatedByProductRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -227,6 +236,7 @@ class InnerQueryInstanceCreatedByProductRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)

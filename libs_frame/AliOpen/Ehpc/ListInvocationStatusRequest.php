@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListInvocationStatus
+ *
  * @method string getClusterId()
  * @method string getCommandId()
  */
@@ -20,6 +22,7 @@ class ListInvocationStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -32,6 +35,7 @@ class ListInvocationStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $commandId
+     *
      * @return $this
      */
     public function setCommandId($commandId)

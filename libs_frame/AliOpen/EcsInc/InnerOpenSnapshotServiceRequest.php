@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerOpenSnapshotService
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -28,6 +30,7 @@ class InnerOpenSnapshotServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -40,6 +43,7 @@ class InnerOpenSnapshotServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -52,6 +56,7 @@ class InnerOpenSnapshotServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -63,7 +68,6 @@ class InnerOpenSnapshotServiceRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $orderIdss
      * @return $this
      */
     public function setOrderIdss(array $orderIdss)
@@ -78,6 +82,7 @@ class InnerOpenSnapshotServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

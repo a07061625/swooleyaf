@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddContainerApp
+ *
  * @method string getContainerType()
  * @method string getName()
  * @method string getDescription()
@@ -23,6 +25,7 @@ class AddContainerAppRequest extends RpcAcsRequest
 
     /**
      * @param string $containerType
+     *
      * @return $this
      */
     public function setContainerType($containerType)
@@ -35,6 +38,7 @@ class AddContainerAppRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -47,6 +51,7 @@ class AddContainerAppRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -59,6 +64,7 @@ class AddContainerAppRequest extends RpcAcsRequest
 
     /**
      * @param string $repository
+     *
      * @return $this
      */
     public function setRepository($repository)
@@ -71,6 +77,7 @@ class AddContainerAppRequest extends RpcAcsRequest
 
     /**
      * @param string $imageTag
+     *
      * @return $this
      */
     public function setImageTag($imageTag)

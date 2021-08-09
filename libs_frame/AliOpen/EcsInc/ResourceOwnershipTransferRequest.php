@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ResourceOwnershipTransfer
+ *
  * @method string getResourceOwnerId()
  * @method string getToVSwitchId()
  * @method string getClientToken()
@@ -43,6 +45,7 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -55,6 +58,7 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $toVSwitchId
+     *
      * @return $this
      */
     public function setToVSwitchId($toVSwitchId)
@@ -67,6 +71,7 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -79,6 +84,7 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -91,6 +97,7 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -103,6 +110,7 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setAliUid($aliUid)
@@ -115,6 +123,7 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -127,6 +136,7 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $dryRun
+     *
      * @return $this
      */
     public function setDryRun($dryRun)
@@ -138,7 +148,6 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $privateIpss
      * @return $this
      */
     public function setPrivateIpss(array $privateIpss)
@@ -153,6 +162,7 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -165,6 +175,7 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -177,6 +188,7 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $keepPublicIp
+     *
      * @return $this
      */
     public function setKeepPublicIp($keepPublicIp)
@@ -189,6 +201,7 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -201,6 +214,7 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -213,6 +227,7 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $newOwnerId
+     *
      * @return $this
      */
     public function setNewOwnerId($newOwnerId)
@@ -225,6 +240,7 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $toSecurityGroupId
+     *
      * @return $this
      */
     public function setToSecurityGroupId($toSecurityGroupId)
@@ -236,7 +252,6 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceIdss
      * @return $this
      */
     public function setInstanceIdss(array $instanceIdss)
@@ -251,6 +266,7 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $appKey
+     *
      * @return $this
      */
     public function setappKey($appKey)
@@ -263,6 +279,7 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setBid($bid)
@@ -275,6 +292,7 @@ class ResourceOwnershipTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $toVSwitchAliUid
+     *
      * @return $this
      */
     public function setToVSwitchAliUid($toVSwitchAliUid)

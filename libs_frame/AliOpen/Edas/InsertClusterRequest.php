@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of InsertCluster
+ *
  * @method string getClusterType()
  * @method string getIaasProvider()
  * @method string getLogicalRegionId()
@@ -34,6 +36,7 @@ class InsertClusterRequest extends RoaAcsRequest
 
     /**
      * @param string $clusterType
+     *
      * @return $this
      */
     public function setClusterType($clusterType)
@@ -46,6 +49,7 @@ class InsertClusterRequest extends RoaAcsRequest
 
     /**
      * @param string $iaasProvider
+     *
      * @return $this
      */
     public function setIaasProvider($iaasProvider)
@@ -58,6 +62,7 @@ class InsertClusterRequest extends RoaAcsRequest
 
     /**
      * @param string $logicalRegionId
+     *
      * @return $this
      */
     public function setLogicalRegionId($logicalRegionId)
@@ -70,6 +75,7 @@ class InsertClusterRequest extends RoaAcsRequest
 
     /**
      * @param string $clusterName
+     *
      * @return $this
      */
     public function setClusterName($clusterName)
@@ -82,6 +88,7 @@ class InsertClusterRequest extends RoaAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -94,6 +101,7 @@ class InsertClusterRequest extends RoaAcsRequest
 
     /**
      * @param string $networkMode
+     *
      * @return $this
      */
     public function setNetworkMode($networkMode)
@@ -106,6 +114,7 @@ class InsertClusterRequest extends RoaAcsRequest
 
     /**
      * @param string $oversoldFactor
+     *
      * @return $this
      */
     public function setOversoldFactor($oversoldFactor)

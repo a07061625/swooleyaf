@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyCommand
+ *
  * @method string getResourceOwnerId()
  * @method string getWorkingDir()
  * @method string getDescription()
@@ -33,6 +35,7 @@ class CommandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class CommandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $workingDir
+     *
      * @return $this
      */
     public function setWorkingDir($workingDir)
@@ -57,6 +61,7 @@ class CommandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -69,6 +74,7 @@ class CommandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $commandId
+     *
      * @return $this
      */
     public function setCommandId($commandId)
@@ -81,6 +87,7 @@ class CommandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $commandContent
+     *
      * @return $this
      */
     public function setCommandContent($commandContent)
@@ -93,6 +100,7 @@ class CommandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $timeout
+     *
      * @return $this
      */
     public function setTimeout($timeout)
@@ -105,6 +113,7 @@ class CommandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -117,6 +126,7 @@ class CommandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -129,6 +139,7 @@ class CommandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -141,6 +152,7 @@ class CommandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)

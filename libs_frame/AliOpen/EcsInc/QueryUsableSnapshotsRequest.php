@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryUsableSnapshots
+ *
  * @method string getResourceOwnerId()
  * @method string getSnapshotNickName()
  * @method string getSnapshotId()
@@ -33,6 +35,7 @@ class QueryUsableSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class QueryUsableSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotNickName
+     *
      * @return $this
      */
     public function setSnapshotNickName($snapshotNickName)
@@ -57,6 +61,7 @@ class QueryUsableSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotId
+     *
      * @return $this
      */
     public function setSnapshotId($snapshotId)
@@ -69,6 +74,7 @@ class QueryUsableSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $offset
+     *
      * @return $this
      */
     public function setOffset($offset)
@@ -81,6 +87,7 @@ class QueryUsableSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -93,6 +100,7 @@ class QueryUsableSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $creationStartTime
+     *
      * @return $this
      */
     public function setCreationStartTime($creationStartTime)
@@ -105,6 +113,7 @@ class QueryUsableSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $creationEndTime
+     *
      * @return $this
      */
     public function setCreationEndTime($creationEndTime)
@@ -117,6 +126,7 @@ class QueryUsableSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -129,6 +139,7 @@ class QueryUsableSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -141,6 +152,7 @@ class QueryUsableSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

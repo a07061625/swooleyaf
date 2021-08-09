@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeImagePrice
+ *
  * @method string getPeriod()
  * @method string getAmount()
  * @method string getImageId()
@@ -24,6 +26,7 @@ class DescribeImagePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -36,6 +39,7 @@ class DescribeImagePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $amount
+     *
      * @return $this
      */
     public function setAmount($amount)
@@ -48,6 +52,7 @@ class DescribeImagePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -60,6 +65,7 @@ class DescribeImagePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $priceUnit
+     *
      * @return $this
      */
     public function setPriceUnit($priceUnit)
@@ -72,6 +78,7 @@ class DescribeImagePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $skuCode
+     *
      * @return $this
      */
     public function setSkuCode($skuCode)
@@ -84,6 +91,7 @@ class DescribeImagePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $orderType
+     *
      * @return $this
      */
     public function setOrderType($orderType)

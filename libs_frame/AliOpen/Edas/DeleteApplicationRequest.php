@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DeleteApplication
+ *
  * @method string getAppId()
  */
 class DeleteApplicationRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class DeleteApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

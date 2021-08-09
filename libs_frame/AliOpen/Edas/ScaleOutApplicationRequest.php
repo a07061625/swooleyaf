@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of ScaleOutApplication
+ *
  * @method string getEcuInfo()
  * @method string getDeployGroup()
  * @method string getAppId()
@@ -30,6 +32,7 @@ class ScaleOutApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $ecuInfo
+     *
      * @return $this
      */
     public function setEcuInfo($ecuInfo)
@@ -42,6 +45,7 @@ class ScaleOutApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $deployGroup
+     *
      * @return $this
      */
     public function setDeployGroup($deployGroup)
@@ -54,6 +58,7 @@ class ScaleOutApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

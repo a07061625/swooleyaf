@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of ListEcuByRegion
+ *
  * @method string getAct()
  * @method string getLogicalRegionId()
  */
@@ -25,6 +27,7 @@ class ListEcuByRegionRequest extends RoaAcsRequest
 
     /**
      * @param string $act
+     *
      * @return $this
      */
     public function setAct($act)
@@ -37,6 +40,7 @@ class ListEcuByRegionRequest extends RoaAcsRequest
 
     /**
      * @param string $logicalRegionId
+     *
      * @return $this
      */
     public function setLogicalRegionId($logicalRegionId)

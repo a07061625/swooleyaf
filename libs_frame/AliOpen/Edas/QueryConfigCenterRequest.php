@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of QueryConfigCenter
+ *
  * @method string getDataId()
  * @method string getLogicalRegionId()
  * @method string getGroup()
@@ -26,6 +28,7 @@ class QueryConfigCenterRequest extends RoaAcsRequest
 
     /**
      * @param string $dataId
+     *
      * @return $this
      */
     public function setDataId($dataId)
@@ -38,6 +41,7 @@ class QueryConfigCenterRequest extends RoaAcsRequest
 
     /**
      * @param string $logicalRegionId
+     *
      * @return $this
      */
     public function setLogicalRegionId($logicalRegionId)
@@ -50,6 +54,7 @@ class QueryConfigCenterRequest extends RoaAcsRequest
 
     /**
      * @param string $group
+     *
      * @return $this
      */
     public function setGroup($group)

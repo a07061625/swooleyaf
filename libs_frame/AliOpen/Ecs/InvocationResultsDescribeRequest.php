@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeInvocationResults
+ *
  * @method string getResourceOwnerId()
  * @method string getCommandId()
  * @method string getPageNumber()
@@ -34,6 +36,7 @@ class InvocationResultsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class InvocationResultsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $commandId
+     *
      * @return $this
      */
     public function setCommandId($commandId)
@@ -58,6 +62,7 @@ class InvocationResultsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -70,6 +75,7 @@ class InvocationResultsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -82,6 +88,7 @@ class InvocationResultsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $invokeId
+     *
      * @return $this
      */
     public function setInvokeId($invokeId)
@@ -94,6 +101,7 @@ class InvocationResultsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -106,6 +114,7 @@ class InvocationResultsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -118,6 +127,7 @@ class InvocationResultsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -130,6 +140,7 @@ class InvocationResultsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -142,6 +153,7 @@ class InvocationResultsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $invokeRecordStatus
+     *
      * @return $this
      */
     public function setInvokeRecordStatus($invokeRecordStatus)
@@ -154,6 +166,7 @@ class InvocationResultsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $includeHistory
+     *
      * @return $this
      */
     public function setIncludeHistory($includeHistory)

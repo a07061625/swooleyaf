@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeInstanceAutoRenewAttribute
+ *
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
  * @method string getRenewalStatus()
@@ -31,6 +33,7 @@ class InstanceAutoRenewAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class InstanceAutoRenewAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -55,6 +59,7 @@ class InstanceAutoRenewAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $renewalStatus
+     *
      * @return $this
      */
     public function setRenewalStatus($renewalStatus)
@@ -67,6 +72,7 @@ class InstanceAutoRenewAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -79,6 +85,7 @@ class InstanceAutoRenewAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -91,6 +98,7 @@ class InstanceAutoRenewAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -103,6 +111,7 @@ class InstanceAutoRenewAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -115,6 +124,7 @@ class InstanceAutoRenewAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)

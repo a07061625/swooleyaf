@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of UpdateApplicationBaseInfo
+ *
  * @method string getAppName()
  * @method string getAppId()
  * @method string getdesc()
@@ -30,6 +32,7 @@ class UpdateApplicationBaseInfoRequest extends RoaAcsRequest
 
     /**
      * @param string $appName
+     *
      * @return $this
      */
     public function setAppName($appName)
@@ -42,6 +45,7 @@ class UpdateApplicationBaseInfoRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -54,6 +58,7 @@ class UpdateApplicationBaseInfoRequest extends RoaAcsRequest
 
     /**
      * @param string $desc
+     *
      * @return $this
      */
     public function setdesc($desc)

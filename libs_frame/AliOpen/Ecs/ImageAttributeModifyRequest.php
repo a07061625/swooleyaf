@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyImageAttribute
+ *
  * @method string getResourceOwnerId()
  * @method string getImageId()
  * @method string getDescription()
@@ -32,6 +34,7 @@ class ImageAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class ImageAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -56,6 +60,7 @@ class ImageAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -68,6 +73,7 @@ class ImageAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $imageName
+     *
      * @return $this
      */
     public function setImageName($imageName)
@@ -80,6 +86,7 @@ class ImageAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -92,6 +99,7 @@ class ImageAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +112,7 @@ class ImageAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,6 +125,7 @@ class ImageAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $imageFamily
+     *
      * @return $this
      */
     public function setImageFamily($imageFamily)
@@ -128,6 +138,7 @@ class ImageAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

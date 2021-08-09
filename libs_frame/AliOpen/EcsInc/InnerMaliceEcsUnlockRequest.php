@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerMaliceEcsUnlock
+ *
  * @method string getreason()
  * @method string getResourceOwnerId()
  * @method string getinternetIp()
@@ -37,6 +39,7 @@ class InnerMaliceEcsUnlockRequest extends RpcAcsRequest
 
     /**
      * @param string $reason
+     *
      * @return $this
      */
     public function setreason($reason)
@@ -49,6 +52,7 @@ class InnerMaliceEcsUnlockRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -61,6 +65,7 @@ class InnerMaliceEcsUnlockRequest extends RpcAcsRequest
 
     /**
      * @param string $internetIp
+     *
      * @return $this
      */
     public function setinternetIp($internetIp)
@@ -73,6 +78,7 @@ class InnerMaliceEcsUnlockRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -85,6 +91,7 @@ class InnerMaliceEcsUnlockRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -97,6 +104,7 @@ class InnerMaliceEcsUnlockRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -109,6 +117,7 @@ class InnerMaliceEcsUnlockRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -121,6 +130,7 @@ class InnerMaliceEcsUnlockRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -133,6 +143,7 @@ class InnerMaliceEcsUnlockRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -145,6 +156,7 @@ class InnerMaliceEcsUnlockRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -157,6 +169,7 @@ class InnerMaliceEcsUnlockRequest extends RpcAcsRequest
 
     /**
      * @param string $lockType
+     *
      * @return $this
      */
     public function setlockType($lockType)
@@ -169,6 +182,7 @@ class InnerMaliceEcsUnlockRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setid($id)
@@ -181,6 +195,7 @@ class InnerMaliceEcsUnlockRequest extends RpcAcsRequest
 
     /**
      * @param string $proof
+     *
      * @return $this
      */
     public function setproof($proof)
@@ -193,6 +208,7 @@ class InnerMaliceEcsUnlockRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DeployK8sApplication
+ *
  * @method string getMemoryRequest()
  * @method string getNasId()
  * @method string getImage()
@@ -47,6 +49,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $memoryRequest
+     *
      * @return $this
      */
     public function setMemoryRequest($memoryRequest)
@@ -59,6 +62,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $nasId
+     *
      * @return $this
      */
     public function setNasId($nasId)
@@ -71,6 +75,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $image
+     *
      * @return $this
      */
     public function setImage($image)
@@ -83,6 +88,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $preStop
+     *
      * @return $this
      */
     public function setPreStop($preStop)
@@ -95,6 +101,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $mountDescs
+     *
      * @return $this
      */
     public function setMountDescs($mountDescs)
@@ -107,6 +114,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $readiness
+     *
      * @return $this
      */
     public function setReadiness($readiness)
@@ -119,6 +127,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $replicas
+     *
      * @return $this
      */
     public function setReplicas($replicas)
@@ -131,6 +140,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $batchWaitTime
+     *
      * @return $this
      */
     public function setBatchWaitTime($batchWaitTime)
@@ -143,6 +153,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $liveness
+     *
      * @return $this
      */
     public function setLiveness($liveness)
@@ -155,6 +166,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $cpuRequest
+     *
      * @return $this
      */
     public function setCpuRequest($cpuRequest)
@@ -167,6 +179,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $envs
+     *
      * @return $this
      */
     public function setEnvs($envs)
@@ -179,6 +192,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $cpuLimit
+     *
      * @return $this
      */
     public function setCpuLimit($cpuLimit)
@@ -191,6 +205,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $localVolume
+     *
      * @return $this
      */
     public function setLocalVolume($localVolume)
@@ -203,6 +218,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $command
+     *
      * @return $this
      */
     public function setCommand($command)
@@ -215,6 +231,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $storageType
+     *
      * @return $this
      */
     public function setStorageType($storageType)
@@ -227,6 +244,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $args
+     *
      * @return $this
      */
     public function setArgs($args)
@@ -239,6 +257,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -251,6 +270,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $memoryLimit
+     *
      * @return $this
      */
     public function setMemoryLimit($memoryLimit)
@@ -263,6 +283,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $imageTag
+     *
      * @return $this
      */
     public function setImageTag($imageTag)
@@ -275,6 +296,7 @@ class DeployK8sApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $postStart
+     *
      * @return $this
      */
     public function setPostStart($postStart)

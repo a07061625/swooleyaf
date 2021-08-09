@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerDiskResizeByParam
+ *
  * @method string getResourceOwnerId()
  * @method string getinstanceId()
  * @method string getResourceOwnerAccount()
@@ -34,6 +36,7 @@ class InnerDiskResizeByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class InnerDiskResizeByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setinstanceId($instanceId)
@@ -58,6 +62,7 @@ class InnerDiskResizeByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -70,6 +75,7 @@ class InnerDiskResizeByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -82,6 +88,7 @@ class InnerDiskResizeByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -94,6 +101,7 @@ class InnerDiskResizeByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $newSize
+     *
      * @return $this
      */
     public function setnewSize($newSize)
@@ -106,6 +114,7 @@ class InnerDiskResizeByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $appKey
+     *
      * @return $this
      */
     public function setappKey($appKey)
@@ -118,6 +127,7 @@ class InnerDiskResizeByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -130,6 +140,7 @@ class InnerDiskResizeByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -142,6 +153,7 @@ class InnerDiskResizeByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -154,6 +166,7 @@ class InnerDiskResizeByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

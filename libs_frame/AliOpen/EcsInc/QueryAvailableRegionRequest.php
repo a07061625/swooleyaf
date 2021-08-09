@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryAvailableRegion
+ *
  * @method string getSpotStrategy()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -29,6 +31,7 @@ class QueryAvailableRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $spotStrategy
+     *
      * @return $this
      */
     public function setSpotStrategy($spotStrategy)
@@ -41,6 +44,7 @@ class QueryAvailableRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -53,6 +57,7 @@ class QueryAvailableRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -65,6 +70,7 @@ class QueryAvailableRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -77,6 +83,7 @@ class QueryAvailableRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityCode
+     *
      * @return $this
      */
     public function setCommodityCode($commodityCode)
@@ -89,6 +96,7 @@ class QueryAvailableRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

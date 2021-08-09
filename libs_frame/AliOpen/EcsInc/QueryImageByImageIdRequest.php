@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryImageByImageId
+ *
  * @method string getResourceOwnerId()
  * @method array getImageIds()
  * @method string getResourceOwnerAccount()
@@ -29,6 +31,7 @@ class QueryImageByImageIdRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -40,7 +43,6 @@ class QueryImageByImageIdRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $imageIds
      * @return $this
      */
     public function setImageIds(array $imageIds)
@@ -55,6 +57,7 @@ class QueryImageByImageIdRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -67,6 +70,7 @@ class QueryImageByImageIdRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -79,6 +83,7 @@ class QueryImageByImageIdRequest extends RpcAcsRequest
 
     /**
      * @param string $chargeType
+     *
      * @return $this
      */
     public function setChargeType($chargeType)
@@ -91,6 +96,7 @@ class QueryImageByImageIdRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

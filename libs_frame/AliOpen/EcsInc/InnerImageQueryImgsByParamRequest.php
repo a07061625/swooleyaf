@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerImageQueryImgsByParam
+ *
  * @method string getResourceOwnerId()
  * @method string getimageId()
  * @method string getvisibility()
@@ -41,6 +43,7 @@ class InnerImageQueryImgsByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -53,6 +56,7 @@ class InnerImageQueryImgsByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setimageId($imageId)
@@ -65,6 +69,7 @@ class InnerImageQueryImgsByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $visibility
+     *
      * @return $this
      */
     public function setvisibility($visibility)
@@ -77,6 +82,7 @@ class InnerImageQueryImgsByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -89,6 +95,7 @@ class InnerImageQueryImgsByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -101,6 +108,7 @@ class InnerImageQueryImgsByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $osTypeId
+     *
      * @return $this
      */
     public function setosTypeId($osTypeId)
@@ -113,6 +121,7 @@ class InnerImageQueryImgsByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -125,6 +134,7 @@ class InnerImageQueryImgsByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -137,6 +147,7 @@ class InnerImageQueryImgsByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -149,6 +160,7 @@ class InnerImageQueryImgsByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $imageCategory
+     *
      * @return $this
      */
     public function setimageCategory($imageCategory)
@@ -161,6 +173,7 @@ class InnerImageQueryImgsByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -173,6 +186,7 @@ class InnerImageQueryImgsByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $requestId
+     *
      * @return $this
      */
     public function setrequestId($requestId)
@@ -185,6 +199,7 @@ class InnerImageQueryImgsByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setpageSize($pageSize)
@@ -197,6 +212,7 @@ class InnerImageQueryImgsByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -209,6 +225,7 @@ class InnerImageQueryImgsByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $page
+     *
      * @return $this
      */
     public function setpage($page)
@@ -221,6 +238,7 @@ class InnerImageQueryImgsByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -233,6 +251,7 @@ class InnerImageQueryImgsByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -245,6 +264,7 @@ class InnerImageQueryImgsByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setstatus($status)

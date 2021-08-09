@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeResourceCreationCapacity
+ *
  * @method string getResourceOwnerId()
  * @method string getIoOptimized()
  * @method array getDataDiskCategorys()
@@ -38,6 +40,7 @@ class DescribeResourceCreationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +53,7 @@ class DescribeResourceCreationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $ioOptimized
+     *
      * @return $this
      */
     public function setIoOptimized($ioOptimized)
@@ -61,7 +65,6 @@ class DescribeResourceCreationCapacityRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $dataDiskCategorys
      * @return $this
      */
     public function setDataDiskCategorys(array $dataDiskCategorys)
@@ -76,6 +79,7 @@ class DescribeResourceCreationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskCategory
+     *
      * @return $this
      */
     public function setSystemDiskCategory($systemDiskCategory)
@@ -88,6 +92,7 @@ class DescribeResourceCreationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -100,6 +105,7 @@ class DescribeResourceCreationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $networkCategory
+     *
      * @return $this
      */
     public function setNetworkCategory($networkCategory)
@@ -112,6 +118,7 @@ class DescribeResourceCreationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setAliUid($aliUid)
@@ -124,6 +131,7 @@ class DescribeResourceCreationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceChargeType
+     *
      * @return $this
      */
     public function setInstanceChargeType($instanceChargeType)
@@ -136,6 +144,7 @@ class DescribeResourceCreationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $amount
+     *
      * @return $this
      */
     public function setAmount($amount)
@@ -148,6 +157,7 @@ class DescribeResourceCreationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -160,6 +170,7 @@ class DescribeResourceCreationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -172,6 +183,7 @@ class DescribeResourceCreationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -184,6 +196,7 @@ class DescribeResourceCreationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $spotStrategy
+     *
      * @return $this
      */
     public function setSpotStrategy($spotStrategy)
@@ -196,6 +209,7 @@ class DescribeResourceCreationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -208,6 +222,7 @@ class DescribeResourceCreationCapacityRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setBid($bid)

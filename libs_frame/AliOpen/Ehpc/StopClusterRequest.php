@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of StopCluster
+ *
  * @method string getClusterId()
  */
 class StopClusterRequest extends RpcAcsRequest
@@ -19,6 +21,7 @@ class StopClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

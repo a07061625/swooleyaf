@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetAccountingReport
+ *
  * @method string getReportType()
  * @method string getEndTime()
  * @method string getClusterId()
@@ -22,6 +24,7 @@ class GetAccountingReportRequest extends RpcAcsRequest
 
     /**
      * @param string $reportType
+     *
      * @return $this
      */
     public function setReportType($reportType)
@@ -34,6 +37,7 @@ class GetAccountingReportRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -46,6 +50,7 @@ class GetAccountingReportRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -58,6 +63,7 @@ class GetAccountingReportRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)

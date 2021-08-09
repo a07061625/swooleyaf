@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetJobUser
+ *
  * @method string getRunasUserPassword()
  * @method string getRunasUser()
  * @method string getClusterId()
@@ -21,6 +23,7 @@ class SetJobUserRequest extends RpcAcsRequest
 
     /**
      * @param string $runasUserPassword
+     *
      * @return $this
      */
     public function setRunasUserPassword($runasUserPassword)
@@ -33,6 +36,7 @@ class SetJobUserRequest extends RpcAcsRequest
 
     /**
      * @param string $runasUser
+     *
      * @return $this
      */
     public function setRunasUser($runasUser)
@@ -45,6 +49,7 @@ class SetJobUserRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

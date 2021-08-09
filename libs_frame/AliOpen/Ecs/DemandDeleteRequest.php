@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteDemand
+ *
  * @method string getReason()
  * @method string getResourceOwnerId()
  * @method string getClientToken()
@@ -30,6 +32,7 @@ class DemandDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $reason
+     *
      * @return $this
      */
     public function setReason($reason)
@@ -42,6 +45,7 @@ class DemandDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -54,6 +58,7 @@ class DemandDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -66,6 +71,7 @@ class DemandDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -78,6 +84,7 @@ class DemandDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -90,6 +97,7 @@ class DemandDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -102,6 +110,7 @@ class DemandDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $demandId
+     *
      * @return $this
      */
     public function setDemandId($demandId)

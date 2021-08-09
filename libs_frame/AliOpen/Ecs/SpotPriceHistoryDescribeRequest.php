@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeSpotPriceHistory
+ *
  * @method string getResourceOwnerId()
  * @method string getIoOptimized()
  * @method string getNetworkType()
@@ -36,6 +38,7 @@ class SpotPriceHistoryDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +51,7 @@ class SpotPriceHistoryDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ioOptimized
+     *
      * @return $this
      */
     public function setIoOptimized($ioOptimized)
@@ -60,6 +64,7 @@ class SpotPriceHistoryDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $networkType
+     *
      * @return $this
      */
     public function setNetworkType($networkType)
@@ -72,6 +77,7 @@ class SpotPriceHistoryDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -84,6 +90,7 @@ class SpotPriceHistoryDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -96,6 +103,7 @@ class SpotPriceHistoryDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $offset
+     *
      * @return $this
      */
     public function setOffset($offset)
@@ -108,6 +116,7 @@ class SpotPriceHistoryDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -120,6 +129,7 @@ class SpotPriceHistoryDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -132,6 +142,7 @@ class SpotPriceHistoryDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -144,6 +155,7 @@ class SpotPriceHistoryDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $oSType
+     *
      * @return $this
      */
     public function setOSType($oSType)
@@ -156,6 +168,7 @@ class SpotPriceHistoryDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -168,6 +181,7 @@ class SpotPriceHistoryDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $spotDuration
+     *
      * @return $this
      */
     public function setSpotDuration($spotDuration)
@@ -180,6 +194,7 @@ class SpotPriceHistoryDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)

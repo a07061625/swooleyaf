@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DeleteServerlessApplication
+ *
  * @method string getAct()
  * @method string getAppId()
  */
@@ -29,6 +31,7 @@ class DeleteServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $act
+     *
      * @return $this
      */
     public function setAct($act)
@@ -41,6 +44,7 @@ class DeleteServerlessApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

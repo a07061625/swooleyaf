@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeImageGatewayConfig
+ *
  * @method string getClusterId()
  */
 class DescribeImageGatewayConfigRequest extends RpcAcsRequest
@@ -19,6 +21,7 @@ class DescribeImageGatewayConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

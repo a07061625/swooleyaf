@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeInstanceHistoryEvents
+ *
  * @method array getEventIds()
  * @method string getResourceOwnerId()
  * @method string getEventCycleStatus()
@@ -38,7 +40,6 @@ class InstanceHistoryEventsDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $eventId
      * @return $this
      */
     public function setEventIds(array $eventId)
@@ -53,6 +54,7 @@ class InstanceHistoryEventsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -65,6 +67,7 @@ class InstanceHistoryEventsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $eventCycleStatus
+     *
      * @return $this
      */
     public function setEventCycleStatus($eventCycleStatus)
@@ -77,6 +80,7 @@ class InstanceHistoryEventsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -89,6 +93,7 @@ class InstanceHistoryEventsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -100,7 +105,6 @@ class InstanceHistoryEventsDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceEventCycleStatus
      * @return $this
      */
     public function setInstanceEventCycleStatuss(array $instanceEventCycleStatus)
@@ -115,6 +119,7 @@ class InstanceHistoryEventsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $eventPublishTimeEnd
+     *
      * @return $this
      */
     public function setEventPublishTimeEnd($eventPublishTimeEnd)
@@ -126,7 +131,6 @@ class InstanceHistoryEventsDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceEventType
      * @return $this
      */
     public function setInstanceEventTypes(array $instanceEventType)
@@ -141,6 +145,7 @@ class InstanceHistoryEventsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -153,6 +158,7 @@ class InstanceHistoryEventsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -165,6 +171,7 @@ class InstanceHistoryEventsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $notBeforeStart
+     *
      * @return $this
      */
     public function setNotBeforeStart($notBeforeStart)
@@ -177,6 +184,7 @@ class InstanceHistoryEventsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -189,6 +197,7 @@ class InstanceHistoryEventsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $eventPublishTimeStart
+     *
      * @return $this
      */
     public function setEventPublishTimeStart($eventPublishTimeStart)
@@ -201,6 +210,7 @@ class InstanceHistoryEventsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -213,6 +223,7 @@ class InstanceHistoryEventsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $notBeforeEnd
+     *
      * @return $this
      */
     public function setNotBeforeEnd($notBeforeEnd)
@@ -225,6 +236,7 @@ class InstanceHistoryEventsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $eventType
+     *
      * @return $this
      */
     public function setEventType($eventType)

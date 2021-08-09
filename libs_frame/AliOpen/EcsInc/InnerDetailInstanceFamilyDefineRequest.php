@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerDetailInstanceFamilyDefine
+ *
  * @method string getResourceOwnerId()
  * @method string getLang()
  * @method string getResourceOwnerAccount()
@@ -29,6 +31,7 @@ class InnerDetailInstanceFamilyDefineRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class InnerDetailInstanceFamilyDefineRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -53,6 +57,7 @@ class InnerDetailInstanceFamilyDefineRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -65,6 +70,7 @@ class InnerDetailInstanceFamilyDefineRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -76,7 +82,6 @@ class InnerDetailInstanceFamilyDefineRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceTypeFamilys
      * @return $this
      */
     public function setInstanceTypeFamilys(array $instanceTypeFamilys)
@@ -91,6 +96,7 @@ class InnerDetailInstanceFamilyDefineRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

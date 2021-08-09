@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CopyImage
+ *
  * @method string getResourceOwnerId()
  * @method string getImageId()
  * @method string getEncryptAlgorithm()
@@ -35,6 +37,7 @@ class ImageCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +50,7 @@ class ImageCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -59,6 +63,7 @@ class ImageCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $encryptAlgorithm
+     *
      * @return $this
      */
     public function setEncryptAlgorithm($encryptAlgorithm)
@@ -71,6 +76,7 @@ class ImageCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationRegionId
+     *
      * @return $this
      */
     public function setDestinationRegionId($destinationRegionId)
@@ -82,7 +88,6 @@ class ImageCopyRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -98,6 +103,7 @@ class ImageCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -110,6 +116,7 @@ class ImageCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationImageName
+     *
      * @return $this
      */
     public function setDestinationImageName($destinationImageName)
@@ -122,6 +129,7 @@ class ImageCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -134,6 +142,7 @@ class ImageCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -146,6 +155,7 @@ class ImageCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $encrypted
+     *
      * @return $this
      */
     public function setEncrypted($encrypted)
@@ -158,6 +168,7 @@ class ImageCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $kMSKeyId
+     *
      * @return $this
      */
     public function setKMSKeyId($kMSKeyId)
@@ -170,6 +181,7 @@ class ImageCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationDescription
+     *
      * @return $this
      */
     public function setDestinationDescription($destinationDescription)

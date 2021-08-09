@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DeleteConfigCenter
+ *
  * @method string getDataId()
  * @method string getLogicalRegionId()
  * @method string getGroup()
@@ -30,6 +32,7 @@ class DeleteConfigCenterRequest extends RoaAcsRequest
 
     /**
      * @param string $dataId
+     *
      * @return $this
      */
     public function setDataId($dataId)
@@ -42,6 +45,7 @@ class DeleteConfigCenterRequest extends RoaAcsRequest
 
     /**
      * @param string $logicalRegionId
+     *
      * @return $this
      */
     public function setLogicalRegionId($logicalRegionId)
@@ -54,6 +58,7 @@ class DeleteConfigCenterRequest extends RoaAcsRequest
 
     /**
      * @param string $group
+     *
      * @return $this
      */
     public function setGroup($group)

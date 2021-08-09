@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDiskAttribute
+ *
  * @method string getResourceOwnerId()
  * @method string getDescription()
  * @method string getDiskName()
@@ -34,6 +36,7 @@ class DiskAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class DiskAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -58,6 +62,7 @@ class DiskAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $diskName
+     *
      * @return $this
      */
     public function setDiskName($diskName)
@@ -70,6 +75,7 @@ class DiskAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $deleteAutoSnapshot
+     *
      * @return $this
      */
     public function setDeleteAutoSnapshot($deleteAutoSnapshot)
@@ -81,7 +87,6 @@ class DiskAttributeModifyRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $diskIds
      * @return $this
      */
     public function setDiskIdss(array $diskIds)
@@ -96,6 +101,7 @@ class DiskAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $diskId
+     *
      * @return $this
      */
     public function setDiskId($diskId)
@@ -108,6 +114,7 @@ class DiskAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $deleteWithInstance
+     *
      * @return $this
      */
     public function setDeleteWithInstance($deleteWithInstance)
@@ -120,6 +127,7 @@ class DiskAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $enableAutoSnapshot
+     *
      * @return $this
      */
     public function setEnableAutoSnapshot($enableAutoSnapshot)
@@ -132,6 +140,7 @@ class DiskAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -144,6 +153,7 @@ class DiskAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -156,6 +166,7 @@ class DiskAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

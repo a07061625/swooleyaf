@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerRefundVcpuQuery
+ *
  * @method string getResourceOwnerId()
  * @method string getAliUid()
  * @method string getTimestamp()
@@ -30,6 +32,7 @@ class InnerRefundVcpuQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class InnerRefundVcpuQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setAliUid($aliUid)
@@ -54,6 +58,7 @@ class InnerRefundVcpuQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $timestamp
+     *
      * @return $this
      */
     public function setTimestamp($timestamp)
@@ -66,6 +71,7 @@ class InnerRefundVcpuQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $isLock
+     *
      * @return $this
      */
     public function setIsLock($isLock)
@@ -78,6 +84,7 @@ class InnerRefundVcpuQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -90,6 +97,7 @@ class InnerRefundVcpuQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -102,6 +110,7 @@ class InnerRefundVcpuQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

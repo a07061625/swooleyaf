@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CopySystemImageAtTarget
+ *
  * @method string getImageCenterResourceId()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -33,6 +35,7 @@ class CopySystemImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $imageCenterResourceId
+     *
      * @return $this
      */
     public function setImageCenterResourceId($imageCenterResourceId)
@@ -45,6 +48,7 @@ class CopySystemImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +61,7 @@ class CopySystemImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -69,6 +74,7 @@ class CopySystemImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $toImageName
+     *
      * @return $this
      */
     public function setToImageName($toImageName)
@@ -81,6 +87,7 @@ class CopySystemImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -93,6 +100,7 @@ class CopySystemImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $toImageDesc
+     *
      * @return $this
      */
     public function setToImageDesc($toImageDesc)
@@ -104,7 +112,6 @@ class CopySystemImageAtTargetRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tags
      * @return $this
      */
     public function setTags(array $tags)
@@ -120,6 +127,7 @@ class CopySystemImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -132,6 +140,7 @@ class CopySystemImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $toRegionNo
+     *
      * @return $this
      */
     public function setToRegionNo($toRegionNo)
@@ -144,6 +153,7 @@ class CopySystemImageAtTargetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceTransitInBase64
+     *
      * @return $this
      */
     public function setResourceTransitInBase64($resourceTransitInBase64)

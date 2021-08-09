@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UninstallSoftware
+ *
  * @method string getApplication()
  * @method string getClusterId()
  */
@@ -20,6 +22,7 @@ class UninstallSoftwareRequest extends RpcAcsRequest
 
     /**
      * @param string $application
+     *
      * @return $this
      */
     public function setApplication($application)
@@ -32,6 +35,7 @@ class UninstallSoftwareRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

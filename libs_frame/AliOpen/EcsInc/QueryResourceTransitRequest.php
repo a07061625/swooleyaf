@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryResourceTransit
+ *
  * @method string getResourceId()
  * @method string getResourceOwnerId()
  * @method array getResourceStatusLists()
@@ -38,6 +40,7 @@ class QueryResourceTransitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceId
+     *
      * @return $this
      */
     public function setResourceId($resourceId)
@@ -50,6 +53,7 @@ class QueryResourceTransitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -61,7 +65,6 @@ class QueryResourceTransitRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $resourceStatusLists
      * @return $this
      */
     public function setResourceStatusLists(array $resourceStatusLists)
@@ -76,6 +79,7 @@ class QueryResourceTransitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -87,7 +91,6 @@ class QueryResourceTransitRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $resourceTypeLists
      * @return $this
      */
     public function setResourceTypeLists(array $resourceTypeLists)
@@ -102,6 +105,7 @@ class QueryResourceTransitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -114,6 +118,7 @@ class QueryResourceTransitRequest extends RpcAcsRequest
 
     /**
      * @param string $fromRegionNo
+     *
      * @return $this
      */
     public function setFromRegionNo($fromRegionNo)
@@ -126,6 +131,7 @@ class QueryResourceTransitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -138,6 +144,7 @@ class QueryResourceTransitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceTransitId
+     *
      * @return $this
      */
     public function setResourceTransitId($resourceTransitId)
@@ -150,6 +157,7 @@ class QueryResourceTransitRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNo
+     *
      * @return $this
      */
     public function setPageNo($pageNo)
@@ -162,6 +170,7 @@ class QueryResourceTransitRequest extends RpcAcsRequest
 
     /**
      * @param string $dbId
+     *
      * @return $this
      */
     public function setDbId($dbId)
@@ -174,6 +183,7 @@ class QueryResourceTransitRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -186,6 +196,7 @@ class QueryResourceTransitRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setAliUid($aliUid)
@@ -198,6 +209,7 @@ class QueryResourceTransitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceName
+     *
      * @return $this
      */
     public function setResourceName($resourceName)
@@ -209,7 +221,6 @@ class QueryResourceTransitRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tags
      * @return $this
      */
     public function setTags(array $tags)

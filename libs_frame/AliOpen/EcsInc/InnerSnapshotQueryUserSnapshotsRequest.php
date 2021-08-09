@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerSnapshotQueryUserSnapshots
+ *
  * @method string getecsIds()
  * @method string getResourceOwnerId()
  * @method string getsnapshotNickName()
@@ -57,6 +59,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsIds
+     *
      * @return $this
      */
     public function setecsIds($ecsIds)
@@ -69,6 +72,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -81,6 +85,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotNickName
+     *
      * @return $this
      */
     public function setsnapshotNickName($snapshotNickName)
@@ -93,6 +98,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUids
+     *
      * @return $this
      */
     public function setaliUids($aliUids)
@@ -105,6 +111,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotIds
+     *
      * @return $this
      */
     public function setsnapshotIds($snapshotIds)
@@ -117,6 +124,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -129,6 +137,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $deviceNo
+     *
      * @return $this
      */
     public function setdeviceNo($deviceNo)
@@ -141,6 +150,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -153,6 +163,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $deviceType
+     *
      * @return $this
      */
     public function setdeviceType($deviceType)
@@ -165,6 +176,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $gmtCreatedBegin
+     *
      * @return $this
      */
     public function setgmtCreatedBegin($gmtCreatedBegin)
@@ -177,6 +189,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsSnapshotStatus
+     *
      * @return $this
      */
     public function setecsSnapshotStatus($ecsSnapshotStatus)
@@ -189,6 +202,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $createFinished
+     *
      * @return $this
      */
     public function setcreateFinished($createFinished)
@@ -201,6 +215,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $fuzzySnapshotName
+     *
      * @return $this
      */
     public function setfuzzySnapshotName($fuzzySnapshotName)
@@ -213,6 +228,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setpageSize($pageSize)
@@ -225,6 +241,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $diskId
+     *
      * @return $this
      */
     public function setdiskId($diskId)
@@ -237,6 +254,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsSnapshotTypes
+     *
      * @return $this
      */
     public function setecsSnapshotTypes($ecsSnapshotTypes)
@@ -249,6 +267,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $quoteType
+     *
      * @return $this
      */
     public function setquoteType($quoteType)
@@ -261,6 +280,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $gmtCreatedEnd
+     *
      * @return $this
      */
     public function setgmtCreatedEnd($gmtCreatedEnd)
@@ -273,6 +293,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -285,6 +306,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -297,6 +319,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -309,6 +332,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $excludeSnapshotIds
+     *
      * @return $this
      */
     public function setexcludeSnapshotIds($excludeSnapshotIds)
@@ -321,6 +345,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -333,6 +358,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $diskType
+     *
      * @return $this
      */
     public function setdiskType($diskType)
@@ -345,6 +371,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $regionIndexId
+     *
      * @return $this
      */
     public function setregionIndexId($regionIndexId)
@@ -357,6 +384,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -369,6 +397,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $regionNo
+     *
      * @return $this
      */
     public function setregionNo($regionNo)
@@ -381,6 +410,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNo
+     *
      * @return $this
      */
     public function setpageNo($pageNo)
@@ -393,6 +423,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotSizeLowLimit
+     *
      * @return $this
      */
     public function setsnapshotSizeLowLimit($snapshotSizeLowLimit)
@@ -405,6 +436,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $ids
+     *
      * @return $this
      */
     public function setids($ids)
@@ -417,6 +449,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotSizeLimit
+     *
      * @return $this
      */
     public function setsnapshotSizeLimit($snapshotSizeLimit)
@@ -429,6 +462,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $isSyncHouyi
+     *
      * @return $this
      */
     public function setisSyncHouyi($isSyncHouyi)
@@ -441,6 +475,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -453,6 +488,7 @@ class InnerSnapshotQueryUserSnapshotsRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotNos
+     *
      * @return $this
      */
     public function setsnapshotNos($snapshotNos)

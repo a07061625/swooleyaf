@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetCommodityProxy
+ *
  * @method string getResourceOwnerId()
  * @method string getInstanceId()
  * @method string getResourceOwnerAccount()
@@ -30,6 +32,7 @@ class GetCommodityProxyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class GetCommodityProxyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -54,6 +58,7 @@ class GetCommodityProxyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +71,7 @@ class GetCommodityProxyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -78,6 +84,7 @@ class GetCommodityProxyRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityCode
+     *
      * @return $this
      */
     public function setCommodityCode($commodityCode)
@@ -90,6 +97,7 @@ class GetCommodityProxyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -102,6 +110,7 @@ class GetCommodityProxyRequest extends RpcAcsRequest
 
     /**
      * @param string $orderType
+     *
      * @return $this
      */
     public function setOrderType($orderType)

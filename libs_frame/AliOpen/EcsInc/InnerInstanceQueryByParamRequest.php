@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerInstanceQueryByParam
+ *
  * @method string getstartOfInternetTx()
  * @method string getResourceOwnerId()
  * @method string getizNo()
@@ -59,6 +61,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $startOfInternetTx
+     *
      * @return $this
      */
     public function setstartOfInternetTx($startOfInternetTx)
@@ -71,6 +74,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -83,6 +87,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $izNo
+     *
      * @return $this
      */
     public function setizNo($izNo)
@@ -95,6 +100,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $internetIp
+     *
      * @return $this
      */
     public function setinternetIp($internetIp)
@@ -107,6 +113,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -119,6 +126,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcInstanceId
+     *
      * @return $this
      */
     public function setvpcInstanceId($vpcInstanceId)
@@ -131,6 +139,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $networkType
+     *
      * @return $this
      */
     public function setnetworkType($networkType)
@@ -143,6 +152,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $notSyncHouyi
+     *
      * @return $this
      */
     public function setnotSyncHouyi($notSyncHouyi)
@@ -155,6 +165,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -167,6 +178,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $hostname
+     *
      * @return $this
      */
     public function sethostname($hostname)
@@ -179,6 +191,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneNo
+     *
      * @return $this
      */
     public function setzoneNo($zoneNo)
@@ -191,6 +204,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $cores
+     *
      * @return $this
      */
     public function setcores($cores)
@@ -203,6 +217,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $mem
+     *
      * @return $this
      */
     public function setmem($mem)
@@ -215,6 +230,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $bizStatus
+     *
      * @return $this
      */
     public function setbizStatus($bizStatus)
@@ -227,6 +243,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setpageSize($pageSize)
@@ -239,6 +256,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -251,6 +269,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchInstanceId
+     *
      * @return $this
      */
     public function setvSwitchInstanceId($vSwitchInstanceId)
@@ -263,6 +282,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -275,6 +295,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $order
+     *
      * @return $this
      */
     public function setorder($order)
@@ -287,6 +308,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDeviceCategory
+     *
      * @return $this
      */
     public function setsystemDeviceCategory($systemDeviceCategory)
@@ -299,6 +321,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $agentId
+     *
      * @return $this
      */
     public function setagentId($agentId)
@@ -311,6 +334,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $imageType
+     *
      * @return $this
      */
     public function setimageType($imageType)
@@ -323,6 +347,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -335,6 +360,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -347,6 +373,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $endOfInternetTx
+     *
      * @return $this
      */
     public function setendOfInternetTx($endOfInternetTx)
@@ -359,6 +386,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -371,6 +399,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -383,6 +412,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $regionNo
+     *
      * @return $this
      */
     public function setregionNo($regionNo)
@@ -395,6 +425,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceIds
+     *
      * @return $this
      */
     public function setinstanceIds($instanceIds)
@@ -407,6 +438,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNo
+     *
      * @return $this
      */
     public function setpageNo($pageNo)
@@ -419,6 +451,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $imageIndexId
+     *
      * @return $this
      */
     public function setimageIndexId($imageIndexId)
@@ -431,6 +464,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -443,6 +477,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $izId
+     *
      * @return $this
      */
     public function setizId($izId)
@@ -455,6 +490,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setstatus($status)
@@ -467,6 +503,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $intranetIp
+     *
      * @return $this
      */
     public function setintranetIp($intranetIp)
@@ -479,6 +516,7 @@ class InnerInstanceQueryByParamRequest extends RpcAcsRequest
 
     /**
      * @param string $orderType
+     *
      * @return $this
      */
     public function setorderType($orderType)

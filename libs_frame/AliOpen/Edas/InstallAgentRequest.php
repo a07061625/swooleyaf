@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of InstallAgent
+ *
  * @method string getInstanceIds()
  * @method string getDoAsync()
  * @method string getClusterId()
@@ -30,6 +32,7 @@ class InstallAgentRequest extends RoaAcsRequest
 
     /**
      * @param string $instanceIds
+     *
      * @return $this
      */
     public function setInstanceIds($instanceIds)
@@ -42,6 +45,7 @@ class InstallAgentRequest extends RoaAcsRequest
 
     /**
      * @param string $doAsync
+     *
      * @return $this
      */
     public function setDoAsync($doAsync)
@@ -54,6 +58,7 @@ class InstallAgentRequest extends RoaAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

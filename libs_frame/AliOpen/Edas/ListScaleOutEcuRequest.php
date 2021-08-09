@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of ListScaleOutEcu
+ *
  * @method string getMem()
  * @method string getLogicalRegionId()
  * @method string getAppId()
@@ -34,6 +36,7 @@ class ListScaleOutEcuRequest extends RoaAcsRequest
 
     /**
      * @param string $mem
+     *
      * @return $this
      */
     public function setMem($mem)
@@ -46,6 +49,7 @@ class ListScaleOutEcuRequest extends RoaAcsRequest
 
     /**
      * @param string $logicalRegionId
+     *
      * @return $this
      */
     public function setLogicalRegionId($logicalRegionId)
@@ -58,6 +62,7 @@ class ListScaleOutEcuRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -70,6 +75,7 @@ class ListScaleOutEcuRequest extends RoaAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -82,6 +88,7 @@ class ListScaleOutEcuRequest extends RoaAcsRequest
 
     /**
      * @param string $instanceNum
+     *
      * @return $this
      */
     public function setInstanceNum($instanceNum)
@@ -94,6 +101,7 @@ class ListScaleOutEcuRequest extends RoaAcsRequest
 
     /**
      * @param string $cpu
+     *
      * @return $this
      */
     public function setCpu($cpu)
@@ -106,6 +114,7 @@ class ListScaleOutEcuRequest extends RoaAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

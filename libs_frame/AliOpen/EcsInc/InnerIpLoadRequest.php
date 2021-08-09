@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerIpLoad
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getnextToken()
@@ -34,6 +36,7 @@ class InnerIpLoadRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class InnerIpLoadRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -58,6 +62,7 @@ class InnerIpLoadRequest extends RpcAcsRequest
 
     /**
      * @param string $nextToken
+     *
      * @return $this
      */
     public function setnextToken($nextToken)
@@ -70,6 +75,7 @@ class InnerIpLoadRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -82,6 +88,7 @@ class InnerIpLoadRequest extends RpcAcsRequest
 
     /**
      * @param string $ipCategory
+     *
      * @return $this
      */
     public function setipCategory($ipCategory)
@@ -94,6 +101,7 @@ class InnerIpLoadRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -106,6 +114,7 @@ class InnerIpLoadRequest extends RpcAcsRequest
 
     /**
      * @param string $count
+     *
      * @return $this
      */
     public function setcount($count)
@@ -118,6 +127,7 @@ class InnerIpLoadRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -130,6 +140,7 @@ class InnerIpLoadRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -142,6 +153,7 @@ class InnerIpLoadRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -154,6 +166,7 @@ class InnerIpLoadRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

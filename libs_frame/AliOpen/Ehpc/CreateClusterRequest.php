@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateCluster
+ *
  * @method string getSccClusterId()
  * @method string getImageId()
  * @method array getAdditionalVolumess()
@@ -63,6 +65,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $sccClusterId
+     *
      * @return $this
      */
     public function setSccClusterId($sccClusterId)
@@ -75,6 +78,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -86,7 +90,6 @@ class CreateClusterRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $additionalVolumes
      * @return $this
      */
     public function setAdditionalVolumess(array $additionalVolumes)
@@ -111,6 +114,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsOrderManagerInstanceType
+     *
      * @return $this
      */
     public function setEcsOrderManagerInstanceType($ecsOrderManagerInstanceType)
@@ -123,6 +127,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $ehpcVersion
+     *
      * @return $this
      */
     public function setEhpcVersion($ehpcVersion)
@@ -135,6 +140,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $accountType
+     *
      * @return $this
      */
     public function setAccountType($accountType)
@@ -147,6 +153,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -159,6 +166,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -171,6 +179,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $keyPairName
+     *
      * @return $this
      */
     public function setKeyPairName($keyPairName)
@@ -183,6 +192,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupName
+     *
      * @return $this
      */
     public function setSecurityGroupName($securityGroupName)
@@ -195,6 +205,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsOrderComputeInstanceType
+     *
      * @return $this
      */
     public function setEcsOrderComputeInstanceType($ecsOrderComputeInstanceType)
@@ -207,6 +218,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $jobQueue
+     *
      * @return $this
      */
     public function setJobQueue($jobQueue)
@@ -219,6 +231,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $imageOwnerAlias
+     *
      * @return $this
      */
     public function setImageOwnerAlias($imageOwnerAlias)
@@ -231,6 +244,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $volumeType
+     *
      * @return $this
      */
     public function setVolumeType($volumeType)
@@ -243,6 +257,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $deployMode
+     *
      * @return $this
      */
     public function setDeployMode($deployMode)
@@ -255,6 +270,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsOrderManagerCount
+     *
      * @return $this
      */
     public function setEcsOrderManagerCount($ecsOrderManagerCount)
@@ -267,6 +283,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -279,6 +296,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $password
+     *
      * @return $this
      */
     public function setPassword($password)
@@ -291,6 +309,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsOrderLoginCount
+     *
      * @return $this
      */
     public function setEcsOrderLoginCount($ecsOrderLoginCount)
@@ -303,6 +322,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $remoteVisEnable
+     *
      * @return $this
      */
     public function setRemoteVisEnable($remoteVisEnable)
@@ -315,6 +335,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskSize
+     *
      * @return $this
      */
     public function setSystemDiskSize($systemDiskSize)
@@ -327,6 +348,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $computeSpotPriceLimit
+     *
      * @return $this
      */
     public function setComputeSpotPriceLimit($computeSpotPriceLimit)
@@ -339,6 +361,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $autoRenewPeriod
+     *
      * @return $this
      */
     public function setAutoRenewPeriod($autoRenewPeriod)
@@ -351,6 +374,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -363,6 +387,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $volumeProtocol
+     *
      * @return $this
      */
     public function setVolumeProtocol($volumeProtocol)
@@ -375,6 +400,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $clientVersion
+     *
      * @return $this
      */
     public function setClientVersion($clientVersion)
@@ -387,6 +413,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $osTag
+     *
      * @return $this
      */
     public function setOsTag($osTag)
@@ -399,6 +426,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $remoteDirectory
+     *
      * @return $this
      */
     public function setRemoteDirectory($remoteDirectory)
@@ -411,6 +439,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsOrderComputeCount
+     *
      * @return $this
      */
     public function setEcsOrderComputeCount($ecsOrderComputeCount)
@@ -423,6 +452,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $computeSpotStrategy
+     *
      * @return $this
      */
     public function setComputeSpotStrategy($computeSpotStrategy)
@@ -434,7 +464,6 @@ class CreateClusterRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $postInstallScript
      * @return $this
      */
     public function setPostInstallScripts(array $postInstallScript)
@@ -450,6 +479,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -462,6 +492,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $periodUnit
+     *
      * @return $this
      */
     public function setPeriodUnit($periodUnit)
@@ -473,7 +504,6 @@ class CreateClusterRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $application
      * @return $this
      */
     public function setApplications(array $application)
@@ -488,6 +518,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $autoRenew
+     *
      * @return $this
      */
     public function setAutoRenew($autoRenew)
@@ -500,6 +531,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsChargeType
+     *
      * @return $this
      */
     public function setEcsChargeType($ecsChargeType)
@@ -512,6 +544,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $inputFileUrl
+     *
      * @return $this
      */
     public function setInputFileUrl($inputFileUrl)
@@ -524,6 +557,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -536,6 +570,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $haEnable
+     *
      * @return $this
      */
     public function setHaEnable($haEnable)
@@ -548,6 +583,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -560,6 +596,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $schedulerType
+     *
      * @return $this
      */
     public function setSchedulerType($schedulerType)
@@ -572,6 +609,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $volumeId
+     *
      * @return $this
      */
     public function setVolumeId($volumeId)
@@ -584,6 +622,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $volumeMountpoint
+     *
      * @return $this
      */
     public function setVolumeMountpoint($volumeMountpoint)
@@ -596,6 +635,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsOrderLoginInstanceType
+     *
      * @return $this
      */
     public function setEcsOrderLoginInstanceType($ecsOrderLoginInstanceType)
@@ -608,6 +648,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)

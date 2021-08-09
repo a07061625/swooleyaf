@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeGroupHighRiskStat
+ *
  * @method string getBizRegionId()
  * @method string getResourceOwnerId()
  * @method string getchannel()
@@ -35,6 +37,7 @@ class DescribeGroupHighRiskStatRequest extends RpcAcsRequest
 
     /**
      * @param string $bizRegionId
+     *
      * @return $this
      */
     public function setBizRegionId($bizRegionId)
@@ -47,6 +50,7 @@ class DescribeGroupHighRiskStatRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -59,6 +63,7 @@ class DescribeGroupHighRiskStatRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -71,6 +76,7 @@ class DescribeGroupHighRiskStatRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -83,6 +89,7 @@ class DescribeGroupHighRiskStatRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -95,6 +102,7 @@ class DescribeGroupHighRiskStatRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -107,6 +115,7 @@ class DescribeGroupHighRiskStatRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -119,6 +128,7 @@ class DescribeGroupHighRiskStatRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -131,6 +141,7 @@ class DescribeGroupHighRiskStatRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -143,6 +154,7 @@ class DescribeGroupHighRiskStatRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -155,6 +167,7 @@ class DescribeGroupHighRiskStatRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -167,6 +180,7 @@ class DescribeGroupHighRiskStatRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerInstanceQueryByParamBackyard
+ *
  * @method string getstartOfInternetTx()
  * @method string getecsIds()
  * @method string getResourceOwnerId()
@@ -67,6 +69,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $startOfInternetTx
+     *
      * @return $this
      */
     public function setstartOfInternetTx($startOfInternetTx)
@@ -79,6 +82,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsIds
+     *
      * @return $this
      */
     public function setecsIds($ecsIds)
@@ -91,6 +95,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -103,6 +108,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setimageId($imageId)
@@ -115,6 +121,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $internetIp
+     *
      * @return $this
      */
     public function setinternetIp($internetIp)
@@ -127,6 +134,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $izNo
+     *
      * @return $this
      */
     public function setizNo($izNo)
@@ -139,6 +147,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $ioOptimized
+     *
      * @return $this
      */
     public function setioOptimized($ioOptimized)
@@ -151,6 +160,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -163,6 +173,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcInstanceId
+     *
      * @return $this
      */
     public function setvpcInstanceId($vpcInstanceId)
@@ -175,6 +186,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $imgPc
+     *
      * @return $this
      */
     public function setimgPc($imgPc)
@@ -187,6 +199,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $notSyncHouyi
+     *
      * @return $this
      */
     public function setnotSyncHouyi($notSyncHouyi)
@@ -199,6 +212,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceTypeId
+     *
      * @return $this
      */
     public function setinstanceTypeId($instanceTypeId)
@@ -211,6 +225,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -223,6 +238,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $vswInstanceId
+     *
      * @return $this
      */
     public function setvswInstanceId($vswInstanceId)
@@ -235,6 +251,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $hostname
+     *
      * @return $this
      */
     public function sethostname($hostname)
@@ -247,6 +264,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $cores
+     *
      * @return $this
      */
     public function setcores($cores)
@@ -259,6 +277,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneNo
+     *
      * @return $this
      */
     public function setzoneNo($zoneNo)
@@ -271,6 +290,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $mem
+     *
      * @return $this
      */
     public function setmem($mem)
@@ -283,6 +303,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $bizStatus
+     *
      * @return $this
      */
     public function setbizStatus($bizStatus)
@@ -295,6 +316,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setpageSize($pageSize)
@@ -307,6 +329,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -319,6 +342,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $exclusionEcsIds
+     *
      * @return $this
      */
     public function setexclusionEcsIds($exclusionEcsIds)
@@ -331,6 +355,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -343,6 +368,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $order
+     *
      * @return $this
      */
     public function setorder($order)
@@ -355,6 +381,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDeviceCategory
+     *
      * @return $this
      */
     public function setsystemDeviceCategory($systemDeviceCategory)
@@ -367,6 +394,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $imageType
+     *
      * @return $this
      */
     public function setimageType($imageType)
@@ -379,6 +407,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $agentId
+     *
      * @return $this
      */
     public function setagentId($agentId)
@@ -391,6 +420,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -403,6 +433,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -415,6 +446,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $endOfInternetTx
+     *
      * @return $this
      */
     public function setendOfInternetTx($endOfInternetTx)
@@ -427,6 +459,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -439,6 +472,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $regionIndexId
+     *
      * @return $this
      */
     public function setregionIndexId($regionIndexId)
@@ -451,6 +485,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -463,6 +498,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsNetworkType
+     *
      * @return $this
      */
     public function setecsNetworkType($ecsNetworkType)
@@ -475,6 +511,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $regionNo
+     *
      * @return $this
      */
     public function setregionNo($regionNo)
@@ -487,6 +524,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceIds
+     *
      * @return $this
      */
     public function setinstanceIds($instanceIds)
@@ -499,6 +537,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNo
+     *
      * @return $this
      */
     public function setpageNo($pageNo)
@@ -511,6 +550,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setzoneId($zoneId)
@@ -523,6 +563,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $appKey
+     *
      * @return $this
      */
     public function setappKey($appKey)
@@ -535,6 +576,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -547,6 +589,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $izId
+     *
      * @return $this
      */
     public function setizId($izId)
@@ -559,6 +602,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $intranetIp
+     *
      * @return $this
      */
     public function setintranetIp($intranetIp)
@@ -571,6 +615,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setstatus($status)
@@ -583,6 +628,7 @@ class InnerInstanceQueryByParamBackyardRequest extends RpcAcsRequest
 
     /**
      * @param string $orderType
+     *
      * @return $this
      */
     public function setorderType($orderType)

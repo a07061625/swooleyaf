@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerEcsFindById
+ *
  * @method string getResourceOwnerId()
  * @method string getinternetIp()
  * @method string getserialNumber()
@@ -40,6 +42,7 @@ class InnerEcsFindByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -52,6 +55,7 @@ class InnerEcsFindByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $internetIp
+     *
      * @return $this
      */
     public function setinternetIp($internetIp)
@@ -64,6 +68,7 @@ class InnerEcsFindByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $serialNumber
+     *
      * @return $this
      */
     public function setserialNumber($serialNumber)
@@ -76,6 +81,7 @@ class InnerEcsFindByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -88,6 +94,7 @@ class InnerEcsFindByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -100,6 +107,7 @@ class InnerEcsFindByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $ip
+     *
      * @return $this
      */
     public function setip($ip)
@@ -112,6 +120,7 @@ class InnerEcsFindByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -124,6 +133,7 @@ class InnerEcsFindByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -136,6 +146,7 @@ class InnerEcsFindByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -148,6 +159,7 @@ class InnerEcsFindByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -160,6 +172,7 @@ class InnerEcsFindByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setinstanceId($instanceId)
@@ -172,6 +185,7 @@ class InnerEcsFindByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -184,6 +198,7 @@ class InnerEcsFindByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $authedEcsIds
+     *
      * @return $this
      */
     public function setauthedEcsIds($authedEcsIds)
@@ -196,6 +211,7 @@ class InnerEcsFindByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setid($id)
@@ -208,6 +224,7 @@ class InnerEcsFindByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -220,6 +237,7 @@ class InnerEcsFindByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -232,6 +250,7 @@ class InnerEcsFindByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $intranetIp
+     *
      * @return $this
      */
     public function setintranetIp($intranetIp)

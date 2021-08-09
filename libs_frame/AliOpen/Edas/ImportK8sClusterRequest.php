@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of ImportK8sCluster
+ *
  * @method string getClusterId()
  */
 class ImportK8sClusterRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class ImportK8sClusterRequest extends RoaAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

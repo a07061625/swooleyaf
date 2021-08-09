@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetHybridClusterConfig
+ *
  * @method string getNode()
  * @method string getClusterId()
  */
@@ -20,6 +22,7 @@ class GetHybridClusterConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $node
+     *
      * @return $this
      */
     public function setNode($node)
@@ -32,6 +35,7 @@ class GetHybridClusterConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

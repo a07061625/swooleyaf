@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerGroupQuery
+ *
  * @method string getResourceOwnerId()
  * @method string getfuzzyQuery()
  * @method string getchannel()
@@ -47,6 +49,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -59,6 +62,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $fuzzyQuery
+     *
      * @return $this
      */
     public function setfuzzyQuery($fuzzyQuery)
@@ -71,6 +75,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -83,6 +88,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $isQueryEcsCount
+     *
      * @return $this
      */
     public function setisQueryEcsCount($isQueryEcsCount)
@@ -95,6 +101,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcInstanceId
+     *
      * @return $this
      */
     public function setvpcInstanceId($vpcInstanceId)
@@ -107,6 +114,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $networkType
+     *
      * @return $this
      */
     public function setnetworkType($networkType)
@@ -119,6 +127,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -131,6 +140,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setpageSize($pageSize)
@@ -143,6 +153,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -155,6 +166,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $groupNos
+     *
      * @return $this
      */
     public function setgroupNos($groupNos)
@@ -167,6 +179,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -179,6 +192,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsInstanceId
+     *
      * @return $this
      */
     public function setecsInstanceId($ecsInstanceId)
@@ -191,6 +205,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -203,6 +218,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -215,6 +231,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -227,6 +244,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $groupName
+     *
      * @return $this
      */
     public function setgroupName($groupName)
@@ -239,6 +257,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -251,6 +270,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $isOnlyQueryVpcGroup
+     *
      * @return $this
      */
     public function setisOnlyQueryVpcGroup($isOnlyQueryVpcGroup)
@@ -263,6 +283,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $tags
+     *
      * @return $this
      */
     public function settags($tags)
@@ -275,6 +296,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $regionNo
+     *
      * @return $this
      */
     public function setregionNo($regionNo)
@@ -287,6 +309,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $async
+     *
      * @return $this
      */
     public function setasync($async)
@@ -299,6 +322,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNo
+     *
      * @return $this
      */
     public function setpageNo($pageNo)
@@ -311,6 +335,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -323,6 +348,7 @@ class InnerGroupQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $groupNo
+     *
      * @return $this
      */
     public function setgroupNo($groupNo)

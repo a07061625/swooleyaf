@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DeleteEcu
+ *
  * @method string getEcuId()
  */
 class DeleteEcuRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class DeleteEcuRequest extends RoaAcsRequest
 
     /**
      * @param string $ecuId
+     *
      * @return $this
      */
     public function setEcuId($ecuId)

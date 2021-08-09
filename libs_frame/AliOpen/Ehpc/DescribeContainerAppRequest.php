@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeContainerApp
+ *
  * @method string getContainerId()
  */
 class DescribeContainerAppRequest extends RpcAcsRequest
@@ -19,6 +21,7 @@ class DescribeContainerAppRequest extends RpcAcsRequest
 
     /**
      * @param string $containerId
+     *
      * @return $this
      */
     public function setContainerId($containerId)

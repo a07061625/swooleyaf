@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeAutoProvisioningGroups
+ *
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
  * @method string getPageSize()
@@ -32,6 +34,7 @@ class AutoProvisioningGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class AutoProvisioningGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -56,6 +60,7 @@ class AutoProvisioningGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -67,7 +72,6 @@ class AutoProvisioningGroupsDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $autoProvisioningGroupStatus
      * @return $this
      */
     public function setAutoProvisioningGroupStatuss(array $autoProvisioningGroupStatus)
@@ -82,6 +86,7 @@ class AutoProvisioningGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -94,6 +99,7 @@ class AutoProvisioningGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -106,6 +112,7 @@ class AutoProvisioningGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -117,7 +124,6 @@ class AutoProvisioningGroupsDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $autoProvisioningGroupId
      * @return $this
      */
     public function setAutoProvisioningGroupIds(array $autoProvisioningGroupId)
@@ -132,6 +138,7 @@ class AutoProvisioningGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $autoProvisioningGroupName
+     *
      * @return $this
      */
     public function setAutoProvisioningGroupName($autoProvisioningGroupName)

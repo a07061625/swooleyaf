@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UploadSystemImageAtOrigin
+ *
  * @method string getMetaData()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -35,6 +37,7 @@ class UploadSystemImageAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $metaData
+     *
      * @return $this
      */
     public function setMetaData($metaData)
@@ -47,6 +50,7 @@ class UploadSystemImageAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -59,6 +63,7 @@ class UploadSystemImageAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -71,6 +76,7 @@ class UploadSystemImageAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $osTypeId
+     *
      * @return $this
      */
     public function setOsTypeId($osTypeId)
@@ -83,6 +89,7 @@ class UploadSystemImageAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -95,6 +102,7 @@ class UploadSystemImageAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -107,6 +115,7 @@ class UploadSystemImageAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $fromRegionNo
+     *
      * @return $this
      */
     public function setFromRegionNo($fromRegionNo)
@@ -119,6 +128,7 @@ class UploadSystemImageAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -131,6 +141,7 @@ class UploadSystemImageAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $imageName
+     *
      * @return $this
      */
     public function setImageName($imageName)
@@ -143,6 +154,7 @@ class UploadSystemImageAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $imageUrl
+     *
      * @return $this
      */
     public function setImageUrl($imageUrl)
@@ -154,7 +166,6 @@ class UploadSystemImageAtOriginRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tags
      * @return $this
      */
     public function setTags(array $tags)
@@ -170,6 +181,7 @@ class UploadSystemImageAtOriginRequest extends RpcAcsRequest
 
     /**
      * @param string $mD5
+     *
      * @return $this
      */
     public function setMD5($mD5)

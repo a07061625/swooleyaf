@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyImageGatewayConfig
+ *
  * @method string getDefaultRepoLocation()
  * @method string getDBPassword()
  * @method array getRepos()
@@ -27,6 +29,7 @@ class ModifyImageGatewayConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $defaultRepoLocation
+     *
      * @return $this
      */
     public function setDefaultRepoLocation($defaultRepoLocation)
@@ -39,6 +42,7 @@ class ModifyImageGatewayConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $dBPassword
+     *
      * @return $this
      */
     public function setDBPassword($dBPassword)
@@ -50,7 +54,6 @@ class ModifyImageGatewayConfigRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $repo
      * @return $this
      */
     public function setRepos(array $repo)
@@ -67,6 +70,7 @@ class ModifyImageGatewayConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $dBType
+     *
      * @return $this
      */
     public function setDBType($dBType)
@@ -79,6 +83,7 @@ class ModifyImageGatewayConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $dBUsername
+     *
      * @return $this
      */
     public function setDBUsername($dBUsername)
@@ -91,6 +96,7 @@ class ModifyImageGatewayConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $dBServerInfo
+     *
      * @return $this
      */
     public function setDBServerInfo($dBServerInfo)
@@ -103,6 +109,7 @@ class ModifyImageGatewayConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $pullUpdateTimeout
+     *
      * @return $this
      */
     public function setPullUpdateTimeout($pullUpdateTimeout)
@@ -115,6 +122,7 @@ class ModifyImageGatewayConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -127,6 +135,7 @@ class ModifyImageGatewayConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $imageExpirationTimeout
+     *
      * @return $this
      */
     public function setImageExpirationTimeout($imageExpirationTimeout)

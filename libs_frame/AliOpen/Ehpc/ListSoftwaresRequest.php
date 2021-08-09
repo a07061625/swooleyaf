@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListSoftwares
+ *
  * @method string getEhpcVersion()
  */
 class ListSoftwaresRequest extends RpcAcsRequest
@@ -19,6 +21,7 @@ class ListSoftwaresRequest extends RpcAcsRequest
 
     /**
      * @param string $ehpcVersion
+     *
      * @return $this
      */
     public function setEhpcVersion($ehpcVersion)

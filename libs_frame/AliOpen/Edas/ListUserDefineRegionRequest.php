@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of ListUserDefineRegion
+ *
  * @method string getDebugEnable()
  */
 class ListUserDefineRegionRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class ListUserDefineRegionRequest extends RoaAcsRequest
 
     /**
      * @param string $debugEnable
+     *
      * @return $this
      */
     public function setDebugEnable($debugEnable)

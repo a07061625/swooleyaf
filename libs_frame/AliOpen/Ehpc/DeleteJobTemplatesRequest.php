@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteJobTemplates
+ *
  * @method string getTemplates()
  */
 class DeleteJobTemplatesRequest extends RpcAcsRequest
@@ -19,6 +21,7 @@ class DeleteJobTemplatesRequest extends RpcAcsRequest
 
     /**
      * @param string $templates
+     *
      * @return $this
      */
     public function setTemplates($templates)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerCheckEniEipOperate
+ *
  * @method string getResourceOwnerId()
  * @method string getAliUid()
  * @method string getEipAddressKeeped()
@@ -31,6 +33,7 @@ class InnerCheckEniEipOperateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class InnerCheckEniEipOperateRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setAliUid($aliUid)
@@ -55,6 +59,7 @@ class InnerCheckEniEipOperateRequest extends RpcAcsRequest
 
     /**
      * @param string $eipAddressKeeped
+     *
      * @return $this
      */
     public function setEipAddressKeeped($eipAddressKeeped)
@@ -67,6 +72,7 @@ class InnerCheckEniEipOperateRequest extends RpcAcsRequest
 
     /**
      * @param string $eniNo
+     *
      * @return $this
      */
     public function setEniNo($eniNo)
@@ -79,6 +85,7 @@ class InnerCheckEniEipOperateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -91,6 +98,7 @@ class InnerCheckEniEipOperateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +111,7 @@ class InnerCheckEniEipOperateRequest extends RpcAcsRequest
 
     /**
      * @param string $eipAddressCount
+     *
      * @return $this
      */
     public function setEipAddressCount($eipAddressCount)
@@ -115,6 +124,7 @@ class InnerCheckEniEipOperateRequest extends RpcAcsRequest
 
     /**
      * @param string $operateType
+     *
      * @return $this
      */
     public function setOperateType($operateType)

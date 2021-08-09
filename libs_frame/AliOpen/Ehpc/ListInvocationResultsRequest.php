@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListInvocationResults
+ *
  * @method array getInstances()
  * @method string getInvokeRecordStatus()
  * @method string getPageSize()
@@ -23,7 +25,6 @@ class ListInvocationResultsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instance
      * @return $this
      */
     public function setInstances(array $instance)
@@ -38,6 +39,7 @@ class ListInvocationResultsRequest extends RpcAcsRequest
 
     /**
      * @param string $invokeRecordStatus
+     *
      * @return $this
      */
     public function setInvokeRecordStatus($invokeRecordStatus)
@@ -50,6 +52,7 @@ class ListInvocationResultsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -62,6 +65,7 @@ class ListInvocationResultsRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -74,6 +78,7 @@ class ListInvocationResultsRequest extends RpcAcsRequest
 
     /**
      * @param string $commandId
+     *
      * @return $this
      */
     public function setCommandId($commandId)
@@ -86,6 +91,7 @@ class ListInvocationResultsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

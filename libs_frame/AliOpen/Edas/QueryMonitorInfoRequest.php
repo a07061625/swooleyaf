@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of QueryMonitorInfo
+ *
  * @method string getMetric()
  * @method string getAggregator()
  * @method string getStart()
@@ -29,6 +31,7 @@ class QueryMonitorInfoRequest extends RoaAcsRequest
 
     /**
      * @param string $metric
+     *
      * @return $this
      */
     public function setMetric($metric)
@@ -41,6 +44,7 @@ class QueryMonitorInfoRequest extends RoaAcsRequest
 
     /**
      * @param string $aggregator
+     *
      * @return $this
      */
     public function setAggregator($aggregator)
@@ -53,6 +57,7 @@ class QueryMonitorInfoRequest extends RoaAcsRequest
 
     /**
      * @param string $start
+     *
      * @return $this
      */
     public function setStart($start)
@@ -65,6 +70,7 @@ class QueryMonitorInfoRequest extends RoaAcsRequest
 
     /**
      * @param string $end
+     *
      * @return $this
      */
     public function setEnd($end)
@@ -77,6 +83,7 @@ class QueryMonitorInfoRequest extends RoaAcsRequest
 
     /**
      * @param string $interval
+     *
      * @return $this
      */
     public function setInterval($interval)
@@ -89,6 +96,7 @@ class QueryMonitorInfoRequest extends RoaAcsRequest
 
     /**
      * @param string $tags
+     *
      * @return $this
      */
     public function setTags($tags)

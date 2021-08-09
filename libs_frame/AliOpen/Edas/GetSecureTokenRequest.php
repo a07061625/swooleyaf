@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of GetSecureToken
+ *
  * @method string getNamespaceId()
  */
 class GetSecureTokenRequest extends RoaAcsRequest
@@ -24,6 +26,7 @@ class GetSecureTokenRequest extends RoaAcsRequest
 
     /**
      * @param string $namespaceId
+     *
      * @return $this
      */
     public function setNamespaceId($namespaceId)

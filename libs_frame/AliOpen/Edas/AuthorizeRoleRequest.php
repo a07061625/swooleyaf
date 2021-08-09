@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of AuthorizeRole
+ *
  * @method string getRoleIds()
  * @method string getTargetUserId()
  */
@@ -29,6 +31,7 @@ class AuthorizeRoleRequest extends RoaAcsRequest
 
     /**
      * @param string $roleIds
+     *
      * @return $this
      */
     public function setRoleIds($roleIds)
@@ -41,6 +44,7 @@ class AuthorizeRoleRequest extends RoaAcsRequest
 
     /**
      * @param string $targetUserId
+     *
      * @return $this
      */
     public function setTargetUserId($targetUserId)

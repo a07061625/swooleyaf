@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of RollbackApplication
+ *
  * @method string getAppId()
  * @method string getGroupId()
  * @method string getBatchWaitTime()
@@ -32,6 +34,7 @@ class RollbackApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -44,6 +47,7 @@ class RollbackApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -56,6 +60,7 @@ class RollbackApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $batchWaitTime
+     *
      * @return $this
      */
     public function setBatchWaitTime($batchWaitTime)
@@ -68,6 +73,7 @@ class RollbackApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $batch
+     *
      * @return $this
      */
     public function setBatch($batch)
@@ -80,6 +86,7 @@ class RollbackApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $historyVersion
+     *
      * @return $this
      */
     public function setHistoryVersion($historyVersion)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerEcsRiskControlPunish
+ *
  * @method string getreason()
  * @method string getbussinessCode()
  * @method string getResourceOwnerId()
@@ -40,6 +42,7 @@ class InnerEcsRiskControlPunishRequest extends RpcAcsRequest
 
     /**
      * @param string $reason
+     *
      * @return $this
      */
     public function setreason($reason)
@@ -52,6 +55,7 @@ class InnerEcsRiskControlPunishRequest extends RpcAcsRequest
 
     /**
      * @param string $bussinessCode
+     *
      * @return $this
      */
     public function setbussinessCode($bussinessCode)
@@ -64,6 +68,7 @@ class InnerEcsRiskControlPunishRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -76,6 +81,7 @@ class InnerEcsRiskControlPunishRequest extends RpcAcsRequest
 
     /**
      * @param string $coordinate
+     *
      * @return $this
      */
     public function setcoordinate($coordinate)
@@ -88,6 +94,7 @@ class InnerEcsRiskControlPunishRequest extends RpcAcsRequest
 
     /**
      * @param string $signatureCode
+     *
      * @return $this
      */
     public function setsignatureCode($signatureCode)
@@ -100,6 +107,7 @@ class InnerEcsRiskControlPunishRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -112,6 +120,7 @@ class InnerEcsRiskControlPunishRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -124,6 +133,7 @@ class InnerEcsRiskControlPunishRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -136,6 +146,7 @@ class InnerEcsRiskControlPunishRequest extends RpcAcsRequest
 
     /**
      * @param string $actionCode
+     *
      * @return $this
      */
     public function setactionCode($actionCode)
@@ -148,6 +159,7 @@ class InnerEcsRiskControlPunishRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -160,6 +172,7 @@ class InnerEcsRiskControlPunishRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -172,6 +185,7 @@ class InnerEcsRiskControlPunishRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -184,6 +198,7 @@ class InnerEcsRiskControlPunishRequest extends RpcAcsRequest
 
     /**
      * @param string $async
+     *
      * @return $this
      */
     public function setasync($async)
@@ -196,6 +211,7 @@ class InnerEcsRiskControlPunishRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -208,6 +224,7 @@ class InnerEcsRiskControlPunishRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -220,6 +237,7 @@ class InnerEcsRiskControlPunishRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -232,6 +250,7 @@ class InnerEcsRiskControlPunishRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

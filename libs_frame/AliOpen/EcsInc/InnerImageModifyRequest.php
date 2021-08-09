@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerImageModify
+ *
  * @method string getResourceOwnerId()
  * @method string getimageId()
  * @method string getResourceOwnerAccount()
@@ -43,6 +45,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -55,6 +58,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setimageId($imageId)
@@ -67,6 +71,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -79,6 +84,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,6 +97,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $osTypeId
+     *
      * @return $this
      */
     public function setosTypeId($osTypeId)
@@ -103,6 +110,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -115,6 +123,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $remark
+     *
      * @return $this
      */
     public function setremark($remark)
@@ -127,6 +136,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $imageSize
+     *
      * @return $this
      */
     public function setimageSize($imageSize)
@@ -139,6 +149,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -151,6 +162,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $virtBaseImageId
+     *
      * @return $this
      */
     public function setvirtBaseImageId($virtBaseImageId)
@@ -163,6 +175,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -175,6 +188,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $imageCategory
+     *
      * @return $this
      */
     public function setimageCategory($imageCategory)
@@ -187,6 +201,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -199,6 +214,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $async
+     *
      * @return $this
      */
     public function setasync($async)
@@ -211,6 +227,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $imageName
+     *
      * @return $this
      */
     public function setimageName($imageName)
@@ -223,6 +240,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $isPublic
+     *
      * @return $this
      */
     public function setisPublic($isPublic)
@@ -235,6 +253,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $imageVersion
+     *
      * @return $this
      */
     public function setImageVersion($imageVersion)
@@ -247,6 +266,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -259,6 +279,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -271,6 +292,7 @@ class InnerImageModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

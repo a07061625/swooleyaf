@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerEcsRiskControlPunishRemove
+ *
  * @method string getreason()
  * @method string getbussinessCode()
  * @method string getResourceOwnerId()
@@ -41,6 +43,7 @@ class InnerEcsRiskControlPunishRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $reason
+     *
      * @return $this
      */
     public function setreason($reason)
@@ -53,6 +56,7 @@ class InnerEcsRiskControlPunishRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $bussinessCode
+     *
      * @return $this
      */
     public function setbussinessCode($bussinessCode)
@@ -65,6 +69,7 @@ class InnerEcsRiskControlPunishRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -77,6 +82,7 @@ class InnerEcsRiskControlPunishRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $coordinate
+     *
      * @return $this
      */
     public function setcoordinate($coordinate)
@@ -89,6 +95,7 @@ class InnerEcsRiskControlPunishRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $signatureCode
+     *
      * @return $this
      */
     public function setsignatureCode($signatureCode)
@@ -101,6 +108,7 @@ class InnerEcsRiskControlPunishRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -113,6 +121,7 @@ class InnerEcsRiskControlPunishRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -125,6 +134,7 @@ class InnerEcsRiskControlPunishRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -137,6 +147,7 @@ class InnerEcsRiskControlPunishRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $punishResult
+     *
      * @return $this
      */
     public function setpunishResult($punishResult)
@@ -149,6 +160,7 @@ class InnerEcsRiskControlPunishRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $actionCode
+     *
      * @return $this
      */
     public function setactionCode($actionCode)
@@ -161,6 +173,7 @@ class InnerEcsRiskControlPunishRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -173,6 +186,7 @@ class InnerEcsRiskControlPunishRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -185,6 +199,7 @@ class InnerEcsRiskControlPunishRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -197,6 +212,7 @@ class InnerEcsRiskControlPunishRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $async
+     *
      * @return $this
      */
     public function setasync($async)
@@ -209,6 +225,7 @@ class InnerEcsRiskControlPunishRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -221,6 +238,7 @@ class InnerEcsRiskControlPunishRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -233,6 +251,7 @@ class InnerEcsRiskControlPunishRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -245,6 +264,7 @@ class InnerEcsRiskControlPunishRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)

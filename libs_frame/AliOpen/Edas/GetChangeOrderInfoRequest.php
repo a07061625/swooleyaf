@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of GetChangeOrderInfo
+ *
  * @method string getChangeOrderId()
  */
 class GetChangeOrderInfoRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class GetChangeOrderInfoRequest extends RoaAcsRequest
 
     /**
      * @param string $changeOrderId
+     *
      * @return $this
      */
     public function setChangeOrderId($changeOrderId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerSnapshotSecurityMount
+ *
  * @method string getResourceOwnerId()
  * @method string getecsOwnerAliUid()
  * @method string getResourceOwnerAccount()
@@ -38,6 +40,7 @@ class InnerSnapshotSecurityMountRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +53,7 @@ class InnerSnapshotSecurityMountRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsOwnerAliUid
+     *
      * @return $this
      */
     public function setecsOwnerAliUid($ecsOwnerAliUid)
@@ -62,6 +66,7 @@ class InnerSnapshotSecurityMountRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -74,6 +79,7 @@ class InnerSnapshotSecurityMountRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -86,6 +92,7 @@ class InnerSnapshotSecurityMountRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setchannel($channel)
@@ -98,6 +105,7 @@ class InnerSnapshotSecurityMountRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -110,6 +118,7 @@ class InnerSnapshotSecurityMountRequest extends RpcAcsRequest
 
     /**
      * @param string $operator
+     *
      * @return $this
      */
     public function setoperator($operator)
@@ -122,6 +131,7 @@ class InnerSnapshotSecurityMountRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function settoken($token)
@@ -134,6 +144,7 @@ class InnerSnapshotSecurityMountRequest extends RpcAcsRequest
 
     /**
      * @param string $async
+     *
      * @return $this
      */
     public function setasync($async)
@@ -146,6 +157,7 @@ class InnerSnapshotSecurityMountRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -158,6 +170,7 @@ class InnerSnapshotSecurityMountRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setaliUid($aliUid)
@@ -170,6 +183,7 @@ class InnerSnapshotSecurityMountRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setbid($bid)
@@ -182,6 +196,7 @@ class InnerSnapshotSecurityMountRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotOwnerAliUid
+     *
      * @return $this
      */
     public function setsnapshotOwnerAliUid($snapshotOwnerAliUid)
@@ -194,6 +209,7 @@ class InnerSnapshotSecurityMountRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -206,6 +222,7 @@ class InnerSnapshotSecurityMountRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotIndexId
+     *
      * @return $this
      */
     public function setsnapshotIndexId($snapshotIndexId)

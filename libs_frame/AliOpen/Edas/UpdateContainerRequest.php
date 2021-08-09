@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of UpdateContainer
+ *
  * @method string getBuildPackId()
  * @method string getAppId()
  */
@@ -29,6 +31,7 @@ class UpdateContainerRequest extends RoaAcsRequest
 
     /**
      * @param string $buildPackId
+     *
      * @return $this
      */
     public function setBuildPackId($buildPackId)
@@ -41,6 +44,7 @@ class UpdateContainerRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

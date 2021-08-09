@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerQueryExplanation
+ *
  * @method string getActionType()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -30,6 +32,7 @@ class InnerQueryExplanationRequest extends RpcAcsRequest
 
     /**
      * @param string $actionType
+     *
      * @return $this
      */
     public function setActionType($actionType)
@@ -42,6 +45,7 @@ class InnerQueryExplanationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -54,6 +58,7 @@ class InnerQueryExplanationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +71,7 @@ class InnerQueryExplanationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -78,6 +84,7 @@ class InnerQueryExplanationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -89,7 +96,6 @@ class InnerQueryExplanationRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $filters
      * @return $this
      */
     public function setFilters(array $filters)
@@ -105,6 +111,7 @@ class InnerQueryExplanationRequest extends RpcAcsRequest
 
     /**
      * @param string $entityType
+     *
      * @return $this
      */
     public function setEntityType($entityType)

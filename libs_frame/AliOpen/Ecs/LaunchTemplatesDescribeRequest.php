@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeLaunchTemplates
+ *
  * @method array getLaunchTemplateNames()
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
@@ -32,7 +34,6 @@ class LaunchTemplatesDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $launchTemplateName
      * @return $this
      */
     public function setLaunchTemplateNames(array $launchTemplateName)
@@ -47,6 +48,7 @@ class LaunchTemplatesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -59,6 +61,7 @@ class LaunchTemplatesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -71,6 +74,7 @@ class LaunchTemplatesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -82,7 +86,6 @@ class LaunchTemplatesDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $templateTag
      * @return $this
      */
     public function setTemplateTags(array $templateTag)
@@ -97,7 +100,6 @@ class LaunchTemplatesDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $launchTemplateId
      * @return $this
      */
     public function setLaunchTemplateIds(array $launchTemplateId)
@@ -112,6 +114,7 @@ class LaunchTemplatesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -124,6 +127,7 @@ class LaunchTemplatesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -136,6 +140,7 @@ class LaunchTemplatesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $templateResourceGroupId
+     *
      * @return $this
      */
     public function setTemplateResourceGroupId($templateResourceGroupId)
@@ -148,6 +153,7 @@ class LaunchTemplatesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

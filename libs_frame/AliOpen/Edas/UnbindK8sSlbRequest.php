@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of UnbindK8sSlb
+ *
  * @method string getAppId()
  * @method string getClusterId()
  * @method string getType()
@@ -30,6 +32,7 @@ class UnbindK8sSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -42,6 +45,7 @@ class UnbindK8sSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -54,6 +58,7 @@ class UnbindK8sSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)

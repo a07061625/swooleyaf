@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeReservedInstances
+ *
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
  * @method string getLockReason()
@@ -39,6 +41,7 @@ class ReservedInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -51,6 +54,7 @@ class ReservedInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -63,6 +67,7 @@ class ReservedInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $lockReason
+     *
      * @return $this
      */
     public function setLockReason($lockReason)
@@ -75,6 +80,7 @@ class ReservedInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $scope
+     *
      * @return $this
      */
     public function setScope($scope)
@@ -87,6 +93,7 @@ class ReservedInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -99,6 +106,7 @@ class ReservedInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -111,6 +119,7 @@ class ReservedInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -123,6 +132,7 @@ class ReservedInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -135,6 +145,7 @@ class ReservedInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceTypeFamily
+     *
      * @return $this
      */
     public function setInstanceTypeFamily($instanceTypeFamily)
@@ -147,6 +158,7 @@ class ReservedInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -158,7 +170,6 @@ class ReservedInstancesDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $reservedInstanceId
      * @return $this
      */
     public function setReservedInstanceIds(array $reservedInstanceId)
@@ -173,6 +184,7 @@ class ReservedInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $offeringType
+     *
      * @return $this
      */
     public function setOfferingType($offeringType)
@@ -185,6 +197,7 @@ class ReservedInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -197,6 +210,7 @@ class ReservedInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $reservedInstanceName
+     *
      * @return $this
      */
     public function setReservedInstanceName($reservedInstanceName)
@@ -208,7 +222,6 @@ class ReservedInstancesDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $status
      * @return $this
      */
     public function setStatuss(array $status)
@@ -223,6 +236,7 @@ class ReservedInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $allocationType
+     *
      * @return $this
      */
     public function setAllocationType($allocationType)

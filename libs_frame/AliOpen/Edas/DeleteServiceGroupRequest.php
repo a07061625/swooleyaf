@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DeleteServiceGroup
+ *
  * @method string getGroupId()
  */
 class DeleteServiceGroupRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class DeleteServiceGroupRequest extends RoaAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)

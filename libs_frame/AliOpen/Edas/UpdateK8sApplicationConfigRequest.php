@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of UpdateK8sApplicationConfig
+ *
  * @method string getAppId()
  * @method string getMemoryLimit()
  * @method string getClusterId()
@@ -31,6 +33,7 @@ class UpdateK8sApplicationConfigRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -43,6 +46,7 @@ class UpdateK8sApplicationConfigRequest extends RoaAcsRequest
 
     /**
      * @param string $memoryLimit
+     *
      * @return $this
      */
     public function setMemoryLimit($memoryLimit)
@@ -55,6 +59,7 @@ class UpdateK8sApplicationConfigRequest extends RoaAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -67,6 +72,7 @@ class UpdateK8sApplicationConfigRequest extends RoaAcsRequest
 
     /**
      * @param string $cpuLimit
+     *
      * @return $this
      */
     public function setCpuLimit($cpuLimit)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetAutoScaleConfig
+ *
  * @method string getClusterId()
  */
 class GetAutoScaleConfigRequest extends RpcAcsRequest
@@ -19,6 +21,7 @@ class GetAutoScaleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerRemedyRenewInstance
+ *
  * @method string getCommodity()
  * @method string getResourceOwnerId()
  * @method string getFromApp()
@@ -33,6 +35,7 @@ class InnerRemedyRenewInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $commodity
+     *
      * @return $this
      */
     public function setCommodity($commodity)
@@ -45,6 +48,7 @@ class InnerRemedyRenewInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +61,7 @@ class InnerRemedyRenewInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $fromApp
+     *
      * @return $this
      */
     public function setFromApp($fromApp)
@@ -69,6 +74,7 @@ class InnerRemedyRenewInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -81,6 +87,7 @@ class InnerRemedyRenewInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -93,6 +100,7 @@ class InnerRemedyRenewInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -105,6 +113,7 @@ class InnerRemedyRenewInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $chargeType
+     *
      * @return $this
      */
     public function setChargeType($chargeType)
@@ -117,6 +126,7 @@ class InnerRemedyRenewInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,6 +139,7 @@ class InnerRemedyRenewInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $businessInfo
+     *
      * @return $this
      */
     public function setBusinessInfo($businessInfo)
@@ -141,6 +152,7 @@ class InnerRemedyRenewInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $orderType
+     *
      * @return $this
      */
     public function setOrderType($orderType)

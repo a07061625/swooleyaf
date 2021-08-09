@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListContainerImages
+ *
  * @method string getContainerType()
  * @method string getPageSize()
  * @method string getClusterId()
@@ -22,6 +24,7 @@ class ListContainerImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $containerType
+     *
      * @return $this
      */
     public function setContainerType($containerType)
@@ -34,6 +37,7 @@ class ListContainerImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -46,6 +50,7 @@ class ListContainerImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -58,6 +63,7 @@ class ListContainerImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

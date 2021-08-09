@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerQueryEcsCountByCondition
+ *
  * @method string getBizRegionId()
  * @method string getResourceOwnerId()
  * @method string getNetworkType()
@@ -35,6 +37,7 @@ class InnerQueryEcsCountByConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $bizRegionId
+     *
      * @return $this
      */
     public function setBizRegionId($bizRegionId)
@@ -47,6 +50,7 @@ class InnerQueryEcsCountByConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -59,6 +63,7 @@ class InnerQueryEcsCountByConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $networkType
+     *
      * @return $this
      */
     public function setNetworkType($networkType)
@@ -71,6 +76,7 @@ class InnerQueryEcsCountByConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -82,7 +88,6 @@ class InnerQueryEcsCountByConditionRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tagValues
      * @return $this
      */
     public function setTagValues(array $tagValues)
@@ -97,6 +102,7 @@ class InnerQueryEcsCountByConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -109,6 +115,7 @@ class InnerQueryEcsCountByConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -121,6 +128,7 @@ class InnerQueryEcsCountByConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -133,6 +141,7 @@ class InnerQueryEcsCountByConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -144,7 +153,6 @@ class InnerQueryEcsCountByConditionRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $vSwitchIds
      * @return $this
      */
     public function setVSwitchIds(array $vSwitchIds)
@@ -159,6 +167,7 @@ class InnerQueryEcsCountByConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $metric
+     *
      * @return $this
      */
     public function setMetric($metric)
@@ -171,6 +180,7 @@ class InnerQueryEcsCountByConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $tagKey
+     *
      * @return $this
      */
     public function setTagKey($tagKey)

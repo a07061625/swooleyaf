@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of UnbindSlb
+ *
  * @method string getSlbId()
  * @method string getAppId()
  * @method string getType()
@@ -30,6 +32,7 @@ class UnbindSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $slbId
+     *
      * @return $this
      */
     public function setSlbId($slbId)
@@ -42,6 +45,7 @@ class UnbindSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -54,6 +58,7 @@ class UnbindSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)

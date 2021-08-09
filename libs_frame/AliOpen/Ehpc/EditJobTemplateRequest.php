@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of EditJobTemplate
+ *
  * @method string getStderrRedirectPath()
  * @method string getVariables()
  * @method string getRunasUser()
@@ -29,6 +31,7 @@ class EditJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $stderrRedirectPath
+     *
      * @return $this
      */
     public function setStderrRedirectPath($stderrRedirectPath)
@@ -41,6 +44,7 @@ class EditJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $variables
+     *
      * @return $this
      */
     public function setVariables($variables)
@@ -53,6 +57,7 @@ class EditJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $runasUser
+     *
      * @return $this
      */
     public function setRunasUser($runasUser)
@@ -65,6 +70,7 @@ class EditJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $reRunable
+     *
      * @return $this
      */
     public function setReRunable($reRunable)
@@ -77,6 +83,7 @@ class EditJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $templateId
+     *
      * @return $this
      */
     public function setTemplateId($templateId)
@@ -89,6 +96,7 @@ class EditJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $priority
+     *
      * @return $this
      */
     public function setPriority($priority)
@@ -101,6 +109,7 @@ class EditJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $commandLine
+     *
      * @return $this
      */
     public function setCommandLine($commandLine)
@@ -113,6 +122,7 @@ class EditJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $arrayRequest
+     *
      * @return $this
      */
     public function setArrayRequest($arrayRequest)
@@ -125,6 +135,7 @@ class EditJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $packagePath
+     *
      * @return $this
      */
     public function setPackagePath($packagePath)
@@ -137,6 +148,7 @@ class EditJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -149,6 +161,7 @@ class EditJobTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $stdoutRedirectPath
+     *
      * @return $this
      */
     public function setStdoutRedirectPath($stdoutRedirectPath)

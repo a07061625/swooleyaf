@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of BindSlb
+ *
  * @method string getVServerGroupId()
  * @method string getListenerPort()
  * @method string getSlbId()
@@ -33,6 +35,7 @@ class BindSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $vServerGroupId
+     *
      * @return $this
      */
     public function setVServerGroupId($vServerGroupId)
@@ -45,6 +48,7 @@ class BindSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $listenerPort
+     *
      * @return $this
      */
     public function setListenerPort($listenerPort)
@@ -57,6 +61,7 @@ class BindSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $slbId
+     *
      * @return $this
      */
     public function setSlbId($slbId)
@@ -69,6 +74,7 @@ class BindSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -81,6 +87,7 @@ class BindSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $slbIp
+     *
      * @return $this
      */
     public function setSlbIp($slbIp)
@@ -93,6 +100,7 @@ class BindSlbRequest extends RoaAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateHybridCluster
+ *
  * @method string getEhpcVersion()
  * @method string getSecurityGroupId()
  * @method string getDescription()
@@ -47,6 +49,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $ehpcVersion
+     *
      * @return $this
      */
     public function setEhpcVersion($ehpcVersion)
@@ -59,6 +62,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -71,6 +75,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -83,6 +88,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $keyPairName
+     *
      * @return $this
      */
     public function setKeyPairName($keyPairName)
@@ -95,6 +101,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupName
+     *
      * @return $this
      */
     public function setSecurityGroupName($securityGroupName)
@@ -107,6 +114,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsOrderComputeInstanceType
+     *
      * @return $this
      */
     public function setEcsOrderComputeInstanceType($ecsOrderComputeInstanceType)
@@ -119,6 +127,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $onPremiseVolumeRemotePath
+     *
      * @return $this
      */
     public function setOnPremiseVolumeRemotePath($onPremiseVolumeRemotePath)
@@ -131,6 +140,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $jobQueue
+     *
      * @return $this
      */
     public function setJobQueue($jobQueue)
@@ -143,6 +153,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $volumeType
+     *
      * @return $this
      */
     public function setVolumeType($volumeType)
@@ -155,6 +166,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -167,6 +179,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $password
+     *
      * @return $this
      */
     public function setPassword($password)
@@ -179,6 +192,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $onPremiseVolumeMountPoint
+     *
      * @return $this
      */
     public function setOnPremiseVolumeMountPoint($onPremiseVolumeMountPoint)
@@ -191,6 +205,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $onPremiseVolumeProtocol
+     *
      * @return $this
      */
     public function setOnPremiseVolumeProtocol($onPremiseVolumeProtocol)
@@ -203,6 +218,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $volumeProtocol
+     *
      * @return $this
      */
     public function setVolumeProtocol($volumeProtocol)
@@ -215,6 +231,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $onPremiseVolumeLocalPath
+     *
      * @return $this
      */
     public function setOnPremiseVolumeLocalPath($onPremiseVolumeLocalPath)
@@ -227,6 +244,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $clientVersion
+     *
      * @return $this
      */
     public function setClientVersion($clientVersion)
@@ -239,6 +257,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $osTag
+     *
      * @return $this
      */
     public function setOsTag($osTag)
@@ -251,6 +270,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $remoteDirectory
+     *
      * @return $this
      */
     public function setRemoteDirectory($remoteDirectory)
@@ -262,7 +282,6 @@ class CreateHybridClusterRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $postInstallScript
      * @return $this
      */
     public function setPostInstallScripts(array $postInstallScript)
@@ -278,6 +297,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -290,6 +310,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $nodes
+     *
      * @return $this
      */
     public function setNodes($nodes)
@@ -301,7 +322,6 @@ class CreateHybridClusterRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $application
      * @return $this
      */
     public function setApplications(array $application)
@@ -316,6 +336,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $domain
+     *
      * @return $this
      */
     public function setDomain($domain)
@@ -328,6 +349,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -340,6 +362,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -352,6 +375,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $volumeId
+     *
      * @return $this
      */
     public function setVolumeId($volumeId)
@@ -364,6 +388,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $volumeMountpoint
+     *
      * @return $this
      */
     public function setVolumeMountpoint($volumeMountpoint)
@@ -376,6 +401,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -388,6 +414,7 @@ class CreateHybridClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $location
+     *
      * @return $this
      */
     public function setLocation($location)

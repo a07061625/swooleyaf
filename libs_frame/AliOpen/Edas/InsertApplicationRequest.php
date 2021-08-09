@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of InsertApplication
+ *
  * @method string getWebContainer()
  * @method string getEcuInfo()
  * @method string getBuildPackId()
@@ -40,6 +42,7 @@ class InsertApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $webContainer
+     *
      * @return $this
      */
     public function setWebContainer($webContainer)
@@ -52,6 +55,7 @@ class InsertApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $ecuInfo
+     *
      * @return $this
      */
     public function setEcuInfo($ecuInfo)
@@ -64,6 +68,7 @@ class InsertApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $buildPackId
+     *
      * @return $this
      */
     public function setBuildPackId($buildPackId)
@@ -76,6 +81,7 @@ class InsertApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $healthCheckURL
+     *
      * @return $this
      */
     public function setHealthCheckURL($healthCheckURL)
@@ -88,6 +94,7 @@ class InsertApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $reservedPortStr
+     *
      * @return $this
      */
     public function setReservedPortStr($reservedPortStr)
@@ -100,6 +107,7 @@ class InsertApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -112,6 +120,7 @@ class InsertApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $cpu
+     *
      * @return $this
      */
     public function setCpu($cpu)
@@ -124,6 +133,7 @@ class InsertApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -136,6 +146,7 @@ class InsertApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $applicationName
+     *
      * @return $this
      */
     public function setApplicationName($applicationName)
@@ -148,6 +159,7 @@ class InsertApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $jdk
+     *
      * @return $this
      */
     public function setJdk($jdk)
@@ -160,6 +172,7 @@ class InsertApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $mem
+     *
      * @return $this
      */
     public function setMem($mem)
@@ -172,6 +185,7 @@ class InsertApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $logicalRegionId
+     *
      * @return $this
      */
     public function setLogicalRegionId($logicalRegionId)
@@ -184,6 +198,7 @@ class InsertApplicationRequest extends RoaAcsRequest
 
     /**
      * @param string $packageType
+     *
      * @return $this
      */
     public function setPackageType($packageType)

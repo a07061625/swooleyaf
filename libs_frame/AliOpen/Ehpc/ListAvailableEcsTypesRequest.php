@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ehpc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListAvailableEcsTypes
+ *
  * @method string getSpotStrategy()
  * @method string getZoneId()
  * @method string getInstanceChargeType()
@@ -21,6 +23,7 @@ class ListAvailableEcsTypesRequest extends RpcAcsRequest
 
     /**
      * @param string $spotStrategy
+     *
      * @return $this
      */
     public function setSpotStrategy($spotStrategy)
@@ -33,6 +36,7 @@ class ListAvailableEcsTypesRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -45,6 +49,7 @@ class ListAvailableEcsTypesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceChargeType
+     *
      * @return $this
      */
     public function setInstanceChargeType($instanceChargeType)

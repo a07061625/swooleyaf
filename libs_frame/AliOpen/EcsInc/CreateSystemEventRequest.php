@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateSystemEvent
+ *
  * @method string getResourceOwnerId()
  * @method string getEffectTime()
  * @method string getLimitTime()
@@ -31,6 +33,7 @@ class CreateSystemEventRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class CreateSystemEventRequest extends RpcAcsRequest
 
     /**
      * @param string $effectTime
+     *
      * @return $this
      */
     public function setEffectTime($effectTime)
@@ -55,6 +59,7 @@ class CreateSystemEventRequest extends RpcAcsRequest
 
     /**
      * @param string $limitTime
+     *
      * @return $this
      */
     public function setLimitTime($limitTime)
@@ -67,6 +72,7 @@ class CreateSystemEventRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setAliUid($aliUid)
@@ -79,6 +85,7 @@ class CreateSystemEventRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceId
+     *
      * @return $this
      */
     public function setResourceId($resourceId)
@@ -91,6 +98,7 @@ class CreateSystemEventRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -103,6 +111,7 @@ class CreateSystemEventRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -115,6 +124,7 @@ class CreateSystemEventRequest extends RpcAcsRequest
 
     /**
      * @param string $eventType
+     *
      * @return $this
      */
     public function setEventType($eventType)

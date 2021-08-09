@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of UpdateRole
+ *
  * @method string getRoleId()
  * @method string getActionData()
  */
@@ -29,6 +31,7 @@ class UpdateRoleRequest extends RoaAcsRequest
 
     /**
      * @param string $roleId
+     *
      * @return $this
      */
     public function setRoleId($roleId)
@@ -41,6 +44,7 @@ class UpdateRoleRequest extends RoaAcsRequest
 
     /**
      * @param string $actionData
+     *
      * @return $this
      */
     public function setActionData($actionData)

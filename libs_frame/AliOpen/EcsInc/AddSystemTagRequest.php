@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\EcsInc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddSystemTag
+ *
  * @method string getResourceOwnerId()
  * @method string getOwnerBid()
  * @method string getScope()
@@ -33,6 +35,7 @@ class AddSystemTagRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class AddSystemTagRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerBid
+     *
      * @return $this
      */
     public function setOwnerBid($ownerBid)
@@ -57,6 +61,7 @@ class AddSystemTagRequest extends RpcAcsRequest
 
     /**
      * @param string $scope
+     *
      * @return $this
      */
     public function setScope($scope)
@@ -69,6 +74,7 @@ class AddSystemTagRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerUid
+     *
      * @return $this
      */
     public function setOwnerUid($ownerUid)
@@ -80,7 +86,6 @@ class AddSystemTagRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $resourceIds
      * @return $this
      */
     public function setResourceIds(array $resourceIds)
@@ -95,6 +100,7 @@ class AddSystemTagRequest extends RpcAcsRequest
 
     /**
      * @param string $tagValue
+     *
      * @return $this
      */
     public function setTagValue($tagValue)
@@ -107,6 +113,7 @@ class AddSystemTagRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -119,6 +126,7 @@ class AddSystemTagRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -131,6 +139,7 @@ class AddSystemTagRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -143,6 +152,7 @@ class AddSystemTagRequest extends RpcAcsRequest
 
     /**
      * @param string $relatedKey
+     *
      * @return $this
      */
     public function setRelatedKey($relatedKey)

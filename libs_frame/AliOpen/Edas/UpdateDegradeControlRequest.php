@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of UpdateDegradeControl
+ *
  * @method string getDuration()
  * @method string getRuleType()
  * @method string getAppId()
@@ -35,6 +37,7 @@ class UpdateDegradeControlRequest extends RoaAcsRequest
 
     /**
      * @param string $duration
+     *
      * @return $this
      */
     public function setDuration($duration)
@@ -47,6 +50,7 @@ class UpdateDegradeControlRequest extends RoaAcsRequest
 
     /**
      * @param string $ruleType
+     *
      * @return $this
      */
     public function setRuleType($ruleType)
@@ -59,6 +63,7 @@ class UpdateDegradeControlRequest extends RoaAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -71,6 +76,7 @@ class UpdateDegradeControlRequest extends RoaAcsRequest
 
     /**
      * @param string $urlVar
+     *
      * @return $this
      */
     public function setUrlVar($urlVar)
@@ -83,6 +89,7 @@ class UpdateDegradeControlRequest extends RoaAcsRequest
 
     /**
      * @param string $rtThreshold
+     *
      * @return $this
      */
     public function setRtThreshold($rtThreshold)
@@ -95,6 +102,7 @@ class UpdateDegradeControlRequest extends RoaAcsRequest
 
     /**
      * @param string $serviceName
+     *
      * @return $this
      */
     public function setServiceName($serviceName)
@@ -107,6 +115,7 @@ class UpdateDegradeControlRequest extends RoaAcsRequest
 
     /**
      * @param string $ruleId
+     *
      * @return $this
      */
     public function setRuleId($ruleId)
@@ -119,6 +128,7 @@ class UpdateDegradeControlRequest extends RoaAcsRequest
 
     /**
      * @param string $methodName
+     *
      * @return $this
      */
     public function setMethodName($methodName)

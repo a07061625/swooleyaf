@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Edas;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DeleteUserDefineRegion
+ *
  * @method string getId()
  */
 class DeleteUserDefineRegionRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class DeleteUserDefineRegionRequest extends RoaAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)

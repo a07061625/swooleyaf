@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDedicatedHosts
+ *
  * @method string getDedicatedHostIds()
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
@@ -37,6 +39,7 @@ class DedicatedHostsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostIds
+     *
      * @return $this
      */
     public function setDedicatedHostIds($dedicatedHostIds)
@@ -49,6 +52,7 @@ class DedicatedHostsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -61,6 +65,7 @@ class DedicatedHostsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -73,6 +78,7 @@ class DedicatedHostsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -85,6 +91,7 @@ class DedicatedHostsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $lockReason
+     *
      * @return $this
      */
     public function setLockReason($lockReason)
@@ -97,6 +104,7 @@ class DedicatedHostsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -109,6 +117,7 @@ class DedicatedHostsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostType
+     *
      * @return $this
      */
     public function setDedicatedHostType($dedicatedHostType)
@@ -120,7 +129,6 @@ class DedicatedHostsDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -136,6 +144,7 @@ class DedicatedHostsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostName
+     *
      * @return $this
      */
     public function setDedicatedHostName($dedicatedHostName)
@@ -148,6 +157,7 @@ class DedicatedHostsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -160,6 +170,7 @@ class DedicatedHostsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -172,6 +183,7 @@ class DedicatedHostsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -184,6 +196,7 @@ class DedicatedHostsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -196,6 +209,7 @@ class DedicatedHostsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)
