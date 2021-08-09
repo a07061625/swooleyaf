@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddSupplierNewItems
+ *
  * @method string getBizId()
  * @method array getItemLists()
  */
@@ -26,6 +27,7 @@ class AddSupplierNewItemsRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -37,7 +39,6 @@ class AddSupplierNewItemsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $itemList
      * @return $this
      */
     public function setItemLists(array $itemList)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SearchFace
+ *
  * @method string getImage()
  * @method string getGroupId()
  */
@@ -30,6 +31,7 @@ class SearchFaceRequest extends RpcAcsRequest
 
     /**
      * @param string $image
+     *
      * @return $this
      */
     public function setImage($image)
@@ -42,6 +44,7 @@ class SearchFaceRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)

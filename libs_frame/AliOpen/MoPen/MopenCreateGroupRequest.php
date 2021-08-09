@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MopenCreateGroup
+ *
  * @method string getCreator()
  */
 class MopenCreateGroupRequest extends RpcAcsRequest
@@ -29,6 +30,7 @@ class MopenCreateGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $creator
+     *
      * @return $this
      */
     public function setCreator($creator)

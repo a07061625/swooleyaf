@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeLicense
+ *
  * @method string getLicenseCode()
  */
 class DescribeLicenseRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class DescribeLicenseRequest extends RpcAcsRequest
 
     /**
      * @param string $licenseCode
+     *
      * @return $this
      */
     public function setLicenseCode($licenseCode)

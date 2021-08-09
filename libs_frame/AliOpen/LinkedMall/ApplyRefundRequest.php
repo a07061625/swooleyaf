@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ApplyRefund
+ *
  * @method string getGoodsStatus()
  * @method string getSubLmOrderId()
  * @method string getThirdPartyUserId()
@@ -36,6 +37,7 @@ class ApplyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $goodsStatus
+     *
      * @return $this
      */
     public function setGoodsStatus($goodsStatus)
@@ -48,6 +50,7 @@ class ApplyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $subLmOrderId
+     *
      * @return $this
      */
     public function setSubLmOrderId($subLmOrderId)
@@ -60,6 +63,7 @@ class ApplyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $thirdPartyUserId
+     *
      * @return $this
      */
     public function setThirdPartyUserId($thirdPartyUserId)
@@ -72,6 +76,7 @@ class ApplyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $bizUid
+     *
      * @return $this
      */
     public function setBizUid($bizUid)
@@ -84,6 +89,7 @@ class ApplyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $applyRefundFee
+     *
      * @return $this
      */
     public function setApplyRefundFee($applyRefundFee)
@@ -96,6 +102,7 @@ class ApplyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $bizClaimType
+     *
      * @return $this
      */
     public function setBizClaimType($bizClaimType)
@@ -108,6 +115,7 @@ class ApplyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $applyReasonTextId
+     *
      * @return $this
      */
     public function setApplyReasonTextId($applyReasonTextId)
@@ -120,6 +128,7 @@ class ApplyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -132,6 +141,7 @@ class ApplyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $useAnonymousTbAccount
+     *
      * @return $this
      */
     public function setUseAnonymousTbAccount($useAnonymousTbAccount)
@@ -143,7 +153,6 @@ class ApplyRefundRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $leavePictureList
      * @return $this
      */
     public function setLeavePictureLists(array $leavePictureList)
@@ -159,6 +168,7 @@ class ApplyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $applyRefundCount
+     *
      * @return $this
      */
     public function setApplyRefundCount($applyRefundCount)
@@ -171,6 +181,7 @@ class ApplyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $leaveMessage
+     *
      * @return $this
      */
     public function setLeaveMessage($leaveMessage)

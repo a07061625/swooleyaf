@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of NotifyPayOrderStatus
+ *
  * @method string getAmount()
  * @method string getPayTypes()
  * @method string getRequestId()
@@ -29,6 +30,7 @@ class NotifyPayOrderStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $amount
+     *
      * @return $this
      */
     public function setAmount($amount)
@@ -41,6 +43,7 @@ class NotifyPayOrderStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $payTypes
+     *
      * @return $this
      */
     public function setPayTypes($payTypes)
@@ -53,6 +56,7 @@ class NotifyPayOrderStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $requestId
+     *
      * @return $this
      */
     public function setRequestId($requestId)
@@ -65,6 +69,7 @@ class NotifyPayOrderStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $operationDate
+     *
      * @return $this
      */
     public function setOperationDate($operationDate)
@@ -77,6 +82,7 @@ class NotifyPayOrderStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $channelId
+     *
      * @return $this
      */
     public function setChannelId($channelId)

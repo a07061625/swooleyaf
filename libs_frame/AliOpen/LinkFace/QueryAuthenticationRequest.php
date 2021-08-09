@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryAuthentication
+ *
  * @method string getLicenseType()
  * @method string getIotId()
  * @method string getPageSize()
@@ -34,6 +35,7 @@ class QueryAuthenticationRequest extends RpcAcsRequest
 
     /**
      * @param string $licenseType
+     *
      * @return $this
      */
     public function setLicenseType($licenseType)
@@ -46,6 +48,7 @@ class QueryAuthenticationRequest extends RpcAcsRequest
 
     /**
      * @param string $iotId
+     *
      * @return $this
      */
     public function setIotId($iotId)
@@ -58,6 +61,7 @@ class QueryAuthenticationRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -70,6 +74,7 @@ class QueryAuthenticationRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -82,6 +87,7 @@ class QueryAuthenticationRequest extends RpcAcsRequest
 
     /**
      * @param string $deviceName
+     *
      * @return $this
      */
     public function setDeviceName($deviceName)
@@ -94,6 +100,7 @@ class QueryAuthenticationRequest extends RpcAcsRequest
 
     /**
      * @param string $productKey
+     *
      * @return $this
      */
     public function setProductKey($productKey)

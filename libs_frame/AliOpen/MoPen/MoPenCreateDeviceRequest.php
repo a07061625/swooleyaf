@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MoPenCreateDevice
+ *
  * @method string getDeviceName()
  * @method string getDeviceType()
  */
@@ -30,6 +31,7 @@ class MoPenCreateDeviceRequest extends RpcAcsRequest
 
     /**
      * @param string $deviceName
+     *
      * @return $this
      */
     public function setDeviceName($deviceName)
@@ -42,6 +44,7 @@ class MoPenCreateDeviceRequest extends RpcAcsRequest
 
     /**
      * @param string $deviceType
+     *
      * @return $this
      */
     public function setDeviceType($deviceType)

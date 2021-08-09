@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribePrice
+ *
  * @method string getCommodity()
  * @method string getOrderType()
  */
@@ -26,6 +27,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $commodity
+     *
      * @return $this
      */
     public function setCommodity($commodity)
@@ -38,6 +40,7 @@ class DescribePriceRequest extends RpcAcsRequest
 
     /**
      * @param string $orderType
+     *
      * @return $this
      */
     public function setOrderType($orderType)

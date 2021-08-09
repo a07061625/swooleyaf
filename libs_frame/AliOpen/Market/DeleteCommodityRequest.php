@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteCommodity
+ *
  * @method string getCommodityId()
  */
 class DeleteCommodityRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class DeleteCommodityRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityId
+     *
      * @return $this
      */
     public function setCommodityId($commodityId)

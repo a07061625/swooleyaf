@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateFace
+ *
  * @method string getImage()
  * @method string getUserId()
  * @method string getUserInfo()
@@ -31,6 +32,7 @@ class UpdateFaceRequest extends RpcAcsRequest
 
     /**
      * @param string $image
+     *
      * @return $this
      */
     public function setImage($image)
@@ -43,6 +45,7 @@ class UpdateFaceRequest extends RpcAcsRequest
 
     /**
      * @param string $userId
+     *
      * @return $this
      */
     public function setUserId($userId)
@@ -55,6 +58,7 @@ class UpdateFaceRequest extends RpcAcsRequest
 
     /**
      * @param string $userInfo
+     *
      * @return $this
      */
     public function setUserInfo($userInfo)

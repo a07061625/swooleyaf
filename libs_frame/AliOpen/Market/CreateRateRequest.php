@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateRate
+ *
  * @method string getScore()
  * @method string getOrderId()
  * @method string getRequestId()
@@ -28,6 +29,7 @@ class CreateRateRequest extends RpcAcsRequest
 
     /**
      * @param string $score
+     *
      * @return $this
      */
     public function setScore($score)
@@ -40,6 +42,7 @@ class CreateRateRequest extends RpcAcsRequest
 
     /**
      * @param string $orderId
+     *
      * @return $this
      */
     public function setOrderId($orderId)
@@ -52,6 +55,7 @@ class CreateRateRequest extends RpcAcsRequest
 
     /**
      * @param string $requestId
+     *
      * @return $this
      */
     public function setRequestId($requestId)
@@ -64,6 +68,7 @@ class CreateRateRequest extends RpcAcsRequest
 
     /**
      * @param string $content
+     *
      * @return $this
      */
     public function setContent($content)

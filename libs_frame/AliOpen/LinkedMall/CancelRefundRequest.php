@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CancelRefund
+ *
  * @method string getSubLmOrderId()
  * @method string getThirdPartyUserId()
  * @method string getBizUid()
@@ -30,6 +31,7 @@ class CancelRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $subLmOrderId
+     *
      * @return $this
      */
     public function setSubLmOrderId($subLmOrderId)
@@ -42,6 +44,7 @@ class CancelRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $thirdPartyUserId
+     *
      * @return $this
      */
     public function setThirdPartyUserId($thirdPartyUserId)
@@ -54,6 +57,7 @@ class CancelRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $bizUid
+     *
      * @return $this
      */
     public function setBizUid($bizUid)
@@ -66,6 +70,7 @@ class CancelRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $disputeId
+     *
      * @return $this
      */
     public function setDisputeId($disputeId)
@@ -78,6 +83,7 @@ class CancelRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -90,6 +96,7 @@ class CancelRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $useAnonymousTbAccount
+     *
      * @return $this
      */
     public function setUseAnonymousTbAccount($useAnonymousTbAccount)

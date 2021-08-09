@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of NotifyContractEvent
+ *
  * @method string getEventMessage()
  * @method string getEventType()
  */
@@ -26,6 +27,7 @@ class NotifyContractEventRequest extends RpcAcsRequest
 
     /**
      * @param string $eventMessage
+     *
      * @return $this
      */
     public function setEventMessage($eventMessage)
@@ -38,6 +40,7 @@ class NotifyContractEventRequest extends RpcAcsRequest
 
     /**
      * @param string $eventType
+     *
      * @return $this
      */
     public function setEventType($eventType)

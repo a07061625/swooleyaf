@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryOrderInfoAfterSale
+ *
  * @method string getLmOrderId()
  * @method string getThirdPartyUserId()
  * @method string getBizId()
@@ -24,6 +25,7 @@ class QueryOrderInfoAfterSaleRequest extends RpcAcsRequest
 
     /**
      * @param string $lmOrderId
+     *
      * @return $this
      */
     public function setLmOrderId($lmOrderId)
@@ -36,6 +38,7 @@ class QueryOrderInfoAfterSaleRequest extends RpcAcsRequest
 
     /**
      * @param string $thirdPartyUserId
+     *
      * @return $this
      */
     public function setThirdPartyUserId($thirdPartyUserId)
@@ -48,6 +51,7 @@ class QueryOrderInfoAfterSaleRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -60,6 +64,7 @@ class QueryOrderInfoAfterSaleRequest extends RpcAcsRequest
 
     /**
      * @param string $useAnonymousTbAccount
+     *
      * @return $this
      */
     public function setUseAnonymousTbAccount($useAnonymousTbAccount)
@@ -72,6 +77,7 @@ class QueryOrderInfoAfterSaleRequest extends RpcAcsRequest
 
     /**
      * @param string $channelUserId
+     *
      * @return $this
      */
     public function setChannelUserId($channelUserId)

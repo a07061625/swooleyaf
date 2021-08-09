@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryOrderIdByPayId
+ *
  * @method string getThirdPartyUserId()
  * @method string getBizUid()
  * @method string getPaymentId()
@@ -29,6 +30,7 @@ class QueryOrderIdByPayIdRequest extends RpcAcsRequest
 
     /**
      * @param string $thirdPartyUserId
+     *
      * @return $this
      */
     public function setThirdPartyUserId($thirdPartyUserId)
@@ -41,6 +43,7 @@ class QueryOrderIdByPayIdRequest extends RpcAcsRequest
 
     /**
      * @param string $bizUid
+     *
      * @return $this
      */
     public function setBizUid($bizUid)
@@ -53,6 +56,7 @@ class QueryOrderIdByPayIdRequest extends RpcAcsRequest
 
     /**
      * @param string $paymentId
+     *
      * @return $this
      */
     public function setPaymentId($paymentId)
@@ -65,6 +69,7 @@ class QueryOrderIdByPayIdRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -77,6 +82,7 @@ class QueryOrderIdByPayIdRequest extends RpcAcsRequest
 
     /**
      * @param string $useAnonymousTbAccount
+     *
      * @return $this
      */
     public function setUseAnonymousTbAccount($useAnonymousTbAccount)

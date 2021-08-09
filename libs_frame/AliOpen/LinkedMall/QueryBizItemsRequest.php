@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryBizItems
+ *
  * @method string getBizId()
  * @method string getPageSize()
  * @method string getUserId()
@@ -29,6 +30,7 @@ class QueryBizItemsRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -41,6 +43,7 @@ class QueryBizItemsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -53,6 +56,7 @@ class QueryBizItemsRequest extends RpcAcsRequest
 
     /**
      * @param string $userId
+     *
      * @return $this
      */
     public function setUserId($userId)
@@ -65,6 +69,7 @@ class QueryBizItemsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -77,6 +82,7 @@ class QueryBizItemsRequest extends RpcAcsRequest
 
     /**
      * @param string $subBizId
+     *
      * @return $this
      */
     public function setSubBizId($subBizId)

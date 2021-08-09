@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeProduct
+ *
  * @method string getCode()
  * @method string getQueryDraft()
  * @method string getAliUid()
@@ -27,6 +28,7 @@ class DescribeProductRequest extends RpcAcsRequest
 
     /**
      * @param string $code
+     *
      * @return $this
      */
     public function setCode($code)
@@ -39,6 +41,7 @@ class DescribeProductRequest extends RpcAcsRequest
 
     /**
      * @param string $queryDraft
+     *
      * @return $this
      */
     public function setQueryDraft($queryDraft)
@@ -51,6 +54,7 @@ class DescribeProductRequest extends RpcAcsRequest
 
     /**
      * @param string $aliUid
+     *
      * @return $this
      */
     public function setAliUid($aliUid)

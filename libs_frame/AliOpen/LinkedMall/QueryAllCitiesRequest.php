@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryAllCities
+ *
  * @method string getExtJson()
  * @method string getBizId()
  */
@@ -26,6 +27,7 @@ class QueryAllCitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $extJson
+     *
      * @return $this
      */
     public function setExtJson($extJson)
@@ -38,6 +40,7 @@ class QueryAllCitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)

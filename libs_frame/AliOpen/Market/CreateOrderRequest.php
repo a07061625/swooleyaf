@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateOrder
+ *
  * @method string getOrderSouce()
  * @method string getCommodity()
  * @method string getClientToken()
@@ -30,6 +31,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $orderSouce
+     *
      * @return $this
      */
     public function setOrderSouce($orderSouce)
@@ -42,6 +44,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $commodity
+     *
      * @return $this
      */
     public function setCommodity($commodity)
@@ -54,6 +57,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -66,6 +70,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -78,6 +83,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $paymentType
+     *
      * @return $this
      */
     public function setPaymentType($paymentType)
@@ -90,6 +96,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $orderType
+     *
      * @return $this
      */
     public function setOrderType($orderType)

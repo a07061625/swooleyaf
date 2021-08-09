@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RenderOrder
+ *
  * @method string getThirdPartyUserId()
  * @method string getBizUid()
  * @method string getExtJson()
@@ -31,6 +32,7 @@ class RenderOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $thirdPartyUserId
+     *
      * @return $this
      */
     public function setThirdPartyUserId($thirdPartyUserId)
@@ -43,6 +45,7 @@ class RenderOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $bizUid
+     *
      * @return $this
      */
     public function setBizUid($bizUid)
@@ -55,6 +58,7 @@ class RenderOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $extJson
+     *
      * @return $this
      */
     public function setExtJson($extJson)
@@ -67,6 +71,7 @@ class RenderOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -79,6 +84,7 @@ class RenderOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $useAnonymousTbAccount
+     *
      * @return $this
      */
     public function setUseAnonymousTbAccount($useAnonymousTbAccount)
@@ -90,7 +96,6 @@ class RenderOrderRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $itemList
      * @return $this
      */
     public function setItemLists(array $itemList)
@@ -107,6 +112,7 @@ class RenderOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $deliveryAddress
+     *
      * @return $this
      */
     public function setDeliveryAddress($deliveryAddress)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateGroup
+ *
  * @method string getGroupId()
  */
 class CreateGroupRequest extends RpcAcsRequest
@@ -29,6 +30,7 @@ class CreateGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)

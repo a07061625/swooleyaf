@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetCustomServiceUrl
+ *
  * @method string getNick()
  * @method string getSellerId()
  * @method string getCuid()
@@ -31,6 +32,7 @@ class GetCustomServiceUrlRequest extends RpcAcsRequest
 
     /**
      * @param string $nick
+     *
      * @return $this
      */
     public function setNick($nick)
@@ -43,6 +45,7 @@ class GetCustomServiceUrlRequest extends RpcAcsRequest
 
     /**
      * @param string $sellerId
+     *
      * @return $this
      */
     public function setSellerId($sellerId)
@@ -55,6 +58,7 @@ class GetCustomServiceUrlRequest extends RpcAcsRequest
 
     /**
      * @param string $cuid
+     *
      * @return $this
      */
     public function setCuid($cuid)
@@ -67,6 +71,7 @@ class GetCustomServiceUrlRequest extends RpcAcsRequest
 
     /**
      * @param string $thirdPartyUserId
+     *
      * @return $this
      */
     public function setThirdPartyUserId($thirdPartyUserId)
@@ -79,6 +84,7 @@ class GetCustomServiceUrlRequest extends RpcAcsRequest
 
     /**
      * @param string $bizUid
+     *
      * @return $this
      */
     public function setBizUid($bizUid)
@@ -91,6 +97,7 @@ class GetCustomServiceUrlRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -103,6 +110,7 @@ class GetCustomServiceUrlRequest extends RpcAcsRequest
 
     /**
      * @param string $useAnonymousTbAccount
+     *
      * @return $this
      */
     public function setUseAnonymousTbAccount($useAnonymousTbAccount)

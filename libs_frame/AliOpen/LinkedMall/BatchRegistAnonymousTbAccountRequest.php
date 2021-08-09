@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BatchRegistAnonymousTbAccount
+ *
  * @method string getBizId()
  * @method string getIdJsonList()
  */
@@ -26,6 +27,7 @@ class BatchRegistAnonymousTbAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -38,6 +40,7 @@ class BatchRegistAnonymousTbAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $idJsonList
+     *
      * @return $this
      */
     public function setIdJsonList($idJsonList)

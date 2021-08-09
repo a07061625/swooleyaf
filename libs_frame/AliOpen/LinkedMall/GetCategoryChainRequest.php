@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetCategoryChain
+ *
  * @method string getItemId()
  * @method string getBizId()
  * @method string getCategoryId()
@@ -27,6 +28,7 @@ class GetCategoryChainRequest extends RpcAcsRequest
 
     /**
      * @param string $itemId
+     *
      * @return $this
      */
     public function setItemId($itemId)
@@ -39,6 +41,7 @@ class GetCategoryChainRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -51,6 +54,7 @@ class GetCategoryChainRequest extends RpcAcsRequest
 
     /**
      * @param string $categoryId
+     *
      * @return $this
      */
     public function setCategoryId($categoryId)

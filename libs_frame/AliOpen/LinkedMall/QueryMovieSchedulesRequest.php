@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryMovieSchedules
+ *
  * @method string getCinemaId()
  * @method string getExtJson()
  * @method string getBizId()
@@ -27,6 +28,7 @@ class QueryMovieSchedulesRequest extends RpcAcsRequest
 
     /**
      * @param string $cinemaId
+     *
      * @return $this
      */
     public function setCinemaId($cinemaId)
@@ -39,6 +41,7 @@ class QueryMovieSchedulesRequest extends RpcAcsRequest
 
     /**
      * @param string $extJson
+     *
      * @return $this
      */
     public function setExtJson($extJson)
@@ -51,6 +54,7 @@ class QueryMovieSchedulesRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)

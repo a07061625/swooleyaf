@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UploadCommodityFile
+ *
  * @method string getFileResourceType()
  * @method string getFileResource()
  * @method string getFileContentType()
@@ -27,6 +28,7 @@ class UploadCommodityFileRequest extends RpcAcsRequest
 
     /**
      * @param string $fileResourceType
+     *
      * @return $this
      */
     public function setFileResourceType($fileResourceType)
@@ -39,6 +41,7 @@ class UploadCommodityFileRequest extends RpcAcsRequest
 
     /**
      * @param string $fileResource
+     *
      * @return $this
      */
     public function setFileResource($fileResource)
@@ -51,6 +54,7 @@ class UploadCommodityFileRequest extends RpcAcsRequest
 
     /**
      * @param string $fileContentType
+     *
      * @return $this
      */
     public function setFileContentType($fileContentType)

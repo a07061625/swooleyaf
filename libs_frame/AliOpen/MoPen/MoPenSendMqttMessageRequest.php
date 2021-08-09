@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MoPenSendMqttMessage
+ *
  * @method string getPayload()
  * @method string getDeviceName()
  */
@@ -30,6 +31,7 @@ class MoPenSendMqttMessageRequest extends RpcAcsRequest
 
     /**
      * @param string $payload
+     *
      * @return $this
      */
     public function setPayload($payload)
@@ -42,6 +44,7 @@ class MoPenSendMqttMessageRequest extends RpcAcsRequest
 
     /**
      * @param string $deviceName
+     *
      * @return $this
      */
     public function setDeviceName($deviceName)

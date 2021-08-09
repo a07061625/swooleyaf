@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RegisterFace
+ *
  * @method string getImage()
  * @method string getGroupId()
  * @method string getUserId()
@@ -32,6 +33,7 @@ class RegisterFaceRequest extends RpcAcsRequest
 
     /**
      * @param string $image
+     *
      * @return $this
      */
     public function setImage($image)
@@ -44,6 +46,7 @@ class RegisterFaceRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -56,6 +59,7 @@ class RegisterFaceRequest extends RpcAcsRequest
 
     /**
      * @param string $userId
+     *
      * @return $this
      */
     public function setUserId($userId)
@@ -68,6 +72,7 @@ class RegisterFaceRequest extends RpcAcsRequest
 
     /**
      * @param string $userInfo
+     *
      * @return $this
      */
     public function setUserInfo($userInfo)

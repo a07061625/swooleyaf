@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryOrderList
+ *
  * @method string getThirdPartyUserId()
  * @method string getBizUid()
  * @method string getFilterOption()
@@ -31,6 +32,7 @@ class QueryOrderListRequest extends RpcAcsRequest
 
     /**
      * @param string $thirdPartyUserId
+     *
      * @return $this
      */
     public function setThirdPartyUserId($thirdPartyUserId)
@@ -43,6 +45,7 @@ class QueryOrderListRequest extends RpcAcsRequest
 
     /**
      * @param string $bizUid
+     *
      * @return $this
      */
     public function setBizUid($bizUid)
@@ -55,6 +58,7 @@ class QueryOrderListRequest extends RpcAcsRequest
 
     /**
      * @param string $filterOption
+     *
      * @return $this
      */
     public function setFilterOption($filterOption)
@@ -67,6 +71,7 @@ class QueryOrderListRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -79,6 +84,7 @@ class QueryOrderListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -91,6 +97,7 @@ class QueryOrderListRequest extends RpcAcsRequest
 
     /**
      * @param string $useAnonymousTbAccount
+     *
      * @return $this
      */
     public function setUseAnonymousTbAccount($useAnonymousTbAccount)
@@ -103,6 +110,7 @@ class QueryOrderListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

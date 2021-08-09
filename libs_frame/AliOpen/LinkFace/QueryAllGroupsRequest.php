@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryAllGroups
+ *
  * @method string getPageSize()
  * @method string getCurrentPage()
  */
@@ -30,6 +31,7 @@ class QueryAllGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -42,6 +44,7 @@ class QueryAllGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)

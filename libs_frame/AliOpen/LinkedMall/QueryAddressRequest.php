@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryAddress
+ *
  * @method string getDivisionCode()
  * @method string getIp()
  * @method string getBizId()
@@ -27,6 +28,7 @@ class QueryAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $divisionCode
+     *
      * @return $this
      */
     public function setDivisionCode($divisionCode)
@@ -39,6 +41,7 @@ class QueryAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $ip
+     *
      * @return $this
      */
     public function setIp($ip)
@@ -51,6 +54,7 @@ class QueryAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)

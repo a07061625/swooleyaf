@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeCommodities
+ *
  * @method string getCommodityGmtModifiedTo()
  * @method string getCommodityGmtModifiedFrom()
  * @method string getCommodityId()
@@ -33,6 +34,7 @@ class DescribeCommoditiesRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityGmtModifiedTo
+     *
      * @return $this
      */
     public function setCommodityGmtModifiedTo($commodityGmtModifiedTo)
@@ -45,6 +47,7 @@ class DescribeCommoditiesRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityGmtModifiedFrom
+     *
      * @return $this
      */
     public function setCommodityGmtModifiedFrom($commodityGmtModifiedFrom)
@@ -57,6 +60,7 @@ class DescribeCommoditiesRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityId
+     *
      * @return $this
      */
     public function setCommodityId($commodityId)
@@ -69,6 +73,7 @@ class DescribeCommoditiesRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityGmtPublishFrom
+     *
      * @return $this
      */
     public function setCommodityGmtPublishFrom($commodityGmtPublishFrom)
@@ -81,6 +86,7 @@ class DescribeCommoditiesRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityStatuses
+     *
      * @return $this
      */
     public function setCommodityStatuses($commodityStatuses)
@@ -93,6 +99,7 @@ class DescribeCommoditiesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -105,6 +112,7 @@ class DescribeCommoditiesRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityGmtCreatedFrom
+     *
      * @return $this
      */
     public function setCommodityGmtCreatedFrom($commodityGmtCreatedFrom)
@@ -117,6 +125,7 @@ class DescribeCommoditiesRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityIds
+     *
      * @return $this
      */
     public function setCommodityIds($commodityIds)
@@ -129,6 +138,7 @@ class DescribeCommoditiesRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityGmtCreatedTo
+     *
      * @return $this
      */
     public function setCommodityGmtCreatedTo($commodityGmtCreatedTo)
@@ -141,6 +151,7 @@ class DescribeCommoditiesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -153,6 +164,7 @@ class DescribeCommoditiesRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityGmtPublishTo
+     *
      * @return $this
      */
     public function setCommodityGmtPublishTo($commodityGmtPublishTo)
@@ -165,6 +177,7 @@ class DescribeCommoditiesRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityAuditStatuses
+     *
      * @return $this
      */
     public function setCommodityAuditStatuses($commodityAuditStatuses)
@@ -177,6 +190,7 @@ class DescribeCommoditiesRequest extends RpcAcsRequest
 
     /**
      * @param string $properties
+     *
      * @return $this
      */
     public function setProperties($properties)
@@ -189,6 +203,7 @@ class DescribeCommoditiesRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityCategoryIds
+     *
      * @return $this
      */
     public function setCommodityCategoryIds($commodityCategoryIds)

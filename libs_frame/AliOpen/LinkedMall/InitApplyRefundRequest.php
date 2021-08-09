@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InitApplyRefund
+ *
  * @method string getGoodsStatus()
  * @method string getSubLmOrderId()
  * @method string getThirdPartyUserId()
@@ -31,6 +32,7 @@ class InitApplyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $goodsStatus
+     *
      * @return $this
      */
     public function setGoodsStatus($goodsStatus)
@@ -43,6 +45,7 @@ class InitApplyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $subLmOrderId
+     *
      * @return $this
      */
     public function setSubLmOrderId($subLmOrderId)
@@ -55,6 +58,7 @@ class InitApplyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $thirdPartyUserId
+     *
      * @return $this
      */
     public function setThirdPartyUserId($thirdPartyUserId)
@@ -67,6 +71,7 @@ class InitApplyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $bizUid
+     *
      * @return $this
      */
     public function setBizUid($bizUid)
@@ -79,6 +84,7 @@ class InitApplyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $bizClaimType
+     *
      * @return $this
      */
     public function setBizClaimType($bizClaimType)
@@ -91,6 +97,7 @@ class InitApplyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -103,6 +110,7 @@ class InitApplyRefundRequest extends RpcAcsRequest
 
     /**
      * @param string $useAnonymousTbAccount
+     *
      * @return $this
      */
     public function setUseAnonymousTbAccount($useAnonymousTbAccount)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryLicenses
+ *
  * @method string getLicenseType()
  * @method string getPageSize()
  * @method string getCurrentPage()
@@ -31,6 +32,7 @@ class QueryLicensesRequest extends RpcAcsRequest
 
     /**
      * @param string $licenseType
+     *
      * @return $this
      */
     public function setLicenseType($licenseType)
@@ -43,6 +45,7 @@ class QueryLicensesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -55,6 +58,7 @@ class QueryLicensesRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)

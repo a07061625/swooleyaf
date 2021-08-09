@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeOrder
+ *
  * @method string getOrderId()
  */
 class DescribeOrderRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class DescribeOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $orderId
+     *
      * @return $this
      */
     public function setOrderId($orderId)

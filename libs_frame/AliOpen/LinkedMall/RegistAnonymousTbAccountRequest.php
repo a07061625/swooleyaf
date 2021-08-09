@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RegistAnonymousTbAccount
+ *
  * @method string getThirdPartyUserId()
  * @method string getBizId()
  */
@@ -26,6 +27,7 @@ class RegistAnonymousTbAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $thirdPartyUserId
+     *
      * @return $this
      */
     public function setThirdPartyUserId($thirdPartyUserId)
@@ -38,6 +40,7 @@ class RegistAnonymousTbAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)

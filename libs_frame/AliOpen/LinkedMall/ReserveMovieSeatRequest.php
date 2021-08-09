@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ReserveMovieSeat
+ *
  * @method string getSeatIds()
  * @method string getBizUid()
  * @method string getExtJson()
@@ -31,6 +32,7 @@ class ReserveMovieSeatRequest extends RpcAcsRequest
 
     /**
      * @param string $seatIds
+     *
      * @return $this
      */
     public function setSeatIds($seatIds)
@@ -43,6 +45,7 @@ class ReserveMovieSeatRequest extends RpcAcsRequest
 
     /**
      * @param string $bizUid
+     *
      * @return $this
      */
     public function setBizUid($bizUid)
@@ -55,6 +58,7 @@ class ReserveMovieSeatRequest extends RpcAcsRequest
 
     /**
      * @param string $extJson
+     *
      * @return $this
      */
     public function setExtJson($extJson)
@@ -67,6 +71,7 @@ class ReserveMovieSeatRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -79,6 +84,7 @@ class ReserveMovieSeatRequest extends RpcAcsRequest
 
     /**
      * @param string $mobile
+     *
      * @return $this
      */
     public function setMobile($mobile)
@@ -91,6 +97,7 @@ class ReserveMovieSeatRequest extends RpcAcsRequest
 
     /**
      * @param string $seatNames
+     *
      * @return $this
      */
     public function setSeatNames($seatNames)
@@ -103,6 +110,7 @@ class ReserveMovieSeatRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduleId
+     *
      * @return $this
      */
     public function setScheduleId($scheduleId)

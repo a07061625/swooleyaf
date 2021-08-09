@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ReleaseMovieSeat
+ *
  * @method string getBizUid()
  * @method string getExtJson()
  * @method string getBizId()
@@ -28,6 +29,7 @@ class ReleaseMovieSeatRequest extends RpcAcsRequest
 
     /**
      * @param string $bizUid
+     *
      * @return $this
      */
     public function setBizUid($bizUid)
@@ -40,6 +42,7 @@ class ReleaseMovieSeatRequest extends RpcAcsRequest
 
     /**
      * @param string $extJson
+     *
      * @return $this
      */
     public function setExtJson($extJson)
@@ -52,6 +55,7 @@ class ReleaseMovieSeatRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -64,6 +68,7 @@ class ReleaseMovieSeatRequest extends RpcAcsRequest
 
     /**
      * @param string $lockSeatApplyKey
+     *
      * @return $this
      */
     public function setLockSeatApplyKey($lockSeatApplyKey)

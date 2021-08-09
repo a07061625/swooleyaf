@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeInstances
+ *
  * @method string getPageSize()
  * @method string getPageNumber()
  * @method string getProductType()
@@ -27,6 +28,7 @@ class DescribeInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -39,6 +41,7 @@ class DescribeInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -51,6 +54,7 @@ class DescribeInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $productType
+     *
      * @return $this
      */
     public function setProductType($productType)

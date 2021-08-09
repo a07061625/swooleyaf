@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryBatchRegistAnonymousTbAccountResult
+ *
  * @method string getBizId()
  * @method string getBatchId()
  */
@@ -26,6 +27,7 @@ class QueryBatchRegistAnonymousTbAccountResultRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -38,6 +40,7 @@ class QueryBatchRegistAnonymousTbAccountResultRequest extends RpcAcsRequest
 
     /**
      * @param string $batchId
+     *
      * @return $this
      */
     public function setBatchId($batchId)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryMovieComments
+ *
  * @method string getExtJson()
  * @method string getBizId()
  * @method string getMovieId()
@@ -28,6 +29,7 @@ class QueryMovieCommentsRequest extends RpcAcsRequest
 
     /**
      * @param string $extJson
+     *
      * @return $this
      */
     public function setExtJson($extJson)
@@ -40,6 +42,7 @@ class QueryMovieCommentsRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -52,6 +55,7 @@ class QueryMovieCommentsRequest extends RpcAcsRequest
 
     /**
      * @param string $movieId
+     *
      * @return $this
      */
     public function setMovieId($movieId)
@@ -64,6 +68,7 @@ class QueryMovieCommentsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

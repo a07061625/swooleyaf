@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RefundPoint
+ *
  * @method string getReason()
  * @method string getSellerId()
  * @method string getLmOrderId()
@@ -30,6 +31,7 @@ class RefundPointRequest extends RpcAcsRequest
 
     /**
      * @param string $reason
+     *
      * @return $this
      */
     public function setReason($reason)
@@ -42,6 +44,7 @@ class RefundPointRequest extends RpcAcsRequest
 
     /**
      * @param string $sellerId
+     *
      * @return $this
      */
     public function setSellerId($sellerId)
@@ -54,6 +57,7 @@ class RefundPointRequest extends RpcAcsRequest
 
     /**
      * @param string $lmOrderId
+     *
      * @return $this
      */
     public function setLmOrderId($lmOrderId)
@@ -66,6 +70,7 @@ class RefundPointRequest extends RpcAcsRequest
 
     /**
      * @param string $thirdPartyUserId
+     *
      * @return $this
      */
     public function setThirdPartyUserId($thirdPartyUserId)
@@ -78,6 +83,7 @@ class RefundPointRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -90,6 +96,7 @@ class RefundPointRequest extends RpcAcsRequest
 
     /**
      * @param string $useAnonymousTbAccount
+     *
      * @return $this
      */
     public function setUseAnonymousTbAccount($useAnonymousTbAccount)

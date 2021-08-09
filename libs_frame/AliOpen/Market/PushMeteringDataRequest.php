@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of PushMeteringData
+ *
  * @method string getMetering()
  */
 class PushMeteringDataRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class PushMeteringDataRequest extends RpcAcsRequest
 
     /**
      * @param string $metering
+     *
      * @return $this
      */
     public function setMetering($metering)

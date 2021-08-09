@@ -17,19 +17,20 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\LuBanCloud;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class SubmitCutoutTaskRequest extends RpcAcsRequest
 {
+    private $PictureUrls;
+
     public function __construct()
     {
-        parent::__construct("lubancloud", "2018-05-09", "SubmitCutoutTask", "luban", "openAPI");
-        $this->setMethod("POST");
+        parent::__construct('lubancloud', '2018-05-09', 'SubmitCutoutTask', 'luban', 'openAPI');
+        $this->setMethod('POST');
     }
-
-    private $PictureUrls;
 
     public function getPictureUrls()
     {
@@ -39,8 +40,8 @@ class SubmitCutoutTaskRequest extends RpcAcsRequest
     public function setPictureUrls($PictureUrls)
     {
         $this->PictureUrls = $PictureUrls;
-        for ($i = 0; $i < count($PictureUrls); $i ++) {
-            $this->queryParameters["PictureUrl." . ($i + 1)] = $PictureUrls[$i];
+        for ($i = 0; $i < \count($PictureUrls); ++$i ) {
+            $this->queryParameters['PictureUrl.' . ($i + 1)] = $PictureUrls[$i];
         }
     }
 }

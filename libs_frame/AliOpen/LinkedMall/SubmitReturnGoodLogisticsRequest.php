@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitReturnGoodLogistics
+ *
  * @method string getCpCode()
  * @method string getSubLmOrderId()
  * @method string getThirdPartyUserId()
@@ -32,6 +33,7 @@ class SubmitReturnGoodLogisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $cpCode
+     *
      * @return $this
      */
     public function setCpCode($cpCode)
@@ -44,6 +46,7 @@ class SubmitReturnGoodLogisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $subLmOrderId
+     *
      * @return $this
      */
     public function setSubLmOrderId($subLmOrderId)
@@ -56,6 +59,7 @@ class SubmitReturnGoodLogisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $thirdPartyUserId
+     *
      * @return $this
      */
     public function setThirdPartyUserId($thirdPartyUserId)
@@ -68,6 +72,7 @@ class SubmitReturnGoodLogisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $bizUid
+     *
      * @return $this
      */
     public function setBizUid($bizUid)
@@ -80,6 +85,7 @@ class SubmitReturnGoodLogisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $disputeId
+     *
      * @return $this
      */
     public function setDisputeId($disputeId)
@@ -92,6 +98,7 @@ class SubmitReturnGoodLogisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -104,6 +111,7 @@ class SubmitReturnGoodLogisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $logisticsNo
+     *
      * @return $this
      */
     public function setLogisticsNo($logisticsNo)
@@ -116,6 +124,7 @@ class SubmitReturnGoodLogisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $useAnonymousTbAccount
+     *
      * @return $this
      */
     public function setUseAnonymousTbAccount($useAnonymousTbAccount)

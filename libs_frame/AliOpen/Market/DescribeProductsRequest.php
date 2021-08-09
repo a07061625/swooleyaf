@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeProducts
+ *
  * @method array getFilters()
  * @method string getSearchTerm()
  * @method string getPageSize()
@@ -27,7 +28,6 @@ class DescribeProductsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $filter
      * @return $this
      */
     public function setFilters(array $filter)
@@ -43,6 +43,7 @@ class DescribeProductsRequest extends RpcAcsRequest
 
     /**
      * @param string $searchTerm
+     *
      * @return $this
      */
     public function setSearchTerm($searchTerm)
@@ -55,6 +56,7 @@ class DescribeProductsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -67,6 +69,7 @@ class DescribeProductsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

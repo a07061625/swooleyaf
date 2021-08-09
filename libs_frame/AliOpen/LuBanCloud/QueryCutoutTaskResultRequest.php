@@ -17,19 +17,20 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\LuBanCloud;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class QueryCutoutTaskResultRequest extends RpcAcsRequest
 {
+    private $taskId;
+
     public function __construct()
     {
-        parent::__construct("lubancloud", "2018-05-09", "QueryCutoutTaskResult", "luban", "openAPI");
-        $this->setMethod("POST");
+        parent::__construct('lubancloud', '2018-05-09', 'QueryCutoutTaskResult', 'luban', 'openAPI');
+        $this->setMethod('POST');
     }
-
-    private $taskId;
 
     public function getTaskId()
     {
@@ -39,6 +40,6 @@ class QueryCutoutTaskResultRequest extends RpcAcsRequest
     public function setTaskId($taskId)
     {
         $this->taskId = $taskId;
-        $this->queryParameters["TaskId"] = $taskId;
+        $this->queryParameters['TaskId'] = $taskId;
     }
 }

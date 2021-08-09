@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryGroupUsers
+ *
  * @method string getGroupId()
  * @method string getPageSize()
  * @method string getCurrentPage()
@@ -31,6 +32,7 @@ class QueryGroupUsersRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -43,6 +45,7 @@ class QueryGroupUsersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -55,6 +58,7 @@ class QueryGroupUsersRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)

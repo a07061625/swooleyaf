@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of LinkFace
+ *
  * @method string getGroupId()
  * @method string getUserId()
  */
@@ -30,6 +31,7 @@ class LinkFaceRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -42,6 +44,7 @@ class LinkFaceRequest extends RpcAcsRequest
 
     /**
      * @param string $userId
+     *
      * @return $this
      */
     public function setUserId($userId)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryOrderItemInfoByPaymentIdForAiZhanYou
+ *
  * @method string getBizUid()
  * @method string getPaymentId()
  * @method string getBizId()
@@ -27,6 +28,7 @@ class QueryOrderItemInfoByPaymentIdForAiZhanYouRequest extends RpcAcsRequest
 
     /**
      * @param string $bizUid
+     *
      * @return $this
      */
     public function setBizUid($bizUid)
@@ -39,6 +41,7 @@ class QueryOrderItemInfoByPaymentIdForAiZhanYouRequest extends RpcAcsRequest
 
     /**
      * @param string $paymentId
+     *
      * @return $this
      */
     public function setPaymentId($paymentId)
@@ -51,6 +54,7 @@ class QueryOrderItemInfoByPaymentIdForAiZhanYouRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)

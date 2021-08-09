@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryMarketImages
+ *
  * @method string getParam()
  */
 class QueryMarketImagesRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class QueryMarketImagesRequest extends RpcAcsRequest
 
     /**
      * @param string $param
+     *
      * @return $this
      */
     public function setParam($param)

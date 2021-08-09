@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ValidateTaobaoAccount
+ *
  * @method string getBizUid()
  * @method string getExtJson()
  * @method string getBizId()
@@ -29,6 +30,7 @@ class ValidateTaobaoAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $bizUid
+     *
      * @return $this
      */
     public function setBizUid($bizUid)
@@ -41,6 +43,7 @@ class ValidateTaobaoAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $extJson
+     *
      * @return $this
      */
     public function setExtJson($extJson)
@@ -53,6 +56,7 @@ class ValidateTaobaoAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -65,6 +69,7 @@ class ValidateTaobaoAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $mobileNo
+     *
      * @return $this
      */
     public function setMobileNo($mobileNo)
@@ -77,6 +82,7 @@ class ValidateTaobaoAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $tbUserNick
+     *
      * @return $this
      */
     public function setTbUserNick($tbUserNick)

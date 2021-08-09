@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateCommodity
+ *
  * @method string getCommodityId()
  * @method string getContent()
  */
@@ -26,6 +27,7 @@ class UpdateCommodityRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityId
+     *
      * @return $this
      */
     public function setCommodityId($commodityId)
@@ -38,6 +40,7 @@ class UpdateCommodityRequest extends RpcAcsRequest
 
     /**
      * @param string $content
+     *
      * @return $this
      */
     public function setContent($content)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MoPenQueryCanvas
+ *
  * @method string getDeviceName()
  * @method string getSessionId()
  * @method string getPageId()
@@ -32,6 +33,7 @@ class MoPenQueryCanvasRequest extends RpcAcsRequest
 
     /**
      * @param string $deviceName
+     *
      * @return $this
      */
     public function setDeviceName($deviceName)
@@ -44,6 +46,7 @@ class MoPenQueryCanvasRequest extends RpcAcsRequest
 
     /**
      * @param string $sessionId
+     *
      * @return $this
      */
     public function setSessionId($sessionId)
@@ -56,6 +59,7 @@ class MoPenQueryCanvasRequest extends RpcAcsRequest
 
     /**
      * @param string $pageId
+     *
      * @return $this
      */
     public function setPageId($pageId)
@@ -68,6 +72,7 @@ class MoPenQueryCanvasRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

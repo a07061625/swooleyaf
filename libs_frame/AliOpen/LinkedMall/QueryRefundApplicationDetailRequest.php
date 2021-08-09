@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryRefundApplicationDetail
+ *
  * @method string getSubLmOrderId()
  * @method string getThirdPartyUserId()
  * @method string getBizUid()
@@ -29,6 +30,7 @@ class QueryRefundApplicationDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $subLmOrderId
+     *
      * @return $this
      */
     public function setSubLmOrderId($subLmOrderId)
@@ -41,6 +43,7 @@ class QueryRefundApplicationDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $thirdPartyUserId
+     *
      * @return $this
      */
     public function setThirdPartyUserId($thirdPartyUserId)
@@ -53,6 +56,7 @@ class QueryRefundApplicationDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $bizUid
+     *
      * @return $this
      */
     public function setBizUid($bizUid)
@@ -65,6 +69,7 @@ class QueryRefundApplicationDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -77,6 +82,7 @@ class QueryRefundApplicationDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $useAnonymousTbAccount
+     *
      * @return $this
      */
     public function setUseAnonymousTbAccount($useAnonymousTbAccount)

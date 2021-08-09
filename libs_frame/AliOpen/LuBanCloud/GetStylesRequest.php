@@ -17,6 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\LuBanCloud;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -25,7 +26,7 @@ class GetStylesRequest extends RpcAcsRequest
 {
     public function __construct()
     {
-        parent::__construct("lubancloud", "2018-05-09", "GetStyles", "luban", "openAPI");
-        $this->setMethod("POST");
+        parent::__construct('lubancloud', '2018-05-09', 'GetStyles', 'luban', 'openAPI');
+        $this->setMethod('POST');
     }
 }

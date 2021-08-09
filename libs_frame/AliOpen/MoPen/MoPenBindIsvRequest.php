@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MoPenBindIsv
+ *
  * @method string getOrderKey()
  * @method string getDeviceName()
  */
@@ -30,6 +31,7 @@ class MoPenBindIsvRequest extends RpcAcsRequest
 
     /**
      * @param string $orderKey
+     *
      * @return $this
      */
     public function setOrderKey($orderKey)
@@ -42,6 +44,7 @@ class MoPenBindIsvRequest extends RpcAcsRequest
 
     /**
      * @param string $deviceName
+     *
      * @return $this
      */
     public function setDeviceName($deviceName)

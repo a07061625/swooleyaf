@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of NotifyWithholdFund
+ *
  * @method string getAmount()
  * @method string getPayTypes()
  * @method string getTenantOrderId()
@@ -30,6 +31,7 @@ class NotifyWithholdFundRequest extends RpcAcsRequest
 
     /**
      * @param string $amount
+     *
      * @return $this
      */
     public function setAmount($amount)
@@ -42,6 +44,7 @@ class NotifyWithholdFundRequest extends RpcAcsRequest
 
     /**
      * @param string $payTypes
+     *
      * @return $this
      */
     public function setPayTypes($payTypes)
@@ -54,6 +57,7 @@ class NotifyWithholdFundRequest extends RpcAcsRequest
 
     /**
      * @param string $tenantOrderId
+     *
      * @return $this
      */
     public function setTenantOrderId($tenantOrderId)
@@ -66,6 +70,7 @@ class NotifyWithholdFundRequest extends RpcAcsRequest
 
     /**
      * @param string $requestId
+     *
      * @return $this
      */
     public function setRequestId($requestId)
@@ -78,6 +83,7 @@ class NotifyWithholdFundRequest extends RpcAcsRequest
 
     /**
      * @param string $operationDate
+     *
      * @return $this
      */
     public function setOperationDate($operationDate)
@@ -90,6 +96,7 @@ class NotifyWithholdFundRequest extends RpcAcsRequest
 
     /**
      * @param string $channelId
+     *
      * @return $this
      */
     public function setChannelId($channelId)

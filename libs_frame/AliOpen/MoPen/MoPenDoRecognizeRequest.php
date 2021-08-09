@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MoPenDoRecognize
+ *
  * @method string getCanvasId()
  * @method string getEndY()
  * @method string getEndX()
@@ -35,6 +36,7 @@ class MoPenDoRecognizeRequest extends RpcAcsRequest
 
     /**
      * @param string $canvasId
+     *
      * @return $this
      */
     public function setCanvasId($canvasId)
@@ -47,6 +49,7 @@ class MoPenDoRecognizeRequest extends RpcAcsRequest
 
     /**
      * @param string $endY
+     *
      * @return $this
      */
     public function setEndY($endY)
@@ -59,6 +62,7 @@ class MoPenDoRecognizeRequest extends RpcAcsRequest
 
     /**
      * @param string $endX
+     *
      * @return $this
      */
     public function setEndX($endX)
@@ -71,6 +75,7 @@ class MoPenDoRecognizeRequest extends RpcAcsRequest
 
     /**
      * @param string $jsonConf
+     *
      * @return $this
      */
     public function setJsonConf($jsonConf)
@@ -83,6 +88,7 @@ class MoPenDoRecognizeRequest extends RpcAcsRequest
 
     /**
      * @param string $exportType
+     *
      * @return $this
      */
     public function setExportType($exportType)
@@ -95,6 +101,7 @@ class MoPenDoRecognizeRequest extends RpcAcsRequest
 
     /**
      * @param string $startY
+     *
      * @return $this
      */
     public function setStartY($startY)
@@ -107,6 +114,7 @@ class MoPenDoRecognizeRequest extends RpcAcsRequest
 
     /**
      * @param string $startX
+     *
      * @return $this
      */
     public function setStartX($startX)

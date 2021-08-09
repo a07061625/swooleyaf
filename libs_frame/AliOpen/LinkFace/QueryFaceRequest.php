@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryFace
+ *
  * @method string getUserId()
  */
 class QueryFaceRequest extends RpcAcsRequest
@@ -29,6 +30,7 @@ class QueryFaceRequest extends RpcAcsRequest
 
     /**
      * @param string $userId
+     *
      * @return $this
      */
     public function setUserId($userId)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateOrder
+ *
  * @method string getItemId()
  * @method string getQuantity()
  * @method string getTotalAmount()
@@ -36,6 +37,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $itemId
+     *
      * @return $this
      */
     public function setItemId($itemId)
@@ -48,6 +50,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $quantity
+     *
      * @return $this
      */
     public function setQuantity($quantity)
@@ -60,6 +63,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $totalAmount
+     *
      * @return $this
      */
     public function setTotalAmount($totalAmount)
@@ -72,6 +76,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $thirdPartyUserId
+     *
      * @return $this
      */
     public function setThirdPartyUserId($thirdPartyUserId)
@@ -84,6 +89,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $bizUid
+     *
      * @return $this
      */
     public function setBizUid($bizUid)
@@ -96,6 +102,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $extJson
+     *
      * @return $this
      */
     public function setExtJson($extJson)
@@ -108,6 +115,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -120,6 +128,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $outTradeId
+     *
      * @return $this
      */
     public function setOutTradeId($outTradeId)
@@ -132,6 +141,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $useAnonymousTbAccount
+     *
      * @return $this
      */
     public function setUseAnonymousTbAccount($useAnonymousTbAccount)
@@ -144,6 +154,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $orderExpireTime
+     *
      * @return $this
      */
     public function setOrderExpireTime($orderExpireTime)
@@ -155,7 +166,6 @@ class CreateOrderRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $itemList
      * @return $this
      */
     public function setItemLists(array $itemList)
@@ -172,6 +182,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $deliveryAddress
+     *
      * @return $this
      */
     public function setDeliveryAddress($deliveryAddress)

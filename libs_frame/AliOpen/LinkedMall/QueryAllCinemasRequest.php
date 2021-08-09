@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryAllCinemas
+ *
  * @method string getCityCode()
  * @method string getExtJson()
  * @method string getBizId()
@@ -28,6 +29,7 @@ class QueryAllCinemasRequest extends RpcAcsRequest
 
     /**
      * @param string $cityCode
+     *
      * @return $this
      */
     public function setCityCode($cityCode)
@@ -40,6 +42,7 @@ class QueryAllCinemasRequest extends RpcAcsRequest
 
     /**
      * @param string $extJson
+     *
      * @return $this
      */
     public function setExtJson($extJson)
@@ -52,6 +55,7 @@ class QueryAllCinemasRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -64,6 +68,7 @@ class QueryAllCinemasRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

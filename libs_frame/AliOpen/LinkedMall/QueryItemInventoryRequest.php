@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryItemInventory
+ *
  * @method string getDivisionCode()
  * @method string getIp()
  * @method string getBizId()
@@ -28,6 +29,7 @@ class QueryItemInventoryRequest extends RpcAcsRequest
 
     /**
      * @param string $divisionCode
+     *
      * @return $this
      */
     public function setDivisionCode($divisionCode)
@@ -40,6 +42,7 @@ class QueryItemInventoryRequest extends RpcAcsRequest
 
     /**
      * @param string $ip
+     *
      * @return $this
      */
     public function setIp($ip)
@@ -52,6 +55,7 @@ class QueryItemInventoryRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -63,7 +67,6 @@ class QueryItemInventoryRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $itemList
      * @return $this
      */
     public function setItemLists(array $itemList)

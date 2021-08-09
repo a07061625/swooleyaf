@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryItemDetail
+ *
  * @method string getItemId()
  * @method string getBizId()
  */
@@ -26,6 +27,7 @@ class QueryItemDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $itemId
+     *
      * @return $this
      */
     public function setItemId($itemId)
@@ -38,6 +40,7 @@ class QueryItemDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)

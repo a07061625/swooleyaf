@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MoPenDeleteGroup
+ *
  * @method string getGroupId()
  */
 class MoPenDeleteGroupRequest extends RpcAcsRequest
@@ -29,6 +30,7 @@ class MoPenDeleteGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)

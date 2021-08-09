@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MoPenAddGroupMember
+ *
  * @method string getGroupId()
  * @method string getDeviceName()
  */
@@ -30,6 +31,7 @@ class MoPenAddGroupMemberRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -42,6 +44,7 @@ class MoPenAddGroupMemberRequest extends RpcAcsRequest
 
     /**
      * @param string $deviceName
+     *
      * @return $this
      */
     public function setDeviceName($deviceName)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BindImagePackage
+ *
  * @method string getEcsInstanceId()
  * @method string getImagePackageInstanceId()
  */
@@ -26,6 +27,7 @@ class BindImagePackageRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsInstanceId
+     *
      * @return $this
      */
     public function setEcsInstanceId($ecsInstanceId)
@@ -38,6 +40,7 @@ class BindImagePackageRequest extends RpcAcsRequest
 
     /**
      * @param string $imagePackageInstanceId
+     *
      * @return $this
      */
     public function setImagePackageInstanceId($imagePackageInstanceId)

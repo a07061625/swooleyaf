@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeCommodity
+ *
  * @method string getCommodityId()
  */
 class DescribeCommodityRequest extends RpcAcsRequest
@@ -20,6 +21,7 @@ class DescribeCommodityRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityId
+     *
      * @return $this
      */
     public function setCommodityId($commodityId)
