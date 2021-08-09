@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetMezzanineInfo
+ *
  * @method string getResourceOwnerId()
  * @method string getOutputType()
  * @method string getAuthTimeout()
@@ -31,6 +33,7 @@ class MezzanineInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class MezzanineInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $outputType
+     *
      * @return $this
      */
     public function setOutputType($outputType)
@@ -55,6 +59,7 @@ class MezzanineInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $authTimeout
+     *
      * @return $this
      */
     public function setAuthTimeout($authTimeout)
@@ -67,6 +72,7 @@ class MezzanineInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -79,6 +85,7 @@ class MezzanineInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $videoId
+     *
      * @return $this
      */
     public function setVideoId($videoId)
@@ -91,6 +98,7 @@ class MezzanineInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +111,7 @@ class MezzanineInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $previewSegment
+     *
      * @return $this
      */
     public function setPreviewSegment($previewSegment)
@@ -115,6 +124,7 @@ class MezzanineInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $additionType
+     *
      * @return $this
      */
     public function setAdditionType($additionType)

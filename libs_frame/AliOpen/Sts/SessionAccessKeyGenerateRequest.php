@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Sts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GenerateSessionAccessKey
+ *
  * @method string getDurationSeconds()
  */
 class SessionAccessKeyGenerateRequest extends RpcAcsRequest
@@ -28,6 +30,7 @@ class SessionAccessKeyGenerateRequest extends RpcAcsRequest
 
     /**
      * @param string $durationSeconds
+     *
      * @return $this
      */
     public function setDurationSeconds($durationSeconds)

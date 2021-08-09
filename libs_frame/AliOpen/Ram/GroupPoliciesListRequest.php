@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListPoliciesForGroup
+ *
  * @method string getGroupName()
  */
 class GroupPoliciesListRequest extends RpcAcsRequest
@@ -28,6 +30,7 @@ class GroupPoliciesListRequest extends RpcAcsRequest
 
     /**
      * @param string $groupName
+     *
      * @return $this
      */
     public function setGroupName($groupName)

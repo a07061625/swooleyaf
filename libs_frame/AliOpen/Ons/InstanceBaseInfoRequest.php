@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsInstanceBaseInfo
+ *
  * @method string getInstanceId()
  */
 class InstanceBaseInfoRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class InstanceBaseInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)

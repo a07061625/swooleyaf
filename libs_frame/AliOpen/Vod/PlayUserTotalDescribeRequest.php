@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribePlayUserTotal
+ *
  * @method string getStartTime()
  * @method string getEndTime()
  * @method string getOwnerId()
@@ -26,6 +28,7 @@ class PlayUserTotalDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -38,6 +41,7 @@ class PlayUserTotalDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -50,6 +54,7 @@ class PlayUserTotalDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

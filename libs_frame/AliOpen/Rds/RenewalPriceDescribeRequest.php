@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeRenewalPrice
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getDBInstanceId()
@@ -38,6 +40,7 @@ class RenewalPriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +53,7 @@ class RenewalPriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -62,6 +66,7 @@ class RenewalPriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -74,6 +79,7 @@ class RenewalPriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $businessInfo
+     *
      * @return $this
      */
     public function setBusinessInfo($businessInfo)
@@ -86,6 +92,7 @@ class RenewalPriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $quantity
+     *
      * @return $this
      */
     public function setQuantity($quantity)
@@ -98,6 +105,7 @@ class RenewalPriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -110,6 +118,7 @@ class RenewalPriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -122,6 +131,7 @@ class RenewalPriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityCode
+     *
      * @return $this
      */
     public function setCommodityCode($commodityCode)
@@ -134,6 +144,7 @@ class RenewalPriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -146,6 +157,7 @@ class RenewalPriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $usedTime
+     *
      * @return $this
      */
     public function setUsedTime($usedTime)
@@ -158,6 +170,7 @@ class RenewalPriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceClass
+     *
      * @return $this
      */
     public function setDBInstanceClass($dBInstanceClass)
@@ -170,6 +183,7 @@ class RenewalPriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $promotionCode
+     *
      * @return $this
      */
     public function setPromotionCode($promotionCode)
@@ -182,6 +196,7 @@ class RenewalPriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $timeType
+     *
      * @return $this
      */
     public function setTimeType($timeType)
@@ -194,6 +209,7 @@ class RenewalPriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)
@@ -206,6 +222,7 @@ class RenewalPriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $orderType
+     *
      * @return $this
      */
     public function setOrderType($orderType)

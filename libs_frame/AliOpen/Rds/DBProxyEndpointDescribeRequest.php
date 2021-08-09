@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDBProxyEndpoint
+ *
  * @method string getResourceOwnerId()
  * @method string getDBProxyConnectString()
  * @method string getDBInstanceId()
@@ -29,6 +31,7 @@ class DBProxyEndpointDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class DBProxyEndpointDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBProxyConnectString
+     *
      * @return $this
      */
     public function setDBProxyConnectString($dBProxyConnectString)
@@ -53,6 +57,7 @@ class DBProxyEndpointDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -65,6 +70,7 @@ class DBProxyEndpointDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -77,6 +83,7 @@ class DBProxyEndpointDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -89,6 +96,7 @@ class DBProxyEndpointDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBProxyEndpointId
+     *
      * @return $this
      */
     public function setDBProxyEndpointId($dBProxyEndpointId)

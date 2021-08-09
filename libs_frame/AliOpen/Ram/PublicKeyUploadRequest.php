@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UploadPublicKey
+ *
  * @method string getPublicKeySpec()
  * @method string getUserName()
  */
@@ -29,6 +31,7 @@ class PublicKeyUploadRequest extends RpcAcsRequest
 
     /**
      * @param string $publicKeySpec
+     *
      * @return $this
      */
     public function setPublicKeySpec($publicKeySpec)
@@ -41,6 +44,7 @@ class PublicKeyUploadRequest extends RpcAcsRequest
 
     /**
      * @param string $userName
+     *
      * @return $this
      */
     public function setUserName($userName)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeletePublicKey
+ *
  * @method string getUserPublicKeyId()
  * @method string getUserName()
  */
@@ -29,6 +31,7 @@ class PublicKeyDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $userPublicKeyId
+     *
      * @return $this
      */
     public function setUserPublicKeyId($userPublicKeyId)
@@ -41,6 +44,7 @@ class PublicKeyDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $userName
+     *
      * @return $this
      */
     public function setUserName($userName)

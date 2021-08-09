@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Sts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AssumeRole
+ *
  * @method string getRoleArn()
  * @method string getRoleSessionName()
  * @method string getDurationSeconds()
@@ -31,6 +33,7 @@ class RoleAssumeRequest extends RpcAcsRequest
 
     /**
      * @param string $roleArn
+     *
      * @return $this
      */
     public function setRoleArn($roleArn)
@@ -43,6 +46,7 @@ class RoleAssumeRequest extends RpcAcsRequest
 
     /**
      * @param string $roleSessionName
+     *
      * @return $this
      */
     public function setRoleSessionName($roleSessionName)
@@ -55,6 +59,7 @@ class RoleAssumeRequest extends RpcAcsRequest
 
     /**
      * @param string $durationSeconds
+     *
      * @return $this
      */
     public function setDurationSeconds($durationSeconds)
@@ -67,6 +72,7 @@ class RoleAssumeRequest extends RpcAcsRequest
 
     /**
      * @param string $policy
+     *
      * @return $this
      */
     public function setPolicy($policy)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateUploadImage
+ *
  * @method string getResourceOwnerId()
  * @method string getDescription()
  * @method string getTitle()
@@ -36,6 +38,7 @@ class UploadImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +51,7 @@ class UploadImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -60,6 +64,7 @@ class UploadImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -72,6 +77,7 @@ class UploadImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $storageLocation
+     *
      * @return $this
      */
     public function setStorageLocation($storageLocation)
@@ -84,6 +90,7 @@ class UploadImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -96,6 +103,7 @@ class UploadImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $cateId
+     *
      * @return $this
      */
     public function setCateId($cateId)
@@ -108,6 +116,7 @@ class UploadImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $imageType
+     *
      * @return $this
      */
     public function setImageType($imageType)
@@ -120,6 +129,7 @@ class UploadImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -132,6 +142,7 @@ class UploadImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $imageExt
+     *
      * @return $this
      */
     public function setImageExt($imageExt)
@@ -144,6 +155,7 @@ class UploadImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -156,6 +168,7 @@ class UploadImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $tags
+     *
      * @return $this
      */
     public function setTags($tags)
@@ -168,6 +181,7 @@ class UploadImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $originalFileName
+     *
      * @return $this
      */
     public function setOriginalFileName($originalFileName)
@@ -180,6 +194,7 @@ class UploadImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitWorkflowJob
+ *
  * @method string getResourceOwnerId()
  * @method string getWorkflowId()
  * @method string getResourceOwnerAccount()
@@ -29,6 +31,7 @@ class WorkflowJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class WorkflowJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $workflowId
+     *
      * @return $this
      */
     public function setWorkflowId($workflowId)
@@ -53,6 +57,7 @@ class WorkflowJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -65,6 +70,7 @@ class WorkflowJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -77,6 +83,7 @@ class WorkflowJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $mediaId
+     *
      * @return $this
      */
     public function setMediaId($mediaId)
@@ -89,6 +96,7 @@ class WorkflowJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $fileUrl
+     *
      * @return $this
      */
     public function setFileUrl($fileUrl)

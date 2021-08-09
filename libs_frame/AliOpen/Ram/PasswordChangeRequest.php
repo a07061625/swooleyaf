@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ChangePassword
+ *
  * @method string getOldPassword()
  * @method string getNewPassword()
  */
@@ -29,6 +31,7 @@ class PasswordChangeRequest extends RpcAcsRequest
 
     /**
      * @param string $oldPassword
+     *
      * @return $this
      */
     public function setOldPassword($oldPassword)
@@ -41,6 +44,7 @@ class PasswordChangeRequest extends RpcAcsRequest
 
     /**
      * @param string $newPassword
+     *
      * @return $this
      */
     public function setNewPassword($newPassword)

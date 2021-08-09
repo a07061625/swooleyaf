@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifySecurityIps
+ *
  * @method string getDBInstanceIPArrayName()
  * @method string getResourceOwnerId()
  * @method string getClientToken()
@@ -36,6 +38,7 @@ class SecurityIpsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceIPArrayName
+     *
      * @return $this
      */
     public function setDBInstanceIPArrayName($dBInstanceIPArrayName)
@@ -48,6 +51,7 @@ class SecurityIpsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -60,6 +64,7 @@ class SecurityIpsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -72,6 +77,7 @@ class SecurityIpsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $securityIps
+     *
      * @return $this
      */
     public function setSecurityIps($securityIps)
@@ -84,6 +90,7 @@ class SecurityIpsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -96,6 +103,7 @@ class SecurityIpsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $whitelistNetworkType
+     *
      * @return $this
      */
     public function setWhitelistNetworkType($whitelistNetworkType)
@@ -108,6 +116,7 @@ class SecurityIpsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $securityIPType
+     *
      * @return $this
      */
     public function setSecurityIPType($securityIPType)
@@ -120,6 +129,7 @@ class SecurityIpsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -132,6 +142,7 @@ class SecurityIpsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $modifyMode
+     *
      * @return $this
      */
     public function setModifyMode($modifyMode)
@@ -144,6 +155,7 @@ class SecurityIpsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -156,6 +168,7 @@ class SecurityIpsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -168,6 +181,7 @@ class SecurityIpsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -180,6 +194,7 @@ class SecurityIpsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceIPArrayAttribute
+     *
      * @return $this
      */
     public function setDBInstanceIPArrayAttribute($dBInstanceIPArrayAttribute)

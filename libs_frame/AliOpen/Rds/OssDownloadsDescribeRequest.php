@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeOssDownloads
+ *
  * @method string getResourceOwnerId()
  * @method string getMigrateTaskId()
  * @method string getResourceOwnerAccount()
@@ -28,6 +30,7 @@ class OssDownloadsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -40,6 +43,7 @@ class OssDownloadsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $migrateTaskId
+     *
      * @return $this
      */
     public function setMigrateTaskId($migrateTaskId)
@@ -52,6 +56,7 @@ class OssDownloadsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -64,6 +69,7 @@ class OssDownloadsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -76,6 +82,7 @@ class OssDownloadsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)

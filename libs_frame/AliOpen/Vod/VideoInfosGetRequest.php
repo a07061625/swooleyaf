@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetVideoInfos
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerId()
@@ -28,6 +30,7 @@ class VideoInfosGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -40,6 +43,7 @@ class VideoInfosGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -52,6 +56,7 @@ class VideoInfosGetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -64,6 +69,7 @@ class VideoInfosGetRequest extends RpcAcsRequest
 
     /**
      * @param string $additionType
+     *
      * @return $this
      */
     public function setAdditionType($additionType)
@@ -76,6 +82,7 @@ class VideoInfosGetRequest extends RpcAcsRequest
 
     /**
      * @param string $videoIds
+     *
      * @return $this
      */
     public function setVideoIds($videoIds)

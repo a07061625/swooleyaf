@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RecoveryDBInstance
+ *
  * @method string getResourceOwnerId()
  * @method string getDBInstanceStorage()
  * @method string getClientToken()
@@ -45,6 +47,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +60,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStorage
+     *
      * @return $this
      */
     public function setDBInstanceStorage($dBInstanceStorage)
@@ -69,6 +73,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -81,6 +86,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -93,6 +99,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceDescription
+     *
      * @return $this
      */
     public function setDBInstanceDescription($dBInstanceDescription)
@@ -105,6 +112,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -117,6 +125,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStorageType
+     *
      * @return $this
      */
     public function setDBInstanceStorageType($dBInstanceStorageType)
@@ -129,6 +138,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreTime
+     *
      * @return $this
      */
     public function setRestoreTime($restoreTime)
@@ -141,6 +151,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -153,6 +164,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -165,6 +177,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $backupId
+     *
      * @return $this
      */
     public function setBackupId($backupId)
@@ -177,6 +190,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -189,6 +203,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -201,6 +216,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $usedTime
+     *
      * @return $this
      */
     public function setUsedTime($usedTime)
@@ -213,6 +229,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceClass
+     *
      * @return $this
      */
     public function setDBInstanceClass($dBInstanceClass)
@@ -225,6 +242,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $dbNames
+     *
      * @return $this
      */
     public function setDbNames($dbNames)
@@ -237,6 +255,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -249,6 +268,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $privateIpAddress
+     *
      * @return $this
      */
     public function setPrivateIpAddress($privateIpAddress)
@@ -261,6 +281,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $targetDBInstanceId
+     *
      * @return $this
      */
     public function setTargetDBInstanceId($targetDBInstanceId)
@@ -273,6 +294,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $vPCId
+     *
      * @return $this
      */
     public function setVPCId($vPCId)
@@ -285,6 +307,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)
@@ -297,6 +320,7 @@ class DBInstanceRecoveryRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceNetworkType
+     *
      * @return $this
      */
     public function setInstanceNetworkType($instanceNetworkType)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateReadOnlyDBInstance
+ *
  * @method string getResourceOwnerId()
  * @method string getDBInstanceStorage()
  * @method string getClientToken()
@@ -43,6 +45,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -55,6 +58,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStorage
+     *
      * @return $this
      */
     public function setDBInstanceStorage($dBInstanceStorage)
@@ -67,6 +71,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -79,6 +84,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $engineVersion
+     *
      * @return $this
      */
     public function setEngineVersion($engineVersion)
@@ -91,6 +97,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -103,6 +110,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -115,6 +123,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceDescription
+     *
      * @return $this
      */
     public function setDBInstanceDescription($dBInstanceDescription)
@@ -127,6 +136,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStorageType
+     *
      * @return $this
      */
     public function setDBInstanceStorageType($dBInstanceStorageType)
@@ -139,6 +149,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostGroupId
+     *
      * @return $this
      */
     public function setDedicatedHostGroupId($dedicatedHostGroupId)
@@ -151,6 +162,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -163,6 +175,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -175,6 +188,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -187,6 +201,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceClass
+     *
      * @return $this
      */
     public function setDBInstanceClass($dBInstanceClass)
@@ -199,6 +214,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -211,6 +227,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $privateIpAddress
+     *
      * @return $this
      */
     public function setPrivateIpAddress($privateIpAddress)
@@ -223,6 +240,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $vPCId
+     *
      * @return $this
      */
     public function setVPCId($vPCId)
@@ -235,6 +253,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -247,6 +266,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $category
+     *
      * @return $this
      */
     public function setCategory($category)
@@ -259,6 +279,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)
@@ -271,6 +292,7 @@ class ReadOnlyDBInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceNetworkType
+     *
      * @return $this
      */
     public function setInstanceNetworkType($instanceNetworkType)

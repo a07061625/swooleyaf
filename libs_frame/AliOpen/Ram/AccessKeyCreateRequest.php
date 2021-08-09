@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateAccessKey
+ *
  * @method string getUserName()
  */
 class AccessKeyCreateRequest extends RpcAcsRequest
@@ -28,6 +30,7 @@ class AccessKeyCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $userName
+     *
      * @return $this
      */
     public function setUserName($userName)

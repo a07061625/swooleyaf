@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteVirtualMFADevice
+ *
  * @method string getSerialNumber()
  */
 class VirtualMFADeviceDeleteRequest extends RpcAcsRequest
@@ -28,6 +30,7 @@ class VirtualMFADeviceDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $serialNumber
+     *
      * @return $this
      */
     public function setSerialNumber($serialNumber)

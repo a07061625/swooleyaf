@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeCloudDbExpertService
+ *
  * @method string getResourceOwnerId()
  * @method string getServiceRequestType()
  * @method string getServiceRequestParam()
@@ -31,6 +33,7 @@ class CloudDbExpertServiceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class CloudDbExpertServiceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceRequestType
+     *
      * @return $this
      */
     public function setServiceRequestType($serviceRequestType)
@@ -55,6 +59,7 @@ class CloudDbExpertServiceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceRequestParam
+     *
      * @return $this
      */
     public function setServiceRequestParam($serviceRequestParam)
@@ -67,6 +72,7 @@ class CloudDbExpertServiceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -79,6 +85,7 @@ class CloudDbExpertServiceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -91,6 +98,7 @@ class CloudDbExpertServiceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -103,6 +111,7 @@ class CloudDbExpertServiceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -115,6 +124,7 @@ class CloudDbExpertServiceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

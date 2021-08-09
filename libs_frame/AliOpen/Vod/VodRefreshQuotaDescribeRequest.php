@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeVodRefreshQuota
+ *
  * @method string getOwnerId()
  * @method string getSecurityToken()
  */
@@ -25,6 +27,7 @@ class VodRefreshQuotaDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -37,6 +40,7 @@ class VodRefreshQuotaDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeCrossRegionBackups
+ *
  * @method string getResourceOwnerId()
  * @method string getStartTime()
  * @method string getPageNumber()
@@ -33,6 +35,7 @@ class CrossRegionBackupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class CrossRegionBackupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -57,6 +61,7 @@ class CrossRegionBackupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -69,6 +74,7 @@ class CrossRegionBackupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -81,6 +87,7 @@ class CrossRegionBackupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -93,6 +100,7 @@ class CrossRegionBackupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -105,6 +113,7 @@ class CrossRegionBackupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -117,6 +126,7 @@ class CrossRegionBackupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,6 +139,7 @@ class CrossRegionBackupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $crossBackupRegion
+     *
      * @return $this
      */
     public function setCrossBackupRegion($crossBackupRegion)
@@ -141,6 +152,7 @@ class CrossRegionBackupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $crossBackupId
+     *
      * @return $this
      */
     public function setCrossBackupId($crossBackupId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeletePolicy
+ *
  * @method string getPolicyName()
  */
 class PolicyDeleteRequest extends RpcAcsRequest
@@ -28,6 +30,7 @@ class PolicyDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $policyName
+     *
      * @return $this
      */
     public function setPolicyName($policyName)

@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\Sts;
 
 use AliOpen\Core\RpcAcsRequest;

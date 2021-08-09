@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RequestServiceOfCloudDBExpert
+ *
  * @method string getServiceRequestType()
  * @method string getServiceRequestParam()
  * @method string getDBInstanceId()
@@ -26,6 +28,7 @@ class CloudDBExpertServiceRequestRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceRequestType
+     *
      * @return $this
      */
     public function setServiceRequestType($serviceRequestType)
@@ -38,6 +41,7 @@ class CloudDBExpertServiceRequestRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceRequestParam
+     *
      * @return $this
      */
     public function setServiceRequestParam($serviceRequestParam)
@@ -50,6 +54,7 @@ class CloudDBExpertServiceRequestRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)

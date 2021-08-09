@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribePlayVideoStatis
+ *
  * @method string getStartTime()
  * @method string getEndTime()
  * @method string getVideoId()
@@ -27,6 +29,7 @@ class PlayVideoStatisDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -39,6 +42,7 @@ class PlayVideoStatisDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -51,6 +55,7 @@ class PlayVideoStatisDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $videoId
+     *
      * @return $this
      */
     public function setVideoId($videoId)
@@ -63,6 +68,7 @@ class PlayVideoStatisDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

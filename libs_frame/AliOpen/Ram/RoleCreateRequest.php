@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateRole
+ *
  * @method string getRoleName()
  * @method string getDescription()
  * @method string getAssumeRolePolicyDocument()
@@ -30,6 +32,7 @@ class RoleCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $roleName
+     *
      * @return $this
      */
     public function setRoleName($roleName)
@@ -42,6 +45,7 @@ class RoleCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -54,6 +58,7 @@ class RoleCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $assumeRolePolicyDocument
+     *
      * @return $this
      */
     public function setAssumeRolePolicyDocument($assumeRolePolicyDocument)

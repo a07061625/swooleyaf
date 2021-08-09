@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeCrossRegionBackupDBInstance
+ *
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
  * @method string getPageSize()
@@ -31,6 +33,7 @@ class CrossRegionBackupDBInstanceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class CrossRegionBackupDBInstanceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -55,6 +59,7 @@ class CrossRegionBackupDBInstanceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -67,6 +72,7 @@ class CrossRegionBackupDBInstanceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -79,6 +85,7 @@ class CrossRegionBackupDBInstanceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $notEnabled
+     *
      * @return $this
      */
     public function setNotEnabled($notEnabled)
@@ -91,6 +98,7 @@ class CrossRegionBackupDBInstanceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $product
+     *
      * @return $this
      */
     public function setProduct($product)
@@ -103,6 +111,7 @@ class CrossRegionBackupDBInstanceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -115,6 +124,7 @@ class CrossRegionBackupDBInstanceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

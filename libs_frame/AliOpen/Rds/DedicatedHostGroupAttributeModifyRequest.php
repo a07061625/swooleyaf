@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDedicatedHostGroupAttribute
+ *
  * @method string getResourceOwnerId()
  * @method string getCpuAllocationRatio()
  * @method string getDedicatedHostGroupId()
@@ -33,6 +35,7 @@ class DedicatedHostGroupAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class DedicatedHostGroupAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $cpuAllocationRatio
+     *
      * @return $this
      */
     public function setCpuAllocationRatio($cpuAllocationRatio)
@@ -57,6 +61,7 @@ class DedicatedHostGroupAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostGroupId
+     *
      * @return $this
      */
     public function setDedicatedHostGroupId($dedicatedHostGroupId)
@@ -69,6 +74,7 @@ class DedicatedHostGroupAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -81,6 +87,7 @@ class DedicatedHostGroupAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $diskAllocationRatio
+     *
      * @return $this
      */
     public function setDiskAllocationRatio($diskAllocationRatio)
@@ -93,6 +100,7 @@ class DedicatedHostGroupAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $memAllocationRatio
+     *
      * @return $this
      */
     public function setMemAllocationRatio($memAllocationRatio)
@@ -105,6 +113,7 @@ class DedicatedHostGroupAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -117,6 +126,7 @@ class DedicatedHostGroupAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $hostReplacePolicy
+     *
      * @return $this
      */
     public function setHostReplacePolicy($hostReplacePolicy)
@@ -129,6 +139,7 @@ class DedicatedHostGroupAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostGroupDesc
+     *
      * @return $this
      */
     public function setDedicatedHostGroupDesc($dedicatedHostGroupDesc)
@@ -141,6 +152,7 @@ class DedicatedHostGroupAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $allocationPolicy
+     *
      * @return $this
      */
     public function setAllocationPolicy($allocationPolicy)

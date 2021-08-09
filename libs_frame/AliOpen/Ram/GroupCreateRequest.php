@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateGroup
+ *
  * @method string getComments()
  * @method string getGroupName()
  */
@@ -29,6 +31,7 @@ class GroupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $comments
+     *
      * @return $this
      */
     public function setComments($comments)
@@ -41,6 +44,7 @@ class GroupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $groupName
+     *
      * @return $this
      */
     public function setGroupName($groupName)

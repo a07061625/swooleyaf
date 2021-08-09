@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CloneDBInstance
+ *
  * @method string getResourceOwnerId()
  * @method string getDBInstanceStorage()
  * @method string getClientToken()
@@ -51,6 +53,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -63,6 +66,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStorage
+     *
      * @return $this
      */
     public function setDBInstanceStorage($dBInstanceStorage)
@@ -75,6 +79,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -87,6 +92,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneIdSlave1
+     *
      * @return $this
      */
     public function setZoneIdSlave1($zoneIdSlave1)
@@ -99,6 +105,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneIdSlave2
+     *
      * @return $this
      */
     public function setZoneIdSlave2($zoneIdSlave2)
@@ -111,6 +118,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -123,6 +131,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $tableMeta
+     *
      * @return $this
      */
     public function setTableMeta($tableMeta)
@@ -135,6 +144,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceDescription
+     *
      * @return $this
      */
     public function setDBInstanceDescription($dBInstanceDescription)
@@ -147,6 +157,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -159,6 +170,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStorageType
+     *
      * @return $this
      */
     public function setDBInstanceStorageType($dBInstanceStorageType)
@@ -171,6 +183,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostGroupId
+     *
      * @return $this
      */
     public function setDedicatedHostGroupId($dedicatedHostGroupId)
@@ -183,6 +196,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreTime
+     *
      * @return $this
      */
     public function setRestoreTime($restoreTime)
@@ -195,6 +209,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -207,6 +222,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -219,6 +235,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $backupId
+     *
      * @return $this
      */
     public function setBackupId($backupId)
@@ -231,6 +248,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -243,6 +261,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreTable
+     *
      * @return $this
      */
     public function setRestoreTable($restoreTable)
@@ -255,6 +274,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -267,6 +287,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $usedTime
+     *
      * @return $this
      */
     public function setUsedTime($usedTime)
@@ -279,6 +300,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceClass
+     *
      * @return $this
      */
     public function setDBInstanceClass($dBInstanceClass)
@@ -291,6 +313,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $dbNames
+     *
      * @return $this
      */
     public function setDbNames($dbNames)
@@ -303,6 +326,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -315,6 +339,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $privateIpAddress
+     *
      * @return $this
      */
     public function setPrivateIpAddress($privateIpAddress)
@@ -327,6 +352,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $vPCId
+     *
      * @return $this
      */
     public function setVPCId($vPCId)
@@ -339,6 +365,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -351,6 +378,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $category
+     *
      * @return $this
      */
     public function setCategory($category)
@@ -363,6 +391,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)
@@ -375,6 +404,7 @@ class DBInstanceCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceNetworkType
+     *
      * @return $this
      */
     public function setInstanceNetworkType($instanceNetworkType)

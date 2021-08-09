@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateVirtualMFADevice
+ *
  * @method string getVirtualMFADeviceName()
  */
 class VirtualMFADeviceCreateRequest extends RpcAcsRequest
@@ -28,6 +30,7 @@ class VirtualMFADeviceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $virtualMFADeviceName
+     *
      * @return $this
      */
     public function setVirtualMFADeviceName($virtualMFADeviceName)

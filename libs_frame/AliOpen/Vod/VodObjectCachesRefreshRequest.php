@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RefreshVodObjectCaches
+ *
  * @method string getObjectPath()
  * @method string getOwnerId()
  * @method string getSecurityToken()
@@ -27,6 +29,7 @@ class VodObjectCachesRefreshRequest extends RpcAcsRequest
 
     /**
      * @param string $objectPath
+     *
      * @return $this
      */
     public function setObjectPath($objectPath)
@@ -39,6 +42,7 @@ class VodObjectCachesRefreshRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -51,6 +55,7 @@ class VodObjectCachesRefreshRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -63,6 +68,7 @@ class VodObjectCachesRefreshRequest extends RpcAcsRequest
 
     /**
      * @param string $objectType
+     *
      * @return $this
      */
     public function setObjectType($objectType)

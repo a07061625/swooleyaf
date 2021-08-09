@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsTrendTopicInputTps
+ *
  * @method string getPeriod()
  * @method string getEndTime()
  * @method string getBeginTime()
@@ -29,6 +31,7 @@ class TrendTopicInputTpsRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -41,6 +44,7 @@ class TrendTopicInputTpsRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -53,6 +57,7 @@ class TrendTopicInputTpsRequest extends RpcAcsRequest
 
     /**
      * @param string $beginTime
+     *
      * @return $this
      */
     public function setBeginTime($beginTime)
@@ -65,6 +70,7 @@ class TrendTopicInputTpsRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -77,6 +83,7 @@ class TrendTopicInputTpsRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -89,6 +96,7 @@ class TrendTopicInputTpsRequest extends RpcAcsRequest
 
     /**
      * @param string $topic
+     *
      * @return $this
      */
     public function setTopic($topic)

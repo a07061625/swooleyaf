@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDedicatedHostAttribute
+ *
  * @method string getResourceOwnerId()
  * @method string getHostName()
  * @method string getAllocationStatus()
@@ -29,6 +31,7 @@ class DedicatedHostAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class DedicatedHostAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $hostName
+     *
      * @return $this
      */
     public function setHostName($hostName)
@@ -53,6 +57,7 @@ class DedicatedHostAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $allocationStatus
+     *
      * @return $this
      */
     public function setAllocationStatus($allocationStatus)
@@ -65,6 +70,7 @@ class DedicatedHostAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -77,6 +83,7 @@ class DedicatedHostAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostId
+     *
      * @return $this
      */
     public function setDedicatedHostId($dedicatedHostId)
@@ -89,6 +96,7 @@ class DedicatedHostAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

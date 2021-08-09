@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeVodTranscodeData
+ *
  * @method string getStartTime()
  * @method string getStorage()
  * @method string getEndTime()
@@ -29,6 +31,7 @@ class VodTranscodeDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -41,6 +44,7 @@ class VodTranscodeDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $storage
+     *
      * @return $this
      */
     public function setStorage($storage)
@@ -53,6 +57,7 @@ class VodTranscodeDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -65,6 +70,7 @@ class VodTranscodeDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $specification
+     *
      * @return $this
      */
     public function setSpecification($specification)
@@ -77,6 +83,7 @@ class VodTranscodeDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -89,6 +96,7 @@ class VodTranscodeDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)

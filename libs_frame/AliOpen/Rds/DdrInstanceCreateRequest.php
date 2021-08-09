@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateDdrInstance
+ *
  * @method string getResourceOwnerId()
  * @method string getDBInstanceStorage()
  * @method string getSystemDBCharset()
@@ -58,6 +60,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -70,6 +73,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStorage
+     *
      * @return $this
      */
     public function setDBInstanceStorage($dBInstanceStorage)
@@ -82,6 +86,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDBCharset
+     *
      * @return $this
      */
     public function setSystemDBCharset($systemDBCharset)
@@ -94,6 +99,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $engineVersion
+     *
      * @return $this
      */
     public function setEngineVersion($engineVersion)
@@ -106,6 +112,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $userBakSetURL
+     *
      * @return $this
      */
     public function setUserBakSetURL($userBakSetURL)
@@ -118,6 +125,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -130,6 +138,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceDescription
+     *
      * @return $this
      */
     public function setDBInstanceDescription($dBInstanceDescription)
@@ -142,6 +151,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $backupSetRegion
+     *
      * @return $this
      */
     public function setBackupSetRegion($backupSetRegion)
@@ -154,6 +164,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -166,6 +177,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $backupSetId
+     *
      * @return $this
      */
     public function setBackupSetId($backupSetId)
@@ -178,6 +190,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -190,6 +203,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceClass
+     *
      * @return $this
      */
     public function setDBInstanceClass($dBInstanceClass)
@@ -202,6 +216,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $securityIPList
+     *
      * @return $this
      */
     public function setSecurityIPList($securityIPList)
@@ -214,6 +229,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -226,6 +242,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $privateIpAddress
+     *
      * @return $this
      */
     public function setPrivateIpAddress($privateIpAddress)
@@ -238,6 +255,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $tunnelId
+     *
      * @return $this
      */
     public function setTunnelId($tunnelId)
@@ -250,6 +268,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -262,6 +281,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceNetworkType
+     *
      * @return $this
      */
     public function setInstanceNetworkType($instanceNetworkType)
@@ -274,6 +294,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $connectionMode
+     *
      * @return $this
      */
     public function setConnectionMode($connectionMode)
@@ -286,6 +307,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceDBInstanceName
+     *
      * @return $this
      */
     public function setSourceDBInstanceName($sourceDBInstanceName)
@@ -298,6 +320,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -310,6 +333,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $hostType
+     *
      * @return $this
      */
     public function setHostType($hostType)
@@ -322,6 +346,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $engine
+     *
      * @return $this
      */
     public function setEngine($engine)
@@ -334,6 +359,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStorageType
+     *
      * @return $this
      */
     public function setDBInstanceStorageType($dBInstanceStorageType)
@@ -346,6 +372,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceNetType
+     *
      * @return $this
      */
     public function setDBInstanceNetType($dBInstanceNetType)
@@ -358,6 +385,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $backupSetType
+     *
      * @return $this
      */
     public function setBackupSetType($backupSetType)
@@ -370,6 +398,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreTime
+     *
      * @return $this
      */
     public function setRestoreTime($restoreTime)
@@ -382,6 +411,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $bakSetName
+     *
      * @return $this
      */
     public function setBakSetName($bakSetName)
@@ -394,6 +424,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -406,6 +437,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -418,6 +450,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $usedTime
+     *
      * @return $this
      */
     public function setUsedTime($usedTime)
@@ -430,6 +463,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreType
+     *
      * @return $this
      */
     public function setRestoreType($restoreType)
@@ -442,6 +476,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $vPCId
+     *
      * @return $this
      */
     public function setVPCId($vPCId)
@@ -454,6 +489,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)
@@ -466,6 +502,7 @@ class DdrInstanceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceRegion
+     *
      * @return $this
      */
     public function setSourceRegion($sourceRegion)

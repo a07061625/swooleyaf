@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of EvaluateDedicatedHostInstanceResource
+ *
  * @method string getResourceOwnerId()
  * @method string getEngineVersion()
  * @method string getEngine()
@@ -32,6 +34,7 @@ class DedicatedHostInstanceResourceEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class DedicatedHostInstanceResourceEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $engineVersion
+     *
      * @return $this
      */
     public function setEngineVersion($engineVersion)
@@ -56,6 +60,7 @@ class DedicatedHostInstanceResourceEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $engine
+     *
      * @return $this
      */
     public function setEngine($engine)
@@ -68,6 +73,7 @@ class DedicatedHostInstanceResourceEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostGroupId
+     *
      * @return $this
      */
     public function setDedicatedHostGroupId($dedicatedHostGroupId)
@@ -80,6 +86,7 @@ class DedicatedHostInstanceResourceEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceClassNames
+     *
      * @return $this
      */
     public function setInstanceClassNames($instanceClassNames)
@@ -92,6 +99,7 @@ class DedicatedHostInstanceResourceEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $diskSize
+     *
      * @return $this
      */
     public function setDiskSize($diskSize)
@@ -104,6 +112,7 @@ class DedicatedHostInstanceResourceEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -116,6 +125,7 @@ class DedicatedHostInstanceResourceEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -128,6 +138,7 @@ class DedicatedHostInstanceResourceEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $diskType
+     *
      * @return $this
      */
     public function setDiskType($diskType)

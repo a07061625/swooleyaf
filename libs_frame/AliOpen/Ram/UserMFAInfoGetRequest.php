@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetUserMFAInfo
+ *
  * @method string getUserName()
  */
 class UserMFAInfoGetRequest extends RpcAcsRequest
@@ -28,6 +30,7 @@ class UserMFAInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $userName
+     *
      * @return $this
      */
     public function setUserName($userName)

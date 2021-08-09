@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of PreCheckCreateOrderForTempUpgrade
+ *
  * @method string getResourceOwnerId()
  * @method string getDBInstanceStorage()
  * @method string getNodeType()
@@ -38,6 +40,7 @@ class CreateOrderForTempUpgradePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +53,7 @@ class CreateOrderForTempUpgradePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStorage
+     *
      * @return $this
      */
     public function setDBInstanceStorage($dBInstanceStorage)
@@ -62,6 +66,7 @@ class CreateOrderForTempUpgradePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeType
+     *
      * @return $this
      */
     public function setNodeType($nodeType)
@@ -74,6 +79,7 @@ class CreateOrderForTempUpgradePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -86,6 +92,7 @@ class CreateOrderForTempUpgradePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $effectiveTime
+     *
      * @return $this
      */
     public function setEffectiveTime($effectiveTime)
@@ -98,6 +105,7 @@ class CreateOrderForTempUpgradePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -110,6 +118,7 @@ class CreateOrderForTempUpgradePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStorageType
+     *
      * @return $this
      */
     public function setDBInstanceStorageType($dBInstanceStorageType)
@@ -122,6 +131,7 @@ class CreateOrderForTempUpgradePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $businessInfo
+     *
      * @return $this
      */
     public function setBusinessInfo($businessInfo)
@@ -134,6 +144,7 @@ class CreateOrderForTempUpgradePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -146,6 +157,7 @@ class CreateOrderForTempUpgradePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -158,6 +170,7 @@ class CreateOrderForTempUpgradePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resource
+     *
      * @return $this
      */
     public function setResource($resource)
@@ -170,6 +183,7 @@ class CreateOrderForTempUpgradePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityCode
+     *
      * @return $this
      */
     public function setCommodityCode($commodityCode)
@@ -182,6 +196,7 @@ class CreateOrderForTempUpgradePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -194,6 +209,7 @@ class CreateOrderForTempUpgradePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $usedTime
+     *
      * @return $this
      */
     public function setUsedTime($usedTime)
@@ -206,6 +222,7 @@ class CreateOrderForTempUpgradePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceClass
+     *
      * @return $this
      */
     public function setDBInstanceClass($dBInstanceClass)

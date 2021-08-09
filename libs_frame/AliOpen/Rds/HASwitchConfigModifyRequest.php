@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyHASwitchConfig
+ *
  * @method string getResourceOwnerId()
  * @method string getHAConfig()
  * @method string getManualHATime()
@@ -29,6 +31,7 @@ class HASwitchConfigModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class HASwitchConfigModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $hAConfig
+     *
      * @return $this
      */
     public function setHAConfig($hAConfig)
@@ -53,6 +57,7 @@ class HASwitchConfigModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $manualHATime
+     *
      * @return $this
      */
     public function setManualHATime($manualHATime)
@@ -65,6 +70,7 @@ class HASwitchConfigModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -77,6 +83,7 @@ class HASwitchConfigModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -89,6 +96,7 @@ class HASwitchConfigModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

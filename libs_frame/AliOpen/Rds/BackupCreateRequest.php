@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateBackup
+ *
  * @method string getResourceOwnerId()
  * @method string getBackupStrategy()
  * @method string getDBInstanceId()
@@ -32,6 +34,7 @@ class BackupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class BackupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $backupStrategy
+     *
      * @return $this
      */
     public function setBackupStrategy($backupStrategy)
@@ -56,6 +60,7 @@ class BackupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -68,6 +73,7 @@ class BackupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $backupType
+     *
      * @return $this
      */
     public function setBackupType($backupType)
@@ -80,6 +86,7 @@ class BackupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -92,6 +99,7 @@ class BackupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +112,7 @@ class BackupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,6 +125,7 @@ class BackupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $backupMethod
+     *
      * @return $this
      */
     public function setBackupMethod($backupMethod)
@@ -128,6 +138,7 @@ class BackupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBName
+     *
      * @return $this
      */
     public function setDBName($dBName)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateAITemplate
+ *
  * @method string getResourceOwnerId()
  * @method string getTemplateConfig()
  * @method string getTemplateName()
@@ -29,6 +31,7 @@ class AITemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class AITemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $templateConfig
+     *
      * @return $this
      */
     public function setTemplateConfig($templateConfig)
@@ -53,6 +57,7 @@ class AITemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $templateName
+     *
      * @return $this
      */
     public function setTemplateName($templateName)
@@ -65,6 +70,7 @@ class AITemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -77,6 +83,7 @@ class AITemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -89,6 +96,7 @@ class AITemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $templateId
+     *
      * @return $this
      */
     public function setTemplateId($templateId)

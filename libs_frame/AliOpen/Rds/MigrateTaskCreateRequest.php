@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateMigrateTask
+ *
  * @method string getResourceOwnerId()
  * @method string getIsOnlineDB()
  * @method string getDBInstanceId()
@@ -34,6 +36,7 @@ class MigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class MigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $isOnlineDB
+     *
      * @return $this
      */
     public function setIsOnlineDB($isOnlineDB)
@@ -58,6 +62,7 @@ class MigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -70,6 +75,7 @@ class MigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $migrateTaskId
+     *
      * @return $this
      */
     public function setMigrateTaskId($migrateTaskId)
@@ -82,6 +88,7 @@ class MigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -94,6 +101,7 @@ class MigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -106,6 +114,7 @@ class MigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ossObjectPositions
+     *
      * @return $this
      */
     public function setOssObjectPositions($ossObjectPositions)
@@ -118,6 +127,7 @@ class MigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $oSSUrls
+     *
      * @return $this
      */
     public function setOSSUrls($oSSUrls)
@@ -130,6 +140,7 @@ class MigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBName
+     *
      * @return $this
      */
     public function setDBName($dBName)
@@ -142,6 +153,7 @@ class MigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $backupMode
+     *
      * @return $this
      */
     public function setBackupMode($backupMode)
@@ -154,6 +166,7 @@ class MigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $checkDBMode
+     *
      * @return $this
      */
     public function setCheckDBMode($checkDBMode)

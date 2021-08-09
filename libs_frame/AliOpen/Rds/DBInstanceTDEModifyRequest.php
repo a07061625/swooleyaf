@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDBInstanceTDE
+ *
  * @method string getResourceOwnerId()
  * @method string getDBInstanceId()
  * @method string getResourceOwnerAccount()
@@ -32,6 +34,7 @@ class DBInstanceTDEModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class DBInstanceTDEModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -56,6 +60,7 @@ class DBInstanceTDEModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -68,6 +73,7 @@ class DBInstanceTDEModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -80,6 +86,7 @@ class DBInstanceTDEModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $encryptionKey
+     *
      * @return $this
      */
     public function setEncryptionKey($encryptionKey)
@@ -92,6 +99,7 @@ class DBInstanceTDEModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -104,6 +112,7 @@ class DBInstanceTDEModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBName
+     *
      * @return $this
      */
     public function setDBName($dBName)
@@ -116,6 +125,7 @@ class DBInstanceTDEModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $roleArn
+     *
      * @return $this
      */
     public function setRoleArn($roleArn)
@@ -128,6 +138,7 @@ class DBInstanceTDEModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $tDEStatus
+     *
      * @return $this
      */
     public function setTDEStatus($tDEStatus)

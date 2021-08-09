@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsConsumerTimeSpan
+ *
  * @method string getGroupId()
  * @method string getInstanceId()
  * @method string getTopic()
@@ -26,6 +28,7 @@ class ConsumerTimeSpanRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -38,6 +41,7 @@ class ConsumerTimeSpanRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -50,6 +54,7 @@ class ConsumerTimeSpanRequest extends RpcAcsRequest
 
     /**
      * @param string $topic
+     *
      * @return $this
      */
     public function setTopic($topic)

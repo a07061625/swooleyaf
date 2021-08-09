@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetUploadDetails
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceRealOwnerId()
  * @method string getMediaIds()
@@ -29,6 +31,7 @@ class UploadDetailsGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class UploadDetailsGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceRealOwnerId
+     *
      * @return $this
      */
     public function setResourceRealOwnerId($resourceRealOwnerId)
@@ -53,6 +57,7 @@ class UploadDetailsGetRequest extends RpcAcsRequest
 
     /**
      * @param string $mediaIds
+     *
      * @return $this
      */
     public function setMediaIds($mediaIds)
@@ -65,6 +70,7 @@ class UploadDetailsGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -77,6 +83,7 @@ class UploadDetailsGetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -89,6 +96,7 @@ class UploadDetailsGetRequest extends RpcAcsRequest
 
     /**
      * @param string $mediaType
+     *
      * @return $this
      */
     public function setMediaType($mediaType)

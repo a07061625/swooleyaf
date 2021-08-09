@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsTopicUpdate
+ *
  * @method string getPerm()
  * @method string getInstanceId()
  * @method string getTopic()
@@ -26,6 +28,7 @@ class TopicUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $perm
+     *
      * @return $this
      */
     public function setPerm($perm)
@@ -38,6 +41,7 @@ class TopicUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -50,6 +54,7 @@ class TopicUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $topic
+     *
      * @return $this
      */
     public function setTopic($topic)

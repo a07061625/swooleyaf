@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of EvaluateSupportByokShow
+ *
  * @method string getResourceOwnerId()
  * @method string getNodeType()
  * @method string getEngineVersion()
@@ -33,6 +35,7 @@ class SupportByokShowEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class SupportByokShowEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeType
+     *
      * @return $this
      */
     public function setNodeType($nodeType)
@@ -57,6 +61,7 @@ class SupportByokShowEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $engineVersion
+     *
      * @return $this
      */
     public function setEngineVersion($engineVersion)
@@ -69,6 +74,7 @@ class SupportByokShowEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -81,6 +87,7 @@ class SupportByokShowEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $engine
+     *
      * @return $this
      */
     public function setEngine($engine)
@@ -93,6 +100,7 @@ class SupportByokShowEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $dbInstanceStorageType
+     *
      * @return $this
      */
     public function setDbInstanceStorageType($dbInstanceStorageType)
@@ -105,6 +113,7 @@ class SupportByokShowEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -117,6 +126,7 @@ class SupportByokShowEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -129,6 +139,7 @@ class SupportByokShowEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -141,6 +152,7 @@ class SupportByokShowEvaluateRequest extends RpcAcsRequest
 
     /**
      * @param string $targetRegionId
+     *
      * @return $this
      */
     public function setTargetRegionId($targetRegionId)

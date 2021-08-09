@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsConsumerResetOffset
+ *
  * @method string getGroupId()
  * @method string getResetTimestamp()
  * @method string getType()
@@ -28,6 +30,7 @@ class ConsumerOffsetResetRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -40,6 +43,7 @@ class ConsumerOffsetResetRequest extends RpcAcsRequest
 
     /**
      * @param string $resetTimestamp
+     *
      * @return $this
      */
     public function setResetTimestamp($resetTimestamp)
@@ -52,6 +56,7 @@ class ConsumerOffsetResetRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -64,6 +69,7 @@ class ConsumerOffsetResetRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -76,6 +82,7 @@ class ConsumerOffsetResetRequest extends RpcAcsRequest
 
     /**
      * @param string $topic
+     *
      * @return $this
      */
     public function setTopic($topic)

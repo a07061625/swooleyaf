@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetDefaultPolicyVersion
+ *
  * @method string getVersionId()
  * @method string getPolicyName()
  */
@@ -29,6 +31,7 @@ class DefaultPolicyVersionSetRequest extends RpcAcsRequest
 
     /**
      * @param string $versionId
+     *
      * @return $this
      */
     public function setVersionId($versionId)
@@ -41,6 +44,7 @@ class DefaultPolicyVersionSetRequest extends RpcAcsRequest
 
     /**
      * @param string $policyName
+     *
      * @return $this
      */
     public function setPolicyName($policyName)

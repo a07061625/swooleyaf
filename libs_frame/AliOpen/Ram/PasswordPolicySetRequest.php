@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetPasswordPolicy
+ *
  * @method string getRequireNumbers()
  * @method string getPasswordReusePrevention()
  * @method string getRequireUppercaseCharacters()
@@ -36,6 +38,7 @@ class PasswordPolicySetRequest extends RpcAcsRequest
 
     /**
      * @param string $requireNumbers
+     *
      * @return $this
      */
     public function setRequireNumbers($requireNumbers)
@@ -48,6 +51,7 @@ class PasswordPolicySetRequest extends RpcAcsRequest
 
     /**
      * @param string $passwordReusePrevention
+     *
      * @return $this
      */
     public function setPasswordReusePrevention($passwordReusePrevention)
@@ -60,6 +64,7 @@ class PasswordPolicySetRequest extends RpcAcsRequest
 
     /**
      * @param string $requireUppercaseCharacters
+     *
      * @return $this
      */
     public function setRequireUppercaseCharacters($requireUppercaseCharacters)
@@ -72,6 +77,7 @@ class PasswordPolicySetRequest extends RpcAcsRequest
 
     /**
      * @param string $maxPasswordAge
+     *
      * @return $this
      */
     public function setMaxPasswordAge($maxPasswordAge)
@@ -84,6 +90,7 @@ class PasswordPolicySetRequest extends RpcAcsRequest
 
     /**
      * @param string $maxLoginAttemps
+     *
      * @return $this
      */
     public function setMaxLoginAttemps($maxLoginAttemps)
@@ -96,6 +103,7 @@ class PasswordPolicySetRequest extends RpcAcsRequest
 
     /**
      * @param string $hardExpiry
+     *
      * @return $this
      */
     public function setHardExpiry($hardExpiry)
@@ -108,6 +116,7 @@ class PasswordPolicySetRequest extends RpcAcsRequest
 
     /**
      * @param string $minimumPasswordLength
+     *
      * @return $this
      */
     public function setMinimumPasswordLength($minimumPasswordLength)
@@ -120,6 +129,7 @@ class PasswordPolicySetRequest extends RpcAcsRequest
 
     /**
      * @param string $requireLowercaseCharacters
+     *
      * @return $this
      */
     public function setRequireLowercaseCharacters($requireLowercaseCharacters)
@@ -132,6 +142,7 @@ class PasswordPolicySetRequest extends RpcAcsRequest
 
     /**
      * @param string $requireSymbols
+     *
      * @return $this
      */
     public function setRequireSymbols($requireSymbols)

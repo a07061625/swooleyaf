@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MigrateDBInstance
+ *
  * @method string getResourceOwnerId()
  * @method string getSpecifiedTime()
  * @method string getTargetDedicatedHostIdForSlave()
@@ -39,6 +41,7 @@ class DBInstanceMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -51,6 +54,7 @@ class DBInstanceMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $specifiedTime
+     *
      * @return $this
      */
     public function setSpecifiedTime($specifiedTime)
@@ -63,6 +67,7 @@ class DBInstanceMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $targetDedicatedHostIdForSlave
+     *
      * @return $this
      */
     public function setTargetDedicatedHostIdForSlave($targetDedicatedHostIdForSlave)
@@ -75,6 +80,7 @@ class DBInstanceMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $engineVersion
+     *
      * @return $this
      */
     public function setEngineVersion($engineVersion)
@@ -87,6 +93,7 @@ class DBInstanceMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $storage
+     *
      * @return $this
      */
     public function setStorage($storage)
@@ -99,6 +106,7 @@ class DBInstanceMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $effectiveTime
+     *
      * @return $this
      */
     public function setEffectiveTime($effectiveTime)
@@ -111,6 +119,7 @@ class DBInstanceMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceTransType
+     *
      * @return $this
      */
     public function setDBInstanceTransType($dBInstanceTransType)
@@ -123,6 +132,7 @@ class DBInstanceMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $targetDedicatedHostIdForMaster
+     *
      * @return $this
      */
     public function setTargetDedicatedHostIdForMaster($targetDedicatedHostIdForMaster)
@@ -135,6 +145,7 @@ class DBInstanceMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -147,6 +158,7 @@ class DBInstanceMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostGroupId
+     *
      * @return $this
      */
     public function setDedicatedHostGroupId($dedicatedHostGroupId)
@@ -159,6 +171,7 @@ class DBInstanceMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -171,6 +184,7 @@ class DBInstanceMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -183,6 +197,7 @@ class DBInstanceMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $targetDBInstanceClass
+     *
      * @return $this
      */
     public function setTargetDBInstanceClass($targetDBInstanceClass)
@@ -195,6 +210,7 @@ class DBInstanceMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -207,6 +223,7 @@ class DBInstanceMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $targetDedicatedHostIdForLog
+     *
      * @return $this
      */
     public function setTargetDedicatedHostIdForLog($targetDedicatedHostIdForLog)
@@ -219,6 +236,7 @@ class DBInstanceMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)

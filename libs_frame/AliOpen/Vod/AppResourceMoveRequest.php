@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MoveAppResource
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceRealOwnerId()
  * @method string getTargetAppId()
@@ -30,6 +32,7 @@ class AppResourceMoveRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class AppResourceMoveRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceRealOwnerId
+     *
      * @return $this
      */
     public function setResourceRealOwnerId($resourceRealOwnerId)
@@ -54,6 +58,7 @@ class AppResourceMoveRequest extends RpcAcsRequest
 
     /**
      * @param string $targetAppId
+     *
      * @return $this
      */
     public function setTargetAppId($targetAppId)
@@ -66,6 +71,7 @@ class AppResourceMoveRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -78,6 +84,7 @@ class AppResourceMoveRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -90,6 +97,7 @@ class AppResourceMoveRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -102,6 +110,7 @@ class AppResourceMoveRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceIds
+     *
      * @return $this
      */
     public function setResourceIds($resourceIds)

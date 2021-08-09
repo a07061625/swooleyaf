@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateDBInstanceReplica
+ *
  * @method string getConnectionMode()
  * @method string getDomainMode()
  * @method string getReplicaDescription()
@@ -49,6 +51,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $connectionMode
+     *
      * @return $this
      */
     public function setConnectionMode($connectionMode)
@@ -61,6 +64,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $domainMode
+     *
      * @return $this
      */
     public function setDomainMode($domainMode)
@@ -73,6 +77,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $replicaDescription
+     *
      * @return $this
      */
     public function setReplicaDescription($replicaDescription)
@@ -85,6 +90,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -97,6 +103,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStorage
+     *
      * @return $this
      */
     public function setDBInstanceStorage($dBInstanceStorage)
@@ -109,6 +116,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDBCharset
+     *
      * @return $this
      */
     public function setSystemDBCharset($systemDBCharset)
@@ -121,6 +129,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -133,6 +142,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $engineVersion
+     *
      * @return $this
      */
     public function setEngineVersion($engineVersion)
@@ -145,6 +155,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $engine
+     *
      * @return $this
      */
     public function setEngine($engine)
@@ -157,6 +168,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceDescription
+     *
      * @return $this
      */
     public function setDBInstanceDescription($dBInstanceDescription)
@@ -169,6 +181,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceNetType
+     *
      * @return $this
      */
     public function setDBInstanceNetType($dBInstanceNetType)
@@ -181,6 +194,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -193,6 +207,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -205,6 +220,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -217,6 +233,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -229,6 +246,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $usedTime
+     *
      * @return $this
      */
     public function setUsedTime($usedTime)
@@ -241,6 +259,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceClass
+     *
      * @return $this
      */
     public function setDBInstanceClass($dBInstanceClass)
@@ -253,6 +272,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $securityIPList
+     *
      * @return $this
      */
     public function setSecurityIPList($securityIPList)
@@ -265,6 +285,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -277,6 +298,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $privateIpAddress
+     *
      * @return $this
      */
     public function setPrivateIpAddress($privateIpAddress)
@@ -289,6 +311,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceDBInstanceId
+     *
      * @return $this
      */
     public function setSourceDBInstanceId($sourceDBInstanceId)
@@ -301,6 +324,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $replicaMode
+     *
      * @return $this
      */
     public function setReplicaMode($replicaMode)
@@ -313,6 +337,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $vPCId
+     *
      * @return $this
      */
     public function setVPCId($vPCId)
@@ -325,6 +350,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -337,6 +363,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)
@@ -349,6 +376,7 @@ class DBInstanceReplicaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceNetworkType
+     *
      * @return $this
      */
     public function setInstanceNetworkType($instanceNetworkType)

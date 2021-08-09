@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AllocateInstanceVpcNetworkType
+ *
  * @method string getResourceOwnerId()
  * @method string getTargetVpcId()
  * @method string getTargetZoneId()
@@ -32,6 +34,7 @@ class InstanceVpcNetworkTypeAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class InstanceVpcNetworkTypeAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $targetVpcId
+     *
      * @return $this
      */
     public function setTargetVpcId($targetVpcId)
@@ -56,6 +60,7 @@ class InstanceVpcNetworkTypeAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $targetZoneId
+     *
      * @return $this
      */
     public function setTargetZoneId($targetZoneId)
@@ -68,6 +73,7 @@ class InstanceVpcNetworkTypeAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -80,6 +86,7 @@ class InstanceVpcNetworkTypeAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -92,6 +99,7 @@ class InstanceVpcNetworkTypeAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +112,7 @@ class InstanceVpcNetworkTypeAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $targetVSwitchId
+     *
      * @return $this
      */
     public function setTargetVSwitchId($targetVSwitchId)
@@ -116,6 +125,7 @@ class InstanceVpcNetworkTypeAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -128,6 +138,7 @@ class InstanceVpcNetworkTypeAllocateRequest extends RpcAcsRequest
 
     /**
      * @param string $targetRegionId
+     *
      * @return $this
      */
     public function setTargetRegionId($targetRegionId)

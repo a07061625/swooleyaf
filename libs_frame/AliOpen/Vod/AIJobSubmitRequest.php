@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitAIJob
+ *
  * @method string getResourceOwnerId()
  * @method string getUserData()
  * @method string getTypes()
@@ -32,6 +34,7 @@ class AIJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class AIJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -56,6 +60,7 @@ class AIJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $types
+     *
      * @return $this
      */
     public function setTypes($types)
@@ -68,6 +73,7 @@ class AIJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -80,6 +86,7 @@ class AIJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -92,6 +99,7 @@ class AIJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -104,6 +112,7 @@ class AIJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $mediaId
+     *
      * @return $this
      */
     public function setMediaId($mediaId)
@@ -116,6 +125,7 @@ class AIJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $input
+     *
      * @return $this
      */
     public function setInput($input)
@@ -128,6 +138,7 @@ class AIJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $config
+     *
      * @return $this
      */
     public function setConfig($config)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsTraceGetResult
+ *
  * @method string getQueryId()
  */
 class TraceGetResultRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class TraceGetResultRequest extends RpcAcsRequest
 
     /**
      * @param string $queryId
+     *
      * @return $this
      */
     public function setQueryId($queryId)

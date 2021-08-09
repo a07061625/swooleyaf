@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateUploadAttachedMedia
+ *
  * @method string getResourceOwnerId()
  * @method string getIcon()
  * @method string getDescription()
@@ -39,6 +41,7 @@ class UploadAttachedMediaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -51,6 +54,7 @@ class UploadAttachedMediaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $icon
+     *
      * @return $this
      */
     public function setIcon($icon)
@@ -63,6 +67,7 @@ class UploadAttachedMediaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -75,6 +80,7 @@ class UploadAttachedMediaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $fileSize
+     *
      * @return $this
      */
     public function setFileSize($fileSize)
@@ -87,6 +93,7 @@ class UploadAttachedMediaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -99,6 +106,7 @@ class UploadAttachedMediaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $businessType
+     *
      * @return $this
      */
     public function setBusinessType($businessType)
@@ -111,6 +119,7 @@ class UploadAttachedMediaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $storageLocation
+     *
      * @return $this
      */
     public function setStorageLocation($storageLocation)
@@ -123,6 +132,7 @@ class UploadAttachedMediaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -135,6 +145,7 @@ class UploadAttachedMediaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $cateId
+     *
      * @return $this
      */
     public function setCateId($cateId)
@@ -147,6 +158,7 @@ class UploadAttachedMediaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -159,6 +171,7 @@ class UploadAttachedMediaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $cateIds
+     *
      * @return $this
      */
     public function setCateIds($cateIds)
@@ -171,6 +184,7 @@ class UploadAttachedMediaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -183,6 +197,7 @@ class UploadAttachedMediaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $tags
+     *
      * @return $this
      */
     public function setTags($tags)
@@ -195,6 +210,7 @@ class UploadAttachedMediaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $mediaExt
+     *
      * @return $this
      */
     public function setMediaExt($mediaExt)
@@ -207,6 +223,7 @@ class UploadAttachedMediaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $fileName
+     *
      * @return $this
      */
     public function setFileName($fileName)
@@ -219,6 +236,7 @@ class UploadAttachedMediaCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
