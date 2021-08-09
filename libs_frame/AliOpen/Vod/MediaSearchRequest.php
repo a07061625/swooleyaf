@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SearchMedia
+ *
  * @method string getResourceOwnerId()
  * @method string getSessionId()
  * @method string getScrollToken()
@@ -35,6 +37,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +50,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $sessionId
+     *
      * @return $this
      */
     public function setSessionId($sessionId)
@@ -59,6 +63,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $scrollToken
+     *
      * @return $this
      */
     public function setScrollToken($scrollToken)
@@ -71,6 +76,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $searchType
+     *
      * @return $this
      */
     public function setSearchType($searchType)
@@ -83,6 +89,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -95,6 +102,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $resultTypes
+     *
      * @return $this
      */
     public function setResultTypes($resultTypes)
@@ -107,6 +115,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -119,6 +128,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $match
+     *
      * @return $this
      */
     public function setMatch($match)
@@ -131,6 +141,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -143,6 +154,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNo
+     *
      * @return $this
      */
     public function setPageNo($pageNo)
@@ -155,6 +167,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $sortBy
+     *
      * @return $this
      */
     public function setSortBy($sortBy)
@@ -167,6 +180,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $fields
+     *
      * @return $this
      */
     public function setFields($fields)

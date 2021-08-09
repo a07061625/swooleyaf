@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateAutoSnapshotPolicy
+ *
  * @method string getResourceOwnerId()
  * @method string gettimePoints()
  * @method string getrepeatWeekdays()
@@ -31,6 +33,7 @@ class AutoSnapshotPolicyCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class AutoSnapshotPolicyCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $timePoints
+     *
      * @return $this
      */
     public function settimePoints($timePoints)
@@ -55,6 +59,7 @@ class AutoSnapshotPolicyCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $repeatWeekdays
+     *
      * @return $this
      */
     public function setrepeatWeekdays($repeatWeekdays)
@@ -66,7 +71,6 @@ class AutoSnapshotPolicyCreateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -82,6 +86,7 @@ class AutoSnapshotPolicyCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -94,6 +99,7 @@ class AutoSnapshotPolicyCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -106,6 +112,7 @@ class AutoSnapshotPolicyCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $autoSnapshotPolicyName
+     *
      * @return $this
      */
     public function setautoSnapshotPolicyName($autoSnapshotPolicyName)
@@ -118,6 +125,7 @@ class AutoSnapshotPolicyCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $retentionDays
+     *
      * @return $this
      */
     public function setretentionDays($retentionDays)

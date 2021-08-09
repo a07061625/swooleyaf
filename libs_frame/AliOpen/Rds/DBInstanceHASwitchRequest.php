@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SwitchDBInstanceHA
+ *
  * @method string getResourceOwnerId()
  * @method string getEffectiveTime()
  * @method string getDBInstanceId()
@@ -32,6 +34,7 @@ class DBInstanceHASwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class DBInstanceHASwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $effectiveTime
+     *
      * @return $this
      */
     public function setEffectiveTime($effectiveTime)
@@ -56,6 +60,7 @@ class DBInstanceHASwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -68,6 +73,7 @@ class DBInstanceHASwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeId
+     *
      * @return $this
      */
     public function setNodeId($nodeId)
@@ -80,6 +86,7 @@ class DBInstanceHASwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -92,6 +99,7 @@ class DBInstanceHASwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +112,7 @@ class DBInstanceHASwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,6 +125,7 @@ class DBInstanceHASwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $force
+     *
      * @return $this
      */
     public function setForce($force)
@@ -128,6 +138,7 @@ class DBInstanceHASwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $operation
+     *
      * @return $this
      */
     public function setOperation($operation)

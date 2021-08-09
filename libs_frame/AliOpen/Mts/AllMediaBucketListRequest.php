@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListAllMediaBucket
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getNextPageToken()
@@ -29,6 +31,7 @@ class AllMediaBucketListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class AllMediaBucketListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -53,6 +57,7 @@ class AllMediaBucketListRequest extends RpcAcsRequest
 
     /**
      * @param string $nextPageToken
+     *
      * @return $this
      */
     public function setNextPageToken($nextPageToken)
@@ -65,6 +70,7 @@ class AllMediaBucketListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -77,6 +83,7 @@ class AllMediaBucketListRequest extends RpcAcsRequest
 
     /**
      * @param string $maximumPageSize
+     *
      * @return $this
      */
     public function setMaximumPageSize($maximumPageSize)
@@ -89,6 +96,7 @@ class AllMediaBucketListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

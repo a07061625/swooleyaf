@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListSnapshots
+ *
  * @method string getResourceOwnerId()
  * @method string getPageSize()
  * @method string getAuthTimeout()
@@ -31,6 +33,7 @@ class SnapshotsListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class SnapshotsListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -55,6 +59,7 @@ class SnapshotsListRequest extends RpcAcsRequest
 
     /**
      * @param string $authTimeout
+     *
      * @return $this
      */
     public function setAuthTimeout($authTimeout)
@@ -67,6 +72,7 @@ class SnapshotsListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -79,6 +85,7 @@ class SnapshotsListRequest extends RpcAcsRequest
 
     /**
      * @param string $videoId
+     *
      * @return $this
      */
     public function setVideoId($videoId)
@@ -91,6 +98,7 @@ class SnapshotsListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +111,7 @@ class SnapshotsListRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotType
+     *
      * @return $this
      */
     public function setSnapshotType($snapshotType)
@@ -115,6 +124,7 @@ class SnapshotsListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNo
+     *
      * @return $this
      */
     public function setPageNo($pageNo)

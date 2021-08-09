@@ -1,10 +1,10 @@
 <?php
-namespace SyObjectStorage\Oss\Model;
 
-use SyObjectStorage\Oss\Core\OssException;
+namespace SyObjectStorage\Oss\Model;
 
 /**
  * Class LiveChannelInfo
+ *
  * @package SyObjectStorage\Oss\Model
  */
 class LiveChannelInfo implements XmlConfig
@@ -67,30 +67,30 @@ class LiveChannelInfo implements XmlConfig
     public function parseFromXmlNode($xml)
     {
         if (isset($xml->Name)) {
-            $this->name = strval($xml->Name);
+            $this->name = (string)($xml->Name);
         }
 
         if (isset($xml->Description)) {
-            $this->description = strval($xml->Description);
+            $this->description = (string)($xml->Description);
         }
 
         if (isset($xml->Status)) {
-            $this->status = strval($xml->Status);
+            $this->status = (string)($xml->Status);
         }
 
         if (isset($xml->LastModified)) {
-            $this->lastModified = strval($xml->LastModified);
+            $this->lastModified = (string)($xml->LastModified);
         }
 
         if (isset($xml->PublishUrls)) {
             foreach ($xml->PublishUrls as $url) {
-                $this->publishUrls[] = strval($url->Url);
+                $this->publishUrls[] = (string)($url->Url);
             }
         }
 
         if (isset($xml->PlayUrls)) {
             foreach ($xml->PlayUrls as $url) {
-                $this->playUrls[] = strval($url->Url);
+                $this->playUrls[] = (string)($url->Url);
             }
         }
     }
@@ -103,6 +103,6 @@ class LiveChannelInfo implements XmlConfig
 
     public function serializeToXml()
     {
-        throw new OssException("Not implemented.");
+        throw new OssException('Not implemented.');
     }
 }

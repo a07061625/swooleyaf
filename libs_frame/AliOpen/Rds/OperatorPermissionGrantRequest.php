@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GrantOperatorPermission
+ *
  * @method string getPrivileges()
  * @method string getResourceOwnerId()
  * @method string getDBInstanceId()
@@ -30,6 +32,7 @@ class OperatorPermissionGrantRequest extends RpcAcsRequest
 
     /**
      * @param string $privileges
+     *
      * @return $this
      */
     public function setPrivileges($privileges)
@@ -42,6 +45,7 @@ class OperatorPermissionGrantRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -54,6 +58,7 @@ class OperatorPermissionGrantRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -66,6 +71,7 @@ class OperatorPermissionGrantRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -78,6 +84,7 @@ class OperatorPermissionGrantRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -90,6 +97,7 @@ class OperatorPermissionGrantRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -102,6 +110,7 @@ class OperatorPermissionGrantRequest extends RpcAcsRequest
 
     /**
      * @param string $expiredTime
+     *
      * @return $this
      */
     public function setExpiredTime($expiredTime)

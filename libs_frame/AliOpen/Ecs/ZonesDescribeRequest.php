@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeZones
+ *
  * @method string getResourceOwnerId()
  * @method string getInstanceChargeType()
  * @method string getResourceOwnerAccount()
@@ -31,6 +33,7 @@ class ZonesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class ZonesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceChargeType
+     *
      * @return $this
      */
     public function setInstanceChargeType($instanceChargeType)
@@ -55,6 +59,7 @@ class ZonesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -67,6 +72,7 @@ class ZonesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -79,6 +85,7 @@ class ZonesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -91,6 +98,7 @@ class ZonesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $verbose
+     *
      * @return $this
      */
     public function setVerbose($verbose)
@@ -103,6 +111,7 @@ class ZonesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $spotStrategy
+     *
      * @return $this
      */
     public function setSpotStrategy($spotStrategy)
@@ -115,6 +124,7 @@ class ZonesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $acceptLanguage
+     *
      * @return $this
      */
     public function setAcceptLanguage($acceptLanguage)

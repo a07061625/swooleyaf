@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetAuthConfig
+ *
  * @method string getKey1()
  * @method string getKey2()
  * @method string getResourceOwnerId()
@@ -29,6 +31,7 @@ class AuthConfigSetRequest extends RpcAcsRequest
 
     /**
      * @param string $key1
+     *
      * @return $this
      */
     public function setKey1($key1)
@@ -41,6 +44,7 @@ class AuthConfigSetRequest extends RpcAcsRequest
 
     /**
      * @param string $key2
+     *
      * @return $this
      */
     public function setKey2($key2)
@@ -53,6 +57,7 @@ class AuthConfigSetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -65,6 +70,7 @@ class AuthConfigSetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -77,6 +83,7 @@ class AuthConfigSetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -89,6 +96,7 @@ class AuthConfigSetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDedicatedHostAutoRenewAttribute
+ *
  * @method string getDedicatedHostIds()
  * @method string getResourceOwnerId()
  * @method string getDuration()
@@ -32,6 +34,7 @@ class DedicatedHostAutoRenewAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostIds
+     *
      * @return $this
      */
     public function setDedicatedHostIds($dedicatedHostIds)
@@ -44,6 +47,7 @@ class DedicatedHostAutoRenewAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -56,6 +60,7 @@ class DedicatedHostAutoRenewAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $duration
+     *
      * @return $this
      */
     public function setDuration($duration)
@@ -68,6 +73,7 @@ class DedicatedHostAutoRenewAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $renewalStatus
+     *
      * @return $this
      */
     public function setRenewalStatus($renewalStatus)
@@ -80,6 +86,7 @@ class DedicatedHostAutoRenewAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -92,6 +99,7 @@ class DedicatedHostAutoRenewAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +112,7 @@ class DedicatedHostAutoRenewAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,6 +125,7 @@ class DedicatedHostAutoRenewAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $periodUnit
+     *
      * @return $this
      */
     public function setPeriodUnit($periodUnit)
@@ -128,6 +138,7 @@ class DedicatedHostAutoRenewAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $autoRenew
+     *
      * @return $this
      */
     public function setAutoRenew($autoRenew)

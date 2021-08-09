@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsTraceQueryByMsgKey
+ *
  * @method string getEndTime()
  * @method string getBeginTime()
  * @method string getInstanceId()
@@ -28,6 +30,7 @@ class TraceQueryByMsgKeyRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -40,6 +43,7 @@ class TraceQueryByMsgKeyRequest extends RpcAcsRequest
 
     /**
      * @param string $beginTime
+     *
      * @return $this
      */
     public function setBeginTime($beginTime)
@@ -52,6 +56,7 @@ class TraceQueryByMsgKeyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -64,6 +69,7 @@ class TraceQueryByMsgKeyRequest extends RpcAcsRequest
 
     /**
      * @param string $topic
+     *
      * @return $this
      */
     public function setTopic($topic)
@@ -76,6 +82,7 @@ class TraceQueryByMsgKeyRequest extends RpcAcsRequest
 
     /**
      * @param string $msgKey
+     *
      * @return $this
      */
     public function setMsgKey($msgKey)

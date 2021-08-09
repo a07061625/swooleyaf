@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateDiagnosticReport
+ *
  * @method string getEndTime()
  * @method string getStartTime()
  * @method string getDBInstanceId()
@@ -26,6 +28,7 @@ class DiagnosticReportCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -38,6 +41,7 @@ class DiagnosticReportCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -50,6 +54,7 @@ class DiagnosticReportCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)

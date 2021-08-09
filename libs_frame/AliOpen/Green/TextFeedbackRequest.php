@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of TextFeedback
+ *
  * @method string getClientInfo()
  */
 class TextFeedbackRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class TextFeedbackRequest extends RoaAcsRequest
 
     /**
      * @param string $clientInfo
+     *
      * @return $this
      */
     public function setClientInfo($clientInfo)

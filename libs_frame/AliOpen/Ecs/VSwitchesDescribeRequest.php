@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeVSwitches
+ *
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
  * @method string getPageSize()
@@ -33,6 +35,7 @@ class VSwitchesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class VSwitchesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -57,6 +61,7 @@ class VSwitchesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -69,6 +74,7 @@ class VSwitchesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $isDefault
+     *
      * @return $this
      */
     public function setIsDefault($isDefault)
@@ -81,6 +87,7 @@ class VSwitchesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -93,6 +100,7 @@ class VSwitchesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -105,6 +113,7 @@ class VSwitchesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -117,6 +126,7 @@ class VSwitchesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -129,6 +139,7 @@ class VSwitchesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -141,6 +152,7 @@ class VSwitchesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)

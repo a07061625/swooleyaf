@@ -1,4 +1,5 @@
 <?php
+
 namespace SyObjectStorage\Oss\Result;
 
 use SyObjectStorage\Oss\Model\LiveChannelListInfo;

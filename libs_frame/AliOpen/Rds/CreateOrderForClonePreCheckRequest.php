@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of PreCheckCreateOrderForClone
+ *
  * @method string getResourceOwnerId()
  * @method string getDBInstanceStorage()
  * @method string getCountryCode()
@@ -60,6 +62,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -72,6 +75,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStorage
+     *
      * @return $this
      */
     public function setDBInstanceStorage($dBInstanceStorage)
@@ -84,6 +88,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $countryCode
+     *
      * @return $this
      */
     public function setCountryCode($countryCode)
@@ -96,6 +101,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $currencyCode
+     *
      * @return $this
      */
     public function setCurrencyCode($currencyCode)
@@ -108,6 +114,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -120,6 +127,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceDescription
+     *
      * @return $this
      */
     public function setDBInstanceDescription($dBInstanceDescription)
@@ -132,6 +140,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $businessInfo
+     *
      * @return $this
      */
     public function setBusinessInfo($businessInfo)
@@ -144,6 +153,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $agentId
+     *
      * @return $this
      */
     public function setAgentId($agentId)
@@ -156,6 +166,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resource
+     *
      * @return $this
      */
     public function setResource($resource)
@@ -168,6 +179,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $backupId
+     *
      * @return $this
      */
     public function setBackupId($backupId)
@@ -180,6 +192,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityCode
+     *
      * @return $this
      */
     public function setCommodityCode($commodityCode)
@@ -192,6 +205,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -204,6 +218,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceClass
+     *
      * @return $this
      */
     public function setDBInstanceClass($dBInstanceClass)
@@ -216,6 +231,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -228,6 +244,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $privateIpAddress
+     *
      * @return $this
      */
     public function setPrivateIpAddress($privateIpAddress)
@@ -240,6 +257,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $autoRenew
+     *
      * @return $this
      */
     public function setAutoRenew($autoRenew)
@@ -252,6 +270,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $promotionCode
+     *
      * @return $this
      */
     public function setPromotionCode($promotionCode)
@@ -264,6 +283,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -276,6 +296,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $timeType
+     *
      * @return $this
      */
     public function setTimeType($timeType)
@@ -288,6 +309,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceNetworkType
+     *
      * @return $this
      */
     public function setInstanceNetworkType($instanceNetworkType)
@@ -300,6 +322,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeType
+     *
      * @return $this
      */
     public function setNodeType($nodeType)
@@ -312,6 +335,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -324,6 +348,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $tableMeta
+     *
      * @return $this
      */
     public function setTableMeta($tableMeta)
@@ -336,6 +361,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -348,6 +374,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStorageType
+     *
      * @return $this
      */
     public function setDBInstanceStorageType($dBInstanceStorageType)
@@ -360,6 +387,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreTime
+     *
      * @return $this
      */
     public function setRestoreTime($restoreTime)
@@ -372,6 +400,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $quantity
+     *
      * @return $this
      */
     public function setQuantity($quantity)
@@ -384,6 +413,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -396,6 +426,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -408,6 +439,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -420,6 +452,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreTable
+     *
      * @return $this
      */
     public function setRestoreTable($restoreTable)
@@ -432,6 +465,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $usedTime
+     *
      * @return $this
      */
     public function setUsedTime($usedTime)
@@ -444,6 +478,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBNames
+     *
      * @return $this
      */
     public function setDBNames($dBNames)
@@ -456,6 +491,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceUsedType
+     *
      * @return $this
      */
     public function setInstanceUsedType($instanceUsedType)
@@ -468,6 +504,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $vPCId
+     *
      * @return $this
      */
     public function setVPCId($vPCId)
@@ -480,6 +517,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $cloneInstanceDefaultValue
+     *
      * @return $this
      */
     public function setCloneInstanceDefaultValue($cloneInstanceDefaultValue)
@@ -492,6 +530,7 @@ class CreateOrderForClonePreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)

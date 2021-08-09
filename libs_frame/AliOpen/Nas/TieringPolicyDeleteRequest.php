@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteTieringPolicy
+ *
  * @method string getName()
  */
 class TieringPolicyDeleteRequest extends RpcAcsRequest
@@ -19,6 +21,7 @@ class TieringPolicyDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)

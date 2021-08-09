@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsMqttQueryMsgTransTrend
+ *
  * @method string getTransType()
  * @method string getEndTime()
  * @method string getBeginTime()
@@ -32,6 +34,7 @@ class MqttQueryMsgTransTrendRequest extends RpcAcsRequest
 
     /**
      * @param string $transType
+     *
      * @return $this
      */
     public function setTransType($transType)
@@ -44,6 +47,7 @@ class MqttQueryMsgTransTrendRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -56,6 +60,7 @@ class MqttQueryMsgTransTrendRequest extends RpcAcsRequest
 
     /**
      * @param string $beginTime
+     *
      * @return $this
      */
     public function setBeginTime($beginTime)
@@ -68,6 +73,7 @@ class MqttQueryMsgTransTrendRequest extends RpcAcsRequest
 
     /**
      * @param string $tpsType
+     *
      * @return $this
      */
     public function setTpsType($tpsType)
@@ -80,6 +86,7 @@ class MqttQueryMsgTransTrendRequest extends RpcAcsRequest
 
     /**
      * @param string $parentTopic
+     *
      * @return $this
      */
     public function setParentTopic($parentTopic)
@@ -92,6 +99,7 @@ class MqttQueryMsgTransTrendRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -104,6 +112,7 @@ class MqttQueryMsgTransTrendRequest extends RpcAcsRequest
 
     /**
      * @param string $qos
+     *
      * @return $this
      */
     public function setQos($qos)
@@ -116,6 +125,7 @@ class MqttQueryMsgTransTrendRequest extends RpcAcsRequest
 
     /**
      * @param string $msgType
+     *
      * @return $this
      */
     public function setMsgType($msgType)
@@ -128,6 +138,7 @@ class MqttQueryMsgTransTrendRequest extends RpcAcsRequest
 
     /**
      * @param string $subTopic
+     *
      * @return $this
      */
     public function setSubTopic($subTopic)

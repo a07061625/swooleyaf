@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Afs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ConfigurationStyle
+ *
  * @method string getSourceIp()
  * @method string getConfigurationMethod()
  * @method string getRefExtId()
@@ -28,6 +30,7 @@ class StyleConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -40,6 +43,7 @@ class StyleConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $configurationMethod
+     *
      * @return $this
      */
     public function setConfigurationMethod($configurationMethod)
@@ -52,6 +56,7 @@ class StyleConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $refExtId
+     *
      * @return $this
      */
     public function setRefExtId($refExtId)
@@ -64,6 +69,7 @@ class StyleConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $applyType
+     *
      * @return $this
      */
     public function setApplyType($applyType)
@@ -76,6 +82,7 @@ class StyleConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $scene
+     *
      * @return $this
      */
     public function setScene($scene)

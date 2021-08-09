@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeTags
+ *
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
  * @method string getPageSize()
@@ -32,6 +34,7 @@ class TagsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class TagsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -56,6 +60,7 @@ class TagsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -67,7 +72,6 @@ class TagsDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -83,6 +87,7 @@ class TagsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceId
+     *
      * @return $this
      */
     public function setResourceId($resourceId)
@@ -95,6 +100,7 @@ class TagsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -107,6 +113,7 @@ class TagsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -119,6 +126,7 @@ class TagsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -131,6 +139,7 @@ class TagsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $category
+     *
      * @return $this
      */
     public function setCategory($category)

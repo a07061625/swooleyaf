@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateNetworkInterface
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getSecurityGroupId()
@@ -40,6 +42,7 @@ class NetworkInterfaceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -52,6 +55,7 @@ class NetworkInterfaceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -64,6 +68,7 @@ class NetworkInterfaceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -76,6 +81,7 @@ class NetworkInterfaceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -88,6 +94,7 @@ class NetworkInterfaceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $secondaryPrivateIpAddressCount
+     *
      * @return $this
      */
     public function setSecondaryPrivateIpAddressCount($secondaryPrivateIpAddressCount)
@@ -100,6 +107,7 @@ class NetworkInterfaceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $businessType
+     *
      * @return $this
      */
     public function setBusinessType($businessType)
@@ -112,6 +120,7 @@ class NetworkInterfaceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -123,7 +132,6 @@ class NetworkInterfaceCreateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -139,6 +147,7 @@ class NetworkInterfaceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $networkInterfaceName
+     *
      * @return $this
      */
     public function setNetworkInterfaceName($networkInterfaceName)
@@ -151,6 +160,7 @@ class NetworkInterfaceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $visible
+     *
      * @return $this
      */
     public function setVisible($visible)
@@ -163,6 +173,7 @@ class NetworkInterfaceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -175,6 +186,7 @@ class NetworkInterfaceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -187,6 +199,7 @@ class NetworkInterfaceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -198,7 +211,6 @@ class NetworkInterfaceCreateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $securityGroupIds
      * @return $this
      */
     public function setSecurityGroupIdss(array $securityGroupIds)
@@ -213,6 +225,7 @@ class NetworkInterfaceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -224,7 +237,6 @@ class NetworkInterfaceCreateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $privateIpAddress
      * @return $this
      */
     public function setPrivateIpAddresss(array $privateIpAddress)
@@ -239,6 +251,7 @@ class NetworkInterfaceCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $primaryIpAddress
+     *
      * @return $this
      */
     public function setPrimaryIpAddress($primaryIpAddress)

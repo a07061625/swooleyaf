@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of StopInstances
+ *
  * @method string getResourceOwnerId()
  * @method string getStoppedMode()
  * @method string getForceStop()
@@ -32,6 +34,7 @@ class InstancesStopRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class InstancesStopRequest extends RpcAcsRequest
 
     /**
      * @param string $stoppedMode
+     *
      * @return $this
      */
     public function setStoppedMode($stoppedMode)
@@ -56,6 +60,7 @@ class InstancesStopRequest extends RpcAcsRequest
 
     /**
      * @param string $forceStop
+     *
      * @return $this
      */
     public function setForceStop($forceStop)
@@ -68,6 +73,7 @@ class InstancesStopRequest extends RpcAcsRequest
 
     /**
      * @param string $batchOptimization
+     *
      * @return $this
      */
     public function setBatchOptimization($batchOptimization)
@@ -80,6 +86,7 @@ class InstancesStopRequest extends RpcAcsRequest
 
     /**
      * @param string $dryRun
+     *
      * @return $this
      */
     public function setDryRun($dryRun)
@@ -92,6 +99,7 @@ class InstancesStopRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -104,6 +112,7 @@ class InstancesStopRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -116,6 +125,7 @@ class InstancesStopRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -127,7 +137,6 @@ class InstancesStopRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceId
      * @return $this
      */
     public function setInstanceIds(array $instanceId)

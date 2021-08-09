@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteInstances
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getTerminateSubscription()
@@ -32,6 +34,7 @@ class InstancesDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class InstancesDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -56,6 +60,7 @@ class InstancesDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $terminateSubscription
+     *
      * @return $this
      */
     public function setTerminateSubscription($terminateSubscription)
@@ -68,6 +73,7 @@ class InstancesDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $dryRun
+     *
      * @return $this
      */
     public function setDryRun($dryRun)
@@ -80,6 +86,7 @@ class InstancesDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -92,6 +99,7 @@ class InstancesDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +112,7 @@ class InstancesDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -115,7 +124,6 @@ class InstancesDeleteRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceId
      * @return $this
      */
     public function setInstanceIds(array $instanceId)
@@ -130,6 +138,7 @@ class InstancesDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $force
+     *
      * @return $this
      */
     public function setForce($force)

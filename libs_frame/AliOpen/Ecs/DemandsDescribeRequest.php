@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDemands
+ *
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
  * @method string getPageSize()
@@ -38,6 +40,7 @@ class DemandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +53,7 @@ class DemandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -62,6 +66,7 @@ class DemandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -74,6 +79,7 @@ class DemandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -85,7 +91,6 @@ class DemandsDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -101,6 +106,7 @@ class DemandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceChargeType
+     *
      * @return $this
      */
     public function setInstanceChargeType($instanceChargeType)
@@ -113,6 +119,7 @@ class DemandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dryRun
+     *
      * @return $this
      */
     public function setDryRun($dryRun)
@@ -125,6 +132,7 @@ class DemandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -137,6 +145,7 @@ class DemandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -149,6 +158,7 @@ class DemandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceTypeFamily
+     *
      * @return $this
      */
     public function setInstanceTypeFamily($instanceTypeFamily)
@@ -161,6 +171,7 @@ class DemandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -172,7 +183,6 @@ class DemandsDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $demandStatus
      * @return $this
      */
     public function setDemandStatuss(array $demandStatus)
@@ -187,6 +197,7 @@ class DemandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $demandId
+     *
      * @return $this
      */
     public function setDemandId($demandId)
@@ -199,6 +210,7 @@ class DemandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -211,6 +223,7 @@ class DemandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $demandType
+     *
      * @return $this
      */
     public function setDemandType($demandType)

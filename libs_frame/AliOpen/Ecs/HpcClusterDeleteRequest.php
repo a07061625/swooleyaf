@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteHpcCluster
+ *
  * @method string getResourceOwnerId()
  * @method string getHpcClusterId()
  * @method string getClientToken()
@@ -29,6 +31,7 @@ class HpcClusterDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class HpcClusterDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $hpcClusterId
+     *
      * @return $this
      */
     public function setHpcClusterId($hpcClusterId)
@@ -53,6 +57,7 @@ class HpcClusterDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -65,6 +70,7 @@ class HpcClusterDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -77,6 +83,7 @@ class HpcClusterDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -89,6 +96,7 @@ class HpcClusterDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

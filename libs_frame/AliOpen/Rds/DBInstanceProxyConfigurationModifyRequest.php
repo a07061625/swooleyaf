@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDBInstanceProxyConfiguration
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getProxyConfigurationValue()
@@ -29,6 +31,7 @@ class DBInstanceProxyConfigurationModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class DBInstanceProxyConfigurationModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -53,6 +57,7 @@ class DBInstanceProxyConfigurationModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyConfigurationValue
+     *
      * @return $this
      */
     public function setProxyConfigurationValue($proxyConfigurationValue)
@@ -65,6 +70,7 @@ class DBInstanceProxyConfigurationModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -77,6 +83,7 @@ class DBInstanceProxyConfigurationModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyConfigurationKey
+     *
      * @return $this
      */
     public function setProxyConfigurationKey($proxyConfigurationKey)
@@ -89,6 +96,7 @@ class DBInstanceProxyConfigurationModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)

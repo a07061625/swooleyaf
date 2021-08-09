@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetPlayInfo
+ *
  * @method string getResourceOwnerId()
  * @method string getFormats()
  * @method string getChannel()
@@ -39,6 +41,7 @@ class PlayInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -51,6 +54,7 @@ class PlayInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $formats
+     *
      * @return $this
      */
     public function setFormats($formats)
@@ -63,6 +67,7 @@ class PlayInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setChannel($channel)
@@ -75,6 +80,7 @@ class PlayInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $playerVersion
+     *
      * @return $this
      */
     public function setPlayerVersion($playerVersion)
@@ -87,6 +93,7 @@ class PlayInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $rand
+     *
      * @return $this
      */
     public function setRand($rand)
@@ -99,6 +106,7 @@ class PlayInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $reAuthInfo
+     *
      * @return $this
      */
     public function setReAuthInfo($reAuthInfo)
@@ -111,6 +119,7 @@ class PlayInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $playConfig
+     *
      * @return $this
      */
     public function setPlayConfig($playConfig)
@@ -123,6 +132,7 @@ class PlayInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $outputType
+     *
      * @return $this
      */
     public function setOutputType($outputType)
@@ -135,6 +145,7 @@ class PlayInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $definition
+     *
      * @return $this
      */
     public function setDefinition($definition)
@@ -147,6 +158,7 @@ class PlayInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $authTimeout
+     *
      * @return $this
      */
     public function setAuthTimeout($authTimeout)
@@ -159,6 +171,7 @@ class PlayInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $streamType
+     *
      * @return $this
      */
     public function setStreamType($streamType)
@@ -171,6 +184,7 @@ class PlayInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -183,6 +197,7 @@ class PlayInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $videoId
+     *
      * @return $this
      */
     public function setVideoId($videoId)
@@ -195,6 +210,7 @@ class PlayInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -207,6 +223,7 @@ class PlayInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resultType
+     *
      * @return $this
      */
     public function setResultType($resultType)
@@ -219,6 +236,7 @@ class PlayInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $authInfo
+     *
      * @return $this
      */
     public function setAuthInfo($authInfo)

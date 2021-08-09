@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsInstanceDelete
+ *
  * @method string getInstanceId()
  */
 class InstanceDeleteRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class InstanceDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)

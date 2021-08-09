@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeTieringJobs
+ *
  * @method string getVolume()
  */
 class TieringJobsDescribeRequest extends RpcAcsRequest
@@ -19,6 +21,7 @@ class TieringJobsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $volume
+     *
      * @return $this
      */
     public function setVolume($volume)

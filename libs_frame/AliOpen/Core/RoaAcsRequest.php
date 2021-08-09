@@ -17,10 +17,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Core;
 
 use AliOpen\Core\Auth\BearerTokenCredential;
 
+/**
+ * Class AliOpen\Core\RoaAcsRequest
+ */
 abstract class RoaAcsRequest extends AcsRequest
 {
     /**
@@ -32,13 +36,21 @@ abstract class RoaAcsRequest extends AcsRequest
      */
     protected $pathParameters = [];
     /**
+     * @var string
+     */
+    protected $method = 'RAW';
+    /**
+     * @var string
+     */
+    protected $acceptFormat = 'JSON';
+    /**
      * @var array
      */
     private $domainParameters = [];
     /**
      * @var string
      */
-    private $dateTimeFormat = "D, d M Y H:i:s \G\M\T";
+    private $dateTimeFormat = 'D, d M Y H:i:s \\G\\M\\T';
     /**
      * @var string
      */
@@ -47,19 +59,12 @@ abstract class RoaAcsRequest extends AcsRequest
      * @var string
      */
     private static $querySeparator = '&';
-    /**
-     * @var string
-     */
-    protected $method = 'RAW';
-    /**
-     * @var string
-     */
-    protected $acceptFormat = 'JSON';
 
     /**
      * @param $iSigner
      * @param $credential
      * @param $domain
+     *
      * @return mixed|string
      */
     public function composeUrl($iSigner, $credential, $domain)
@@ -92,176 +97,15 @@ abstract class RoaAcsRequest extends AcsRequest
         $uri = $this->replaceOccupiedParameters();
         $signString .= $this->buildCanonicalHeaders();
         $queryString = $this->buildQueryString($uri);
-        if (substr($queryString, - 1) === '?') {
-            $queryString = substr($queryString, 0, - 1);
+        if ('?' === substr($queryString, -1)) {
+            $queryString = substr($queryString, 0, -1);
         }
         $signString .= $queryString;
         $this->stringToBeSigned = $signString;
-        $this->headers['Authorization'] =
-            'acs ' . $credential->getAccessKeyId() . ':' . $iSigner->signString($signString, $credential->getAccessSecret());
-        $requestUrl = $this->getProtocol() . '://' . $domain . $queryString;
+        $this->headers['Authorization'] = 'acs ' . $credential->getAccessKeyId()
+                                          . ':' . $iSigner->signString($signString, $credential->getAccessSecret());
 
-        return $requestUrl;
-    }
-
-    /**
-     * @return string
-     */
-    private function concatQueryString()
-    {
-        $sortMap = $this->queryParameters;
-        if (null == $sortMap || count($sortMap) == 0) {
-            return '';
-        }
-        $queryString = '';
-        ksort($sortMap);
-        foreach ($sortMap as $sortMapKey => $sortMapValue) {
-            $queryString .= $sortMapKey;
-            if (isset($sortMapValue)) {
-                $queryString = $queryString . '=' . urlencode($sortMapValue);
-            }
-            $queryString .= self::$querySeparator;
-        }
-
-        if (count($sortMap) > 0) {
-            $queryString = substr($queryString, 0, - 1);
-        }
-
-        return '?' . $queryString;
-    }
-
-    /**
-     * @param $iSigner
-     * @param $credential
-     */
-    private function prepareHeader($iSigner, $credential)
-    {
-        $this->headers['Date'] = gmdate($this->dateTimeFormat);
-        if (null == $this->acceptFormat) {
-            $this->acceptFormat = 'RAW';
-        }
-        $this->headers['Accept'] = $this->formatToAccept($this->getAcceptFormat());
-        $this->headers['x-acs-signature-method'] = $iSigner->getSignatureMethod();
-        $this->headers['x-acs-signature-version'] = $iSigner->getSignatureVersion();
-        if ($iSigner->getSignatureType() != null) {
-            $this->headers['x-acs-signature-type'] = $iSigner->getSignatureType();
-        }
-        $this->headers['x-acs-region-id'] = $this->regionId;
-        $content = $this->getDomainParameter();
-        if ($content != null) {
-            $this->headers['Content-MD5'] = base64_encode(md5(json_encode($content), true));
-        }
-        if ($this->acceptFormat === 'JSON') {
-            $this->headers['Content-Type'] = 'application/json;charset=utf-8';
-        } else {
-            $this->headers['Content-Type'] = 'application/octet-stream;charset=utf-8';
-        }
-        if ($credential->getSecurityToken() != null) {
-            $this->headers['x-acs-security-token'] = $credential->getSecurityToken();
-        }
-        if ($credential instanceof BearerTokenCredential) {
-            $this->headers['x-acs-bearer-token'] = $credential->getBearerToken();
-        }
-    }
-
-    /**
-     * @return mixed|string
-     */
-    private function replaceOccupiedParameters()
-    {
-        $result = $this->uriPattern;
-        foreach ($this->pathParameters as $pathParameterKey => $apiParameterValue) {
-            $target = '[' . $pathParameterKey . ']';
-            $result = str_replace($target, $apiParameterValue, $result);
-        }
-
-        return $result;
-    }
-
-    /**
-     * @return string
-     */
-    private function buildCanonicalHeaders()
-    {
-        $sortMap = [];
-        foreach ($this->headers as $headerKey => $headerValue) {
-            $key = strtolower($headerKey);
-            if (strpos($key, 'x-acs-') === 0) {
-                $sortMap[$key] = $headerValue;
-            }
-        }
-        ksort($sortMap);
-        $headerString = '';
-        foreach ($sortMap as $sortMapKey => $sortMapValue) {
-            $headerString = $headerString . $sortMapKey . ':' . $sortMapValue . self::$headerSeparator;
-        }
-
-        return $headerString;
-    }
-
-    /**
-     * @param $uri
-     * @return array
-     */
-    private function splitSubResource($uri)
-    {
-        $queIndex = strpos($uri, '?');
-        $uriParts = [];
-        if (null != $queIndex) {
-            $uriParts[] = substr($uri, 0, $queIndex);
-            $uriParts[] = substr($uri, $queIndex + 1);
-        } else {
-            $uriParts[] = $uri;
-        }
-
-        return $uriParts;
-    }
-
-    /**
-     * @param $uri
-     * @return bool|mixed|string
-     */
-    private function buildQueryString($uri)
-    {
-        $uriParts = $this->splitSubResource($uri);
-        $sortMap = $this->queryParameters;
-        if (isset($uriParts[1])) {
-            $sortMap[$uriParts[1]] = null;
-        }
-        $queryString = $uriParts[0];
-        if (count($uriParts)) {
-            $queryString .= '?';
-        }
-        ksort($sortMap);
-        foreach ($sortMap as $sortMapKey => $sortMapValue) {
-            $queryString .= $sortMapKey;
-            if (isset($sortMapValue)) {
-                $queryString = $queryString . '=' . $sortMapValue;
-            }
-            $queryString .= self::$querySeparator;
-        }
-        if (0 < count($sortMap)) {
-            $queryString = substr($queryString, 0, - 1);
-        }
-
-        return $queryString;
-    }
-
-    /**
-     * @param $acceptFormat
-     * @return string
-     */
-    private function formatToAccept($acceptFormat)
-    {
-        if ($acceptFormat === 'JSON') {
-            return 'application/json';
-        }
-
-        if ($acceptFormat === 'XML') {
-            return 'application/xml';
-        }
-
-        return 'application/octet-stream';
+        return $this->getProtocol() . '://' . $domain . $queryString;
     }
 
     /**
@@ -308,10 +152,174 @@ abstract class RoaAcsRequest extends AcsRequest
 
     /**
      * @param $uriPattern
+     *
      * @return mixed
      */
     public function setUriPattern($uriPattern)
     {
         return $this->uriPattern = $uriPattern;
+    }
+
+    /**
+     * @return string
+     */
+    private function concatQueryString()
+    {
+        $sortMap = $this->queryParameters;
+        if (null == $sortMap || 0 == \count($sortMap)) {
+            return '';
+        }
+        $queryString = '';
+        ksort($sortMap);
+        foreach ($sortMap as $sortMapKey => $sortMapValue) {
+            $queryString .= $sortMapKey;
+            if (isset($sortMapValue)) {
+                $queryString = $queryString . '=' . urlencode($sortMapValue);
+            }
+            $queryString .= self::$querySeparator;
+        }
+
+        if (\count($sortMap) > 0) {
+            $queryString = substr($queryString, 0, -1);
+        }
+
+        return '?' . $queryString;
+    }
+
+    /**
+     * @param $iSigner
+     * @param $credential
+     */
+    private function prepareHeader($iSigner, $credential)
+    {
+        $this->headers['Date'] = gmdate($this->dateTimeFormat);
+        if (null == $this->acceptFormat) {
+            $this->acceptFormat = 'RAW';
+        }
+        $this->headers['Accept'] = $this->formatToAccept($this->getAcceptFormat());
+        $this->headers['x-acs-signature-method'] = $iSigner->getSignatureMethod();
+        $this->headers['x-acs-signature-version'] = $iSigner->getSignatureVersion();
+        if (null != $iSigner->getSignatureType()) {
+            $this->headers['x-acs-signature-type'] = $iSigner->getSignatureType();
+        }
+        $this->headers['x-acs-region-id'] = $this->regionId;
+        $content = $this->getDomainParameter();
+        if (null != $content) {
+            $this->headers['Content-MD5'] = base64_encode(md5(json_encode($content), true));
+        }
+        if ('JSON' === $this->acceptFormat) {
+            $this->headers['Content-Type'] = 'application/json;charset=utf-8';
+        } else {
+            $this->headers['Content-Type'] = 'application/octet-stream;charset=utf-8';
+        }
+        if (null != $credential->getSecurityToken()) {
+            $this->headers['x-acs-security-token'] = $credential->getSecurityToken();
+        }
+        if ($credential instanceof BearerTokenCredential) {
+            $this->headers['x-acs-bearer-token'] = $credential->getBearerToken();
+        }
+    }
+
+    /**
+     * @return mixed|string
+     */
+    private function replaceOccupiedParameters()
+    {
+        $result = $this->uriPattern;
+        foreach ($this->pathParameters as $pathParameterKey => $apiParameterValue) {
+            $target = '[' . $pathParameterKey . ']';
+            $result = str_replace($target, $apiParameterValue, $result);
+        }
+
+        return $result;
+    }
+
+    /**
+     * @return string
+     */
+    private function buildCanonicalHeaders()
+    {
+        $sortMap = [];
+        foreach ($this->headers as $headerKey => $headerValue) {
+            $key = strtolower($headerKey);
+            if (0 === strpos($key, 'x-acs-')) {
+                $sortMap[$key] = $headerValue;
+            }
+        }
+        ksort($sortMap);
+        $headerString = '';
+        foreach ($sortMap as $sortMapKey => $sortMapValue) {
+            $headerString = $headerString . $sortMapKey . ':' . $sortMapValue . self::$headerSeparator;
+        }
+
+        return $headerString;
+    }
+
+    /**
+     * @param $uri
+     *
+     * @return array
+     */
+    private function splitSubResource($uri)
+    {
+        $queIndex = strpos($uri, '?');
+        $uriParts = [];
+        if (null != $queIndex) {
+            $uriParts[] = substr($uri, 0, $queIndex);
+            $uriParts[] = substr($uri, $queIndex + 1);
+        } else {
+            $uriParts[] = $uri;
+        }
+
+        return $uriParts;
+    }
+
+    /**
+     * @param $uri
+     *
+     * @return bool|mixed|string
+     */
+    private function buildQueryString($uri)
+    {
+        $uriParts = $this->splitSubResource($uri);
+        $sortMap = $this->queryParameters;
+        if (isset($uriParts[1])) {
+            $sortMap[$uriParts[1]] = null;
+        }
+        $queryString = $uriParts[0];
+        if (\count($uriParts)) {
+            $queryString .= '?';
+        }
+        ksort($sortMap);
+        foreach ($sortMap as $sortMapKey => $sortMapValue) {
+            $queryString .= $sortMapKey;
+            if (isset($sortMapValue)) {
+                $queryString = $queryString . '=' . $sortMapValue;
+            }
+            $queryString .= self::$querySeparator;
+        }
+        if (0 < \count($sortMap)) {
+            $queryString = substr($queryString, 0, -1);
+        }
+
+        return $queryString;
+    }
+
+    /**
+     * @param $acceptFormat
+     *
+     * @return string
+     */
+    private function formatToAccept($acceptFormat)
+    {
+        if ('JSON' === $acceptFormat) {
+            return 'application/json';
+        }
+
+        if ('XML' === $acceptFormat) {
+            return 'application/xml';
+        }
+
+        return 'application/octet-stream';
     }
 }

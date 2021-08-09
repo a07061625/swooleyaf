@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifySQLCollectorPolicy
+ *
  * @method string getResourceOwnerId()
  * @method string getStoragePeriod()
  * @method string getClientToken()
@@ -31,6 +33,7 @@ class SQLCollectorPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class SQLCollectorPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $storagePeriod
+     *
      * @return $this
      */
     public function setStoragePeriod($storagePeriod)
@@ -55,6 +59,7 @@ class SQLCollectorPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -67,6 +72,7 @@ class SQLCollectorPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $sQLCollectorStatus
+     *
      * @return $this
      */
     public function setSQLCollectorStatus($sQLCollectorStatus)
@@ -79,6 +85,7 @@ class SQLCollectorPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -91,6 +98,7 @@ class SQLCollectorPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -103,6 +111,7 @@ class SQLCollectorPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -115,6 +124,7 @@ class SQLCollectorPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

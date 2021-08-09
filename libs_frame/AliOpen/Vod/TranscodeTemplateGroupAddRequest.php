@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddTranscodeTemplateGroup
+ *
  * @method string getTranscodeTemplateList()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -30,6 +32,7 @@ class TranscodeTemplateGroupAddRequest extends RpcAcsRequest
 
     /**
      * @param string $transcodeTemplateList
+     *
      * @return $this
      */
     public function setTranscodeTemplateList($transcodeTemplateList)
@@ -42,6 +45,7 @@ class TranscodeTemplateGroupAddRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -54,6 +58,7 @@ class TranscodeTemplateGroupAddRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +71,7 @@ class TranscodeTemplateGroupAddRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -78,6 +84,7 @@ class TranscodeTemplateGroupAddRequest extends RpcAcsRequest
 
     /**
      * @param string $transcodeTemplateGroupId
+     *
      * @return $this
      */
     public function setTranscodeTemplateGroupId($transcodeTemplateGroupId)
@@ -90,6 +97,7 @@ class TranscodeTemplateGroupAddRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -102,6 +110,7 @@ class TranscodeTemplateGroupAddRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SearchMedia
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -37,6 +39,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -49,6 +52,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -61,6 +65,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -73,6 +78,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -85,6 +91,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -97,6 +104,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -109,6 +117,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -121,6 +130,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $cateId
+     *
      * @return $this
      */
     public function setCateId($cateId)
@@ -133,6 +143,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -145,6 +156,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $from
+     *
      * @return $this
      */
     public function setFrom($from)
@@ -157,6 +169,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $sortBy
+     *
      * @return $this
      */
     public function setSortBy($sortBy)
@@ -169,6 +182,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $to
+     *
      * @return $this
      */
     public function setTo($to)
@@ -181,6 +195,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $tag
+     *
      * @return $this
      */
     public function setTag($tag)
@@ -193,6 +208,7 @@ class MediaSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $keyWord
+     *
      * @return $this
      */
     public function setKeyWord($keyWord)

@@ -1,40 +1,50 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: 姜伟
- * Date: 2020/5/5 0005
- * Time: 11:16
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
  */
+
 namespace AliOpen\Core\Auth;
 
 use AliOpen\Core\Http\HttpHelper;
-use AliOpen\Sts\RoleAssumeRequest;
+use AliOpen\Core\Profile\IClientProfile;
 
-/**
- * Class RamRoleArnService
- * @package AliOpen\Core\Auth
- */
 class RamRoleArnService
 {
     /**
-     * @var \AliOpen\Core\Profile\IClientProfile
+     * @var string
+     */
+    public static $serviceDomain = ALIOPEN_STS_DOMAIN;
+    /**
+     * @var IClientProfile
      */
     private $clientProfile;
     /**
      * @var null|string
      */
-    private $lastClearTime = null;
+    private $lastClearTime;
     /**
      * @var null|string
      */
-    private $sessionCredential = null;
-    /**
-     * @var string
-     */
-    public static $serviceDomain = ALIOPEN_STS_DOMAIN;
+    private $sessionCredential;
 
     /**
-     * RamRoleArnService constructor.
+     * AliOpen\Core\Auth\RamRoleArnService constructor.
+     *
      * @param $clientProfile
      */
     public function __construct($clientProfile)
@@ -43,12 +53,13 @@ class RamRoleArnService
     }
 
     /**
-     * @return Credential|string|null
+     * @return null|Credential|string
+     *
      * @throws \AliOpen\Core\Exception\ClientException
      */
     public function getSessionCredential()
     {
-        if ($this->lastClearTime != null && $this->sessionCredential != null) {
+        if (null != $this->lastClearTime && null != $this->sessionCredential) {
             $now = time();
             $elapsedTime = $now - $this->lastClearTime;
             if ($elapsedTime <= ALIOPEN_ROLE_ARN_EXPIRE_TIME * 0.8) {
@@ -58,8 +69,8 @@ class RamRoleArnService
 
         $credential = $this->assumeRole();
 
-        if ($credential == null) {
-            return null;
+        if (null == $credential) {
+            return;
         }
 
         $this->sessionCredential = $credential;
@@ -69,7 +80,8 @@ class RamRoleArnService
     }
 
     /**
-     * @return Credential|null
+     * @return null|Credential
+     *
      * @throws \AliOpen\Core\Exception\ClientException
      */
     private function assumeRole()
@@ -77,20 +89,19 @@ class RamRoleArnService
         $signer = $this->clientProfile->getSigner();
         $ramRoleArnCredential = $this->clientProfile->getCredential();
 
-        $request = new RoleAssumeRequest();
-        $request->setRoleArn($ramRoleArnCredential->getRoleArn());
-        $request->setRoleSessionName($ramRoleArnCredential->getRoleSessionName());
-        $request->setDurationSeconds(ALIOPEN_ROLE_ARN_EXPIRE_TIME);
-        $request->setRegionId(ALIOPEN_STS_REGION);
-        $request->setProtocol('https');
-        $request->setAcceptFormat('JSON');
+        $request =
+            new AssumeRoleRequest($ramRoleArnCredential->getRoleArn(), $ramRoleArnCredential->getRoleSessionName());
+
         $requestUrl = $request->composeUrl($signer, $ramRoleArnCredential, self::$serviceDomain);
+
         $httpResponse = HttpHelper::curl($requestUrl, $request->getMethod(), null, $request->getHeaders());
+
         if (!$httpResponse->isSuccess()) {
-            return null;
+            return;
         }
 
         $respObj = json_decode($httpResponse->getBody());
+
         $sessionAccessKeyId = $respObj->Credentials->AccessKeyId;
         $sessionAccessKeySecret = $respObj->Credentials->AccessKeySecret;
         $securityToken = $respObj->Credentials->SecurityToken;

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DeleteVideoDnaGroup
+ *
  * @method string getClientInfo()
  */
 class VideoDnaGroupDeleteRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class VideoDnaGroupDeleteRequest extends RoaAcsRequest
 
     /**
      * @param string $clientInfo
+     *
      * @return $this
      */
     public function setClientInfo($clientInfo)

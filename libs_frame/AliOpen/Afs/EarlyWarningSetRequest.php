@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Afs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetEarlyWarning
+ *
  * @method string getTimeEnd()
  * @method string getWarnOpen()
  * @method string getSourceIp()
@@ -31,6 +33,7 @@ class EarlyWarningSetRequest extends RpcAcsRequest
 
     /**
      * @param string $timeEnd
+     *
      * @return $this
      */
     public function setTimeEnd($timeEnd)
@@ -43,6 +46,7 @@ class EarlyWarningSetRequest extends RpcAcsRequest
 
     /**
      * @param string $warnOpen
+     *
      * @return $this
      */
     public function setWarnOpen($warnOpen)
@@ -55,6 +59,7 @@ class EarlyWarningSetRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -67,6 +72,7 @@ class EarlyWarningSetRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setChannel($channel)
@@ -79,6 +85,7 @@ class EarlyWarningSetRequest extends RpcAcsRequest
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -91,6 +98,7 @@ class EarlyWarningSetRequest extends RpcAcsRequest
 
     /**
      * @param string $timeOpen
+     *
      * @return $this
      */
     public function setTimeOpen($timeOpen)
@@ -103,6 +111,7 @@ class EarlyWarningSetRequest extends RpcAcsRequest
 
     /**
      * @param string $timeBegin
+     *
      * @return $this
      */
     public function setTimeBegin($timeBegin)
@@ -115,6 +124,7 @@ class EarlyWarningSetRequest extends RpcAcsRequest
 
     /**
      * @param string $frequency
+     *
      * @return $this
      */
     public function setFrequency($frequency)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyParameter
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getParameterGroupId()
@@ -32,6 +34,7 @@ class ParameterModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class ParameterModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -56,6 +60,7 @@ class ParameterModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $parameterGroupId
+     *
      * @return $this
      */
     public function setParameterGroupId($parameterGroupId)
@@ -68,6 +73,7 @@ class ParameterModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -80,6 +86,7 @@ class ParameterModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $forcerestart
+     *
      * @return $this
      */
     public function setForcerestart($forcerestart)
@@ -92,6 +99,7 @@ class ParameterModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -104,6 +112,7 @@ class ParameterModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -116,6 +125,7 @@ class ParameterModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -128,6 +138,7 @@ class ParameterModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $parameters
+     *
      * @return $this
      */
     public function setParameters($parameters)

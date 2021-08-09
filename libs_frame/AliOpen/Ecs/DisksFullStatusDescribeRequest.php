@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDisksFullStatus
+ *
  * @method array getEventIds()
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
@@ -35,7 +37,6 @@ class DisksFullStatusDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $eventId
      * @return $this
      */
     public function setEventIds(array $eventId)
@@ -50,6 +51,7 @@ class DisksFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -62,6 +64,7 @@ class DisksFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -74,6 +77,7 @@ class DisksFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $eventTimeStart
+     *
      * @return $this
      */
     public function setEventTimeStart($eventTimeStart)
@@ -86,6 +90,7 @@ class DisksFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -97,7 +102,6 @@ class DisksFullStatusDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $diskId
      * @return $this
      */
     public function setDiskIds(array $diskId)
@@ -112,6 +116,7 @@ class DisksFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -124,6 +129,7 @@ class DisksFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -136,6 +142,7 @@ class DisksFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -148,6 +155,7 @@ class DisksFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $eventTimeEnd
+     *
      * @return $this
      */
     public function setEventTimeEnd($eventTimeEnd)
@@ -160,6 +168,7 @@ class DisksFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $healthStatus
+     *
      * @return $this
      */
     public function setHealthStatus($healthStatus)
@@ -172,6 +181,7 @@ class DisksFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $eventType
+     *
      * @return $this
      */
     public function setEventType($eventType)
@@ -184,6 +194,7 @@ class DisksFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribePhysicalConnections
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getPageNumber()
@@ -32,6 +34,7 @@ class PhysicalConnectionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class PhysicalConnectionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -56,6 +60,7 @@ class PhysicalConnectionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -68,6 +73,7 @@ class PhysicalConnectionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -80,6 +86,7 @@ class PhysicalConnectionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $userCidr
+     *
      * @return $this
      */
     public function setUserCidr($userCidr)
@@ -92,6 +99,7 @@ class PhysicalConnectionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -104,6 +112,7 @@ class PhysicalConnectionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -116,6 +125,7 @@ class PhysicalConnectionsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -127,7 +137,6 @@ class PhysicalConnectionsDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $filter
      * @return $this
      */
     public function setFilters(array $filter)

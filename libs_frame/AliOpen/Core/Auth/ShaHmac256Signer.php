@@ -17,6 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Core\Auth;
 
 class ShaHmac256Signer implements ISigner
@@ -24,6 +25,7 @@ class ShaHmac256Signer implements ISigner
     /**
      * @param $source
      * @param $accessSecret
+     *
      * @return string
      */
     public function signString($source, $accessSecret)
@@ -47,11 +49,7 @@ class ShaHmac256Signer implements ISigner
         return '1.0';
     }
 
-    /**
-     * @return null
-     */
     public function getSignatureType()
     {
-        return null;
     }
 }

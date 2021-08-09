@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetVodTemplate
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerId()
@@ -27,6 +29,7 @@ class VodTemplateGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -39,6 +42,7 @@ class VodTemplateGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -51,6 +55,7 @@ class VodTemplateGetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -63,6 +68,7 @@ class VodTemplateGetRequest extends RpcAcsRequest
 
     /**
      * @param string $vodTemplateId
+     *
      * @return $this
      */
     public function setVodTemplateId($vodTemplateId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreatePolicy
+ *
  * @method string getDescription()
  * @method string getPolicyName()
  * @method string getPolicyDocument()
@@ -30,6 +32,7 @@ class PolicyCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -42,6 +45,7 @@ class PolicyCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $policyName
+     *
      * @return $this
      */
     public function setPolicyName($policyName)
@@ -54,6 +58,7 @@ class PolicyCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $policyDocument
+     *
      * @return $this
      */
     public function setPolicyDocument($policyDocument)

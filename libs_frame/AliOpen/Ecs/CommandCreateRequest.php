@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateCommand
+ *
  * @method string getResourceOwnerId()
  * @method string getWorkingDir()
  * @method string getDescription()
@@ -34,6 +36,7 @@ class CommandCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class CommandCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $workingDir
+     *
      * @return $this
      */
     public function setWorkingDir($workingDir)
@@ -58,6 +62,7 @@ class CommandCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -70,6 +75,7 @@ class CommandCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -82,6 +88,7 @@ class CommandCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $commandContent
+     *
      * @return $this
      */
     public function setCommandContent($commandContent)
@@ -94,6 +101,7 @@ class CommandCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $timeout
+     *
      * @return $this
      */
     public function setTimeout($timeout)
@@ -106,6 +114,7 @@ class CommandCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -118,6 +127,7 @@ class CommandCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -130,6 +140,7 @@ class CommandCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -142,6 +153,7 @@ class CommandCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -154,6 +166,7 @@ class CommandCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $enableParameter
+     *
      * @return $this
      */
     public function setEnableParameter($enableParameter)

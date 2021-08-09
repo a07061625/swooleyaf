@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteImage
+ *
  * @method string getResourceOwnerId()
  * @method string getImageURLs()
  * @method string getImageType()
@@ -31,6 +33,7 @@ class ImageDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class ImageDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $imageURLs
+     *
      * @return $this
      */
     public function setImageURLs($imageURLs)
@@ -55,6 +59,7 @@ class ImageDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $imageType
+     *
      * @return $this
      */
     public function setImageType($imageType)
@@ -67,6 +72,7 @@ class ImageDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -79,6 +85,7 @@ class ImageDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $videoId
+     *
      * @return $this
      */
     public function setVideoId($videoId)
@@ -91,6 +98,7 @@ class ImageDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +111,7 @@ class ImageDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $deleteImageType
+     *
      * @return $this
      */
     public function setDeleteImageType($deleteImageType)
@@ -115,6 +124,7 @@ class ImageDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $imageIds
+     *
      * @return $this
      */
     public function setImageIds($imageIds)

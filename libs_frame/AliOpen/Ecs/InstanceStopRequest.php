@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of StopInstance
+ *
  * @method string getResourceOwnerId()
  * @method string getStoppedMode()
  * @method string getHibernate()
@@ -33,6 +35,7 @@ class InstanceStopRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class InstanceStopRequest extends RpcAcsRequest
 
     /**
      * @param string $stoppedMode
+     *
      * @return $this
      */
     public function setStoppedMode($stoppedMode)
@@ -57,6 +61,7 @@ class InstanceStopRequest extends RpcAcsRequest
 
     /**
      * @param string $hibernate
+     *
      * @return $this
      */
     public function setHibernate($hibernate)
@@ -69,6 +74,7 @@ class InstanceStopRequest extends RpcAcsRequest
 
     /**
      * @param string $forceStop
+     *
      * @return $this
      */
     public function setForceStop($forceStop)
@@ -81,6 +87,7 @@ class InstanceStopRequest extends RpcAcsRequest
 
     /**
      * @param string $confirmStop
+     *
      * @return $this
      */
     public function setConfirmStop($confirmStop)
@@ -93,6 +100,7 @@ class InstanceStopRequest extends RpcAcsRequest
 
     /**
      * @param string $dryRun
+     *
      * @return $this
      */
     public function setDryRun($dryRun)
@@ -105,6 +113,7 @@ class InstanceStopRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -117,6 +126,7 @@ class InstanceStopRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -129,6 +139,7 @@ class InstanceStopRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -141,6 +152,7 @@ class InstanceStopRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)

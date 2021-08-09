@@ -1,4 +1,5 @@
 <?php
+
 namespace SyObjectStorage\Oss\Result;
 
 use SyObjectStorage\Oss\Model\GetLiveChannelHistory;
@@ -6,7 +7,7 @@ use SyObjectStorage\Oss\Model\GetLiveChannelHistory;
 class GetLiveChannelHistoryResult extends Result
 {
     /**
-     * @return array
+     * @return \SyObjectStorage\Oss\Model\GetLiveChannelHistory
      */
     protected function parseDataFromResponse()
     {

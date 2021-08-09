@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Afs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeCaptchaDay
+ *
  * @method string getSourceIp()
  * @method string getConfigName()
  * @method string getRefExtId()
@@ -28,6 +30,7 @@ class CaptchaDayDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -40,6 +43,7 @@ class CaptchaDayDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $configName
+     *
      * @return $this
      */
     public function setConfigName($configName)
@@ -52,6 +56,7 @@ class CaptchaDayDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $refExtId
+     *
      * @return $this
      */
     public function setRefExtId($refExtId)
@@ -64,6 +69,7 @@ class CaptchaDayDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $time
+     *
      * @return $this
      */
     public function setTime($time)
@@ -76,6 +82,7 @@ class CaptchaDayDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)

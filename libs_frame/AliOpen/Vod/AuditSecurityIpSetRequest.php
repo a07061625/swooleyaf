@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetAuditSecurityIp
+ *
  * @method string getSecurityGroupName()
  * @method string getOperateMode()
  * @method string getIps()
@@ -26,6 +28,7 @@ class AuditSecurityIpSetRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupName
+     *
      * @return $this
      */
     public function setSecurityGroupName($securityGroupName)
@@ -38,6 +41,7 @@ class AuditSecurityIpSetRequest extends RpcAcsRequest
 
     /**
      * @param string $operateMode
+     *
      * @return $this
      */
     public function setOperateMode($operateMode)
@@ -50,6 +54,7 @@ class AuditSecurityIpSetRequest extends RpcAcsRequest
 
     /**
      * @param string $ips
+     *
      * @return $this
      */
     public function setIps($ips)

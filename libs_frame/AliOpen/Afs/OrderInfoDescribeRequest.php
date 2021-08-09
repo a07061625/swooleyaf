@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Afs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeOrderInfo
+ *
  * @method string getSourceIp()
  */
 class OrderInfoDescribeRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class OrderInfoDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)

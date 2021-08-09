@@ -1,32 +1,17 @@
 <?php
+
 namespace SyObjectStorage\Oss\Core;
 
 /**
  * Class MimeTypes
+ *
  * The map of a file's extention name to its corresponding Content-Type value in the file upload request.
  * If the file extention name is not predefined in this class, getMimetype() returns null.
+ *
  * @package SyObjectStorage\Oss\Core
  */
 class MimeTypes
 {
-    /**
-     * Get the content-type value of http header from the file's extension name.
-     * @param string $name Default file extension name.
-     * @return string content-type
-     */
-    public static function getMimetype($name)
-    {
-        $parts = explode('.', $name);
-        if (count($parts) > 1) {
-            $ext = strtolower(end($parts));
-            if (isset(self::$mime_types[$ext])) {
-                return self::$mime_types[$ext];
-            }
-        }
-
-        return null;
-    }
-
     private static $mime_types = [
         'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
         'xltx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.template',
@@ -256,4 +241,22 @@ class MimeTypes
         'xslt' => 'application/xslt+xml',
         'xul' => 'application/vnd.mozilla.xul+xml',
     ];
+
+    /**
+     * Get the content-type value of http header from the file's extension name.
+     *
+     * @param string $name default file extension name
+     *
+     * @return string content-type
+     */
+    public static function getMimetype($name)
+    {
+        $parts = explode('.', $name);
+        if (\count($parts) > 1) {
+            $ext = strtolower(end($parts));
+            if (isset(self::$mime_types[$ext])) {
+                return self::$mime_types[$ext];
+            }
+        }
+    }
 }

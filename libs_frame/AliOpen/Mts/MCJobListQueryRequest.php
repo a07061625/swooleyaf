@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryMCJobList
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getNextPageToken()
@@ -34,6 +36,7 @@ class MCJobListQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class MCJobListQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -58,6 +62,7 @@ class MCJobListQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $nextPageToken
+     *
      * @return $this
      */
     public function setNextPageToken($nextPageToken)
@@ -70,6 +75,7 @@ class MCJobListQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $startOfJobCreatedTimeRange
+     *
      * @return $this
      */
     public function setStartOfJobCreatedTimeRange($startOfJobCreatedTimeRange)
@@ -82,6 +88,7 @@ class MCJobListQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -94,6 +101,7 @@ class MCJobListQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $maximumPageSize
+     *
      * @return $this
      */
     public function setMaximumPageSize($maximumPageSize)
@@ -106,6 +114,7 @@ class MCJobListQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -118,6 +127,7 @@ class MCJobListQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $pipelineId
+     *
      * @return $this
      */
     public function setPipelineId($pipelineId)
@@ -130,6 +140,7 @@ class MCJobListQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $jobIds
+     *
      * @return $this
      */
     public function setJobIds($jobIds)
@@ -142,6 +153,7 @@ class MCJobListQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $state
+     *
      * @return $this
      */
     public function setState($state)
@@ -154,6 +166,7 @@ class MCJobListQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $endOfJobCreatedTimeRange
+     *
      * @return $this
      */
     public function setEndOfJobCreatedTimeRange($endOfJobCreatedTimeRange)

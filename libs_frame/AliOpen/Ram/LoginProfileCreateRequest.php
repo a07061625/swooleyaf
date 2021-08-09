@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateLoginProfile
+ *
  * @method string getPassword()
  * @method string getPasswordResetRequired()
  * @method string getMFABindRequired()
@@ -31,6 +33,7 @@ class LoginProfileCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $password
+     *
      * @return $this
      */
     public function setPassword($password)
@@ -43,6 +46,7 @@ class LoginProfileCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $passwordResetRequired
+     *
      * @return $this
      */
     public function setPasswordResetRequired($passwordResetRequired)
@@ -55,6 +59,7 @@ class LoginProfileCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $mFABindRequired
+     *
      * @return $this
      */
     public function setMFABindRequired($mFABindRequired)
@@ -67,6 +72,7 @@ class LoginProfileCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $userName
+     *
      * @return $this
      */
     public function setUserName($userName)

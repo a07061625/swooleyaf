@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeCommands
+ *
  * @method string getResourceOwnerId()
  * @method string getDescription()
  * @method string getType()
@@ -34,6 +36,7 @@ class CommandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class CommandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -58,6 +62,7 @@ class CommandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -70,6 +75,7 @@ class CommandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $commandId
+     *
      * @return $this
      */
     public function setCommandId($commandId)
@@ -82,6 +88,7 @@ class CommandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -94,6 +101,7 @@ class CommandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $contentEncoding
+     *
      * @return $this
      */
     public function setContentEncoding($contentEncoding)
@@ -106,6 +114,7 @@ class CommandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -118,6 +127,7 @@ class CommandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -130,6 +140,7 @@ class CommandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -142,6 +153,7 @@ class CommandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -154,6 +166,7 @@ class CommandsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)

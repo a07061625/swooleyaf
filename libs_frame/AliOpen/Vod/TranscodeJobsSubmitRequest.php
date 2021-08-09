@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitTranscodeJobs
+ *
  * @method string getResourceOwnerId()
  * @method string getUserData()
  * @method string getResourceOwnerAccount()
@@ -34,6 +36,7 @@ class TranscodeJobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class TranscodeJobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -58,6 +62,7 @@ class TranscodeJobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -70,6 +75,7 @@ class TranscodeJobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $videoId
+     *
      * @return $this
      */
     public function setVideoId($videoId)
@@ -82,6 +88,7 @@ class TranscodeJobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $overrideParams
+     *
      * @return $this
      */
     public function setOverrideParams($overrideParams)
@@ -94,6 +101,7 @@ class TranscodeJobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -106,6 +114,7 @@ class TranscodeJobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $priority
+     *
      * @return $this
      */
     public function setPriority($priority)
@@ -118,6 +127,7 @@ class TranscodeJobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $pipelineId
+     *
      * @return $this
      */
     public function setPipelineId($pipelineId)
@@ -130,6 +140,7 @@ class TranscodeJobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $templateGroupId
+     *
      * @return $this
      */
     public function setTemplateGroupId($templateGroupId)
@@ -142,6 +153,7 @@ class TranscodeJobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $fileUrl
+     *
      * @return $this
      */
     public function setFileUrl($fileUrl)
@@ -154,6 +166,7 @@ class TranscodeJobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $encryptConfig
+     *
      * @return $this
      */
     public function setEncryptConfig($encryptConfig)

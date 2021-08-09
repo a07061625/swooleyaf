@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RebuildDBInstance
+ *
  * @method string getResourceOwnerId()
  * @method string getDBInstanceId()
  * @method string getDedicatedHostGroupId()
@@ -29,6 +31,7 @@ class DBInstanceRebuildRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class DBInstanceRebuildRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -53,6 +57,7 @@ class DBInstanceRebuildRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostGroupId
+     *
      * @return $this
      */
     public function setDedicatedHostGroupId($dedicatedHostGroupId)
@@ -65,6 +70,7 @@ class DBInstanceRebuildRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -77,6 +83,7 @@ class DBInstanceRebuildRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostId
+     *
      * @return $this
      */
     public function setDedicatedHostId($dedicatedHostId)
@@ -89,6 +96,7 @@ class DBInstanceRebuildRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

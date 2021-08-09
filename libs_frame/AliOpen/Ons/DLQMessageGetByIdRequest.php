@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsDLQMessageGetById
+ *
  * @method string getGroupId()
  * @method string getMsgId()
  * @method string getInstanceId()
@@ -26,6 +28,7 @@ class DLQMessageGetByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -38,6 +41,7 @@ class DLQMessageGetByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $msgId
+     *
      * @return $this
      */
     public function setMsgId($msgId)
@@ -50,6 +54,7 @@ class DLQMessageGetByIdRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)

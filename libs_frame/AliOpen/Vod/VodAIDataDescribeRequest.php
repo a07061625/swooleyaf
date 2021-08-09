@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeVodAIData
+ *
  * @method string getStartTime()
  * @method string getAIType()
  * @method string getEndTime()
@@ -28,6 +30,7 @@ class VodAIDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -40,6 +43,7 @@ class VodAIDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $aIType
+     *
      * @return $this
      */
     public function setAIType($aIType)
@@ -52,6 +56,7 @@ class VodAIDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -64,6 +69,7 @@ class VodAIDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -76,6 +82,7 @@ class VodAIDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)

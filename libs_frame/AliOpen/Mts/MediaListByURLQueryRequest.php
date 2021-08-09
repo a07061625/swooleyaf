@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryMediaListByURL
+ *
  * @method string getResourceOwnerId()
  * @method string getIncludeSummaryList()
  * @method string getResourceOwnerAccount()
@@ -32,6 +34,7 @@ class MediaListByURLQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class MediaListByURLQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $includeSummaryList
+     *
      * @return $this
      */
     public function setIncludeSummaryList($includeSummaryList)
@@ -56,6 +60,7 @@ class MediaListByURLQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -68,6 +73,7 @@ class MediaListByURLQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $includeSnapshotList
+     *
      * @return $this
      */
     public function setIncludeSnapshotList($includeSnapshotList)
@@ -80,6 +86,7 @@ class MediaListByURLQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $fileURLs
+     *
      * @return $this
      */
     public function setFileURLs($fileURLs)
@@ -92,6 +99,7 @@ class MediaListByURLQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +112,7 @@ class MediaListByURLQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,6 +125,7 @@ class MediaListByURLQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $includePlayList
+     *
      * @return $this
      */
     public function setIncludePlayList($includePlayList)
@@ -128,6 +138,7 @@ class MediaListByURLQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $includeMediaInfo
+     *
      * @return $this
      */
     public function setIncludeMediaInfo($includeMediaInfo)

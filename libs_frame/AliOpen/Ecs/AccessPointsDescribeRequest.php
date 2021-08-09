@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeAccessPoints
+ *
  * @method string getResourceOwnerId()
  * @method string getType()
  * @method string getPageNumber()
@@ -30,6 +32,7 @@ class AccessPointsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class AccessPointsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -54,6 +58,7 @@ class AccessPointsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -66,6 +71,7 @@ class AccessPointsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -78,6 +84,7 @@ class AccessPointsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -90,6 +97,7 @@ class AccessPointsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -101,7 +109,6 @@ class AccessPointsDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $filter
      * @return $this
      */
     public function setFilters(array $filter)

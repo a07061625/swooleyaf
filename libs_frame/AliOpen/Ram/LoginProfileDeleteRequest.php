@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteLoginProfile
+ *
  * @method string getUserName()
  */
 class LoginProfileDeleteRequest extends RpcAcsRequest
@@ -28,6 +30,7 @@ class LoginProfileDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $userName
+     *
      * @return $this
      */
     public function setUserName($userName)

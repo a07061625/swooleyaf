@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ImportSnapshot
+ *
  * @method string getResourceOwnerId()
  * @method string getSnapshotName()
  * @method string getOssObject()
@@ -30,6 +32,7 @@ class SnapshotImportRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class SnapshotImportRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotName
+     *
      * @return $this
      */
     public function setSnapshotName($snapshotName)
@@ -54,6 +58,7 @@ class SnapshotImportRequest extends RpcAcsRequest
 
     /**
      * @param string $ossObject
+     *
      * @return $this
      */
     public function setOssObject($ossObject)
@@ -66,6 +71,7 @@ class SnapshotImportRequest extends RpcAcsRequest
 
     /**
      * @param string $ossBucket
+     *
      * @return $this
      */
     public function setOssBucket($ossBucket)
@@ -78,6 +84,7 @@ class SnapshotImportRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -90,6 +97,7 @@ class SnapshotImportRequest extends RpcAcsRequest
 
     /**
      * @param string $roleName
+     *
      * @return $this
      */
     public function setRoleName($roleName)
@@ -102,6 +110,7 @@ class SnapshotImportRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

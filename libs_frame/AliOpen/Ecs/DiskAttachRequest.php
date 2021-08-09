@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AttachDisk
+ *
  * @method string getResourceOwnerId()
  * @method string getKeyPairName()
  * @method string getBootable()
@@ -34,6 +36,7 @@ class DiskAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class DiskAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $keyPairName
+     *
      * @return $this
      */
     public function setKeyPairName($keyPairName)
@@ -58,6 +62,7 @@ class DiskAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $bootable
+     *
      * @return $this
      */
     public function setBootable($bootable)
@@ -70,6 +75,7 @@ class DiskAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $password
+     *
      * @return $this
      */
     public function setPassword($password)
@@ -82,6 +88,7 @@ class DiskAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $diskId
+     *
      * @return $this
      */
     public function setDiskId($diskId)
@@ -94,6 +101,7 @@ class DiskAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $deleteWithInstance
+     *
      * @return $this
      */
     public function setDeleteWithInstance($deleteWithInstance)
@@ -106,6 +114,7 @@ class DiskAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -118,6 +127,7 @@ class DiskAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -130,6 +140,7 @@ class DiskAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -142,6 +153,7 @@ class DiskAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -154,6 +166,7 @@ class DiskAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $device
+     *
      * @return $this
      */
     public function setDevice($device)

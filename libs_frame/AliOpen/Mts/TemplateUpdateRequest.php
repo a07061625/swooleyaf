@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateTemplate
+ *
  * @method string getContainer()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -34,6 +36,7 @@ class TemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $container
+     *
      * @return $this
      */
     public function setContainer($container)
@@ -46,6 +49,7 @@ class TemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -58,6 +62,7 @@ class TemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -70,6 +75,7 @@ class TemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -82,6 +88,7 @@ class TemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $muxConfig
+     *
      * @return $this
      */
     public function setMuxConfig($muxConfig)
@@ -94,6 +101,7 @@ class TemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $video
+     *
      * @return $this
      */
     public function setVideo($video)
@@ -106,6 +114,7 @@ class TemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -118,6 +127,7 @@ class TemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $templateId
+     *
      * @return $this
      */
     public function setTemplateId($templateId)
@@ -130,6 +140,7 @@ class TemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -142,6 +153,7 @@ class TemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $transConfig
+     *
      * @return $this
      */
     public function setTransConfig($transConfig)
@@ -154,6 +166,7 @@ class TemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $audio
+     *
      * @return $this
      */
     public function setAudio($audio)

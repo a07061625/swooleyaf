@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeFleets
+ *
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
  * @method string getFleetName()
@@ -32,6 +34,7 @@ class FleetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class FleetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -56,6 +60,7 @@ class FleetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $fleetName
+     *
      * @return $this
      */
     public function setFleetName($fleetName)
@@ -67,7 +72,6 @@ class FleetsDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $fleetStatus
      * @return $this
      */
     public function setFleetStatuss(array $fleetStatus)
@@ -82,6 +86,7 @@ class FleetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -94,6 +99,7 @@ class FleetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -106,6 +112,7 @@ class FleetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -118,6 +125,7 @@ class FleetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,7 +137,6 @@ class FleetsDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $fleetId
      * @return $this
      */
     public function setFleetIds(array $fleetId)

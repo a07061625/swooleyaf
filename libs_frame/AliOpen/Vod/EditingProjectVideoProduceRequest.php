@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ProduceEditingProjectVideo
+ *
  * @method string getResourceOwnerId()
  * @method string getDescription()
  * @method string getTitle()
@@ -34,6 +36,7 @@ class EditingProjectVideoProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class EditingProjectVideoProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -58,6 +62,7 @@ class EditingProjectVideoProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -70,6 +75,7 @@ class EditingProjectVideoProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $coverURL
+     *
      * @return $this
      */
     public function setCoverURL($coverURL)
@@ -82,6 +88,7 @@ class EditingProjectVideoProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -94,6 +101,7 @@ class EditingProjectVideoProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $produceConfig
+     *
      * @return $this
      */
     public function setProduceConfig($produceConfig)
@@ -106,6 +114,7 @@ class EditingProjectVideoProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -118,6 +127,7 @@ class EditingProjectVideoProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $mediaMetadata
+     *
      * @return $this
      */
     public function setMediaMetadata($mediaMetadata)
@@ -130,6 +140,7 @@ class EditingProjectVideoProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -142,6 +153,7 @@ class EditingProjectVideoProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -154,6 +166,7 @@ class EditingProjectVideoProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $timeline
+     *
      * @return $this
      */
     public function setTimeline($timeline)

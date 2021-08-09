@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of PhysicalDeleteResource
+ *
  * @method string getCountry()
  * @method string getHid()
  * @method string getSuccess()
@@ -34,6 +36,7 @@ class ResourceDeletePhysicalRequest extends RpcAcsRequest
 
     /**
      * @param string $country
+     *
      * @return $this
      */
     public function setCountry($country)
@@ -46,6 +49,7 @@ class ResourceDeletePhysicalRequest extends RpcAcsRequest
 
     /**
      * @param string $hid
+     *
      * @return $this
      */
     public function setHid($hid)
@@ -58,6 +62,7 @@ class ResourceDeletePhysicalRequest extends RpcAcsRequest
 
     /**
      * @param string $success
+     *
      * @return $this
      */
     public function setSuccess($success)
@@ -70,6 +75,7 @@ class ResourceDeletePhysicalRequest extends RpcAcsRequest
 
     /**
      * @param string $interrupt
+     *
      * @return $this
      */
     public function setInterrupt($interrupt)
@@ -82,6 +88,7 @@ class ResourceDeletePhysicalRequest extends RpcAcsRequest
 
     /**
      * @param string $gmtWakeup
+     *
      * @return $this
      */
     public function setGmtWakeup($gmtWakeup)
@@ -94,6 +101,7 @@ class ResourceDeletePhysicalRequest extends RpcAcsRequest
 
     /**
      * @param string $pk
+     *
      * @return $this
      */
     public function setPk($pk)
@@ -106,6 +114,7 @@ class ResourceDeletePhysicalRequest extends RpcAcsRequest
 
     /**
      * @param string $invoker
+     *
      * @return $this
      */
     public function setInvoker($invoker)
@@ -118,6 +127,7 @@ class ResourceDeletePhysicalRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setBid($bid)
@@ -130,6 +140,7 @@ class ResourceDeletePhysicalRequest extends RpcAcsRequest
 
     /**
      * @param string $message
+     *
      * @return $this
      */
     public function setMessage($message)
@@ -142,6 +153,7 @@ class ResourceDeletePhysicalRequest extends RpcAcsRequest
 
     /**
      * @param string $taskExtraData
+     *
      * @return $this
      */
     public function setTaskExtraData($taskExtraData)
@@ -154,6 +166,7 @@ class ResourceDeletePhysicalRequest extends RpcAcsRequest
 
     /**
      * @param string $taskIdentifier
+     *
      * @return $this
      */
     public function setTaskIdentifier($taskIdentifier)

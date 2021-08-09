@@ -17,6 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Core\Auth;
 
 class EcsRamRoleCredential extends AbstractCredential
@@ -28,6 +29,7 @@ class EcsRamRoleCredential extends AbstractCredential
 
     /**
      * AliOpen\Core\Auth\EcsRamRoleCredential constructor.
+     *
      * @param $roleName
      */
     public function __construct($roleName)
@@ -35,20 +37,12 @@ class EcsRamRoleCredential extends AbstractCredential
         $this->roleName = $roleName;
     }
 
-    /**
-     * @return null
-     */
     public function getAccessKeyId()
     {
-        return null;
     }
 
-    /**
-     * @return null
-     */
     public function getAccessSecret()
     {
-        return null;
     }
 
     /**
@@ -67,11 +61,7 @@ class EcsRamRoleCredential extends AbstractCredential
         $this->roleName = $roleName;
     }
 
-    /**
-     * @return null
-     */
     public function getSecurityToken()
     {
-        return null;
     }
 }

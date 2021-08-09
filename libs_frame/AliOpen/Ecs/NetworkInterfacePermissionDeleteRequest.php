@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteNetworkInterfacePermission
+ *
  * @method string getResourceOwnerId()
  * @method string getNetworkInterfacePermissionId()
  * @method string getResourceOwnerAccount()
@@ -29,6 +31,7 @@ class NetworkInterfacePermissionDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class NetworkInterfacePermissionDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $networkInterfacePermissionId
+     *
      * @return $this
      */
     public function setNetworkInterfacePermissionId($networkInterfacePermissionId)
@@ -53,6 +57,7 @@ class NetworkInterfacePermissionDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -65,6 +70,7 @@ class NetworkInterfacePermissionDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -77,6 +83,7 @@ class NetworkInterfacePermissionDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -89,6 +96,7 @@ class NetworkInterfacePermissionDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $force
+     *
      * @return $this
      */
     public function setForce($force)

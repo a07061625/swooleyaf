@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListLiveRecordVideo
+ *
  * @method string getResourceOwnerId()
  * @method string getStartTime()
  * @method string getAppName()
@@ -35,6 +37,7 @@ class LiveRecordVideoListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +50,7 @@ class LiveRecordVideoListRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -59,6 +63,7 @@ class LiveRecordVideoListRequest extends RpcAcsRequest
 
     /**
      * @param string $appName
+     *
      * @return $this
      */
     public function setAppName($appName)
@@ -71,6 +76,7 @@ class LiveRecordVideoListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -83,6 +89,7 @@ class LiveRecordVideoListRequest extends RpcAcsRequest
 
     /**
      * @param string $streamName
+     *
      * @return $this
      */
     public function setStreamName($streamName)
@@ -95,6 +102,7 @@ class LiveRecordVideoListRequest extends RpcAcsRequest
 
     /**
      * @param string $queryType
+     *
      * @return $this
      */
     public function setQueryType($queryType)
@@ -107,6 +115,7 @@ class LiveRecordVideoListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -119,6 +128,7 @@ class LiveRecordVideoListRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -131,6 +141,7 @@ class LiveRecordVideoListRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -143,6 +154,7 @@ class LiveRecordVideoListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -155,6 +167,7 @@ class LiveRecordVideoListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNo
+     *
      * @return $this
      */
     public function setPageNo($pageNo)
@@ -167,6 +180,7 @@ class LiveRecordVideoListRequest extends RpcAcsRequest
 
     /**
      * @param string $sortBy
+     *
      * @return $this
      */
     public function setSortBy($sortBy)

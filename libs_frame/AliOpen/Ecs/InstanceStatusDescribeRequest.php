@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeInstanceStatus
+ *
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
  * @method string getPageSize()
@@ -32,6 +34,7 @@ class InstanceStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class InstanceStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -56,6 +60,7 @@ class InstanceStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -68,6 +73,7 @@ class InstanceStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -80,6 +86,7 @@ class InstanceStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -92,6 +99,7 @@ class InstanceStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -104,6 +112,7 @@ class InstanceStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -115,7 +124,6 @@ class InstanceStatusDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceId
      * @return $this
      */
     public function setInstanceIds(array $instanceId)
@@ -130,6 +138,7 @@ class InstanceStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)

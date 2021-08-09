@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifySnapshotAttribute
+ *
  * @method string getResourceOwnerId()
  * @method string getSnapshotId()
  * @method string getDescription()
@@ -30,6 +32,7 @@ class SnapshotAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class SnapshotAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotId
+     *
      * @return $this
      */
     public function setSnapshotId($snapshotId)
@@ -54,6 +58,7 @@ class SnapshotAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -66,6 +71,7 @@ class SnapshotAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotName
+     *
      * @return $this
      */
     public function setSnapshotName($snapshotName)
@@ -78,6 +84,7 @@ class SnapshotAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -90,6 +97,7 @@ class SnapshotAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -102,6 +110,7 @@ class SnapshotAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

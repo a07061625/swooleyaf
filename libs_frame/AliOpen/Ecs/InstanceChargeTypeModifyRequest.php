@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyInstanceChargeType
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getIsDetailFee()
@@ -36,6 +38,7 @@ class InstanceChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +51,7 @@ class InstanceChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -60,6 +64,7 @@ class InstanceChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $isDetailFee
+     *
      * @return $this
      */
     public function setIsDetailFee($isDetailFee)
@@ -72,6 +77,7 @@ class InstanceChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceChargeType
+     *
      * @return $this
      */
     public function setInstanceChargeType($instanceChargeType)
@@ -84,6 +90,7 @@ class InstanceChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -96,6 +103,7 @@ class InstanceChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dryRun
+     *
      * @return $this
      */
     public function setDryRun($dryRun)
@@ -108,6 +116,7 @@ class InstanceChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -120,6 +129,7 @@ class InstanceChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $includeDataDisks
+     *
      * @return $this
      */
     public function setIncludeDataDisks($includeDataDisks)
@@ -132,6 +142,7 @@ class InstanceChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -144,6 +155,7 @@ class InstanceChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -156,6 +168,7 @@ class InstanceChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -168,6 +181,7 @@ class InstanceChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $periodUnit
+     *
      * @return $this
      */
     public function setPeriodUnit($periodUnit)
@@ -180,6 +194,7 @@ class InstanceChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceIds
+     *
      * @return $this
      */
     public function setInstanceIds($instanceIds)

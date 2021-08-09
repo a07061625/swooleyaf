@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetEditingProjectMaterials
+ *
  * @method string getResourceOwnerId()
  * @method string getProjectId()
  * @method string getResourceOwnerAccount()
@@ -29,6 +31,7 @@ class EditingProjectMaterialsSetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class EditingProjectMaterialsSetRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -53,6 +57,7 @@ class EditingProjectMaterialsSetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -65,6 +70,7 @@ class EditingProjectMaterialsSetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -77,6 +83,7 @@ class EditingProjectMaterialsSetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -89,6 +96,7 @@ class EditingProjectMaterialsSetRequest extends RpcAcsRequest
 
     /**
      * @param string $materialIds
+     *
      * @return $this
      */
     public function setMaterialIds($materialIds)

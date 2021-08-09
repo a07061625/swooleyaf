@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDBInstanceNetworkType
+ *
  * @method string getResourceOwnerId()
  * @method string getClassicExpiredDays()
  * @method string getDBInstanceId()
@@ -36,6 +38,7 @@ class DBInstanceNetworkTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +51,7 @@ class DBInstanceNetworkTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $classicExpiredDays
+     *
      * @return $this
      */
     public function setClassicExpiredDays($classicExpiredDays)
@@ -60,6 +64,7 @@ class DBInstanceNetworkTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -72,6 +77,7 @@ class DBInstanceNetworkTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $readWriteSplittingPrivateIpAddress
+     *
      * @return $this
      */
     public function setReadWriteSplittingPrivateIpAddress($readWriteSplittingPrivateIpAddress)
@@ -84,6 +90,7 @@ class DBInstanceNetworkTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -96,6 +103,7 @@ class DBInstanceNetworkTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -108,6 +116,7 @@ class DBInstanceNetworkTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -120,6 +129,7 @@ class DBInstanceNetworkTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -132,6 +142,7 @@ class DBInstanceNetworkTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $privateIpAddress
+     *
      * @return $this
      */
     public function setPrivateIpAddress($privateIpAddress)
@@ -144,6 +155,7 @@ class DBInstanceNetworkTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $retainClassic
+     *
      * @return $this
      */
     public function setRetainClassic($retainClassic)
@@ -156,6 +168,7 @@ class DBInstanceNetworkTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $vPCId
+     *
      * @return $this
      */
     public function setVPCId($vPCId)
@@ -168,6 +181,7 @@ class DBInstanceNetworkTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceNetworkType
+     *
      * @return $this
      */
     public function setInstanceNetworkType($instanceNetworkType)
@@ -180,6 +194,7 @@ class DBInstanceNetworkTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $readWriteSplittingClassicExpiredDays
+     *
      * @return $this
      */
     public function setReadWriteSplittingClassicExpiredDays($readWriteSplittingClassicExpiredDays)

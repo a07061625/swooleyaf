@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescibeImportsFromDatabase
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getStartTime()
@@ -35,6 +37,7 @@ class DatabaseImportsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +50,7 @@ class DatabaseImportsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -59,6 +63,7 @@ class DatabaseImportsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -71,6 +76,7 @@ class DatabaseImportsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -83,6 +89,7 @@ class DatabaseImportsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $importId
+     *
      * @return $this
      */
     public function setImportId($importId)
@@ -95,6 +102,7 @@ class DatabaseImportsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $engine
+     *
      * @return $this
      */
     public function setEngine($engine)
@@ -107,6 +115,7 @@ class DatabaseImportsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -119,6 +128,7 @@ class DatabaseImportsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -131,6 +141,7 @@ class DatabaseImportsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -143,6 +154,7 @@ class DatabaseImportsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -155,6 +167,7 @@ class DatabaseImportsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -167,6 +180,7 @@ class DatabaseImportsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

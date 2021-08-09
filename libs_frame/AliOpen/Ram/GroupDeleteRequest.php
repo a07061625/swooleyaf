@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteGroup
+ *
  * @method string getGroupName()
  */
 class GroupDeleteRequest extends RpcAcsRequest
@@ -28,6 +30,7 @@ class GroupDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $groupName
+     *
      * @return $this
      */
     public function setGroupName($groupName)

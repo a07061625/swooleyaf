@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CPFSDeleteFileSystem
+ *
  * @method string getFsId()
  */
 class CPFSFileSystemDeleteRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class CPFSFileSystemDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $fsId
+     *
      * @return $this
      */
     public function setFsId($fsId)

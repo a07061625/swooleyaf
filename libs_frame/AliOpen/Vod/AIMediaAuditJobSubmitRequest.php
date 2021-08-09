@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitAIMediaAuditJob
+ *
  * @method string getResourceOwnerId()
  * @method string getUserData()
  * @method string getResourceOwnerAccount()
@@ -30,6 +32,7 @@ class AIMediaAuditJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class AIMediaAuditJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -54,6 +58,7 @@ class AIMediaAuditJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +71,7 @@ class AIMediaAuditJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -78,6 +84,7 @@ class AIMediaAuditJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $mediaId
+     *
      * @return $this
      */
     public function setMediaId($mediaId)
@@ -90,6 +97,7 @@ class AIMediaAuditJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $templateId
+     *
      * @return $this
      */
     public function setTemplateId($templateId)
@@ -102,6 +110,7 @@ class AIMediaAuditJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $mediaType
+     *
      * @return $this
      */
     public function setMediaType($mediaType)

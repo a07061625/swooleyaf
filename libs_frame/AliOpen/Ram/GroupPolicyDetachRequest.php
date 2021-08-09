@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DetachPolicyFromGroup
+ *
  * @method string getPolicyType()
  * @method string getPolicyName()
  * @method string getGroupName()
@@ -30,6 +32,7 @@ class GroupPolicyDetachRequest extends RpcAcsRequest
 
     /**
      * @param string $policyType
+     *
      * @return $this
      */
     public function setPolicyType($policyType)
@@ -42,6 +45,7 @@ class GroupPolicyDetachRequest extends RpcAcsRequest
 
     /**
      * @param string $policyName
+     *
      * @return $this
      */
     public function setPolicyName($policyName)
@@ -54,6 +58,7 @@ class GroupPolicyDetachRequest extends RpcAcsRequest
 
     /**
      * @param string $groupName
+     *
      * @return $this
      */
     public function setGroupName($groupName)

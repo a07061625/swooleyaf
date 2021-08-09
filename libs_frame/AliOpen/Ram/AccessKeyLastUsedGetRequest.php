@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetAccessKeyLastUsed
+ *
  * @method string getUserAccessKeyId()
  * @method string getUserName()
  */
@@ -29,6 +31,7 @@ class AccessKeyLastUsedGetRequest extends RpcAcsRequest
 
     /**
      * @param string $userAccessKeyId
+     *
      * @return $this
      */
     public function setUserAccessKeyId($userAccessKeyId)
@@ -41,6 +44,7 @@ class AccessKeyLastUsedGetRequest extends RpcAcsRequest
 
     /**
      * @param string $userName
+     *
      * @return $this
      */
     public function setUserName($userName)

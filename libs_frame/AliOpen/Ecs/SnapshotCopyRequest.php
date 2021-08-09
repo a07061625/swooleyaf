@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CopySnapshot
+ *
  * @method string getResourceOwnerId()
  * @method string getSnapshotId()
  * @method string getDestinationRegionId()
@@ -32,6 +34,7 @@ class SnapshotCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class SnapshotCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotId
+     *
      * @return $this
      */
     public function setSnapshotId($snapshotId)
@@ -56,6 +60,7 @@ class SnapshotCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationRegionId
+     *
      * @return $this
      */
     public function setDestinationRegionId($destinationRegionId)
@@ -67,7 +72,6 @@ class SnapshotCopyRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -83,6 +87,7 @@ class SnapshotCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -95,6 +100,7 @@ class SnapshotCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -107,6 +113,7 @@ class SnapshotCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationSnapshotName
+     *
      * @return $this
      */
     public function setDestinationSnapshotName($destinationSnapshotName)
@@ -119,6 +126,7 @@ class SnapshotCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationSnapshotDescription
+     *
      * @return $this
      */
     public function setDestinationSnapshotDescription($destinationSnapshotDescription)
@@ -131,6 +139,7 @@ class SnapshotCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $retentionDays
+     *
      * @return $this
      */
     public function setRetentionDays($retentionDays)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyLaunchTemplateDefaultVersion
+ *
  * @method string getLaunchTemplateName()
  * @method string getResourceOwnerId()
  * @method string getLaunchTemplateId()
@@ -30,6 +32,7 @@ class LaunchTemplateDefaultVersionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $launchTemplateName
+     *
      * @return $this
      */
     public function setLaunchTemplateName($launchTemplateName)
@@ -42,6 +45,7 @@ class LaunchTemplateDefaultVersionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -54,6 +58,7 @@ class LaunchTemplateDefaultVersionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $launchTemplateId
+     *
      * @return $this
      */
     public function setLaunchTemplateId($launchTemplateId)
@@ -66,6 +71,7 @@ class LaunchTemplateDefaultVersionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -78,6 +84,7 @@ class LaunchTemplateDefaultVersionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -90,6 +97,7 @@ class LaunchTemplateDefaultVersionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -102,6 +110,7 @@ class LaunchTemplateDefaultVersionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $defaultVersionNumber
+     *
      * @return $this
      */
     public function setDefaultVersionNumber($defaultVersionNumber)

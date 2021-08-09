@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsGroupSubDetail
+ *
  * @method string getGroupId()
  * @method string getInstanceId()
  */
@@ -25,6 +27,7 @@ class GroupSubDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -37,6 +40,7 @@ class GroupSubDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyImageShareGroupPermission
+ *
  * @method string getResourceOwnerId()
  * @method string getImageId()
  * @method string getAddGroup1()
@@ -30,6 +32,7 @@ class ImageShareGroupPermissionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class ImageShareGroupPermissionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -54,6 +58,7 @@ class ImageShareGroupPermissionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $addGroup1
+     *
      * @return $this
      */
     public function setAddGroup1($addGroup1)
@@ -66,6 +71,7 @@ class ImageShareGroupPermissionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -78,6 +84,7 @@ class ImageShareGroupPermissionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -90,6 +97,7 @@ class ImageShareGroupPermissionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -102,6 +110,7 @@ class ImageShareGroupPermissionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $removeGroup1
+     *
      * @return $this
      */
     public function setRemoveGroup1($removeGroup1)

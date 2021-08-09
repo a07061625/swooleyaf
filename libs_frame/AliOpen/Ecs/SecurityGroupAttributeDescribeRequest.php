@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeSecurityGroupAttribute
+ *
  * @method string getNicType()
  * @method string getResourceOwnerId()
  * @method string getSecurityGroupId()
@@ -30,6 +32,7 @@ class SecurityGroupAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $nicType
+     *
      * @return $this
      */
     public function setNicType($nicType)
@@ -42,6 +45,7 @@ class SecurityGroupAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -54,6 +58,7 @@ class SecurityGroupAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -66,6 +71,7 @@ class SecurityGroupAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $direction
+     *
      * @return $this
      */
     public function setDirection($direction)
@@ -78,6 +84,7 @@ class SecurityGroupAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -90,6 +97,7 @@ class SecurityGroupAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -102,6 +110,7 @@ class SecurityGroupAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

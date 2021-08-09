@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddPipeline
+ *
  * @method string getResourceOwnerId()
  * @method string getRole()
  * @method string getResourceOwnerAccount()
@@ -32,6 +34,7 @@ class PipelineAddRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class PipelineAddRequest extends RpcAcsRequest
 
     /**
      * @param string $role
+     *
      * @return $this
      */
     public function setRole($role)
@@ -56,6 +60,7 @@ class PipelineAddRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -68,6 +73,7 @@ class PipelineAddRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -80,6 +86,7 @@ class PipelineAddRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -92,6 +99,7 @@ class PipelineAddRequest extends RpcAcsRequest
 
     /**
      * @param string $notifyConfig
+     *
      * @return $this
      */
     public function setNotifyConfig($notifyConfig)
@@ -104,6 +112,7 @@ class PipelineAddRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,6 +125,7 @@ class PipelineAddRequest extends RpcAcsRequest
 
     /**
      * @param string $speedLevel
+     *
      * @return $this
      */
     public function setSpeedLevel($speedLevel)
@@ -128,6 +138,7 @@ class PipelineAddRequest extends RpcAcsRequest
 
     /**
      * @param string $speed
+     *
      * @return $this
      */
     public function setSpeed($speed)

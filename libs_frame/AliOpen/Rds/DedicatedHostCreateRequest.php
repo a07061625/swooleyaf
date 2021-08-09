@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateDedicatedHost
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getHostName()
@@ -36,6 +38,7 @@ class DedicatedHostCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +51,7 @@ class DedicatedHostCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -60,6 +64,7 @@ class DedicatedHostCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $hostName
+     *
      * @return $this
      */
     public function setHostName($hostName)
@@ -72,6 +77,7 @@ class DedicatedHostCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostGroupId
+     *
      * @return $this
      */
     public function setDedicatedHostGroupId($dedicatedHostGroupId)
@@ -84,6 +90,7 @@ class DedicatedHostCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -96,6 +103,7 @@ class DedicatedHostCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $hostClass
+     *
      * @return $this
      */
     public function setHostClass($hostClass)
@@ -108,6 +116,7 @@ class DedicatedHostCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -120,6 +129,7 @@ class DedicatedHostCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -132,6 +142,7 @@ class DedicatedHostCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $usedTime
+     *
      * @return $this
      */
     public function setUsedTime($usedTime)
@@ -144,6 +155,7 @@ class DedicatedHostCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -156,6 +168,7 @@ class DedicatedHostCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $autoRenew
+     *
      * @return $this
      */
     public function setAutoRenew($autoRenew)
@@ -168,6 +181,7 @@ class DedicatedHostCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -180,6 +194,7 @@ class DedicatedHostCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetCategories
+ *
  * @method string getResourceOwnerId()
  * @method string getType()
  * @method string getCateId()
@@ -31,6 +33,7 @@ class CategoriesGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class CategoriesGetRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -55,6 +59,7 @@ class CategoriesGetRequest extends RpcAcsRequest
 
     /**
      * @param string $cateId
+     *
      * @return $this
      */
     public function setCateId($cateId)
@@ -67,6 +72,7 @@ class CategoriesGetRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -79,6 +85,7 @@ class CategoriesGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -91,6 +98,7 @@ class CategoriesGetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +111,7 @@ class CategoriesGetRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNo
+     *
      * @return $this
      */
     public function setPageNo($pageNo)
@@ -115,6 +124,7 @@ class CategoriesGetRequest extends RpcAcsRequest
 
     /**
      * @param string $sortBy
+     *
      * @return $this
      */
     public function setSortBy($sortBy)

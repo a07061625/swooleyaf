@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeInstancesFullStatus
+ *
  * @method array getEventIds()
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
@@ -38,7 +40,6 @@ class InstancesFullStatusDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $eventId
      * @return $this
      */
     public function setEventIds(array $eventId)
@@ -53,6 +54,7 @@ class InstancesFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -65,6 +67,7 @@ class InstancesFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -77,6 +80,7 @@ class InstancesFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -89,6 +93,7 @@ class InstancesFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $eventPublishTimeEnd
+     *
      * @return $this
      */
     public function setEventPublishTimeEnd($eventPublishTimeEnd)
@@ -100,7 +105,6 @@ class InstancesFullStatusDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceEventType
      * @return $this
      */
     public function setInstanceEventTypes(array $instanceEventType)
@@ -115,6 +119,7 @@ class InstancesFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -127,6 +132,7 @@ class InstancesFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -139,6 +145,7 @@ class InstancesFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $notBeforeStart
+     *
      * @return $this
      */
     public function setNotBeforeStart($notBeforeStart)
@@ -151,6 +158,7 @@ class InstancesFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -163,6 +171,7 @@ class InstancesFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $eventPublishTimeStart
+     *
      * @return $this
      */
     public function setEventPublishTimeStart($eventPublishTimeStart)
@@ -174,7 +183,6 @@ class InstancesFullStatusDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceId
      * @return $this
      */
     public function setInstanceIds(array $instanceId)
@@ -189,6 +197,7 @@ class InstancesFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $notBeforeEnd
+     *
      * @return $this
      */
     public function setNotBeforeEnd($notBeforeEnd)
@@ -201,6 +210,7 @@ class InstancesFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $healthStatus
+     *
      * @return $this
      */
     public function setHealthStatus($healthStatus)
@@ -213,6 +223,7 @@ class InstancesFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $eventType
+     *
      * @return $this
      */
     public function setEventType($eventType)
@@ -225,6 +236,7 @@ class InstancesFullStatusDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

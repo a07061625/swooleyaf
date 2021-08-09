@@ -17,12 +17,17 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Core;
 
+/**
+ * Interface AliOpen\Core\IAcsClient
+ */
 interface IAcsClient
 {
     /**
      * @param AcsRequest $request
+     *
      * @return mixed
      */
     public function doAction($request);

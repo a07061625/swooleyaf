@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeVodDomainUsageData
+ *
  * @method string getStartTime()
  * @method string getType()
  * @method string getArea()
@@ -30,6 +32,7 @@ class VodDomainUsageDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -42,6 +45,7 @@ class VodDomainUsageDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -54,6 +58,7 @@ class VodDomainUsageDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $area
+     *
      * @return $this
      */
     public function setArea($area)
@@ -66,6 +71,7 @@ class VodDomainUsageDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -78,6 +84,7 @@ class VodDomainUsageDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -90,6 +97,7 @@ class VodDomainUsageDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -102,6 +110,7 @@ class VodDomainUsageDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $field
+     *
      * @return $this
      */
     public function setField($field)

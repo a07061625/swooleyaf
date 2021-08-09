@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ReportMediaDetailJobResult
+ *
  * @method string getJobId()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -30,6 +32,7 @@ class MediaDetailJobResultReportRequest extends RpcAcsRequest
 
     /**
      * @param string $jobId
+     *
      * @return $this
      */
     public function setJobId($jobId)
@@ -42,6 +45,7 @@ class MediaDetailJobResultReportRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -54,6 +58,7 @@ class MediaDetailJobResultReportRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +71,7 @@ class MediaDetailJobResultReportRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -78,6 +84,7 @@ class MediaDetailJobResultReportRequest extends RpcAcsRequest
 
     /**
      * @param string $tag
+     *
      * @return $this
      */
     public function setTag($tag)
@@ -90,6 +97,7 @@ class MediaDetailJobResultReportRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -102,6 +110,7 @@ class MediaDetailJobResultReportRequest extends RpcAcsRequest
 
     /**
      * @param string $results
+     *
      * @return $this
      */
     public function setResults($results)

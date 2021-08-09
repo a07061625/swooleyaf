@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Afs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeConfigName
+ *
  * @method string getSourceIp()
  */
 class ConfigNameDescribeRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class ConfigNameDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)

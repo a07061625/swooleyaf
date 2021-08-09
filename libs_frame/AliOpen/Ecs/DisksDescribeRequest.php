@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDisks
+ *
  * @method string getResourceOwnerId()
  * @method string getFilter2Value()
  * @method string getAutoSnapshotPolicyId()
@@ -56,6 +58,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -68,6 +71,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $filter2Value
+     *
      * @return $this
      */
     public function setFilter2Value($filter2Value)
@@ -80,6 +84,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $autoSnapshotPolicyId
+     *
      * @return $this
      */
     public function setAutoSnapshotPolicyId($autoSnapshotPolicyId)
@@ -92,6 +97,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $diskName
+     *
      * @return $this
      */
     public function setDiskName($diskName)
@@ -104,6 +110,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $deleteAutoSnapshot
+     *
      * @return $this
      */
     public function setDeleteAutoSnapshot($deleteAutoSnapshot)
@@ -116,6 +123,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -128,6 +136,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $diskChargeType
+     *
      * @return $this
      */
     public function setDiskChargeType($diskChargeType)
@@ -140,6 +149,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $lockReason
+     *
      * @return $this
      */
     public function setLockReason($lockReason)
@@ -152,6 +162,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $filter1Key
+     *
      * @return $this
      */
     public function setFilter1Key($filter1Key)
@@ -163,7 +174,6 @@ class DisksDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -179,6 +189,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $enableAutoSnapshot
+     *
      * @return $this
      */
     public function setEnableAutoSnapshot($enableAutoSnapshot)
@@ -191,6 +202,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dryRun
+     *
      * @return $this
      */
     public function setDryRun($dryRun)
@@ -203,6 +215,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $filter1Value
+     *
      * @return $this
      */
     public function setFilter1Value($filter1Value)
@@ -215,6 +228,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $portable
+     *
      * @return $this
      */
     public function setPortable($portable)
@@ -227,6 +241,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -238,7 +253,6 @@ class DisksDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $additionalAttributes
      * @return $this
      */
     public function setAdditionalAttributess(array $additionalAttributes)
@@ -253,6 +267,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -265,6 +280,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -277,6 +293,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)
@@ -289,6 +306,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotId
+     *
      * @return $this
      */
     public function setSnapshotId($snapshotId)
@@ -301,6 +319,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -313,6 +332,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -325,6 +345,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $diskIds
+     *
      * @return $this
      */
     public function setDiskIds($diskIds)
@@ -337,6 +358,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $deleteWithInstance
+     *
      * @return $this
      */
     public function setDeleteWithInstance($deleteWithInstance)
@@ -349,6 +371,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -361,6 +384,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -373,6 +397,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $enableAutomatedSnapshotPolicy
+     *
      * @return $this
      */
     public function setEnableAutomatedSnapshotPolicy($enableAutomatedSnapshotPolicy)
@@ -385,6 +410,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $filter2Key
+     *
      * @return $this
      */
     public function setFilter2Key($filter2Key)
@@ -397,6 +423,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $diskType
+     *
      * @return $this
      */
     public function setDiskType($diskType)
@@ -409,6 +436,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $enableShared
+     *
      * @return $this
      */
     public function setEnableShared($enableShared)
@@ -421,6 +449,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $encrypted
+     *
      * @return $this
      */
     public function setEncrypted($encrypted)
@@ -433,6 +462,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $category
+     *
      * @return $this
      */
     public function setCategory($category)
@@ -445,6 +475,7 @@ class DisksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $kMSKeyId
+     *
      * @return $this
      */
     public function setKMSKeyId($kMSKeyId)

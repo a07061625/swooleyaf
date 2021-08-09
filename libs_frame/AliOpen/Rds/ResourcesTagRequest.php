@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of TagResources
+ *
  * @method string getResourceOwnerId()
  * @method array getResourceIds()
  * @method string getResourceOwnerAccount()
@@ -29,6 +31,7 @@ class ResourcesTagRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -40,7 +43,6 @@ class ResourcesTagRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $resourceId
      * @return $this
      */
     public function setResourceIds(array $resourceId)
@@ -55,6 +57,7 @@ class ResourcesTagRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -67,6 +70,7 @@ class ResourcesTagRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -79,6 +83,7 @@ class ResourcesTagRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -90,7 +95,6 @@ class ResourcesTagRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)

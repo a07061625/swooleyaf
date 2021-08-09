@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateSecurityGroup
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getDescription()
@@ -34,6 +36,7 @@ class SecurityGroupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class SecurityGroupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -58,6 +62,7 @@ class SecurityGroupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -70,6 +75,7 @@ class SecurityGroupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupName
+     *
      * @return $this
      */
     public function setSecurityGroupName($securityGroupName)
@@ -82,6 +88,7 @@ class SecurityGroupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -93,7 +100,6 @@ class SecurityGroupCreateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -109,6 +115,7 @@ class SecurityGroupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -121,6 +128,7 @@ class SecurityGroupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -133,6 +141,7 @@ class SecurityGroupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -145,6 +154,7 @@ class SecurityGroupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupType
+     *
      * @return $this
      */
     public function setSecurityGroupType($securityGroupType)
@@ -157,6 +167,7 @@ class SecurityGroupCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteTieringJob
+ *
  * @method string getVolume()
  * @method string getName()
  */
@@ -20,6 +22,7 @@ class TieringJobDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $volume
+     *
      * @return $this
      */
     public function setVolume($volume)
@@ -32,6 +35,7 @@ class TieringJobDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)

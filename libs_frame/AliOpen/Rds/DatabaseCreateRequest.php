@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateDatabase
+ *
  * @method string getResourceOwnerId()
  * @method string getDBInstanceId()
  * @method string getDBDescription()
@@ -31,6 +33,7 @@ class DatabaseCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class DatabaseCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -55,6 +59,7 @@ class DatabaseCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBDescription
+     *
      * @return $this
      */
     public function setDBDescription($dBDescription)
@@ -67,6 +72,7 @@ class DatabaseCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -79,6 +85,7 @@ class DatabaseCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,6 +98,7 @@ class DatabaseCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +111,7 @@ class DatabaseCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBName
+     *
      * @return $this
      */
     public function setDBName($dBName)
@@ -115,6 +124,7 @@ class DatabaseCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $characterSetName
+     *
      * @return $this
      */
     public function setCharacterSetName($characterSetName)

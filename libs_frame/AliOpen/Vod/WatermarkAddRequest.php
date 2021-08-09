@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddWatermark
+ *
  * @method string getResourceOwnerId()
  * @method string getType()
  * @method string getResourceOwnerAccount()
@@ -31,6 +33,7 @@ class WatermarkAddRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class WatermarkAddRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -55,6 +59,7 @@ class WatermarkAddRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -67,6 +72,7 @@ class WatermarkAddRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -79,6 +85,7 @@ class WatermarkAddRequest extends RpcAcsRequest
 
     /**
      * @param string $watermarkConfig
+     *
      * @return $this
      */
     public function setWatermarkConfig($watermarkConfig)
@@ -91,6 +98,7 @@ class WatermarkAddRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -103,6 +111,7 @@ class WatermarkAddRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -115,6 +124,7 @@ class WatermarkAddRequest extends RpcAcsRequest
 
     /**
      * @param string $fileUrl
+     *
      * @return $this
      */
     public function setFileUrl($fileUrl)

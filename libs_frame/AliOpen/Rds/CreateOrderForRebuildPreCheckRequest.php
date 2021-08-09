@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of PreCheckCreateOrderForRebuild
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getResourceGroupId()
@@ -47,6 +49,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -59,6 +62,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -71,6 +75,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -83,6 +88,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -95,6 +101,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceDescription
+     *
      * @return $this
      */
     public function setDBInstanceDescription($dBInstanceDescription)
@@ -107,6 +114,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $businessInfo
+     *
      * @return $this
      */
     public function setBusinessInfo($businessInfo)
@@ -119,6 +127,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $agentId
+     *
      * @return $this
      */
     public function setAgentId($agentId)
@@ -131,6 +140,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -143,6 +153,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -155,6 +166,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resource
+     *
      * @return $this
      */
     public function setResource($resource)
@@ -167,6 +179,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -179,6 +192,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityCode
+     *
      * @return $this
      */
     public function setCommodityCode($commodityCode)
@@ -191,6 +205,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -203,6 +218,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $usedTime
+     *
      * @return $this
      */
     public function setUsedTime($usedTime)
@@ -215,6 +231,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceClass
+     *
      * @return $this
      */
     public function setDBInstanceClass($dBInstanceClass)
@@ -227,6 +244,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -239,6 +257,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $rebuildInstanceFlag
+     *
      * @return $this
      */
     public function setRebuildInstanceFlag($rebuildInstanceFlag)
@@ -251,6 +270,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $autoRenew
+     *
      * @return $this
      */
     public function setAutoRenew($autoRenew)
@@ -263,6 +283,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $promotionCode
+     *
      * @return $this
      */
     public function setPromotionCode($promotionCode)
@@ -275,6 +296,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $vPCId
+     *
      * @return $this
      */
     public function setVPCId($vPCId)
@@ -287,6 +309,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -299,6 +322,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $timeType
+     *
      * @return $this
      */
     public function setTimeType($timeType)
@@ -311,6 +335,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)
@@ -323,6 +348,7 @@ class CreateOrderForRebuildPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceNetworkType
+     *
      * @return $this
      */
     public function setInstanceNetworkType($instanceNetworkType)

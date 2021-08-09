@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsInstanceUpdate
+ *
  * @method string getRemark()
  * @method string getInstanceName()
  * @method string getInstanceId()
@@ -26,6 +28,7 @@ class InstanceUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $remark
+     *
      * @return $this
      */
     public function setRemark($remark)
@@ -38,6 +41,7 @@ class InstanceUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceName
+     *
      * @return $this
      */
     public function setInstanceName($instanceName)
@@ -50,6 +54,7 @@ class InstanceUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyInstanceMetadataOptions
+ *
  * @method string getResourceOwnerId()
  * @method string getHttpPutResponseHopLimit()
  * @method string getHttpEndpoint()
@@ -30,6 +32,7 @@ class InstanceMetadataOptionsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class InstanceMetadataOptionsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $httpPutResponseHopLimit
+     *
      * @return $this
      */
     public function setHttpPutResponseHopLimit($httpPutResponseHopLimit)
@@ -54,6 +58,7 @@ class InstanceMetadataOptionsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $httpEndpoint
+     *
      * @return $this
      */
     public function setHttpEndpoint($httpEndpoint)
@@ -66,6 +71,7 @@ class InstanceMetadataOptionsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -78,6 +84,7 @@ class InstanceMetadataOptionsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -90,6 +97,7 @@ class InstanceMetadataOptionsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -102,6 +110,7 @@ class InstanceMetadataOptionsModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $httpTokens
+     *
      * @return $this
      */
     public function setHttpTokens($httpTokens)

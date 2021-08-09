@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsTopicCreate
+ *
  * @method string getMessageType()
  * @method string getRemark()
  * @method string getInstanceId()
@@ -27,6 +29,7 @@ class TopicCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $messageType
+     *
      * @return $this
      */
     public function setMessageType($messageType)
@@ -39,6 +42,7 @@ class TopicCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $remark
+     *
      * @return $this
      */
     public function setRemark($remark)
@@ -51,6 +55,7 @@ class TopicCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -63,6 +68,7 @@ class TopicCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $topic
+     *
      * @return $this
      */
     public function setTopic($topic)

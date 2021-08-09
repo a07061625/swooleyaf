@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetMessageCallback
+ *
  * @method string getAuthKey()
  * @method string getResourceOwnerId()
  * @method string getResourceRealOwnerId()
@@ -37,6 +39,7 @@ class MessageCallbackSetRequest extends RpcAcsRequest
 
     /**
      * @param string $authKey
+     *
      * @return $this
      */
     public function setAuthKey($authKey)
@@ -49,6 +52,7 @@ class MessageCallbackSetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -61,6 +65,7 @@ class MessageCallbackSetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceRealOwnerId
+     *
      * @return $this
      */
     public function setResourceRealOwnerId($resourceRealOwnerId)
@@ -73,6 +78,7 @@ class MessageCallbackSetRequest extends RpcAcsRequest
 
     /**
      * @param string $callbackType
+     *
      * @return $this
      */
     public function setCallbackType($callbackType)
@@ -85,6 +91,7 @@ class MessageCallbackSetRequest extends RpcAcsRequest
 
     /**
      * @param string $callbackSwitch
+     *
      * @return $this
      */
     public function setCallbackSwitch($callbackSwitch)
@@ -97,6 +104,7 @@ class MessageCallbackSetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -109,6 +117,7 @@ class MessageCallbackSetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -121,6 +130,7 @@ class MessageCallbackSetRequest extends RpcAcsRequest
 
     /**
      * @param string $eventTypeList
+     *
      * @return $this
      */
     public function setEventTypeList($eventTypeList)
@@ -133,6 +143,7 @@ class MessageCallbackSetRequest extends RpcAcsRequest
 
     /**
      * @param string $mnsQueueName
+     *
      * @return $this
      */
     public function setMnsQueueName($mnsQueueName)
@@ -145,6 +156,7 @@ class MessageCallbackSetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -157,6 +169,7 @@ class MessageCallbackSetRequest extends RpcAcsRequest
 
     /**
      * @param string $mnsEndpoint
+     *
      * @return $this
      */
     public function setMnsEndpoint($mnsEndpoint)
@@ -169,6 +182,7 @@ class MessageCallbackSetRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -181,6 +195,7 @@ class MessageCallbackSetRequest extends RpcAcsRequest
 
     /**
      * @param string $authSwitch
+     *
      * @return $this
      */
     public function setAuthSwitch($authSwitch)
@@ -193,6 +208,7 @@ class MessageCallbackSetRequest extends RpcAcsRequest
 
     /**
      * @param string $callbackURL
+     *
      * @return $this
      */
     public function setCallbackURL($callbackURL)

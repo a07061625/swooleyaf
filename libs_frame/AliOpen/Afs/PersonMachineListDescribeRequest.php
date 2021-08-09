@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Afs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribePersonMachineList
+ *
  * @method string getSourceIp()
  */
 class PersonMachineListDescribeRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class PersonMachineListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)

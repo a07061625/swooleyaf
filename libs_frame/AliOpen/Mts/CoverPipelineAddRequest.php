@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddCoverPipeline
+ *
  * @method string getResourceOwnerId()
  * @method string getRole()
  * @method string getResourceOwnerAccount()
@@ -31,6 +33,7 @@ class CoverPipelineAddRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class CoverPipelineAddRequest extends RpcAcsRequest
 
     /**
      * @param string $role
+     *
      * @return $this
      */
     public function setRole($role)
@@ -55,6 +59,7 @@ class CoverPipelineAddRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -67,6 +72,7 @@ class CoverPipelineAddRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -79,6 +85,7 @@ class CoverPipelineAddRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -91,6 +98,7 @@ class CoverPipelineAddRequest extends RpcAcsRequest
 
     /**
      * @param string $notifyConfig
+     *
      * @return $this
      */
     public function setNotifyConfig($notifyConfig)
@@ -103,6 +111,7 @@ class CoverPipelineAddRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -115,6 +124,7 @@ class CoverPipelineAddRequest extends RpcAcsRequest
 
     /**
      * @param string $priority
+     *
      * @return $this
      */
     public function setPriority($priority)

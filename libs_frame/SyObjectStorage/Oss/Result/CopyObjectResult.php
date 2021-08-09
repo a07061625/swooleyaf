@@ -1,14 +1,16 @@
 <?php
+
 namespace SyObjectStorage\Oss\Result;
 
 /**
  * Class CopyObjectResult
+ *
  * @package SyObjectStorage\Oss\Result
  */
 class CopyObjectResult extends Result
 {
     /**
-     * @return array
+     * @return array()
      */
     protected function parseDataFromResponse()
     {
@@ -23,6 +25,6 @@ class CopyObjectResult extends Result
             $result[] = $xml->ETag;
         }
 
-        return $result;
+        return array_merge($result, $this->rawResponse->header);
     }
 }

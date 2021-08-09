@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ReportFpShotJobResult
+ *
  * @method string getResult()
  * @method string getJobId()
  * @method string getResourceOwnerId()
@@ -30,6 +32,7 @@ class FpShotJobResultReportRequest extends RpcAcsRequest
 
     /**
      * @param string $result
+     *
      * @return $this
      */
     public function setResult($result)
@@ -42,6 +45,7 @@ class FpShotJobResultReportRequest extends RpcAcsRequest
 
     /**
      * @param string $jobId
+     *
      * @return $this
      */
     public function setJobId($jobId)
@@ -54,6 +58,7 @@ class FpShotJobResultReportRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -66,6 +71,7 @@ class FpShotJobResultReportRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -78,6 +84,7 @@ class FpShotJobResultReportRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -90,6 +97,7 @@ class FpShotJobResultReportRequest extends RpcAcsRequest
 
     /**
      * @param string $details
+     *
      * @return $this
      */
     public function setDetails($details)
@@ -102,6 +110,7 @@ class FpShotJobResultReportRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

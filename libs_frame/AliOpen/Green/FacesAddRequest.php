@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of AddFaces
+ *
  * @method string getClientInfo()
  */
 class FacesAddRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class FacesAddRequest extends RoaAcsRequest
 
     /**
      * @param string $clientInfo
+     *
      * @return $this
      */
     public function setClientInfo($clientInfo)

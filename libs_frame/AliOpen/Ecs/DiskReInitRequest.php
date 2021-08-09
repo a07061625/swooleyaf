@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ReInitDisk
+ *
  * @method string getResourceOwnerId()
  * @method string getAutoStartInstance()
  * @method string getSecurityEnhancementStrategy()
@@ -32,6 +34,7 @@ class DiskReInitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class DiskReInitRequest extends RpcAcsRequest
 
     /**
      * @param string $autoStartInstance
+     *
      * @return $this
      */
     public function setAutoStartInstance($autoStartInstance)
@@ -56,6 +60,7 @@ class DiskReInitRequest extends RpcAcsRequest
 
     /**
      * @param string $securityEnhancementStrategy
+     *
      * @return $this
      */
     public function setSecurityEnhancementStrategy($securityEnhancementStrategy)
@@ -68,6 +73,7 @@ class DiskReInitRequest extends RpcAcsRequest
 
     /**
      * @param string $keyPairName
+     *
      * @return $this
      */
     public function setKeyPairName($keyPairName)
@@ -80,6 +86,7 @@ class DiskReInitRequest extends RpcAcsRequest
 
     /**
      * @param string $password
+     *
      * @return $this
      */
     public function setPassword($password)
@@ -92,6 +99,7 @@ class DiskReInitRequest extends RpcAcsRequest
 
     /**
      * @param string $diskId
+     *
      * @return $this
      */
     public function setDiskId($diskId)
@@ -104,6 +112,7 @@ class DiskReInitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -116,6 +125,7 @@ class DiskReInitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -128,6 +138,7 @@ class DiskReInitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

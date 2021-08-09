@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of PreCheckCreateOrderForDefer
+ *
  * @method string getResourceOwnerId()
  * @method string getDBInstanceStorage()
  * @method string getClientToken()
@@ -39,6 +41,7 @@ class CreateOrderForDeferPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -51,6 +54,7 @@ class CreateOrderForDeferPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStorage
+     *
      * @return $this
      */
     public function setDBInstanceStorage($dBInstanceStorage)
@@ -63,6 +67,7 @@ class CreateOrderForDeferPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -75,6 +80,7 @@ class CreateOrderForDeferPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $renewChange
+     *
      * @return $this
      */
     public function setRenewChange($renewChange)
@@ -87,6 +93,7 @@ class CreateOrderForDeferPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -99,6 +106,7 @@ class CreateOrderForDeferPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStorageType
+     *
      * @return $this
      */
     public function setDBInstanceStorageType($dBInstanceStorageType)
@@ -111,6 +119,7 @@ class CreateOrderForDeferPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $businessInfo
+     *
      * @return $this
      */
     public function setBusinessInfo($businessInfo)
@@ -123,6 +132,7 @@ class CreateOrderForDeferPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -135,6 +145,7 @@ class CreateOrderForDeferPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -147,6 +158,7 @@ class CreateOrderForDeferPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resource
+     *
      * @return $this
      */
     public function setResource($resource)
@@ -159,6 +171,7 @@ class CreateOrderForDeferPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $commodityCode
+     *
      * @return $this
      */
     public function setCommodityCode($commodityCode)
@@ -171,6 +184,7 @@ class CreateOrderForDeferPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -183,6 +197,7 @@ class CreateOrderForDeferPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $usedTime
+     *
      * @return $this
      */
     public function setUsedTime($usedTime)
@@ -195,6 +210,7 @@ class CreateOrderForDeferPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceClass
+     *
      * @return $this
      */
     public function setDBInstanceClass($dBInstanceClass)
@@ -207,6 +223,7 @@ class CreateOrderForDeferPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $timeType
+     *
      * @return $this
      */
     public function setTimeType($timeType)
@@ -219,6 +236,7 @@ class CreateOrderForDeferPreCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)

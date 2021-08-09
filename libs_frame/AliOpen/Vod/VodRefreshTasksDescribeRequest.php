@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeVodRefreshTasks
+ *
  * @method string getObjectPath()
  * @method string getStartTime()
  * @method string getPageNumber()
@@ -35,6 +37,7 @@ class VodRefreshTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $objectPath
+     *
      * @return $this
      */
     public function setObjectPath($objectPath)
@@ -47,6 +50,7 @@ class VodRefreshTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -59,6 +63,7 @@ class VodRefreshTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -71,6 +76,7 @@ class VodRefreshTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -83,6 +89,7 @@ class VodRefreshTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -95,6 +102,7 @@ class VodRefreshTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -107,6 +115,7 @@ class VodRefreshTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $objectType
+     *
      * @return $this
      */
     public function setObjectType($objectType)
@@ -119,6 +128,7 @@ class VodRefreshTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $taskId
+     *
      * @return $this
      */
     public function setTaskId($taskId)
@@ -131,6 +141,7 @@ class VodRefreshTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -143,6 +154,7 @@ class VodRefreshTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -155,6 +167,7 @@ class VodRefreshTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -167,6 +180,7 @@ class VodRefreshTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

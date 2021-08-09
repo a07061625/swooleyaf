@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDedicatedHostTypes
+ *
  * @method string getResourceOwnerId()
  * @method string getSupportedInstanceTypeFamily()
  * @method string getDedicatedHostType()
@@ -29,6 +31,7 @@ class DedicatedHostTypesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class DedicatedHostTypesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $supportedInstanceTypeFamily
+     *
      * @return $this
      */
     public function setSupportedInstanceTypeFamily($supportedInstanceTypeFamily)
@@ -53,6 +57,7 @@ class DedicatedHostTypesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostType
+     *
      * @return $this
      */
     public function setDedicatedHostType($dedicatedHostType)
@@ -65,6 +70,7 @@ class DedicatedHostTypesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -77,6 +83,7 @@ class DedicatedHostTypesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -89,6 +96,7 @@ class DedicatedHostTypesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

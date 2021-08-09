@@ -17,6 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Core\Auth;
 
 /**
@@ -31,6 +32,7 @@ interface ISigner
     /**
      * @param $source
      * @param $accessSecret
+     *
      * @return mixed
      */
     public function signString($source, $accessSecret);

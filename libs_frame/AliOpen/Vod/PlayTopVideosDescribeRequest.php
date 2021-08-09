@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribePlayTopVideos
+ *
  * @method string getPageSize()
  * @method string getOwnerId()
  * @method string getBizDate()
@@ -27,6 +29,7 @@ class PlayTopVideosDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -39,6 +42,7 @@ class PlayTopVideosDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -51,6 +55,7 @@ class PlayTopVideosDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $bizDate
+     *
      * @return $this
      */
     public function setBizDate($bizDate)
@@ -63,6 +68,7 @@ class PlayTopVideosDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNo
+     *
      * @return $this
      */
     public function setPageNo($pageNo)

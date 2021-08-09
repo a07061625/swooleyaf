@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateWaterMarkTemplate
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -30,6 +32,7 @@ class WaterMarkTemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class WaterMarkTemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -54,6 +58,7 @@ class WaterMarkTemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -66,6 +71,7 @@ class WaterMarkTemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -78,6 +84,7 @@ class WaterMarkTemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -90,6 +97,7 @@ class WaterMarkTemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $waterMarkTemplateId
+     *
      * @return $this
      */
     public function setWaterMarkTemplateId($waterMarkTemplateId)
@@ -102,6 +110,7 @@ class WaterMarkTemplateUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $config
+     *
      * @return $this
      */
     public function setConfig($config)

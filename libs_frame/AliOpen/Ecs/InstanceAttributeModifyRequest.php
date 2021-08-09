@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyInstanceAttribute
+ *
  * @method string getResourceOwnerId()
  * @method string getRecyclable()
  * @method string getDescription()
@@ -37,6 +39,7 @@ class InstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -49,6 +52,7 @@ class InstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $recyclable
+     *
      * @return $this
      */
     public function setRecyclable($recyclable)
@@ -61,6 +65,7 @@ class InstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -73,6 +78,7 @@ class InstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $deletionProtection
+     *
      * @return $this
      */
     public function setDeletionProtection($deletionProtection)
@@ -85,6 +91,7 @@ class InstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -97,6 +104,7 @@ class InstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $password
+     *
      * @return $this
      */
     public function setPassword($password)
@@ -109,6 +117,7 @@ class InstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $hostName
+     *
      * @return $this
      */
     public function setHostName($hostName)
@@ -121,6 +130,7 @@ class InstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -133,6 +143,7 @@ class InstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -145,6 +156,7 @@ class InstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $creditSpecification
+     *
      * @return $this
      */
     public function setCreditSpecification($creditSpecification)
@@ -157,6 +169,7 @@ class InstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -168,7 +181,6 @@ class InstanceAttributeModifyRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $securityGroupIds
      * @return $this
      */
     public function setSecurityGroupIdss(array $securityGroupIds)
@@ -183,6 +195,7 @@ class InstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -195,6 +208,7 @@ class InstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceName
+     *
      * @return $this
      */
     public function setInstanceName($instanceName)

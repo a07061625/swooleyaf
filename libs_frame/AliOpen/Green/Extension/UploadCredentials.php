@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\Green\Extension;
 
 class UploadCredentials

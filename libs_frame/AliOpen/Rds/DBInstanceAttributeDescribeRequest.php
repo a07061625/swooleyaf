@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDBInstanceAttribute
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceGroupId()
  * @method string getExpired()
@@ -30,6 +32,7 @@ class DBInstanceAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class DBInstanceAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -54,6 +58,7 @@ class DBInstanceAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $expired
+     *
      * @return $this
      */
     public function setExpired($expired)
@@ -66,6 +71,7 @@ class DBInstanceAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -78,6 +84,7 @@ class DBInstanceAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -90,6 +97,7 @@ class DBInstanceAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -102,6 +110,7 @@ class DBInstanceAttributeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

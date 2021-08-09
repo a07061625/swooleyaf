@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteMaintenanceProperty
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -28,6 +30,7 @@ class MaintenancePropertyDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -40,6 +43,7 @@ class MaintenancePropertyDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -52,6 +56,7 @@ class MaintenancePropertyDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -64,6 +69,7 @@ class MaintenancePropertyDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -75,7 +81,6 @@ class MaintenancePropertyDeleteRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceId
      * @return $this
      */
     public function setInstanceIds(array $instanceId)

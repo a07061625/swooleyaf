@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeInvocations
+ *
  * @method string getResourceOwnerId()
  * @method string getInvokeStatus()
  * @method string getIncludeOutput()
@@ -38,6 +40,7 @@ class InvocationsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +53,7 @@ class InvocationsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $invokeStatus
+     *
      * @return $this
      */
     public function setInvokeStatus($invokeStatus)
@@ -62,6 +66,7 @@ class InvocationsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $includeOutput
+     *
      * @return $this
      */
     public function setIncludeOutput($includeOutput)
@@ -74,6 +79,7 @@ class InvocationsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $commandId
+     *
      * @return $this
      */
     public function setCommandId($commandId)
@@ -86,6 +92,7 @@ class InvocationsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -98,6 +105,7 @@ class InvocationsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $contentEncoding
+     *
      * @return $this
      */
     public function setContentEncoding($contentEncoding)
@@ -110,6 +118,7 @@ class InvocationsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -122,6 +131,7 @@ class InvocationsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $invokeId
+     *
      * @return $this
      */
     public function setInvokeId($invokeId)
@@ -134,6 +144,7 @@ class InvocationsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $timed
+     *
      * @return $this
      */
     public function setTimed($timed)
@@ -146,6 +157,7 @@ class InvocationsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $commandName
+     *
      * @return $this
      */
     public function setCommandName($commandName)
@@ -158,6 +170,7 @@ class InvocationsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -170,6 +183,7 @@ class InvocationsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -182,6 +196,7 @@ class InvocationsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -194,6 +209,7 @@ class InvocationsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $commandType
+     *
      * @return $this
      */
     public function setCommandType($commandType)
@@ -206,6 +222,7 @@ class InvocationsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)

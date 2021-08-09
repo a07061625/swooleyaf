@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListMedia
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getNextPageToken()
@@ -31,6 +33,7 @@ class MediaListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class MediaListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -55,6 +59,7 @@ class MediaListRequest extends RpcAcsRequest
 
     /**
      * @param string $nextPageToken
+     *
      * @return $this
      */
     public function setNextPageToken($nextPageToken)
@@ -67,6 +72,7 @@ class MediaListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -79,6 +85,7 @@ class MediaListRequest extends RpcAcsRequest
 
     /**
      * @param string $maximumPageSize
+     *
      * @return $this
      */
     public function setMaximumPageSize($maximumPageSize)
@@ -91,6 +98,7 @@ class MediaListRequest extends RpcAcsRequest
 
     /**
      * @param string $from
+     *
      * @return $this
      */
     public function setFrom($from)
@@ -103,6 +111,7 @@ class MediaListRequest extends RpcAcsRequest
 
     /**
      * @param string $to
+     *
      * @return $this
      */
     public function setTo($to)
@@ -115,6 +124,7 @@ class MediaListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

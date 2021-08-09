@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateRouteEntry
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getNextHopId()
@@ -33,6 +35,7 @@ class RouteEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class RouteEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -57,6 +61,7 @@ class RouteEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $nextHopId
+     *
      * @return $this
      */
     public function setNextHopId($nextHopId)
@@ -69,6 +74,7 @@ class RouteEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $nextHopType
+     *
      * @return $this
      */
     public function setNextHopType($nextHopType)
@@ -81,6 +87,7 @@ class RouteEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $routeTableId
+     *
      * @return $this
      */
     public function setRouteTableId($routeTableId)
@@ -93,6 +100,7 @@ class RouteEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -105,6 +113,7 @@ class RouteEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationCidrBlock
+     *
      * @return $this
      */
     public function setDestinationCidrBlock($destinationCidrBlock)
@@ -117,6 +126,7 @@ class RouteEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -129,6 +139,7 @@ class RouteEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -140,7 +151,6 @@ class RouteEntryCreateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $nextHopList
      * @return $this
      */
     public function setNextHopLists(array $nextHopList)

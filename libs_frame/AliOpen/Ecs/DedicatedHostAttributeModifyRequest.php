@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDedicatedHostAttribute
+ *
  * @method string getResourceOwnerId()
  * @method string getDescription()
  * @method string getActionOnMaintenance()
@@ -34,6 +36,7 @@ class DedicatedHostAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class DedicatedHostAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -58,6 +62,7 @@ class DedicatedHostAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $actionOnMaintenance
+     *
      * @return $this
      */
     public function setActionOnMaintenance($actionOnMaintenance)
@@ -70,6 +75,7 @@ class DedicatedHostAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostName
+     *
      * @return $this
      */
     public function setDedicatedHostName($dedicatedHostName)
@@ -82,6 +88,7 @@ class DedicatedHostAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -94,6 +101,7 @@ class DedicatedHostAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -106,6 +114,7 @@ class DedicatedHostAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostId
+     *
      * @return $this
      */
     public function setDedicatedHostId($dedicatedHostId)
@@ -118,6 +127,7 @@ class DedicatedHostAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -130,6 +140,7 @@ class DedicatedHostAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $networkAttributesSlbUdpTimeout
+     *
      * @return $this
      */
     public function setNetworkAttributesSlbUdpTimeout($networkAttributesSlbUdpTimeout)
@@ -142,6 +153,7 @@ class DedicatedHostAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPlacement
+     *
      * @return $this
      */
     public function setAutoPlacement($autoPlacement)
@@ -154,6 +166,7 @@ class DedicatedHostAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $networkAttributesUdpTimeout
+     *
      * @return $this
      */
     public function setNetworkAttributesUdpTimeout($networkAttributesUdpTimeout)

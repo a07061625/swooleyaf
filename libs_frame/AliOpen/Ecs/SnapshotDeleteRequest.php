@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteSnapshot
+ *
  * @method string getResourceOwnerId()
  * @method string getSnapshotId()
  * @method string getResourceOwnerAccount()
@@ -29,6 +31,7 @@ class SnapshotDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class SnapshotDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotId
+     *
      * @return $this
      */
     public function setSnapshotId($snapshotId)
@@ -53,6 +57,7 @@ class SnapshotDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -65,6 +70,7 @@ class SnapshotDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -77,6 +83,7 @@ class SnapshotDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -89,6 +96,7 @@ class SnapshotDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $force
+     *
      * @return $this
      */
     public function setForce($force)

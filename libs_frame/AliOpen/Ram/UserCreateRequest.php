@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateUser
+ *
  * @method string getComments()
  * @method string getDisplayName()
  * @method string getMobilePhone()
@@ -32,6 +34,7 @@ class UserCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $comments
+     *
      * @return $this
      */
     public function setComments($comments)
@@ -44,6 +47,7 @@ class UserCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $displayName
+     *
      * @return $this
      */
     public function setDisplayName($displayName)
@@ -56,6 +60,7 @@ class UserCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $mobilePhone
+     *
      * @return $this
      */
     public function setMobilePhone($mobilePhone)
@@ -68,6 +73,7 @@ class UserCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $email
+     *
      * @return $this
      */
     public function setEmail($email)
@@ -80,6 +86,7 @@ class UserCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $userName
+     *
      * @return $this
      */
     public function setUserName($userName)

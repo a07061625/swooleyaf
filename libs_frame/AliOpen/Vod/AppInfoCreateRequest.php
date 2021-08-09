@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateAppInfo
+ *
  * @method string getResourceOwnerId()
  * @method string getDescription()
  * @method string getResourceRealOwnerId()
@@ -29,6 +31,7 @@ class AppInfoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class AppInfoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -53,6 +57,7 @@ class AppInfoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceRealOwnerId
+     *
      * @return $this
      */
     public function setResourceRealOwnerId($resourceRealOwnerId)
@@ -65,6 +70,7 @@ class AppInfoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $appName
+     *
      * @return $this
      */
     public function setAppName($appName)
@@ -77,6 +83,7 @@ class AppInfoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -89,6 +96,7 @@ class AppInfoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

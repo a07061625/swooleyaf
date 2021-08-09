@@ -17,8 +17,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Core\Exception;
 
+/**
+ * Class AliOpen\Core\Exception\ClientException
+ */
 class ClientException extends \Exception
 {
     /**
@@ -36,6 +40,7 @@ class ClientException extends \Exception
 
     /**
      * AliOpen\Core\Exception\ClientException constructor.
+     *
      * @param $errorMessage
      * @param $errorCode
      */

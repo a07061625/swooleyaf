@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyReservedInstances
+ *
  * @method string getResourceOwnerId()
  * @method array getConfigurations()
  * @method string getResourceOwnerAccount()
@@ -29,6 +31,7 @@ class ReservedInstancesModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -40,7 +43,6 @@ class ReservedInstancesModifyRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $configuration
      * @return $this
      */
     public function setConfigurations(array $configuration)
@@ -59,6 +61,7 @@ class ReservedInstancesModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -71,6 +74,7 @@ class ReservedInstancesModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -83,6 +87,7 @@ class ReservedInstancesModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -94,7 +99,6 @@ class ReservedInstancesModifyRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $reservedInstanceId
      * @return $this
      */
     public function setReservedInstanceIds(array $reservedInstanceId)

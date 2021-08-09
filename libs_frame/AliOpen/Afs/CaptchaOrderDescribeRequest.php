@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Afs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeCaptchaOrder
+ *
  * @method string getSourceIp()
  * @method string getLang()
  */
@@ -25,6 +27,7 @@ class CaptchaOrderDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -37,6 +40,7 @@ class CaptchaOrderDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

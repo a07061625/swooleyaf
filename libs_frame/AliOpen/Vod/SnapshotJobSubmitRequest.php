@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitSnapshotJob
+ *
  * @method string getResourceOwnerId()
  * @method string getUserData()
  * @method string getSpecifiedOffsetTime()
@@ -36,6 +38,7 @@ class SnapshotJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +51,7 @@ class SnapshotJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -60,6 +64,7 @@ class SnapshotJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $specifiedOffsetTime
+     *
      * @return $this
      */
     public function setSpecifiedOffsetTime($specifiedOffsetTime)
@@ -72,6 +77,7 @@ class SnapshotJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $spriteSnapshotConfig
+     *
      * @return $this
      */
     public function setSpriteSnapshotConfig($spriteSnapshotConfig)
@@ -84,6 +90,7 @@ class SnapshotJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotTemplateId
+     *
      * @return $this
      */
     public function setSnapshotTemplateId($snapshotTemplateId)
@@ -96,6 +103,7 @@ class SnapshotJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $height
+     *
      * @return $this
      */
     public function setHeight($height)
@@ -108,6 +116,7 @@ class SnapshotJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -120,6 +129,7 @@ class SnapshotJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $count
+     *
      * @return $this
      */
     public function setCount($count)
@@ -132,6 +142,7 @@ class SnapshotJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $videoId
+     *
      * @return $this
      */
     public function setVideoId($videoId)
@@ -144,6 +155,7 @@ class SnapshotJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -156,6 +168,7 @@ class SnapshotJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $width
+     *
      * @return $this
      */
     public function setWidth($width)
@@ -168,6 +181,7 @@ class SnapshotJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $fileUrl
+     *
      * @return $this
      */
     public function setFileUrl($fileUrl)
@@ -180,6 +194,7 @@ class SnapshotJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $interval
+     *
      * @return $this
      */
     public function setInterval($interval)

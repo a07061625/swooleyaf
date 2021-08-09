@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SearchEditingProject
+ *
  * @method string getResourceOwnerId()
  * @method string getStartTime()
  * @method string getTitle()
@@ -34,6 +36,7 @@ class EditingProjectSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class EditingProjectSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -58,6 +62,7 @@ class EditingProjectSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -70,6 +75,7 @@ class EditingProjectSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -82,6 +88,7 @@ class EditingProjectSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -94,6 +101,7 @@ class EditingProjectSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -106,6 +114,7 @@ class EditingProjectSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -118,6 +127,7 @@ class EditingProjectSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -130,6 +140,7 @@ class EditingProjectSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNo
+     *
      * @return $this
      */
     public function setPageNo($pageNo)
@@ -142,6 +153,7 @@ class EditingProjectSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $sortBy
+     *
      * @return $this
      */
     public function setSortBy($sortBy)
@@ -154,6 +166,7 @@ class EditingProjectSearchRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

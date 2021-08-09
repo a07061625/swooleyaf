@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeInstances
+ *
  * @method string getInnerIpAddresses()
  * @method string getResourceOwnerId()
  * @method string getPrivateIpAddresses()
@@ -68,6 +70,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $innerIpAddresses
+     *
      * @return $this
      */
     public function setInnerIpAddresses($innerIpAddresses)
@@ -80,6 +83,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -92,6 +96,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $privateIpAddresses
+     *
      * @return $this
      */
     public function setPrivateIpAddresses($privateIpAddresses)
@@ -104,6 +109,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $hpcClusterId
+     *
      * @return $this
      */
     public function setHpcClusterId($hpcClusterId)
@@ -116,6 +122,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $httpPutResponseHopLimit
+     *
      * @return $this
      */
     public function setHttpPutResponseHopLimit($httpPutResponseHopLimit)
@@ -128,6 +135,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $filter2Value
+     *
      * @return $this
      */
     public function setFilter2Value($filter2Value)
@@ -140,6 +148,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $keyPairName
+     *
      * @return $this
      */
     public function setKeyPairName($keyPairName)
@@ -152,6 +161,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -164,6 +174,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $lockReason
+     *
      * @return $this
      */
     public function setLockReason($lockReason)
@@ -176,6 +187,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $filter1Key
+     *
      * @return $this
      */
     public function setFilter1Key($filter1Key)
@@ -188,6 +200,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $deviceAvailable
+     *
      * @return $this
      */
     public function setDeviceAvailable($deviceAvailable)
@@ -199,7 +212,6 @@ class InstancesDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -215,6 +227,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $filter3Value
+     *
      * @return $this
      */
     public function setFilter3Value($filter3Value)
@@ -227,6 +240,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dryRun
+     *
      * @return $this
      */
     public function setDryRun($dryRun)
@@ -239,6 +253,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $filter1Value
+     *
      * @return $this
      */
     public function setFilter1Value($filter1Value)
@@ -251,6 +266,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $needSaleCycle
+     *
      * @return $this
      */
     public function setNeedSaleCycle($needSaleCycle)
@@ -263,6 +279,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -275,6 +292,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -286,7 +304,6 @@ class InstancesDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $additionalAttributes
      * @return $this
      */
     public function setAdditionalAttributess(array $additionalAttributes)
@@ -301,6 +318,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceName
+     *
      * @return $this
      */
     public function setInstanceName($instanceName)
@@ -313,6 +331,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceIds
+     *
      * @return $this
      */
     public function setInstanceIds($instanceIds)
@@ -325,6 +344,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $internetChargeType
+     *
      * @return $this
      */
     public function setInternetChargeType($internetChargeType)
@@ -337,6 +357,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -349,6 +370,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceNetworkType
+     *
      * @return $this
      */
     public function setInstanceNetworkType($instanceNetworkType)
@@ -361,6 +383,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)
@@ -373,6 +396,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -385,6 +409,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $filter4Value
+     *
      * @return $this
      */
     public function setFilter4Value($filter4Value)
@@ -397,6 +422,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ioOptimized
+     *
      * @return $this
      */
     public function setIoOptimized($ioOptimized)
@@ -409,6 +435,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -421,6 +448,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $filter4Key
+     *
      * @return $this
      */
     public function setFilter4Key($filter4Key)
@@ -433,6 +461,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -445,6 +474,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $rdmaIpAddresses
+     *
      * @return $this
      */
     public function setRdmaIpAddresses($rdmaIpAddresses)
@@ -457,6 +487,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $httpEndpoint
+     *
      * @return $this
      */
     public function setHttpEndpoint($httpEndpoint)
@@ -469,6 +500,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -481,6 +513,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $publicIpAddresses
+     *
      * @return $this
      */
     public function setPublicIpAddresses($publicIpAddresses)
@@ -493,6 +526,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -505,6 +539,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceChargeType
+     *
      * @return $this
      */
     public function setInstanceChargeType($instanceChargeType)
@@ -517,6 +552,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -529,6 +565,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -541,6 +578,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceTypeFamily
+     *
      * @return $this
      */
     public function setInstanceTypeFamily($instanceTypeFamily)
@@ -553,6 +591,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $filter2Key
+     *
      * @return $this
      */
     public function setFilter2Key($filter2Key)
@@ -565,6 +604,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $eipAddresses
+     *
      * @return $this
      */
     public function setEipAddresses($eipAddresses)
@@ -577,6 +617,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -589,6 +630,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $httpTokens
+     *
      * @return $this
      */
     public function setHttpTokens($httpTokens)
@@ -601,6 +643,7 @@ class InstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $filter3Key
+     *
      * @return $this
      */
     public function setFilter3Key($filter3Key)

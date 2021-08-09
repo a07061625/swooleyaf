@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeEniMonitorData
+ *
  * @method string getResourceOwnerId()
  * @method string getStartTime()
  * @method string getPeriod()
@@ -32,6 +34,7 @@ class EniMonitorDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class EniMonitorDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -56,6 +60,7 @@ class EniMonitorDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -68,6 +73,7 @@ class EniMonitorDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -80,6 +86,7 @@ class EniMonitorDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -92,6 +99,7 @@ class EniMonitorDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -104,6 +112,7 @@ class EniMonitorDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,6 +125,7 @@ class EniMonitorDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -128,6 +138,7 @@ class EniMonitorDataDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $eniId
+     *
      * @return $this
      */
     public function setEniId($eniId)

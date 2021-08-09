@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteRouteEntry
+ *
  * @method string getResourceOwnerId()
  * @method string getNextHopId()
  * @method string getRouteTableId()
@@ -31,6 +33,7 @@ class RouteEntryDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class RouteEntryDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $nextHopId
+     *
      * @return $this
      */
     public function setNextHopId($nextHopId)
@@ -55,6 +59,7 @@ class RouteEntryDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $routeTableId
+     *
      * @return $this
      */
     public function setRouteTableId($routeTableId)
@@ -67,6 +72,7 @@ class RouteEntryDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -79,6 +85,7 @@ class RouteEntryDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationCidrBlock
+     *
      * @return $this
      */
     public function setDestinationCidrBlock($destinationCidrBlock)
@@ -91,6 +98,7 @@ class RouteEntryDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -103,6 +111,7 @@ class RouteEntryDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -114,7 +123,6 @@ class RouteEntryDeleteRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $nextHopList
      * @return $this
      */
     public function setNextHopLists(array $nextHopList)

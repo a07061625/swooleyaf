@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CheckRecoveryConditions
+ *
  * @method string getResourceOwnerId()
  * @method string getDBInstanceId()
  * @method string getRestoreTime()
@@ -31,6 +33,7 @@ class RecoveryConditionsCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class RecoveryConditionsCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -55,6 +59,7 @@ class RecoveryConditionsCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreTime
+     *
      * @return $this
      */
     public function setRestoreTime($restoreTime)
@@ -67,6 +72,7 @@ class RecoveryConditionsCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -79,6 +85,7 @@ class RecoveryConditionsCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $backupFile
+     *
      * @return $this
      */
     public function setBackupFile($backupFile)
@@ -91,6 +98,7 @@ class RecoveryConditionsCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $backupId
+     *
      * @return $this
      */
     public function setBackupId($backupId)
@@ -103,6 +111,7 @@ class RecoveryConditionsCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -115,6 +124,7 @@ class RecoveryConditionsCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyInstanceNetworkSpec
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getInternetMaxBandwidthOut()
@@ -36,6 +38,7 @@ class InstanceNetworkSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +51,7 @@ class InstanceNetworkSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -60,6 +64,7 @@ class InstanceNetworkSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $internetMaxBandwidthOut
+     *
      * @return $this
      */
     public function setInternetMaxBandwidthOut($internetMaxBandwidthOut)
@@ -72,6 +77,7 @@ class InstanceNetworkSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -84,6 +90,7 @@ class InstanceNetworkSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -96,6 +103,7 @@ class InstanceNetworkSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -108,6 +116,7 @@ class InstanceNetworkSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -120,6 +129,7 @@ class InstanceNetworkSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -132,6 +142,7 @@ class InstanceNetworkSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -144,6 +155,7 @@ class InstanceNetworkSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -156,6 +168,7 @@ class InstanceNetworkSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $networkChargeType
+     *
      * @return $this
      */
     public function setNetworkChargeType($networkChargeType)
@@ -168,6 +181,7 @@ class InstanceNetworkSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $internetMaxBandwidthIn
+     *
      * @return $this
      */
     public function setInternetMaxBandwidthIn($internetMaxBandwidthIn)
@@ -180,6 +194,7 @@ class InstanceNetworkSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $allocatePublicIp
+     *
      * @return $this
      */
     public function setAllocatePublicIp($allocatePublicIp)

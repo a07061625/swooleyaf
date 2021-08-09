@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeMountTargets
+ *
  * @method string getMountTargetDomain()
  * @method string getPageSize()
  * @method string getPageNumber()
@@ -27,6 +29,7 @@ class MountTargetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $mountTargetDomain
+     *
      * @return $this
      */
     public function setMountTargetDomain($mountTargetDomain)
@@ -39,6 +42,7 @@ class MountTargetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -51,6 +55,7 @@ class MountTargetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -63,6 +68,7 @@ class MountTargetsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $fileSystemId
+     *
      * @return $this
      */
     public function setFileSystemId($fileSystemId)

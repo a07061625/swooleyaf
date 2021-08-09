@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsTopicSubDetail
+ *
  * @method string getInstanceId()
  * @method string getTopic()
  */
@@ -25,6 +27,7 @@ class TopicSubDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -37,6 +40,7 @@ class TopicSubDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $topic
+     *
      * @return $this
      */
     public function setTopic($topic)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyStorageSetAttribute
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getDescription()
@@ -31,6 +33,7 @@ class StorageSetAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class StorageSetAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -55,6 +59,7 @@ class StorageSetAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -67,6 +72,7 @@ class StorageSetAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -79,6 +85,7 @@ class StorageSetAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,6 +98,7 @@ class StorageSetAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +111,7 @@ class StorageSetAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $storageSetId
+     *
      * @return $this
      */
     public function setStorageSetId($storageSetId)
@@ -115,6 +124,7 @@ class StorageSetAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $storageSetName
+     *
      * @return $this
      */
     public function setStorageSetName($storageSetName)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeBackupTasks
+ *
  * @method string getBackupJobId()
  * @method string getResourceOwnerId()
  * @method string getFlag()
@@ -33,6 +35,7 @@ class BackupTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $backupJobId
+     *
      * @return $this
      */
     public function setBackupJobId($backupJobId)
@@ -45,6 +48,7 @@ class BackupTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +61,7 @@ class BackupTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $flag
+     *
      * @return $this
      */
     public function setFlag($flag)
@@ -69,6 +74,7 @@ class BackupTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -81,6 +87,7 @@ class BackupTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -93,6 +100,7 @@ class BackupTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -105,6 +113,7 @@ class BackupTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -117,6 +126,7 @@ class BackupTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,6 +139,7 @@ class BackupTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $backupJobStatus
+     *
      * @return $this
      */
     public function setBackupJobStatus($backupJobStatus)
@@ -141,6 +152,7 @@ class BackupTasksDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $backupMode
+     *
      * @return $this
      */
     public function setBackupMode($backupMode)

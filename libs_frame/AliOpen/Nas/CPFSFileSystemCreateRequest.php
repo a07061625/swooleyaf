@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CPFSCreateFileSystem
+ *
  * @method string getFsSpec()
  * @method string getVSwitchId()
  * @method string getBandwidth()
@@ -31,6 +33,7 @@ class CPFSFileSystemCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $fsSpec
+     *
      * @return $this
      */
     public function setFsSpec($fsSpec)
@@ -43,6 +46,7 @@ class CPFSFileSystemCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -55,6 +59,7 @@ class CPFSFileSystemCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidth
+     *
      * @return $this
      */
     public function setBandwidth($bandwidth)
@@ -67,6 +72,7 @@ class CPFSFileSystemCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -79,6 +85,7 @@ class CPFSFileSystemCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -91,6 +98,7 @@ class CPFSFileSystemCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $networkType
+     *
      * @return $this
      */
     public function setNetworkType($networkType)
@@ -103,6 +111,7 @@ class CPFSFileSystemCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $fsDesc
+     *
      * @return $this
      */
     public function setFsDesc($fsDesc)
@@ -115,6 +124,7 @@ class CPFSFileSystemCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $capacity
+     *
      * @return $this
      */
     public function setCapacity($capacity)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of GetSimilarityImage
+ *
  * @method string getClientInfo()
  */
 class SimilarityImageGetRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class SimilarityImageGetRequest extends RoaAcsRequest
 
     /**
      * @param string $clientInfo
+     *
      * @return $this
      */
     public function setClientInfo($clientInfo)

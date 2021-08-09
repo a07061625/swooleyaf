@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetImageInfo
+ *
  * @method string getResourceOwnerId()
  * @method string getImageId()
  * @method string getOutputType()
@@ -29,6 +31,7 @@ class ImageInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class ImageInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -53,6 +57,7 @@ class ImageInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $outputType
+     *
      * @return $this
      */
     public function setOutputType($outputType)
@@ -65,6 +70,7 @@ class ImageInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $authTimeout
+     *
      * @return $this
      */
     public function setAuthTimeout($authTimeout)
@@ -77,6 +83,7 @@ class ImageInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -89,6 +96,7 @@ class ImageInfoGetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
