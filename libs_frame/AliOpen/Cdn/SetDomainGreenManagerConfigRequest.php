@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SetDomainGreenManagerConfig
  *
  * @method string getEnable()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetDomainGreenManagerConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

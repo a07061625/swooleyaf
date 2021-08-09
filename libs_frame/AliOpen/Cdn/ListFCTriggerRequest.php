@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListFCTrigger
  *
  * @method string getEventMetaVersion()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListFCTriggerRequest extends RpcAcsRequest
 {
-
     /**
      * Class constructor.
      */

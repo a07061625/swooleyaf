@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of AddBulkPhoneNumbers
  *
  * @method string getContactFlowId()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class AddBulkPhoneNumbersRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -62,18 +60,16 @@ class AddBulkPhoneNumbersRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $phoneNumber
-     *
      * @return $this
      */
-	public function setPhoneNumbers(array $phoneNumber)
-	{
-	    $this->requestParameters['PhoneNumbers'] = $phoneNumber;
-		foreach ($phoneNumber as $i => $iValue) {
-			$this->queryParameters['PhoneNumber.' . ($i + 1)] = $iValue;
-		}
+    public function setPhoneNumbers(array $phoneNumber)
+    {
+        $this->requestParameters['PhoneNumbers'] = $phoneNumber;
+        foreach ($phoneNumber as $i => $iValue) {
+            $this->queryParameters['PhoneNumber.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -90,17 +86,15 @@ class AddBulkPhoneNumbersRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $skillGroupId
-     *
      * @return $this
      */
-	public function setSkillGroupIds(array $skillGroupId)
-	{
-	    $this->requestParameters['SkillGroupIds'] = $skillGroupId;
-		foreach ($skillGroupId as $i => $iValue) {
-			$this->queryParameters['SkillGroupId.' . ($i + 1)] = $iValue;
-		}
+    public function setSkillGroupIds(array $skillGroupId)
+    {
+        $this->requestParameters['SkillGroupIds'] = $skillGroupId;
+        foreach ($skillGroupId as $i => $iValue) {
+            $this->queryParameters['SkillGroupId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }

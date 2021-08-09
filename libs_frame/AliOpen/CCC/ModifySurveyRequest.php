@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ModifySurvey
  *
  * @method string getRole()
@@ -23,7 +22,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifySurveyRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

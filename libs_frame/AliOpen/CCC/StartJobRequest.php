@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of StartJob
  *
  * @method string getGroupId()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class StartJobRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -63,18 +61,16 @@ class StartJobRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $callingNumber
-     *
      * @return $this
      */
-	public function setCallingNumbers(array $callingNumber)
-	{
-	    $this->requestParameters['CallingNumbers'] = $callingNumber;
-		foreach ($callingNumber as $i => $iValue) {
-			$this->queryParameters['CallingNumber.' . ($i + 1)] = $iValue;
-		}
+    public function setCallingNumbers(array $callingNumber)
+    {
+        $this->requestParameters['CallingNumbers'] = $callingNumber;
+        foreach ($callingNumber as $i => $iValue) {
+            $this->queryParameters['CallingNumber.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

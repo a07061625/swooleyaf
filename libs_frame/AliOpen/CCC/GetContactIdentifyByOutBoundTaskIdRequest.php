@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetContactIdentifyByOutBoundTaskId
  *
  * @method string getInstanceId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetContactIdentifyByOutBoundTaskIdRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

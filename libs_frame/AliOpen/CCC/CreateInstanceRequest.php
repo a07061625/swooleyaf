@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of CreateInstance
  *
  * @method array getPhoneNumberss()
@@ -21,7 +20,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateInstanceRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -41,33 +39,29 @@ class CreateInstanceRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $phoneNumbers
-     *
      * @return $this
      */
-	public function setPhoneNumberss(array $phoneNumbers)
-	{
-	    $this->requestParameters['PhoneNumberss'] = $phoneNumbers;
-		foreach ($phoneNumbers as $i => $iValue) {
-			$this->queryParameters['PhoneNumbers.' . ($i + 1)] = $iValue;
-		}
+    public function setPhoneNumberss(array $phoneNumbers)
+    {
+        $this->requestParameters['PhoneNumberss'] = $phoneNumbers;
+        foreach ($phoneNumbers as $i => $iValue) {
+            $this->queryParameters['PhoneNumbers.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $userObject
-     *
      * @return $this
      */
-	public function setUserObjects(array $userObject)
-	{
-	    $this->requestParameters['UserObjects'] = $userObject;
-		foreach ($userObject as $i => $iValue) {
-			$this->queryParameters['UserObject.' . ($i + 1)] = $iValue;
-		}
+    public function setUserObjects(array $userObject)
+    {
+        $this->requestParameters['UserObjects'] = $userObject;
+        foreach ($userObject as $i => $iValue) {
+            $this->queryParameters['UserObject.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -123,18 +117,16 @@ class CreateInstanceRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $adminRamId
-     *
      * @return $this
      */
-	public function setAdminRamIds(array $adminRamId)
-	{
-	    $this->requestParameters['AdminRamIds'] = $adminRamId;
-		foreach ($adminRamId as $i => $iValue) {
-			$this->queryParameters['AdminRamId.' . ($i + 1)] = $iValue;
-		}
+    public function setAdminRamIds(array $adminRamId)
+    {
+        $this->requestParameters['AdminRamIds'] = $adminRamId;
+        foreach ($adminRamId as $i => $iValue) {
+            $this->queryParameters['AdminRamId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

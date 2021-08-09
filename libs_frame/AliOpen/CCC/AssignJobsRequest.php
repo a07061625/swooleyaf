@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of AssignJobs
  *
  * @method string getGroupId()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class AssignJobsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -50,33 +48,29 @@ class AssignJobsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $jobsJson
-     *
      * @return $this
      */
-	public function setJobsJsons(array $jobsJson)
-	{
-	    $this->requestParameters['JobsJsons'] = $jobsJson;
-		foreach ($jobsJson as $i => $iValue) {
-			$this->queryParameters['JobsJson.' . ($i + 1)] = $iValue;
-		}
+    public function setJobsJsons(array $jobsJson)
+    {
+        $this->requestParameters['JobsJsons'] = $jobsJson;
+        foreach ($jobsJson as $i => $iValue) {
+            $this->queryParameters['JobsJson.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $callingNumber
-     *
      * @return $this
      */
-	public function setCallingNumbers(array $callingNumber)
-	{
-	    $this->requestParameters['CallingNumbers'] = $callingNumber;
-		foreach ($callingNumber as $i => $iValue) {
-			$this->queryParameters['CallingNumber.' . ($i + 1)] = $iValue;
-		}
+    public function setCallingNumbers(array $callingNumber)
+    {
+        $this->requestParameters['CallingNumbers'] = $callingNumber;
+        foreach ($callingNumber as $i => $iValue) {
+            $this->queryParameters['CallingNumber.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

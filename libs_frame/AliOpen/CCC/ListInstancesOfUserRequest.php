@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListInstancesOfUser
- *
  */
 class ListInstancesOfUserRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

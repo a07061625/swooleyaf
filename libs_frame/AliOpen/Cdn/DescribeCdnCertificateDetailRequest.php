@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeCdnCertificateDetail
  *
  * @method string getCertName()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeCdnCertificateDetailRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

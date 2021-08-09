@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CommitContactFlowVersionModification
  *
  * @method string getCanvas()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CommitContactFlowVersionModificationRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

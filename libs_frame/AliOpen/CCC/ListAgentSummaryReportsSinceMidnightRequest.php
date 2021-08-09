@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListAgentSummaryReportsSinceMidnight
  *
  * @method string getAgentIds()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListAgentSummaryReportsSinceMidnightRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

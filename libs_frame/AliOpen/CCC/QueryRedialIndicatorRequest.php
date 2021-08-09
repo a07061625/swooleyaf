@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of QueryRedialIndicator
  *
  * @method string getContactId()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class QueryRedialIndicatorRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

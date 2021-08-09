@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeRefreshQuota
  *
  * @method string getOwnerId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeRefreshQuotaRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

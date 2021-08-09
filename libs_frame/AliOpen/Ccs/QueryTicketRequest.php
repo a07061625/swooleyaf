@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Ccs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of QueryTicket
  *
  * @method string getStage()
@@ -19,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class QueryTicketRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

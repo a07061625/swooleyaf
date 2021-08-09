@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\Cbn;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -17,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeCenBandwidthPackagesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -37,8 +37,6 @@ class DescribeCenBandwidthPackagesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $filters
-     *
      * @return $this
      */
     public function setFilters(array $filters)

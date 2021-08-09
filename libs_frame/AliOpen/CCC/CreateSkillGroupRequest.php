@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of CreateSkillGroup
  *
  * @method string getAllowPrivateOutboundNumber()
@@ -19,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateSkillGroupRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -78,33 +76,29 @@ class CreateSkillGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $userId
-     *
      * @return $this
      */
-	public function setUserIds(array $userId)
-	{
-	    $this->requestParameters['UserIds'] = $userId;
-		foreach ($userId as $i => $iValue) {
-			$this->queryParameters['UserId.' . ($i + 1)] = $iValue;
-		}
+    public function setUserIds(array $userId)
+    {
+        $this->requestParameters['UserIds'] = $userId;
+        foreach ($userId as $i => $iValue) {
+            $this->queryParameters['UserId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $skillLevel
-     *
      * @return $this
      */
-	public function setSkillLevels(array $skillLevel)
-	{
-	    $this->requestParameters['SkillLevels'] = $skillLevel;
-		foreach ($skillLevel as $i => $iValue) {
-			$this->queryParameters['SkillLevel.' . ($i + 1)] = $iValue;
-		}
+    public function setSkillLevels(array $skillLevel)
+    {
+        $this->requestParameters['SkillLevels'] = $skillLevel;
+        foreach ($skillLevel as $i => $iValue) {
+            $this->queryParameters['SkillLevel.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -121,18 +115,16 @@ class CreateSkillGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $outboundPhoneNumberId
-     *
      * @return $this
      */
-	public function setOutboundPhoneNumberIds(array $outboundPhoneNumberId)
-	{
-	    $this->requestParameters['OutboundPhoneNumberIds'] = $outboundPhoneNumberId;
-		foreach ($outboundPhoneNumberId as $i => $iValue) {
-			$this->queryParameters['OutboundPhoneNumberId.' . ($i + 1)] = $iValue;
-		}
+    public function setOutboundPhoneNumberIds(array $outboundPhoneNumberId)
+    {
+        $this->requestParameters['OutboundPhoneNumberIds'] = $outboundPhoneNumberId;
+        foreach ($outboundPhoneNumberId as $i => $iValue) {
+            $this->queryParameters['OutboundPhoneNumberId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of PickOutboundNumbers
  *
  * @method string getCount()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class PickOutboundNumbersRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -61,18 +59,16 @@ class PickOutboundNumbersRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $candidateNumber
-     *
      * @return $this
      */
-	public function setCandidateNumbers(array $candidateNumber)
-	{
-	    $this->requestParameters['CandidateNumbers'] = $candidateNumber;
-		foreach ($candidateNumber as $i => $iValue) {
-			$this->queryParameters['CandidateNumber.' . ($i + 1)] = $iValue;
-		}
+    public function setCandidateNumbers(array $candidateNumber)
+    {
+        $this->requestParameters['CandidateNumbers'] = $candidateNumber;
+        foreach ($candidateNumber as $i => $iValue) {
+            $this->queryParameters['CandidateNumber.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

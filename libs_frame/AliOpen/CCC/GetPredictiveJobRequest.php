@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetPredictiveJob
  *
  * @method string getJobId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetPredictiveJobRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetJobsProgress
  *
  * @method string getInstanceId()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetJobsProgressRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

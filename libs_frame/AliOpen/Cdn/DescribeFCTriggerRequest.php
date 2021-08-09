@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of DescribeFCTrigger
  *
  * @method string getTriggerARN()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeFCTriggerRequest extends RpcAcsRequest
 {
-
     /**
      * Class constructor.
      */

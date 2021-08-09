@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of AddPhoneTags
  *
  * @method string getRegionNameProvince()
@@ -20,7 +19,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class AddPhoneTagsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -105,18 +103,16 @@ class AddPhoneTagsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $phoneNumberList
-     *
      * @return $this
      */
-	public function setPhoneNumberLists(array $phoneNumberList)
-	{
-	    $this->requestParameters['PhoneNumberLists'] = $phoneNumberList;
-		foreach ($phoneNumberList as $i => $iValue) {
-			$this->queryParameters['PhoneNumberList.' . ($i + 1)] = $iValue;
-		}
+    public function setPhoneNumberLists(array $phoneNumberList)
+    {
+        $this->requestParameters['PhoneNumberLists'] = $phoneNumberList;
+        foreach ($phoneNumberList as $i => $iValue) {
+            $this->queryParameters['PhoneNumberList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

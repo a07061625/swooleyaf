@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of CreatePredictiveJobGroup
  *
  * @method string getDescription()
@@ -20,7 +19,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreatePredictiveJobGroupRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -65,18 +63,16 @@ class CreatePredictiveJobGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $jobsJson
-     *
      * @return $this
      */
-	public function setJobsJsons(array $jobsJson)
-	{
-	    $this->requestParameters['JobsJsons'] = $jobsJson;
-		foreach ($jobsJson as $i => $iValue) {
-			$this->queryParameters['JobsJson.' . ($i + 1)] = $iValue;
-		}
+    public function setJobsJsons(array $jobsJson)
+    {
+        $this->requestParameters['JobsJsons'] = $jobsJson;
+        foreach ($jobsJson as $i => $iValue) {
+            $this->queryParameters['JobsJson.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

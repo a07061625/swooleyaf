@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListCallDetailRecords
  *
  * @method string getContactType()
@@ -23,7 +22,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListCallDetailRecordsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

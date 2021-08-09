@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\Cbn;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -18,7 +19,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class UntagResourcesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -51,8 +51,6 @@ class UntagResourcesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $resourceIds
-     *
      * @return $this
      */
     public function setResourceIds(array $resourceIds)
@@ -131,8 +129,6 @@ class UntagResourcesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tagKeys
-     *
      * @return $this
      */
     public function setTagKeys(array $tagKeys)

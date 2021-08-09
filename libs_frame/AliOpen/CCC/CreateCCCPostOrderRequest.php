@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of CreateCCCPostOrder
  *
  * @method string getOwnerId()
  */
 class CreateCCCPostOrderRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

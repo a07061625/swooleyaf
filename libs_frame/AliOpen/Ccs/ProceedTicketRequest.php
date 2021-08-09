@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Ccs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ProceedTicket
  *
  * @method string getMemo()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ProceedTicketRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

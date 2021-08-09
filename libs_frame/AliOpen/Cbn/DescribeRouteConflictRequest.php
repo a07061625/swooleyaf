@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\Cbn;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -20,7 +21,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeRouteConflictRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

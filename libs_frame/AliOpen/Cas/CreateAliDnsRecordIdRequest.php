@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateAliDnsRecordId
  *
  * @method string getRecordId()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateAliDnsRecordIdRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

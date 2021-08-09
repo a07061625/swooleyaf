@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -11,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class EncryptRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -43,8 +43,6 @@ class EncryptRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $plainTexts
-     *
      * @return $this
      */
     public function setPlainTexts(array $plainTexts)

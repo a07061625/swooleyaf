@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SetIpAllowListConfig
  *
  * @method string getDomainName()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetIpAllowListConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

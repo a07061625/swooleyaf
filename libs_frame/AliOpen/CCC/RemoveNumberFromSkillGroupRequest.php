@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of RemoveNumberFromSkillGroup
  *
  * @method string getNumber()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class RemoveNumberFromSkillGroupRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

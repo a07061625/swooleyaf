@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SetOptimizeConfig
  *
  * @method string getEnable()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetOptimizeConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

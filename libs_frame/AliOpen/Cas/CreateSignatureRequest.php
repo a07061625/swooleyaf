@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateSignature
  *
  * @method string getQuantity()
@@ -28,7 +27,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateSignatureRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ModifyCabInstance
  *
  * @method string getMaxConcurrentConversation()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifyCabInstanceRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

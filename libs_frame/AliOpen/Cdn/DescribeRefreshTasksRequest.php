@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeRefreshTasks
  *
  * @method string getObjectPath()
@@ -23,7 +22,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeRefreshTasksRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

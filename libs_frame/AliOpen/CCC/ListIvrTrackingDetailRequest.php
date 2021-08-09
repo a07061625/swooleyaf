@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListIvrTrackingDetail
  *
  * @method string getContactId()
@@ -19,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListIvrTrackingDetailRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

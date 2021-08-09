@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of DescribeRangeDataByLocateAndIspService
  *
  * @method string getDomainNames()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeRangeDataByLocateAndIspServiceRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

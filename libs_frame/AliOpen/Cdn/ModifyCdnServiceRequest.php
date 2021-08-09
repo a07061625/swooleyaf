@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ModifyCdnService
  *
  * @method string getOwnerId()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifyCdnServiceRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of StartBack2BackCall
  *
  * @method string getCallCenterNumber()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class StartBack2BackCallRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

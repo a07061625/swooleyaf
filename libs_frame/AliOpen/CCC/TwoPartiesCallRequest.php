@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of TwoPartiesCall
  *
  * @method string getCalleeCustomer()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class TwoPartiesCallRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

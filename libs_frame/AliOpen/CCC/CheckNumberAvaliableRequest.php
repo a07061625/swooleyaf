@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CheckNumberAvaliable
  *
  * @method string getCaller()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CheckNumberAvaliableRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SetForwardSchemeConfig
  *
  * @method string getSchemeOriginPort()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetForwardSchemeConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

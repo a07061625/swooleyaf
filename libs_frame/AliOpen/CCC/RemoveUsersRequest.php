@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of RemoveUsers
  *
  * @method string getInstanceId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class RemoveUsersRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -46,17 +44,15 @@ class RemoveUsersRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $userId
-     *
      * @return $this
      */
-	public function setUserIds(array $userId)
-	{
-	    $this->requestParameters['UserIds'] = $userId;
-		foreach ($userId as $i => $iValue) {
-			$this->queryParameters['UserId.' . ($i + 1)] = $iValue;
-		}
+    public function setUserIds(array $userId)
+    {
+        $this->requestParameters['UserIds'] = $userId;
+        foreach ($userId as $i => $iValue) {
+            $this->queryParameters['UserId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }

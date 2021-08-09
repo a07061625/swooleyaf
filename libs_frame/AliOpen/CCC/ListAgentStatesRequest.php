@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListAgentStates
  *
  * @method string getAgentIds()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListAgentStatesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

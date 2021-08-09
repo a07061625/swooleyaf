@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of SaveStats
  *
  * @method string getCallId()
@@ -20,7 +19,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SaveStatsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

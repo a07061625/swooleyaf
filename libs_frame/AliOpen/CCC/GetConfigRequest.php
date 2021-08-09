@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetConfig
  *
  * @method string getInstanceId()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

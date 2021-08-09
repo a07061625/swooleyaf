@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of AddPhoneNumber
  *
  * @method string getContactFlowId()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class AddPhoneNumberRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of SendPredefinedShortMessage
  *
  * @method string getPhoneNumbers()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SendPredefinedShortMessageRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

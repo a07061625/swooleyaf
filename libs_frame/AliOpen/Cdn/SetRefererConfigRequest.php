@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of SetRefererConfig
  *
  * @method string getReferList()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetRefererConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

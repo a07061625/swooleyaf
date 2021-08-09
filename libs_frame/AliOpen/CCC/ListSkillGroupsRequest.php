@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListSkillGroups
  *
  * @method string getInstanceId()
  */
 class ListSkillGroupsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

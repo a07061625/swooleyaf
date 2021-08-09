@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SetIgnoreQueryStringConfig
  *
  * @method string getEnable()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetIgnoreQueryStringConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

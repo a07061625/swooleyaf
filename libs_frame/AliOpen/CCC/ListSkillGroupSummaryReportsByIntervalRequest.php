@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListSkillGroupSummaryReportsByInterval
  *
  * @method string getEndTime()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListSkillGroupSummaryReportsByIntervalRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

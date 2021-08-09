@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListPredictiveJobGroups
  *
  * @method string getCriteria()
@@ -19,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListPredictiveJobGroupsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

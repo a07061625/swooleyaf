@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeOrderMaterial
  *
  * @method string getSourceIp()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeOrderMaterialRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

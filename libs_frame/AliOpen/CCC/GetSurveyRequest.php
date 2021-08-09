@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetSurvey
  *
  * @method string getSurveyId()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetSurveyRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeUserUsageDataExportTask
  *
  * @method string getPageNumber()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeUserUsageDataExportTaskRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

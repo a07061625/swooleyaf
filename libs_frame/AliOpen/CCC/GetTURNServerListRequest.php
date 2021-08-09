@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetTURNServerList
  *
  * @method string getInstanceId()
  */
 class GetTURNServerListRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of DescribeDomainMax95BpsData
  *
  * @method string getStartTime()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeDomainMax95BpsDataRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

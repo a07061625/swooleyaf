@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListJobStatus
  *
  * @method string getTimeAlignment()
@@ -21,7 +20,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListJobStatusRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

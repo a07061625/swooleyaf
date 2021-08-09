@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of SetUserGreenManagerConfig
  *
  * @method string getOwnerId()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetUserGreenManagerConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

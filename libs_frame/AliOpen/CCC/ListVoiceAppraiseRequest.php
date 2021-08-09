@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListVoiceAppraise
  *
  * @method string getInstanceId()
  */
 class ListVoiceAppraiseRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

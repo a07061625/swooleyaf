@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of CreateFault
  *
  * @method string getAgentOssFileName()
@@ -31,7 +30,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateFaultRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

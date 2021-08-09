@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListAgentStateLogs
  *
  * @method string getEndTime()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListAgentStateLogsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

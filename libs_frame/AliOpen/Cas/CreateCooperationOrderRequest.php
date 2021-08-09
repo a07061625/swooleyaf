@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateCooperationOrder
  *
  * @method string getProductCode()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateCooperationOrderRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

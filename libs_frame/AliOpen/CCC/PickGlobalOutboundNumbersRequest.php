@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of PickGlobalOutboundNumbers
  *
  * @method string getIsVirtual()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class PickGlobalOutboundNumbersRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -75,18 +73,16 @@ class PickGlobalOutboundNumbersRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $skillGroupId
-     *
      * @return $this
      */
-	public function setSkillGroupIds(array $skillGroupId)
-	{
-	    $this->requestParameters['SkillGroupIds'] = $skillGroupId;
-		foreach ($skillGroupId as $i => $iValue) {
-			$this->queryParameters['SkillGroupId.' . ($i + 1)] = $iValue;
-		}
+    public function setSkillGroupIds(array $skillGroupId)
+    {
+        $this->requestParameters['SkillGroupIds'] = $skillGroupId;
+        foreach ($skillGroupId as $i => $iValue) {
+            $this->queryParameters['SkillGroupId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListRealtimeLogDeliveryInfos
  *
  * @method string getOwnerId()
  */
 class ListRealtimeLogDeliveryInfosRequest extends RpcAcsRequest
 {
-
     /**
      * Class constructor.
      */

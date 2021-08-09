@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of LaunchShortMessageAppraise
  *
  * @method string getContactType()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class LaunchShortMessageAppraiseRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

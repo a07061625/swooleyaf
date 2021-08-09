@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SetRemoveQueryStringConfig
  *
  * @method string getAliRemoveArgs()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetRemoveQueryStringConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

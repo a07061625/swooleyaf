@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateScenarioFromTemplate
  *
  * @method string getVariables()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateScenarioFromTemplateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

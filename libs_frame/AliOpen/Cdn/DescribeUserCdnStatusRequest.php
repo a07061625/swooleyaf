@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeUserCdnStatus
  *
  * @method string getSecurityToken()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeUserCdnStatusRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

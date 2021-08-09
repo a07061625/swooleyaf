@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ModifyNotificationConfig
  *
  * @method array getSubscriptionss()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifyNotificationConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -35,20 +33,18 @@ class ModifyNotificationConfigRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $subscriptions
-     *
      * @return $this
      */
-	public function setSubscriptionss(array $subscriptions)
-	{
-	    $this->requestParameters['Subscriptionss'] = $subscriptions;
-		foreach ($subscriptions as $depth1 => $depth1Value) {
-			$this->queryParameters['Subscriptions.' . ($depth1 + 1) . '.DisplayName'] = $depth1Value['DisplayName'];
-			$this->queryParameters['Subscriptions.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
-			$this->queryParameters['Subscriptions.' . ($depth1 + 1) . '.Selected'] = $depth1Value['Selected'];
-		}
+    public function setSubscriptionss(array $subscriptions)
+    {
+        $this->requestParameters['Subscriptionss'] = $subscriptions;
+        foreach ($subscriptions as $depth1 => $depth1Value) {
+            $this->queryParameters['Subscriptions.' . ($depth1 + 1) . '.DisplayName'] = $depth1Value['DisplayName'];
+            $this->queryParameters['Subscriptions.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+            $this->queryParameters['Subscriptions.' . ($depth1 + 1) . '.Selected'] = $depth1Value['Selected'];
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

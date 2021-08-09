@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListRealTimeAgent
  *
  * @method string getInstanceId()
  */
 class ListRealTimeAgentRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

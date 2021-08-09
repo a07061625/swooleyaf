@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of BatchStopCdnDomain
  *
  * @method string getDomainNames()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class BatchStopCdnDomainRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

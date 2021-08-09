@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeOrderList
  *
  * @method string getSourceIp()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeOrderListRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

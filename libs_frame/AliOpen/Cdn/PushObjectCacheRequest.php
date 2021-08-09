@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of PushObjectCache
  *
  * @method string getArea()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class PushObjectCacheRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

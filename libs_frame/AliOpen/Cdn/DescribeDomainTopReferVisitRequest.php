@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of DescribeDomainTopReferVisit
  *
  * @method string getStartTime()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeDomainTopReferVisitRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

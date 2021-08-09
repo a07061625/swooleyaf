@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetSmsConfig
  *
  * @method string getInstanceId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetSmsConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -46,17 +44,15 @@ class GetSmsConfigRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $scenario
-     *
      * @return $this
      */
-	public function setScenarios(array $scenario)
-	{
-	    $this->requestParameters['Scenarios'] = $scenario;
-		foreach ($scenario as $i => $iValue) {
-			$this->queryParameters['Scenario.' . ($i + 1)] = $iValue;
-		}
+    public function setScenarios(array $scenario)
+    {
+        $this->requestParameters['Scenarios'] = $scenario;
+        foreach ($scenario as $i => $iValue) {
+            $this->queryParameters['Scenario.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }

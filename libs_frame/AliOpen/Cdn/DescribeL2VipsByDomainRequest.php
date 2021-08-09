@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of DescribeL2VipsByDomain
  *
  * @method string getDomainName()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeL2VipsByDomainRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

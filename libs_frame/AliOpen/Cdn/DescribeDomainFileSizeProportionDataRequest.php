@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeDomainFileSizeProportionData
  *
  * @method string getDomainName()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeDomainFileSizeProportionDataRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

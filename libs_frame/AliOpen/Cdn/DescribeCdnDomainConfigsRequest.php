@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeCdnDomainConfigs
  *
  * @method string getFunctionNames()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeCdnDomainConfigsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

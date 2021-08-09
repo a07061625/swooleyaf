@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeDomainCustomLogConfig
  *
  * @method string getDomainName()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeDomainCustomLogConfigRequest extends RpcAcsRequest
 {
-
     /**
      * Class constructor.
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListSkillGroupStates
  *
  * @method string getPageNumber()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListSkillGroupStatesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

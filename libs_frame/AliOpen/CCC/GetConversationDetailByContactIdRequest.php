@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetConversationDetailByContactId
  *
  * @method string getContactId()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetConversationDetailByContactIdRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

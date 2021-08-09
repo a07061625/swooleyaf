@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeDomainPathData
  *
  * @method string getStartTime()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeDomainPathDataRequest extends RpcAcsRequest
 {
-
     /**
      * Class constructor.
      */

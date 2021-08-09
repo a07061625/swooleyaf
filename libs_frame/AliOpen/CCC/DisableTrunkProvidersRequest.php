@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DisableTrunkProviders
  *
  * @method array getProviderNames()
  */
 class DisableTrunkProvidersRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -32,17 +30,15 @@ class DisableTrunkProvidersRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $providerName
-     *
      * @return $this
      */
-	public function setProviderNames(array $providerName)
-	{
-	    $this->requestParameters['ProviderNames'] = $providerName;
-		foreach ($providerName as $i => $iValue) {
-			$this->queryParameters['ProviderName.' . ($i + 1)] = $iValue;
-		}
+    public function setProviderNames(array $providerName)
+    {
+        $this->requestParameters['ProviderNames'] = $providerName;
+        foreach ($providerName as $i => $iValue) {
+            $this->queryParameters['ProviderName.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateOrderDocument
  *
  * @method string getOssKey()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateOrderDocumentRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

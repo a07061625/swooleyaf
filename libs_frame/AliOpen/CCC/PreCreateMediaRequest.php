@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of PreCreateMedia
  *
  * @method string getDescription()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class PreCreateMediaRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

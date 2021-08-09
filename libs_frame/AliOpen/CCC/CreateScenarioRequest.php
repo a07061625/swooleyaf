@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of CreateScenario
  *
  * @method array getSurveysJsons()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateScenarioRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -37,18 +35,16 @@ class CreateScenarioRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $surveysJson
-     *
      * @return $this
      */
-	public function setSurveysJsons(array $surveysJson)
-	{
-	    $this->requestParameters['SurveysJsons'] = $surveysJson;
-		foreach ($surveysJson as $i => $iValue) {
-			$this->queryParameters['SurveysJson.' . ($i + 1)] = $iValue;
-		}
+    public function setSurveysJsons(array $surveysJson)
+    {
+        $this->requestParameters['SurveysJsons'] = $surveysJson;
+        foreach ($surveysJson as $i => $iValue) {
+            $this->queryParameters['SurveysJson.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

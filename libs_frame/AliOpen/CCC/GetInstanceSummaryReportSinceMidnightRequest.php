@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetInstanceSummaryReportSinceMidnight
  *
  * @method string getPageNumber()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetInstanceSummaryReportSinceMidnightRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateOrderRevoke
  *
  * @method string getReason()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateOrderRevokeRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

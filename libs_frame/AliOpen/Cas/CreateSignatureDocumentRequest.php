@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateSignatureDocument
  *
  * @method string getSourceIp()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateSignatureDocumentRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

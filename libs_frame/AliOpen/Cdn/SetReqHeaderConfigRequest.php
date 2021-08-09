@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SetReqHeaderConfig
  *
  * @method string getDomainName()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetReqHeaderConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

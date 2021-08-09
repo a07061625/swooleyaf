@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeDownloadCertificate
  *
  * @method string getSourceIp()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeDownloadCertificateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

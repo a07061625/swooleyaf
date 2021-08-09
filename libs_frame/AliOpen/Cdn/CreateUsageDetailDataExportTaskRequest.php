@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateUsageDetailDataExportTask
  *
  * @method string getDomainNames()
@@ -19,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateUsageDetailDataExportTaskRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

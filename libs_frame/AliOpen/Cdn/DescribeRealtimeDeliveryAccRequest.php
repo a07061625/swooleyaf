@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeRealtimeDeliveryAcc
  *
  * @method string getProject()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeRealtimeDeliveryAccRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

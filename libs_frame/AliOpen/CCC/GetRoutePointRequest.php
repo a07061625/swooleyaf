@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetRoutePoint
  *
  * @method string getContactFlowId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetRoutePointRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

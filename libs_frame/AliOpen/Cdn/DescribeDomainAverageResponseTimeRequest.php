@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of DescribeDomainAverageResponseTime
  *
  * @method string getLocationNameEn()
@@ -20,7 +19,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeDomainAverageResponseTimeRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

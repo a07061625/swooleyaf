@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ModifyUserCustomLogConfig
  *
  * @method string getOwnerId()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifyUserCustomLogConfigRequest extends RpcAcsRequest
 {
-
     /**
      * Class constructor.
      */

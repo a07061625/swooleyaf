@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SetHttpErrorPageConfig
  *
  * @method string getPageUrl()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetHttpErrorPageConfigRequest extends RpcAcsRequest
 {
-
     /**
      * Class constructor.
      */

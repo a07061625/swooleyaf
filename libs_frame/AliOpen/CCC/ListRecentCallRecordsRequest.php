@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListRecentCallRecords
  *
  * @method string getCriteria()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListRecentCallRecordsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

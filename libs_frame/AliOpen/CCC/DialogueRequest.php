@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of Dialogue
  *
  * @method string getCallId()
@@ -22,7 +21,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DialogueRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

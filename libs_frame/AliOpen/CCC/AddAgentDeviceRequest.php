@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of AddAgentDevice
  *
  * @method string getRemark()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class AddAgentDeviceRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

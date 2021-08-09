@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListTrunkProviders
- *
  */
 class ListTrunkProvidersRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

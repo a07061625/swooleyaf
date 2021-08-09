@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of SimpleDial
  *
  * @method string getCallee()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SimpleDialRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeSignatureCapacity
  *
  * @method string getSourceIp()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeSignatureCapacityRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

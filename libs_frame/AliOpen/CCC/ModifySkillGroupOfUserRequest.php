@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ModifySkillGroupOfUser
  *
  * @method array getRoleIds()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifySkillGroupOfUserRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -36,18 +34,16 @@ class ModifySkillGroupOfUserRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $roleId
-     *
      * @return $this
      */
-	public function setRoleIds(array $roleId)
-	{
-	    $this->requestParameters['RoleIds'] = $roleId;
-		foreach ($roleId as $i => $iValue) {
-			$this->queryParameters['RoleId.' . ($i + 1)] = $iValue;
-		}
+    public function setRoleIds(array $roleId)
+    {
+        $this->requestParameters['RoleIds'] = $roleId;
+        foreach ($roleId as $i => $iValue) {
+            $this->queryParameters['RoleId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -64,18 +60,16 @@ class ModifySkillGroupOfUserRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $skillLevel
-     *
      * @return $this
      */
-	public function setSkillLevels(array $skillLevel)
-	{
-	    $this->requestParameters['SkillLevels'] = $skillLevel;
-		foreach ($skillLevel as $i => $iValue) {
-			$this->queryParameters['SkillLevel.' . ($i + 1)] = $iValue;
-		}
+    public function setSkillLevels(array $skillLevel)
+    {
+        $this->requestParameters['SkillLevels'] = $skillLevel;
+        foreach ($skillLevel as $i => $iValue) {
+            $this->queryParameters['SkillLevel.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -92,17 +86,15 @@ class ModifySkillGroupOfUserRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $skillGroupId
-     *
      * @return $this
      */
-	public function setSkillGroupIds(array $skillGroupId)
-	{
-	    $this->requestParameters['SkillGroupIds'] = $skillGroupId;
-		foreach ($skillGroupId as $i => $iValue) {
-			$this->queryParameters['SkillGroupId.' . ($i + 1)] = $iValue;
-		}
+    public function setSkillGroupIds(array $skillGroupId)
+    {
+        $this->requestParameters['SkillGroupIds'] = $skillGroupId;
+        foreach ($skillGroupId as $i => $iValue) {
+            $this->queryParameters['SkillGroupId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }

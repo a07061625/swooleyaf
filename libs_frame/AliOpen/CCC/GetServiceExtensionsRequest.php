@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetServiceExtensions
  *
  * @method string getServiceType()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetServiceExtensionsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

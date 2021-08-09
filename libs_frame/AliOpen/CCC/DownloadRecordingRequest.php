@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DownloadRecording
  *
  * @method string getChannel()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DownloadRecordingRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

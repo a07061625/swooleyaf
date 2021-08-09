@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetNumberRegionInfo
  *
  * @method string getNumber()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetNumberRegionInfoRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

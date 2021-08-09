@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateSignaturePeopleCertificate
  *
  * @method string getPeopleName()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateSignaturePeopleCertificateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

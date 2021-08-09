@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeDomainReqHitRateData
  *
  * @method string getStartTime()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeDomainReqHitRateDataRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

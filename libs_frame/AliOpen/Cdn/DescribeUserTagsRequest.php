@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeUserTags
  *
  * @method string getOwnerId()
  */
 class DescribeUserTagsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Ccs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateTicket
  *
  * @method string getCreatorId()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateTicketRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

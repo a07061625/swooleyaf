@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListBasicStatisticsReportSubItems
  *
  * @method string getTitle()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListBasicStatisticsReportSubItemsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

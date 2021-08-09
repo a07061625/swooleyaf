@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of SetL2OssKeyConfig
  *
  * @method string getDomainName()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetL2OssKeyConfigRequest extends RpcAcsRequest
 {
-
     /**
      * Class constructor.
      */

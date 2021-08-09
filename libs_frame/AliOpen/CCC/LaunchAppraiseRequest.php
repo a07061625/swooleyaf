@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of LaunchAppraise
  *
  * @method string getAcid()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class LaunchAppraiseRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

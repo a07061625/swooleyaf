@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of DeletePhoneTags
  *
  * @method string getInstanceId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeletePhoneTagsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -46,17 +44,15 @@ class DeletePhoneTagsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $phoneNumberList
-     *
      * @return $this
      */
-	public function setPhoneNumberLists(array $phoneNumberList)
-	{
-	    $this->requestParameters['PhoneNumberLists'] = $phoneNumberList;
-		foreach ($phoneNumberList as $i => $iValue) {
-			$this->queryParameters['PhoneNumberList.' . ($i + 1)] = $iValue;
-		}
+    public function setPhoneNumberLists(array $phoneNumberList)
+    {
+        $this->requestParameters['PhoneNumberLists'] = $phoneNumberList;
+        foreach ($phoneNumberList as $i => $iValue) {
+            $this->queryParameters['PhoneNumberList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }

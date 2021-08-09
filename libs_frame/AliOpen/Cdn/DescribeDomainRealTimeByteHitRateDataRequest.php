@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeDomainRealTimeByteHitRateData
  *
  * @method string getStartTime()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeDomainRealTimeByteHitRateDataRequest extends RpcAcsRequest
 {
-
     /**
      * Class constructor.
      */

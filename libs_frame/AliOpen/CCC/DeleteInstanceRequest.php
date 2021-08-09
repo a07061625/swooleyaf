@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteInstance
  *
  * @method string getInstanceId()
  */
 class DeleteInstanceRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

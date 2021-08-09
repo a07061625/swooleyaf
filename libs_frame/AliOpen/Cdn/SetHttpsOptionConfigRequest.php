@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SetHttpsOptionConfig
  *
  * @method string getHttp2()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetHttpsOptionConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

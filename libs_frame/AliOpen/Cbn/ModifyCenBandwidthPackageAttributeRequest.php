@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\Cbn;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -16,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifyCenBandwidthPackageAttributeRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

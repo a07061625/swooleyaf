@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListConfig
  *
  * @method string getInstanceId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -46,17 +44,15 @@ class ListConfigRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $configItem
-     *
      * @return $this
      */
-	public function setConfigItems(array $configItem)
-	{
-	    $this->requestParameters['ConfigItems'] = $configItem;
-		foreach ($configItem as $i => $iValue) {
-			$this->queryParameters['ConfigItem.' . ($i + 1)] = $iValue;
-		}
+    public function setConfigItems(array $configItem)
+    {
+        $this->requestParameters['ConfigItems'] = $configItem;
+        foreach ($configItem as $i => $iValue) {
+            $this->queryParameters['ConfigItem.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }

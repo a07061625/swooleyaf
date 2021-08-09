@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Ccs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of QueryHotlineRecord
  *
  * @method string getAgentId()
@@ -27,7 +26,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class QueryHotlineRecordRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

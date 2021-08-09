@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of TaskPreparing
  *
  * @method string getJobId()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class TaskPreparingRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

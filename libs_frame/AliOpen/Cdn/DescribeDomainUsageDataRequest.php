@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of DescribeDomainUsageData
  *
  * @method string getStartTime()
@@ -19,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeDomainUsageDataRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

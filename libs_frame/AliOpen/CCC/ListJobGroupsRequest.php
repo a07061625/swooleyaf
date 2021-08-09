@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListJobGroups
  *
  * @method string getEndTime()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListJobGroupsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

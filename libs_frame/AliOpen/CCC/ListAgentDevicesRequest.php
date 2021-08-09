@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListAgentDevices
  *
  * @method string getRamIds()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListAgentDevicesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

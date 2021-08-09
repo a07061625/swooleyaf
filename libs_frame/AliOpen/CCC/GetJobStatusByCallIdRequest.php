@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of GetJobStatusByCallId
  *
  * @method string getCallId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetJobStatusByCallIdRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

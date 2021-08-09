@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of RefreshToken
  *
  * @method string getInstanceId()
  */
 class RefreshTokenRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

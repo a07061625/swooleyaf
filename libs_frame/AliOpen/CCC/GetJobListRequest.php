@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of GetJobList
  *
  * @method string getPageNumber()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetJobListRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

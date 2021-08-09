@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SetFileCacheExpiredConfig
  *
  * @method string getSecurityToken()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetFileCacheExpiredConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

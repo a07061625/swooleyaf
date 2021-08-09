@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteSpecificConfig
  *
  * @method string getDomainName()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteSpecificConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

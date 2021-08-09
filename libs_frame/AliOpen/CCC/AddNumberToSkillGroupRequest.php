@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of AddNumberToSkillGroup
  *
  * @method string getNumber()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class AddNumberToSkillGroupRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ResetUserStatus
  *
  * @method string getInstanceId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ResetUserStatusRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -46,17 +44,15 @@ class ResetUserStatusRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $ramIdList
-     *
      * @return $this
      */
-	public function setRamIdLists(array $ramIdList)
-	{
-	    $this->requestParameters['RamIdLists'] = $ramIdList;
-		foreach ($ramIdList as $i => $iValue) {
-			$this->queryParameters['RamIdList.' . ($i + 1)] = $iValue;
-		}
+    public function setRamIdLists(array $ramIdList)
+    {
+        $this->requestParameters['RamIdLists'] = $ramIdList;
+        foreach ($ramIdList as $i => $iValue) {
+            $this->queryParameters['RamIdList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }

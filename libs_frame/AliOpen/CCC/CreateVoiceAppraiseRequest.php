@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateVoiceAppraise
  *
  * @method string getIsAppraise()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateVoiceAppraiseRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

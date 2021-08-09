@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListPhoneTags
  *
  * @method array getNumberGroupIdss()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListPhoneTagsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -37,18 +35,16 @@ class ListPhoneTagsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $numberGroupIds
-     *
      * @return $this
      */
-	public function setNumberGroupIdss(array $numberGroupIds)
-	{
-	    $this->requestParameters['NumberGroupIdss'] = $numberGroupIds;
-		foreach ($numberGroupIds as $i => $iValue) {
-			$this->queryParameters['NumberGroupIds.' . ($i + 1)] = $iValue;
-		}
+    public function setNumberGroupIdss(array $numberGroupIds)
+    {
+        $this->requestParameters['NumberGroupIdss'] = $numberGroupIds;
+        foreach ($numberGroupIds as $i => $iValue) {
+            $this->queryParameters['NumberGroupIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteRealtimeLogDelivery
  *
  * @method string getProject()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteRealtimeLogDeliveryRequest extends RpcAcsRequest
 {
-
     /**
      * Class constructor.
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SetReqAuthConfig
  *
  * @method string getKey1()
@@ -19,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetReqAuthConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

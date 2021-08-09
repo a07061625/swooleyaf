@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListRecordingOfDualTrack
  *
  * @method string getAgentId()
@@ -20,7 +19,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListRecordingOfDualTrackRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

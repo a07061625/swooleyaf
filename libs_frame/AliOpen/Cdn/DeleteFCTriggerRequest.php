@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of DeleteFCTrigger
  *
  * @method string getTriggerARN()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteFCTriggerRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

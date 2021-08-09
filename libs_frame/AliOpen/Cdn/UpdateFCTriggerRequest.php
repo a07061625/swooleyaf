@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of UpdateFCTrigger
  *
  * @method string getNotes()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class UpdateFCTriggerRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

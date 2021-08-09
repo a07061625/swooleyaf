@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CallOnlinePrivacyNumber
  *
  * @method string getTelA()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CallOnlinePrivacyNumberRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

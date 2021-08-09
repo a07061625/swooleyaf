@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\Cbn;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -17,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeCensRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -37,8 +37,6 @@ class DescribeCensRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $filters
-     *
      * @return $this
      */
     public function setFilters(array $filters)
@@ -107,8 +105,6 @@ class DescribeCensRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tags
-     *
      * @return $this
      */
     public function setTags(array $tags)

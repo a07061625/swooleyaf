@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ModifySkillGroupOutboundNumbers
  *
  * @method string getOperationType()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifySkillGroupOutboundNumbersRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -61,18 +59,16 @@ class ModifySkillGroupOutboundNumbersRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $outboundPhoneNumberId
-     *
      * @return $this
      */
-	public function setOutboundPhoneNumberIds(array $outboundPhoneNumberId)
-	{
-	    $this->requestParameters['OutboundPhoneNumberIds'] = $outboundPhoneNumberId;
-		foreach ($outboundPhoneNumberId as $i => $iValue) {
-			$this->queryParameters['OutboundPhoneNumberId.' . ($i + 1)] = $iValue;
-		}
+    public function setOutboundPhoneNumberIds(array $outboundPhoneNumberId)
+    {
+        $this->requestParameters['OutboundPhoneNumberIds'] = $outboundPhoneNumberId;
+        foreach ($outboundPhoneNumberId as $i => $iValue) {
+            $this->queryParameters['OutboundPhoneNumberId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

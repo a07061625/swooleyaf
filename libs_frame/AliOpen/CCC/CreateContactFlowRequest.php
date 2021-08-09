@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateContactFlow
  *
  * @method string getCanvas()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateContactFlowRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

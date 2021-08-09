@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetUserByExtension
  *
  * @method string getExtension()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetUserByExtensionRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

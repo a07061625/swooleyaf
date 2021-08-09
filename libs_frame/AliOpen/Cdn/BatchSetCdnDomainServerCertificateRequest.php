@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of BatchSetCdnDomainServerCertificate
  *
  * @method string getSSLProtocol()
@@ -21,7 +20,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class BatchSetCdnDomainServerCertificateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

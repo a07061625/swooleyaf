@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ModifyAgentDevice
  *
  * @method string getIsLogin()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifyAgentDeviceRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

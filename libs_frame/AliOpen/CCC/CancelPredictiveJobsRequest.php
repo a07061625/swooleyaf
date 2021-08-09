@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CancelPredictiveJobs
  *
  * @method string getAll()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CancelPredictiveJobsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -47,18 +45,16 @@ class CancelPredictiveJobsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $jobId
-     *
      * @return $this
      */
-	public function setJobIds(array $jobId)
-	{
-	    $this->requestParameters['JobIds'] = $jobId;
-		foreach ($jobId as $i => $iValue) {
-			$this->queryParameters['JobId.' . ($i + 1)] = $iValue;
-		}
+    public function setJobIds(array $jobId)
+    {
+        $this->requestParameters['JobIds'] = $jobId;
+        foreach ($jobId as $i => $iValue) {
+            $this->queryParameters['JobId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

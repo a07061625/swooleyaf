@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of CreateUserUsageDataExportTask
  *
  * @method string getTaskName()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateUserUsageDataExportTaskRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

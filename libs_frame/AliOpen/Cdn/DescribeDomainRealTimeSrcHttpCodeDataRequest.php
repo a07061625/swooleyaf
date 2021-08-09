@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of DescribeDomainRealTimeSrcHttpCodeData
  *
  * @method string getLocationNameEn()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeDomainRealTimeSrcHttpCodeDataRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

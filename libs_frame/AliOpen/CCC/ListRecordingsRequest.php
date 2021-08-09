@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListRecordings
  *
  * @method string getAgentId()
@@ -19,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListRecordingsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

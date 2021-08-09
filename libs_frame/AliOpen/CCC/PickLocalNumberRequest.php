@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of PickLocalNumber
  *
  * @method string getInstanceId()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class PickLocalNumberRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -47,18 +45,16 @@ class PickLocalNumberRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $candidateNumber
-     *
      * @return $this
      */
-	public function setCandidateNumbers(array $candidateNumber)
-	{
-	    $this->requestParameters['CandidateNumbers'] = $candidateNumber;
-		foreach ($candidateNumber as $i => $iValue) {
-			$this->queryParameters['CandidateNumber.' . ($i + 1)] = $iValue;
-		}
+    public function setCandidateNumbers(array $candidateNumber)
+    {
+        $this->requestParameters['CandidateNumbers'] = $candidateNumber;
+        foreach ($candidateNumber as $i => $iValue) {
+            $this->queryParameters['CandidateNumber.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

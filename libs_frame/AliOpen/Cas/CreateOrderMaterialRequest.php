@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateOrderMaterial
  *
  * @method string getLeaderName()
@@ -37,7 +36,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateOrderMaterialRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

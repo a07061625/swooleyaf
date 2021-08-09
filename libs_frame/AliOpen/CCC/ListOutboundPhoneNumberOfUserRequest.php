@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListOutboundPhoneNumberOfUser
  *
  * @method string getUserId()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListOutboundPhoneNumberOfUserRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

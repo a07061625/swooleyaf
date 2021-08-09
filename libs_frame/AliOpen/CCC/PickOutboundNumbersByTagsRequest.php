@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of PickOutboundNumbersByTags
  *
  * @method array getPrioritizedCallerAreas()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class PickOutboundNumbersByTagsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -36,18 +34,16 @@ class PickOutboundNumbersByTagsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $prioritizedCallerArea
-     *
      * @return $this
      */
-	public function setPrioritizedCallerAreas(array $prioritizedCallerArea)
-	{
-	    $this->requestParameters['PrioritizedCallerAreas'] = $prioritizedCallerArea;
-		foreach ($prioritizedCallerArea as $i => $iValue) {
-			$this->queryParameters['PrioritizedCallerArea.' . ($i + 1)] = $iValue;
-		}
+    public function setPrioritizedCallerAreas(array $prioritizedCallerArea)
+    {
+        $this->requestParameters['PrioritizedCallerAreas'] = $prioritizedCallerArea;
+        foreach ($prioritizedCallerArea as $i => $iValue) {
+            $this->queryParameters['PrioritizedCallerArea.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -77,33 +73,29 @@ class PickOutboundNumbersByTagsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $serviceTag
-     *
      * @return $this
      */
-	public function setServiceTags(array $serviceTag)
-	{
-	    $this->requestParameters['ServiceTags'] = $serviceTag;
-		foreach ($serviceTag as $i => $iValue) {
-			$this->queryParameters['ServiceTag.' . ($i + 1)] = $iValue;
-		}
+    public function setServiceTags(array $serviceTag)
+    {
+        $this->requestParameters['ServiceTags'] = $serviceTag;
+        foreach ($serviceTag as $i => $iValue) {
+            $this->queryParameters['ServiceTag.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $skillGroupId
-     *
      * @return $this
      */
-	public function setSkillGroupIds(array $skillGroupId)
-	{
-	    $this->requestParameters['SkillGroupIds'] = $skillGroupId;
-		foreach ($skillGroupId as $i => $iValue) {
-			$this->queryParameters['SkillGroupId.' . ($i + 1)] = $iValue;
-		}
+    public function setSkillGroupIds(array $skillGroupId)
+    {
+        $this->requestParameters['SkillGroupIds'] = $skillGroupId;
+        foreach ($skillGroupId as $i => $iValue) {
+            $this->queryParameters['SkillGroupId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

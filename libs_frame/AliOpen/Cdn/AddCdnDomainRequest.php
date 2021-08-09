@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of AddCdnDomain
  *
  * @method string getSources()
@@ -21,7 +20,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class AddCdnDomainRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

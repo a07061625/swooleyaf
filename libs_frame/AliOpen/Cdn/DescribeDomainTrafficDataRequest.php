@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of DescribeDomainTrafficData
  *
  * @method string getLocationNameEn()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeDomainTrafficDataRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

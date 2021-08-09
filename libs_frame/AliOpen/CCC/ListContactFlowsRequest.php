@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListContactFlows
  *
  * @method string getInstanceId()
  */
 class ListContactFlowsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

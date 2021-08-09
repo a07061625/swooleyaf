@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeDeploymentDomainList
  *
  * @method string getSourceIp()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeDeploymentDomainListRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

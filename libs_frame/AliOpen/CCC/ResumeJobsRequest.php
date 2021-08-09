@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ResumeJobs
  *
  * @method string getAll()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ResumeJobsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -50,18 +48,16 @@ class ResumeJobsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $jobReferenceId
-     *
      * @return $this
      */
-	public function setJobReferenceIds(array $jobReferenceId)
-	{
-	    $this->requestParameters['JobReferenceIds'] = $jobReferenceId;
-		foreach ($jobReferenceId as $i => $iValue) {
-			$this->queryParameters['JobReferenceId.' . ($i + 1)] = $iValue;
-		}
+    public function setJobReferenceIds(array $jobReferenceId)
+    {
+        $this->requestParameters['JobReferenceIds'] = $jobReferenceId;
+        foreach ($jobReferenceId as $i => $iValue) {
+            $this->queryParameters['JobReferenceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -78,18 +74,16 @@ class ResumeJobsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $jobId
-     *
      * @return $this
      */
-	public function setJobIds(array $jobId)
-	{
-	    $this->requestParameters['JobIds'] = $jobId;
-		foreach ($jobId as $i => $iValue) {
-			$this->queryParameters['JobId.' . ($i + 1)] = $iValue;
-		}
+    public function setJobIds(array $jobId)
+    {
+        $this->requestParameters['JobIds'] = $jobId;
+        foreach ($jobId as $i => $iValue) {
+            $this->queryParameters['JobId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

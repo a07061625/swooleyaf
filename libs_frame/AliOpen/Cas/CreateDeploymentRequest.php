@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateDeployment
  *
  * @method string getSourceIp()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateDeploymentRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of GetCallMeasureSummaryReport
  *
  * @method string getIntervalType()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetCallMeasureSummaryReportRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

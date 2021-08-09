@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetAgentData
  *
  * @method string getStartDay()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetAgentDataRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

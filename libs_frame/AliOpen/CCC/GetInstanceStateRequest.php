@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of GetInstanceState
  *
  * @method string getInstanceId()
  */
 class GetInstanceStateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

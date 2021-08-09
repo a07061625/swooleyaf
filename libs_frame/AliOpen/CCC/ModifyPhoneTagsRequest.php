@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ModifyPhoneTags
  *
  * @method string getInstanceId()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifyPhoneTagsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -47,18 +45,16 @@ class ModifyPhoneTagsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $skillGroupIdList
-     *
      * @return $this
      */
-	public function setSkillGroupIdLists(array $skillGroupIdList)
-	{
-	    $this->requestParameters['SkillGroupIdLists'] = $skillGroupIdList;
-		foreach ($skillGroupIdList as $i => $iValue) {
-			$this->queryParameters['SkillGroupIdList.' . ($i + 1)] = $iValue;
-		}
+    public function setSkillGroupIdLists(array $skillGroupIdList)
+    {
+        $this->requestParameters['SkillGroupIdLists'] = $skillGroupIdList;
+        foreach ($skillGroupIdList as $i => $iValue) {
+            $this->queryParameters['SkillGroupIdList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

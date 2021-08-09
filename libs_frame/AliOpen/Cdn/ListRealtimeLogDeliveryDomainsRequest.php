@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListRealtimeLogDeliveryDomains
  *
  * @method string getProject()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListRealtimeLogDeliveryDomainsRequest extends RpcAcsRequest
 {
-
     /**
      * Class constructor.
      */

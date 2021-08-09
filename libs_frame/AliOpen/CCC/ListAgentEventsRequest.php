@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListAgentEvents
  *
  * @method string getStartTime()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListAgentEventsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -62,18 +60,16 @@ class ListAgentEventsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $ramId
-     *
      * @return $this
      */
-	public function setRamIds(array $ramId)
-	{
-	    $this->requestParameters['RamIds'] = $ramId;
-		foreach ($ramId as $i => $iValue) {
-			$this->queryParameters['RamId.' . ($i + 1)] = $iValue;
-		}
+    public function setRamIds(array $ramId)
+    {
+        $this->requestParameters['RamIds'] = $ramId;
+        foreach ($ramId as $i => $iValue) {
+            $this->queryParameters['RamId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -90,17 +86,15 @@ class ListAgentEventsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $event
-     *
      * @return $this
      */
-	public function setEvents(array $event)
-	{
-	    $this->requestParameters['Events'] = $event;
-		foreach ($event as $i => $iValue) {
-			$this->queryParameters['Event.' . ($i + 1)] = $iValue;
-		}
+    public function setEvents(array $event)
+    {
+        $this->requestParameters['Events'] = $event;
+        foreach ($event as $i => $iValue) {
+            $this->queryParameters['Event.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }

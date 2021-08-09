@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ModifyPrimaryTrunksOfSkillGroup
  *
  * @method array getPrimaryProviderNames()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifyPrimaryTrunksOfSkillGroupRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -34,18 +32,16 @@ class ModifyPrimaryTrunksOfSkillGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $primaryProviderName
-     *
      * @return $this
      */
-	public function setPrimaryProviderNames(array $primaryProviderName)
-	{
-	    $this->requestParameters['PrimaryProviderNames'] = $primaryProviderName;
-		foreach ($primaryProviderName as $i => $iValue) {
-			$this->queryParameters['PrimaryProviderName.' . ($i + 1)] = $iValue;
-		}
+    public function setPrimaryProviderNames(array $primaryProviderName)
+    {
+        $this->requestParameters['PrimaryProviderNames'] = $primaryProviderName;
+        foreach ($primaryProviderName as $i => $iValue) {
+            $this->queryParameters['PrimaryProviderName.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

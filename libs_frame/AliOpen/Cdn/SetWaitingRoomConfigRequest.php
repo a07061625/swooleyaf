@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SetWaitingRoomConfig
  *
  * @method string getWaitUrl()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetWaitingRoomConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SetDomainServerCertificate
  *
  * @method string getServerCertificate()
@@ -21,7 +20,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetDomainServerCertificateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

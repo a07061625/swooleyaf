@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ModifyFileCacheExpiredConfig
  *
  * @method string getDomainName()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifyFileCacheExpiredConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

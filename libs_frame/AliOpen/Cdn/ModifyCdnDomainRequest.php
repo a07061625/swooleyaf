@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ModifyCdnDomain
  *
  * @method string getTopLevelDomain()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifyCdnDomainRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

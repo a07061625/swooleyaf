@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SetIpBlackListConfig
  *
  * @method string getBlockIps()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetIpBlackListConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

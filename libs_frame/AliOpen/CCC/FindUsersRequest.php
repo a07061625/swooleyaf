@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of FindUsers
  *
  * @method string getCriteria()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class FindUsersRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

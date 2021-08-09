@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListRoles
  *
  * @method string getInstanceId()
  */
 class ListRolesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

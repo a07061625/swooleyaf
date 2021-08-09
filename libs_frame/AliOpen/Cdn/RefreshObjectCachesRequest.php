@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of RefreshObjectCaches
  *
  * @method string getObjectPath()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class RefreshObjectCachesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

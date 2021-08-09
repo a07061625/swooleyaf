@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of GenerateAgentStatisticReport
  *
  * @method string getAgentId()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GenerateAgentStatisticReportRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CCC;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of InflightTaskTimeout
  *
  * @method string getInstanceId()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class InflightTaskTimeoutRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
