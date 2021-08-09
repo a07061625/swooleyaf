@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyExecutionPlanJobInfo
+ *
  * @method string getResourceOwnerId()
  * @method string getId()
  * @method array getJobIdLists()
@@ -26,6 +28,7 @@ class ModifyExecutionPlanJobInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -38,6 +41,7 @@ class ModifyExecutionPlanJobInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -49,7 +53,6 @@ class ModifyExecutionPlanJobInfoRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $jobIdLists
      * @return $this
      */
     public function setJobIdLists(array $jobIdLists)

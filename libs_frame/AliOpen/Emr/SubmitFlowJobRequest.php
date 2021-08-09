@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitFlowJob
+ *
  * @method string getJobId()
  * @method string getHostName()
  * @method string getConf()
@@ -28,6 +30,7 @@ class SubmitFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $jobId
+     *
      * @return $this
      */
     public function setJobId($jobId)
@@ -40,6 +43,7 @@ class SubmitFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $hostName
+     *
      * @return $this
      */
     public function setHostName($hostName)
@@ -52,6 +56,7 @@ class SubmitFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $conf
+     *
      * @return $this
      */
     public function setConf($conf)
@@ -64,6 +69,7 @@ class SubmitFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -76,6 +82,7 @@ class SubmitFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitImageSearchJob
+ *
  * @method string getInputImage()
  * @method string getUserData()
  * @method string getResourceOwnerId()
@@ -33,6 +35,7 @@ class ImageSearchJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $inputImage
+     *
      * @return $this
      */
     public function setInputImage($inputImage)
@@ -45,6 +48,7 @@ class ImageSearchJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -57,6 +61,7 @@ class ImageSearchJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -69,6 +74,7 @@ class ImageSearchJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $fpDBId
+     *
      * @return $this
      */
     public function setFpDBId($fpDBId)
@@ -81,6 +87,7 @@ class ImageSearchJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -93,6 +100,7 @@ class ImageSearchJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $inputVideo
+     *
      * @return $this
      */
     public function setInputVideo($inputVideo)
@@ -105,6 +113,7 @@ class ImageSearchJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -117,6 +126,7 @@ class ImageSearchJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,6 +139,7 @@ class ImageSearchJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $config
+     *
      * @return $this
      */
     public function setConfig($config)
@@ -141,6 +152,7 @@ class ImageSearchJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $pipelineId
+     *
      * @return $this
      */
     public function setPipelineId($pipelineId)

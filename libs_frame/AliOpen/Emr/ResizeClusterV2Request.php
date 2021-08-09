@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ResizeClusterV2
+ *
  * @method string getVswitchId()
  * @method string getIsOpenPublicIp()
  * @method string getAutoPayOrder()
@@ -29,6 +31,7 @@ class ResizeClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $vswitchId
+     *
      * @return $this
      */
     public function setVswitchId($vswitchId)
@@ -41,6 +44,7 @@ class ResizeClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $isOpenPublicIp
+     *
      * @return $this
      */
     public function setIsOpenPublicIp($isOpenPublicIp)
@@ -53,6 +57,7 @@ class ResizeClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $autoPayOrder
+     *
      * @return $this
      */
     public function setAutoPayOrder($autoPayOrder)
@@ -64,7 +69,6 @@ class ResizeClusterV2Request extends RpcAcsRequest
     }
 
     /**
-     * @param array $hostComponentInfos
      * @return $this
      */
     public function setHostComponentInfos(array $hostComponentInfos)
@@ -82,7 +86,6 @@ class ResizeClusterV2Request extends RpcAcsRequest
     }
 
     /**
-     * @param array $hostGroups
      * @return $this
      */
     public function setHostGroups(array $hostGroups)
@@ -115,6 +118,7 @@ class ResizeClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

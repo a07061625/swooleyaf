@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DisableScalingGroup
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getScalingGroupId()
@@ -28,6 +30,7 @@ class DisableScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -40,6 +43,7 @@ class DisableScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -52,6 +56,7 @@ class DisableScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -64,6 +69,7 @@ class DisableScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -76,6 +82,7 @@ class DisableScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

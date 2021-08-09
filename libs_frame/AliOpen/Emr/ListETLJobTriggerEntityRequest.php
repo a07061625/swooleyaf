@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListETLJobTriggerEntity
+ *
  * @method string getResourceOwnerId()
  * @method string getEntityType()
  */
@@ -25,6 +27,7 @@ class ListETLJobTriggerEntityRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -37,6 +40,7 @@ class ListETLJobTriggerEntityRequest extends RpcAcsRequest
 
     /**
      * @param string $entityType
+     *
      * @return $this
      */
     public function setEntityType($entityType)

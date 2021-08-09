@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListFlowClusterAllHosts
+ *
  * @method string getClusterId()
  * @method string getProjectId()
  */
@@ -25,6 +27,7 @@ class ListFlowClusterAllHostsRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -37,6 +40,7 @@ class ListFlowClusterAllHostsRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)

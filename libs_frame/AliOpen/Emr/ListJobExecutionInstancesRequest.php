@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListJobExecutionInstances
+ *
  * @method string getResourceOwnerId()
  * @method string getExecutionPlanInstanceId()
  * @method string getPageSize()
@@ -28,6 +30,7 @@ class ListJobExecutionInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -40,6 +43,7 @@ class ListJobExecutionInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $executionPlanInstanceId
+     *
      * @return $this
      */
     public function setExecutionPlanInstanceId($executionPlanInstanceId)
@@ -52,6 +56,7 @@ class ListJobExecutionInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -64,6 +69,7 @@ class ListJobExecutionInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $isDesc
+     *
      * @return $this
      */
     public function setIsDesc($isDesc)
@@ -76,6 +82,7 @@ class ListJobExecutionInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

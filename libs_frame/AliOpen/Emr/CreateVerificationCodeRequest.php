@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateVerificationCode
+ *
  * @method string getMode()
  * @method string getResourceOwnerId()
  * @method string getTarget()
@@ -26,6 +28,7 @@ class CreateVerificationCodeRequest extends RpcAcsRequest
 
     /**
      * @param string $mode
+     *
      * @return $this
      */
     public function setMode($mode)
@@ -38,6 +41,7 @@ class CreateVerificationCodeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +54,7 @@ class CreateVerificationCodeRequest extends RpcAcsRequest
 
     /**
      * @param string $target
+     *
      * @return $this
      */
     public function setTarget($target)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListResourceQueue
+ *
  * @method string getResourceOwnerId()
  * @method string getPoolId()
  * @method string getPageSize()
@@ -29,6 +31,7 @@ class ListResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class ListResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $poolId
+     *
      * @return $this
      */
     public function setPoolId($poolId)
@@ -53,6 +57,7 @@ class ListResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -65,6 +70,7 @@ class ListResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -77,6 +83,7 @@ class ListResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -89,6 +96,7 @@ class ListResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $poolType
+     *
      * @return $this
      */
     public function setPoolType($poolType)

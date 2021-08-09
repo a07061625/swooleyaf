@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MetastoreListKafkaTopic
+ *
  * @method string getResourceOwnerId()
  * @method string getPageSize()
  * @method string getDataSourceId()
@@ -29,6 +31,7 @@ class MetastoreListKafkaTopicRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class MetastoreListKafkaTopicRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -53,6 +57,7 @@ class MetastoreListKafkaTopicRequest extends RpcAcsRequest
 
     /**
      * @param string $dataSourceId
+     *
      * @return $this
      */
     public function setDataSourceId($dataSourceId)
@@ -65,6 +70,7 @@ class MetastoreListKafkaTopicRequest extends RpcAcsRequest
 
     /**
      * @param string $topicName
+     *
      * @return $this
      */
     public function setTopicName($topicName)
@@ -77,6 +83,7 @@ class MetastoreListKafkaTopicRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -89,6 +96,7 @@ class MetastoreListKafkaTopicRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

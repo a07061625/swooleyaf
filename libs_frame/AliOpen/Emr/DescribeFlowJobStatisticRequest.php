@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeFlowJobStatistic
+ *
  * @method string getFromApp()
  * @method string getProjectId()
  */
@@ -25,6 +27,7 @@ class DescribeFlowJobStatisticRequest extends RpcAcsRequest
 
     /**
      * @param string $fromApp
+     *
      * @return $this
      */
     public function setFromApp($fromApp)
@@ -37,6 +40,7 @@ class DescribeFlowJobStatisticRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)

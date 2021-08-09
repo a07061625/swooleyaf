@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeFlowNodeInstanceLauncherLog
+ *
  * @method string getOffset()
  * @method string getStart()
  * @method string getLength()
@@ -32,6 +34,7 @@ class DescribeFlowNodeInstanceLauncherLogRequest extends RpcAcsRequest
 
     /**
      * @param string $offset
+     *
      * @return $this
      */
     public function setOffset($offset)
@@ -44,6 +47,7 @@ class DescribeFlowNodeInstanceLauncherLogRequest extends RpcAcsRequest
 
     /**
      * @param string $start
+     *
      * @return $this
      */
     public function setStart($start)
@@ -56,6 +60,7 @@ class DescribeFlowNodeInstanceLauncherLogRequest extends RpcAcsRequest
 
     /**
      * @param string $length
+     *
      * @return $this
      */
     public function setLength($length)
@@ -68,6 +73,7 @@ class DescribeFlowNodeInstanceLauncherLogRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -80,6 +86,7 @@ class DescribeFlowNodeInstanceLauncherLogRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -92,6 +99,7 @@ class DescribeFlowNodeInstanceLauncherLogRequest extends RpcAcsRequest
 
     /**
      * @param string $lines
+     *
      * @return $this
      */
     public function setLines($lines)
@@ -104,6 +112,7 @@ class DescribeFlowNodeInstanceLauncherLogRequest extends RpcAcsRequest
 
     /**
      * @param string $reverse
+     *
      * @return $this
      */
     public function setReverse($reverse)
@@ -116,6 +125,7 @@ class DescribeFlowNodeInstanceLauncherLogRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeInstanceId
+     *
      * @return $this
      */
     public function setNodeInstanceId($nodeInstanceId)
@@ -128,6 +138,7 @@ class DescribeFlowNodeInstanceLauncherLogRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)

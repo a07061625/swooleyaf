@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeFlowCategoryTree
+ *
  * @method string getType()
  * @method string getProjectId()
  */
@@ -25,6 +27,7 @@ class DescribeFlowCategoryTreeRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -37,6 +40,7 @@ class DescribeFlowCategoryTreeRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)

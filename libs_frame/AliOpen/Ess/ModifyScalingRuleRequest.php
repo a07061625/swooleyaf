@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyScalingRule
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getAdjustmentValue()
@@ -38,6 +40,7 @@ class ModifyScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +53,7 @@ class ModifyScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -62,6 +66,7 @@ class ModifyScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $adjustmentValue
+     *
      * @return $this
      */
     public function setAdjustmentValue($adjustmentValue)
@@ -73,7 +78,6 @@ class ModifyScalingRuleRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $stepAdjustment
      * @return $this
      */
     public function setStepAdjustments(array $stepAdjustment)
@@ -92,6 +96,7 @@ class ModifyScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $estimatedInstanceWarmup
+     *
      * @return $this
      */
     public function setEstimatedInstanceWarmup($estimatedInstanceWarmup)
@@ -104,6 +109,7 @@ class ModifyScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -116,6 +122,7 @@ class ModifyScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $adjustmentType
+     *
      * @return $this
      */
     public function setAdjustmentType($adjustmentType)
@@ -128,6 +135,7 @@ class ModifyScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $disableScaleIn
+     *
      * @return $this
      */
     public function setDisableScaleIn($disableScaleIn)
@@ -140,6 +148,7 @@ class ModifyScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -152,6 +161,7 @@ class ModifyScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleId
+     *
      * @return $this
      */
     public function setScalingRuleId($scalingRuleId)
@@ -164,6 +174,7 @@ class ModifyScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleName
+     *
      * @return $this
      */
     public function setScalingRuleName($scalingRuleName)
@@ -176,6 +187,7 @@ class ModifyScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $cooldown
+     *
      * @return $this
      */
     public function setCooldown($cooldown)
@@ -188,6 +200,7 @@ class ModifyScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $minAdjustmentMagnitude
+     *
      * @return $this
      */
     public function setMinAdjustmentMagnitude($minAdjustmentMagnitude)
@@ -200,6 +213,7 @@ class ModifyScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $targetValue
+     *
      * @return $this
      */
     public function setTargetValue($targetValue)
@@ -212,6 +226,7 @@ class ModifyScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $metricName
+     *
      * @return $this
      */
     public function setMetricName($metricName)

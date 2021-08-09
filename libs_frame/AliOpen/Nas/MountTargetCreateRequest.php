@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateMountTarget
+ *
  * @method string getVSwitchId()
  * @method string getVpcId()
  * @method string getNetworkType()
@@ -28,6 +30,7 @@ class MountTargetCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -40,6 +43,7 @@ class MountTargetCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -52,6 +56,7 @@ class MountTargetCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $networkType
+     *
      * @return $this
      */
     public function setNetworkType($networkType)
@@ -64,6 +69,7 @@ class MountTargetCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $accessGroupName
+     *
      * @return $this
      */
     public function setAccessGroupName($accessGroupName)
@@ -76,6 +82,7 @@ class MountTargetCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $fileSystemId
+     *
      * @return $this
      */
     public function setFileSystemId($fileSystemId)

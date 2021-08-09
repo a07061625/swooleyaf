@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DetachVServerGroups
+ *
  * @method string getResourceOwnerAccount()
  * @method string getScalingGroupId()
  * @method string getForceDetach()
@@ -28,6 +30,7 @@ class DetachVServerGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -40,6 +43,7 @@ class DetachVServerGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -52,6 +56,7 @@ class DetachVServerGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $forceDetach
+     *
      * @return $this
      */
     public function setForceDetach($forceDetach)
@@ -64,6 +69,7 @@ class DetachVServerGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -75,7 +81,6 @@ class DetachVServerGroupsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $vServerGroup
      * @return $this
      */
     public function setVServerGroups(array $vServerGroup)

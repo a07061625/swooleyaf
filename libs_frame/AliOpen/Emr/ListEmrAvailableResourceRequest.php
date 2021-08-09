@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListEmrAvailableResource
+ *
  * @method string getResourceOwnerId()
  * @method string getClusterId()
  * @method string getDepositType()
@@ -35,6 +37,7 @@ class ListEmrAvailableResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +50,7 @@ class ListEmrAvailableResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -59,6 +63,7 @@ class ListEmrAvailableResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $depositType
+     *
      * @return $this
      */
     public function setDepositType($depositType)
@@ -71,6 +76,7 @@ class ListEmrAvailableResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationResource
+     *
      * @return $this
      */
     public function setDestinationResource($destinationResource)
@@ -83,6 +89,7 @@ class ListEmrAvailableResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterType
+     *
      * @return $this
      */
     public function setClusterType($clusterType)
@@ -95,6 +102,7 @@ class ListEmrAvailableResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $spotStrategy
+     *
      * @return $this
      */
     public function setSpotStrategy($spotStrategy)
@@ -107,6 +115,7 @@ class ListEmrAvailableResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskType
+     *
      * @return $this
      */
     public function setSystemDiskType($systemDiskType)
@@ -119,6 +128,7 @@ class ListEmrAvailableResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $netType
+     *
      * @return $this
      */
     public function setNetType($netType)
@@ -131,6 +141,7 @@ class ListEmrAvailableResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -143,6 +154,7 @@ class ListEmrAvailableResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -155,6 +167,7 @@ class ListEmrAvailableResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDiskType
+     *
      * @return $this
      */
     public function setDataDiskType($dataDiskType)
@@ -167,6 +180,7 @@ class ListEmrAvailableResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceChargeType
+     *
      * @return $this
      */
     public function setInstanceChargeType($instanceChargeType)

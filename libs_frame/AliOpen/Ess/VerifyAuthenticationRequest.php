@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of VerifyAuthentication
+ *
  * @method string getUid()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -27,6 +29,7 @@ class VerifyAuthenticationRequest extends RpcAcsRequest
 
     /**
      * @param string $uid
+     *
      * @return $this
      */
     public function setUid($uid)
@@ -39,6 +42,7 @@ class VerifyAuthenticationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -51,6 +55,7 @@ class VerifyAuthenticationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -63,6 +68,7 @@ class VerifyAuthenticationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

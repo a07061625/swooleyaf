@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of EnterStandby
+ *
  * @method array getInstanceIds()
  * @method string getResourceOwnerAccount()
  * @method string getScalingGroupId()
@@ -26,7 +28,6 @@ class EnterStandbyRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceId
      * @return $this
      */
     public function setInstanceIds(array $instanceId)
@@ -41,6 +42,7 @@ class EnterStandbyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -53,6 +55,7 @@ class EnterStandbyRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -65,6 +68,7 @@ class EnterStandbyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

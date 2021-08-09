@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListSlsLogstoreInfo
+ *
  * @method string getResourceOwnerId()
  * @method string getComponentName()
  * @method string getServiceName()
@@ -27,6 +29,7 @@ class ListSlsLogstoreInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -39,6 +42,7 @@ class ListSlsLogstoreInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $componentName
+     *
      * @return $this
      */
     public function setComponentName($componentName)
@@ -51,6 +55,7 @@ class ListSlsLogstoreInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceName
+     *
      * @return $this
      */
     public function setServiceName($serviceName)
@@ -63,6 +68,7 @@ class ListSlsLogstoreInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

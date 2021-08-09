@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeScalingGroups
+ *
  * @method string getResourceOwnerId()
  * @method string getScalingGroupId10()
  * @method string getScalingGroupId12()
@@ -69,6 +71,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -81,6 +84,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId10
+     *
      * @return $this
      */
     public function setScalingGroupId10($scalingGroupId10)
@@ -93,6 +97,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId12
+     *
      * @return $this
      */
     public function setScalingGroupId12($scalingGroupId12)
@@ -105,6 +110,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId13
+     *
      * @return $this
      */
     public function setScalingGroupId13($scalingGroupId13)
@@ -117,6 +123,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId14
+     *
      * @return $this
      */
     public function setScalingGroupId14($scalingGroupId14)
@@ -129,6 +136,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId15
+     *
      * @return $this
      */
     public function setScalingGroupId15($scalingGroupId15)
@@ -141,6 +149,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -153,6 +162,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -165,6 +175,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -177,6 +188,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName20
+     *
      * @return $this
      */
     public function setScalingGroupName20($scalingGroupName20)
@@ -189,6 +201,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName19
+     *
      * @return $this
      */
     public function setScalingGroupName19($scalingGroupName19)
@@ -201,6 +214,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId20
+     *
      * @return $this
      */
     public function setScalingGroupId20($scalingGroupId20)
@@ -213,6 +227,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName18
+     *
      * @return $this
      */
     public function setScalingGroupName18($scalingGroupName18)
@@ -225,6 +240,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName17
+     *
      * @return $this
      */
     public function setScalingGroupName17($scalingGroupName17)
@@ -237,6 +253,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName16
+     *
      * @return $this
      */
     public function setScalingGroupName16($scalingGroupName16)
@@ -249,6 +266,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -261,6 +279,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName
+     *
      * @return $this
      */
     public function setScalingGroupName($scalingGroupName)
@@ -273,6 +292,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -285,6 +305,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName1
+     *
      * @return $this
      */
     public function setScalingGroupName1($scalingGroupName1)
@@ -297,6 +318,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName2
+     *
      * @return $this
      */
     public function setScalingGroupName2($scalingGroupName2)
@@ -309,6 +331,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId2
+     *
      * @return $this
      */
     public function setScalingGroupId2($scalingGroupId2)
@@ -321,6 +344,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId1
+     *
      * @return $this
      */
     public function setScalingGroupId1($scalingGroupId1)
@@ -333,6 +357,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId6
+     *
      * @return $this
      */
     public function setScalingGroupId6($scalingGroupId6)
@@ -345,6 +370,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId16
+     *
      * @return $this
      */
     public function setScalingGroupId16($scalingGroupId16)
@@ -357,6 +383,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName7
+     *
      * @return $this
      */
     public function setScalingGroupName7($scalingGroupName7)
@@ -369,6 +396,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName11
+     *
      * @return $this
      */
     public function setScalingGroupName11($scalingGroupName11)
@@ -381,6 +409,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId5
+     *
      * @return $this
      */
     public function setScalingGroupId5($scalingGroupId5)
@@ -393,6 +422,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId17
+     *
      * @return $this
      */
     public function setScalingGroupId17($scalingGroupId17)
@@ -405,6 +435,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName8
+     *
      * @return $this
      */
     public function setScalingGroupName8($scalingGroupName8)
@@ -417,6 +448,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName10
+     *
      * @return $this
      */
     public function setScalingGroupName10($scalingGroupName10)
@@ -429,6 +461,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId4
+     *
      * @return $this
      */
     public function setScalingGroupId4($scalingGroupId4)
@@ -441,6 +474,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId18
+     *
      * @return $this
      */
     public function setScalingGroupId18($scalingGroupId18)
@@ -453,6 +487,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName9
+     *
      * @return $this
      */
     public function setScalingGroupName9($scalingGroupName9)
@@ -465,6 +500,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId3
+     *
      * @return $this
      */
     public function setScalingGroupId3($scalingGroupId3)
@@ -477,6 +513,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId19
+     *
      * @return $this
      */
     public function setScalingGroupId19($scalingGroupId19)
@@ -489,6 +526,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName3
+     *
      * @return $this
      */
     public function setScalingGroupName3($scalingGroupName3)
@@ -501,6 +539,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName15
+     *
      * @return $this
      */
     public function setScalingGroupName15($scalingGroupName15)
@@ -513,6 +552,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId9
+     *
      * @return $this
      */
     public function setScalingGroupId9($scalingGroupId9)
@@ -525,6 +565,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName4
+     *
      * @return $this
      */
     public function setScalingGroupName4($scalingGroupName4)
@@ -537,6 +578,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName14
+     *
      * @return $this
      */
     public function setScalingGroupName14($scalingGroupName14)
@@ -549,6 +591,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId8
+     *
      * @return $this
      */
     public function setScalingGroupId8($scalingGroupId8)
@@ -561,6 +604,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName5
+     *
      * @return $this
      */
     public function setScalingGroupName5($scalingGroupName5)
@@ -573,6 +617,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName13
+     *
      * @return $this
      */
     public function setScalingGroupName13($scalingGroupName13)
@@ -585,6 +630,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId7
+     *
      * @return $this
      */
     public function setScalingGroupId7($scalingGroupId7)
@@ -597,6 +643,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName6
+     *
      * @return $this
      */
     public function setScalingGroupName6($scalingGroupName6)
@@ -609,6 +656,7 @@ class DescribeScalingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName12
+     *
      * @return $this
      */
     public function setScalingGroupName12($scalingGroupName12)

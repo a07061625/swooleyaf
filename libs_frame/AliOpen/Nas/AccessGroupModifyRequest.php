@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyAccessGroup
+ *
  * @method string getDescription()
  * @method string getAccessGroupName()
  */
@@ -25,6 +27,7 @@ class AccessGroupModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -37,6 +40,7 @@ class AccessGroupModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $accessGroupName
+     *
      * @return $this
      */
     public function setAccessGroupName($accessGroupName)

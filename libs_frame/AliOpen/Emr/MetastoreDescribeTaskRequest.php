@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MetastoreDescribeTask
+ *
  * @method string getResourceOwnerId()
  * @method string getTaskId()
  */
@@ -25,6 +27,7 @@ class MetastoreDescribeTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -37,6 +40,7 @@ class MetastoreDescribeTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $taskId
+     *
      * @return $this
      */
     public function setTaskId($taskId)

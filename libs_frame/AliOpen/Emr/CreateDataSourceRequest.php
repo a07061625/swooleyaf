@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateDataSource
+ *
  * @method string getResourceOwnerId()
  * @method string getNavParentId()
  * @method string getName()
@@ -30,6 +32,7 @@ class CreateDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class CreateDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $navParentId
+     *
      * @return $this
      */
     public function setNavParentId($navParentId)
@@ -54,6 +58,7 @@ class CreateDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -66,6 +71,7 @@ class CreateDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -78,6 +84,7 @@ class CreateDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceType
+     *
      * @return $this
      */
     public function setSourceType($sourceType)
@@ -90,6 +97,7 @@ class CreateDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $conf
+     *
      * @return $this
      */
     public function setConf($conf)
@@ -102,6 +110,7 @@ class CreateDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

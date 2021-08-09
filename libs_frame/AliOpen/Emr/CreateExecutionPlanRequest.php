@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateExecutionPlan
+ *
  * @method string getResourceOwnerId()
  * @method string getTimeInterval()
  * @method string getLogPath()
@@ -59,6 +61,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -71,6 +74,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $timeInterval
+     *
      * @return $this
      */
     public function setTimeInterval($timeInterval)
@@ -83,6 +87,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $logPath
+     *
      * @return $this
      */
     public function setLogPath($logPath)
@@ -95,6 +100,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterName
+     *
      * @return $this
      */
     public function setClusterName($clusterName)
@@ -107,6 +113,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $configurations
+     *
      * @return $this
      */
     public function setConfigurations($configurations)
@@ -119,6 +126,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $ioOptimized
+     *
      * @return $this
      */
     public function setIoOptimized($ioOptimized)
@@ -131,6 +139,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -143,6 +152,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $easEnable
+     *
      * @return $this
      */
     public function setEasEnable($easEnable)
@@ -155,6 +165,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $createClusterOnDemand
+     *
      * @return $this
      */
     public function setCreateClusterOnDemand($createClusterOnDemand)
@@ -167,6 +178,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -178,7 +190,6 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $jobIdLists
      * @return $this
      */
     public function setJobIdLists(array $jobIdLists)
@@ -193,6 +204,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $dayOfMonth
+     *
      * @return $this
      */
     public function setDayOfMonth($dayOfMonth)
@@ -204,7 +216,6 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $bootstrapActions
      * @return $this
      */
     public function setBootstrapActions(array $bootstrapActions)
@@ -221,6 +232,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $useLocalMetaDb
+     *
      * @return $this
      */
     public function setUseLocalMetaDb($useLocalMetaDb)
@@ -233,6 +245,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $emrVer
+     *
      * @return $this
      */
     public function setEmrVer($emrVer)
@@ -245,6 +258,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $userDefinedEmrEcsRole
+     *
      * @return $this
      */
     public function setUserDefinedEmrEcsRole($userDefinedEmrEcsRole)
@@ -257,6 +271,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $isOpenPublicIp
+     *
      * @return $this
      */
     public function setIsOpenPublicIp($isOpenPublicIp)
@@ -269,6 +284,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -281,6 +297,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $timeUnit
+     *
      * @return $this
      */
     public function setTimeUnit($timeUnit)
@@ -293,6 +310,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceGeneration
+     *
      * @return $this
      */
     public function setInstanceGeneration($instanceGeneration)
@@ -305,6 +323,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterType
+     *
      * @return $this
      */
     public function setClusterType($clusterType)
@@ -317,6 +336,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -328,7 +348,6 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $optionSoftWareLists
      * @return $this
      */
     public function setOptionSoftWareLists(array $optionSoftWareLists)
@@ -343,6 +362,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -355,6 +375,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $netType
+     *
      * @return $this
      */
     public function setNetType($netType)
@@ -366,7 +387,6 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $ecsOrders
      * @return $this
      */
     public function setEcsOrders(array $ecsOrders)
@@ -387,6 +407,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $workflowDefinition
+     *
      * @return $this
      */
     public function setWorkflowDefinition($workflowDefinition)
@@ -399,6 +420,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -411,6 +433,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $dayOfWeek
+     *
      * @return $this
      */
     public function setDayOfWeek($dayOfWeek)
@@ -423,6 +446,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -435,6 +459,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $useCustomHiveMetaDB
+     *
      * @return $this
      */
     public function setUseCustomHiveMetaDB($useCustomHiveMetaDB)
@@ -447,6 +472,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $strategy
+     *
      * @return $this
      */
     public function setStrategy($strategy)
@@ -458,7 +484,6 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $configs
      * @return $this
      */
     public function setConfigs(array $configs)
@@ -478,6 +503,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $highAvailabilityEnable
+     *
      * @return $this
      */
     public function setHighAvailabilityEnable($highAvailabilityEnable)
@@ -490,6 +516,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $initCustomHiveMetaDB
+     *
      * @return $this
      */
     public function setInitCustomHiveMetaDB($initCustomHiveMetaDB)
@@ -502,6 +529,7 @@ class CreateExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $logEnable
+     *
      * @return $this
      */
     public function setLogEnable($logEnable)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteScalingRule
+ *
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
  * @method string getOwnerId()
@@ -27,6 +29,7 @@ class DeleteScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -39,6 +42,7 @@ class DeleteScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -51,6 +55,7 @@ class DeleteScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -63,6 +68,7 @@ class DeleteScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleId
+     *
      * @return $this
      */
     public function setScalingRuleId($scalingRuleId)

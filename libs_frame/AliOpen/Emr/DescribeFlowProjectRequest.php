@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeFlowProject
+ *
  * @method string getProjectId()
  */
 class DescribeFlowProjectRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class DescribeFlowProjectRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)

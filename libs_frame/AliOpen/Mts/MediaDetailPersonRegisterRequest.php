@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RegisterMediaDetailPerson
+ *
  * @method string getResourceOwnerId()
  * @method string getImages()
  * @method string getResourceOwnerAccount()
@@ -31,6 +33,7 @@ class MediaDetailPersonRegisterRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class MediaDetailPersonRegisterRequest extends RpcAcsRequest
 
     /**
      * @param string $images
+     *
      * @return $this
      */
     public function setImages($images)
@@ -55,6 +59,7 @@ class MediaDetailPersonRegisterRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -67,6 +72,7 @@ class MediaDetailPersonRegisterRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -79,6 +85,7 @@ class MediaDetailPersonRegisterRequest extends RpcAcsRequest
 
     /**
      * @param string $personLib
+     *
      * @return $this
      */
     public function setPersonLib($personLib)
@@ -91,6 +98,7 @@ class MediaDetailPersonRegisterRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +111,7 @@ class MediaDetailPersonRegisterRequest extends RpcAcsRequest
 
     /**
      * @param string $category
+     *
      * @return $this
      */
     public function setCategory($category)
@@ -115,6 +124,7 @@ class MediaDetailPersonRegisterRequest extends RpcAcsRequest
 
     /**
      * @param string $personName
+     *
      * @return $this
      */
     public function setPersonName($personName)

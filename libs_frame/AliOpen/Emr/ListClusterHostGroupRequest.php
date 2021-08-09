@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListClusterHostGroup
+ *
  * @method string getResourceOwnerId()
  * @method array getStatusLists()
  * @method string getHostGroupId()
@@ -31,6 +33,7 @@ class ListClusterHostGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,7 +45,6 @@ class ListClusterHostGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $statusLists
      * @return $this
      */
     public function setStatusLists(array $statusLists)
@@ -57,6 +59,7 @@ class ListClusterHostGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $hostGroupId
+     *
      * @return $this
      */
     public function setHostGroupId($hostGroupId)
@@ -69,6 +72,7 @@ class ListClusterHostGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -81,6 +85,7 @@ class ListClusterHostGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -93,6 +98,7 @@ class ListClusterHostGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $hostGroupName
+     *
      * @return $this
      */
     public function setHostGroupName($hostGroupName)
@@ -105,6 +111,7 @@ class ListClusterHostGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $hostGroupType
+     *
      * @return $this
      */
     public function setHostGroupType($hostGroupType)
@@ -117,6 +124,7 @@ class ListClusterHostGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

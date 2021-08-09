@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of GetAddVideoDnaResults
+ *
  * @method string getClientInfo()
  */
 class AddVideoDnaResultsGetRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class AddVideoDnaResultsGetRequest extends RoaAcsRequest
 
     /**
      * @param string $clientInfo
+     *
      * @return $this
      */
     public function setClientInfo($clientInfo)

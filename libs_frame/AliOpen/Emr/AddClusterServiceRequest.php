@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddClusterService
+ *
  * @method string getResourceOwnerId()
  * @method array getServices()
  * @method string getComment()
@@ -27,6 +29,7 @@ class AddClusterServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -38,7 +41,6 @@ class AddClusterServiceRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $services
      * @return $this
      */
     public function setServices(array $services)
@@ -53,6 +55,7 @@ class AddClusterServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $comment
+     *
      * @return $this
      */
     public function setComment($comment)
@@ -65,6 +68,7 @@ class AddClusterServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

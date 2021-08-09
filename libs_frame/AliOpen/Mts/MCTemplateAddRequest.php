@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddMCTemplate
+ *
  * @method string getPolitics()
  * @method string getResourceOwnerId()
  * @method string getContraband()
@@ -38,6 +40,7 @@ class MCTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $politics
+     *
      * @return $this
      */
     public function setPolitics($politics)
@@ -50,6 +53,7 @@ class MCTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -62,6 +66,7 @@ class MCTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $contraband
+     *
      * @return $this
      */
     public function setContraband($contraband)
@@ -74,6 +79,7 @@ class MCTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $ad
+     *
      * @return $this
      */
     public function setAd($ad)
@@ -86,6 +92,7 @@ class MCTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $abuse
+     *
      * @return $this
      */
     public function setAbuse($abuse)
@@ -98,6 +105,7 @@ class MCTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -110,6 +118,7 @@ class MCTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $qrcode
+     *
      * @return $this
      */
     public function setQrcode($qrcode)
@@ -122,6 +131,7 @@ class MCTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -134,6 +144,7 @@ class MCTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -146,6 +157,7 @@ class MCTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $porn
+     *
      * @return $this
      */
     public function setPorn($porn)
@@ -158,6 +170,7 @@ class MCTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $terrorism
+     *
      * @return $this
      */
     public function setTerrorism($terrorism)
@@ -170,6 +183,7 @@ class MCTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -182,6 +196,7 @@ class MCTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $logo
+     *
      * @return $this
      */
     public function setLogo($logo)
@@ -194,6 +209,7 @@ class MCTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $spam
+     *
      * @return $this
      */
     public function setspam($spam)
@@ -206,6 +222,7 @@ class MCTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $live
+     *
      * @return $this
      */
     public function setLive($live)

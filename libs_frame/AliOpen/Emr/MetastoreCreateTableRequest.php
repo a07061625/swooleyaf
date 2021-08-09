@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MetastoreCreateTable
+ *
  * @method string getResourceOwnerId()
  * @method string getFieldDelimiter()
  * @method array getColumns()
@@ -34,6 +36,7 @@ class MetastoreCreateTableRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class MetastoreCreateTableRequest extends RpcAcsRequest
 
     /**
      * @param string $fieldDelimiter
+     *
      * @return $this
      */
     public function setFieldDelimiter($fieldDelimiter)
@@ -57,7 +61,6 @@ class MetastoreCreateTableRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $columns
      * @return $this
      */
     public function setColumns(array $columns)
@@ -74,6 +77,7 @@ class MetastoreCreateTableRequest extends RpcAcsRequest
 
     /**
      * @param string $createWith
+     *
      * @return $this
      */
     public function setCreateWith($createWith)
@@ -85,7 +89,6 @@ class MetastoreCreateTableRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $partitions
      * @return $this
      */
     public function setPartitions(array $partitions)
@@ -102,6 +105,7 @@ class MetastoreCreateTableRequest extends RpcAcsRequest
 
     /**
      * @param string $dbName
+     *
      * @return $this
      */
     public function setDbName($dbName)
@@ -114,6 +118,7 @@ class MetastoreCreateTableRequest extends RpcAcsRequest
 
     /**
      * @param string $createSql
+     *
      * @return $this
      */
     public function setCreateSql($createSql)
@@ -126,6 +131,7 @@ class MetastoreCreateTableRequest extends RpcAcsRequest
 
     /**
      * @param string $comment
+     *
      * @return $this
      */
     public function setComment($comment)
@@ -138,6 +144,7 @@ class MetastoreCreateTableRequest extends RpcAcsRequest
 
     /**
      * @param string $locationUri
+     *
      * @return $this
      */
     public function setLocationUri($locationUri)
@@ -150,6 +157,7 @@ class MetastoreCreateTableRequest extends RpcAcsRequest
 
     /**
      * @param string $tableName
+     *
      * @return $this
      */
     public function setTableName($tableName)
@@ -162,6 +170,7 @@ class MetastoreCreateTableRequest extends RpcAcsRequest
 
     /**
      * @param string $databaseId
+     *
      * @return $this
      */
     public function setDatabaseId($databaseId)

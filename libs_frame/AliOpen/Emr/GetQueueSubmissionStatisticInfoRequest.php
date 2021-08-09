@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetQueueSubmissionStatisticInfo
+ *
  * @method string getFromDatetime()
  * @method string getResourceOwnerId()
  * @method string getClusterId()
@@ -29,6 +31,7 @@ class GetQueueSubmissionStatisticInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $fromDatetime
+     *
      * @return $this
      */
     public function setFromDatetime($fromDatetime)
@@ -41,6 +44,7 @@ class GetQueueSubmissionStatisticInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -53,6 +57,7 @@ class GetQueueSubmissionStatisticInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -65,6 +70,7 @@ class GetQueueSubmissionStatisticInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $toDatetime
+     *
      * @return $this
      */
     public function setToDatetime($toDatetime)
@@ -77,6 +83,7 @@ class GetQueueSubmissionStatisticInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $applicationType
+     *
      * @return $this
      */
     public function setApplicationType($applicationType)
@@ -89,6 +96,7 @@ class GetQueueSubmissionStatisticInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $finalStatus
+     *
      * @return $this
      */
     public function setFinalStatus($finalStatus)

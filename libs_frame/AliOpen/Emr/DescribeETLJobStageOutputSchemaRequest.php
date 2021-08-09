@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeETLJobStageOutputSchema
+ *
  * @method string getStageName()
  * @method string getResourceOwnerId()
  * @method string getEtlJobId()
@@ -26,6 +28,7 @@ class DescribeETLJobStageOutputSchemaRequest extends RpcAcsRequest
 
     /**
      * @param string $stageName
+     *
      * @return $this
      */
     public function setStageName($stageName)
@@ -38,6 +41,7 @@ class DescribeETLJobStageOutputSchemaRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +54,7 @@ class DescribeETLJobStageOutputSchemaRequest extends RpcAcsRequest
 
     /**
      * @param string $etlJobId
+     *
      * @return $this
      */
     public function setEtlJobId($etlJobId)

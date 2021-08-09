@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeFlowVariableCollection
+ *
  * @method string getEntityId()
  */
 class DescribeFlowVariableCollectionRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class DescribeFlowVariableCollectionRequest extends RpcAcsRequest
 
     /**
      * @param string $entityId
+     *
      * @return $this
      */
     public function setEntityId($entityId)

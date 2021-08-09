@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeETLJobSqlSchema
+ *
  * @method string getResourceOwnerId()
  * @method string getResolveId()
  */
@@ -25,6 +27,7 @@ class DescribeETLJobSqlSchemaRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -37,6 +40,7 @@ class DescribeETLJobSqlSchemaRequest extends RpcAcsRequest
 
     /**
      * @param string $resolveId
+     *
      * @return $this
      */
     public function setResolveId($resolveId)

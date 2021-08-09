@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateClusterWithTemplate
+ *
  * @method string getResourceOwnerId()
  * @method string getUniqueTag()
  * @method string getTemplateBizId()
@@ -26,6 +28,7 @@ class CreateClusterWithTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -38,6 +41,7 @@ class CreateClusterWithTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $uniqueTag
+     *
      * @return $this
      */
     public function setUniqueTag($uniqueTag)
@@ -50,6 +54,7 @@ class CreateClusterWithTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $templateBizId
+     *
      * @return $this
      */
     public function setTemplateBizId($templateBizId)

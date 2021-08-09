@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyFlowJob
+ *
  * @method string getRunConf()
  * @method string getEnvConf()
  * @method string getDescription()
@@ -40,6 +42,7 @@ class ModifyFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $runConf
+     *
      * @return $this
      */
     public function setRunConf($runConf)
@@ -52,6 +55,7 @@ class ModifyFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $envConf
+     *
      * @return $this
      */
     public function setEnvConf($envConf)
@@ -64,6 +68,7 @@ class ModifyFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -76,6 +81,7 @@ class ModifyFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -88,6 +94,7 @@ class ModifyFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $params
+     *
      * @return $this
      */
     public function setParams($params)
@@ -100,6 +107,7 @@ class ModifyFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $paramConf
+     *
      * @return $this
      */
     public function setParamConf($paramConf)
@@ -111,7 +119,6 @@ class ModifyFlowJobRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $resourceLists
      * @return $this
      */
     public function setResourceLists(array $resourceLists)
@@ -127,6 +134,7 @@ class ModifyFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $failAct
+     *
      * @return $this
      */
     public function setFailAct($failAct)
@@ -139,6 +147,7 @@ class ModifyFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $customVariables
+     *
      * @return $this
      */
     public function setCustomVariables($customVariables)
@@ -151,6 +160,7 @@ class ModifyFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $mode
+     *
      * @return $this
      */
     public function setMode($mode)
@@ -163,6 +173,7 @@ class ModifyFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $retryInterval
+     *
      * @return $this
      */
     public function setRetryInterval($retryInterval)
@@ -175,6 +186,7 @@ class ModifyFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $monitorConf
+     *
      * @return $this
      */
     public function setMonitorConf($monitorConf)
@@ -187,6 +199,7 @@ class ModifyFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -199,6 +212,7 @@ class ModifyFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -211,6 +225,7 @@ class ModifyFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $maxRetry
+     *
      * @return $this
      */
     public function setMaxRetry($maxRetry)
@@ -223,6 +238,7 @@ class ModifyFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $alertConf
+     *
      * @return $this
      */
     public function setAlertConf($alertConf)
@@ -235,6 +251,7 @@ class ModifyFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)

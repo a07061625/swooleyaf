@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyClusterServiceConfig
+ *
  * @method string getResourceOwnerId()
  * @method string getCustomConfigParams()
  * @method string getConfigType()
@@ -32,6 +34,7 @@ class ModifyClusterServiceConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class ModifyClusterServiceConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $customConfigParams
+     *
      * @return $this
      */
     public function setCustomConfigParams($customConfigParams)
@@ -56,6 +60,7 @@ class ModifyClusterServiceConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $configType
+     *
      * @return $this
      */
     public function setConfigType($configType)
@@ -68,6 +73,7 @@ class ModifyClusterServiceConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $hostInstanceId
+     *
      * @return $this
      */
     public function setHostInstanceId($hostInstanceId)
@@ -80,6 +86,7 @@ class ModifyClusterServiceConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -92,6 +99,7 @@ class ModifyClusterServiceConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceName
+     *
      * @return $this
      */
     public function setServiceName($serviceName)
@@ -104,6 +112,7 @@ class ModifyClusterServiceConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $comment
+     *
      * @return $this
      */
     public function setComment($comment)
@@ -116,6 +125,7 @@ class ModifyClusterServiceConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -128,6 +138,7 @@ class ModifyClusterServiceConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $configParams
+     *
      * @return $this
      */
     public function setConfigParams($configParams)

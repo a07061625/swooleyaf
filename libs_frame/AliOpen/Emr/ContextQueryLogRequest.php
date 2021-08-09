@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ContextQueryLog
+ *
  * @method string getPackId()
  * @method string getResourceOwnerId()
  * @method string getTotalOffset()
@@ -33,6 +35,7 @@ class ContextQueryLogRequest extends RpcAcsRequest
 
     /**
      * @param string $packId
+     *
      * @return $this
      */
     public function setPackId($packId)
@@ -45,6 +48,7 @@ class ContextQueryLogRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +61,7 @@ class ContextQueryLogRequest extends RpcAcsRequest
 
     /**
      * @param string $totalOffset
+     *
      * @return $this
      */
     public function setTotalOffset($totalOffset)
@@ -69,6 +74,7 @@ class ContextQueryLogRequest extends RpcAcsRequest
 
     /**
      * @param string $size
+     *
      * @return $this
      */
     public function setSize($size)
@@ -81,6 +87,7 @@ class ContextQueryLogRequest extends RpcAcsRequest
 
     /**
      * @param string $packMeta
+     *
      * @return $this
      */
     public function setPackMeta($packMeta)
@@ -93,6 +100,7 @@ class ContextQueryLogRequest extends RpcAcsRequest
 
     /**
      * @param string $from
+     *
      * @return $this
      */
     public function setFrom($from)
@@ -105,6 +113,7 @@ class ContextQueryLogRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -117,6 +126,7 @@ class ContextQueryLogRequest extends RpcAcsRequest
 
     /**
      * @param string $to
+     *
      * @return $this
      */
     public function setTo($to)
@@ -129,6 +139,7 @@ class ContextQueryLogRequest extends RpcAcsRequest
 
     /**
      * @param string $reverse
+     *
      * @return $this
      */
     public function setReverse($reverse)
@@ -141,6 +152,7 @@ class ContextQueryLogRequest extends RpcAcsRequest
 
     /**
      * @param string $logStore
+     *
      * @return $this
      */
     public function setLogStore($logStore)

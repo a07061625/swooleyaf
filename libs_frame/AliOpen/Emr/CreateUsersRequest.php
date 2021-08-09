@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateUsers
+ *
  * @method string getResourceOwnerId()
  * @method string getClusterId()
  * @method array getUserInfos()
@@ -26,6 +28,7 @@ class CreateUsersRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -38,6 +41,7 @@ class CreateUsersRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -49,7 +53,6 @@ class CreateUsersRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $userInfos
      * @return $this
      */
     public function setUserInfos(array $userInfos)

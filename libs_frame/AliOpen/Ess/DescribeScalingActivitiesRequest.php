@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeScalingActivities
+ *
  * @method string getScalingActivityId9()
  * @method string getResourceOwnerId()
  * @method string getScalingActivityId5()
@@ -51,6 +53,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId9
+     *
      * @return $this
      */
     public function setScalingActivityId9($scalingActivityId9)
@@ -63,6 +66,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -75,6 +79,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId5
+     *
      * @return $this
      */
     public function setScalingActivityId5($scalingActivityId5)
@@ -87,6 +92,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId6
+     *
      * @return $this
      */
     public function setScalingActivityId6($scalingActivityId6)
@@ -99,6 +105,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -111,6 +118,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId7
+     *
      * @return $this
      */
     public function setScalingActivityId7($scalingActivityId7)
@@ -123,6 +131,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId8
+     *
      * @return $this
      */
     public function setScalingActivityId8($scalingActivityId8)
@@ -135,6 +144,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId1
+     *
      * @return $this
      */
     public function setScalingActivityId1($scalingActivityId1)
@@ -147,6 +157,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId2
+     *
      * @return $this
      */
     public function setScalingActivityId2($scalingActivityId2)
@@ -159,6 +170,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId3
+     *
      * @return $this
      */
     public function setScalingActivityId3($scalingActivityId3)
@@ -171,6 +183,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId4
+     *
      * @return $this
      */
     public function setScalingActivityId4($scalingActivityId4)
@@ -183,6 +196,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -195,6 +209,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $statusCode
+     *
      * @return $this
      */
     public function setStatusCode($statusCode)
@@ -207,6 +222,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -219,6 +235,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId11
+     *
      * @return $this
      */
     public function setScalingActivityId11($scalingActivityId11)
@@ -231,6 +248,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId10
+     *
      * @return $this
      */
     public function setScalingActivityId10($scalingActivityId10)
@@ -243,6 +261,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId13
+     *
      * @return $this
      */
     public function setScalingActivityId13($scalingActivityId13)
@@ -255,6 +274,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId12
+     *
      * @return $this
      */
     public function setScalingActivityId12($scalingActivityId12)
@@ -267,6 +287,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId15
+     *
      * @return $this
      */
     public function setScalingActivityId15($scalingActivityId15)
@@ -279,6 +300,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId14
+     *
      * @return $this
      */
     public function setScalingActivityId14($scalingActivityId14)
@@ -291,6 +313,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId17
+     *
      * @return $this
      */
     public function setScalingActivityId17($scalingActivityId17)
@@ -303,6 +326,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId16
+     *
      * @return $this
      */
     public function setScalingActivityId16($scalingActivityId16)
@@ -315,6 +339,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId19
+     *
      * @return $this
      */
     public function setScalingActivityId19($scalingActivityId19)
@@ -327,6 +352,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -339,6 +365,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId18
+     *
      * @return $this
      */
     public function setScalingActivityId18($scalingActivityId18)
@@ -351,6 +378,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -363,6 +391,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -375,6 +404,7 @@ class DescribeScalingActivitiesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingActivityId20
+     *
      * @return $this
      */
     public function setScalingActivityId20($scalingActivityId20)

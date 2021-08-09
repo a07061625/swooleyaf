@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RecordLifecycleActionHeartbeat
+ *
  * @method string getlifecycleActionToken()
  * @method string getResourceOwnerAccount()
  * @method string getheartbeatTimeout()
@@ -29,6 +31,7 @@ class RecordLifecycleActionHeartbeatRequest extends RpcAcsRequest
 
     /**
      * @param string $lifecycleActionToken
+     *
      * @return $this
      */
     public function setlifecycleActionToken($lifecycleActionToken)
@@ -41,6 +44,7 @@ class RecordLifecycleActionHeartbeatRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -53,6 +57,7 @@ class RecordLifecycleActionHeartbeatRequest extends RpcAcsRequest
 
     /**
      * @param string $heartbeatTimeout
+     *
      * @return $this
      */
     public function setheartbeatTimeout($heartbeatTimeout)
@@ -65,6 +70,7 @@ class RecordLifecycleActionHeartbeatRequest extends RpcAcsRequest
 
     /**
      * @param string $lifecycleHookId
+     *
      * @return $this
      */
     public function setlifecycleHookId($lifecycleHookId)
@@ -77,6 +83,7 @@ class RecordLifecycleActionHeartbeatRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -89,6 +96,7 @@ class RecordLifecycleActionHeartbeatRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MetastoreListDatabases
+ *
  * @method string getResourceOwnerId()
  * @method string getDbName()
  * @method string getPageSize()
@@ -28,6 +30,7 @@ class MetastoreListDatabasesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -40,6 +43,7 @@ class MetastoreListDatabasesRequest extends RpcAcsRequest
 
     /**
      * @param string $dbName
+     *
      * @return $this
      */
     public function setDbName($dbName)
@@ -52,6 +56,7 @@ class MetastoreListDatabasesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -64,6 +69,7 @@ class MetastoreListDatabasesRequest extends RpcAcsRequest
 
     /**
      * @param string $fuzzyDatabaseName
+     *
      * @return $this
      */
     public function setFuzzyDatabaseName($fuzzyDatabaseName)
@@ -76,6 +82,7 @@ class MetastoreListDatabasesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MetastoreDescribeKafkaTopic
+ *
  * @method string getResourceOwnerId()
  * @method string getTopicId()
  */
@@ -25,6 +27,7 @@ class MetastoreDescribeKafkaTopicRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -37,6 +40,7 @@ class MetastoreDescribeKafkaTopicRequest extends RpcAcsRequest
 
     /**
      * @param string $topicId
+     *
      * @return $this
      */
     public function setTopicId($topicId)

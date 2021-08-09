@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CommonApiWhiteList
+ *
  * @method string getResourceOwnerId()
  */
 class CommonApiWhiteListRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class CommonApiWhiteListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)

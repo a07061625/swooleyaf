@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MetastoreCreateDatabase
+ *
  * @method string getDbSource()
  * @method string getResourceOwnerId()
  * @method string getDbName()
@@ -31,6 +33,7 @@ class MetastoreCreateDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $dbSource
+     *
      * @return $this
      */
     public function setDbSource($dbSource)
@@ -43,6 +46,7 @@ class MetastoreCreateDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -55,6 +59,7 @@ class MetastoreCreateDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $dbName
+     *
      * @return $this
      */
     public function setDbName($dbName)
@@ -67,6 +72,7 @@ class MetastoreCreateDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $dataSourceId
+     *
      * @return $this
      */
     public function setDataSourceId($dataSourceId)
@@ -79,6 +85,7 @@ class MetastoreCreateDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -91,6 +98,7 @@ class MetastoreCreateDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $comment
+     *
      * @return $this
      */
     public function setComment($comment)
@@ -103,6 +111,7 @@ class MetastoreCreateDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $locationUri
+     *
      * @return $this
      */
     public function setLocationUri($locationUri)
@@ -115,6 +124,7 @@ class MetastoreCreateDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterBizId
+     *
      * @return $this
      */
     public function setClusterBizId($clusterBizId)

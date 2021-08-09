@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyFlowVariableCollection
+ *
  * @method string getData()
  */
 class ModifyFlowVariableCollectionRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class ModifyFlowVariableCollectionRequest extends RpcAcsRequest
 
     /**
      * @param string $data
+     *
      * @return $this
      */
     public function setData($data)

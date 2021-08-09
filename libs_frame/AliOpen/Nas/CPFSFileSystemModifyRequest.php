@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CPFSModifyFileSystem
+ *
  * @method string getBandwidth()
  * @method string getFsId()
  * @method string getFsDesc()
@@ -27,6 +29,7 @@ class CPFSFileSystemModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidth
+     *
      * @return $this
      */
     public function setBandwidth($bandwidth)
@@ -39,6 +42,7 @@ class CPFSFileSystemModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $fsId
+     *
      * @return $this
      */
     public function setFsId($fsId)
@@ -51,6 +55,7 @@ class CPFSFileSystemModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $fsDesc
+     *
      * @return $this
      */
     public function setFsDesc($fsDesc)
@@ -63,6 +68,7 @@ class CPFSFileSystemModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $capacity
+     *
      * @return $this
      */
     public function setCapacity($capacity)

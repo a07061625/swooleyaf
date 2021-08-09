@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyUserStatistics
+ *
  * @method string getJobMigratedNum()
  * @method string getResourceOwnerId()
  * @method string getExecutePlanNum()
@@ -31,6 +33,7 @@ class ModifyUserStatisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $jobMigratedNum
+     *
      * @return $this
      */
     public function setJobMigratedNum($jobMigratedNum)
@@ -43,6 +46,7 @@ class ModifyUserStatisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -55,6 +59,7 @@ class ModifyUserStatisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $executePlanNum
+     *
      * @return $this
      */
     public function setExecutePlanNum($executePlanNum)
@@ -67,6 +72,7 @@ class ModifyUserStatisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $jobNum
+     *
      * @return $this
      */
     public function setJobNum($jobNum)
@@ -79,6 +85,7 @@ class ModifyUserStatisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $executePlanMigratedNum
+     *
      * @return $this
      */
     public function setExecutePlanMigratedNum($executePlanMigratedNum)
@@ -91,6 +98,7 @@ class ModifyUserStatisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $interactionJobMigratedNum
+     *
      * @return $this
      */
     public function setInteractionJobMigratedNum($interactionJobMigratedNum)
@@ -103,6 +111,7 @@ class ModifyUserStatisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $userId
+     *
      * @return $this
      */
     public function setUserId($userId)
@@ -115,6 +124,7 @@ class ModifyUserStatisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $interactionJobNum
+     *
      * @return $this
      */
     public function setInteractionJobNum($interactionJobNum)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateClusterV2
+ *
  * @method string getAutoPayOrder()
  * @method string getResourceOwnerId()
  * @method string getLogPath()
@@ -62,6 +64,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $autoPayOrder
+     *
      * @return $this
      */
     public function setAutoPayOrder($autoPayOrder)
@@ -74,6 +77,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -86,6 +90,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $logPath
+     *
      * @return $this
      */
     public function setLogPath($logPath)
@@ -98,6 +103,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $masterPwd
+     *
      * @return $this
      */
     public function setMasterPwd($masterPwd)
@@ -110,6 +116,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $configurations
+     *
      * @return $this
      */
     public function setConfigurations($configurations)
@@ -122,6 +129,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $ioOptimized
+     *
      * @return $this
      */
     public function setIoOptimized($ioOptimized)
@@ -134,6 +142,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -146,6 +155,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $sshEnable
+     *
      * @return $this
      */
     public function setSshEnable($sshEnable)
@@ -158,6 +168,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $easEnable
+     *
      * @return $this
      */
     public function setEasEnable($easEnable)
@@ -170,6 +181,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $keyPairName
+     *
      * @return $this
      */
     public function setKeyPairName($keyPairName)
@@ -182,6 +194,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $securityGroupName
+     *
      * @return $this
      */
     public function setSecurityGroupName($securityGroupName)
@@ -194,6 +207,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $depositType
+     *
      * @return $this
      */
     public function setDepositType($depositType)
@@ -206,6 +220,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $machineType
+     *
      * @return $this
      */
     public function setMachineType($machineType)
@@ -217,7 +232,6 @@ class CreateClusterV2Request extends RpcAcsRequest
     }
 
     /**
-     * @param array $hostComponentInfos
      * @return $this
      */
     public function setHostComponentInfos(array $hostComponentInfos)
@@ -235,7 +249,6 @@ class CreateClusterV2Request extends RpcAcsRequest
     }
 
     /**
-     * @param array $bootstrapActions
      * @return $this
      */
     public function setBootstrapActions(array $bootstrapActions)
@@ -252,6 +265,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $useLocalMetaDb
+     *
      * @return $this
      */
     public function setUseLocalMetaDb($useLocalMetaDb)
@@ -264,6 +278,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $emrVer
+     *
      * @return $this
      */
     public function setEmrVer($emrVer)
@@ -275,7 +290,6 @@ class CreateClusterV2Request extends RpcAcsRequest
     }
 
     /**
-     * @param array $userInfos
      * @return $this
      */
     public function setUserInfos(array $userInfos)
@@ -292,6 +306,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $userDefinedEmrEcsRole
+     *
      * @return $this
      */
     public function setUserDefinedEmrEcsRole($userDefinedEmrEcsRole)
@@ -304,6 +319,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $authorizeContent
+     *
      * @return $this
      */
     public function setAuthorizeContent($authorizeContent)
@@ -316,6 +332,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $isOpenPublicIp
+     *
      * @return $this
      */
     public function setIsOpenPublicIp($isOpenPublicIp)
@@ -328,6 +345,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -340,6 +358,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $whiteListType
+     *
      * @return $this
      */
     public function setWhiteListType($whiteListType)
@@ -352,6 +371,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $relatedClusterId
+     *
      * @return $this
      */
     public function setRelatedClusterId($relatedClusterId)
@@ -364,6 +384,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $instanceGeneration
+     *
      * @return $this
      */
     public function setInstanceGeneration($instanceGeneration)
@@ -376,6 +397,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -388,6 +410,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $clusterType
+     *
      * @return $this
      */
     public function setClusterType($clusterType)
@@ -400,6 +423,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $autoRenew
+     *
      * @return $this
      */
     public function setAutoRenew($autoRenew)
@@ -411,7 +435,6 @@ class CreateClusterV2Request extends RpcAcsRequest
     }
 
     /**
-     * @param array $optionSoftWareLists
      * @return $this
      */
     public function setOptionSoftWareLists(array $optionSoftWareLists)
@@ -426,6 +449,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -438,6 +462,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $netType
+     *
      * @return $this
      */
     public function setNetType($netType)
@@ -450,6 +475,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -461,7 +487,6 @@ class CreateClusterV2Request extends RpcAcsRequest
     }
 
     /**
-     * @param array $hostGroups
      * @return $this
      */
     public function setHostGroups(array $hostGroups)
@@ -493,6 +518,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -505,6 +531,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $chargeType
+     *
      * @return $this
      */
     public function setChargeType($chargeType)
@@ -517,6 +544,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $useCustomHiveMetaDB
+     *
      * @return $this
      */
     public function setUseCustomHiveMetaDB($useCustomHiveMetaDB)
@@ -528,7 +556,6 @@ class CreateClusterV2Request extends RpcAcsRequest
     }
 
     /**
-     * @param array $configs
      * @return $this
      */
     public function setConfigs(array $configs)
@@ -548,6 +575,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $highAvailabilityEnable
+     *
      * @return $this
      */
     public function setHighAvailabilityEnable($highAvailabilityEnable)
@@ -560,6 +588,7 @@ class CreateClusterV2Request extends RpcAcsRequest
 
     /**
      * @param string $initCustomHiveMetaDB
+     *
      * @return $this
      */
     public function setInitCustomHiveMetaDB($initCustomHiveMetaDB)

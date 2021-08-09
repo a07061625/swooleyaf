@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetOpsCommandResult
+ *
  * @method string getResourceOwnerId()
  * @method string getEndCursor()
  * @method string getStartCursor()
@@ -23,6 +25,7 @@ class GetOpsCommandResultRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -35,6 +38,7 @@ class GetOpsCommandResultRequest extends RpcAcsRequest
 
     /**
      * @param string $endCursor
+     *
      * @return $this
      */
     public function setEndCursor($endCursor)
@@ -47,6 +51,7 @@ class GetOpsCommandResultRequest extends RpcAcsRequest
 
     /**
      * @param string $startCursor
+     *
      * @return $this
      */
     public function setStartCursor($startCursor)
@@ -59,6 +64,7 @@ class GetOpsCommandResultRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -71,6 +77,7 @@ class GetOpsCommandResultRequest extends RpcAcsRequest
 
     /**
      * @param string $taskId
+     *
      * @return $this
      */
     public function setTaskId($taskId)

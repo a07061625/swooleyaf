@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SearchLog
+ *
  * @method string getResourceOwnerId()
  * @method string getLogstoreName()
  * @method string getFromTimestamp()
@@ -34,6 +36,7 @@ class SearchLogRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class SearchLogRequest extends RpcAcsRequest
 
     /**
      * @param string $logstoreName
+     *
      * @return $this
      */
     public function setLogstoreName($logstoreName)
@@ -58,6 +62,7 @@ class SearchLogRequest extends RpcAcsRequest
 
     /**
      * @param string $fromTimestamp
+     *
      * @return $this
      */
     public function setFromTimestamp($fromTimestamp)
@@ -70,6 +75,7 @@ class SearchLogRequest extends RpcAcsRequest
 
     /**
      * @param string $offset
+     *
      * @return $this
      */
     public function setOffset($offset)
@@ -82,6 +88,7 @@ class SearchLogRequest extends RpcAcsRequest
 
     /**
      * @param string $line
+     *
      * @return $this
      */
     public function setLine($line)
@@ -94,6 +101,7 @@ class SearchLogRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -106,6 +114,7 @@ class SearchLogRequest extends RpcAcsRequest
 
     /**
      * @param string $reverse
+     *
      * @return $this
      */
     public function setReverse($reverse)
@@ -118,6 +127,7 @@ class SearchLogRequest extends RpcAcsRequest
 
     /**
      * @param string $hostInnerIp
+     *
      * @return $this
      */
     public function setHostInnerIp($hostInnerIp)
@@ -130,6 +140,7 @@ class SearchLogRequest extends RpcAcsRequest
 
     /**
      * @param string $hostName
+     *
      * @return $this
      */
     public function setHostName($hostName)
@@ -142,6 +153,7 @@ class SearchLogRequest extends RpcAcsRequest
 
     /**
      * @param string $toTimestamp
+     *
      * @return $this
      */
     public function setToTimestamp($toTimestamp)
@@ -154,6 +166,7 @@ class SearchLogRequest extends RpcAcsRequest
 
     /**
      * @param string $slsQueryString
+     *
      * @return $this
      */
     public function setSlsQueryString($slsQueryString)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MetastoreListTask
+ *
  * @method string getResourceOwnerId()
  * @method string getTaskStatus()
  * @method string getTaskSourceType()
@@ -31,6 +33,7 @@ class MetastoreListTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class MetastoreListTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $taskStatus
+     *
      * @return $this
      */
     public function setTaskStatus($taskStatus)
@@ -55,6 +59,7 @@ class MetastoreListTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $taskSourceType
+     *
      * @return $this
      */
     public function setTaskSourceType($taskSourceType)
@@ -67,6 +72,7 @@ class MetastoreListTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $taskType
+     *
      * @return $this
      */
     public function setTaskType($taskType)
@@ -79,6 +85,7 @@ class MetastoreListTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -91,6 +98,7 @@ class MetastoreListTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $dataSourceId
+     *
      * @return $this
      */
     public function setDataSourceId($dataSourceId)
@@ -103,6 +111,7 @@ class MetastoreListTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -115,6 +124,7 @@ class MetastoreListTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $taskId
+     *
      * @return $this
      */
     public function setTaskId($taskId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateAlarm
+ *
  * @method string getMetricType()
  * @method string getPeriod()
  * @method string getResourceOwnerAccount()
@@ -38,6 +40,7 @@ class CreateAlarmRequest extends RpcAcsRequest
 
     /**
      * @param string $metricType
+     *
      * @return $this
      */
     public function setMetricType($metricType)
@@ -50,6 +53,7 @@ class CreateAlarmRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -62,6 +66,7 @@ class CreateAlarmRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -74,6 +79,7 @@ class CreateAlarmRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -86,6 +92,7 @@ class CreateAlarmRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -98,6 +105,7 @@ class CreateAlarmRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -109,7 +117,6 @@ class CreateAlarmRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $alarmAction
      * @return $this
      */
     public function setAlarmActions(array $alarmAction)
@@ -124,6 +131,7 @@ class CreateAlarmRequest extends RpcAcsRequest
 
     /**
      * @param string $threshold
+     *
      * @return $this
      */
     public function setThreshold($threshold)
@@ -136,6 +144,7 @@ class CreateAlarmRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -148,6 +157,7 @@ class CreateAlarmRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -160,6 +170,7 @@ class CreateAlarmRequest extends RpcAcsRequest
 
     /**
      * @param string $evaluationCount
+     *
      * @return $this
      */
     public function setEvaluationCount($evaluationCount)
@@ -172,6 +183,7 @@ class CreateAlarmRequest extends RpcAcsRequest
 
     /**
      * @param string $metricName
+     *
      * @return $this
      */
     public function setMetricName($metricName)
@@ -184,6 +196,7 @@ class CreateAlarmRequest extends RpcAcsRequest
 
     /**
      * @param string $comparisonOperator
+     *
      * @return $this
      */
     public function setComparisonOperator($comparisonOperator)
@@ -195,7 +208,6 @@ class CreateAlarmRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $dimension
      * @return $this
      */
     public function setDimensions(array $dimension)
@@ -211,6 +223,7 @@ class CreateAlarmRequest extends RpcAcsRequest
 
     /**
      * @param string $statistics
+     *
      * @return $this
      */
     public function setStatistics($statistics)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyFlowCategory
+ *
  * @method string getName()
  * @method string getId()
  * @method string getProjectId()
@@ -27,6 +29,7 @@ class ModifyFlowCategoryRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -39,6 +42,7 @@ class ModifyFlowCategoryRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -51,6 +55,7 @@ class ModifyFlowCategoryRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -63,6 +68,7 @@ class ModifyFlowCategoryRequest extends RpcAcsRequest
 
     /**
      * @param string $parentId
+     *
      * @return $this
      */
     public function setParentId($parentId)

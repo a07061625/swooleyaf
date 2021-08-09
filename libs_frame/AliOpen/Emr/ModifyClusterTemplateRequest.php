@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyClusterTemplate
+ *
  * @method string getResourceOwnerId()
  * @method string getLogPath()
  * @method string getMasterPwd()
@@ -56,6 +58,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -68,6 +71,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $logPath
+     *
      * @return $this
      */
     public function setLogPath($logPath)
@@ -80,6 +84,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $masterPwd
+     *
      * @return $this
      */
     public function setMasterPwd($masterPwd)
@@ -92,6 +97,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $configurations
+     *
      * @return $this
      */
     public function setConfigurations($configurations)
@@ -104,6 +110,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $ioOptimized
+     *
      * @return $this
      */
     public function setIoOptimized($ioOptimized)
@@ -116,6 +123,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -128,6 +136,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $sshEnable
+     *
      * @return $this
      */
     public function setSshEnable($sshEnable)
@@ -140,6 +149,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $easEnable
+     *
      * @return $this
      */
     public function setEasEnable($easEnable)
@@ -152,6 +162,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupName
+     *
      * @return $this
      */
     public function setSecurityGroupName($securityGroupName)
@@ -164,6 +175,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $depositType
+     *
      * @return $this
      */
     public function setDepositType($depositType)
@@ -176,6 +188,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $machineType
+     *
      * @return $this
      */
     public function setMachineType($machineType)
@@ -187,7 +200,6 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $bootstrapActions
      * @return $this
      */
     public function setBootstrapActions(array $bootstrapActions)
@@ -204,6 +216,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $useLocalMetaDb
+     *
      * @return $this
      */
     public function setUseLocalMetaDb($useLocalMetaDb)
@@ -216,6 +229,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $emrVer
+     *
      * @return $this
      */
     public function setEmrVer($emrVer)
@@ -228,6 +242,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $templateName
+     *
      * @return $this
      */
     public function setTemplateName($templateName)
@@ -240,6 +255,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $userDefinedEmrEcsRole
+     *
      * @return $this
      */
     public function setUserDefinedEmrEcsRole($userDefinedEmrEcsRole)
@@ -252,6 +268,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $isOpenPublicIp
+     *
      * @return $this
      */
     public function setIsOpenPublicIp($isOpenPublicIp)
@@ -264,6 +281,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -276,6 +294,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceGeneration
+     *
      * @return $this
      */
     public function setInstanceGeneration($instanceGeneration)
@@ -288,6 +307,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -300,6 +320,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterType
+     *
      * @return $this
      */
     public function setClusterType($clusterType)
@@ -312,6 +333,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $autoRenew
+     *
      * @return $this
      */
     public function setAutoRenew($autoRenew)
@@ -323,7 +345,6 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $optionSoftWareLists
      * @return $this
      */
     public function setOptionSoftWareLists(array $optionSoftWareLists)
@@ -338,6 +359,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -350,6 +372,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $netType
+     *
      * @return $this
      */
     public function setNetType($netType)
@@ -362,6 +385,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -373,7 +397,6 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $hostGroups
      * @return $this
      */
     public function setHostGroups(array $hostGroups)
@@ -405,6 +428,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -417,6 +441,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $chargeType
+     *
      * @return $this
      */
     public function setChargeType($chargeType)
@@ -429,6 +454,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $useCustomHiveMetaDb
+     *
      * @return $this
      */
     public function setUseCustomHiveMetaDb($useCustomHiveMetaDb)
@@ -440,7 +466,6 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $configs
      * @return $this
      */
     public function setConfigs(array $configs)
@@ -460,6 +485,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $highAvailabilityEnable
+     *
      * @return $this
      */
     public function setHighAvailabilityEnable($highAvailabilityEnable)
@@ -472,6 +498,7 @@ class ModifyClusterTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $initCustomHiveMetaDb
+     *
      * @return $this
      */
     public function setInitCustomHiveMetaDb($initCustomHiveMetaDb)

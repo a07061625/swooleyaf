@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListExecutionPlanInstances
+ *
  * @method string getOnlyLastInstance()
  * @method string getResourceOwnerId()
  * @method array getExecutionPlanIdLists()
@@ -30,6 +32,7 @@ class ListExecutionPlanInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $onlyLastInstance
+     *
      * @return $this
      */
     public function setOnlyLastInstance($onlyLastInstance)
@@ -42,6 +45,7 @@ class ListExecutionPlanInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -53,7 +57,6 @@ class ListExecutionPlanInstancesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $executionPlanIdLists
      * @return $this
      */
     public function setExecutionPlanIdLists(array $executionPlanIdLists)
@@ -67,7 +70,6 @@ class ListExecutionPlanInstancesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $statusLists
      * @return $this
      */
     public function setStatusLists(array $statusLists)
@@ -82,6 +84,7 @@ class ListExecutionPlanInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -94,6 +97,7 @@ class ListExecutionPlanInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $isDesc
+     *
      * @return $this
      */
     public function setIsDesc($isDesc)
@@ -106,6 +110,7 @@ class ListExecutionPlanInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

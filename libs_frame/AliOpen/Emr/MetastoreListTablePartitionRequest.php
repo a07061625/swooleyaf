@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MetastoreListTablePartition
+ *
  * @method string getResourceOwnerId()
  * @method string getPageSize()
  * @method string getTableId()
@@ -28,6 +30,7 @@ class MetastoreListTablePartitionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -40,6 +43,7 @@ class MetastoreListTablePartitionRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -52,6 +56,7 @@ class MetastoreListTablePartitionRequest extends RpcAcsRequest
 
     /**
      * @param string $tableId
+     *
      * @return $this
      */
     public function setTableId($tableId)
@@ -64,6 +69,7 @@ class MetastoreListTablePartitionRequest extends RpcAcsRequest
 
     /**
      * @param string $databaseId
+     *
      * @return $this
      */
     public function setDatabaseId($databaseId)
@@ -76,6 +82,7 @@ class MetastoreListTablePartitionRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

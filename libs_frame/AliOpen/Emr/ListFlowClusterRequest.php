@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListFlowCluster
+ *
  * @method string getPageSize()
  * @method string getProjectId()
  * @method string getPageNumber()
@@ -26,6 +28,7 @@ class ListFlowClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -38,6 +41,7 @@ class ListFlowClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -50,6 +54,7 @@ class ListFlowClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

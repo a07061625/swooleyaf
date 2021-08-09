@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyFlowProjectClusterSetting
+ *
  * @method array getUserLists()
  * @method array getQueueLists()
  * @method array getHostLists()
@@ -29,7 +31,6 @@ class ModifyFlowProjectClusterSettingRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $userLists
      * @return $this
      */
     public function setUserLists(array $userLists)
@@ -43,7 +44,6 @@ class ModifyFlowProjectClusterSettingRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $queueLists
      * @return $this
      */
     public function setQueueLists(array $queueLists)
@@ -57,7 +57,6 @@ class ModifyFlowProjectClusterSettingRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $hostLists
      * @return $this
      */
     public function setHostLists(array $hostLists)
@@ -72,6 +71,7 @@ class ModifyFlowProjectClusterSettingRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -84,6 +84,7 @@ class ModifyFlowProjectClusterSettingRequest extends RpcAcsRequest
 
     /**
      * @param string $defaultQueue
+     *
      * @return $this
      */
     public function setDefaultQueue($defaultQueue)
@@ -96,6 +97,7 @@ class ModifyFlowProjectClusterSettingRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -108,6 +110,7 @@ class ModifyFlowProjectClusterSettingRequest extends RpcAcsRequest
 
     /**
      * @param string $defaultUser
+     *
      * @return $this
      */
     public function setDefaultUser($defaultUser)

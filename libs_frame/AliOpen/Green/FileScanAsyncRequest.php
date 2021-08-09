@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of FileAsyncScan
+ *
  * @method string getClientInfo()
  */
 class FileScanAsyncRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class FileScanAsyncRequest extends RoaAcsRequest
 
     /**
      * @param string $clientInfo
+     *
      * @return $this
      */
     public function setClientInfo($clientInfo)

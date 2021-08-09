@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OperateExistsNodeCluster
+ *
  * @method string getResourceOwnerId()
  * @method string getLogPath()
  * @method array getMasterInstanceIdLists()
@@ -47,6 +49,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -59,6 +62,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $logPath
+     *
      * @return $this
      */
     public function setLogPath($logPath)
@@ -70,7 +74,6 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $masterInstanceIdLists
      * @return $this
      */
     public function setMasterInstanceIdLists(array $masterInstanceIdLists)
@@ -85,6 +88,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $ioOptimized
+     *
      * @return $this
      */
     public function setIoOptimized($ioOptimized)
@@ -97,6 +101,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -109,6 +114,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $easEnable
+     *
      * @return $this
      */
     public function setEasEnable($easEnable)
@@ -121,6 +127,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $isResize
+     *
      * @return $this
      */
     public function setIsResize($isResize)
@@ -133,6 +140,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $depositType
+     *
      * @return $this
      */
     public function setDepositType($depositType)
@@ -145,6 +153,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $machineType
+     *
      * @return $this
      */
     public function setMachineType($machineType)
@@ -157,6 +166,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $useLocalMetaDb
+     *
      * @return $this
      */
     public function setUseLocalMetaDb($useLocalMetaDb)
@@ -169,6 +179,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $emrVer
+     *
      * @return $this
      */
     public function setEmrVer($emrVer)
@@ -181,6 +192,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -193,6 +205,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -205,6 +218,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -217,6 +231,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterType
+     *
      * @return $this
      */
     public function setClusterType($clusterType)
@@ -228,7 +243,6 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $optionSoftWareLists
      * @return $this
      */
     public function setOptionSoftWareLists(array $optionSoftWareLists)
@@ -242,7 +256,6 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceIdLists
      * @return $this
      */
     public function setInstanceIdLists(array $instanceIdLists)
@@ -257,6 +270,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -269,6 +283,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $netType
+     *
      * @return $this
      */
     public function setNetType($netType)
@@ -281,6 +296,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -293,6 +309,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -305,6 +322,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $chargeType
+     *
      * @return $this
      */
     public function setChargeType($chargeType)
@@ -317,6 +335,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $operateType
+     *
      * @return $this
      */
     public function setOperateType($operateType)
@@ -329,6 +348,7 @@ class OperateExistsNodeClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $highAvailabilityEnable
+     *
      * @return $this
      */
     public function setHighAvailabilityEnable($highAvailabilityEnable)

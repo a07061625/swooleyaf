@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeClusterOperationHostTaskLog
+ *
  * @method string getResourceOwnerId()
  * @method string getOperationId()
  * @method string getHostId()
@@ -29,6 +31,7 @@ class DescribeClusterOperationHostTaskLogRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class DescribeClusterOperationHostTaskLogRequest extends RpcAcsRequest
 
     /**
      * @param string $operationId
+     *
      * @return $this
      */
     public function setOperationId($operationId)
@@ -53,6 +57,7 @@ class DescribeClusterOperationHostTaskLogRequest extends RpcAcsRequest
 
     /**
      * @param string $hostId
+     *
      * @return $this
      */
     public function setHostId($hostId)
@@ -65,6 +70,7 @@ class DescribeClusterOperationHostTaskLogRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -77,6 +83,7 @@ class DescribeClusterOperationHostTaskLogRequest extends RpcAcsRequest
 
     /**
      * @param string $taskId
+     *
      * @return $this
      */
     public function setTaskId($taskId)
@@ -89,6 +96,7 @@ class DescribeClusterOperationHostTaskLogRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

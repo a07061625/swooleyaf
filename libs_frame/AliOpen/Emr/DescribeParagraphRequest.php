@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeParagraph
+ *
  * @method string getResourceOwnerId()
  * @method string getNoteId()
  * @method string getId()
@@ -26,6 +28,7 @@ class DescribeParagraphRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -38,6 +41,7 @@ class DescribeParagraphRequest extends RpcAcsRequest
 
     /**
      * @param string $noteId
+     *
      * @return $this
      */
     public function setNoteId($noteId)
@@ -50,6 +54,7 @@ class DescribeParagraphRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)

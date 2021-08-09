@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\Mts;
 
 /**
@@ -19,7 +20,6 @@ namespace AliOpen\Mts;
  */
 class PlayInfoRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetLogDownloadUrl
+ *
  * @method string getResourceOwnerId()
  * @method string getHostName()
  * @method string getLogstoreName()
@@ -28,6 +30,7 @@ class GetLogDownloadUrlRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -40,6 +43,7 @@ class GetLogDownloadUrlRequest extends RpcAcsRequest
 
     /**
      * @param string $hostName
+     *
      * @return $this
      */
     public function setHostName($hostName)
@@ -52,6 +56,7 @@ class GetLogDownloadUrlRequest extends RpcAcsRequest
 
     /**
      * @param string $logstoreName
+     *
      * @return $this
      */
     public function setLogstoreName($logstoreName)
@@ -64,6 +69,7 @@ class GetLogDownloadUrlRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -76,6 +82,7 @@ class GetLogDownloadUrlRequest extends RpcAcsRequest
 
     /**
      * @param string $logFileName
+     *
      * @return $this
      */
     public function setLogFileName($logFileName)

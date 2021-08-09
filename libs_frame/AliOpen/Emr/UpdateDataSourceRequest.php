@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateDataSource
+ *
  * @method string getResourceOwnerId()
  * @method string getName()
  * @method string getDescription()
@@ -28,6 +30,7 @@ class UpdateDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -40,6 +43,7 @@ class UpdateDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -52,6 +56,7 @@ class UpdateDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -64,6 +69,7 @@ class UpdateDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $conf
+     *
      * @return $this
      */
     public function setConf($conf)
@@ -76,6 +82,7 @@ class UpdateDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateETLJob
+ *
  * @method string getResourceOwnerId()
  * @method string getNavParentId()
  * @method string getName()
@@ -29,6 +31,7 @@ class CreateETLJobRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class CreateETLJobRequest extends RpcAcsRequest
 
     /**
      * @param string $navParentId
+     *
      * @return $this
      */
     public function setNavParentId($navParentId)
@@ -53,6 +57,7 @@ class CreateETLJobRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -65,6 +70,7 @@ class CreateETLJobRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -77,6 +83,7 @@ class CreateETLJobRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -89,6 +96,7 @@ class CreateETLJobRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AttachLoadBalancers
+ *
  * @method array getLoadBalancers()
  * @method string getResourceOwnerAccount()
  * @method string getScalingGroupId()
@@ -27,7 +29,6 @@ class AttachLoadBalancersRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $loadBalancer
      * @return $this
      */
     public function setLoadBalancers(array $loadBalancer)
@@ -42,6 +43,7 @@ class AttachLoadBalancersRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -54,6 +56,7 @@ class AttachLoadBalancersRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -66,6 +69,7 @@ class AttachLoadBalancersRequest extends RpcAcsRequest
 
     /**
      * @param string $forceAttach
+     *
      * @return $this
      */
     public function setForceAttach($forceAttach)
@@ -78,6 +82,7 @@ class AttachLoadBalancersRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

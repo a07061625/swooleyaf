@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListClusterServiceConfigHistory
+ *
  * @method string getResourceOwnerId()
  * @method string getPageSize()
  * @method string getServiceName()
@@ -29,6 +31,7 @@ class ListClusterServiceConfigHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class ListClusterServiceConfigHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -53,6 +57,7 @@ class ListClusterServiceConfigHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceName
+     *
      * @return $this
      */
     public function setServiceName($serviceName)
@@ -65,6 +70,7 @@ class ListClusterServiceConfigHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -77,6 +83,7 @@ class ListClusterServiceConfigHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -89,6 +96,7 @@ class ListClusterServiceConfigHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $configVersion
+     *
      * @return $this
      */
     public function setConfigVersion($configVersion)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MetastoreDescribeKafkaConsumerGroup
+ *
  * @method string getResourceOwnerId()
  * @method string getTopicId()
  * @method string getConsumerGroupId()
@@ -26,6 +28,7 @@ class MetastoreDescribeKafkaConsumerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -38,6 +41,7 @@ class MetastoreDescribeKafkaConsumerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $topicId
+     *
      * @return $this
      */
     public function setTopicId($topicId)
@@ -50,6 +54,7 @@ class MetastoreDescribeKafkaConsumerGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $consumerGroupId
+     *
      * @return $this
      */
     public function setConsumerGroupId($consumerGroupId)

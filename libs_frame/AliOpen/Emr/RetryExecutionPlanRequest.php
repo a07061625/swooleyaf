@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RetryExecutionPlan
+ *
  * @method string getResourceOwnerId()
  * @method string getExecutionPlanWorkNodeIds()
  * @method string getId()
@@ -26,6 +28,7 @@ class RetryExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -38,6 +41,7 @@ class RetryExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $executionPlanWorkNodeIds
+     *
      * @return $this
      */
     public function setExecutionPlanWorkNodeIds($executionPlanWorkNodeIds)
@@ -50,6 +54,7 @@ class RetryExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateFlowProject
+ *
  * @method string getName()
  * @method string getDescription()
  */
@@ -25,6 +27,7 @@ class CreateFlowProjectRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -37,6 +40,7 @@ class CreateFlowProjectRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)

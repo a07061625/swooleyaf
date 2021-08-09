@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyExecutionPlanBasicInfo
+ *
  * @method string getResourceOwnerId()
  * @method string getName()
  * @method string getId()
@@ -27,6 +29,7 @@ class ModifyExecutionPlanBasicInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -39,6 +42,7 @@ class ModifyExecutionPlanBasicInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -51,6 +55,7 @@ class ModifyExecutionPlanBasicInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -63,6 +68,7 @@ class ModifyExecutionPlanBasicInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AttachInstances
+ *
  * @method string getInstanceId10()
  * @method string getLoadBalancerWeight6()
  * @method string getLoadBalancerWeight11()
@@ -68,6 +70,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId10
+     *
      * @return $this
      */
     public function setInstanceId10($instanceId10)
@@ -80,6 +83,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight6
+     *
      * @return $this
      */
     public function setLoadBalancerWeight6($loadBalancerWeight6)
@@ -92,6 +96,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight11
+     *
      * @return $this
      */
     public function setLoadBalancerWeight11($loadBalancerWeight11)
@@ -104,6 +109,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight7
+     *
      * @return $this
      */
     public function setLoadBalancerWeight7($loadBalancerWeight7)
@@ -116,6 +122,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight12
+     *
      * @return $this
      */
     public function setLoadBalancerWeight12($loadBalancerWeight12)
@@ -128,6 +135,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -140,6 +148,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId12
+     *
      * @return $this
      */
     public function setInstanceId12($instanceId12)
@@ -152,6 +161,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight8
+     *
      * @return $this
      */
     public function setLoadBalancerWeight8($loadBalancerWeight8)
@@ -164,6 +174,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId11
+     *
      * @return $this
      */
     public function setInstanceId11($instanceId11)
@@ -176,6 +187,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight9
+     *
      * @return $this
      */
     public function setLoadBalancerWeight9($loadBalancerWeight9)
@@ -188,6 +200,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight10
+     *
      * @return $this
      */
     public function setLoadBalancerWeight10($loadBalancerWeight10)
@@ -200,6 +213,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight2
+     *
      * @return $this
      */
     public function setLoadBalancerWeight2($loadBalancerWeight2)
@@ -212,6 +226,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight15
+     *
      * @return $this
      */
     public function setLoadBalancerWeight15($loadBalancerWeight15)
@@ -224,6 +239,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight3
+     *
      * @return $this
      */
     public function setLoadBalancerWeight3($loadBalancerWeight3)
@@ -236,6 +252,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight16
+     *
      * @return $this
      */
     public function setLoadBalancerWeight16($loadBalancerWeight16)
@@ -248,6 +265,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -260,6 +278,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight4
+     *
      * @return $this
      */
     public function setLoadBalancerWeight4($loadBalancerWeight4)
@@ -272,6 +291,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight13
+     *
      * @return $this
      */
     public function setLoadBalancerWeight13($loadBalancerWeight13)
@@ -284,6 +304,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight5
+     *
      * @return $this
      */
     public function setLoadBalancerWeight5($loadBalancerWeight5)
@@ -296,6 +317,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight14
+     *
      * @return $this
      */
     public function setLoadBalancerWeight14($loadBalancerWeight14)
@@ -308,6 +330,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight1
+     *
      * @return $this
      */
     public function setLoadBalancerWeight1($loadBalancerWeight1)
@@ -320,6 +343,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId20
+     *
      * @return $this
      */
     public function setInstanceId20($instanceId20)
@@ -332,6 +356,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId1
+     *
      * @return $this
      */
     public function setInstanceId1($instanceId1)
@@ -344,6 +369,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight20
+     *
      * @return $this
      */
     public function setLoadBalancerWeight20($loadBalancerWeight20)
@@ -356,6 +382,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId3
+     *
      * @return $this
      */
     public function setInstanceId3($instanceId3)
@@ -368,6 +395,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -380,6 +408,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId2
+     *
      * @return $this
      */
     public function setInstanceId2($instanceId2)
@@ -392,6 +421,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId5
+     *
      * @return $this
      */
     public function setInstanceId5($instanceId5)
@@ -404,6 +434,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId4
+     *
      * @return $this
      */
     public function setInstanceId4($instanceId4)
@@ -416,6 +447,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -428,6 +460,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId7
+     *
      * @return $this
      */
     public function setInstanceId7($instanceId7)
@@ -440,6 +473,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId6
+     *
      * @return $this
      */
     public function setInstanceId6($instanceId6)
@@ -452,6 +486,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId9
+     *
      * @return $this
      */
     public function setInstanceId9($instanceId9)
@@ -464,6 +499,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId8
+     *
      * @return $this
      */
     public function setInstanceId8($instanceId8)
@@ -476,6 +512,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -488,6 +525,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId18
+     *
      * @return $this
      */
     public function setInstanceId18($instanceId18)
@@ -500,6 +538,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight19
+     *
      * @return $this
      */
     public function setLoadBalancerWeight19($loadBalancerWeight19)
@@ -512,6 +551,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId17
+     *
      * @return $this
      */
     public function setInstanceId17($instanceId17)
@@ -524,6 +564,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight17
+     *
      * @return $this
      */
     public function setLoadBalancerWeight17($loadBalancerWeight17)
@@ -536,6 +577,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId19
+     *
      * @return $this
      */
     public function setInstanceId19($instanceId19)
@@ -548,6 +590,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight18
+     *
      * @return $this
      */
     public function setLoadBalancerWeight18($loadBalancerWeight18)
@@ -560,6 +603,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId14
+     *
      * @return $this
      */
     public function setInstanceId14($instanceId14)
@@ -572,6 +616,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId13
+     *
      * @return $this
      */
     public function setInstanceId13($instanceId13)
@@ -584,6 +629,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId16
+     *
      * @return $this
      */
     public function setInstanceId16($instanceId16)
@@ -596,6 +642,7 @@ class AttachInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId15
+     *
      * @return $this
      */
     public function setInstanceId15($instanceId15)

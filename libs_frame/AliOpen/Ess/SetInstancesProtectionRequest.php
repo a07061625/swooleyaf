@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetInstancesProtection
+ *
  * @method array getInstanceIds()
  * @method string getResourceOwnerAccount()
  * @method string getScalingGroupId()
@@ -27,7 +29,6 @@ class SetInstancesProtectionRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceId
      * @return $this
      */
     public function setInstanceIds(array $instanceId)
@@ -42,6 +43,7 @@ class SetInstancesProtectionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -54,6 +56,7 @@ class SetInstancesProtectionRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -66,6 +69,7 @@ class SetInstancesProtectionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -78,6 +82,7 @@ class SetInstancesProtectionRequest extends RpcAcsRequest
 
     /**
      * @param string $protectedFromScaleIn
+     *
      * @return $this
      */
     public function setProtectedFromScaleIn($protectedFromScaleIn)

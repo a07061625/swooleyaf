@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListDataSource
+ *
  * @method string getResourceOwnerId()
  * @method string getCreateFrom()
  * @method string getPageSize()
@@ -31,6 +33,7 @@ class ListDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class ListDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $createFrom
+     *
      * @return $this
      */
     public function setCreateFrom($createFrom)
@@ -55,6 +59,7 @@ class ListDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -67,6 +72,7 @@ class ListDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -79,6 +85,7 @@ class ListDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceType
+     *
      * @return $this
      */
     public function setSourceType($sourceType)
@@ -91,6 +98,7 @@ class ListDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -103,6 +111,7 @@ class ListDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -115,6 +124,7 @@ class ListDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

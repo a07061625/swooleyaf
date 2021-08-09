@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyResourcePoolSchedulerType
+ *
  * @method string getResourceOwnerId()
  * @method string getSchedulerType()
  * @method string getClusterId()
@@ -26,6 +28,7 @@ class ModifyResourcePoolSchedulerTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -38,6 +41,7 @@ class ModifyResourcePoolSchedulerTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $schedulerType
+     *
      * @return $this
      */
     public function setSchedulerType($schedulerType)
@@ -50,6 +54,7 @@ class ModifyResourcePoolSchedulerTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

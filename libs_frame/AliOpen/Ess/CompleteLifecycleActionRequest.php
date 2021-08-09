@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CompleteLifecycleAction
+ *
  * @method string getLifecycleActionToken()
  * @method string getResourceOwnerAccount()
  * @method string getLifecycleHookId()
@@ -29,6 +31,7 @@ class CompleteLifecycleActionRequest extends RpcAcsRequest
 
     /**
      * @param string $lifecycleActionToken
+     *
      * @return $this
      */
     public function setLifecycleActionToken($lifecycleActionToken)
@@ -41,6 +44,7 @@ class CompleteLifecycleActionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -53,6 +57,7 @@ class CompleteLifecycleActionRequest extends RpcAcsRequest
 
     /**
      * @param string $lifecycleHookId
+     *
      * @return $this
      */
     public function setLifecycleHookId($lifecycleHookId)
@@ -65,6 +70,7 @@ class CompleteLifecycleActionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -77,6 +83,7 @@ class CompleteLifecycleActionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -89,6 +96,7 @@ class CompleteLifecycleActionRequest extends RpcAcsRequest
 
     /**
      * @param string $lifecycleActionResult
+     *
      * @return $this
      */
     public function setLifecycleActionResult($lifecycleActionResult)

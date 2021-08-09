@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListFlowInstance
+ *
  * @method string getOwner()
  * @method string getTimeRange()
  * @method array getStatusLists()
@@ -35,6 +37,7 @@ class ListFlowInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $owner
+     *
      * @return $this
      */
     public function setOwner($owner)
@@ -47,6 +50,7 @@ class ListFlowInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $timeRange
+     *
      * @return $this
      */
     public function setTimeRange($timeRange)
@@ -58,7 +62,6 @@ class ListFlowInstanceRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $statusLists
      * @return $this
      */
     public function setStatusLists(array $statusLists)
@@ -73,6 +76,7 @@ class ListFlowInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $orderBy
+     *
      * @return $this
      */
     public function setOrderBy($orderBy)
@@ -85,6 +89,7 @@ class ListFlowInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -97,6 +102,7 @@ class ListFlowInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -109,6 +115,7 @@ class ListFlowInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -121,6 +128,7 @@ class ListFlowInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $flowName
+     *
      * @return $this
      */
     public function setFlowName($flowName)
@@ -133,6 +141,7 @@ class ListFlowInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -145,6 +154,7 @@ class ListFlowInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $flowId
+     *
      * @return $this
      */
     public function setFlowId($flowId)
@@ -157,6 +167,7 @@ class ListFlowInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -169,6 +180,7 @@ class ListFlowInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $orderType
+     *
      * @return $this
      */
     public function setOrderType($orderType)

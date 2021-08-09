@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateUserStatistics
+ *
  * @method string getResourceOwnerId()
  */
 class CreateUserStatisticsRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class CreateUserStatisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)

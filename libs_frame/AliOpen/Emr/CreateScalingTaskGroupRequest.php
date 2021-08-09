@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateScalingTaskGroup
+ *
  * @method string getResourceOwnerId()
  * @method string getDataDiskCategory()
  * @method string getClusterId()
@@ -37,6 +39,7 @@ class CreateScalingTaskGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -49,6 +52,7 @@ class CreateScalingTaskGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDiskCategory
+     *
      * @return $this
      */
     public function setDataDiskCategory($dataDiskCategory)
@@ -61,6 +65,7 @@ class CreateScalingTaskGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -73,6 +78,7 @@ class CreateScalingTaskGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $minSize
+     *
      * @return $this
      */
     public function setMinSize($minSize)
@@ -85,6 +91,7 @@ class CreateScalingTaskGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $spotStrategy
+     *
      * @return $this
      */
     public function setSpotStrategy($spotStrategy)
@@ -97,6 +104,7 @@ class CreateScalingTaskGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDiskSize
+     *
      * @return $this
      */
     public function setDataDiskSize($dataDiskSize)
@@ -108,7 +116,6 @@ class CreateScalingTaskGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $spotPriceLimitss
      * @return $this
      */
     public function setSpotPriceLimitss(array $spotPriceLimitss)
@@ -123,7 +130,6 @@ class CreateScalingTaskGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $scalingRules
      * @return $this
      */
     public function setScalingRules(array $scalingRules)
@@ -153,6 +159,7 @@ class CreateScalingTaskGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $activeRuleCategory
+     *
      * @return $this
      */
     public function setActiveRuleCategory($activeRuleCategory)
@@ -165,6 +172,7 @@ class CreateScalingTaskGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $maxSize
+     *
      * @return $this
      */
     public function setMaxSize($maxSize)
@@ -177,6 +185,7 @@ class CreateScalingTaskGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDiskCount
+     *
      * @return $this
      */
     public function setDataDiskCount($dataDiskCount)
@@ -189,6 +198,7 @@ class CreateScalingTaskGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $defaultCooldown
+     *
      * @return $this
      */
     public function setDefaultCooldown($defaultCooldown)
@@ -201,6 +211,7 @@ class CreateScalingTaskGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)
@@ -212,7 +223,6 @@ class CreateScalingTaskGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceTypeLists
      * @return $this
      */
     public function setInstanceTypeLists(array $instanceTypeLists)

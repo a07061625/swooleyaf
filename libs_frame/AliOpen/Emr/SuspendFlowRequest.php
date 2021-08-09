@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SuspendFlow
+ *
  * @method string getFlowInstanceId()
  * @method string getProjectId()
  */
@@ -25,6 +27,7 @@ class SuspendFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $flowInstanceId
+     *
      * @return $this
      */
     public function setFlowInstanceId($flowInstanceId)
@@ -37,6 +40,7 @@ class SuspendFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)

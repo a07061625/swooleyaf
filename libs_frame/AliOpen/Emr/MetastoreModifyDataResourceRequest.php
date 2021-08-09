@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MetastoreModifyDataResource
+ *
  * @method string getResourceOwnerId()
  * @method string getDefault()
  * @method string getName()
@@ -29,6 +31,7 @@ class MetastoreModifyDataResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class MetastoreModifyDataResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $default
+     *
      * @return $this
      */
     public function setDefault($default)
@@ -53,6 +57,7 @@ class MetastoreModifyDataResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -65,6 +70,7 @@ class MetastoreModifyDataResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -77,6 +83,7 @@ class MetastoreModifyDataResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -89,6 +96,7 @@ class MetastoreModifyDataResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListFlow
+ *
  * @method string getJobId()
  * @method string getPeriodic()
  * @method string getName()
@@ -32,6 +34,7 @@ class ListFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $jobId
+     *
      * @return $this
      */
     public function setJobId($jobId)
@@ -44,6 +47,7 @@ class ListFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $periodic
+     *
      * @return $this
      */
     public function setPeriodic($periodic)
@@ -56,6 +60,7 @@ class ListFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -68,6 +73,7 @@ class ListFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -80,6 +86,7 @@ class ListFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -92,6 +99,7 @@ class ListFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -104,6 +112,7 @@ class ListFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -116,6 +125,7 @@ class ListFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -128,6 +138,7 @@ class ListFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

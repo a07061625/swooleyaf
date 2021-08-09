@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateResourceQueue
+ *
  * @method string getResourceOwnerId()
  * @method string getParentQueueId()
  * @method string getName()
@@ -31,6 +33,7 @@ class CreateResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class CreateResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $parentQueueId
+     *
      * @return $this
      */
     public function setParentQueueId($parentQueueId)
@@ -55,6 +59,7 @@ class CreateResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -67,6 +72,7 @@ class CreateResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $qualifiedName
+     *
      * @return $this
      */
     public function setQualifiedName($qualifiedName)
@@ -79,6 +85,7 @@ class CreateResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $resourcePoolId
+     *
      * @return $this
      */
     public function setResourcePoolId($resourcePoolId)
@@ -91,6 +98,7 @@ class CreateResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -103,6 +111,7 @@ class CreateResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $leaf
+     *
      * @return $this
      */
     public function setLeaf($leaf)
@@ -114,7 +123,6 @@ class CreateResourceQueueRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $configs
      * @return $this
      */
     public function setConfigs(array $configs)

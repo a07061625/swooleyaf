@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QuerySlsMetricData
+ *
  * @method string getResourceOwnerId()
  * @method string getPeriod()
  * @method string getClusterId()
@@ -30,6 +32,7 @@ class QuerySlsMetricDataRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class QuerySlsMetricDataRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -54,6 +58,7 @@ class QuerySlsMetricDataRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -66,6 +71,7 @@ class QuerySlsMetricDataRequest extends RpcAcsRequest
 
     /**
      * @param string $startTimeStamp
+     *
      * @return $this
      */
     public function setStartTimeStamp($startTimeStamp)
@@ -78,6 +84,7 @@ class QuerySlsMetricDataRequest extends RpcAcsRequest
 
     /**
      * @param string $metricName
+     *
      * @return $this
      */
     public function setMetricName($metricName)
@@ -90,6 +97,7 @@ class QuerySlsMetricDataRequest extends RpcAcsRequest
 
     /**
      * @param string $hostRole
+     *
      * @return $this
      */
     public function setHostRole($hostRole)
@@ -102,6 +110,7 @@ class QuerySlsMetricDataRequest extends RpcAcsRequest
 
     /**
      * @param string $endTimeStamp
+     *
      * @return $this
      */
     public function setEndTimeStamp($endTimeStamp)

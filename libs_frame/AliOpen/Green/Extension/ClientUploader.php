@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\Green\Extension;
 
 use AliOpen\Green\CredentialsUploadRequest;
@@ -85,7 +86,7 @@ class ClientUploader
     public function uploadFile($filePath)
     {
         $uploadCredentials = $this->getCredentials();
-        if ($uploadCredentials == null) {
+        if (null == $uploadCredentials) {
             throw new \RuntimeException('can not get upload credentials');
         }
 
@@ -109,7 +110,7 @@ class ClientUploader
 
     private function getCredentials()
     {
-        if ($this->uploadCredentials == null || $this->uploadCredentials->getExpiredTime() < $this->getMillisecond()) {
+        if (null == $this->uploadCredentials || $this->uploadCredentials->getExpiredTime() < $this->getMillisecond()) {
             $this->uploadCredentials = $this->getCredentialsFromServer();
         }
 
@@ -118,9 +119,9 @@ class ClientUploader
 
     private function getMillisecond()
     {
-        [$microsecond, $time] = explode(' ', microtime()); //' '中间是一个空格
+        list($microsecond, $time) = explode(' ', microtime()); //' '中间是一个空格
 
-        return (float)sprintf('%.0f', (floatval($microsecond) + floatval($time)) * 1000);
+        return (float)sprintf('%.0f', ((float)$microsecond + (float)$time) * 1000);
     }
 
     private function getCredentialsFromServer()

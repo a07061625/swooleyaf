@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AttachPubIp
+ *
  * @method string getResourceOwnerId()
  * @method array getInstanceIdss()
  * @method string getClusterId()
@@ -26,6 +28,7 @@ class AttachPubIpRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -37,7 +40,6 @@ class AttachPubIpRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceIdss
      * @return $this
      */
     public function setInstanceIdss(array $instanceIdss)
@@ -52,6 +54,7 @@ class AttachPubIpRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

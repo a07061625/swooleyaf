@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteFileSystem
+ *
  * @method string getFileSystemId()
  */
 class FileSystemDeleteRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class FileSystemDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $fileSystemId
+     *
      * @return $this
      */
     public function setFileSystemId($fileSystemId)

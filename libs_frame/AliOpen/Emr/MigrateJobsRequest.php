@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MigrateJobs
+ *
  * @method string getResourceOwnerId()
  * @method string getProjectName()
  */
@@ -25,6 +27,7 @@ class MigrateJobsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -37,6 +40,7 @@ class MigrateJobsRequest extends RpcAcsRequest
 
     /**
      * @param string $projectName
+     *
      * @return $this
      */
     public function setProjectName($projectName)

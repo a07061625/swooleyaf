@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MetastoreCreateKafkaTopic
+ *
  * @method string getResourceOwnerId()
  * @method string getDataSourceId()
  * @method string getTopicName()
@@ -29,6 +31,7 @@ class MetastoreCreateKafkaTopicRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class MetastoreCreateKafkaTopicRequest extends RpcAcsRequest
 
     /**
      * @param string $dataSourceId
+     *
      * @return $this
      */
     public function setDataSourceId($dataSourceId)
@@ -53,6 +57,7 @@ class MetastoreCreateKafkaTopicRequest extends RpcAcsRequest
 
     /**
      * @param string $topicName
+     *
      * @return $this
      */
     public function setTopicName($topicName)
@@ -64,7 +69,6 @@ class MetastoreCreateKafkaTopicRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $advancedConfigs
      * @return $this
      */
     public function setAdvancedConfigs(array $advancedConfigs)
@@ -80,6 +84,7 @@ class MetastoreCreateKafkaTopicRequest extends RpcAcsRequest
 
     /**
      * @param string $numPartitions
+     *
      * @return $this
      */
     public function setNumPartitions($numPartitions)
@@ -92,6 +97,7 @@ class MetastoreCreateKafkaTopicRequest extends RpcAcsRequest
 
     /**
      * @param string $replicationFactor
+     *
      * @return $this
      */
     public function setReplicationFactor($replicationFactor)

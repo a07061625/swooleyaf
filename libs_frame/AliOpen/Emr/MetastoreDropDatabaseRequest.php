@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MetastoreDropDatabase
+ *
  * @method string getResourceOwnerId()
  * @method string getDbName()
  * @method string getDatabaseId()
@@ -26,6 +28,7 @@ class MetastoreDropDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -38,6 +41,7 @@ class MetastoreDropDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $dbName
+     *
      * @return $this
      */
     public function setDbName($dbName)
@@ -50,6 +54,7 @@ class MetastoreDropDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $databaseId
+     *
      * @return $this
      */
     public function setDatabaseId($databaseId)

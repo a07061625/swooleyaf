@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteAlertDingDingGroups
+ *
  * @method string getResourceOwnerId()
  * @method string getIds()
  */
@@ -25,6 +27,7 @@ class DeleteAlertDingDingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -37,6 +40,7 @@ class DeleteAlertDingDingGroupsRequest extends RpcAcsRequest
 
     /**
      * @param string $ids
+     *
      * @return $this
      */
     public function setIds($ids)

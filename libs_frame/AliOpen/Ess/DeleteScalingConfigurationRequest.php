@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteScalingConfiguration
+ *
  * @method string getScalingConfigurationId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -27,6 +29,7 @@ class DeleteScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingConfigurationId
+     *
      * @return $this
      */
     public function setScalingConfigurationId($scalingConfigurationId)
@@ -39,6 +42,7 @@ class DeleteScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -51,6 +55,7 @@ class DeleteScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -63,6 +68,7 @@ class DeleteScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

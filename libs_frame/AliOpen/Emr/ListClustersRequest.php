@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListClusters
+ *
  * @method string getResourceOwnerId()
  * @method array getStatusLists()
  * @method string getPageSize()
@@ -32,6 +34,7 @@ class ListClustersRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,7 +46,6 @@ class ListClustersRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $statusLists
      * @return $this
      */
     public function setStatusLists(array $statusLists)
@@ -58,6 +60,7 @@ class ListClustersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -69,7 +72,6 @@ class ListClustersRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $clusterTypeLists
      * @return $this
      */
     public function setClusterTypeLists(array $clusterTypeLists)
@@ -84,6 +86,7 @@ class ListClustersRequest extends RpcAcsRequest
 
     /**
      * @param string $isDesc
+     *
      * @return $this
      */
     public function setIsDesc($isDesc)
@@ -96,6 +99,7 @@ class ListClustersRequest extends RpcAcsRequest
 
     /**
      * @param string $createType
+     *
      * @return $this
      */
     public function setCreateType($createType)
@@ -108,6 +112,7 @@ class ListClustersRequest extends RpcAcsRequest
 
     /**
      * @param string $depositType
+     *
      * @return $this
      */
     public function setDepositType($depositType)
@@ -120,6 +125,7 @@ class ListClustersRequest extends RpcAcsRequest
 
     /**
      * @param string $defaultStatus
+     *
      * @return $this
      */
     public function setDefaultStatus($defaultStatus)
@@ -132,6 +138,7 @@ class ListClustersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListClusterTag
+ *
  * @method string getResourceOwnerId()
  * @method array getClusterIdLists()
  */
@@ -25,6 +27,7 @@ class ListClusterTagRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -36,7 +39,6 @@ class ListClusterTagRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $clusterIdLists
      * @return $this
      */
     public function setClusterIdLists(array $clusterIdLists)

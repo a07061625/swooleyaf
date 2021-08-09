@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MetastoreListDataSource
+ *
  * @method string getResourceOwnerId()
  * @method string getClusterReleased()
  * @method string getPageSize()
@@ -29,6 +31,7 @@ class MetastoreListDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class MetastoreListDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterReleased
+     *
      * @return $this
      */
     public function setClusterReleased($clusterReleased)
@@ -53,6 +57,7 @@ class MetastoreListDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -65,6 +70,7 @@ class MetastoreListDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceType
+     *
      * @return $this
      */
     public function setSourceType($sourceType)
@@ -77,6 +83,7 @@ class MetastoreListDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $dataSourceName
+     *
      * @return $this
      */
     public function setDataSourceName($dataSourceName)
@@ -89,6 +96,7 @@ class MetastoreListDataSourceRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

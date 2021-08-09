@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeNotificationTypes
+ *
  * @method string getResourceOwnerAccount()
  * @method string getOwnerId()
  */
@@ -25,6 +27,7 @@ class DescribeNotificationTypesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -37,6 +40,7 @@ class DescribeNotificationTypesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

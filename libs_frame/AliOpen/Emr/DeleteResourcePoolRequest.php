@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteResourcePool
+ *
  * @method string getResourceOwnerId()
  * @method string getResourcePoolId()
  * @method string getClusterId()
@@ -26,6 +28,7 @@ class DeleteResourcePoolRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -38,6 +41,7 @@ class DeleteResourcePoolRequest extends RpcAcsRequest
 
     /**
      * @param string $resourcePoolId
+     *
      * @return $this
      */
     public function setResourcePoolId($resourcePoolId)
@@ -50,6 +54,7 @@ class DeleteResourcePoolRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

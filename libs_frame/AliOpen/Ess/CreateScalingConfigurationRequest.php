@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateScalingConfiguration
+ *
  * @method string getImageId()
  * @method string getMemory()
  * @method string getScalingGroupId()
@@ -58,6 +60,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -70,6 +73,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $memory
+     *
      * @return $this
      */
     public function setMemory($memory)
@@ -82,6 +86,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -93,7 +98,6 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceTypes
      * @return $this
      */
     public function setInstanceTypes(array $instanceTypes)
@@ -108,6 +112,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $ioOptimized
+     *
      * @return $this
      */
     public function setIoOptimized($ioOptimized)
@@ -120,6 +125,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -132,6 +138,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $internetMaxBandwidthOut
+     *
      * @return $this
      */
     public function setInternetMaxBandwidthOut($internetMaxBandwidthOut)
@@ -144,6 +151,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $securityEnhancementStrategy
+     *
      * @return $this
      */
     public function setSecurityEnhancementStrategy($securityEnhancementStrategy)
@@ -156,6 +164,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $keyPairName
+     *
      * @return $this
      */
     public function setKeyPairName($keyPairName)
@@ -167,7 +176,6 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $spotPriceLimit
      * @return $this
      */
     public function setSpotPriceLimits(array $spotPriceLimit)
@@ -183,6 +191,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskCategory
+     *
      * @return $this
      */
     public function setSystemDiskCategory($systemDiskCategory)
@@ -195,6 +204,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -207,6 +217,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -219,6 +230,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $hostName
+     *
      * @return $this
      */
     public function setHostName($hostName)
@@ -231,6 +243,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $password
+     *
      * @return $this
      */
     public function setPassword($password)
@@ -243,6 +256,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $passwordInherit
+     *
      * @return $this
      */
     public function setPasswordInherit($passwordInherit)
@@ -255,6 +269,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $imageName
+     *
      * @return $this
      */
     public function setImageName($imageName)
@@ -267,6 +282,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -279,6 +295,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $deploymentSetId
+     *
      * @return $this
      */
     public function setDeploymentSetId($deploymentSetId)
@@ -291,6 +308,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -303,6 +321,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -315,6 +334,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $cpu
+     *
      * @return $this
      */
     public function setCpu($cpu)
@@ -327,6 +347,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskDiskName
+     *
      * @return $this
      */
     public function setSystemDiskDiskName($systemDiskDiskName)
@@ -339,6 +360,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $ramRoleName
+     *
      * @return $this
      */
     public function setRamRoleName($ramRoleName)
@@ -351,6 +373,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -362,7 +385,6 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $dataDisk
      * @return $this
      */
     public function setDataDisks(array $dataDisk)
@@ -385,6 +407,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingConfigurationName
+     *
      * @return $this
      */
     public function setScalingConfigurationName($scalingConfigurationName)
@@ -397,6 +420,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $tags
+     *
      * @return $this
      */
     public function setTags($tags)
@@ -409,6 +433,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $spotStrategy
+     *
      * @return $this
      */
     public function setSpotStrategy($spotStrategy)
@@ -421,6 +446,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $loadBalancerWeight
+     *
      * @return $this
      */
     public function setLoadBalancerWeight($loadBalancerWeight)
@@ -433,6 +459,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceName
+     *
      * @return $this
      */
     public function setInstanceName($instanceName)
@@ -445,6 +472,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskSize
+     *
      * @return $this
      */
     public function setSystemDiskSize($systemDiskSize)
@@ -457,6 +485,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $internetChargeType
+     *
      * @return $this
      */
     public function setInternetChargeType($internetChargeType)
@@ -469,6 +498,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $internetMaxBandwidthIn
+     *
      * @return $this
      */
     public function setInternetMaxBandwidthIn($internetMaxBandwidthIn)
@@ -481,6 +511,7 @@ class CreateScalingConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskDescription
+     *
      * @return $this
      */
     public function setSystemDiskDescription($systemDiskDescription)

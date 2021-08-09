@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MetastoreUpdateTable
+ *
  * @method string getResourceOwnerId()
  * @method array getAddColumns()
  * @method array getAddPartitions()
@@ -29,6 +31,7 @@ class MetastoreUpdateTableRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -40,7 +43,6 @@ class MetastoreUpdateTableRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $addColumns
      * @return $this
      */
     public function setAddColumns(array $addColumns)
@@ -56,7 +58,6 @@ class MetastoreUpdateTableRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $addPartitions
      * @return $this
      */
     public function setAddPartitions(array $addPartitions)
@@ -72,7 +73,6 @@ class MetastoreUpdateTableRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $deleteColumnNames
      * @return $this
      */
     public function setDeleteColumnNames(array $deleteColumnNames)
@@ -87,6 +87,7 @@ class MetastoreUpdateTableRequest extends RpcAcsRequest
 
     /**
      * @param string $tableId
+     *
      * @return $this
      */
     public function setTableId($tableId)
@@ -98,7 +99,6 @@ class MetastoreUpdateTableRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $deletePartitionNames
      * @return $this
      */
     public function setDeletePartitionNames(array $deletePartitionNames)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListClusterHost
+ *
  * @method string getResourceOwnerId()
  * @method string getHostInstanceId()
  * @method array getStatusLists()
@@ -35,6 +37,7 @@ class ListClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +50,7 @@ class ListClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $hostInstanceId
+     *
      * @return $this
      */
     public function setHostInstanceId($hostInstanceId)
@@ -58,7 +62,6 @@ class ListClusterHostRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $statusLists
      * @return $this
      */
     public function setStatusLists(array $statusLists)
@@ -73,6 +76,7 @@ class ListClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $privateIp
+     *
      * @return $this
      */
     public function setPrivateIp($privateIp)
@@ -85,6 +89,7 @@ class ListClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $componentName
+     *
      * @return $this
      */
     public function setComponentName($componentName)
@@ -97,6 +102,7 @@ class ListClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $publicIp
+     *
      * @return $this
      */
     public function setPublicIp($publicIp)
@@ -109,6 +115,7 @@ class ListClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -121,6 +128,7 @@ class ListClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -133,6 +141,7 @@ class ListClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $hostName
+     *
      * @return $this
      */
     public function setHostName($hostName)
@@ -145,6 +154,7 @@ class ListClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $groupType
+     *
      * @return $this
      */
     public function setGroupType($groupType)
@@ -157,6 +167,7 @@ class ListClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $hostGroupId
+     *
      * @return $this
      */
     public function setHostGroupId($hostGroupId)
@@ -169,6 +180,7 @@ class ListClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)

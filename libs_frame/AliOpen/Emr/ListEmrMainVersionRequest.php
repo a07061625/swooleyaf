@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListEmrMainVersion
+ *
  * @method string getResourceOwnerId()
  * @method string getPageSize()
  * @method string getEmrVersion()
@@ -29,6 +31,7 @@ class ListEmrMainVersionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class ListEmrMainVersionRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -53,6 +57,7 @@ class ListEmrMainVersionRequest extends RpcAcsRequest
 
     /**
      * @param string $emrVersion
+     *
      * @return $this
      */
     public function setEmrVersion($emrVersion)
@@ -65,6 +70,7 @@ class ListEmrMainVersionRequest extends RpcAcsRequest
 
     /**
      * @param string $stackName
+     *
      * @return $this
      */
     public function setStackName($stackName)
@@ -77,6 +83,7 @@ class ListEmrMainVersionRequest extends RpcAcsRequest
 
     /**
      * @param string $stackVersion
+     *
      * @return $this
      */
     public function setStackVersion($stackVersion)
@@ -89,6 +96,7 @@ class ListEmrMainVersionRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

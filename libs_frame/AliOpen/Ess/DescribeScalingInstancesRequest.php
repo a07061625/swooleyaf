@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeScalingInstances
+ *
  * @method string getInstanceId10()
  * @method string getResourceOwnerId()
  * @method string getInstanceId12()
@@ -54,6 +56,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId10
+     *
      * @return $this
      */
     public function setInstanceId10($instanceId10)
@@ -66,6 +69,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -78,6 +82,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId12
+     *
      * @return $this
      */
     public function setInstanceId12($instanceId12)
@@ -90,6 +95,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId11
+     *
      * @return $this
      */
     public function setInstanceId11($instanceId11)
@@ -102,6 +108,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -114,6 +121,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $lifecycleState
+     *
      * @return $this
      */
     public function setLifecycleState($lifecycleState)
@@ -126,6 +134,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $creationType
+     *
      * @return $this
      */
     public function setCreationType($creationType)
@@ -138,6 +147,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -150,6 +160,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -162,6 +173,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId20
+     *
      * @return $this
      */
     public function setInstanceId20($instanceId20)
@@ -174,6 +186,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId1
+     *
      * @return $this
      */
     public function setInstanceId1($instanceId1)
@@ -186,6 +199,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId3
+     *
      * @return $this
      */
     public function setInstanceId3($instanceId3)
@@ -198,6 +212,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -210,6 +225,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId2
+     *
      * @return $this
      */
     public function setInstanceId2($instanceId2)
@@ -222,6 +238,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId5
+     *
      * @return $this
      */
     public function setInstanceId5($instanceId5)
@@ -234,6 +251,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId4
+     *
      * @return $this
      */
     public function setInstanceId4($instanceId4)
@@ -246,6 +264,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -258,6 +277,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId7
+     *
      * @return $this
      */
     public function setInstanceId7($instanceId7)
@@ -270,6 +290,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId6
+     *
      * @return $this
      */
     public function setInstanceId6($instanceId6)
@@ -282,6 +303,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId9
+     *
      * @return $this
      */
     public function setInstanceId9($instanceId9)
@@ -294,6 +316,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId8
+     *
      * @return $this
      */
     public function setInstanceId8($instanceId8)
@@ -306,6 +329,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -318,6 +342,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingConfigurationId
+     *
      * @return $this
      */
     public function setScalingConfigurationId($scalingConfigurationId)
@@ -330,6 +355,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $healthStatus
+     *
      * @return $this
      */
     public function setHealthStatus($healthStatus)
@@ -342,6 +368,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId18
+     *
      * @return $this
      */
     public function setInstanceId18($instanceId18)
@@ -354,6 +381,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId17
+     *
      * @return $this
      */
     public function setInstanceId17($instanceId17)
@@ -366,6 +394,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId19
+     *
      * @return $this
      */
     public function setInstanceId19($instanceId19)
@@ -378,6 +407,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId14
+     *
      * @return $this
      */
     public function setInstanceId14($instanceId14)
@@ -390,6 +420,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId13
+     *
      * @return $this
      */
     public function setInstanceId13($instanceId13)
@@ -402,6 +433,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId16
+     *
      * @return $this
      */
     public function setInstanceId16($instanceId16)
@@ -414,6 +446,7 @@ class DescribeScalingInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId15
+     *
      * @return $this
      */
     public function setInstanceId15($instanceId15)

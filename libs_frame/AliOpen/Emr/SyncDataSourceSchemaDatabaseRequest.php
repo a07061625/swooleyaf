@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SyncDataSourceSchemaDatabase
+ *
  * @method string getResourceOwnerId()
  * @method string getDbName()
  * @method string getEtlJobId()
@@ -27,6 +29,7 @@ class SyncDataSourceSchemaDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -39,6 +42,7 @@ class SyncDataSourceSchemaDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $dbName
+     *
      * @return $this
      */
     public function setDbName($dbName)
@@ -51,6 +55,7 @@ class SyncDataSourceSchemaDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $etlJobId
+     *
      * @return $this
      */
     public function setEtlJobId($etlJobId)
@@ -63,6 +68,7 @@ class SyncDataSourceSchemaDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $dataSourceId
+     *
      * @return $this
      */
     public function setDataSourceId($dataSourceId)

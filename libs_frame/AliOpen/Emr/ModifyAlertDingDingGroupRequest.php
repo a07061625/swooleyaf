@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyAlertDingDingGroup
+ *
  * @method string getResourceOwnerId()
  * @method string getBizId()
  * @method string getName()
@@ -28,6 +30,7 @@ class ModifyAlertDingDingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -40,6 +43,7 @@ class ModifyAlertDingDingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -52,6 +56,7 @@ class ModifyAlertDingDingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -64,6 +69,7 @@ class ModifyAlertDingDingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -76,6 +82,7 @@ class ModifyAlertDingDingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $webHookUrl
+     *
      * @return $this
      */
     public function setWebHookUrl($webHookUrl)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeFlowNodeInstanceContainerLog
+ *
  * @method string getOffset()
  * @method string getLogName()
  * @method string getAppId()
@@ -30,6 +32,7 @@ class DescribeFlowNodeInstanceContainerLogRequest extends RpcAcsRequest
 
     /**
      * @param string $offset
+     *
      * @return $this
      */
     public function setOffset($offset)
@@ -42,6 +45,7 @@ class DescribeFlowNodeInstanceContainerLogRequest extends RpcAcsRequest
 
     /**
      * @param string $logName
+     *
      * @return $this
      */
     public function setLogName($logName)
@@ -54,6 +58,7 @@ class DescribeFlowNodeInstanceContainerLogRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -66,6 +71,7 @@ class DescribeFlowNodeInstanceContainerLogRequest extends RpcAcsRequest
 
     /**
      * @param string $length
+     *
      * @return $this
      */
     public function setLength($length)
@@ -78,6 +84,7 @@ class DescribeFlowNodeInstanceContainerLogRequest extends RpcAcsRequest
 
     /**
      * @param string $containerId
+     *
      * @return $this
      */
     public function setContainerId($containerId)
@@ -90,6 +97,7 @@ class DescribeFlowNodeInstanceContainerLogRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeInstanceId
+     *
      * @return $this
      */
     public function setNodeInstanceId($nodeInstanceId)
@@ -102,6 +110,7 @@ class DescribeFlowNodeInstanceContainerLogRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)

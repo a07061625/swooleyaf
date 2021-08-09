@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateFileSystem
+ *
  * @method string getDescription()
  * @method string getProtocolType()
  * @method string getStorageType()
@@ -26,6 +28,7 @@ class FileSystemCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -38,6 +41,7 @@ class FileSystemCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $protocolType
+     *
      * @return $this
      */
     public function setProtocolType($protocolType)
@@ -50,6 +54,7 @@ class FileSystemCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $storageType
+     *
      * @return $this
      */
     public function setStorageType($storageType)

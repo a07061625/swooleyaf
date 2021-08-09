@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyAlertConfig
+ *
  * @method string getSuccessConfig()
  * @method string getRejectConfig()
  * @method string getResourceOwnerAccount()
@@ -29,6 +31,7 @@ class ModifyAlertConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $successConfig
+     *
      * @return $this
      */
     public function setSuccessConfig($successConfig)
@@ -41,6 +44,7 @@ class ModifyAlertConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $rejectConfig
+     *
      * @return $this
      */
     public function setRejectConfig($rejectConfig)
@@ -53,6 +57,7 @@ class ModifyAlertConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -65,6 +70,7 @@ class ModifyAlertConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -77,6 +83,7 @@ class ModifyAlertConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -89,6 +96,7 @@ class ModifyAlertConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $failConfig
+     *
      * @return $this
      */
     public function setFailConfig($failConfig)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MetastoreListTables
+ *
  * @method string getResourceOwnerId()
  * @method string getDbName()
  * @method string getPageSize()
@@ -31,6 +33,7 @@ class MetastoreListTablesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class MetastoreListTablesRequest extends RpcAcsRequest
 
     /**
      * @param string $dbName
+     *
      * @return $this
      */
     public function setDbName($dbName)
@@ -55,6 +59,7 @@ class MetastoreListTablesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -67,6 +72,7 @@ class MetastoreListTablesRequest extends RpcAcsRequest
 
     /**
      * @param string $tableId
+     *
      * @return $this
      */
     public function setTableId($tableId)
@@ -79,6 +85,7 @@ class MetastoreListTablesRequest extends RpcAcsRequest
 
     /**
      * @param string $databaseId
+     *
      * @return $this
      */
     public function setDatabaseId($databaseId)
@@ -91,6 +98,7 @@ class MetastoreListTablesRequest extends RpcAcsRequest
 
     /**
      * @param string $tableName
+     *
      * @return $this
      */
     public function setTableName($tableName)
@@ -103,6 +111,7 @@ class MetastoreListTablesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -115,6 +124,7 @@ class MetastoreListTablesRequest extends RpcAcsRequest
 
     /**
      * @param string $fuzzyTableName
+     *
      * @return $this
      */
     public function setFuzzyTableName($fuzzyTableName)

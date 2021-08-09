@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyExecutionPlanClusterInfo
+ *
  * @method string getResourceOwnerId()
  * @method string getLogPath()
  * @method string getClusterName()
@@ -47,6 +49,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -59,6 +62,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $logPath
+     *
      * @return $this
      */
     public function setLogPath($logPath)
@@ -71,6 +75,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterName
+     *
      * @return $this
      */
     public function setClusterName($clusterName)
@@ -83,6 +88,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $configurations
+     *
      * @return $this
      */
     public function setConfigurations($configurations)
@@ -95,6 +101,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $ioOptimized
+     *
      * @return $this
      */
     public function setIoOptimized($ioOptimized)
@@ -107,6 +114,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -119,6 +127,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $easEnable
+     *
      * @return $this
      */
     public function setEasEnable($easEnable)
@@ -131,6 +140,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $createClusterOnDemand
+     *
      * @return $this
      */
     public function setCreateClusterOnDemand($createClusterOnDemand)
@@ -142,7 +152,6 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $bootstrapActions
      * @return $this
      */
     public function setBootstrapActions(array $bootstrapActions)
@@ -159,6 +168,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $useLocalMetaDb
+     *
      * @return $this
      */
     public function setUseLocalMetaDb($useLocalMetaDb)
@@ -171,6 +181,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $emrVer
+     *
      * @return $this
      */
     public function setEmrVer($emrVer)
@@ -183,6 +194,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -195,6 +207,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $isOpenPublicIp
+     *
      * @return $this
      */
     public function setIsOpenPublicIp($isOpenPublicIp)
@@ -207,6 +220,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -219,6 +233,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceGeneration
+     *
      * @return $this
      */
     public function setInstanceGeneration($instanceGeneration)
@@ -231,6 +246,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterType
+     *
      * @return $this
      */
     public function setClusterType($clusterType)
@@ -243,6 +259,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -254,7 +271,6 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $optionSoftWareLists
      * @return $this
      */
     public function setOptionSoftWareLists(array $optionSoftWareLists)
@@ -269,6 +285,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -281,6 +298,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $netType
+     *
      * @return $this
      */
     public function setNetType($netType)
@@ -292,7 +310,6 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $ecsOrders
      * @return $this
      */
     public function setEcsOrders(array $ecsOrders)
@@ -313,6 +330,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -325,6 +343,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $highAvailabilityEnable
+     *
      * @return $this
      */
     public function setHighAvailabilityEnable($highAvailabilityEnable)
@@ -337,6 +356,7 @@ class ModifyExecutionPlanClusterInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $logEnable
+     *
      * @return $this
      */
     public function setLogEnable($logEnable)

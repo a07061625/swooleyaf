@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListJobMigrateInfo
+ *
  * @method string getResourceOwnerId()
  * @method string getPageSize()
  * @method string getUserId()
@@ -27,6 +29,7 @@ class ListJobMigrateInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -39,6 +42,7 @@ class ListJobMigrateInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -51,6 +55,7 @@ class ListJobMigrateInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $userId
+     *
      * @return $this
      */
     public function setUserId($userId)
@@ -63,6 +68,7 @@ class ListJobMigrateInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $currentSize
+     *
      * @return $this
      */
     public function setCurrentSize($currentSize)

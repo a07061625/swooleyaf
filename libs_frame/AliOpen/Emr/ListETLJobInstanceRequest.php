@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListETLJobInstance
+ *
  * @method string getResourceOwnerId()
  * @method string getInstanceId()
  * @method string getEtlJobId()
@@ -29,6 +31,7 @@ class ListETLJobInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class ListETLJobInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -53,6 +57,7 @@ class ListETLJobInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $etlJobId
+     *
      * @return $this
      */
     public function setEtlJobId($etlJobId)
@@ -65,6 +70,7 @@ class ListETLJobInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -77,6 +83,7 @@ class ListETLJobInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -89,6 +96,7 @@ class ListETLJobInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

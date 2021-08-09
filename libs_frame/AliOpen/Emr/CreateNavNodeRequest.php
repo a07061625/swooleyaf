@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateNavNode
+ *
  * @method string getResourceOwnerId()
  * @method string getName()
  * @method string getType()
@@ -30,6 +32,7 @@ class CreateNavNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class CreateNavNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -54,6 +58,7 @@ class CreateNavNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -66,6 +71,7 @@ class CreateNavNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -78,6 +84,7 @@ class CreateNavNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $categoryType
+     *
      * @return $this
      */
     public function setCategoryType($categoryType)
@@ -90,6 +97,7 @@ class CreateNavNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $objectId
+     *
      * @return $this
      */
     public function setObjectId($objectId)
@@ -102,6 +110,7 @@ class CreateNavNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $parentId
+     *
      * @return $this
      */
     public function setParentId($parentId)

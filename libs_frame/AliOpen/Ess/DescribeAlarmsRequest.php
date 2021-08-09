@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeAlarms
+ *
  * @method string getIsEnable()
  * @method string getMetricType()
  * @method string getResourceOwnerAccount()
@@ -32,6 +34,7 @@ class DescribeAlarmsRequest extends RpcAcsRequest
 
     /**
      * @param string $isEnable
+     *
      * @return $this
      */
     public function setIsEnable($isEnable)
@@ -44,6 +47,7 @@ class DescribeAlarmsRequest extends RpcAcsRequest
 
     /**
      * @param string $metricType
+     *
      * @return $this
      */
     public function setMetricType($metricType)
@@ -56,6 +60,7 @@ class DescribeAlarmsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -68,6 +73,7 @@ class DescribeAlarmsRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -80,6 +86,7 @@ class DescribeAlarmsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -92,6 +99,7 @@ class DescribeAlarmsRequest extends RpcAcsRequest
 
     /**
      * @param string $state
+     *
      * @return $this
      */
     public function setState($state)
@@ -104,6 +112,7 @@ class DescribeAlarmsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,6 +125,7 @@ class DescribeAlarmsRequest extends RpcAcsRequest
 
     /**
      * @param string $alarmTaskId
+     *
      * @return $this
      */
     public function setAlarmTaskId($alarmTaskId)
@@ -128,6 +138,7 @@ class DescribeAlarmsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

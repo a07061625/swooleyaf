@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of GetGroups
+ *
  * @method string getClientInfo()
  */
 class GroupsGetRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class GroupsGetRequest extends RoaAcsRequest
 
     /**
      * @param string $clientInfo
+     *
      * @return $this
      */
     public function setClientInfo($clientInfo)

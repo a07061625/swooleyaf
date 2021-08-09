@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteLifecycleHook
+ *
  * @method string getLifecycleHookName()
  * @method string getResourceOwnerAccount()
  * @method string getLifecycleHookId()
@@ -29,6 +31,7 @@ class DeleteLifecycleHookRequest extends RpcAcsRequest
 
     /**
      * @param string $lifecycleHookName
+     *
      * @return $this
      */
     public function setLifecycleHookName($lifecycleHookName)
@@ -41,6 +44,7 @@ class DeleteLifecycleHookRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -53,6 +57,7 @@ class DeleteLifecycleHookRequest extends RpcAcsRequest
 
     /**
      * @param string $lifecycleHookId
+     *
      * @return $this
      */
     public function setLifecycleHookId($lifecycleHookId)
@@ -65,6 +70,7 @@ class DeleteLifecycleHookRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -77,6 +83,7 @@ class DeleteLifecycleHookRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -89,6 +96,7 @@ class DeleteLifecycleHookRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

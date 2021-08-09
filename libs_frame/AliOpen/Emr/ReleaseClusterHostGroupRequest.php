@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ReleaseClusterHostGroup
+ *
  * @method string getResourceOwnerId()
  * @method string getHostGroupId()
  * @method string getInstanceIdList()
@@ -27,6 +29,7 @@ class ReleaseClusterHostGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -39,6 +42,7 @@ class ReleaseClusterHostGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $hostGroupId
+     *
      * @return $this
      */
     public function setHostGroupId($hostGroupId)
@@ -51,6 +55,7 @@ class ReleaseClusterHostGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceIdList
+     *
      * @return $this
      */
     public function setInstanceIdList($instanceIdList)
@@ -63,6 +68,7 @@ class ReleaseClusterHostGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

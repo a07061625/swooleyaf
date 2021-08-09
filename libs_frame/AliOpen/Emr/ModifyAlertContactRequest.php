@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyAlertContact
+ *
  * @method string getEmailVerificationCode()
  * @method string getResourceOwnerId()
  * @method string getPhoneNumberVerificationCode()
@@ -30,6 +32,7 @@ class ModifyAlertContactRequest extends RpcAcsRequest
 
     /**
      * @param string $emailVerificationCode
+     *
      * @return $this
      */
     public function setEmailVerificationCode($emailVerificationCode)
@@ -42,6 +45,7 @@ class ModifyAlertContactRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -54,6 +58,7 @@ class ModifyAlertContactRequest extends RpcAcsRequest
 
     /**
      * @param string $phoneNumberVerificationCode
+     *
      * @return $this
      */
     public function setPhoneNumberVerificationCode($phoneNumberVerificationCode)
@@ -66,6 +71,7 @@ class ModifyAlertContactRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -78,6 +84,7 @@ class ModifyAlertContactRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -90,6 +97,7 @@ class ModifyAlertContactRequest extends RpcAcsRequest
 
     /**
      * @param string $phoneNumber
+     *
      * @return $this
      */
     public function setPhoneNumber($phoneNumber)
@@ -102,6 +110,7 @@ class ModifyAlertContactRequest extends RpcAcsRequest
 
     /**
      * @param string $email
+     *
      * @return $this
      */
     public function setEmail($email)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListClusterHostComponent
+ *
  * @method string getResourceOwnerId()
  * @method string getHostName()
  * @method string getHostInstanceId()
@@ -33,6 +35,7 @@ class ListClusterHostComponentRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class ListClusterHostComponentRequest extends RpcAcsRequest
 
     /**
      * @param string $hostName
+     *
      * @return $this
      */
     public function setHostName($hostName)
@@ -57,6 +61,7 @@ class ListClusterHostComponentRequest extends RpcAcsRequest
 
     /**
      * @param string $hostInstanceId
+     *
      * @return $this
      */
     public function setHostInstanceId($hostInstanceId)
@@ -69,6 +74,7 @@ class ListClusterHostComponentRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -81,6 +87,7 @@ class ListClusterHostComponentRequest extends RpcAcsRequest
 
     /**
      * @param string $componentName
+     *
      * @return $this
      */
     public function setComponentName($componentName)
@@ -93,6 +100,7 @@ class ListClusterHostComponentRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceName
+     *
      * @return $this
      */
     public function setServiceName($serviceName)
@@ -105,6 +113,7 @@ class ListClusterHostComponentRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -117,6 +126,7 @@ class ListClusterHostComponentRequest extends RpcAcsRequest
 
     /**
      * @param string $hostRole
+     *
      * @return $this
      */
     public function setHostRole($hostRole)
@@ -129,6 +139,7 @@ class ListClusterHostComponentRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -141,6 +152,7 @@ class ListClusterHostComponentRequest extends RpcAcsRequest
 
     /**
      * @param string $componentStatus
+     *
      * @return $this
      */
     public function setComponentStatus($componentStatus)

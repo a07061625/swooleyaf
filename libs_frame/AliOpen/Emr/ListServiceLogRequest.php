@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListServiceLog
+ *
  * @method string getResourceOwnerId()
  * @method string getHostName()
  * @method string getMaxKeys()
@@ -29,6 +31,7 @@ class ListServiceLogRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class ListServiceLogRequest extends RpcAcsRequest
 
     /**
      * @param string $hostName
+     *
      * @return $this
      */
     public function setHostName($hostName)
@@ -53,6 +57,7 @@ class ListServiceLogRequest extends RpcAcsRequest
 
     /**
      * @param string $maxKeys
+     *
      * @return $this
      */
     public function setMaxKeys($maxKeys)
@@ -65,6 +70,7 @@ class ListServiceLogRequest extends RpcAcsRequest
 
     /**
      * @param string $logstoreName
+     *
      * @return $this
      */
     public function setLogstoreName($logstoreName)
@@ -77,6 +83,7 @@ class ListServiceLogRequest extends RpcAcsRequest
 
     /**
      * @param string $marker
+     *
      * @return $this
      */
     public function setMarker($marker)
@@ -89,6 +96,7 @@ class ListServiceLogRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

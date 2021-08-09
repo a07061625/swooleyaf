@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyScalingGroup
+ *
  * @method string getResourceOwnerId()
  * @method string getHealthCheckType()
  * @method string getLaunchTemplateId()
@@ -39,6 +41,7 @@ class ModifyScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -51,6 +54,7 @@ class ModifyScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $healthCheckType
+     *
      * @return $this
      */
     public function setHealthCheckType($healthCheckType)
@@ -63,6 +67,7 @@ class ModifyScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $launchTemplateId
+     *
      * @return $this
      */
     public function setLaunchTemplateId($launchTemplateId)
@@ -75,6 +80,7 @@ class ModifyScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -87,6 +93,7 @@ class ModifyScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupName
+     *
      * @return $this
      */
     public function setScalingGroupName($scalingGroupName)
@@ -99,6 +106,7 @@ class ModifyScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -110,7 +118,6 @@ class ModifyScalingGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $vSwitchIds
      * @return $this
      */
     public function setVSwitchIds(array $vSwitchIds)
@@ -125,6 +132,7 @@ class ModifyScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -137,6 +145,7 @@ class ModifyScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $activeScalingConfigurationId
+     *
      * @return $this
      */
     public function setActiveScalingConfigurationId($activeScalingConfigurationId)
@@ -149,6 +158,7 @@ class ModifyScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $minSize
+     *
      * @return $this
      */
     public function setMinSize($minSize)
@@ -161,6 +171,7 @@ class ModifyScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -173,6 +184,7 @@ class ModifyScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $launchTemplateVersion
+     *
      * @return $this
      */
     public function setLaunchTemplateVersion($launchTemplateVersion)
@@ -185,6 +197,7 @@ class ModifyScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $maxSize
+     *
      * @return $this
      */
     public function setMaxSize($maxSize)
@@ -197,6 +210,7 @@ class ModifyScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $defaultCooldown
+     *
      * @return $this
      */
     public function setDefaultCooldown($defaultCooldown)
@@ -209,6 +223,7 @@ class ModifyScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $removalPolicy1
+     *
      * @return $this
      */
     public function setRemovalPolicy1($removalPolicy1)
@@ -221,6 +236,7 @@ class ModifyScalingGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $removalPolicy2
+     *
      * @return $this
      */
     public function setRemovalPolicy2($removalPolicy2)

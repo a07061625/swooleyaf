@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetUserInputStatisticInfo
+ *
  * @method string getFromDatetime()
  * @method string getResourceOwnerId()
  * @method string getClusterId()
@@ -27,6 +29,7 @@ class GetUserInputStatisticInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $fromDatetime
+     *
      * @return $this
      */
     public function setFromDatetime($fromDatetime)
@@ -39,6 +42,7 @@ class GetUserInputStatisticInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -51,6 +55,7 @@ class GetUserInputStatisticInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -63,6 +68,7 @@ class GetUserInputStatisticInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $toDatetime
+     *
      * @return $this
      */
     public function setToDatetime($toDatetime)

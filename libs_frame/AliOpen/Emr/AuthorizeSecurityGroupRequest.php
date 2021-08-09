@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AuthorizeSecurityGroup
+ *
  * @method string getBizType()
  * @method string getResourceOwnerId()
  * @method string getBizContent()
@@ -27,6 +29,7 @@ class AuthorizeSecurityGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $bizType
+     *
      * @return $this
      */
     public function setBizType($bizType)
@@ -39,6 +42,7 @@ class AuthorizeSecurityGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -51,6 +55,7 @@ class AuthorizeSecurityGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $bizContent
+     *
      * @return $this
      */
     public function setBizContent($bizContent)
@@ -63,6 +68,7 @@ class AuthorizeSecurityGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

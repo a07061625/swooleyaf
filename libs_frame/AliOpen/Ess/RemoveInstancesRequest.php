@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RemoveInstances
+ *
  * @method string getResourceOwnerId()
  * @method array getInstanceIds()
  * @method string getRemovePolicy()
@@ -30,6 +32,7 @@ class RemoveInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,7 +44,6 @@ class RemoveInstancesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceId
      * @return $this
      */
     public function setInstanceIds(array $instanceId)
@@ -56,6 +58,7 @@ class RemoveInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $removePolicy
+     *
      * @return $this
      */
     public function setRemovePolicy($removePolicy)
@@ -68,6 +71,7 @@ class RemoveInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -80,6 +84,7 @@ class RemoveInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -92,6 +97,7 @@ class RemoveInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +110,7 @@ class RemoveInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

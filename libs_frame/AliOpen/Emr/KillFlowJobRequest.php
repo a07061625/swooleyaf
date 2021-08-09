@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of KillFlowJob
+ *
  * @method string getJobInstanceId()
  * @method string getProjectId()
  */
@@ -25,6 +27,7 @@ class KillFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $jobInstanceId
+     *
      * @return $this
      */
     public function setJobInstanceId($jobInstanceId)
@@ -37,6 +40,7 @@ class KillFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)

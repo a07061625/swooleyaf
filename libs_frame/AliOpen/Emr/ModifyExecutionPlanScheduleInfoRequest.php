@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyExecutionPlanScheduleInfo
+ *
  * @method string getResourceOwnerId()
  * @method string getTimeInterval()
  * @method string getDayOfWeek()
@@ -31,6 +33,7 @@ class ModifyExecutionPlanScheduleInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class ModifyExecutionPlanScheduleInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $timeInterval
+     *
      * @return $this
      */
     public function setTimeInterval($timeInterval)
@@ -55,6 +59,7 @@ class ModifyExecutionPlanScheduleInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $dayOfWeek
+     *
      * @return $this
      */
     public function setDayOfWeek($dayOfWeek)
@@ -67,6 +72,7 @@ class ModifyExecutionPlanScheduleInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -79,6 +85,7 @@ class ModifyExecutionPlanScheduleInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -91,6 +98,7 @@ class ModifyExecutionPlanScheduleInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $strategy
+     *
      * @return $this
      */
     public function setStrategy($strategy)
@@ -103,6 +111,7 @@ class ModifyExecutionPlanScheduleInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $timeUnit
+     *
      * @return $this
      */
     public function setTimeUnit($timeUnit)
@@ -115,6 +124,7 @@ class ModifyExecutionPlanScheduleInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $dayOfMonth
+     *
      * @return $this
      */
     public function setDayOfMonth($dayOfMonth)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListClusterOperationHostTask
+ *
  * @method string getResourceOwnerId()
  * @method string getPageSize()
  * @method string getOperationId()
@@ -30,6 +32,7 @@ class ListClusterOperationHostTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class ListClusterOperationHostTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -54,6 +58,7 @@ class ListClusterOperationHostTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $operationId
+     *
      * @return $this
      */
     public function setOperationId($operationId)
@@ -66,6 +71,7 @@ class ListClusterOperationHostTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $hostId
+     *
      * @return $this
      */
     public function setHostId($hostId)
@@ -78,6 +84,7 @@ class ListClusterOperationHostTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -90,6 +97,7 @@ class ListClusterOperationHostTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -102,6 +110,7 @@ class ListClusterOperationHostTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

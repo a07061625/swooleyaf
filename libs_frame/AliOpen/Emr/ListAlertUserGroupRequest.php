@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListAlertUserGroup
+ *
  * @method string getResourceOwnerId()
  * @method string getFromApp()
  * @method string getIds()
@@ -27,6 +29,7 @@ class ListAlertUserGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -39,6 +42,7 @@ class ListAlertUserGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $fromApp
+     *
      * @return $this
      */
     public function setFromApp($fromApp)
@@ -51,6 +55,7 @@ class ListAlertUserGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $ids
+     *
      * @return $this
      */
     public function setIds($ids)
@@ -63,6 +68,7 @@ class ListAlertUserGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $userId
+     *
      * @return $this
      */
     public function setUserId($userId)

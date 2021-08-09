@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDataSourceSchemaDatabase
+ *
  * @method string getResourceOwnerId()
  * @method string getDbName()
  * @method string getDataSourceId()
@@ -26,6 +28,7 @@ class DescribeDataSourceSchemaDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -38,6 +41,7 @@ class DescribeDataSourceSchemaDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $dbName
+     *
      * @return $this
      */
     public function setDbName($dbName)
@@ -50,6 +54,7 @@ class DescribeDataSourceSchemaDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $dataSourceId
+     *
      * @return $this
      */
     public function setDataSourceId($dataSourceId)

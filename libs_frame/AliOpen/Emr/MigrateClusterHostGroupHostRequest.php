@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MigrateClusterHostGroupHost
+ *
  * @method array getHostInstanceIdLists()
  * @method string getResourceOwnerId()
  * @method string getHostGroupId()
@@ -26,7 +28,6 @@ class MigrateClusterHostGroupHostRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $hostInstanceIdLists
      * @return $this
      */
     public function setHostInstanceIdLists(array $hostInstanceIdLists)
@@ -41,6 +42,7 @@ class MigrateClusterHostGroupHostRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -53,6 +55,7 @@ class MigrateClusterHostGroupHostRequest extends RpcAcsRequest
 
     /**
      * @param string $hostGroupId
+     *
      * @return $this
      */
     public function setHostGroupId($hostGroupId)
@@ -65,6 +68,7 @@ class MigrateClusterHostGroupHostRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

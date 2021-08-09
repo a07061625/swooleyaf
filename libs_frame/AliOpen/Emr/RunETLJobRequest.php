@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RunETLJob
+ *
  * @method string getResourceOwnerId()
  * @method array getInstanceRunParams()
  * @method string getIsDebug()
@@ -27,6 +29,7 @@ class RunETLJobRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -38,7 +41,6 @@ class RunETLJobRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceRunParams
      * @return $this
      */
     public function setInstanceRunParams(array $instanceRunParams)
@@ -54,6 +56,7 @@ class RunETLJobRequest extends RpcAcsRequest
 
     /**
      * @param string $isDebug
+     *
      * @return $this
      */
     public function setIsDebug($isDebug)
@@ -66,6 +69,7 @@ class RunETLJobRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeScalingRule
+ *
  * @method string getResourceOwnerId()
  * @method string getHostGroupId()
  * @method string getClusterId()
@@ -27,6 +29,7 @@ class DescribeScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -39,6 +42,7 @@ class DescribeScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $hostGroupId
+     *
      * @return $this
      */
     public function setHostGroupId($hostGroupId)
@@ -51,6 +55,7 @@ class DescribeScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -63,6 +68,7 @@ class DescribeScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleId
+     *
      * @return $this
      */
     public function setScalingRuleId($scalingRuleId)

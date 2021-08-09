@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteAlarm
+ *
  * @method string getResourceOwnerAccount()
  * @method string getOwnerId()
  * @method string getAlarmTaskId()
@@ -26,6 +28,7 @@ class DeleteAlarmRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -38,6 +41,7 @@ class DeleteAlarmRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -50,6 +54,7 @@ class DeleteAlarmRequest extends RpcAcsRequest
 
     /**
      * @param string $alarmTaskId
+     *
      * @return $this
      */
     public function setAlarmTaskId($alarmTaskId)

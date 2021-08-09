@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RerunFlow
+ *
  * @method string getFlowInstanceId()
  * @method string getProjectId()
  * @method string getReRunFail()
@@ -26,6 +28,7 @@ class RerunFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $flowInstanceId
+     *
      * @return $this
      */
     public function setFlowInstanceId($flowInstanceId)
@@ -38,6 +41,7 @@ class RerunFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -50,6 +54,7 @@ class RerunFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $reRunFail
+     *
      * @return $this
      */
     public function setReRunFail($reRunFail)

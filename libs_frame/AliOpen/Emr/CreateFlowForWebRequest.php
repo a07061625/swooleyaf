@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateFlowForWeb
+ *
  * @method string getCronExpr()
  * @method string getParentFlowList()
  * @method string getAlertDingDingGroupBizId()
@@ -38,6 +40,7 @@ class CreateFlowForWebRequest extends RpcAcsRequest
 
     /**
      * @param string $cronExpr
+     *
      * @return $this
      */
     public function setCronExpr($cronExpr)
@@ -50,6 +53,7 @@ class CreateFlowForWebRequest extends RpcAcsRequest
 
     /**
      * @param string $parentFlowList
+     *
      * @return $this
      */
     public function setParentFlowList($parentFlowList)
@@ -62,6 +66,7 @@ class CreateFlowForWebRequest extends RpcAcsRequest
 
     /**
      * @param string $alertDingDingGroupBizId
+     *
      * @return $this
      */
     public function setAlertDingDingGroupBizId($alertDingDingGroupBizId)
@@ -74,6 +79,7 @@ class CreateFlowForWebRequest extends RpcAcsRequest
 
     /**
      * @param string $startSchedule
+     *
      * @return $this
      */
     public function setStartSchedule($startSchedule)
@@ -86,6 +92,7 @@ class CreateFlowForWebRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -98,6 +105,7 @@ class CreateFlowForWebRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -110,6 +118,7 @@ class CreateFlowForWebRequest extends RpcAcsRequest
 
     /**
      * @param string $alertUserGroupBizId
+     *
      * @return $this
      */
     public function setAlertUserGroupBizId($alertUserGroupBizId)
@@ -122,6 +131,7 @@ class CreateFlowForWebRequest extends RpcAcsRequest
 
     /**
      * @param string $graph
+     *
      * @return $this
      */
     public function setGraph($graph)
@@ -134,6 +144,7 @@ class CreateFlowForWebRequest extends RpcAcsRequest
 
     /**
      * @param string $hostName
+     *
      * @return $this
      */
     public function setHostName($hostName)
@@ -146,6 +157,7 @@ class CreateFlowForWebRequest extends RpcAcsRequest
 
     /**
      * @param string $createCluster
+     *
      * @return $this
      */
     public function setCreateCluster($createCluster)
@@ -158,6 +170,7 @@ class CreateFlowForWebRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -170,6 +183,7 @@ class CreateFlowForWebRequest extends RpcAcsRequest
 
     /**
      * @param string $endSchedule
+     *
      * @return $this
      */
     public function setEndSchedule($endSchedule)
@@ -182,6 +196,7 @@ class CreateFlowForWebRequest extends RpcAcsRequest
 
     /**
      * @param string $alertConf
+     *
      * @return $this
      */
     public function setAlertConf($alertConf)
@@ -194,6 +209,7 @@ class CreateFlowForWebRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -206,6 +222,7 @@ class CreateFlowForWebRequest extends RpcAcsRequest
 
     /**
      * @param string $parentCategory
+     *
      * @return $this
      */
     public function setParentCategory($parentCategory)

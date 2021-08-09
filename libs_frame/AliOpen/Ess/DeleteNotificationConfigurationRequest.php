@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteNotificationConfiguration
+ *
  * @method string getResourceOwnerAccount()
  * @method string getScalingGroupId()
  * @method string getNotificationArn()
@@ -27,6 +29,7 @@ class DeleteNotificationConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -39,6 +42,7 @@ class DeleteNotificationConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -51,6 +55,7 @@ class DeleteNotificationConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $notificationArn
+     *
      * @return $this
      */
     public function setNotificationArn($notificationArn)
@@ -63,6 +68,7 @@ class DeleteNotificationConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

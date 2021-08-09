@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetOpsCommandDetail
+ *
  * @method string getResourceOwnerId()
  * @method string getOpsCommandName()
  */
@@ -20,6 +22,7 @@ class GetOpsCommandDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -32,6 +35,7 @@ class GetOpsCommandDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $opsCommandName
+     *
      * @return $this
      */
     public function setOpsCommandName($opsCommandName)

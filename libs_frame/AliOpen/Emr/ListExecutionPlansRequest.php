@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListExecutionPlans
+ *
  * @method string getJobId()
  * @method string getResourceOwnerId()
  * @method array getStatusLists()
@@ -33,6 +35,7 @@ class ListExecutionPlansRequest extends RpcAcsRequest
 
     /**
      * @param string $jobId
+     *
      * @return $this
      */
     public function setJobId($jobId)
@@ -45,6 +48,7 @@ class ListExecutionPlansRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -56,7 +60,6 @@ class ListExecutionPlansRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $statusLists
      * @return $this
      */
     public function setStatusLists(array $statusLists)
@@ -71,6 +74,7 @@ class ListExecutionPlansRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -83,6 +87,7 @@ class ListExecutionPlansRequest extends RpcAcsRequest
 
     /**
      * @param string $queryString
+     *
      * @return $this
      */
     public function setQueryString($queryString)
@@ -95,6 +100,7 @@ class ListExecutionPlansRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -107,6 +113,7 @@ class ListExecutionPlansRequest extends RpcAcsRequest
 
     /**
      * @param string $isDesc
+     *
      * @return $this
      */
     public function setIsDesc($isDesc)
@@ -119,6 +126,7 @@ class ListExecutionPlansRequest extends RpcAcsRequest
 
     /**
      * @param string $strategy
+     *
      * @return $this
      */
     public function setStrategy($strategy)
@@ -131,6 +139,7 @@ class ListExecutionPlansRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -143,6 +152,7 @@ class ListExecutionPlansRequest extends RpcAcsRequest
 
     /**
      * @param string $queryType
+     *
      * @return $this
      */
     public function setQueryType($queryType)

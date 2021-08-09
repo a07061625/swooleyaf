@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListOpsOperationTask
+ *
  * @method string getResourceOwnerId()
  * @method string getOperationId()
  * @method string getPageNumber()
@@ -21,6 +23,7 @@ class ListOpsOperationTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -33,6 +36,7 @@ class ListOpsOperationTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $operationId
+     *
      * @return $this
      */
     public function setOperationId($operationId)
@@ -45,6 +49,7 @@ class ListOpsOperationTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

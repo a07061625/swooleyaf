@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateETLJob
+ *
  * @method string getResourceOwnerId()
  * @method array getStageConnections()
  * @method string getClusterConfig()
@@ -33,6 +35,7 @@ class UpdateETLJobRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,7 +47,6 @@ class UpdateETLJobRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $stageConnections
      * @return $this
      */
     public function setStageConnections(array $stageConnections)
@@ -61,6 +63,7 @@ class UpdateETLJobRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterConfig
+     *
      * @return $this
      */
     public function setClusterConfig($clusterConfig)
@@ -72,7 +75,6 @@ class UpdateETLJobRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $triggerRules
      * @return $this
      */
     public function setTriggerRules(array $triggerRules)
@@ -89,7 +91,6 @@ class UpdateETLJobRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $stages
      * @return $this
      */
     public function setStages(array $stages)
@@ -107,6 +108,7 @@ class UpdateETLJobRequest extends RpcAcsRequest
 
     /**
      * @param string $alertConfig
+     *
      * @return $this
      */
     public function setAlertConfig($alertConfig)
@@ -119,6 +121,7 @@ class UpdateETLJobRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -131,6 +134,7 @@ class UpdateETLJobRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -143,6 +147,7 @@ class UpdateETLJobRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -155,6 +160,7 @@ class UpdateETLJobRequest extends RpcAcsRequest
 
     /**
      * @param string $check
+     *
      * @return $this
      */
     public function setCheck($check)

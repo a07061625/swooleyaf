@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyClusterHostGroup
+ *
  * @method string getVswitchId()
  * @method string getResourceOwnerId()
  * @method string getHostGroupId()
@@ -30,6 +32,7 @@ class ModifyClusterHostGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $vswitchId
+     *
      * @return $this
      */
     public function setVswitchId($vswitchId)
@@ -42,6 +45,7 @@ class ModifyClusterHostGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -54,6 +58,7 @@ class ModifyClusterHostGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $hostGroupId
+     *
      * @return $this
      */
     public function setHostGroupId($hostGroupId)
@@ -66,6 +71,7 @@ class ModifyClusterHostGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -78,6 +84,7 @@ class ModifyClusterHostGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $comment
+     *
      * @return $this
      */
     public function setComment($comment)
@@ -90,6 +97,7 @@ class ModifyClusterHostGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -102,6 +110,7 @@ class ModifyClusterHostGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $hostGroupName
+     *
      * @return $this
      */
     public function setHostGroupName($hostGroupName)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ExecuteScalingRule
+ *
  * @method string getResourceOwnerId()
  * @method string getScalingRuleAri()
  * @method string getResourceOwnerAccount()
@@ -31,6 +33,7 @@ class ExecuteScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class ExecuteScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleAri
+     *
      * @return $this
      */
     public function setScalingRuleAri($scalingRuleAri)
@@ -55,6 +59,7 @@ class ExecuteScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -67,6 +72,7 @@ class ExecuteScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -79,6 +85,7 @@ class ExecuteScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $breachThreshold
+     *
      * @return $this
      */
     public function setBreachThreshold($breachThreshold)
@@ -91,6 +98,7 @@ class ExecuteScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -103,6 +111,7 @@ class ExecuteScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -115,6 +124,7 @@ class ExecuteScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $metricValue
+     *
      * @return $this
      */
     public function setMetricValue($metricValue)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListJobExecutionInstanceTrend
+ *
  * @method string getResourceOwnerId()
  */
 class ListJobExecutionInstanceTrendRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class ListJobExecutionInstanceTrendRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)

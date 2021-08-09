@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyNotificationConfiguration
+ *
  * @method string getResourceOwnerAccount()
  * @method string getScalingGroupId()
  * @method string getNotificationArn()
@@ -28,6 +30,7 @@ class ModifyNotificationConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -40,6 +43,7 @@ class ModifyNotificationConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -52,6 +56,7 @@ class ModifyNotificationConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $notificationArn
+     *
      * @return $this
      */
     public function setNotificationArn($notificationArn)
@@ -63,7 +68,6 @@ class ModifyNotificationConfigurationRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $notificationType
      * @return $this
      */
     public function setNotificationTypes(array $notificationType)
@@ -78,6 +82,7 @@ class ModifyNotificationConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

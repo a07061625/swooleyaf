@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListFlowNodeSqlResult
+ *
  * @method string getOffset()
  * @method string getLength()
  * @method string getSqlIndex()
@@ -28,6 +30,7 @@ class ListFlowNodeSqlResultRequest extends RpcAcsRequest
 
     /**
      * @param string $offset
+     *
      * @return $this
      */
     public function setOffset($offset)
@@ -40,6 +43,7 @@ class ListFlowNodeSqlResultRequest extends RpcAcsRequest
 
     /**
      * @param string $length
+     *
      * @return $this
      */
     public function setLength($length)
@@ -52,6 +56,7 @@ class ListFlowNodeSqlResultRequest extends RpcAcsRequest
 
     /**
      * @param string $sqlIndex
+     *
      * @return $this
      */
     public function setSqlIndex($sqlIndex)
@@ -64,6 +69,7 @@ class ListFlowNodeSqlResultRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeInstanceId
+     *
      * @return $this
      */
     public function setNodeInstanceId($nodeInstanceId)
@@ -76,6 +82,7 @@ class ListFlowNodeSqlResultRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)

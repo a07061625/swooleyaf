@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListJobs
+ *
  * @method string getResourceOwnerId()
  * @method string getPageSize()
  * @method string getQueryString()
@@ -29,6 +31,7 @@ class ListJobsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class ListJobsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -53,6 +57,7 @@ class ListJobsRequest extends RpcAcsRequest
 
     /**
      * @param string $queryString
+     *
      * @return $this
      */
     public function setQueryString($queryString)
@@ -65,6 +70,7 @@ class ListJobsRequest extends RpcAcsRequest
 
     /**
      * @param string $isDesc
+     *
      * @return $this
      */
     public function setIsDesc($isDesc)
@@ -77,6 +83,7 @@ class ListJobsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -89,6 +96,7 @@ class ListJobsRequest extends RpcAcsRequest
 
     /**
      * @param string $queryType
+     *
      * @return $this
      */
     public function setQueryType($queryType)

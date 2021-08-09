@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeAlertConfig
+ *
  * @method string getResourceOwnerAccount()
  * @method string getScalingGroupId()
  * @method string getOwnerId()
@@ -26,6 +28,7 @@ class DescribeAlertConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -38,6 +41,7 @@ class DescribeAlertConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -50,6 +54,7 @@ class DescribeAlertConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

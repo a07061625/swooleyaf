@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeEmrMainVersion
+ *
  * @method string getResourceOwnerId()
  * @method string getEmrVersion()
  */
@@ -25,6 +27,7 @@ class DescribeEmrMainVersionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -37,6 +40,7 @@ class DescribeEmrMainVersionRequest extends RpcAcsRequest
 
     /**
      * @param string $emrVersion
+     *
      * @return $this
      */
     public function setEmrVersion($emrVersion)

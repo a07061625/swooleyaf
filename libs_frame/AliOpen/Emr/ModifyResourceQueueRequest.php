@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyResourceQueue
+ *
  * @method string getResourceOwnerId()
  * @method string getParentQueueId()
  * @method string getName()
@@ -32,6 +34,7 @@ class ModifyResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class ModifyResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $parentQueueId
+     *
      * @return $this
      */
     public function setParentQueueId($parentQueueId)
@@ -56,6 +60,7 @@ class ModifyResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -68,6 +73,7 @@ class ModifyResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $qualifiedName
+     *
      * @return $this
      */
     public function setQualifiedName($qualifiedName)
@@ -80,6 +86,7 @@ class ModifyResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $resourcePoolId
+     *
      * @return $this
      */
     public function setResourcePoolId($resourcePoolId)
@@ -92,6 +99,7 @@ class ModifyResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -104,6 +112,7 @@ class ModifyResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -116,6 +125,7 @@ class ModifyResourceQueueRequest extends RpcAcsRequest
 
     /**
      * @param string $leaf
+     *
      * @return $this
      */
     public function setLeaf($leaf)
@@ -127,7 +137,6 @@ class ModifyResourceQueueRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $configs
      * @return $this
      */
     public function setConfigs(array $configs)

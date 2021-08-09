@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetJobRunningTimeStatisticInfo
+ *
  * @method string getFromDatetime()
  * @method string getResourceOwnerId()
  * @method string getPageSize()
@@ -29,6 +31,7 @@ class GetJobRunningTimeStatisticInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $fromDatetime
+     *
      * @return $this
      */
     public function setFromDatetime($fromDatetime)
@@ -41,6 +44,7 @@ class GetJobRunningTimeStatisticInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -53,6 +57,7 @@ class GetJobRunningTimeStatisticInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -65,6 +70,7 @@ class GetJobRunningTimeStatisticInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -77,6 +83,7 @@ class GetJobRunningTimeStatisticInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $toDatetime
+     *
      * @return $this
      */
     public function setToDatetime($toDatetime)
@@ -89,6 +96,7 @@ class GetJobRunningTimeStatisticInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

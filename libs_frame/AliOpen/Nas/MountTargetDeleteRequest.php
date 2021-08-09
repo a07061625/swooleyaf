@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteMountTarget
+ *
  * @method string getMountTargetDomain()
  * @method string getFileSystemId()
  */
@@ -25,6 +27,7 @@ class MountTargetDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $mountTargetDomain
+     *
      * @return $this
      */
     public function setMountTargetDomain($mountTargetDomain)
@@ -37,6 +40,7 @@ class MountTargetDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $fileSystemId
+     *
      * @return $this
      */
     public function setFileSystemId($fileSystemId)

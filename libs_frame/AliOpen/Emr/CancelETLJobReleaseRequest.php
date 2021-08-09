@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CancelETLJobRelease
+ *
  * @method string getResourceOwnerId()
  * @method string getEtlJobId()
  * @method string getReleaseId()
@@ -26,6 +28,7 @@ class CancelETLJobReleaseRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -38,6 +41,7 @@ class CancelETLJobReleaseRequest extends RpcAcsRequest
 
     /**
      * @param string $etlJobId
+     *
      * @return $this
      */
     public function setEtlJobId($etlJobId)
@@ -50,6 +54,7 @@ class CancelETLJobReleaseRequest extends RpcAcsRequest
 
     /**
      * @param string $releaseId
+     *
      * @return $this
      */
     public function setReleaseId($releaseId)

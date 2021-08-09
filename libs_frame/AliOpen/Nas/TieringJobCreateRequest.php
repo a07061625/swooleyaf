@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateTieringJob
+ *
  * @method string getVolume()
  * @method string getPath()
  * @method string getHour()
@@ -32,6 +34,7 @@ class TieringJobCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $volume
+     *
      * @return $this
      */
     public function setVolume($volume)
@@ -44,6 +47,7 @@ class TieringJobCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $path
+     *
      * @return $this
      */
     public function setPath($path)
@@ -56,6 +60,7 @@ class TieringJobCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $hour
+     *
      * @return $this
      */
     public function setHour($hour)
@@ -68,6 +73,7 @@ class TieringJobCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -80,6 +86,7 @@ class TieringJobCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $weekday
+     *
      * @return $this
      */
     public function setWeekday($weekday)
@@ -92,6 +99,7 @@ class TieringJobCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -104,6 +112,7 @@ class TieringJobCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $recursive
+     *
      * @return $this
      */
     public function setRecursive($recursive)
@@ -116,6 +125,7 @@ class TieringJobCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $enabled
+     *
      * @return $this
      */
     public function setEnabled($enabled)
@@ -128,6 +138,7 @@ class TieringJobCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $policy
+     *
      * @return $this
      */
     public function setPolicy($policy)

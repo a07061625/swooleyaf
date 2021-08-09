@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyResourcePool
+ *
  * @method string getResourceOwnerId()
  * @method string getName()
  * @method string getActive()
@@ -30,6 +32,7 @@ class ModifyResourcePoolRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class ModifyResourcePoolRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -54,6 +58,7 @@ class ModifyResourcePoolRequest extends RpcAcsRequest
 
     /**
      * @param string $active
+     *
      * @return $this
      */
     public function setActive($active)
@@ -66,6 +71,7 @@ class ModifyResourcePoolRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -78,6 +84,7 @@ class ModifyResourcePoolRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -90,6 +97,7 @@ class ModifyResourcePoolRequest extends RpcAcsRequest
 
     /**
      * @param string $yarnsiteconfig
+     *
      * @return $this
      */
     public function setYarnsiteconfig($yarnsiteconfig)
@@ -101,7 +109,6 @@ class ModifyResourcePoolRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $configs
      * @return $this
      */
     public function setConfigs(array $configs)

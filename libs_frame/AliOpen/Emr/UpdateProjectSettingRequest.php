@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateProjectSetting
+ *
  * @method string getResourceOwnerId()
  * @method string getDefaultOssPath()
  * @method string getProjectId()
@@ -27,6 +29,7 @@ class UpdateProjectSettingRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -39,6 +42,7 @@ class UpdateProjectSettingRequest extends RpcAcsRequest
 
     /**
      * @param string $defaultOssPath
+     *
      * @return $this
      */
     public function setDefaultOssPath($defaultOssPath)
@@ -51,6 +55,7 @@ class UpdateProjectSettingRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -63,6 +68,7 @@ class UpdateProjectSettingRequest extends RpcAcsRequest
 
     /**
      * @param string $ossConfig
+     *
      * @return $this
      */
     public function setOssConfig($ossConfig)

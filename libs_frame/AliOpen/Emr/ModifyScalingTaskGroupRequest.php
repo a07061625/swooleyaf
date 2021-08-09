@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyScalingTaskGroup
+ *
  * @method string getResourceOwnerId()
  * @method string getHostGroupId()
  * @method string getActiveRuleCategory()
@@ -30,6 +32,7 @@ class ModifyScalingTaskGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class ModifyScalingTaskGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $hostGroupId
+     *
      * @return $this
      */
     public function setHostGroupId($hostGroupId)
@@ -54,6 +58,7 @@ class ModifyScalingTaskGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $activeRuleCategory
+     *
      * @return $this
      */
     public function setActiveRuleCategory($activeRuleCategory)
@@ -66,6 +71,7 @@ class ModifyScalingTaskGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -78,6 +84,7 @@ class ModifyScalingTaskGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $minSize
+     *
      * @return $this
      */
     public function setMinSize($minSize)
@@ -90,6 +97,7 @@ class ModifyScalingTaskGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $maxSize
+     *
      * @return $this
      */
     public function setMaxSize($maxSize)
@@ -102,6 +110,7 @@ class ModifyScalingTaskGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $defaultCooldown
+     *
      * @return $this
      */
     public function setDefaultCooldown($defaultCooldown)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeLifecycleHooks
+ *
  * @method string getLifecycleHookName()
  * @method string getResourceOwnerAccount()
  * @method string getScalingGroupId()
@@ -31,6 +33,7 @@ class DescribeLifecycleHooksRequest extends RpcAcsRequest
 
     /**
      * @param string $lifecycleHookName
+     *
      * @return $this
      */
     public function setLifecycleHookName($lifecycleHookName)
@@ -43,6 +46,7 @@ class DescribeLifecycleHooksRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -55,6 +59,7 @@ class DescribeLifecycleHooksRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -66,7 +71,6 @@ class DescribeLifecycleHooksRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $lifecycleHookId
      * @return $this
      */
     public function setLifecycleHookIds(array $lifecycleHookId)
@@ -81,6 +85,7 @@ class DescribeLifecycleHooksRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -93,6 +98,7 @@ class DescribeLifecycleHooksRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -105,6 +111,7 @@ class DescribeLifecycleHooksRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -117,6 +124,7 @@ class DescribeLifecycleHooksRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

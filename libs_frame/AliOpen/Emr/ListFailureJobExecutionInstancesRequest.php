@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListFailureJobExecutionInstances
+ *
  * @method string getResourceOwnerId()
  * @method string getCount()
  */
@@ -25,6 +27,7 @@ class ListFailureJobExecutionInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -37,6 +40,7 @@ class ListFailureJobExecutionInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $count
+     *
      * @return $this
      */
     public function setCount($count)

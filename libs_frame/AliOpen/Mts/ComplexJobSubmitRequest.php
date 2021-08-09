@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitComplexJob
+ *
  * @method string getResourceOwnerId()
  * @method string getTranscodeOutput()
  * @method string getResourceOwnerAccount()
@@ -34,6 +36,7 @@ class ComplexJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class ComplexJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $transcodeOutput
+     *
      * @return $this
      */
     public function setTranscodeOutput($transcodeOutput)
@@ -58,6 +62,7 @@ class ComplexJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -70,6 +75,7 @@ class ComplexJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $inputs
+     *
      * @return $this
      */
     public function setInputs($inputs)
@@ -82,6 +88,7 @@ class ComplexJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -94,6 +101,7 @@ class ComplexJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $outputLocation
+     *
      * @return $this
      */
     public function setOutputLocation($outputLocation)
@@ -106,6 +114,7 @@ class ComplexJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -118,6 +127,7 @@ class ComplexJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $pipelineId
+     *
      * @return $this
      */
     public function setPipelineId($pipelineId)
@@ -130,6 +140,7 @@ class ComplexJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $outputBucket
+     *
      * @return $this
      */
     public function setOutputBucket($outputBucket)
@@ -142,6 +153,7 @@ class ComplexJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -154,6 +166,7 @@ class ComplexJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $complexConfigs
+     *
      * @return $this
      */
     public function setComplexConfigs($complexConfigs)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitFlow
+ *
  * @method string getConf()
  * @method string getProjectId()
  * @method string getFlowId()
@@ -26,6 +28,7 @@ class SubmitFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $conf
+     *
      * @return $this
      */
     public function setConf($conf)
@@ -38,6 +41,7 @@ class SubmitFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -50,6 +54,7 @@ class SubmitFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $flowId
+     *
      * @return $this
      */
     public function setFlowId($flowId)

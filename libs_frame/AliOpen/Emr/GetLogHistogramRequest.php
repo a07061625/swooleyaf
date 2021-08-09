@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetLogHistogram
+ *
  * @method string getResourceOwnerId()
  * @method string getHostInnerIp()
  * @method string getHostName()
@@ -31,6 +33,7 @@ class GetLogHistogramRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class GetLogHistogramRequest extends RpcAcsRequest
 
     /**
      * @param string $hostInnerIp
+     *
      * @return $this
      */
     public function setHostInnerIp($hostInnerIp)
@@ -55,6 +59,7 @@ class GetLogHistogramRequest extends RpcAcsRequest
 
     /**
      * @param string $hostName
+     *
      * @return $this
      */
     public function setHostName($hostName)
@@ -67,6 +72,7 @@ class GetLogHistogramRequest extends RpcAcsRequest
 
     /**
      * @param string $logstoreName
+     *
      * @return $this
      */
     public function setLogstoreName($logstoreName)
@@ -79,6 +85,7 @@ class GetLogHistogramRequest extends RpcAcsRequest
 
     /**
      * @param string $fromTimestamp
+     *
      * @return $this
      */
     public function setFromTimestamp($fromTimestamp)
@@ -91,6 +98,7 @@ class GetLogHistogramRequest extends RpcAcsRequest
 
     /**
      * @param string $toTimestamp
+     *
      * @return $this
      */
     public function setToTimestamp($toTimestamp)
@@ -103,6 +111,7 @@ class GetLogHistogramRequest extends RpcAcsRequest
 
     /**
      * @param string $slsQueryString
+     *
      * @return $this
      */
     public function setSlsQueryString($slsQueryString)
@@ -115,6 +124,7 @@ class GetLogHistogramRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

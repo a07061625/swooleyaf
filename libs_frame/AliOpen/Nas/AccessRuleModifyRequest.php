@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyAccessRule
+ *
  * @method string getRWAccessType()
  * @method string getSourceCidrIp()
  * @method string getUserAccessType()
@@ -29,6 +31,7 @@ class AccessRuleModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $rWAccessType
+     *
      * @return $this
      */
     public function setRWAccessType($rWAccessType)
@@ -41,6 +44,7 @@ class AccessRuleModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceCidrIp
+     *
      * @return $this
      */
     public function setSourceCidrIp($sourceCidrIp)
@@ -53,6 +57,7 @@ class AccessRuleModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $userAccessType
+     *
      * @return $this
      */
     public function setUserAccessType($userAccessType)
@@ -65,6 +70,7 @@ class AccessRuleModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $priority
+     *
      * @return $this
      */
     public function setPriority($priority)
@@ -77,6 +83,7 @@ class AccessRuleModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $accessGroupName
+     *
      * @return $this
      */
     public function setAccessGroupName($accessGroupName)
@@ -89,6 +96,7 @@ class AccessRuleModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $accessRuleId
+     *
      * @return $this
      */
     public function setAccessRuleId($accessRuleId)

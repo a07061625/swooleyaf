@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListJobExecutionPlanHierarchy
+ *
  * @method string getResourceOwnerId()
  * @method string getCurrentId()
  * @method string getPageSize()
@@ -27,6 +29,7 @@ class ListJobExecutionPlanHierarchyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -39,6 +42,7 @@ class ListJobExecutionPlanHierarchyRequest extends RpcAcsRequest
 
     /**
      * @param string $currentId
+     *
      * @return $this
      */
     public function setCurrentId($currentId)
@@ -51,6 +55,7 @@ class ListJobExecutionPlanHierarchyRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -63,6 +68,7 @@ class ListJobExecutionPlanHierarchyRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

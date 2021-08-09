@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateScheduledTask
+ *
  * @method string getLaunchTime()
  * @method string getScheduledAction()
  * @method string getResourceOwnerAccount()
@@ -35,6 +37,7 @@ class CreateScheduledTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $launchTime
+     *
      * @return $this
      */
     public function setLaunchTime($launchTime)
@@ -47,6 +50,7 @@ class CreateScheduledTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction
+     *
      * @return $this
      */
     public function setScheduledAction($scheduledAction)
@@ -59,6 +63,7 @@ class CreateScheduledTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -71,6 +76,7 @@ class CreateScheduledTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -83,6 +89,7 @@ class CreateScheduledTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -95,6 +102,7 @@ class CreateScheduledTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -107,6 +115,7 @@ class CreateScheduledTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $recurrenceValue
+     *
      * @return $this
      */
     public function setRecurrenceValue($recurrenceValue)
@@ -119,6 +128,7 @@ class CreateScheduledTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $launchExpirationTime
+     *
      * @return $this
      */
     public function setLaunchExpirationTime($launchExpirationTime)
@@ -131,6 +141,7 @@ class CreateScheduledTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $recurrenceEndTime
+     *
      * @return $this
      */
     public function setRecurrenceEndTime($recurrenceEndTime)
@@ -143,6 +154,7 @@ class CreateScheduledTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName
+     *
      * @return $this
      */
     public function setScheduledTaskName($scheduledTaskName)
@@ -155,6 +167,7 @@ class CreateScheduledTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $taskEnabled
+     *
      * @return $this
      */
     public function setTaskEnabled($taskEnabled)
@@ -167,6 +180,7 @@ class CreateScheduledTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $recurrenceType
+     *
      * @return $this
      */
     public function setRecurrenceType($recurrenceType)

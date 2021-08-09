@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeClusterServiceConfigHistory
+ *
  * @method string getResourceOwnerId()
  * @method string getServiceName()
  * @method string getClusterId()
@@ -27,6 +29,7 @@ class DescribeClusterServiceConfigHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -39,6 +42,7 @@ class DescribeClusterServiceConfigHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceName
+     *
      * @return $this
      */
     public function setServiceName($serviceName)
@@ -51,6 +55,7 @@ class DescribeClusterServiceConfigHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -63,6 +68,7 @@ class DescribeClusterServiceConfigHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $configVersion
+     *
      * @return $this
      */
     public function setConfigVersion($configVersion)

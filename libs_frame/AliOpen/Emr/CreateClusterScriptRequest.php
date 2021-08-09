@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateClusterScript
+ *
  * @method string getArgs()
  * @method string getPath()
  * @method string getResourceOwnerId()
@@ -29,6 +31,7 @@ class CreateClusterScriptRequest extends RpcAcsRequest
 
     /**
      * @param string $args
+     *
      * @return $this
      */
     public function setArgs($args)
@@ -41,6 +44,7 @@ class CreateClusterScriptRequest extends RpcAcsRequest
 
     /**
      * @param string $path
+     *
      * @return $this
      */
     public function setPath($path)
@@ -53,6 +57,7 @@ class CreateClusterScriptRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -65,6 +70,7 @@ class CreateClusterScriptRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -77,6 +83,7 @@ class CreateClusterScriptRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -89,6 +96,7 @@ class CreateClusterScriptRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeIdList
+     *
      * @return $this
      */
     public function setNodeIdList($nodeIdList)

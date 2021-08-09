@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AttachDBInstances
+ *
  * @method string getResourceOwnerAccount()
  * @method string getScalingGroupId()
  * @method string getForceAttach()
@@ -28,6 +30,7 @@ class AttachDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -40,6 +43,7 @@ class AttachDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -52,6 +56,7 @@ class AttachDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $forceAttach
+     *
      * @return $this
      */
     public function setForceAttach($forceAttach)
@@ -63,7 +68,6 @@ class AttachDBInstancesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $dBInstance
      * @return $this
      */
     public function setDBInstances(array $dBInstance)
@@ -78,6 +82,7 @@ class AttachDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

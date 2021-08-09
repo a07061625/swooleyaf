@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListFlowNodeInstance
+ *
  * @method array getStatusLists()
  * @method string getPageSize()
  * @method string getOrderBy()
@@ -29,7 +31,6 @@ class ListFlowNodeInstanceRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $statusLists
      * @return $this
      */
     public function setStatusLists(array $statusLists)
@@ -44,6 +45,7 @@ class ListFlowNodeInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -56,6 +58,7 @@ class ListFlowNodeInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $orderBy
+     *
      * @return $this
      */
     public function setOrderBy($orderBy)
@@ -68,6 +71,7 @@ class ListFlowNodeInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -80,6 +84,7 @@ class ListFlowNodeInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -92,6 +97,7 @@ class ListFlowNodeInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -104,6 +110,7 @@ class ListFlowNodeInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $orderType
+     *
      * @return $this
      */
     public function setOrderType($orderType)

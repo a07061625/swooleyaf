@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeScalingRules
+ *
  * @method string getScalingRuleName1()
  * @method string getResourceOwnerId()
  * @method string getScalingRuleName2()
@@ -62,6 +64,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleName1
+     *
      * @return $this
      */
     public function setScalingRuleName1($scalingRuleName1)
@@ -74,6 +77,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -86,6 +90,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleName2
+     *
      * @return $this
      */
     public function setScalingRuleName2($scalingRuleName2)
@@ -98,6 +103,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleName3
+     *
      * @return $this
      */
     public function setScalingRuleName3($scalingRuleName3)
@@ -110,6 +116,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleName4
+     *
      * @return $this
      */
     public function setScalingRuleName4($scalingRuleName4)
@@ -122,6 +129,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleName5
+     *
      * @return $this
      */
     public function setScalingRuleName5($scalingRuleName5)
@@ -134,6 +142,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -146,6 +155,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleName6
+     *
      * @return $this
      */
     public function setScalingRuleName6($scalingRuleName6)
@@ -158,6 +168,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleName7
+     *
      * @return $this
      */
     public function setScalingRuleName7($scalingRuleName7)
@@ -170,6 +181,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleName8
+     *
      * @return $this
      */
     public function setScalingRuleName8($scalingRuleName8)
@@ -182,6 +194,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleAri9
+     *
      * @return $this
      */
     public function setScalingRuleAri9($scalingRuleAri9)
@@ -194,6 +207,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleName9
+     *
      * @return $this
      */
     public function setScalingRuleName9($scalingRuleName9)
@@ -206,6 +220,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -218,6 +233,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -230,6 +246,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleType
+     *
      * @return $this
      */
     public function setScalingRuleType($scalingRuleType)
@@ -242,6 +259,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleId10
+     *
      * @return $this
      */
     public function setScalingRuleId10($scalingRuleId10)
@@ -254,6 +272,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -266,6 +285,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -278,6 +298,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -290,6 +311,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleAri1
+     *
      * @return $this
      */
     public function setScalingRuleAri1($scalingRuleAri1)
@@ -302,6 +324,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleAri2
+     *
      * @return $this
      */
     public function setScalingRuleAri2($scalingRuleAri2)
@@ -314,6 +337,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleName10
+     *
      * @return $this
      */
     public function setScalingRuleName10($scalingRuleName10)
@@ -326,6 +350,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleAri3
+     *
      * @return $this
      */
     public function setScalingRuleAri3($scalingRuleAri3)
@@ -338,6 +363,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleAri4
+     *
      * @return $this
      */
     public function setScalingRuleAri4($scalingRuleAri4)
@@ -350,6 +376,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleId8
+     *
      * @return $this
      */
     public function setScalingRuleId8($scalingRuleId8)
@@ -362,6 +389,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleAri5
+     *
      * @return $this
      */
     public function setScalingRuleAri5($scalingRuleAri5)
@@ -374,6 +402,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleId9
+     *
      * @return $this
      */
     public function setScalingRuleId9($scalingRuleId9)
@@ -386,6 +415,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleAri6
+     *
      * @return $this
      */
     public function setScalingRuleAri6($scalingRuleAri6)
@@ -398,6 +428,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleAri7
+     *
      * @return $this
      */
     public function setScalingRuleAri7($scalingRuleAri7)
@@ -410,6 +441,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleAri10
+     *
      * @return $this
      */
     public function setScalingRuleAri10($scalingRuleAri10)
@@ -422,6 +454,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleAri8
+     *
      * @return $this
      */
     public function setScalingRuleAri8($scalingRuleAri8)
@@ -434,6 +467,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleId4
+     *
      * @return $this
      */
     public function setScalingRuleId4($scalingRuleId4)
@@ -446,6 +480,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $showAlarmRules
+     *
      * @return $this
      */
     public function setShowAlarmRules($showAlarmRules)
@@ -458,6 +493,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleId5
+     *
      * @return $this
      */
     public function setScalingRuleId5($scalingRuleId5)
@@ -470,6 +506,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleId6
+     *
      * @return $this
      */
     public function setScalingRuleId6($scalingRuleId6)
@@ -482,6 +519,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleId7
+     *
      * @return $this
      */
     public function setScalingRuleId7($scalingRuleId7)
@@ -494,6 +532,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleId1
+     *
      * @return $this
      */
     public function setScalingRuleId1($scalingRuleId1)
@@ -506,6 +545,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleId2
+     *
      * @return $this
      */
     public function setScalingRuleId2($scalingRuleId2)
@@ -518,6 +558,7 @@ class DescribeScalingRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingRuleId3
+     *
      * @return $this
      */
     public function setScalingRuleId3($scalingRuleId3)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateUserPassword
+ *
  * @method string getResourceOwnerId()
  * @method string getPassword()
  * @method string getClusterId()
@@ -27,6 +29,7 @@ class CreateUserPasswordRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -39,6 +42,7 @@ class CreateUserPasswordRequest extends RpcAcsRequest
 
     /**
      * @param string $password
+     *
      * @return $this
      */
     public function setPassword($password)
@@ -51,6 +55,7 @@ class CreateUserPasswordRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -62,7 +67,6 @@ class CreateUserPasswordRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $userInfos
      * @return $this
      */
     public function setUserInfos(array $userInfos)

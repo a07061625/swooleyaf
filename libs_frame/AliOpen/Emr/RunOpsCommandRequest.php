@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RunOpsCommand
+ *
  * @method string getResourceOwnerId()
  * @method string getOpsCommandName()
  * @method string getComment()
@@ -25,6 +27,7 @@ class RunOpsCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -37,6 +40,7 @@ class RunOpsCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $opsCommandName
+     *
      * @return $this
      */
     public function setOpsCommandName($opsCommandName)
@@ -49,6 +53,7 @@ class RunOpsCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $comment
+     *
      * @return $this
      */
     public function setComment($comment)
@@ -61,6 +66,7 @@ class RunOpsCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $customParams
+     *
      * @return $this
      */
     public function setCustomParams($customParams)
@@ -73,6 +79,7 @@ class RunOpsCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -84,7 +91,6 @@ class RunOpsCommandRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $hostIdLists
      * @return $this
      */
     public function setHostIdLists(array $hostIdLists)
@@ -99,6 +105,7 @@ class RunOpsCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $dimension
+     *
      * @return $this
      */
     public function setDimension($dimension)

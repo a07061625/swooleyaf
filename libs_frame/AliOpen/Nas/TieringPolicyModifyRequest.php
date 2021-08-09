@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyTieringPolicy
+ *
  * @method string getAtime()
  * @method string getFileName()
  * @method string getSize()
@@ -31,6 +33,7 @@ class TieringPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $atime
+     *
      * @return $this
      */
     public function setAtime($atime)
@@ -43,6 +46,7 @@ class TieringPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $fileName
+     *
      * @return $this
      */
     public function setFileName($fileName)
@@ -55,6 +59,7 @@ class TieringPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $size
+     *
      * @return $this
      */
     public function setSize($size)
@@ -67,6 +72,7 @@ class TieringPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $recallTime
+     *
      * @return $this
      */
     public function setRecallTime($recallTime)
@@ -79,6 +85,7 @@ class TieringPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -91,6 +98,7 @@ class TieringPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -103,6 +111,7 @@ class TieringPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ctime
+     *
      * @return $this
      */
     public function setCtime($ctime)
@@ -115,6 +124,7 @@ class TieringPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $mtime
+     *
      * @return $this
      */
     public function setMtime($mtime)

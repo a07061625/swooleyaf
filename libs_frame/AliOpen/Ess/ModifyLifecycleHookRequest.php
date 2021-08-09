@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyLifecycleHook
+ *
  * @method string getDefaultResult()
  * @method string getResourceOwnerAccount()
  * @method string getHeartbeatTimeout()
@@ -34,6 +36,7 @@ class ModifyLifecycleHookRequest extends RpcAcsRequest
 
     /**
      * @param string $defaultResult
+     *
      * @return $this
      */
     public function setDefaultResult($defaultResult)
@@ -46,6 +49,7 @@ class ModifyLifecycleHookRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -58,6 +62,7 @@ class ModifyLifecycleHookRequest extends RpcAcsRequest
 
     /**
      * @param string $heartbeatTimeout
+     *
      * @return $this
      */
     public function setHeartbeatTimeout($heartbeatTimeout)
@@ -70,6 +75,7 @@ class ModifyLifecycleHookRequest extends RpcAcsRequest
 
     /**
      * @param string $lifecycleHookId
+     *
      * @return $this
      */
     public function setLifecycleHookId($lifecycleHookId)
@@ -82,6 +88,7 @@ class ModifyLifecycleHookRequest extends RpcAcsRequest
 
     /**
      * @param string $scalingGroupId
+     *
      * @return $this
      */
     public function setScalingGroupId($scalingGroupId)
@@ -94,6 +101,7 @@ class ModifyLifecycleHookRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -106,6 +114,7 @@ class ModifyLifecycleHookRequest extends RpcAcsRequest
 
     /**
      * @param string $notificationMetadata
+     *
      * @return $this
      */
     public function setNotificationMetadata($notificationMetadata)
@@ -118,6 +127,7 @@ class ModifyLifecycleHookRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -130,6 +140,7 @@ class ModifyLifecycleHookRequest extends RpcAcsRequest
 
     /**
      * @param string $lifecycleTransition
+     *
      * @return $this
      */
     public function setLifecycleTransition($lifecycleTransition)
@@ -142,6 +153,7 @@ class ModifyLifecycleHookRequest extends RpcAcsRequest
 
     /**
      * @param string $lifecycleHookName
+     *
      * @return $this
      */
     public function setLifecycleHookName($lifecycleHookName)
@@ -154,6 +166,7 @@ class ModifyLifecycleHookRequest extends RpcAcsRequest
 
     /**
      * @param string $notificationArn
+     *
      * @return $this
      */
     public function setNotificationArn($notificationArn)

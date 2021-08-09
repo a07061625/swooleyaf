@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListFlowJob
+ *
  * @method string getName()
  * @method string getPageSize()
  * @method string getId()
@@ -30,6 +32,7 @@ class ListFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -42,6 +45,7 @@ class ListFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -54,6 +58,7 @@ class ListFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -66,6 +71,7 @@ class ListFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -78,6 +84,7 @@ class ListFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $adhoc
+     *
      * @return $this
      */
     public function setAdhoc($adhoc)
@@ -90,6 +97,7 @@ class ListFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -102,6 +110,7 @@ class ListFlowJobRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

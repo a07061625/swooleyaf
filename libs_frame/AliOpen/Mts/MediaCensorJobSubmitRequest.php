@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitMediaCensorJob
+ *
  * @method string getResourceOwnerId()
  * @method string getCoverImages()
  * @method string getResourceOwnerAccount()
@@ -35,6 +37,7 @@ class MediaCensorJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +50,7 @@ class MediaCensorJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $coverImages
+     *
      * @return $this
      */
     public function setCoverImages($coverImages)
@@ -59,6 +63,7 @@ class MediaCensorJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -71,6 +76,7 @@ class MediaCensorJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -83,6 +89,7 @@ class MediaCensorJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -95,6 +102,7 @@ class MediaCensorJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -107,6 +115,7 @@ class MediaCensorJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -119,6 +128,7 @@ class MediaCensorJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $pipelineId
+     *
      * @return $this
      */
     public function setPipelineId($pipelineId)
@@ -131,6 +141,7 @@ class MediaCensorJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $videoCensorConfig
+     *
      * @return $this
      */
     public function setVideoCensorConfig($videoCensorConfig)
@@ -143,6 +154,7 @@ class MediaCensorJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $input
+     *
      * @return $this
      */
     public function setInput($input)
@@ -155,6 +167,7 @@ class MediaCensorJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -167,6 +180,7 @@ class MediaCensorJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $barrages
+     *
      * @return $this
      */
     public function setBarrages($barrages)

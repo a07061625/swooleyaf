@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateFlowProjectUser
+ *
  * @method string getProjectId()
  * @method array getUsers()
  */
@@ -25,6 +27,7 @@ class CreateFlowProjectUserRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -36,7 +39,6 @@ class CreateFlowProjectUserRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $users
      * @return $this
      */
     public function setUsers(array $users)

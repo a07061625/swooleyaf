@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateScalingRule
+ *
  * @method string getLaunchTime()
  * @method string getResourceOwnerId()
  * @method string getRuleCategory()
@@ -38,6 +40,7 @@ class CreateScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $launchTime
+     *
      * @return $this
      */
     public function setLaunchTime($launchTime)
@@ -50,6 +53,7 @@ class CreateScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -62,6 +66,7 @@ class CreateScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ruleCategory
+     *
      * @return $this
      */
     public function setRuleCategory($ruleCategory)
@@ -74,6 +79,7 @@ class CreateScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $adjustmentValue
+     *
      * @return $this
      */
     public function setAdjustmentValue($adjustmentValue)
@@ -86,6 +92,7 @@ class CreateScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $adjustmentType
+     *
      * @return $this
      */
     public function setAdjustmentType($adjustmentType)
@@ -98,6 +105,7 @@ class CreateScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ruleName
+     *
      * @return $this
      */
     public function setRuleName($ruleName)
@@ -110,6 +118,7 @@ class CreateScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -122,6 +131,7 @@ class CreateScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $launchExpirationTime
+     *
      * @return $this
      */
     public function setLaunchExpirationTime($launchExpirationTime)
@@ -134,6 +144,7 @@ class CreateScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $recurrenceValue
+     *
      * @return $this
      */
     public function setRecurrenceValue($recurrenceValue)
@@ -146,6 +157,7 @@ class CreateScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $recurrenceEndTime
+     *
      * @return $this
      */
     public function setRecurrenceEndTime($recurrenceEndTime)
@@ -157,7 +169,6 @@ class CreateScalingRuleRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $cloudWatchTriggers
      * @return $this
      */
     public function setCloudWatchTriggers(array $cloudWatchTriggers)
@@ -177,6 +188,7 @@ class CreateScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $hostGroupId
+     *
      * @return $this
      */
     public function setHostGroupId($hostGroupId)
@@ -188,7 +200,6 @@ class CreateScalingRuleRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $schedulerTriggers
      * @return $this
      */
     public function setSchedulerTriggers(array $schedulerTriggers)
@@ -208,6 +219,7 @@ class CreateScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $cooldown
+     *
      * @return $this
      */
     public function setCooldown($cooldown)
@@ -220,6 +232,7 @@ class CreateScalingRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $recurrenceType
+     *
      * @return $this
      */
     public function setRecurrenceType($recurrenceType)

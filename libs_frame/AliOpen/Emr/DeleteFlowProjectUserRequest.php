@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteFlowProjectUser
+ *
  * @method string getProjectId()
  * @method string getUserName()
  */
@@ -25,6 +27,7 @@ class DeleteFlowProjectUserRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -37,6 +40,7 @@ class DeleteFlowProjectUserRequest extends RpcAcsRequest
 
     /**
      * @param string $userName
+     *
      * @return $this
      */
     public function setUserName($userName)

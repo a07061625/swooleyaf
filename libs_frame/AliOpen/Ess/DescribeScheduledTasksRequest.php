@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ess;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeScheduledTasks
+ *
  * @method string getResourceOwnerId()
  * @method string getScheduledAction2()
  * @method string getScheduledAction1()
@@ -89,6 +91,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -101,6 +104,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction2
+     *
      * @return $this
      */
     public function setScheduledAction2($scheduledAction2)
@@ -113,6 +117,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction1
+     *
      * @return $this
      */
     public function setScheduledAction1($scheduledAction1)
@@ -125,6 +130,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction6
+     *
      * @return $this
      */
     public function setScheduledAction6($scheduledAction6)
@@ -137,6 +143,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction5
+     *
      * @return $this
      */
     public function setScheduledAction5($scheduledAction5)
@@ -149,6 +156,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction4
+     *
      * @return $this
      */
     public function setScheduledAction4($scheduledAction4)
@@ -161,6 +169,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction3
+     *
      * @return $this
      */
     public function setScheduledAction3($scheduledAction3)
@@ -173,6 +182,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction9
+     *
      * @return $this
      */
     public function setScheduledAction9($scheduledAction9)
@@ -185,6 +195,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction8
+     *
      * @return $this
      */
     public function setScheduledAction8($scheduledAction8)
@@ -197,6 +208,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction7
+     *
      * @return $this
      */
     public function setScheduledAction7($scheduledAction7)
@@ -209,6 +221,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -221,6 +234,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName20
+     *
      * @return $this
      */
     public function setScheduledTaskName20($scheduledTaskName20)
@@ -233,6 +247,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName19
+     *
      * @return $this
      */
     public function setScheduledTaskName19($scheduledTaskName19)
@@ -245,6 +260,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName18
+     *
      * @return $this
      */
     public function setScheduledTaskName18($scheduledTaskName18)
@@ -257,6 +273,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId20
+     *
      * @return $this
      */
     public function setScheduledTaskId20($scheduledTaskId20)
@@ -269,6 +286,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName13
+     *
      * @return $this
      */
     public function setScheduledTaskName13($scheduledTaskName13)
@@ -281,6 +299,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName12
+     *
      * @return $this
      */
     public function setScheduledTaskName12($scheduledTaskName12)
@@ -293,6 +312,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName11
+     *
      * @return $this
      */
     public function setScheduledTaskName11($scheduledTaskName11)
@@ -305,6 +325,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName10
+     *
      * @return $this
      */
     public function setScheduledTaskName10($scheduledTaskName10)
@@ -317,6 +338,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName17
+     *
      * @return $this
      */
     public function setScheduledTaskName17($scheduledTaskName17)
@@ -329,6 +351,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName16
+     *
      * @return $this
      */
     public function setScheduledTaskName16($scheduledTaskName16)
@@ -341,6 +364,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -353,6 +377,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName15
+     *
      * @return $this
      */
     public function setScheduledTaskName15($scheduledTaskName15)
@@ -365,6 +390,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName14
+     *
      * @return $this
      */
     public function setScheduledTaskName14($scheduledTaskName14)
@@ -377,6 +403,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId2
+     *
      * @return $this
      */
     public function setScheduledTaskId2($scheduledTaskId2)
@@ -389,6 +416,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId1
+     *
      * @return $this
      */
     public function setScheduledTaskId1($scheduledTaskId1)
@@ -401,6 +429,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId4
+     *
      * @return $this
      */
     public function setScheduledTaskId4($scheduledTaskId4)
@@ -413,6 +442,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId18
+     *
      * @return $this
      */
     public function setScheduledTaskId18($scheduledTaskId18)
@@ -425,6 +455,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId3
+     *
      * @return $this
      */
     public function setScheduledTaskId3($scheduledTaskId3)
@@ -437,6 +468,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId19
+     *
      * @return $this
      */
     public function setScheduledTaskId19($scheduledTaskId19)
@@ -449,6 +481,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId6
+     *
      * @return $this
      */
     public function setScheduledTaskId6($scheduledTaskId6)
@@ -461,6 +494,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId5
+     *
      * @return $this
      */
     public function setScheduledTaskId5($scheduledTaskId5)
@@ -473,6 +507,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId8
+     *
      * @return $this
      */
     public function setScheduledTaskId8($scheduledTaskId8)
@@ -485,6 +520,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName9
+     *
      * @return $this
      */
     public function setScheduledTaskName9($scheduledTaskName9)
@@ -497,6 +533,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction20
+     *
      * @return $this
      */
     public function setScheduledAction20($scheduledAction20)
@@ -509,6 +546,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId7
+     *
      * @return $this
      */
     public function setScheduledTaskId7($scheduledTaskId7)
@@ -521,6 +559,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -533,6 +572,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId12
+     *
      * @return $this
      */
     public function setScheduledTaskId12($scheduledTaskId12)
@@ -545,6 +585,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName7
+     *
      * @return $this
      */
     public function setScheduledTaskName7($scheduledTaskName7)
@@ -557,6 +598,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId9
+     *
      * @return $this
      */
     public function setScheduledTaskId9($scheduledTaskId9)
@@ -569,6 +611,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId13
+     *
      * @return $this
      */
     public function setScheduledTaskId13($scheduledTaskId13)
@@ -581,6 +624,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName8
+     *
      * @return $this
      */
     public function setScheduledTaskName8($scheduledTaskName8)
@@ -593,6 +637,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId10
+     *
      * @return $this
      */
     public function setScheduledTaskId10($scheduledTaskId10)
@@ -605,6 +650,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName5
+     *
      * @return $this
      */
     public function setScheduledTaskName5($scheduledTaskName5)
@@ -617,6 +663,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId11
+     *
      * @return $this
      */
     public function setScheduledTaskId11($scheduledTaskId11)
@@ -629,6 +676,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName6
+     *
      * @return $this
      */
     public function setScheduledTaskName6($scheduledTaskName6)
@@ -641,6 +689,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId16
+     *
      * @return $this
      */
     public function setScheduledTaskId16($scheduledTaskId16)
@@ -653,6 +702,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName3
+     *
      * @return $this
      */
     public function setScheduledTaskName3($scheduledTaskName3)
@@ -665,6 +715,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId17
+     *
      * @return $this
      */
     public function setScheduledTaskId17($scheduledTaskId17)
@@ -677,6 +728,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName4
+     *
      * @return $this
      */
     public function setScheduledTaskName4($scheduledTaskName4)
@@ -689,6 +741,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId14
+     *
      * @return $this
      */
     public function setScheduledTaskId14($scheduledTaskId14)
@@ -701,6 +754,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName1
+     *
      * @return $this
      */
     public function setScheduledTaskName1($scheduledTaskName1)
@@ -713,6 +767,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskId15
+     *
      * @return $this
      */
     public function setScheduledTaskId15($scheduledTaskId15)
@@ -725,6 +780,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledTaskName2
+     *
      * @return $this
      */
     public function setScheduledTaskName2($scheduledTaskName2)
@@ -737,6 +793,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -749,6 +806,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -761,6 +819,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction18
+     *
      * @return $this
      */
     public function setScheduledAction18($scheduledAction18)
@@ -773,6 +832,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction19
+     *
      * @return $this
      */
     public function setScheduledAction19($scheduledAction19)
@@ -785,6 +845,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction16
+     *
      * @return $this
      */
     public function setScheduledAction16($scheduledAction16)
@@ -797,6 +858,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction17
+     *
      * @return $this
      */
     public function setScheduledAction17($scheduledAction17)
@@ -809,6 +871,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction14
+     *
      * @return $this
      */
     public function setScheduledAction14($scheduledAction14)
@@ -821,6 +884,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction15
+     *
      * @return $this
      */
     public function setScheduledAction15($scheduledAction15)
@@ -833,6 +897,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction12
+     *
      * @return $this
      */
     public function setScheduledAction12($scheduledAction12)
@@ -845,6 +910,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction13
+     *
      * @return $this
      */
     public function setScheduledAction13($scheduledAction13)
@@ -857,6 +923,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction10
+     *
      * @return $this
      */
     public function setScheduledAction10($scheduledAction10)
@@ -869,6 +936,7 @@ class DescribeScheduledTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $scheduledAction11
+     *
      * @return $this
      */
     public function setScheduledAction11($scheduledAction11)

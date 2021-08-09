@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of VoiceIdentityRegister
+ *
  * @method string getClientInfo()
  */
 class VoiceIdentityRegisterRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class VoiceIdentityRegisterRequest extends RoaAcsRequest
 
     /**
      * @param string $clientInfo
+     *
      * @return $this
      */
     public function setClientInfo($clientInfo)

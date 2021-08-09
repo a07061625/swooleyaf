@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RunClusterServiceAction
+ *
  * @method string getExecuteStrategy()
  * @method array getHostGroupIdLists()
  * @method string getResourceOwnerId()
@@ -40,6 +42,7 @@ class RunClusterServiceActionRequest extends RpcAcsRequest
 
     /**
      * @param string $executeStrategy
+     *
      * @return $this
      */
     public function setExecuteStrategy($executeStrategy)
@@ -51,7 +54,6 @@ class RunClusterServiceActionRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $hostGroupIdLists
      * @return $this
      */
     public function setHostGroupIdLists(array $hostGroupIdLists)
@@ -66,6 +68,7 @@ class RunClusterServiceActionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -78,6 +81,7 @@ class RunClusterServiceActionRequest extends RpcAcsRequest
 
     /**
      * @param string $onlyRestartStaleConfigNodes
+     *
      * @return $this
      */
     public function setOnlyRestartStaleConfigNodes($onlyRestartStaleConfigNodes)
@@ -90,6 +94,7 @@ class RunClusterServiceActionRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeCountPerBatch
+     *
      * @return $this
      */
     public function setNodeCountPerBatch($nodeCountPerBatch)
@@ -102,6 +107,7 @@ class RunClusterServiceActionRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -114,6 +120,7 @@ class RunClusterServiceActionRequest extends RpcAcsRequest
 
     /**
      * @param string $customCommand
+     *
      * @return $this
      */
     public function setCustomCommand($customCommand)
@@ -126,6 +133,7 @@ class RunClusterServiceActionRequest extends RpcAcsRequest
 
     /**
      * @param string $componentNameList
+     *
      * @return $this
      */
     public function setComponentNameList($componentNameList)
@@ -138,6 +146,7 @@ class RunClusterServiceActionRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceActionName
+     *
      * @return $this
      */
     public function setServiceActionName($serviceActionName)
@@ -150,6 +159,7 @@ class RunClusterServiceActionRequest extends RpcAcsRequest
 
     /**
      * @param string $isRolling
+     *
      * @return $this
      */
     public function setIsRolling($isRolling)
@@ -162,6 +172,7 @@ class RunClusterServiceActionRequest extends RpcAcsRequest
 
     /**
      * @param string $totlerateFailCount
+     *
      * @return $this
      */
     public function setTotlerateFailCount($totlerateFailCount)
@@ -174,6 +185,7 @@ class RunClusterServiceActionRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceName
+     *
      * @return $this
      */
     public function setServiceName($serviceName)
@@ -186,6 +198,7 @@ class RunClusterServiceActionRequest extends RpcAcsRequest
 
     /**
      * @param string $comment
+     *
      * @return $this
      */
     public function setComment($comment)
@@ -198,6 +211,7 @@ class RunClusterServiceActionRequest extends RpcAcsRequest
 
     /**
      * @param string $customParams
+     *
      * @return $this
      */
     public function setCustomParams($customParams)
@@ -210,6 +224,7 @@ class RunClusterServiceActionRequest extends RpcAcsRequest
 
     /**
      * @param string $interval
+     *
      * @return $this
      */
     public function setInterval($interval)
@@ -222,6 +237,7 @@ class RunClusterServiceActionRequest extends RpcAcsRequest
 
     /**
      * @param string $hostIdList
+     *
      * @return $this
      */
     public function setHostIdList($hostIdList)
@@ -234,6 +250,7 @@ class RunClusterServiceActionRequest extends RpcAcsRequest
 
     /**
      * @param string $turnOnMaintenanceMode
+     *
      * @return $this
      */
     public function setTurnOnMaintenanceMode($turnOnMaintenanceMode)

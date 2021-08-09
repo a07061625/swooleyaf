@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateJob
+ *
  * @method string getRunParameter()
  * @method string getRetryInterval()
  * @method string getResourceOwnerId()
@@ -30,6 +32,7 @@ class CreateJobRequest extends RpcAcsRequest
 
     /**
      * @param string $runParameter
+     *
      * @return $this
      */
     public function setRunParameter($runParameter)
@@ -42,6 +45,7 @@ class CreateJobRequest extends RpcAcsRequest
 
     /**
      * @param string $retryInterval
+     *
      * @return $this
      */
     public function setRetryInterval($retryInterval)
@@ -54,6 +58,7 @@ class CreateJobRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -66,6 +71,7 @@ class CreateJobRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -78,6 +84,7 @@ class CreateJobRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -90,6 +97,7 @@ class CreateJobRequest extends RpcAcsRequest
 
     /**
      * @param string $maxRetry
+     *
      * @return $this
      */
     public function setMaxRetry($maxRetry)
@@ -102,6 +110,7 @@ class CreateJobRequest extends RpcAcsRequest
 
     /**
      * @param string $failAct
+     *
      * @return $this
      */
     public function setFailAct($failAct)

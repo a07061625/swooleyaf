@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RunExecutionPlan
+ *
  * @method string getResourceOwnerId()
  * @method string getArguments()
  * @method string getId()
@@ -26,6 +28,7 @@ class RunExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -38,6 +41,7 @@ class RunExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $arguments
+     *
      * @return $this
      */
     public function setArguments($arguments)
@@ -50,6 +54,7 @@ class RunExecutionPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)

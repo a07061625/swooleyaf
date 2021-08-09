@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Emr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryAlarmHistory
+ *
  * @method string getCursor()
  * @method string getResourceOwnerId()
  * @method string getSize()
@@ -29,6 +31,7 @@ class QueryAlarmHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $cursor
+     *
      * @return $this
      */
     public function setCursor($cursor)
@@ -41,6 +44,7 @@ class QueryAlarmHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -53,6 +57,7 @@ class QueryAlarmHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $size
+     *
      * @return $this
      */
     public function setSize($size)
@@ -65,6 +70,7 @@ class QueryAlarmHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -77,6 +83,7 @@ class QueryAlarmHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $startTimeStamp
+     *
      * @return $this
      */
     public function setStartTimeStamp($startTimeStamp)
@@ -89,6 +96,7 @@ class QueryAlarmHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $endTimeStamp
+     *
      * @return $this
      */
     public function setEndTimeStamp($endTimeStamp)
