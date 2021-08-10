@@ -19,15 +19,16 @@ $file = fopen($fileName, 'r');
 while (!feof($file)) {
     $fileContent = fgets($file);
     $prefix = trim(substr($fileContent, 0, 3));
-    if ($prefix == '/**') {
+    if ('/**' == $prefix) {
         $classDoc = $fileContent;
-    } elseif (($prefix == '*') || ($prefix == '*/')) {
+    } elseif (('*' == $prefix) || ('*/' == $prefix)) {
         $classDoc .= $fileContent;
     } elseif (strlen($className) > 0) {
-        if (substr($fileContent, 0, 1) == '}') {
+        if ('}' == substr($fileContent, 0, 1)) {
             $outputFile = __DIR__ . '/' . $productName . '/' . $className . '.php';
             if (is_int(strpos($className, 'ApiResolver'))) {
                 $className = '';
+
                 continue;
             }
 
