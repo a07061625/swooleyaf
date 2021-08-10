@@ -1,0 +1,56 @@
+<?php
+
+namespace AlibabaCloud\Sae;
+
+/**
+ * @method string getIntranet()
+ * @method string getAppId()
+ * @method string getInternet()
+ */
+class UnbindSlb extends Roa
+{
+    /** @var string */
+    public $pathPattern = '/pop/v1/sam/app/slb';
+
+    /** @var string */
+    public $method = 'DELETE';
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withIntranet($value)
+    {
+        $this->data['Intranet'] = $value;
+        $this->options['query']['Intranet'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withAppId($value)
+    {
+        $this->data['AppId'] = $value;
+        $this->options['query']['AppId'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withInternet($value)
+    {
+        $this->data['Internet'] = $value;
+        $this->options['query']['Internet'] = $value;
+
+        return $this;
+    }
+}
