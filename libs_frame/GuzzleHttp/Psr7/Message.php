@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace GuzzleHttp\Psr7;
 
@@ -13,7 +13,7 @@ final class Message
     /**
      * Returns the string representation of an HTTP message.
      *
-     * @param MessageInterface $message Message to convert to a string.
+     * @param MessageInterface $message message to convert to a string
      */
     public static function toString(MessageInterface $message): string
     {
@@ -33,7 +33,7 @@ final class Message
         }
 
         foreach ($message->getHeaders() as $name => $values) {
-            if (strtolower($name) === 'set-cookie') {
+            if ('set-cookie' === strtolower($name)) {
                 foreach ($values as $value) {
                     $msg .= "\r\n{$name}: " . $value;
                 }
@@ -63,7 +63,7 @@ final class Message
 
         $size = $body->getSize();
 
-        if ($size === 0) {
+        if (0 === $size) {
             return null;
         }
 
@@ -109,7 +109,7 @@ final class Message
      * the message, "headers" key containing an associative array of header
      * array values, and a "body" key containing the body of the message.
      *
-     * @param string $message HTTP request or response to parse.
+     * @param string $message HTTP request or response to parse
      */
     public static function parseMessage(string $message): array
     {
@@ -121,21 +121,21 @@ final class Message
 
         $messageParts = preg_split("/\r?\n\r?\n/", $message, 2);
 
-        if ($messageParts === false || count($messageParts) !== 2) {
+        if (false === $messageParts || 2 !== \count($messageParts)) {
             throw new \InvalidArgumentException('Invalid message: Missing header delimiter');
         }
 
-        [$rawHeaders, $body] = $messageParts;
+        list($rawHeaders, $body) = $messageParts;
         $rawHeaders .= "\r\n"; // Put back the delimiter we split previously
         $headerParts = preg_split("/\r?\n/", $rawHeaders, 2);
 
-        if ($headerParts === false || count($headerParts) !== 2) {
+        if (false === $headerParts || 2 !== \count($headerParts)) {
             throw new \InvalidArgumentException('Invalid message: Missing status line');
         }
 
-        [$startLine, $rawHeaders] = $headerParts;
+        list($startLine, $rawHeaders) = $headerParts;
 
-        if (preg_match("/(?:^HTTP\/|^[A-Z]+ \S+ HTTP\/)(\d+(?:\.\d+)?)/i", $startLine, $matches) && $matches[1] === '1.0') {
+        if (preg_match('/(?:^HTTP\\/|^[A-Z]+ \\S+ HTTP\\/)(\\d+(?:\\.\\d+)?)/i', $startLine, $matches) && '1.0' === $matches[1]) {
             // Header folding is deprecated for HTTP/1.1, but allowed in HTTP/1.0
             $rawHeaders = preg_replace(Rfc7230::HEADER_FOLD_REGEX, ' ', $rawHeaders);
         }
@@ -170,12 +170,12 @@ final class Message
      * Constructs a URI for an HTTP request message.
      *
      * @param string $path    Path from the start-line
-     * @param array  $headers Array of headers (each value an array).
+     * @param array  $headers array of headers (each value an array)
      */
     public static function parseRequestUri(string $path, array $headers): string
     {
         $hostKey = array_filter(array_keys($headers), function ($k) {
-            return strtolower($k) === 'host';
+            return 'host' === strtolower($k);
         });
 
         // If no host is found, then a full URI cannot be constructed.
@@ -184,7 +184,7 @@ final class Message
         }
 
         $host = $headers[reset($hostKey)][0];
-        $scheme = substr($host, -4) === ':443' ? 'https' : 'http';
+        $scheme = ':443' === substr($host, -4) ? 'https' : 'http';
 
         return $scheme . '://' . $host . '/' . ltrim($path, '/');
     }
@@ -192,7 +192,7 @@ final class Message
     /**
      * Parses a request message string into a request object.
      *
-     * @param string $message Request message string.
+     * @param string $message request message string
      */
     public static function parseRequest(string $message): RequestInterface
     {
@@ -206,19 +206,19 @@ final class Message
 
         $request = new Request(
             $parts[0],
-            $matches[1] === '/' ? self::parseRequestUri($parts[1], $data['headers']) : $parts[1],
+            '/' === $matches[1] ? self::parseRequestUri($parts[1], $data['headers']) : $parts[1],
             $data['headers'],
             $data['body'],
             $version
         );
 
-        return $matches[1] === '/' ? $request : $request->withRequestTarget($parts[1]);
+        return '/' === $matches[1] ? $request : $request->withRequestTarget($parts[1]);
     }
 
     /**
      * Parses a response message string into a response object.
      *
-     * @param string $message Response message string.
+     * @param string $message response message string
      */
     public static function parseResponse(string $message): ResponseInterface
     {
@@ -232,7 +232,7 @@ final class Message
         $parts = explode(' ', $data['start-line'], 3);
 
         return new Response(
-            (int) $parts[1],
+            (int)$parts[1],
             $data['headers'],
             $data['body'],
             explode('/', $parts[0])[1],

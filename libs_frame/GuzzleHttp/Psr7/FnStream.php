@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace GuzzleHttp\Psr7;
 
@@ -17,14 +17,14 @@ final class FnStream implements StreamInterface
     private const SLOTS = [
         '__toString', 'close', 'detach', 'rewind',
         'getSize', 'tell', 'eof', 'isSeekable', 'seek', 'isWritable', 'write',
-        'isReadable', 'read', 'getContents', 'getMetadata'
+        'isReadable', 'read', 'getContents', 'getMetadata',
     ];
 
     /** @var array<string, callable> */
     private $methods;
 
     /**
-     * @param array<string, callable> $methods Hash of method name to a callable.
+     * @param array<string, callable> $methods hash of method name to a callable
      */
     public function __construct(array $methods)
     {
@@ -33,6 +33,16 @@ final class FnStream implements StreamInterface
         // Create the functions on the class
         foreach ($methods as $name => $fn) {
             $this->{'_fn_' . $name} = $fn;
+        }
+    }
+
+    /**
+     * The close method is called on the underlying stream only if possible.
+     */
+    public function __destruct()
+    {
+        if (isset($this->_fn_close)) {
+            \call_user_func($this->_fn_close);
         }
     }
 
@@ -48,16 +58,6 @@ final class FnStream implements StreamInterface
     }
 
     /**
-     * The close method is called on the underlying stream only if possible.
-     */
-    public function __destruct()
-    {
-        if (isset($this->_fn_close)) {
-            call_user_func($this->_fn_close);
-        }
-    }
-
-    /**
      * An unserialize would allow the __destruct to run when the unserialized value goes out of scope.
      *
      * @throws \LogicException
@@ -65,6 +65,20 @@ final class FnStream implements StreamInterface
     public function __wakeup(): void
     {
         throw new \LogicException('FnStream should never be unserialized');
+    }
+
+    public function __toString(): string
+    {
+        try {
+            return \call_user_func($this->_fn___toString);
+        } catch (\Throwable $e) {
+            if (\PHP_VERSION_ID >= 70400) {
+                throw $e;
+            }
+            trigger_error(sprintf('%s::__toString exception: %s', self::class, (string)$e), E_USER_ERROR);
+
+            return '';
+        }
     }
 
     /**
@@ -89,86 +103,73 @@ final class FnStream implements StreamInterface
         return new self($methods);
     }
 
-    public function __toString(): string
-    {
-        try {
-            return call_user_func($this->_fn___toString);
-        } catch (\Throwable $e) {
-            if (\PHP_VERSION_ID >= 70400) {
-                throw $e;
-            }
-            trigger_error(sprintf('%s::__toString exception: %s', self::class, (string) $e), E_USER_ERROR);
-            return '';
-        }
-    }
-
     public function close(): void
     {
-        call_user_func($this->_fn_close);
+        \call_user_func($this->_fn_close);
     }
 
     public function detach()
     {
-        return call_user_func($this->_fn_detach);
+        return \call_user_func($this->_fn_detach);
     }
 
     public function getSize(): ?int
     {
-        return call_user_func($this->_fn_getSize);
+        return \call_user_func($this->_fn_getSize);
     }
 
     public function tell(): int
     {
-        return call_user_func($this->_fn_tell);
+        return \call_user_func($this->_fn_tell);
     }
 
     public function eof(): bool
     {
-        return call_user_func($this->_fn_eof);
+        return \call_user_func($this->_fn_eof);
     }
 
     public function isSeekable(): bool
     {
-        return call_user_func($this->_fn_isSeekable);
+        return \call_user_func($this->_fn_isSeekable);
     }
 
     public function rewind(): void
     {
-        call_user_func($this->_fn_rewind);
+        \call_user_func($this->_fn_rewind);
     }
 
     public function seek($offset, $whence = SEEK_SET): void
     {
-        call_user_func($this->_fn_seek, $offset, $whence);
+        \call_user_func($this->_fn_seek, $offset, $whence);
     }
 
     public function isWritable(): bool
     {
-        return call_user_func($this->_fn_isWritable);
+        return \call_user_func($this->_fn_isWritable);
     }
 
     public function write($string): int
     {
-        return call_user_func($this->_fn_write, $string);
+        return \call_user_func($this->_fn_write, $string);
     }
 
     public function isReadable(): bool
     {
-        return call_user_func($this->_fn_isReadable);
+        return \call_user_func($this->_fn_isReadable);
     }
 
     public function read($length): string
     {
-        return call_user_func($this->_fn_read, $length);
+        return \call_user_func($this->_fn_read, $length);
     }
 
     public function getContents(): string
     {
-        return call_user_func($this->_fn_getContents);
+        return \call_user_func($this->_fn_getContents);
     }
 
     public function getMetadata($key = null)
     {
-        return call_user_func($this->_fn_getMetadata, $key);
+        return \call_user_func($this->_fn_getMetadata, $key);
     }
 }

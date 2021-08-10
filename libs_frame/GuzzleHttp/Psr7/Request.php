@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace GuzzleHttp\Psr7;
 
@@ -19,7 +19,7 @@ class Request implements RequestInterface
     /** @var string */
     private $method;
 
-    /** @var string|null */
+    /** @var null|string */
     private $requestTarget;
 
     /** @var UriInterface */
@@ -29,7 +29,7 @@ class Request implements RequestInterface
      * @param string                               $method  HTTP method
      * @param string|UriInterface                  $uri     URI
      * @param array<string, string|string[]>       $headers Request headers
-     * @param string|resource|StreamInterface|null $body    Request body
+     * @param null|resource|StreamInterface|string $body    Request body
      * @param string                               $version Protocol version
      */
     public function __construct(
@@ -53,22 +53,22 @@ class Request implements RequestInterface
             $this->updateHostFromUri();
         }
 
-        if ($body !== '' && $body !== null) {
+        if ('' !== $body && null !== $body) {
             $this->stream = Utils::streamFor($body);
         }
     }
 
     public function getRequestTarget(): string
     {
-        if ($this->requestTarget !== null) {
+        if (null !== $this->requestTarget) {
             return $this->requestTarget;
         }
 
         $target = $this->uri->getPath();
-        if ($target === '') {
+        if ('' === $target) {
             $target = '/';
         }
-        if ($this->uri->getQuery() != '') {
+        if ('' != $this->uri->getQuery()) {
             $target .= '?' . $this->uri->getQuery();
         }
 
@@ -85,6 +85,7 @@ class Request implements RequestInterface
 
         $new = clone $this;
         $new->requestTarget = $requestTarget;
+
         return $new;
     }
 
@@ -98,6 +99,7 @@ class Request implements RequestInterface
         $this->assertMethod($method);
         $new = clone $this;
         $new->method = strtoupper($method);
+
         return $new;
     }
 
@@ -126,7 +128,7 @@ class Request implements RequestInterface
     {
         $host = $this->uri->getHost();
 
-        if ($host == '') {
+        if ('' == $host) {
             return;
         }
 
@@ -150,7 +152,7 @@ class Request implements RequestInterface
      */
     private function assertMethod($method): void
     {
-        if (!is_string($method) || $method === '') {
+        if (!\is_string($method) || '' === $method) {
             throw new \InvalidArgumentException('Method must be a non-empty string.');
         }
     }

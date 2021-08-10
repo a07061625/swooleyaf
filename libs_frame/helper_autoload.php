@@ -346,7 +346,7 @@ if (!function_exists('trigger_deprecation')) {
      *
      * @author Nicolas Grekas <p@tchwork.com>
      */
-    function trigger_deprecation(string $package, string $version, string $message, ...$args) : void
+    function trigger_deprecation(string $package, string $version, string $message, ...$args): void
     {
         $msg = '';
         if ($package || $version) {
@@ -364,9 +364,10 @@ if (!function_exists('trigger_deprecation')) {
 if (!function_exists('getallheaders')) {
     /**
      * Get all HTTP header key/values as an associative array for the current request.
-     * @return array[string] The HTTP header key/value pairs.
+     *
+     * @return array[string] The HTTP header key/value pairs
      */
-    function getallheaders() : array
+    function getallheaders(): array
     {
         $headers = [];
 
@@ -377,7 +378,7 @@ if (!function_exists('getallheaders')) {
         ];
 
         foreach ($_SERVER as $key => $value) {
-            if (substr($key, 0, 5) === 'HTTP_') {
+            if ('HTTP_' === substr($key, 0, 5)) {
                 $key = substr($key, 5);
                 if (!isset($copy_server[$key]) || !isset($_SERVER[$key])) {
                     $key = str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', $key))));
@@ -403,11 +404,12 @@ if (!function_exists('getallheaders')) {
     }
 }
 
-if (! function_exists('dot')) {
+if (!function_exists('dot')) {
     /**
      * Create a new Dot object with the given items
      *
-     * @param  mixed $items
+     * @param mixed $items
+     *
      * @return \Adbar\Dot
      */
     function dot($items)

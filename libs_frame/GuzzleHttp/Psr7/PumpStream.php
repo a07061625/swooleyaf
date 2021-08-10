@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace GuzzleHttp\Psr7;
 
@@ -18,10 +18,10 @@ use Psr\Http\Message\StreamInterface;
  */
 final class PumpStream implements StreamInterface
 {
-    /** @var callable|null */
+    /** @var null|callable */
     private $source;
 
-    /** @var int|null */
+    /** @var null|int */
     private $size;
 
     /** @var int */
@@ -59,7 +59,8 @@ final class PumpStream implements StreamInterface
             if (\PHP_VERSION_ID >= 70400) {
                 throw $e;
             }
-            trigger_error(sprintf('%s::__toString exception: %s', self::class, (string) $e), E_USER_ERROR);
+            trigger_error(sprintf('%s::__toString exception: %s', self::class, (string)$e), E_USER_ERROR);
+
             return '';
         }
     }
@@ -73,8 +74,6 @@ final class PumpStream implements StreamInterface
     {
         $this->tellPos = 0;
         $this->source = null;
-
-        return null;
     }
 
     public function getSize(): ?int
@@ -89,7 +88,7 @@ final class PumpStream implements StreamInterface
 
     public function eof(): bool
     {
-        return $this->source === null;
+        return null === $this->source;
     }
 
     public function isSeekable(): bool
@@ -125,14 +124,14 @@ final class PumpStream implements StreamInterface
     public function read($length): string
     {
         $data = $this->buffer->read($length);
-        $readLen = strlen($data);
+        $readLen = \strlen($data);
         $this->tellPos += $readLen;
         $remaining = $length - $readLen;
 
         if ($remaining) {
             $this->pump($remaining);
             $data .= $this->buffer->read($remaining);
-            $this->tellPos += strlen($data) - $readLen;
+            $this->tellPos += \strlen($data) - $readLen;
         }
 
         return $data;
@@ -161,13 +160,14 @@ final class PumpStream implements StreamInterface
     {
         if ($this->source) {
             do {
-                $data = call_user_func($this->source, $length);
-                if ($data === false || $data === null) {
+                $data = \call_user_func($this->source, $length);
+                if (false === $data || null === $data) {
                     $this->source = null;
+
                     return;
                 }
                 $this->buffer->write($data);
-                $length -= strlen($data);
+                $length -= \strlen($data);
             } while ($length > 0);
         }
     }

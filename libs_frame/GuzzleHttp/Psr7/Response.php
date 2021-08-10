@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace GuzzleHttp\Psr7;
 
@@ -87,30 +87,30 @@ class Response implements ResponseInterface
     /**
      * @param int                                  $status  Status code
      * @param array<string, string|string[]>       $headers Response headers
-     * @param string|resource|StreamInterface|null $body    Response body
+     * @param null|resource|StreamInterface|string $body    Response body
      * @param string                               $version Protocol version
-     * @param string|null                          $reason  Reason phrase (when empty a default will be used based on the status code)
+     * @param null|string                          $reason  Reason phrase (when empty a default will be used based on the status code)
      */
     public function __construct(
         int $status = 200,
         array $headers = [],
         $body = null,
         string $version = '1.1',
-        string $reason = null
+        ?string $reason = null
     ) {
         $this->assertStatusCodeRange($status);
 
         $this->statusCode = $status;
 
-        if ($body !== '' && $body !== null) {
+        if ('' !== $body && null !== $body) {
             $this->stream = Utils::streamFor($body);
         }
 
         $this->setHeaders($headers);
-        if ($reason == '' && isset(self::PHRASES[$this->statusCode])) {
+        if ('' == $reason && isset(self::PHRASES[$this->statusCode])) {
             $this->reasonPhrase = self::PHRASES[$this->statusCode];
         } else {
-            $this->reasonPhrase = (string) $reason;
+            $this->reasonPhrase = (string)$reason;
         }
 
         $this->protocol = $version;
@@ -129,15 +129,16 @@ class Response implements ResponseInterface
     public function withStatus($code, $reasonPhrase = ''): ResponseInterface
     {
         $this->assertStatusCodeIsInteger($code);
-        $code = (int) $code;
+        $code = (int)$code;
         $this->assertStatusCodeRange($code);
 
         $new = clone $this;
         $new->statusCode = $code;
-        if ($reasonPhrase == '' && isset(self::PHRASES[$new->statusCode])) {
+        if ('' == $reasonPhrase && isset(self::PHRASES[$new->statusCode])) {
             $reasonPhrase = self::PHRASES[$new->statusCode];
         }
-        $new->reasonPhrase = (string) $reasonPhrase;
+        $new->reasonPhrase = (string)$reasonPhrase;
+
         return $new;
     }
 
@@ -146,7 +147,7 @@ class Response implements ResponseInterface
      */
     private function assertStatusCodeIsInteger($statusCode): void
     {
-        if (filter_var($statusCode, FILTER_VALIDATE_INT) === false) {
+        if (false === filter_var($statusCode, FILTER_VALIDATE_INT)) {
             throw new \InvalidArgumentException('Status code must be an integer value.');
         }
     }

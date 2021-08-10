@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace GuzzleHttp\Psr7;
 
@@ -37,7 +37,7 @@ class ServerRequest extends Request implements ServerRequestInterface
     private $cookieParams = [];
 
     /**
-     * @var array|object|null
+     * @var null|array|object
      */
     private $parsedBody;
 
@@ -60,7 +60,7 @@ class ServerRequest extends Request implements ServerRequestInterface
      * @param string                               $method       HTTP method
      * @param string|UriInterface                  $uri          URI
      * @param array<string, string|string[]>       $headers      Request headers
-     * @param string|resource|StreamInterface|null $body         Request body
+     * @param null|resource|StreamInterface|string $body         Request body
      * @param string                               $version      Protocol version
      * @param array                                $serverParams Typically the $_SERVER superglobal
      */
@@ -91,10 +91,11 @@ class ServerRequest extends Request implements ServerRequestInterface
         foreach ($files as $key => $value) {
             if ($value instanceof UploadedFileInterface) {
                 $normalized[$key] = $value;
-            } elseif (is_array($value) && isset($value['tmp_name'])) {
+            } elseif (\is_array($value) && isset($value['tmp_name'])) {
                 $normalized[$key] = self::createUploadedFileFromSpec($value);
-            } elseif (is_array($value)) {
+            } elseif (\is_array($value)) {
                 $normalized[$key] = self::normalizeFiles($value);
+
                 continue;
             } else {
                 throw new InvalidArgumentException('Invalid value in files specification');
@@ -102,57 +103,6 @@ class ServerRequest extends Request implements ServerRequestInterface
         }
 
         return $normalized;
-    }
-
-    /**
-     * Create and return an UploadedFile instance from a $_FILES specification.
-     *
-     * If the specification represents an array of values, this method will
-     * delegate to normalizeNestedFileSpec() and return that return value.
-     *
-     * @param array $value $_FILES struct
-     *
-     * @return UploadedFileInterface|UploadedFileInterface[]
-     */
-    private static function createUploadedFileFromSpec(array $value)
-    {
-        if (is_array($value['tmp_name'])) {
-            return self::normalizeNestedFileSpec($value);
-        }
-
-        return new UploadedFile(
-            $value['tmp_name'],
-            (int) $value['size'],
-            (int) $value['error'],
-            $value['name'],
-            $value['type']
-        );
-    }
-
-    /**
-     * Normalize an array of file specifications.
-     *
-     * Loops through all nested files and returns a normalized array of
-     * UploadedFileInterface instances.
-     *
-     * @return UploadedFileInterface[]
-     */
-    private static function normalizeNestedFileSpec(array $files = []): array
-    {
-        $normalizedFiles = [];
-
-        foreach (array_keys($files['tmp_name']) as $key) {
-            $spec = [
-                'tmp_name' => $files['tmp_name'][$key],
-                'size'     => $files['size'][$key],
-                'error'    => $files['error'][$key],
-                'name'     => $files['name'][$key],
-                'type'     => $files['type'][$key],
-            ];
-            $normalizedFiles[$key] = self::createUploadedFileFromSpec($spec);
-        }
-
-        return $normalizedFiles;
     }
 
     /**
@@ -171,27 +121,13 @@ class ServerRequest extends Request implements ServerRequestInterface
         $body = new CachingStream(new LazyOpenStream('php://input', 'r+'));
         $protocol = isset($_SERVER['SERVER_PROTOCOL']) ? str_replace('HTTP/', '', $_SERVER['SERVER_PROTOCOL']) : '1.1';
 
-        $serverRequest = new ServerRequest($method, $uri, $headers, $body, $protocol, $_SERVER);
+        $serverRequest = new self($method, $uri, $headers, $body, $protocol, $_SERVER);
 
         return $serverRequest
             ->withCookieParams($_COOKIE)
             ->withQueryParams($_GET)
             ->withParsedBody($_POST)
             ->withUploadedFiles(self::normalizeFiles($_FILES));
-    }
-
-    private static function extractHostAndPortFromAuthority(string $authority): array
-    {
-        $uri = 'http://' . $authority;
-        $parts = parse_url($uri);
-        if (false === $parts) {
-            return [null, null];
-        }
-
-        $host = $parts['host'] ?? null;
-        $port = $parts['port'] ?? null;
-
-        return [$host, $port];
     }
 
     /**
@@ -201,16 +137,16 @@ class ServerRequest extends Request implements ServerRequestInterface
     {
         $uri = new Uri('');
 
-        $uri = $uri->withScheme(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http');
+        $uri = $uri->withScheme(!empty($_SERVER['HTTPS']) && 'off' !== $_SERVER['HTTPS'] ? 'https' : 'http');
 
         $hasPort = false;
         if (isset($_SERVER['HTTP_HOST'])) {
-            [$host, $port] = self::extractHostAndPortFromAuthority($_SERVER['HTTP_HOST']);
-            if ($host !== null) {
+            list($host, $port) = self::extractHostAndPortFromAuthority($_SERVER['HTTP_HOST']);
+            if (null !== $host) {
                 $uri = $uri->withHost($host);
             }
 
-            if ($port !== null) {
+            if (null !== $port) {
                 $hasPort = true;
                 $uri = $uri->withPort($port);
             }
@@ -305,7 +241,7 @@ class ServerRequest extends Request implements ServerRequestInterface
 
     public function getAttribute($attribute, $default = null)
     {
-        if (false === array_key_exists($attribute, $this->attributes)) {
+        if (false === \array_key_exists($attribute, $this->attributes)) {
             return $default;
         }
 
@@ -322,7 +258,7 @@ class ServerRequest extends Request implements ServerRequestInterface
 
     public function withoutAttribute($attribute): ServerRequestInterface
     {
-        if (false === array_key_exists($attribute, $this->attributes)) {
+        if (false === \array_key_exists($attribute, $this->attributes)) {
             return $this;
         }
 
@@ -330,5 +266,70 @@ class ServerRequest extends Request implements ServerRequestInterface
         unset($new->attributes[$attribute]);
 
         return $new;
+    }
+
+    /**
+     * Create and return an UploadedFile instance from a $_FILES specification.
+     *
+     * If the specification represents an array of values, this method will
+     * delegate to normalizeNestedFileSpec() and return that return value.
+     *
+     * @param array $value $_FILES struct
+     *
+     * @return UploadedFileInterface|UploadedFileInterface[]
+     */
+    private static function createUploadedFileFromSpec(array $value)
+    {
+        if (\is_array($value['tmp_name'])) {
+            return self::normalizeNestedFileSpec($value);
+        }
+
+        return new UploadedFile(
+            $value['tmp_name'],
+            (int)$value['size'],
+            (int)$value['error'],
+            $value['name'],
+            $value['type']
+        );
+    }
+
+    /**
+     * Normalize an array of file specifications.
+     *
+     * Loops through all nested files and returns a normalized array of
+     * UploadedFileInterface instances.
+     *
+     * @return UploadedFileInterface[]
+     */
+    private static function normalizeNestedFileSpec(array $files = []): array
+    {
+        $normalizedFiles = [];
+
+        foreach (array_keys($files['tmp_name']) as $key) {
+            $spec = [
+                'tmp_name' => $files['tmp_name'][$key],
+                'size' => $files['size'][$key],
+                'error' => $files['error'][$key],
+                'name' => $files['name'][$key],
+                'type' => $files['type'][$key],
+            ];
+            $normalizedFiles[$key] = self::createUploadedFileFromSpec($spec);
+        }
+
+        return $normalizedFiles;
+    }
+
+    private static function extractHostAndPortFromAuthority(string $authority): array
+    {
+        $uri = 'http://' . $authority;
+        $parts = parse_url($uri);
+        if (false === $parts) {
+            return [null, null];
+        }
+
+        $host = $parts['host'] ?? null;
+        $port = $parts['port'] ?? null;
+
+        return [$host, $port];
     }
 }

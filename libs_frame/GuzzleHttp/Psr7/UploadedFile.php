@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace GuzzleHttp\Psr7;
 
@@ -23,12 +23,12 @@ class UploadedFile implements UploadedFileInterface
     ];
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $clientFilename;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $clientMediaType;
 
@@ -38,7 +38,7 @@ class UploadedFile implements UploadedFileInterface
     private $error;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $file;
 
@@ -48,24 +48,24 @@ class UploadedFile implements UploadedFileInterface
     private $moved = false;
 
     /**
-     * @var int|null
+     * @var null|int
      */
     private $size;
 
     /**
-     * @var StreamInterface|null
+     * @var null|StreamInterface
      */
     private $stream;
 
     /**
-     * @param StreamInterface|string|resource $streamOrFile
+     * @param resource|StreamInterface|string $streamOrFile
      */
     public function __construct(
         $streamOrFile,
         ?int $size,
         int $errorStatus,
-        string $clientFilename = null,
-        string $clientMediaType = null
+        ?string $clientFilename = null,
+        ?string $clientMediaType = null
     ) {
         $this->setError($errorStatus);
         $this->size = $size;
@@ -77,72 +77,9 @@ class UploadedFile implements UploadedFileInterface
         }
     }
 
-    /**
-     * Depending on the value set file or stream variable
-     *
-     * @param StreamInterface|string|resource $streamOrFile
-     *
-     * @throws InvalidArgumentException
-     */
-    private function setStreamOrFile($streamOrFile): void
-    {
-        if (is_string($streamOrFile)) {
-            $this->file = $streamOrFile;
-        } elseif (is_resource($streamOrFile)) {
-            $this->stream = new Stream($streamOrFile);
-        } elseif ($streamOrFile instanceof StreamInterface) {
-            $this->stream = $streamOrFile;
-        } else {
-            throw new InvalidArgumentException(
-                'Invalid stream or file provided for UploadedFile'
-            );
-        }
-    }
-
-    /**
-     * @throws InvalidArgumentException
-     */
-    private function setError(int $error): void
-    {
-        if (false === in_array($error, UploadedFile::ERRORS, true)) {
-            throw new InvalidArgumentException(
-                'Invalid error status for UploadedFile'
-            );
-        }
-
-        $this->error = $error;
-    }
-
-    private function isStringNotEmpty($param): bool
-    {
-        return is_string($param) && false === empty($param);
-    }
-
-    /**
-     * Return true if there is no upload error
-     */
-    private function isOk(): bool
-    {
-        return $this->error === UPLOAD_ERR_OK;
-    }
-
     public function isMoved(): bool
     {
         return $this->moved;
-    }
-
-    /**
-     * @throws RuntimeException if is moved or not ok
-     */
-    private function validateActive(): void
-    {
-        if (false === $this->isOk()) {
-            throw new RuntimeException('Cannot retrieve stream due to upload error');
-        }
-
-        if ($this->isMoved()) {
-            throw new RuntimeException('Cannot retrieve stream after it has already been moved');
-        }
     }
 
     public function getStream(): StreamInterface
@@ -170,7 +107,7 @@ class UploadedFile implements UploadedFileInterface
         }
 
         if ($this->file) {
-            $this->moved = PHP_SAPI === 'cli'
+            $this->moved = \PHP_SAPI === 'cli'
                 ? rename($this->file, $targetPath)
                 : move_uploaded_file($this->file, $targetPath);
         } else {
@@ -207,5 +144,68 @@ class UploadedFile implements UploadedFileInterface
     public function getClientMediaType(): ?string
     {
         return $this->clientMediaType;
+    }
+
+    /**
+     * Depending on the value set file or stream variable
+     *
+     * @param resource|StreamInterface|string $streamOrFile
+     *
+     * @throws InvalidArgumentException
+     */
+    private function setStreamOrFile($streamOrFile): void
+    {
+        if (\is_string($streamOrFile)) {
+            $this->file = $streamOrFile;
+        } elseif (\is_resource($streamOrFile)) {
+            $this->stream = new Stream($streamOrFile);
+        } elseif ($streamOrFile instanceof StreamInterface) {
+            $this->stream = $streamOrFile;
+        } else {
+            throw new InvalidArgumentException(
+                'Invalid stream or file provided for UploadedFile'
+            );
+        }
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     */
+    private function setError(int $error): void
+    {
+        if (false === \in_array($error, self::ERRORS, true)) {
+            throw new InvalidArgumentException(
+                'Invalid error status for UploadedFile'
+            );
+        }
+
+        $this->error = $error;
+    }
+
+    private function isStringNotEmpty($param): bool
+    {
+        return \is_string($param) && false === empty($param);
+    }
+
+    /**
+     * Return true if there is no upload error
+     */
+    private function isOk(): bool
+    {
+        return UPLOAD_ERR_OK === $this->error;
+    }
+
+    /**
+     * @throws RuntimeException if is moved or not ok
+     */
+    private function validateActive(): void
+    {
+        if (false === $this->isOk()) {
+            throw new RuntimeException('Cannot retrieve stream due to upload error');
+        }
+
+        if ($this->isMoved()) {
+            throw new RuntimeException('Cannot retrieve stream after it has already been moved');
+        }
     }
 }

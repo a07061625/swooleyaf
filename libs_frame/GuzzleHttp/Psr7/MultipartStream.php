@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace GuzzleHttp\Psr7;
 
@@ -18,18 +18,18 @@ final class MultipartStream implements StreamInterface
     private $boundary;
 
     /**
-     * @param array  $elements Array of associative arrays, each containing a
+     * @param array  $elements array of associative arrays, each containing a
      *                         required "name" key mapping to the form field,
      *                         name, a required "contents" key mapping to a
      *                         StreamInterface/resource/string, an optional
      *                         "headers" associative array of custom headers,
      *                         and an optional "filename" key mapping to a
-     *                         string to send as the filename in the part.
+     *                         string to send as the filename in the part
      * @param string $boundary You can optionally provide a specific boundary
      *
      * @throws \InvalidArgumentException
      */
-    public function __construct(array $elements = [], string $boundary = null)
+    public function __construct(array $elements = [], ?string $boundary = null)
     {
         $this->boundary = $boundary ?: sha1(uniqid('', true));
         $this->stream = $this->createStream($elements);
@@ -43,21 +43,6 @@ final class MultipartStream implements StreamInterface
     public function isWritable(): bool
     {
         return false;
-    }
-
-    /**
-     * Get the headers needed before transferring the content of a POST file
-     *
-     * @param array<string, string> $headers
-     */
-    private function getHeaders(array $headers): string
-    {
-        $str = '';
-        foreach ($headers as $key => $value) {
-            $str .= "{$key}: {$value}\r\n";
-        }
-
-        return "--{$this->boundary}\r\n" . trim($str) . "\r\n\r\n";
     }
 
     /**
@@ -77,10 +62,25 @@ final class MultipartStream implements StreamInterface
         return $stream;
     }
 
+    /**
+     * Get the headers needed before transferring the content of a POST file
+     *
+     * @param array<string, string> $headers
+     */
+    private function getHeaders(array $headers): string
+    {
+        $str = '';
+        foreach ($headers as $key => $value) {
+            $str .= "{$key}: {$value}\r\n";
+        }
+
+        return "--{$this->boundary}\r\n" . trim($str) . "\r\n\r\n";
+    }
+
     private function addElement(AppendStream $stream, array $element): void
     {
         foreach (['contents', 'name'] as $key) {
-            if (!array_key_exists($key, $element)) {
+            if (!\array_key_exists($key, $element)) {
                 throw new \InvalidArgumentException("A '{$key}' key is required");
             }
         }
@@ -89,12 +89,12 @@ final class MultipartStream implements StreamInterface
 
         if (empty($element['filename'])) {
             $uri = $element['contents']->getMetadata('uri');
-            if (substr($uri, 0, 6) !== 'php://') {
+            if ('php://' !== substr($uri, 0, 6)) {
                 $element['filename'] = $uri;
             }
         }
 
-        [$body, $headers] = $this->createElement(
+        list($body, $headers) = $this->createElement(
             $element['name'],
             $element['contents'],
             $element['filename'] ?? null,
@@ -111,7 +111,7 @@ final class MultipartStream implements StreamInterface
         // Set a default content-disposition header if one was no provided
         $disposition = $this->getHeader($headers, 'content-disposition');
         if (!$disposition) {
-            $headers['Content-Disposition'] = ($filename === '0' || $filename)
+            $headers['Content-Disposition'] = ('0' === $filename || $filename)
                 ? sprintf(
                     'form-data; name="%s"; filename="%s"',
                     $name,
@@ -124,13 +124,13 @@ final class MultipartStream implements StreamInterface
         $length = $this->getHeader($headers, 'content-length');
         if (!$length) {
             if ($length = $stream->getSize()) {
-                $headers['Content-Length'] = (string) $length;
+                $headers['Content-Length'] = (string)$length;
             }
         }
 
         // Set a default Content-Type if one was not supplied
         $type = $this->getHeader($headers, 'content-type');
-        if (!$type && ($filename === '0' || $filename)) {
+        if (!$type && ('0' === $filename || $filename)) {
             if ($type = MimeType::fromFilename($filename)) {
                 $headers['Content-Type'] = $type;
             }
@@ -147,7 +147,5 @@ final class MultipartStream implements StreamInterface
                 return $v;
             }
         }
-
-        return null;
     }
 }

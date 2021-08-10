@@ -53,9 +53,11 @@ interface RequestInterface extends MessageInterface
      * immutability of the message, and MUST return an instance that has the
      * changed request target.
      *
-     * @link http://tools.ietf.org/html/rfc7230#section-5.3 (for the various
+     * @see http://tools.ietf.org/html/rfc7230#section-5.3 (for the various
      *     request-target forms allowed in request messages)
+     *
      * @param mixed $requestTarget
+     *
      * @return static
      */
     public function withRequestTarget($requestTarget);
@@ -63,7 +65,7 @@ interface RequestInterface extends MessageInterface
     /**
      * Retrieves the HTTP method of the request.
      *
-     * @return string Returns the request method.
+     * @return string returns the request method
      */
     public function getMethod();
 
@@ -78,9 +80,11 @@ interface RequestInterface extends MessageInterface
      * immutability of the message, and MUST return an instance that has the
      * changed request method.
      *
-     * @param string $method Case-sensitive method.
+     * @param string $method case-sensitive method
+     *
      * @return static
-     * @throws \InvalidArgumentException for invalid HTTP methods.
+     *
+     * @throws \InvalidArgumentException for invalid HTTP methods
      */
     public function withMethod($method);
 
@@ -89,9 +93,10 @@ interface RequestInterface extends MessageInterface
      *
      * This method MUST return a UriInterface instance.
      *
-     * @link http://tools.ietf.org/html/rfc3986#section-4.3
-     * @return UriInterface Returns a UriInterface instance
-     *     representing the URI of the request.
+     * @see http://tools.ietf.org/html/rfc3986#section-4.3
+     *
+     * @return UriInterface returns a UriInterface instance
+     *                      representing the URI of the request
      */
     public function getUri();
 
@@ -120,9 +125,11 @@ interface RequestInterface extends MessageInterface
      * immutability of the message, and MUST return an instance that has the
      * new UriInterface instance.
      *
-     * @link http://tools.ietf.org/html/rfc3986#section-4.3
-     * @param UriInterface $uri New request URI to use.
-     * @param bool $preserveHost Preserve the original state of the Host header.
+     * @see http://tools.ietf.org/html/rfc3986#section-4.3
+     *
+     * @param UriInterface $uri          new request URI to use
+     * @param bool         $preserveHost preserve the original state of the Host header
+     *
      * @return static
      */
     public function withUri(UriInterface $uri, $preserveHost = false);

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace GuzzleHttp\Psr7;
 
@@ -18,8 +18,8 @@ final class DroppingStream implements StreamInterface
     private $maxLength;
 
     /**
-     * @param StreamInterface $stream    Underlying stream to decorate.
-     * @param int             $maxLength Maximum size before dropping data.
+     * @param StreamInterface $stream    underlying stream to decorate
+     * @param int             $maxLength maximum size before dropping data
      */
     public function __construct(StreamInterface $stream, int $maxLength)
     {
@@ -37,7 +37,7 @@ final class DroppingStream implements StreamInterface
         }
 
         // Write the stream or a subset of the stream if needed.
-        if (strlen($string) < $diff) {
+        if (\strlen($string) < $diff) {
             return $this->stream->write($string);
         }
 
