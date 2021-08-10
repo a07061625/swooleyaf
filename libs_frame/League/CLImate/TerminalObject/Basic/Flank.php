@@ -7,21 +7,21 @@ class Flank extends BasicTerminalObject
     /**
      * The string that will be flanked
      *
-     * @var string $str
+     * @var string
      */
     protected $str;
 
     /**
      * The character(s) to repeat on either side of the string
      *
-     * @var string $char
+     * @var string
      */
     protected $char = '#';
 
     /**
      * How many times the character(s) should be repeated on either side
      *
-     * @var integer $repeat
+     * @var int
      */
     protected $repeat = 3;
 
@@ -49,7 +49,7 @@ class Flank extends BasicTerminalObject
     /**
      * Set the repeat of the flank character(s)
      *
-     * @param integer $repeat
+     * @param int $repeat
      *
      * @return Flank
      */

@@ -11,20 +11,20 @@ class Columns extends BasicTerminalObject
     /**
      * Number of columns
      *
-     * @var integer $column_count
+     * @var int
      */
     protected $column_count;
 
     /**
      * Data to columnize
      *
-     * @var array $data
+     * @var array
      */
     protected $data;
 
     public function __construct($data, $column_count = null)
     {
-        $this->data  = $data;
+        $this->data = $data;
         $this->column_count = $column_count;
     }
 
@@ -35,10 +35,10 @@ class Columns extends BasicTerminalObject
      */
     public function result()
     {
-        $keys      = array_keys($this->data);
+        $keys = array_keys($this->data);
         $first_key = reset($keys);
 
-        return (!is_int($first_key)) ? $this->associativeColumns() : $this->columns();
+        return (!\is_int($first_key)) ? $this->associativeColumns() : $this->columns();
     }
 
     /**
@@ -48,12 +48,12 @@ class Columns extends BasicTerminalObject
      */
     protected function columns()
     {
-        $this->data    = $this->setData();
+        $this->data = $this->setData();
         $column_widths = $this->getColumnWidths();
-        $output        = [];
-        $count         = count(reset($this->data));
+        $output = [];
+        $count = \count(reset($this->data));
 
-        for ($i = 0; $i < $count; $i++) {
+        for ($i = 0; $i < $count; ++$i) {
             $output[] = $this->getRow($i, $column_widths);
         }
 
@@ -66,12 +66,12 @@ class Columns extends BasicTerminalObject
     protected function setData()
     {
         // If it's already an array of arrays, we're good to go
-        if (is_array(reset($this->data))) {
+        if (\is_array(reset($this->data))) {
             return $this->setArrayOfArraysData();
         }
 
         $column_width = $this->getColumnWidth($this->data);
-        $row_count    = $this->getMaxRows($column_width);
+        $row_count = $this->getMaxRows($column_width);
 
         return array_chunk($this->data, $row_count);
     }
@@ -86,8 +86,8 @@ class Columns extends BasicTerminalObject
         $new_data = array_fill(0, $this->column_count, []);
 
         foreach ($this->data as $items) {
-            for ($i = 0; $i < $this->column_count; $i++) {
-                $new_data[$i][] = (array_key_exists($i, $items)) ? $items[$i] : null;
+            for ($i = 0; $i < $this->column_count; ++$i) {
+                $new_data[$i][] = (\array_key_exists($i, $items)) ? $items[$i] : null;
             }
         }
 
@@ -102,7 +102,7 @@ class Columns extends BasicTerminalObject
     protected function associativeColumns()
     {
         $column_width = $this->getColumnWidth(array_keys($this->data));
-        $output       = [];
+        $output = [];
 
         foreach ($this->data as $key => $value) {
             $output[] = $this->pad($key, $column_width) . $value;
@@ -114,7 +114,7 @@ class Columns extends BasicTerminalObject
     /**
      * Get the row of data
      *
-     * @param integer $key
+     * @param int   $key
      * @param array $column_widths
      *
      * @return string
@@ -123,8 +123,8 @@ class Columns extends BasicTerminalObject
     {
         $row = [];
 
-        for ($j = 0; $j < $this->column_count; $j++) {
-            if (isset($this->data[$j]) && array_key_exists($key, $this->data[$j])) {
+        for ($j = 0; $j < $this->column_count; ++$j) {
+            if (isset($this->data[$j]) && \array_key_exists($key, $this->data[$j])) {
                 $row[] = $this->pad($this->data[$j][$key], $column_widths[$j]);
             }
         }
@@ -137,7 +137,7 @@ class Columns extends BasicTerminalObject
      *
      * @param array $data
      *
-     * @return integer
+     * @return int
      */
     protected function getColumnWidth($data)
     {
@@ -154,9 +154,10 @@ class Columns extends BasicTerminalObject
     {
         $column_widths = [];
 
-        for ($i = 0; $i < $this->column_count; $i++) {
+        for ($i = 0; $i < $this->column_count; ++$i) {
             if (!isset($this->data[$i])) {
                 $column_widths[] = 0;
+
                 continue;
             }
             $column_widths[] = $this->getColumnWidth($this->data[$i]);
@@ -168,11 +169,11 @@ class Columns extends BasicTerminalObject
     /**
      * Set the count property
      *
-     * @param integer $column_width
+     * @param int $column_width
      */
     protected function setColumnCount($column_width)
     {
-        $this->column_count = (int) floor($this->util->width() / $column_width);
+        $this->column_count = (int)floor($this->util->width() / $column_width);
     }
 
     /**
@@ -183,7 +184,7 @@ class Columns extends BasicTerminalObject
     protected function setColumnCountViaArray($items)
     {
         $counts = array_map(function ($arr) {
-            return count($arr);
+            return \count($arr);
         }, $items);
 
         $this->column_count = max($counts);
@@ -192,9 +193,9 @@ class Columns extends BasicTerminalObject
     /**
      * Get the number of rows per column
      *
-     * @param integer $column_width
+     * @param int $column_width
      *
-     * @return integer
+     * @return int
      */
     protected function getMaxRows($column_width)
     {
@@ -202,6 +203,6 @@ class Columns extends BasicTerminalObject
             $this->setColumnCount($column_width);
         }
 
-        return ceil(count($this->data) / $this->column_count);
+        return ceil(\count($this->data) / $this->column_count);
     }
 }

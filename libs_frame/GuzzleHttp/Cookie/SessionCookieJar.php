@@ -13,7 +13,7 @@ class SessionCookieJar extends CookieJar
     private $sessionKey;
 
     /**
-     * @var bool Control whether to persist session cookies or not.
+     * @var bool control whether to persist session cookies or not
      */
     private $storeSessionCookies;
 
@@ -22,8 +22,8 @@ class SessionCookieJar extends CookieJar
      *
      * @param string $sessionKey          Session key name to store the cookie
      *                                    data in session
-     * @param bool   $storeSessionCookies Set to true to store session cookies
-     *                                    in the cookie jar.
+     * @param bool   $storeSessionCookies set to true to store session cookies
+     *                                    in the cookie jar
      */
     public function __construct(string $sessionKey, bool $storeSessionCookies = false)
     {
@@ -54,7 +54,7 @@ class SessionCookieJar extends CookieJar
             }
         }
 
-        $_SESSION[$this->sessionKey] = \json_encode($json);
+        $_SESSION[$this->sessionKey] = json_encode($json);
     }
 
     /**
@@ -65,13 +65,13 @@ class SessionCookieJar extends CookieJar
         if (!isset($_SESSION[$this->sessionKey])) {
             return;
         }
-        $data = \json_decode($_SESSION[$this->sessionKey], true);
+        $data = json_decode($_SESSION[$this->sessionKey], true);
         if (\is_array($data)) {
             foreach ($data as $cookie) {
                 $this->setCookie(new SetCookie($cookie));
             }
         } elseif (\strlen($data)) {
-            throw new \RuntimeException("Invalid cookie data");
+            throw new \RuntimeException('Invalid cookie data');
         }
     }
 }

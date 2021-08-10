@@ -9,14 +9,14 @@ class Parser
     /**
      * Filter class to find various types of arguments
      *
-     * @var \League\CLImate\Argument\Filter $filter
+     * @var \League\CLImate\Argument\Filter
      */
     protected $filter;
 
     /**
      * Summary builder class
      *
-     * @var \League\CLImate\Argument\Summary $summary
+     * @var \League\CLImate\Argument\Summary
      */
     protected $summary;
 
@@ -30,7 +30,7 @@ class Parser
     }
 
     /**
-     * @param Filter $filter
+     * @param Filter     $filter
      * @param Argument[] $arguments
      *
      * @return \League\CLImate\Argument\Parser
@@ -48,14 +48,13 @@ class Parser
      *
      * @param array $argv
      *
-     * @return void
-     * @throws InvalidArgumentException if required arguments aren't defined.
+     * @throws InvalidArgumentException if required arguments aren't defined
      */
-    public function parse(array $argv = null)
+    public function parse(?array $argv = null)
     {
         $cliArguments = $this->arguments($argv);
 
-        if (in_array('--', $cliArguments)) {
+        if (\in_array('--', $cliArguments)) {
             $cliArguments = $this->removeTrailingArguments($cliArguments);
         }
 
@@ -67,7 +66,7 @@ class Parser
         // defined on the command line.
         $missingArguments = $this->filter->missing();
 
-        if (count($missingArguments) > 0) {
+        if (\count($missingArguments) > 0) {
             throw new InvalidArgumentException(
                 'The following arguments are required: '
                 . $this->summary->short($missingArguments) . '.'
@@ -82,7 +81,7 @@ class Parser
      *
      * @return string
      */
-    public function command(array $argv = null)
+    public function command(?array $argv = null)
     {
         return $this->getCommandAndArguments($argv)['command'];
     }
@@ -94,7 +93,7 @@ class Parser
      *
      * @return array
      */
-    public function arguments(array $argv = null)
+    public function arguments(?array $argv = null)
     {
         return $this->getCommandAndArguments($argv)['arguments'];
     }
@@ -102,7 +101,7 @@ class Parser
     /**
      * Get the trailing arguments
      *
-     * @return string|null
+     * @return null|string
      */
     public function trailing()
     {
@@ -112,7 +111,7 @@ class Parser
     /**
      * Get the trailing arguments as an array
      *
-     * @return array|null
+     * @return null|array
      */
     public function trailingArray()
     {
@@ -121,8 +120,6 @@ class Parser
 
     /**
      * Remove the trailing arguments from the parser and set them aside
-     *
-     * @param array $arguments
      *
      * @return array
      */
@@ -145,7 +142,6 @@ class Parser
      * Return the arguments passed on the command line that didn't match up with
      * prefixed arguments so they can be assigned to non-prefixed arguments.
      *
-     * @param array $argv
      * @return array
      */
     protected function prefixedArguments(array $argv = [])
@@ -163,8 +159,6 @@ class Parser
      *
      * Non-prefixed arguments are parsed after the prefixed arguments on the
      * command line, in the order that they're defined in the script.
-     *
-     * @param array $unParsedArguments
      */
     protected function nonPrefixedArguments(array $unParsedArguments = [])
     {
@@ -179,12 +173,13 @@ class Parser
      * Parse the name and value of the argument passed in
      *
      * @param string $cliArgument
+     *
      * @return string[] [$name, $value]
      */
     protected function getNameAndValue($cliArgument)
     {
         // Look for arguments defined in the "key=value" format.
-        if (strpos($cliArgument, '=') !== false) {
+        if (false !== strpos($cliArgument, '=')) {
             return explode('=', $cliArgument, 2);
         }
 
@@ -198,8 +193,8 @@ class Parser
      * Attempt to set the an argument's value and remove applicable
      * arguments from array
      *
-     * @param array $argv
-     * @param int $key
+     * @param array  $argv
+     * @param int    $key
      * @param string $passed_argument
      *
      * @return array The new $argv
@@ -223,10 +218,10 @@ class Parser
     /**
      * Set the argument's value
      *
-     * @param array $argv
-     * @param Argument $argument
-     * @param int $key
-     * @param string|null $value
+     * @param array       $argv
+     * @param Argument    $argument
+     * @param int         $key
+     * @param null|string $value
      *
      * @return array The new $argv
      */
@@ -236,11 +231,12 @@ class Parser
         // be defined on the command line to be set.
         if ($argument->noValue()) {
             $argument->setValue(true);
+
             return $argv;
         }
 
-        if (is_null($value)) {
-            if (count($argv) === 0) {
+        if (null === $value) {
+            if (0 === \count($argv)) {
                 return $argv;
             }
 
@@ -250,6 +246,7 @@ class Parser
             if ($this->isValidArgumentValue($nextArgvValue)) {
                 $argument->setValue($nextArgvValue);
                 unset($argv[$key + 1]);
+
                 return $argv;
             }
         }
@@ -263,6 +260,7 @@ class Parser
      * Check if the value is considered a valid input value.
      *
      * @param $argumentValue
+     *
      * @return bool
      */
     protected function isValidArgumentValue($argumentValue)
@@ -280,7 +278,7 @@ class Parser
     protected function findPrefixedArgument($name)
     {
         foreach ($this->filter->withPrefix() as $argument) {
-            if (in_array($name, ["-{$argument->prefix()}", "--{$argument->longPrefix()}"])) {
+            if (\in_array($name, ["-{$argument->prefix()}", "--{$argument->longPrefix()}"])) {
                 return $argument;
             }
         }
@@ -292,17 +290,18 @@ class Parser
      * Pull a command name and arguments from $argv.
      *
      * @param array $argv
+     *
      * @return array
      */
-    protected function getCommandAndArguments(array $argv = null)
+    protected function getCommandAndArguments(?array $argv = null)
     {
         // If no $argv is provided then use the global PHP defined $argv.
-        if (is_null($argv)) {
+        if (null === $argv) {
             global $argv;
         }
 
         $arguments = $argv;
-        $command   = array_shift($arguments);
+        $command = array_shift($arguments);
 
         return compact('arguments', 'command');
     }

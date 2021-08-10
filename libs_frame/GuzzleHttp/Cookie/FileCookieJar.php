@@ -15,7 +15,7 @@ class FileCookieJar extends CookieJar
     private $filename;
 
     /**
-     * @var bool Control whether to persist session cookies or not.
+     * @var bool control whether to persist session cookies or not
      */
     private $storeSessionCookies;
 
@@ -23,8 +23,8 @@ class FileCookieJar extends CookieJar
      * Create a new FileCookieJar object
      *
      * @param string $cookieFile          File to store the cookie data
-     * @param bool   $storeSessionCookies Set to true to store session cookies
-     *                                    in the cookie jar.
+     * @param bool   $storeSessionCookies set to true to store session cookies
+     *                                    in the cookie jar
      *
      * @throws \RuntimeException if the file cannot be found or created
      */
@@ -34,7 +34,7 @@ class FileCookieJar extends CookieJar
         $this->filename = $cookieFile;
         $this->storeSessionCookies = $storeSessionCookies;
 
-        if (\file_exists($cookieFile)) {
+        if (file_exists($cookieFile)) {
             $this->load($cookieFile);
         }
     }
@@ -65,7 +65,7 @@ class FileCookieJar extends CookieJar
         }
 
         $jsonStr = Utils::jsonEncode($json);
-        if (false === \file_put_contents($filename, $jsonStr, \LOCK_EX)) {
+        if (false === file_put_contents($filename, $jsonStr, \LOCK_EX)) {
             throw new \RuntimeException("Unable to save file {$filename}");
         }
     }
@@ -75,17 +75,17 @@ class FileCookieJar extends CookieJar
      *
      * Old cookies are kept unless overwritten by newly loaded ones.
      *
-     * @param string $filename Cookie file to load.
+     * @param string $filename cookie file to load
      *
-     * @throws \RuntimeException if the file cannot be loaded.
+     * @throws \RuntimeException if the file cannot be loaded
      */
     public function load(string $filename): void
     {
-        $json = \file_get_contents($filename);
+        $json = file_get_contents($filename);
         if (false === $json) {
             throw new \RuntimeException("Unable to load file {$filename}");
         }
-        if ($json === '') {
+        if ('' === $json) {
             return;
         }
 
@@ -94,7 +94,7 @@ class FileCookieJar extends CookieJar
             foreach ($data as $cookie) {
                 $this->setCookie(new SetCookie($cookie));
             }
-        } elseif (\is_scalar($data) && !empty($data)) {
+        } elseif (is_scalar($data) && !empty($data)) {
             throw new \RuntimeException("Invalid cookie file: {$filename}");
         }
     }

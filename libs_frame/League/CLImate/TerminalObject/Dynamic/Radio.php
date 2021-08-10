@@ -7,8 +7,6 @@ class Radio extends Checkboxes
     /**
      * Build out the checkboxes
      *
-     * @param array $options
-     *
      * @return Checkbox\RadioGroup
      */
     protected function buildCheckboxes(array $options)
@@ -26,13 +24,13 @@ class Radio extends Checkboxes
      */
     protected function handleCharacter($char)
     {
-        # Ignore space, as we can't select multiple options
-        if ($char === " ") {
+        // Ignore space, as we can't select multiple options
+        if (' ' === $char) {
             return false;
         }
 
-        # Use enter to select the current option
-        if ($char === "\n") {
+        // Use enter to select the current option
+        if ("\n" === $char) {
             $this->checkboxes->toggleCurrent();
         }
 

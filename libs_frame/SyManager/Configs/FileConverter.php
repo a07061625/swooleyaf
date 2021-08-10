@@ -4,12 +4,13 @@ namespace SyManager\Configs;
 
 /**
  * Class FileConverter
+ *
  * @package SyManager\Configs
  */
 class FileConverter implements IConvertable
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public static function convert(IConfigurable $source, IConfigurable $target)
     {
@@ -17,7 +18,7 @@ class FileConverter implements IConvertable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public static function convertAndSave(IConfigurable $source, IConfigurable $target)
     {

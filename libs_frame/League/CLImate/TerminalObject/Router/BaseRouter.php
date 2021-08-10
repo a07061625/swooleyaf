@@ -33,21 +33,21 @@ abstract class BaseRouter implements RouterInterface
      * Determines if the requested class is a
      * valid terminal object class
      *
-     * @param  string  $class
+     * @param string $class
      *
-     * @return boolean
+     * @return bool
      */
     public function exists($class)
     {
         $class = $this->path($class);
 
-        return (is_object($class) || class_exists($class));
+        return \is_object($class) || class_exists($class);
     }
 
     /**
      * Get the full path for the terminal object class
      *
-     * @param  string $class
+     * @param string $class
      *
      * @return string
      */
@@ -61,11 +61,11 @@ abstract class BaseRouter implements RouterInterface
      *
      * @param string $key
      *
-     * @return string|false Full class path to extension
+     * @return false|string Full class path to extension
      */
     protected function getExtension($key)
     {
-        if (array_key_exists($key, $this->extensions)) {
+        if (\array_key_exists($key, $this->extensions)) {
             return $this->extensions[$key];
         }
 

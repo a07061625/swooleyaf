@@ -14,7 +14,7 @@ $xdebug->check();
 unset($xdebug);
 
 $dir = isset($argv[1]) ? $argv[1] : __DIR__ . '/../tests/compliance/perf';
-is_dir($dir) or die('Dir not found: ' . $dir);
+is_dir($dir) || die('Dir not found: ' . $dir);
 // Warm up the runner
 \JmesPath\Env::search('foo', []);
 
@@ -38,6 +38,7 @@ function runSuite($file)
             );
         }
     }
+
     return $total;
 }
 
@@ -46,7 +47,7 @@ function runCase($given, $expression, $name)
     $best = 99999;
     $runtime = \JmesPath\Env::createRuntime();
 
-    for ($i = 0; $i < 100; $i++) {
+    for ($i = 0; $i < 100; ++$i) {
         $t = microtime(true);
         $runtime($expression, $given);
         $tryTime = (microtime(true) - $t) * 1000;

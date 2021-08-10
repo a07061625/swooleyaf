@@ -3,7 +3,6 @@
 namespace AlibabaCloud\Client\Request\Traits;
 
 use AlibabaCloud\Client\Exception\ClientException;
-use RuntimeException;
 use AlibabaCloud\Client\Request\Request;
 
 /**
@@ -14,8 +13,11 @@ trait DeprecatedTrait
 {
     /**
      * @param $content
+     *
      * @return $this
+     *
      * @throws ClientException
+     *
      * @deprecated
      * @codeCoverageIgnore
      */
@@ -26,8 +28,11 @@ trait DeprecatedTrait
 
     /**
      * @param $method
+     *
      * @return $this
+     *
      * @throws ClientException
+     *
      * @deprecated
      * @codeCoverageIgnore
      */
@@ -38,8 +43,11 @@ trait DeprecatedTrait
 
     /**
      * @param $scheme
+     *
      * @return $this
+     *
      * @throws ClientException
+     *
      * @deprecated
      * @codeCoverageIgnore
      */
@@ -59,8 +67,11 @@ trait DeprecatedTrait
 
     /**
      * @param $scheme
+     *
      * @return $this
+     *
      * @throws ClientException
+     *
      * @deprecated
      * @codeCoverageIgnore
      */
@@ -71,8 +82,11 @@ trait DeprecatedTrait
 
     /**
      * @param $actionName
+     *
      * @return $this
+     *
      * @throws ClientException
+     *
      * @deprecated
      * @codeCoverageIgnore
      */
@@ -83,8 +97,11 @@ trait DeprecatedTrait
 
     /**
      * @param $format
+     *
      * @return $this
+     *
      * @throws ClientException
+     *
      * @deprecated
      * @codeCoverageIgnore
      */
@@ -132,7 +149,9 @@ trait DeprecatedTrait
     /**
      * @param $headerKey
      * @param $headerValue
+     *
      * @return $this
+     *
      * @deprecated
      * @codeCoverageIgnore
      */
@@ -155,7 +174,9 @@ trait DeprecatedTrait
     /**
      * @param $name
      * @param $value
+     *
      * @return $this
+     *
      * @deprecated
      * @codeCoverageIgnore
      */
@@ -178,7 +199,9 @@ trait DeprecatedTrait
     /**
      * @param $name
      * @param $value
+     *
      * @return $this
+     *
      * @deprecated
      * @codeCoverageIgnore
      */

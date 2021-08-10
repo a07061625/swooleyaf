@@ -8,7 +8,7 @@ trait StringLength
      * Tags the should not be ultimately considered
      * when calculating any string lengths
      *
-     * @var array $ignore_tags
+     * @var array
      */
     protected $ignore_tags = [];
 
@@ -17,7 +17,7 @@ trait StringLength
      */
     protected function setIgnoreTags()
     {
-        if (!count($this->ignore_tags)) {
+        if (!\count($this->ignore_tags)) {
             $this->ignore_tags = array_keys($this->parser->tags->all());
         }
     }
@@ -25,9 +25,9 @@ trait StringLength
     /**
      * Determine the length of the string without any tags
      *
-     * @param  string  $str
+     * @param string $str
      *
-     * @return integer
+     * @return int
      */
     protected function lengthWithoutTags($str)
     {
@@ -39,7 +39,7 @@ trait StringLength
     /**
      * Get the string without the tags that are to be ignored
      *
-     * @param  string $str
+     * @param string $str
      *
      * @return string
      */
@@ -63,7 +63,7 @@ trait StringLength
     {
         $padding = $final_length - $this->lengthWithoutTags($str);
 
-        if ($padding_side == 'left') {
+        if ('left' == $padding_side) {
             return str_repeat(' ', $padding) . $str;
         }
 
@@ -73,8 +73,8 @@ trait StringLength
     /**
      * Apply padding to an array of strings
      *
-     * @param  array $arr
-     * @param  integer $final_length
+     * @param array  $arr
+     * @param int    $final_length
      * @param string $padding_side
      *
      * @return array
@@ -91,7 +91,6 @@ trait StringLength
     /**
      * Find the max string length in an array
      *
-     * @param array $arr
      * @return int
      */
     protected function maxStrLen(array $arr)
@@ -102,7 +101,6 @@ trait StringLength
     /**
      * Get an array of the string lengths from an array of strings
      *
-     * @param array $arr
      * @return array
      */
     protected function arrayOfStrLens(array $arr)

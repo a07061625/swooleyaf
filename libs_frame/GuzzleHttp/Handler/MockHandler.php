@@ -25,7 +25,7 @@ class MockHandler implements \Countable
     private $queue = [];
 
     /**
-     * @var RequestInterface|null
+     * @var null|RequestInterface
      */
     private $lastRequest;
 
@@ -35,38 +35,25 @@ class MockHandler implements \Countable
     private $lastOptions = [];
 
     /**
-     * @var callable|null
+     * @var null|callable
      */
     private $onFulfilled;
 
     /**
-     * @var callable|null
+     * @var null|callable
      */
     private $onRejected;
-
-    /**
-     * Creates a new MockHandler that uses the default handler stack list of
-     * middlewares.
-     *
-     * @param array|null    $queue       Array of responses, callables, or exceptions.
-     * @param callable|null $onFulfilled Callback to invoke when the return value is fulfilled.
-     * @param callable|null $onRejected  Callback to invoke when the return value is rejected.
-     */
-    public static function createWithMiddleware(array $queue = null, callable $onFulfilled = null, callable $onRejected = null): HandlerStack
-    {
-        return HandlerStack::create(new self($queue, $onFulfilled, $onRejected));
-    }
 
     /**
      * The passed in value must be an array of
      * {@see \Psr\Http\Message\ResponseInterface} objects, Exceptions,
      * callables, or Promises.
      *
-     * @param array<int, mixed>|null $queue       The parameters to be passed to the append function, as an indexed array.
-     * @param callable|null          $onFulfilled Callback to invoke when the return value is fulfilled.
-     * @param callable|null          $onRejected  Callback to invoke when the return value is rejected.
+     * @param null|array<int, mixed> $queue       the parameters to be passed to the append function, as an indexed array
+     * @param null|callable          $onFulfilled callback to invoke when the return value is fulfilled
+     * @param null|callable          $onRejected  callback to invoke when the return value is rejected
      */
-    public function __construct(array $queue = null, callable $onFulfilled = null, callable $onRejected = null)
+    public function __construct(?array $queue = null, ?callable $onFulfilled = null, ?callable $onRejected = null)
     {
         $this->onFulfilled = $onFulfilled;
         $this->onRejected = $onRejected;
@@ -83,18 +70,19 @@ class MockHandler implements \Countable
             throw new \OutOfBoundsException('Mock queue is empty');
         }
 
-        if (isset($options['delay']) && \is_numeric($options['delay'])) {
-            \usleep((int) $options['delay'] * 1000);
+        if (isset($options['delay']) && is_numeric($options['delay'])) {
+            usleep((int)$options['delay'] * 1000);
         }
 
         $this->lastRequest = $request;
         $this->lastOptions = $options;
-        $response = \array_shift($this->queue);
+        $response = array_shift($this->queue);
 
         if (isset($options['on_headers'])) {
             if (!\is_callable($options['on_headers'])) {
                 throw new \InvalidArgumentException('on_headers must be callable');
             }
+
             try {
                 $options['on_headers']($response);
             } catch (\Exception $e) {
@@ -118,14 +106,14 @@ class MockHandler implements \Countable
                     ($this->onFulfilled)($value);
                 }
 
-                if ($value !== null && isset($options['sink'])) {
-                    $contents = (string) $value->getBody();
+                if (null !== $value && isset($options['sink'])) {
+                    $contents = (string)$value->getBody();
                     $sink = $options['sink'];
 
                     if (\is_resource($sink)) {
-                        \fwrite($sink, $contents);
+                        fwrite($sink, $contents);
                     } elseif (\is_string($sink)) {
-                        \file_put_contents($sink, $contents);
+                        file_put_contents($sink, $contents);
                     } elseif ($sink instanceof StreamInterface) {
                         $sink->write($contents);
                     }
@@ -138,9 +126,23 @@ class MockHandler implements \Countable
                 if ($this->onRejected) {
                     ($this->onRejected)($reason);
                 }
+
                 return P\Create::rejectionFor($reason);
             }
         );
+    }
+
+    /**
+     * Creates a new MockHandler that uses the default handler stack list of
+     * middlewares.
+     *
+     * @param null|array    $queue       array of responses, callables, or exceptions
+     * @param null|callable $onFulfilled callback to invoke when the return value is fulfilled
+     * @param null|callable $onRejected  callback to invoke when the return value is rejected
+     */
+    public static function createWithMiddleware(?array $queue = null, ?callable $onFulfilled = null, ?callable $onRejected = null): HandlerStack
+    {
+        return HandlerStack::create(new self($queue, $onFulfilled, $onRejected));
     }
 
     /**
@@ -194,12 +196,12 @@ class MockHandler implements \Countable
     }
 
     /**
-     * @param mixed $reason Promise or reason.
+     * @param mixed $reason promise or reason
      */
     private function invokeStats(
         RequestInterface $request,
         array $options,
-        ResponseInterface $response = null,
+        ?ResponseInterface $response = null,
         $reason = null
     ): void {
         if (isset($options['on_stats'])) {

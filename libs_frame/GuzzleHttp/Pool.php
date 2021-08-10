@@ -29,9 +29,9 @@ class Pool implements PromisorInterface
     private $each;
 
     /**
-     * @param ClientInterface $client   Client used to send the requests.
-     * @param array|\Iterator $requests Requests or functions that return
-     *                                  requests to send concurrently.
+     * @param ClientInterface $client   client used to send the requests
+     * @param array|\Iterator $requests requests or functions that return
+     *                                  requests to send concurrently
      * @param array           $config   Associative array of options
      *                                  - concurrency: (int) Maximum number of requests to send concurrently
      *                                  - options: Array of request options to apply to each request.
@@ -84,14 +84,14 @@ class Pool implements PromisorInterface
      * indeterminate number of requests concurrently.
      *
      * @param ClientInterface $client   Client used to send the requests
-     * @param array|\Iterator $requests Requests to send concurrently.
+     * @param array|\Iterator $requests requests to send concurrently
      * @param array           $options  Passes through the options available in
      *                                  {@see \GuzzleHttp\Pool::__construct}
      *
-     * @return array Returns an array containing the response or an exception
-     *               in the same order that the requests were sent.
+     * @return array returns an array containing the response or an exception
+     *               in the same order that the requests were sent
      *
-     * @throws \InvalidArgumentException if the event format is incorrect.
+     * @throws \InvalidArgumentException if the event format is incorrect
      */
     public static function batch(ClientInterface $client, $requests, array $options = []): array
     {
@@ -100,7 +100,7 @@ class Pool implements PromisorInterface
         self::cmpCallback($options, 'rejected', $res);
         $pool = new static($client, $requests, $options);
         $pool->promise()->wait();
-        \ksort($res);
+        ksort($res);
 
         return $res;
     }

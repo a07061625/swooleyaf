@@ -7,16 +7,16 @@ abstract class BaseDecorator implements DecoratorInterface
     /**
      * An array of defaults for the decorator
      *
-     * @var array $defaults;
+     * @var array;
      */
     protected $defaults = [];
 
     /**
      * An array of currently set codes for the decorator
      *
-     * @var array $current;
+     * @var array;
      */
-    protected $current  = [];
+    protected $current = [];
 
     public function __construct()
     {

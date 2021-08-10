@@ -9,67 +9,67 @@ class Progress extends DynamicTerminalObject
     /**
      * The total number of items involved
      *
-     * @var integer $total
+     * @var int
      */
     protected $total = 0;
 
     /**
      * The current item that the progress bar represents
      *
-     * @var integer $current
+     * @var int
      */
     protected $current = 0;
 
     /**
      * The current percentage displayed
      *
-     * @var string $current_percentage
+     * @var string
      */
     protected $current_percentage = '';
 
     /**
      * The string length of the bar when at 100%
      *
-     * @var integer $bar_str_len
+     * @var int
      */
     protected $bar_str_len;
 
     /**
      * Flag indicating whether we are writing the bar for the first time
      *
-     * @var boolean $first_line
+     * @var bool
      */
     protected $first_line = true;
 
     /**
      * Current status bar label
      *
-     * @var string $label
+     * @var string
      */
     protected $label;
 
     /**
      * Force a redraw every time
      *
-     * @var boolean $force_redraw
+     * @var bool
      */
     protected $force_redraw = false;
 
     /**
      * If this progress bar ever displayed a label.
      *
-     * @var boolean $has_label_line
+     * @var bool
      */
     protected $has_label_line = false;
 
     /**
      * If they pass in a total, set the total
      *
-     * @param integer $total
+     * @param int $total
      */
     public function __construct($total = null)
     {
-        if ($total !== null) {
+        if (null !== $total) {
             $this->total($total);
         }
     }
@@ -77,7 +77,7 @@ class Progress extends DynamicTerminalObject
     /**
      * Set the total property
      *
-     * @param  integer $total
+     * @param int $total
      *
      * @return Progress
      */
@@ -91,15 +91,14 @@ class Progress extends DynamicTerminalObject
     /**
      * Determines the current percentage we are at and re-writes the progress bar
      *
-     * @param integer $current
-     * @param mixed   $label
+     * @param int   $current
+     * @param mixed $label
      *
-     * @return void
      * @throws UnexpectedValueException
      */
     public function current($current, $label = null)
     {
-        if ($this->total == 0) {
+        if (0 == $this->total) {
             // Avoid dividing by 0
             throw new UnexpectedValueException('The progress total must be greater than zero.');
         }
@@ -111,13 +110,13 @@ class Progress extends DynamicTerminalObject
         $this->drawProgressBar($current, $label);
 
         $this->current = $current;
-        $this->label   = $label;
+        $this->label = $label;
     }
 
     /**
      * Increments the current position we are at and re-writes the progress bar
      *
-     * @param integer $increment The number of items to increment by
+     * @param int    $increment The number of items to increment by
      * @param string $label
      */
     public function advance($increment = 1, $label = null)
@@ -128,30 +127,30 @@ class Progress extends DynamicTerminalObject
     /**
      * Force the progress bar to redraw every time regardless of whether it has changed or not
      *
-     * @param boolean $force
+     * @param bool $force
+     *
      * @return Progress
      */
     public function forceRedraw($force = true)
     {
-        $this->force_redraw = !!$force;
+        $this->force_redraw = (bool)$force;
 
         return $this;
     }
 
-
     /**
      * Update a progress bar using an iterable.
      *
-     * @param iterable $items Array or any other iterable object
+     * @param iterable $items    Array or any other iterable object
      * @param callable $callback A handler to run on each item
      */
-    public function each($items, callable $callback = null)
+    public function each($items, ?callable $callback = null)
     {
         if ($items instanceof \Traversable) {
             $items = iterator_to_array($items);
         }
 
-        $total = count($items);
+        $total = \count($items);
         if (!$total) {
             return;
         }
@@ -167,7 +166,6 @@ class Progress extends DynamicTerminalObject
             $this->advance(1, $label);
         }
     }
-
 
     /**
      * Draw the progress bar, if necessary
@@ -190,7 +188,7 @@ class Progress extends DynamicTerminalObject
     /**
      * Build the progress bar str and return it
      *
-     * @param integer $current
+     * @param int    $current
      * @param string $label
      *
      * @return string
@@ -207,13 +205,13 @@ class Progress extends DynamicTerminalObject
         // Move the cursor up and clear it to the end
         $line_count = $this->has_label_line ? 2 : 1;
 
-        $progress_bar  = $this->util->cursor->up($line_count);
+        $progress_bar = $this->util->cursor->up($line_count);
         $progress_bar .= $this->util->cursor->startOfCurrentLine();
         $progress_bar .= $this->util->cursor->deleteCurrentLine();
         $progress_bar .= $this->getProgressBarStr($current, $label);
 
         // If this line has a label then set that this progress bar has a label line
-        if (strlen($label) > 0) {
+        if (\strlen($label) > 0) {
             $this->has_label_line = true;
         }
 
@@ -224,7 +222,7 @@ class Progress extends DynamicTerminalObject
      * Get the progress bar string, basically:
      * =============>             50% label
      *
-     * @param integer $current
+     * @param int    $current
      * @param string $label
      *
      * @return string
@@ -234,8 +232,8 @@ class Progress extends DynamicTerminalObject
         $percentage = $current / $this->total;
         $bar_length = round($this->getBarStrLen() * $percentage);
 
-        $bar        = $this->getBar($bar_length);
-        $number     = $this->percentageFormatted($percentage);
+        $bar = $this->getBar($bar_length);
+        $number = $this->percentageFormatted($percentage);
 
         if ($label) {
             $label = $this->labelFormatted($label);
@@ -251,13 +249,13 @@ class Progress extends DynamicTerminalObject
     /**
      * Get the string for the actual bar based on the current length
      *
-     * @param integer $length
+     * @param int $length
      *
      * @return string
      */
     protected function getBar($length)
     {
-        $bar     = str_repeat('=', $length);
+        $bar = str_repeat('=', $length);
         $padding = str_repeat(' ', $this->getBarStrLen() - $length);
 
         return "{$bar}>{$padding}";
@@ -266,7 +264,7 @@ class Progress extends DynamicTerminalObject
     /**
      * Get the length of the bar string based on the width of the terminal window
      *
-     * @return integer
+     * @return int
      */
     protected function getBarStrLen()
     {
@@ -281,7 +279,8 @@ class Progress extends DynamicTerminalObject
     /**
      * Format the percentage so it looks pretty
      *
-     * @param integer $percentage
+     * @param int $percentage
+     *
      * @return float
      */
     protected function percentageFormatted($percentage)
@@ -293,6 +292,7 @@ class Progress extends DynamicTerminalObject
      * Format the label so it is positioned correctly
      *
      * @param string $label
+     *
      * @return string
      */
     protected function labelFormatted($label)
@@ -306,10 +306,10 @@ class Progress extends DynamicTerminalObject
      * @param string $percentage
      * @param string $label
      *
-     * @return boolean
+     * @return bool
      */
     protected function shouldRedraw($percentage, $label)
     {
-        return ($this->force_redraw || $percentage != $this->current_percentage || $label != $this->label);
+        return $this->force_redraw || $percentage != $this->current_percentage || $label != $this->label;
     }
 }

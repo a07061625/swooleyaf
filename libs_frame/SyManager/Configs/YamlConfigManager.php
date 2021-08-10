@@ -8,6 +8,7 @@ use Symfony\Component\Yaml\Yaml;
 
 /**
  * Class YamlConfigManager
+ *
  * @package SyManager\Configs
  */
 class YamlConfigManager extends AbstractConfigManager
@@ -33,14 +34,15 @@ class YamlConfigManager extends AbstractConfigManager
      * Prepare and write config file on disk
      *
      * @param null|string $configFilePath
-     * @param bool $autoReloadConfig
+     * @param bool        $autoReloadConfig
      *
      * @return IConfigurable
+     *
      * @throws RuntimeException
      */
     public function saveConfigFile($configFilePath = null, $autoReloadConfig = false)
     {
-        if (is_null($configFilePath)) {
+        if (null === $configFilePath) {
             $configFilePath = $this->configFilePath;
         }
 

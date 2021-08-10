@@ -21,7 +21,7 @@ final class Middleware
      * The options array must be set to a CookieJarInterface in order to use
      * cookies. This is typically handled for you by a client.
      *
-     * @return callable Returns a function that accepts the next handler.
+     * @return callable returns a function that accepts the next handler
      */
     public static function cookies(): callable
     {
@@ -29,15 +29,18 @@ final class Middleware
             return static function ($request, array $options) use ($handler) {
                 if (empty($options['cookies'])) {
                     return $handler($request, $options);
-                } elseif (!($options['cookies'] instanceof CookieJarInterface)) {
+                }
+                if (!($options['cookies'] instanceof CookieJarInterface)) {
                     throw new \InvalidArgumentException('cookies must be an instance of GuzzleHttp\Cookie\CookieJarInterface');
                 }
                 $cookieJar = $options['cookies'];
                 $request = $cookieJar->withCookieHeader($request);
+
                 return $handler($request, $options)
                     ->then(
                         static function (ResponseInterface $response) use ($cookieJar, $request): ResponseInterface {
                             $cookieJar->extractCookies($request, $response);
+
                             return $response;
                         }
                     );
@@ -49,23 +52,25 @@ final class Middleware
      * Middleware that throws exceptions for 4xx or 5xx responses when the
      * "http_errors" request option is set to true.
      *
-     * @param BodySummarizerInterface|null $bodySummarizer The body summarizer to use in exception messages.
+     * @param null|BodySummarizerInterface $bodySummarizer the body summarizer to use in exception messages
      *
-     * @return callable(callable): callable Returns a function that accepts the next handler.
+     * @return callable(callable): callable Returns a function that accepts the next handler
      */
-    public static function httpErrors(BodySummarizerInterface $bodySummarizer = null): callable
+    public static function httpErrors(?BodySummarizerInterface $bodySummarizer = null): callable
     {
         return static function (callable $handler) use ($bodySummarizer): callable {
             return static function ($request, array $options) use ($handler, $bodySummarizer) {
                 if (empty($options['http_errors'])) {
                     return $handler($request, $options);
                 }
+
                 return $handler($request, $options)->then(
                     static function (ResponseInterface $response) use ($request, $bodySummarizer) {
                         $code = $response->getStatusCode();
                         if ($code < 400) {
                             return $response;
                         }
+
                         throw RequestException::create($request, $response, null, [], $bodySummarizer);
                     }
                 );
@@ -76,11 +81,11 @@ final class Middleware
     /**
      * Middleware that pushes history data to an ArrayAccess container.
      *
-     * @param array|\ArrayAccess<int, array> $container Container to hold the history (by reference).
+     * @param array|\ArrayAccess<int, array> $container container to hold the history (by reference)
      *
-     * @return callable(callable): callable Returns a function that accepts the next handler.
+     * @return callable(callable): callable Returns a function that accepts the next handler
      *
-     * @throws \InvalidArgumentException if container is not an array or ArrayAccess.
+     * @throws \InvalidArgumentException if container is not an array or ArrayAccess
      */
     public static function history(&$container): callable
     {
@@ -93,20 +98,22 @@ final class Middleware
                 return $handler($request, $options)->then(
                     static function ($value) use ($request, &$container, $options) {
                         $container[] = [
-                            'request'  => $request,
+                            'request' => $request,
                             'response' => $value,
-                            'error'    => null,
-                            'options'  => $options
+                            'error' => null,
+                            'options' => $options,
                         ];
+
                         return $value;
                     },
                     static function ($reason) use ($request, &$container, $options) {
                         $container[] = [
-                            'request'  => $request,
+                            'request' => $request,
                             'response' => null,
-                            'error'    => $reason,
-                            'options'  => $options
+                            'error' => $reason,
+                            'options' => $options,
                         ];
+
                         return P\Create::rejectionFor($reason);
                     }
                 );
@@ -122,12 +129,12 @@ final class Middleware
      * before listener accepts a request and options array, and the after
      * listener accepts a request, options array, and response promise.
      *
-     * @param callable $before Function to invoke before forwarding the request.
-     * @param callable $after  Function invoked after forwarding.
+     * @param callable $before function to invoke before forwarding the request
+     * @param callable $after  function invoked after forwarding
      *
-     * @return callable Returns a function that accepts the next handler.
+     * @return callable returns a function that accepts the next handler
      */
-    public static function tap(callable $before = null, callable $after = null): callable
+    public static function tap(?callable $before = null, ?callable $after = null): callable
     {
         return static function (callable $handler) use ($before, $after): callable {
             return static function (RequestInterface $request, array $options) use ($handler, $before, $after) {
@@ -138,6 +145,7 @@ final class Middleware
                 if ($after) {
                     $after($request, $options, $response);
                 }
+
                 return $response;
             };
         };
@@ -146,7 +154,7 @@ final class Middleware
     /**
      * Middleware that handles request redirects.
      *
-     * @return callable Returns a function that accepts the next handler.
+     * @return callable returns a function that accepts the next handler
      */
     public static function redirect(): callable
     {
@@ -162,15 +170,15 @@ final class Middleware
      * If no delay function is provided, a simple implementation of exponential
      * backoff will be utilized.
      *
-     * @param callable $decider Function that accepts the number of retries,
+     * @param callable $decider function that accepts the number of retries,
      *                          a request, [response], and [exception] and
-     *                          returns true if the request is to be retried.
-     * @param callable $delay   Function that accepts the number of retries and
-     *                          returns the number of milliseconds to delay.
+     *                          returns true if the request is to be retried
+     * @param callable $delay   function that accepts the number of retries and
+     *                          returns the number of milliseconds to delay
      *
-     * @return callable Returns a function that accepts the next handler.
+     * @return callable returns a function that accepts the next handler
      */
-    public static function retry(callable $decider, callable $delay = null): callable
+    public static function retry(callable $decider, ?callable $delay = null): callable
     {
         return static function (callable $handler) use ($decider, $delay): RetryMiddleware {
             return new RetryMiddleware($decider, $handler, $delay);
@@ -183,11 +191,11 @@ final class Middleware
      *
      * @phpstan-param \Psr\Log\LogLevel::* $logLevel  Level at which to log requests.
      *
-     * @param LoggerInterface                            $logger    Logs messages.
-     * @param MessageFormatterInterface|MessageFormatter $formatter Formatter used to create message strings.
-     * @param string                                     $logLevel  Level at which to log requests.
+     * @param LoggerInterface                            $logger    logs messages
+     * @param MessageFormatter|MessageFormatterInterface $formatter formatter used to create message strings
+     * @param string                                     $logLevel  level at which to log requests
      *
-     * @return callable Returns a function that accepts the next handler.
+     * @return callable returns a function that accepts the next handler
      */
     public static function log(LoggerInterface $logger, $formatter, string $logLevel = 'info'): callable
     {
@@ -202,12 +210,14 @@ final class Middleware
                     static function ($response) use ($logger, $request, $formatter, $logLevel): ResponseInterface {
                         $message = $formatter->format($request, $response);
                         $logger->log($logLevel, $message);
+
                         return $response;
                     },
                     static function ($reason) use ($logger, $request, $formatter): PromiseInterface {
                         $response = $reason instanceof RequestException ? $reason->getResponse() : null;
                         $message = $formatter->format($request, $response, P\Create::exceptionFor($reason));
                         $logger->error($message);
+
                         return P\Create::rejectionFor($reason);
                     }
                 );
@@ -230,8 +240,8 @@ final class Middleware
      * Middleware that applies a map function to the request before passing to
      * the next handler.
      *
-     * @param callable $fn Function that accepts a RequestInterface and returns
-     *                     a RequestInterface.
+     * @param callable $fn function that accepts a RequestInterface and returns
+     *                     a RequestInterface
      */
     public static function mapRequest(callable $fn): callable
     {
@@ -246,8 +256,8 @@ final class Middleware
      * Middleware that applies a map function to the resolved promise's
      * response.
      *
-     * @param callable $fn Function that accepts a ResponseInterface and
-     *                     returns a ResponseInterface.
+     * @param callable $fn function that accepts a ResponseInterface and
+     *                     returns a ResponseInterface
      */
     public static function mapResponse(callable $fn): callable
     {

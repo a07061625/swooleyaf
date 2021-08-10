@@ -11,7 +11,7 @@ class AggregateException extends RejectionException
     {
         parent::__construct(
             $reasons,
-            sprintf('%s; %d rejected promises', $msg, count($reasons))
+            sprintf('%s; %d rejected promises', $msg, \count($reasons))
         );
     }
 }

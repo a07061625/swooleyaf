@@ -2,23 +2,26 @@
 
 namespace AlibabaCloud\Client\Traits;
 
-use AlibabaCloud\Client\Filter\ClientFilter;
 use AlibabaCloud\Client\Exception\ClientException;
+use AlibabaCloud\Client\Filter\ClientFilter;
 
 /**
  * Trait RegionTrait
+ *
  * @package AlibabaCloud\Client\Traits
  */
 trait RegionTrait
 {
     /**
-     * @var string|null
+     * @var null|string
      */
     public $regionId;
 
     /**
      * @param string $regionId
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function regionId($regionId)

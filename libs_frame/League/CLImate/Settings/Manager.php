@@ -7,16 +7,16 @@ class Manager
     /**
      * An array of settings that have been... set
      *
-     * @var array $settings
+     * @var array
      */
     protected $settings = [];
 
     /**
      * Check and see if the requested setting is a valid, registered setting
      *
-     * @param  string  $name
+     * @param string $name
      *
-     * @return boolean
+     * @return bool
      */
     public function exists($name)
     {
@@ -32,10 +32,10 @@ class Manager
     public function add($name, $value)
     {
         $setting = $this->getPath($name);
-        $key     = $this->getClassName($name);
+        $key = $this->getClassName($name);
 
         // If the current key doesn't exist in the settings array, set it up
-        if (!array_key_exists($name, $this->settings)) {
+        if (!\array_key_exists($name, $this->settings)) {
             $this->settings[$key] = new $setting();
         }
 
@@ -45,13 +45,13 @@ class Manager
     /**
      * Get the value of the requested setting if it exists
      *
-     * @param  string $key
+     * @param string $key
      *
      * @return mixed
      */
     public function get($key)
     {
-        if (array_key_exists($key, $this->settings)) {
+        if (\array_key_exists($key, $this->settings)) {
             return $this->settings[$key];
         }
 
@@ -61,7 +61,7 @@ class Manager
     /**
      * Get the short name for the requested settings class
      *
-     * @param  string $name
+     * @param string $name
      *
      * @return string
      */
@@ -73,7 +73,7 @@ class Manager
     /**
      * Get the short class name for the setting
      *
-     * @param  string $name
+     * @param string $name
      *
      * @return string
      */

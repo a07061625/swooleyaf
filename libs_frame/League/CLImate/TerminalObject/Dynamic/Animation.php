@@ -11,16 +11,16 @@ class Animation extends DynamicTerminalObject
     use Art;
 
     /**
-     * @var \League\CLImate\TerminalObject\Helper\Sleeper $sleeper
+     * @var \League\CLImate\TerminalObject\Helper\Sleeper
      */
     protected $sleeper;
 
     /**
-     * @var \League\CLImate\TerminalObject\Dynamic\Animation\Keyframe $keyframes
+     * @var \League\CLImate\TerminalObject\Dynamic\Animation\Keyframe
      */
     protected $keyframes;
 
-    public function __construct($art, Sleeper $sleeper = null, Keyframe $keyframes = null)
+    public function __construct($art, ?Sleeper $sleeper = null, ?Keyframe $keyframes = null)
     {
         // Add the default art directory
         $this->addDir(__DIR__ . \DIRECTORY_SEPARATOR);
@@ -36,7 +36,7 @@ class Animation extends DynamicTerminalObject
      */
     public function run()
     {
-        $files     = $this->artDir($this->art);
+        $files = $this->artDir($this->art);
         $animation = [];
 
         foreach ($files as $file) {
@@ -50,7 +50,7 @@ class Animation extends DynamicTerminalObject
      * Set the speed of the animation based on a percentage
      * (50% slower, 200% faster, etc)
      *
-     * @param int|float $percentage
+     * @param float|int $percentage
      *
      * @return \League\CLImate\TerminalObject\Dynamic\Animation
      */
@@ -65,6 +65,7 @@ class Animation extends DynamicTerminalObject
      * Scroll the art
      *
      * @param string $direction
+     *
      * @return bool
      */
     public function scroll($direction = 'right')
@@ -73,13 +74,13 @@ class Animation extends DynamicTerminalObject
 
         $mapping = $this->getScrollDirectionMapping();
 
-        if (!array_key_exists($direction, $mapping)) {
+        if (!\array_key_exists($direction, $mapping)) {
             return false;
         }
 
-        $lines       = $this->getLines();
-        $enter_from  = $mapping[$direction];
-        $exit_to     = $mapping[$enter_from];
+        $lines = $this->getLines();
+        $enter_from = $mapping[$direction];
+        $exit_to = $mapping[$enter_from];
 
         $this->animate($this->keyframes->scroll($lines, $enter_from, $exit_to));
     }
@@ -111,12 +112,12 @@ class Animation extends DynamicTerminalObject
     protected function getScrollDirectionMapping()
     {
         return [
-            'left'   => 'right',
-            'right'  => 'left',
-            'top'    => 'bottom',
+            'left' => 'right',
+            'right' => 'left',
+            'top' => 'bottom',
             'bottom' => 'top',
-            'up'     => 'bottom',
-            'down'   => 'top',
+            'up' => 'bottom',
+            'down' => 'top',
         ];
     }
 
@@ -138,7 +139,7 @@ class Animation extends DynamicTerminalObject
      */
     protected function setKeyFrames($keyframes)
     {
-        $this->keyframes = $keyframes ?: new Keyframe;
+        $this->keyframes = $keyframes ?: new Keyframe();
     }
 
     /**
@@ -162,15 +163,14 @@ class Animation extends DynamicTerminalObject
         foreach ($keyframes as $lines) {
             $this->writeKeyFrame($lines, $count);
             $this->sleeper->sleep();
-            $count = count($lines);
+            $count = \count($lines);
         }
     }
 
     /**
      * Write the current keyframe to the terminal, line by line
      *
-     * @param array $lines
-     * @param integer $count
+     * @param int $count
      */
     protected function writeKeyFrame(array $lines, $count)
     {
@@ -184,15 +184,15 @@ class Animation extends DynamicTerminalObject
      * Format the line to re-write previous lines, if necessary
      *
      * @param string $line
-     * @param integer $key
-     * @param integer $last_frame_count
+     * @param int    $key
+     * @param int    $last_frame_count
      *
      * @return string
      */
     protected function getLineFormatted($line, $key, $last_frame_count)
     {
         // If this is the first thing we're writing, just return the line
-        if ($last_frame_count == 0) {
+        if (0 == $last_frame_count) {
             return $line;
         }
 
@@ -200,7 +200,7 @@ class Animation extends DynamicTerminalObject
 
         // If this is the first line of the frame,
         // move the cursor up the total number of previous lines from the previous frame
-        if ($key == 0) {
+        if (0 == $key) {
             $content .= $this->util->cursor->up($last_frame_count);
         }
 

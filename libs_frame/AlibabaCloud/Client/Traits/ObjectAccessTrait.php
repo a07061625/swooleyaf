@@ -4,26 +4,28 @@ namespace AlibabaCloud\Client\Traits;
 
 /**
  * Trait ObjectAccessTrait
+ *
  * @package   AlibabaCloud\Client\Traits
  */
 trait ObjectAccessTrait
 {
     /**
      * @param string $name
-     * @return mixed|null
+     *
+     * @return null|mixed
      */
     public function __get($name)
     {
         if (!isset($this->data[$name])) {
-            return null;
+            return;
         }
 
-        return \json_decode(\json_encode($this->data))->$name;
+        return json_decode(json_encode($this->data))->{$name};
     }
 
     /**
      * @param string $name
-     * @param mixed $value
+     * @param mixed  $value
      */
     public function __set($name, $value)
     {
@@ -32,6 +34,7 @@ trait ObjectAccessTrait
 
     /**
      * @param string $name
+     *
      * @return bool
      */
     public function __isset($name)
@@ -41,7 +44,6 @@ trait ObjectAccessTrait
 
     /**
      * @param $name
-     * @return void
      */
     public function __unset($name)
     {

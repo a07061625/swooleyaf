@@ -34,7 +34,9 @@ use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class Request
+ *
  * @package   AlibabaCloud\Client\Request
+ *
  * @method string stringToSign()
  * @method string resolveParameter()
  */
@@ -66,10 +68,6 @@ abstract class Request implements ArrayAccess
      */
     public $format = 'JSON';
     /**
-     * @var string HTTP Scheme
-     */
-    protected $scheme = 'http';
-    /**
      * @var string
      */
     public $client;
@@ -78,9 +76,13 @@ abstract class Request implements ArrayAccess
      */
     public $uri;
     /**
-     * @var array The original parameters of the request.
+     * @var array the original parameters of the request
      */
     public $data = [];
+    /**
+     * @var string HTTP Scheme
+     */
+    protected $scheme = 'http';
     /**
      * @var array
      */
@@ -88,7 +90,7 @@ abstract class Request implements ArrayAccess
 
     /**
      * Request constructor.
-     * @param array $options
+     *
      * @throws ClientException
      */
     public function __construct(array $options = [])
@@ -101,12 +103,12 @@ abstract class Request implements ArrayAccess
         $this->options['timeout'] = self::TIMEOUT;
 
         // Turn on debug mode based on environment variable.
-        if (strtolower(\AlibabaCloud\Client\env('DEBUG')) === 'sdk') {
+        if ('sdk' === strtolower(\AlibabaCloud\Client\env('DEBUG'))) {
             $this->options['debug'] = true;
         }
 
         // Rewrite configuration if the user has a configuration.
-        if ($options !== []) {
+        if ([] !== $options) {
             $this->options($options);
         }
     }
@@ -114,7 +116,9 @@ abstract class Request implements ArrayAccess
     /**
      * @param string $name
      * @param string $value
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function appendUserAgent($name, $value)
@@ -129,7 +133,6 @@ abstract class Request implements ArrayAccess
     }
 
     /**
-     * @param array $userAgent
      * @return $this
      */
     public function withUserAgent(array $userAgent)
@@ -141,8 +144,11 @@ abstract class Request implements ArrayAccess
 
     /**
      * Set Accept format.
+     *
      * @param string $format
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function format($format)
@@ -154,7 +160,9 @@ abstract class Request implements ArrayAccess
 
     /**
      * @param $contentType
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function contentType($contentType)
@@ -166,7 +174,9 @@ abstract class Request implements ArrayAccess
 
     /**
      * @param string $accept
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function accept($accept)
@@ -178,8 +188,11 @@ abstract class Request implements ArrayAccess
 
     /**
      * Set the request body.
+     *
      * @param string $body
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function body($body)
@@ -191,8 +204,11 @@ abstract class Request implements ArrayAccess
 
     /**
      * Set the json as body.
+     *
      * @param array|object $content
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function jsonBody($content)
@@ -201,13 +217,16 @@ abstract class Request implements ArrayAccess
             throw new ClientException('jsonBody only accepts an array or object', SDK::INVALID_ARGUMENT);
         }
 
-        return $this->body(\json_encode($content));
+        return $this->body(json_encode($content));
     }
 
     /**
      * Set the request scheme.
+     *
      * @param string $scheme
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function scheme($scheme)
@@ -220,8 +239,11 @@ abstract class Request implements ArrayAccess
 
     /**
      * Set the request host.
+     *
      * @param string $host
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function host($host)
@@ -233,7 +255,9 @@ abstract class Request implements ArrayAccess
 
     /**
      * @param string $method
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function method($method)
@@ -245,7 +269,9 @@ abstract class Request implements ArrayAccess
 
     /**
      * @param string $clientName
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function client($clientName)
@@ -257,16 +283,17 @@ abstract class Request implements ArrayAccess
 
     /**
      * @return bool
+     *
      * @throws ClientException
      */
     public function isDebug()
     {
         if (isset($this->options['debug'])) {
-            return $this->options['debug'] === true;
+            return true === $this->options['debug'];
         }
 
         if (isset($this->httpClient()->options['debug'])) {
-            return $this->httpClient()->options['debug'] === true;
+            return true === $this->httpClient()->options['debug'];
         }
 
         return false;
@@ -286,7 +313,7 @@ abstract class Request implements ArrayAccess
         $this->resolveParameter();
 
         if (isset($this->options['form_params'])) {
-            if (function_exists('\GuzzleHttp\Psr7\parse_query')) {
+            if (\function_exists('\GuzzleHttp\Psr7\parse_query')) {
                 $this->options['form_params'] = \GuzzleHttp\Psr7\parse_query(Encode::create($this->options['form_params'])->toString());
             } else {
                 $this->options['form_params'] = \GuzzleHttp\Psr7\Query::parse(Encode::create($this->options['form_params'])->toString());
@@ -298,6 +325,7 @@ abstract class Request implements ArrayAccess
 
     /**
      * @return Result
+     *
      * @throws ClientException
      * @throws ServerException
      */
@@ -317,8 +345,9 @@ abstract class Request implements ArrayAccess
         return $result;
     }
 
-    /***
+    /**
      * @return PromiseInterface
+     *
      * @throws Exception
      */
     public function requestAsync()
@@ -330,10 +359,12 @@ abstract class Request implements ArrayAccess
 
     /**
      * @param Request $request
+     *
      * @return Client
+     *
      * @throws Exception
      */
-    public static function createClient(Request $request = null)
+    public static function createClient(?self $request = null)
     {
         if (AlibabaCloud::hasMock()) {
             $stack = HandlerStack::create(AlibabaCloud::getMock());
@@ -349,7 +380,7 @@ abstract class Request implements ArrayAccess
             $stack->push(Middleware::log(AlibabaCloud::getLogger(), new MessageFormatter(AlibabaCloud::getLogFormat())));
         }
 
-        $stack->push(Middleware::mapResponse(static function(ResponseInterface $response) use ($request){
+        $stack->push(Middleware::mapResponse(static function (ResponseInterface $response) use ($request) {
             return new Result($response, $request);
         }));
 
@@ -370,28 +401,31 @@ abstract class Request implements ArrayAccess
             if ($this->shouldClientRetry($exception)) {
                 return $this->response();
             }
+
             throw new ClientException($exception->getMessage(), SDK::SERVER_UNREACHABLE, $exception);
         }
     }
 
     /**
      * Remove redundant Query
+     *
      * @codeCoverageIgnore
      */
     private function cleanQuery()
     {
-        if (isset($this->options['query']) && $this->options['query'] === []) {
+        if (isset($this->options['query']) && [] === $this->options['query']) {
             unset($this->options['query']);
         }
     }
 
     /**
      * Remove redundant Headers
+     *
      * @codeCoverageIgnore
      */
     private function cleanFormParams()
     {
-        if (isset($this->options['form_params']) && $this->options['form_params'] === []) {
+        if (isset($this->options['form_params']) && [] === $this->options['form_params']) {
             unset($this->options['form_params']);
         }
     }

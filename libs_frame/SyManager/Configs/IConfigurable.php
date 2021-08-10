@@ -6,6 +6,7 @@ use RuntimeException;
 
 /**
  * Class ConfigManager, class for easily read and access to php config array file.
+ *
  * @package SyManager\Configs
  */
 interface IConfigurable
@@ -23,9 +24,10 @@ interface IConfigurable
      * Prepare and write config file on disk
      *
      * @param null|string $configFilePath
-     * @param bool $autoReloadConfig
+     * @param bool        $autoReloadConfig
      *
      * @return IConfigurable
+     *
      * @throws RuntimeException
      */
     public function saveConfigFile($configFilePath = null, $autoReloadConfig = false);
@@ -34,7 +36,7 @@ interface IConfigurable
      * Get value from config data throught keyValue path
      *
      * @param string $configPath
-     * @param mixed $defaultValue
+     * @param mixed  $defaultValue
      *
      * @return mixed
      */
@@ -53,7 +55,7 @@ interface IConfigurable
      * Set value in config path
      *
      * @param string $configPath
-     * @param mixed $newValue
+     * @param mixed  $newValue
      *
      * @return IConfigurable
      */
@@ -61,6 +63,7 @@ interface IConfigurable
 
     /**
      * Returns the whole internal configuration as array
+     *
      * @return array
      */
     public function getConfig();
@@ -69,6 +72,7 @@ interface IConfigurable
      * Sets the whole internal configuration from array
      *
      * @param array $config
+     *
      * @return IConfigurable
      */
     public function setConfig($config);
@@ -77,8 +81,7 @@ interface IConfigurable
      * Converts the current instance into another one provided as argument,
      * migrating its internal configuration and returning the new one.
      *
-     * @param IConfigurable $target
      * @return IConfigurable
      */
-    public function convert(IConfigurable $target);
+    public function convert(self $target);
 }

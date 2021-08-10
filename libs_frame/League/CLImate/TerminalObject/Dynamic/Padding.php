@@ -7,31 +7,30 @@ class Padding extends DynamicTerminalObject
     /**
      * The length that lines should be padded to
      *
-     * @var integer $length
+     * @var int
      */
     protected $length = 0;
 
     /**
      * The character(s) that should be used to pad
      *
-     * @var string $char
+     * @var string
      */
     protected $char = '.';
-
 
     /**
      * If they pass in a padding character, set the char
      *
-     * @param int $length
+     * @param int    $length
      * @param string $char
      */
     public function __construct($length = null, $char = null)
     {
-        if ($length !== null) {
+        if (null !== $length) {
             $this->length($length);
         }
 
-        if (is_string($char)) {
+        if (\is_string($char)) {
             $this->char($char);
         }
     }
@@ -53,7 +52,7 @@ class Padding extends DynamicTerminalObject
     /**
      * Set the length of the line that should be generated
      *
-     * @param integer $length
+     * @param int $length
      *
      * @return \League\CLImate\TerminalObject\Dynamic\Padding
      */
@@ -62,40 +61,6 @@ class Padding extends DynamicTerminalObject
         $this->length = $length;
 
         return $this;
-    }
-
-    /**
-     * Get the length of the line based on the width of the terminal window
-     *
-     * @return integer
-     */
-    protected function getLength()
-    {
-        if (!$this->length) {
-            $this->length = $this->util->width();
-        }
-
-        return $this->length;
-    }
-
-    /**
-     * Pad the content with the characters
-     *
-     * @param string $content
-     *
-     * @return string
-     */
-    protected function padContent($content)
-    {
-        if (strlen($this->char) > 0) {
-            $length = $this->getLength();
-            $padding_length = ceil($length / mb_strlen($this->char));
-
-            $padding = str_repeat($this->char, $padding_length);
-            $content .= mb_substr($padding, 0, $length - mb_strlen($content));
-        }
-
-        return $content;
     }
 
     /**
@@ -137,5 +102,39 @@ class Padding extends DynamicTerminalObject
     public function result($content)
     {
         $this->output->write($this->parser->apply(' ' . $content));
+    }
+
+    /**
+     * Get the length of the line based on the width of the terminal window
+     *
+     * @return int
+     */
+    protected function getLength()
+    {
+        if (!$this->length) {
+            $this->length = $this->util->width();
+        }
+
+        return $this->length;
+    }
+
+    /**
+     * Pad the content with the characters
+     *
+     * @param string $content
+     *
+     * @return string
+     */
+    protected function padContent($content)
+    {
+        if (\strlen($this->char) > 0) {
+            $length = $this->getLength();
+            $padding_length = ceil($length / mb_strlen($this->char));
+
+            $padding = str_repeat($this->char, $padding_length);
+            $content .= mb_substr($padding, 0, $length - mb_strlen($content));
+        }
+
+        return $content;
     }
 }

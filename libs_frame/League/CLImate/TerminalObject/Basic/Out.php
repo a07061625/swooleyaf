@@ -7,7 +7,7 @@ class Out extends BasicTerminalObject
     /**
      * The content to output
      *
-     * @var string $content
+     * @var string
      */
     protected $content;
 

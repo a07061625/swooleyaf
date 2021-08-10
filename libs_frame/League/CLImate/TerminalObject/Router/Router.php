@@ -10,33 +10,36 @@ use League\CLImate\Util\UtilImporter;
 
 class Router
 {
-    use ParserImporter, SettingsImporter, OutputImporter, UtilImporter;
+    use ParserImporter;
+    use SettingsImporter;
+    use OutputImporter;
+    use UtilImporter;
 
     /**
      * An instance of the Settings Manager class
      *
-     * @var \League\CLImate\Settings\Manager $settings;
+     * @var \League\CLImate\Settings\Manager;
      */
     protected $settings;
 
     /**
      * An instance of the Dynamic Router class
      *
-     * @var \League\CLImate\TerminalObject\Router\DynamicRouter $dynamic;
+     * @var \League\CLImate\TerminalObject\Router\DynamicRouter;
      */
     protected $dynamic;
 
     /**
      * An instance of the Basic Router class
      *
-     * @var \League\CLImate\TerminalObject\Router\BasicRouter $basic;
+     * @var \League\CLImate\TerminalObject\Router\BasicRouter;
      */
     protected $basic;
 
-    public function __construct(DynamicRouter $dynamic = null, BasicRouter $basic = null)
+    public function __construct(?DynamicRouter $dynamic = null, ?BasicRouter $basic = null)
     {
         $this->dynamic = $dynamic ?: new DynamicRouter();
-        $this->basic   = $basic ?: new BasicRouter();
+        $this->basic = $basic ?: new BasicRouter();
     }
 
     /**
@@ -61,11 +64,11 @@ class Router
      *
      * @param string $name
      *
-     * @return boolean
+     * @return bool
      */
     public function exists($name)
     {
-        return ($this->basic->exists($name) || $this->dynamic->exists($name));
+        return $this->basic->exists($name) || $this->dynamic->exists($name);
     }
 
     /**
@@ -100,24 +103,36 @@ class Router
     }
 
     /**
+     * Set the settings property
+     *
+     * @return Router
+     */
+    public function settings(Manager $settings)
+    {
+        $this->settings = $settings;
+
+        return $this;
+    }
+
+    /**
      * Get the object whether it's a string or already instantiated
      *
      * @param \League\CLImate\TerminalObject\Router\RouterInterface $router
-     * @param string $name
-     * @param array $arguments
+     * @param string                                                $name
+     * @param array                                                 $arguments
      *
-     * @return \League\CLImate\TerminalObject\Dynamic\DynamicTerminalObjectInterface|\League\CLImate\TerminalObject\Basic\BasicTerminalObjectInterface
+     * @return \League\CLImate\TerminalObject\Basic\BasicTerminalObjectInterface|\League\CLImate\TerminalObject\Dynamic\DynamicTerminalObjectInterface
      */
     protected function getObject($router, $name, $arguments)
     {
         $obj = $router->path($name);
 
-        if (is_string($obj)) {
+        if (\is_string($obj)) {
             $obj = (new \ReflectionClass($obj))->newInstanceArgs($arguments);
         }
 
         if (method_exists($obj, 'arguments')) {
-            call_user_func_array([$obj, 'arguments'], $arguments);
+            \call_user_func_array([$obj, 'arguments'], $arguments);
         }
 
         return $obj;
@@ -128,7 +143,7 @@ class Router
      *
      * @param string $name
      *
-     * @return \League\CLImate\TerminalObject\Router\RouterInterface|null
+     * @return null|\League\CLImate\TerminalObject\Router\RouterInterface
      */
     protected function getRouter($name)
     {
@@ -139,19 +154,5 @@ class Router
         if ($this->dynamic->exists($name)) {
             return $this->dynamic;
         }
-    }
-
-    /**
-     * Set the settings property
-     *
-     * @param  \League\CLImate\Settings\Manager $settings
-     *
-     * @return Router
-     */
-    public function settings(Manager $settings)
-    {
-        $this->settings = $settings;
-
-        return $this;
     }
 }

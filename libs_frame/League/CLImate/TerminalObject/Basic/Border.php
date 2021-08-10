@@ -7,14 +7,14 @@ class Border extends BasicTerminalObject
     /**
      * The character to repeat for the border
      *
-     * @var string $char
+     * @var string
      */
     protected $char = '-';
 
     /**
      * The length of the border
      *
-     * @var integer $length
+     * @var int
      */
     protected $length;
 
@@ -40,7 +40,7 @@ class Border extends BasicTerminalObject
     /**
      * Set the length of the border
      *
-     * @param integer $length
+     * @param int $length
      *
      * @return Border
      */
@@ -59,9 +59,8 @@ class Border extends BasicTerminalObject
     public function result()
     {
         $length = $this->length ?: $this->util->width() ?: 100;
-        $str    = str_repeat($this->char, $length);
-        $str    = substr($str, 0, $length);
+        $str = str_repeat($this->char, $length);
 
-        return $str;
+        return substr($str, 0, $length);
     }
 }

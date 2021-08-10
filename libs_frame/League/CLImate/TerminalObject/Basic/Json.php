@@ -7,7 +7,7 @@ class Json extends BasicTerminalObject
     /**
      * The data to convert to JSON
      *
-     * @var mixed $data
+     * @var mixed
      */
     protected $data;
 

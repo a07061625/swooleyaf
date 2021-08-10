@@ -8,8 +8,8 @@ namespace GuzzleHttp;
  * @param mixed $input Any type of variable to describe the type of. This
  *                     parameter misses a typehint because of that.
  *
- * @return string Returns a string containing the type of the variable and
- *                if a class is provided, the class name.
+ * @return string returns a string containing the type of the variable and
+ *                if a class is provided, the class name
  *
  * @deprecated describe_type will be removed in guzzlehttp/guzzle:8.0. Use Utils::describeType instead.
  */
@@ -50,9 +50,9 @@ function debug_resource($value = null)
  *
  * The returned handler is not wrapped by any default middlewares.
  *
- * @throws \RuntimeException if no viable Handler is available.
+ * @throws \RuntimeException if no viable Handler is available
  *
- * @return callable(\Psr\Http\Message\RequestInterface, array): \GuzzleHttp\Promise\PromiseInterface Returns the best handler for the given system.
+ * @return callable(\Psr\Http\Message\RequestInterface, array): \GuzzleHttp\Promise\PromiseInterface Returns the best handler for the given system
  *
  * @deprecated choose_handler will be removed in guzzlehttp/guzzle:8.0. Use Utils::chooseHandler instead.
  */
@@ -82,7 +82,7 @@ function default_user_agent(): string
  *
  * Note: the result of this function is cached for subsequent calls.
  *
- * @throws \RuntimeException if no bundle can be found.
+ * @throws \RuntimeException if no bundle can be found
  *
  * @deprecated default_ca_bundle will be removed in guzzlehttp/guzzle:8.0. This function is not needed in PHP 5.6+.
  */
@@ -116,8 +116,8 @@ function normalize_header_keys(array $headers): array
  * 3. The area starts with "." and the area is the last part of the host. e.g.
  *    '.mit.edu' will match any host that ends with '.mit.edu'.
  *
- * @param string   $host         Host to check against the patterns.
- * @param string[] $noProxyArray An array of host patterns.
+ * @param string   $host         host to check against the patterns
+ * @param string[] $noProxyArray an array of host patterns
  *
  * @throws Exception\InvalidArgumentException
  *
@@ -132,16 +132,16 @@ function is_host_in_noproxy(string $host, array $noProxyArray): bool
  * Wrapper for json_decode that throws when an error occurs.
  *
  * @param string $json    JSON data to parse
- * @param bool   $assoc   When true, returned objects will be converted
- *                        into associative arrays.
- * @param int    $depth   User specified recursion depth.
- * @param int    $options Bitmask of JSON decode options.
+ * @param bool   $assoc   when true, returned objects will be converted
+ *                        into associative arrays
+ * @param int    $depth   user specified recursion depth
+ * @param int    $options bitmask of JSON decode options
  *
- * @return object|array|string|int|float|bool|null
+ * @return null|array|bool|float|int|object|string
  *
- * @throws Exception\InvalidArgumentException if the JSON cannot be decoded.
+ * @throws Exception\InvalidArgumentException if the JSON cannot be decoded
  *
- * @link https://www.php.net/manual/en/function.json-decode.php
+ * @see https://www.php.net/manual/en/function.json-decode.php
  * @deprecated json_decode will be removed in guzzlehttp/guzzle:8.0. Use Utils::jsonDecode instead.
  */
 function json_decode(string $json, bool $assoc = false, int $depth = 512, int $options = 0)
@@ -156,9 +156,9 @@ function json_decode(string $json, bool $assoc = false, int $depth = 512, int $o
  * @param int   $options JSON encode option bitmask
  * @param int   $depth   Set the maximum depth. Must be greater than zero.
  *
- * @throws Exception\InvalidArgumentException if the JSON cannot be encoded.
+ * @throws Exception\InvalidArgumentException if the JSON cannot be encoded
  *
- * @link https://www.php.net/manual/en/function.json-encode.php
+ * @see https://www.php.net/manual/en/function.json-encode.php
  * @deprecated json_encode will be removed in guzzlehttp/guzzle:8.0. Use Utils::jsonEncode instead.
  */
 function json_encode($value, int $options = 0, int $depth = 512): string

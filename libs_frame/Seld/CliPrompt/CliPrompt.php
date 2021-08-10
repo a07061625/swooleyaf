@@ -33,32 +33,34 @@ class CliPrompt
     /**
      * Prompts the user for input and hides what they type
      *
-     * @param  bool   $allowFallback If prompting fails for any reason and this is set to true the prompt
-     *                               will be done using the regular prompt() function, otherwise a
-     *                               \RuntimeException is thrown.
+     * @param bool $allowFallback if prompting fails for any reason and this is set to true the prompt
+     *                            will be done using the regular prompt() function, otherwise a
+     *                            \RuntimeException is thrown
+     *
      * @return string
+     *
      * @throws \RuntimeException on failure to prompt, unless $allowFallback is true
      */
     public static function hiddenPrompt($allowFallback = false)
     {
         // handle windows
-        if (defined('PHP_WINDOWS_VERSION_BUILD')) {
+        if (\defined('PHP_WINDOWS_VERSION_BUILD')) {
             // fallback to hiddeninput executable
-            $exe = __DIR__.'\\..\\res\\hiddeninput.exe';
+            $exe = __DIR__ . '\\..\\res\\hiddeninput.exe';
 
             // handle code running from a phar
             if ('phar:' === substr(__FILE__, 0, 5)) {
-                $tmpExe = sys_get_temp_dir().'/hiddeninput.exe';
+                $tmpExe = sys_get_temp_dir() . '/hiddeninput.exe';
 
                 // use stream_copy_to_stream instead of copy
                 // to work around https://bugs.php.net/bug.php?id=64634
                 $source = fopen($exe, 'r');
                 $target = fopen($tmpExe, 'w+');
                 if (false === $source) {
-                    throw new \RuntimeException('Failed to open '.$exe.' for reading.');
+                    throw new \RuntimeException('Failed to open ' . $exe . ' for reading.');
                 }
                 if (false === $target) {
-                    throw new \RuntimeException('Failed to open '.$tmpExe.' for writing.');
+                    throw new \RuntimeException('Failed to open ' . $tmpExe . ' for writing.');
                 }
                 stream_copy_to_stream($source, $target);
                 fclose($source);
@@ -75,7 +77,7 @@ class CliPrompt
                 unlink($tmpExe);
             }
 
-            if ($output !== null) {
+            if (null !== $output) {
                 // output a newline to be on par with the regular prompt()
                 echo PHP_EOL;
 
@@ -86,20 +88,21 @@ class CliPrompt
         if (file_exists('/usr/bin/env')) {
             // handle other OSs with bash/zsh/ksh/csh if available to hide the answer
             $test = "/usr/bin/env %s -c 'echo OK' 2> /dev/null";
-            foreach (array('bash', 'zsh', 'ksh', 'csh', 'sh') as $sh) {
+            foreach (['bash', 'zsh', 'ksh', 'csh', 'sh'] as $sh) {
                 $output = shell_exec(sprintf($test, $sh));
-                if (is_string($output) && 'OK' === rtrim($output)) {
+                if (\is_string($output) && 'OK' === rtrim($output)) {
                     $shell = $sh;
+
                     break;
                 }
             }
 
             if (isset($shell)) {
-                $readCmd = ($shell === 'csh') ? 'set mypassword = $<' : 'read -r mypassword';
+                $readCmd = ('csh' === $shell) ? 'set mypassword = $<' : 'read -r mypassword';
                 $command = sprintf("/usr/bin/env %s -c 'stty -echo; %s; stty echo; echo \$mypassword'", $shell, $readCmd);
                 $output = shell_exec($command);
 
-                if ($output !== null) {
+                if (null !== $output) {
                     // output a newline to be on par with the regular prompt()
                     echo PHP_EOL;
 
@@ -117,11 +120,12 @@ class CliPrompt
     }
 
     /**
-     * @param string|bool $str
+     * @param bool|string $str
+     *
      * @return string
      */
     private static function trimAnswer($str)
     {
-        return preg_replace('{\r?\n$}D', '', (string) $str) ?: '';
+        return preg_replace('{\r?\n$}D', '', (string)$str) ?: '';
     }
 }

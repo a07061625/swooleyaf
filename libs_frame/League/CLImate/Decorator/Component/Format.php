@@ -14,16 +14,16 @@ class Format extends BaseDecorator
     /**
      * An array of default formats
      *
-     * @var array $defaults
+     * @var array
      */
     protected $defaults = [
-            'bold'          => 1,
-            'dim'           => 2,
-            'underline'     => 4,
-            'blink'         => 5,
-            'invert'        => 7,
-            'hidden'        => 8,
-        ];
+        'bold' => 1,
+        'dim' => 2,
+        'underline' => 4,
+        'blink' => 5,
+        'invert' => 7,
+        'hidden' => 8,
+    ];
 
     /**
      * Add a format into the mix
@@ -33,7 +33,7 @@ class Format extends BaseDecorator
      */
     public function add($key, $value)
     {
-        $this->formats[$key] = (int) $value;
+        $this->formats[$key] = (int)$value;
     }
 
     /**
@@ -49,7 +49,7 @@ class Format extends BaseDecorator
     /**
      * Get the code for the format
      *
-     * @param  string  $val
+     * @param string $val
      *
      * @return string
      */
@@ -60,19 +60,17 @@ class Format extends BaseDecorator
             return $val;
         }
 
-        if (array_key_exists($val, $this->formats)) {
+        if (\array_key_exists($val, $this->formats)) {
             return $this->formats[$val];
         }
-
-        return null;
     }
 
     /**
      * Set the current format
      *
-     * @param  string $val
+     * @param string $val
      *
-     * @return boolean
+     * @return bool
      */
     public function set($val)
     {

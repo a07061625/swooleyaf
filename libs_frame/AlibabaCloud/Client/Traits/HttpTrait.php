@@ -2,12 +2,13 @@
 
 namespace AlibabaCloud\Client\Traits;
 
-use AlibabaCloud\Client\Support\Arrays;
-use AlibabaCloud\Client\Filter\ClientFilter;
 use AlibabaCloud\Client\Exception\ClientException;
+use AlibabaCloud\Client\Filter\ClientFilter;
+use AlibabaCloud\Client\Support\Arrays;
 
 /**
  * Trait HttpTrait
+ *
  * @package AlibabaCloud\Client\Traits
  */
 trait HttpTrait
@@ -18,8 +19,10 @@ trait HttpTrait
     public $options = [];
 
     /**
-     * @param int|float $seconds
+     * @param float|int $seconds
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function timeout($seconds)
@@ -31,7 +34,9 @@ trait HttpTrait
 
     /**
      * @param int $milliseconds
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function timeoutMilliseconds($milliseconds)
@@ -43,8 +48,10 @@ trait HttpTrait
     }
 
     /**
-     * @param int|float $seconds
+     * @param float|int $seconds
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function connectTimeout($seconds)
@@ -56,7 +63,9 @@ trait HttpTrait
 
     /**
      * @param int $milliseconds
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function connectTimeoutMilliseconds($milliseconds)
@@ -69,6 +78,7 @@ trait HttpTrait
 
     /**
      * @param bool $debug
+     *
      * @return $this
      */
     public function debug($debug)
@@ -80,7 +90,9 @@ trait HttpTrait
 
     /**
      * @codeCoverageIgnore
+     *
      * @param array $cert
+     *
      * @return $this
      */
     public function cert($cert)
@@ -92,7 +104,9 @@ trait HttpTrait
 
     /**
      * @codeCoverageIgnore
+     *
      * @param array|string $proxy
+     *
      * @return $this
      */
     public function proxy($proxy)
@@ -104,6 +118,7 @@ trait HttpTrait
 
     /**
      * @param mixed $verify
+     *
      * @return $this
      */
     public function verify($verify)
@@ -114,12 +129,11 @@ trait HttpTrait
     }
 
     /**
-     * @param array $options
      * @return $this
      */
     public function options(array $options)
     {
-        if ($options !== []) {
+        if ([] !== $options) {
             $this->options = Arrays::merge([$this->options, $options]);
         }
 

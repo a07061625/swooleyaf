@@ -18,12 +18,12 @@ final class TransferStats
     private $request;
 
     /**
-     * @var ResponseInterface|null
+     * @var null|ResponseInterface
      */
     private $response;
 
     /**
-     * @var float|null
+     * @var null|float
      */
     private $transferTime;
 
@@ -33,16 +33,16 @@ final class TransferStats
     private $handlerStats;
 
     /**
-     * @var mixed|null
+     * @var null|mixed
      */
     private $handlerErrorData;
 
     /**
-     * @param RequestInterface       $request          Request that was sent.
-     * @param ResponseInterface|null $response         Response received (if any)
-     * @param float|null             $transferTime     Total handler transfer time.
-     * @param mixed                  $handlerErrorData Handler error data.
-     * @param array                  $handlerStats     Handler specific stats.
+     * @param RequestInterface       $request          request that was sent
+     * @param null|ResponseInterface $response         Response received (if any)
+     * @param null|float             $transferTime     total handler transfer time
+     * @param mixed                  $handlerErrorData handler error data
+     * @param array                  $handlerStats     handler specific stats
      */
     public function __construct(
         RequestInterface $request,
@@ -76,7 +76,7 @@ final class TransferStats
      */
     public function hasResponse(): bool
     {
-        return $this->response !== null;
+        return null !== $this->response;
     }
 
     /**
@@ -104,7 +104,7 @@ final class TransferStats
     /**
      * Get the estimated time the request was being transferred by the handler.
      *
-     * @return float|null Time in seconds.
+     * @return null|float time in seconds
      */
     public function getTransferTime(): ?float
     {
@@ -122,9 +122,9 @@ final class TransferStats
     /**
      * Get a specific handler statistic from the handler by name.
      *
-     * @param string $stat Handler specific transfer stat to retrieve.
+     * @param string $stat handler specific transfer stat to retrieve
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     public function getHandlerStat(string $stat)
     {

@@ -2,27 +2,30 @@
 
 namespace AlibabaCloud\Client\Filter;
 
-use AlibabaCloud\Client\SDK;
 use AlibabaCloud\Client\Exception\ClientException;
+use AlibabaCloud\Client\SDK;
 
 /**
  * Class ApiFilter
+ *
  * @package AlibabaCloud\Client\Filter
  */
 class ApiFilter
 {
     /**
      * @param $serviceCode
+     *
      * @return mixed
+     *
      * @throws ClientException
      */
     public static function serviceCode($serviceCode)
     {
-        if (!is_string($serviceCode)) {
+        if (!\is_string($serviceCode)) {
             throw new ClientException('Service Code must be a string', SDK::INVALID_ARGUMENT);
         }
 
-        if ($serviceCode === '') {
+        if ('' === $serviceCode) {
             throw new ClientException('Service Code cannot be empty', SDK::INVALID_ARGUMENT);
         }
 
@@ -31,16 +34,18 @@ class ApiFilter
 
     /**
      * @param $endpointType
+     *
      * @return mixed
+     *
      * @throws ClientException
      */
     public static function endpointType($endpointType)
     {
-        if (!is_string($endpointType)) {
+        if (!\is_string($endpointType)) {
             throw new ClientException('Endpoint Type must be a string', SDK::INVALID_ARGUMENT);
         }
 
-        if ($endpointType === '') {
+        if ('' === $endpointType) {
             throw new ClientException('Endpoint Type cannot be empty', SDK::INVALID_ARGUMENT);
         }
 
@@ -49,16 +54,18 @@ class ApiFilter
 
     /**
      * @param $action
+     *
      * @return mixed
+     *
      * @throws ClientException
      */
     public static function action($action)
     {
-        if (!is_string($action)) {
+        if (!\is_string($action)) {
             throw new ClientException('Action must be a string', SDK::INVALID_ARGUMENT);
         }
 
-        if ($action === '') {
+        if ('' === $action) {
             throw new ClientException('Action cannot be empty', SDK::INVALID_ARGUMENT);
         }
 
@@ -67,21 +74,24 @@ class ApiFilter
 
     /**
      * @codeCoverageIgnore
+     *
      * @param string $endpointSuffix
+     *
      * @return mixed
+     *
      * @throws ClientException
      */
     public static function endpointSuffix($endpointSuffix)
     {
-        if (!is_string($endpointSuffix)) {
+        if (!\is_string($endpointSuffix)) {
             throw new ClientException('Endpoint Suffix must be a string', SDK::INVALID_ARGUMENT);
         }
 
-        if ($endpointSuffix === '') {
+        if ('' === $endpointSuffix) {
             throw new ClientException('Endpoint Suffix cannot be empty', SDK::INVALID_ARGUMENT);
         }
 
-        if (!preg_match("/^[a-zA-Z0-9_-]+$/", $endpointSuffix)) {
+        if (!preg_match('/^[a-zA-Z0-9_-]+$/', $endpointSuffix)) {
             throw new ClientException('Invalid Endpoint Suffix', SDK::INVALID_ARGUMENT);
         }
 
@@ -90,21 +100,24 @@ class ApiFilter
 
     /**
      * @codeCoverageIgnore
+     *
      * @param string $network
+     *
      * @return mixed
+     *
      * @throws ClientException
      */
     public static function network($network)
     {
-        if (!is_string($network)) {
+        if (!\is_string($network)) {
             throw new ClientException('Network Suffix must be a string', SDK::INVALID_ARGUMENT);
         }
 
-        if ($network === '') {
+        if ('' === $network) {
             throw new ClientException('Network Suffix cannot be empty', SDK::INVALID_ARGUMENT);
         }
 
-        if (!preg_match("/^[a-zA-Z0-9_-]+$/", $network)) {
+        if (!preg_match('/^[a-zA-Z0-9_-]+$/', $network)) {
             throw new ClientException('Invalid Network Suffix', SDK::INVALID_ARGUMENT);
         }
 
@@ -113,16 +126,18 @@ class ApiFilter
 
     /**
      * @param string $version
+     *
      * @return mixed
+     *
      * @throws ClientException
      */
     public static function version($version)
     {
-        if (!is_string($version)) {
+        if (!\is_string($version)) {
             throw new ClientException('Version must be a string', SDK::INVALID_ARGUMENT);
         }
 
-        if ($version === '') {
+        if ('' === $version) {
             throw new ClientException('Version cannot be empty', SDK::INVALID_ARGUMENT);
         }
 
@@ -131,34 +146,38 @@ class ApiFilter
 
     /**
      * @param $format
+     *
      * @return mixed
+     *
      * @throws ClientException
      */
     public static function format($format)
     {
-        if (!is_string($format)) {
+        if (!\is_string($format)) {
             throw new ClientException('Format must be a string', SDK::INVALID_ARGUMENT);
         }
 
-        if ($format === '') {
+        if ('' === $format) {
             throw new ClientException('Format cannot be empty', SDK::INVALID_ARGUMENT);
         }
 
-        return \strtoupper($format);
+        return strtoupper($format);
     }
 
     /**
      * @param $product
+     *
      * @return string
+     *
      * @throws ClientException
      */
     public static function product($product)
     {
-        if (!is_string($product)) {
+        if (!\is_string($product)) {
             throw new ClientException('Product must be a string', SDK::INVALID_ARGUMENT);
         }
 
-        if ($product === '') {
+        if ('' === $product) {
             throw new ClientException('Product cannot be empty', SDK::INVALID_ARGUMENT);
         }
 
@@ -167,16 +186,18 @@ class ApiFilter
 
     /**
      * @param $pattern
+     *
      * @return string
+     *
      * @throws ClientException
      */
     public static function pattern($pattern)
     {
-        if (!is_string($pattern)) {
+        if (!\is_string($pattern)) {
             throw new ClientException('Pattern must be a string', SDK::INVALID_ARGUMENT);
         }
 
-        if ($pattern === '') {
+        if ('' === $pattern) {
             throw new ClientException('Pattern cannot be empty', SDK::INVALID_ARGUMENT);
         }
 

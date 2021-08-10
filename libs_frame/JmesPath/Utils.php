@@ -1,15 +1,16 @@
 <?php
+
 namespace JmesPath;
 
 class Utils
 {
     public static $typeMap = [
         'boolean' => 'boolean',
-        'string'  => 'string',
-        'NULL'    => 'null',
-        'double'  => 'number',
-        'float'   => 'number',
-        'integer' => 'number'
+        'string' => 'string',
+        'NULL' => 'null',
+        'double' => 'number',
+        'float' => 'number',
+        'integer' => 'number',
     ];
 
     /**
@@ -22,48 +23,57 @@ class Utils
     public static function isTruthy($value)
     {
         if (!$value) {
-            return $value === 0 || $value === '0';
-        } elseif ($value instanceof \stdClass) {
-            return (bool) get_object_vars($value);
-        } else {
-            return true;
+            return 0 === $value || '0' === $value;
         }
+        if ($value instanceof \stdClass) {
+            return (bool)get_object_vars($value);
+        }
+
+        return true;
     }
 
     /**
      * Gets the JMESPath type equivalent of a PHP variable.
      *
      * @param mixed $arg PHP variable
+     *
      * @return string Returns the JSON data type
-     * @throws \InvalidArgumentException when an unknown type is given.
+     *
+     * @throws \InvalidArgumentException when an unknown type is given
      */
     public static function type($arg)
     {
-        $type = gettype($arg);
+        $type = \gettype($arg);
         if (isset(self::$typeMap[$type])) {
             return self::$typeMap[$type];
-        } elseif ($type === 'array') {
+        }
+        if ('array' === $type) {
             if (empty($arg)) {
                 return 'array';
             }
             reset($arg);
-            return key($arg) === 0 ? 'array' : 'object';
-        } elseif ($arg instanceof \stdClass) {
+
+            return 0 === key($arg) ? 'array' : 'object';
+        }
+        if ($arg instanceof \stdClass) {
             return 'object';
-        } elseif ($arg instanceof \Closure) {
+        }
+        if ($arg instanceof \Closure) {
             return 'expression';
-        } elseif ($arg instanceof \ArrayAccess
+        }
+        if ($arg instanceof \ArrayAccess
             && $arg instanceof \Countable
         ) {
-            return count($arg) == 0 || $arg->offsetExists(0)
+            return 0 == \count($arg) || $arg->offsetExists(0)
                 ? 'array'
                 : 'object';
-        } elseif (method_exists($arg, '__toString')) {
+        }
+        if (method_exists($arg, '__toString')) {
             return 'string';
         }
 
         throw new \InvalidArgumentException(
-            'Unable to determine JMESPath type from ' . get_class($arg)
+            'Unable to determine JMESPath type from ' . \get_class($arg)
         );
     }
 
@@ -76,13 +86,13 @@ class Utils
      */
     public static function isObject($value)
     {
-        if (is_array($value)) {
-            return !$value || array_keys($value)[0] !== 0;
+        if (\is_array($value)) {
+            return !$value || 0 !== array_keys($value)[0];
         }
 
         // Handle array-like values. Must be empty or offset 0 does not exist
         return $value instanceof \Countable && $value instanceof \ArrayAccess
-            ? count($value) == 0 || !$value->offsetExists(0)
+            ? 0 == \count($value) || !$value->offsetExists(0)
             : $value instanceof \stdClass;
     }
 
@@ -95,13 +105,13 @@ class Utils
      */
     public static function isArray($value)
     {
-        if (is_array($value)) {
-            return !$value || array_keys($value)[0] === 0;
+        if (\is_array($value)) {
+            return !$value || 0 === array_keys($value)[0];
         }
 
         // Handle array-like values. Must be empty or offset 0 exists.
         return $value instanceof \Countable && $value instanceof \ArrayAccess
-            ? count($value) == 0 || $value->offsetExists(0)
+            ? 0 == \count($value) || $value->offsetExists(0)
             : false;
     }
 
@@ -117,13 +127,15 @@ class Utils
     {
         if ($a === $b) {
             return true;
-        } elseif ($a instanceof \stdClass) {
-            return self::isEqual((array) $a, $b);
-        } elseif ($b instanceof \stdClass) {
-            return self::isEqual($a, (array) $b);
-        } else {
-            return false;
         }
+        if ($a instanceof \stdClass) {
+            return self::isEqual((array)$a, $b);
+        }
+        if ($b instanceof \stdClass) {
+            return self::isEqual($a, (array)$b);
+        }
+
+        return false;
     }
 
     /**
@@ -132,23 +144,22 @@ class Utils
      * @param mixed $a First value to add
      * @param mixed $b Second value to add
      *
-     * @return int|float
+     * @return float|int
      */
     public static function add($a, $b)
     {
         if (is_numeric($a)) {
             if (is_numeric($b)) {
                 return $a + $b;
-            } else {
-                return $a;
             }
-        } else {
-            if (is_numeric($b)) {
-                return $b;
-            } else {
-                return 0;
-            }
+
+            return $a;
         }
+        if (is_numeric($b)) {
+            return $b;
+        }
+
+        return 0;
     }
 
     /**
@@ -160,7 +171,8 @@ class Utils
      * @param callable $sortFn Callable used to sort values
      *
      * @return array Returns the sorted array
-     * @link http://en.wikipedia.org/wiki/Schwartzian_transform
+     *
+     * @see http://en.wikipedia.org/wiki/Schwartzian_transform
      */
     public static function stableSort(array $data, callable $sortFn)
     {
@@ -183,16 +195,17 @@ class Utils
      * Creates a Python-style slice of a string or array.
      *
      * @param array|string $value Value to slice
-     * @param int|null     $start Starting position
-     * @param int|null     $stop  Stop position
+     * @param null|int     $start Starting position
+     * @param null|int     $stop  Stop position
      * @param int          $step  Step (1, 2, -1, -2, etc.)
      *
      * @return array|string
+     *
      * @throws \InvalidArgumentException
      */
     public static function slice($value, $start = null, $stop = null, $step = 1)
     {
-        if (!is_array($value) && !is_string($value)) {
+        if (!\is_array($value) && !\is_string($value)) {
             throw new \InvalidArgumentException('Expects string or array');
         }
 
@@ -215,19 +228,19 @@ class Utils
 
     private static function adjustSlice($length, $start, $stop, $step)
     {
-        if ($step === null) {
+        if (null === $step) {
             $step = 1;
-        } elseif ($step === 0) {
+        } elseif (0 === $step) {
             throw new \RuntimeException('step cannot be 0');
         }
 
-        if ($start === null) {
+        if (null === $start) {
             $start = $step < 0 ? $length - 1 : 0;
         } else {
             $start = self::adjustEndpoint($length, $start, $step);
         }
 
-        if ($stop === null) {
+        if (null === $stop) {
             $stop = $step < 0 ? -1 : $length;
         } else {
             $stop = self::adjustEndpoint($length, $stop, $step);
@@ -238,8 +251,8 @@ class Utils
 
     private static function sliceIndices($subject, $start, $stop, $step)
     {
-        $type = gettype($subject);
-        $len = $type == 'string' ? mb_strlen($subject, 'UTF-8') : count($subject);
+        $type = \gettype($subject);
+        $len = 'string' == $type ? mb_strlen($subject, 'UTF-8') : \count($subject);
         list($start, $stop, $step) = self::adjustSlice($len, $start, $stop, $step);
 
         $result = [];
@@ -253,6 +266,6 @@ class Utils
             }
         }
 
-        return $type == 'string' ? implode('', $result) : $result;
+        return 'string' == $type ? implode('', $result) : $result;
     }
 }

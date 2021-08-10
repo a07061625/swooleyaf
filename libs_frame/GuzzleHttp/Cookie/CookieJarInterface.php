@@ -13,7 +13,7 @@ use Psr\Http\Message\ResponseInterface;
  * necessary. Subclasses are also responsible for storing and retrieving
  * cookies from a file, database, etc.
  *
- * @link https://docs.python.org/2/library/cookielib.html Inspiration
+ * @see https://docs.python.org/2/library/cookielib.html Inspiration
  * @extends \IteratorAggregate<SetCookie>
  */
 interface CookieJarInterface extends \Countable, \IteratorAggregate
@@ -24,9 +24,9 @@ interface CookieJarInterface extends \Countable, \IteratorAggregate
      * If no matching cookies are found in the cookie jar, then no Cookie
      * header is added to the request and the same request is returned.
      *
-     * @param RequestInterface $request Request object to modify.
+     * @param RequestInterface $request request object to modify
      *
-     * @return RequestInterface returns the modified request.
+     * @return RequestInterface returns the modified request
      */
     public function withCookieHeader(RequestInterface $request): RequestInterface;
 
@@ -41,7 +41,7 @@ interface CookieJarInterface extends \Countable, \IteratorAggregate
     /**
      * Sets a cookie in the cookie jar.
      *
-     * @param SetCookie $cookie Cookie to set.
+     * @param SetCookie $cookie cookie to set
      *
      * @return bool Returns true on success or false on failure
      */
@@ -57,9 +57,9 @@ interface CookieJarInterface extends \Countable, \IteratorAggregate
      * arguments, then the cookie with the specified name, path and domain is
      * removed.
      *
-     * @param string|null $domain Clears cookies matching a domain
-     * @param string|null $path   Clears cookies matching a domain and path
-     * @param string|null $name   Clears cookies matching a domain, path, and name
+     * @param null|string $domain Clears cookies matching a domain
+     * @param null|string $path   Clears cookies matching a domain and path
+     * @param null|string $name   Clears cookies matching a domain, path, and name
      */
     public function clear(?string $domain = null, ?string $path = null, ?string $name = null): void;
 

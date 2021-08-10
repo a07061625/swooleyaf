@@ -8,7 +8,9 @@ use ReflectionException;
 
 /**
  * Class Rpc
+ *
  * @codeCoverageIgnore
+ *
  * @package AlibabaCloud\Client\Resolver
  */
 abstract class Rpc extends RpcRequest
@@ -17,7 +19,6 @@ abstract class Rpc extends RpcRequest
     use CallTrait;
 
     /**
-     * @param array $options
      * @throws ReflectionException
      * @throws ClientException
      */

@@ -11,7 +11,9 @@ trait DeprecatedRoaTrait
     /**
      * @param $name
      * @param $value
+     *
      * @return $this
+     *
      * @deprecated
      * @codeCoverageIgnore
      */
@@ -22,7 +24,9 @@ trait DeprecatedRoaTrait
 
     /**
      * @param $pathPattern
+     *
      * @return $this
+     *
      * @deprecated
      * @codeCoverageIgnore
      */
@@ -33,6 +37,7 @@ trait DeprecatedRoaTrait
 
     /**
      * @return string
+     *
      * @deprecated
      * @codeCoverageIgnore
      */
@@ -43,6 +48,7 @@ trait DeprecatedRoaTrait
 
     /**
      * @return array
+     *
      * @deprecated
      * @codeCoverageIgnore
      */

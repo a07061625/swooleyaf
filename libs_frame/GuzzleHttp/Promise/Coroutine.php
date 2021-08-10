@@ -36,16 +36,16 @@ use Throwable;
  *     // Outputs "abc"
  *     $promise->then(function ($v) { echo $v; });
  *
- * @param callable $generatorFn Generator function to wrap into a promise.
+ * @param callable $generatorFn generator function to wrap into a promise
  *
  * @return Promise
  *
- * @link https://github.com/petkaantonov/bluebird/blob/master/API.md#generators inspiration
+ * @see https://github.com/petkaantonov/bluebird/blob/master/API.md#generators inspiration
  */
 final class Coroutine implements PromiseInterface
 {
     /**
-     * @var PromiseInterface|null
+     * @var null|PromiseInterface
      */
     private $currentPromise;
 
@@ -67,6 +67,7 @@ final class Coroutine implements PromiseInterface
                 $this->currentPromise->wait();
             }
         });
+
         try {
             $this->nextCoroutine($this->generator->current());
         } catch (\Exception $exception) {
@@ -87,8 +88,8 @@ final class Coroutine implements PromiseInterface
     }
 
     public function then(
-        callable $onFulfilled = null,
-        callable $onRejected = null
+        ?callable $onFulfilled = null,
+        ?callable $onRejected = null
     ) {
         return $this->result->then($onFulfilled, $onRejected);
     }
@@ -124,18 +125,15 @@ final class Coroutine implements PromiseInterface
         $this->result->cancel();
     }
 
-    private function nextCoroutine($yielded)
-    {
-        $this->currentPromise = Create::promiseFor($yielded)
-            ->then([$this, '_handleSuccess'], [$this, '_handleFailure']);
-    }
-
     /**
      * @internal
+     *
+     * @param mixed $value
      */
     public function _handleSuccess($value)
     {
-        unset($this->currentPromise);
+        $this->currentPromise = null;
+
         try {
             $next = $this->generator->send($value);
             if ($this->generator->valid()) {
@@ -152,10 +150,13 @@ final class Coroutine implements PromiseInterface
 
     /**
      * @internal
+     *
+     * @param mixed $reason
      */
     public function _handleFailure($reason)
     {
-        unset($this->currentPromise);
+        $this->currentPromise = null;
+
         try {
             $nextYield = $this->generator->throw(Create::exceptionFor($reason));
             // The throw was caught, so keep iterating on the coroutine
@@ -165,5 +166,11 @@ final class Coroutine implements PromiseInterface
         } catch (Throwable $throwable) {
             $this->result->reject($throwable);
         }
+    }
+
+    private function nextCoroutine($yielded)
+    {
+        $this->currentPromise = Create::promiseFor($yielded)
+            ->then([$this, '_handleSuccess'], [$this, '_handleFailure']);
     }
 }

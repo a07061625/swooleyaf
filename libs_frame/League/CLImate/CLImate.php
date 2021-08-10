@@ -28,7 +28,6 @@ use League\CLImate\Util\UtilFactory;
  * @method CLImate lightMagenta(string $str = null)
  * @method CLImate lightCyan(string $str = null)
  * @method CLImate white(string $str = null)
- *
  * @method CLImate backgroundBlack(string $str = null)
  * @method CLImate backgroundRed(string $str = null)
  * @method CLImate backgroundGreen(string $str = null)
@@ -45,20 +44,17 @@ use League\CLImate\Util\UtilFactory;
  * @method CLImate backgroundLightMagenta(string $str = null)
  * @method CLImate backgroundLightCyan(string $str = null)
  * @method CLImate backgroundWhite(string $str = null)
- *
  * @method CLImate bold(string $str = null)
  * @method CLImate dim(string $str = null)
  * @method CLImate underline(string $str = null)
  * @method CLImate blink(string $str = null)
  * @method CLImate invert(string $str = null)
  * @method CLImate hidden(string $str = null)
- *
  * @method CLImate info(string $str = null)
  * @method CLImate comment(string $str = null)
  * @method CLImate whisper(string $str = null)
  * @method CLImate shout(string $str = null)
  * @method CLImate error(string $str = null)
- *
  * @method mixed out(string $str)
  * @method mixed inline(string $str)
  * @method mixed table(array $data)
@@ -81,7 +77,6 @@ use League\CLImate\Util\UtilFactory;
  * @method mixed columns(array $data, $column_count = null)
  * @method mixed clear()
  * @method CLImate clearLine()
- *
  * @method CLImate addArt(string $dir)
  */
 class CLImate
@@ -89,42 +84,42 @@ class CLImate
     /**
      * An instance of the Style class
      *
-     * @var \League\CLImate\Decorator\Style $style
+     * @var \League\CLImate\Decorator\Style
      */
     public $style;
 
     /**
-     * An instance of the Terminal Object Router class
-     *
-     * @var \League\CLImate\TerminalObject\Router\Router $router
-     */
-    protected $router;
-
-    /**
-     * An instance of the Settings Manager class
-     *
-     * @var \League\CLImate\Settings\Manager $settings
-     */
-    protected $settings;
-
-    /**
      * An instance of the Argument Manager class
      *
-     * @var \League\CLImate\Argument\Manager $arguments
+     * @var \League\CLImate\Argument\Manager
      */
     public $arguments;
 
     /**
      * An instance of the Output class
      *
-     * @var \League\CLImate\Util\Output $output
+     * @var \League\CLImate\Util\Output
      */
     public $output;
 
     /**
+     * An instance of the Terminal Object Router class
+     *
+     * @var \League\CLImate\TerminalObject\Router\Router
+     */
+    protected $router;
+
+    /**
+     * An instance of the Settings Manager class
+     *
+     * @var \League\CLImate\Settings\Manager
+     */
+    protected $settings;
+
+    /**
      * An instance of the Util Factory
      *
-     * @var \League\CLImate\Util\UtilFactory $util
+     * @var \League\CLImate\Util\UtilFactory
      */
     protected $util;
 
@@ -139,9 +134,39 @@ class CLImate
     }
 
     /**
-     * Set the style property
+     * Magic method for anything called that doesn't exist
      *
-     * @param \League\CLImate\Decorator\Style $style
+     * @param string $requested_method
+     * @param array  $arguments
+     *
+     * @return \League\CLImate\CLImate|\League\CLImate\TerminalObject\Dynamic\DynamicTerminalObject
+     *
+     * List of many of the possible method being called here
+     * documented at the top of this class
+     */
+    public function __call($requested_method, $arguments)
+    {
+        // Apply any style methods that we can find first
+        $name = $this->applyStyleMethods(Helper::snakeCase($requested_method));
+
+        // The first argument is the string|array|object we want to echo out
+        $output = reset($arguments);
+
+        if (\strlen($name)) {
+            // If we have something left, let's try and route it to the appropriate place
+            if ($result = $this->routeRemainingMethod($name, $arguments)) {
+                return $result;
+            }
+        } elseif ($this->hasOutput($output)) {
+            // If we have fulfilled all of the requested methods and we have output, output it
+            $this->out($output);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Set the style property
      */
     public function setStyle(Style $style)
     {
@@ -150,8 +175,6 @@ class CLImate
 
     /**
      * Set the router property
-     *
-     * @param \League\CLImate\TerminalObject\Router\Router $router
      */
     public function setRouter(Router $router)
     {
@@ -160,8 +183,6 @@ class CLImate
 
     /**
      * Set the settings property
-     *
-     * @param \League\CLImate\Settings\Manager $manager
      */
     public function setSettingsManager(SettingsManager $manager)
     {
@@ -170,8 +191,6 @@ class CLImate
 
     /**
      * Set the arguments property
-     *
-     * @param \League\CLImate\Argument\Manager $manager
      */
     public function setArgumentManager(ArgumentManager $manager)
     {
@@ -180,8 +199,6 @@ class CLImate
 
     /**
      * Set the output property
-     *
-     * @param \League\CLImate\Util\Output $output
      */
     public function setOutput(Output $output)
     {
@@ -190,8 +207,6 @@ class CLImate
 
     /**
      * Set the util property
-     *
-     * @param \League\CLImate\Util\UtilFactory $util
      */
     public function setUtil(UtilFactory $util)
     {
@@ -201,8 +216,8 @@ class CLImate
     /**
      * Extend CLImate with custom methods
      *
-     * @param string|object|array $class
-     * @param string $key Optional custom key instead of class name
+     * @param array|object|string $class
+     * @param string              $key   Optional custom key instead of class name
      *
      * @return \League\CLImate\CLImate
      */
@@ -240,7 +255,7 @@ class CLImate
     /**
      * Write line to writer once
      *
-     * @param string|array $writer
+     * @param array|string $writer
      *
      * @return \League\CLImate\CLImate
      */
@@ -256,7 +271,7 @@ class CLImate
      *
      * @param array $argv
      */
-    public function usage(array $argv = null)
+    public function usage(?array $argv = null)
     {
         return $this->arguments->usage($this, $argv);
     }
@@ -278,9 +293,9 @@ class CLImate
     /**
      * Check if we have valid output
      *
-     * @param  mixed   $output
+     * @param mixed $output
      *
-     * @return boolean
+     * @return bool
      */
     protected function hasOutput($output)
     {
@@ -289,24 +304,24 @@ class CLImate
         }
 
         // Check for type first to avoid errors with objects/arrays/etc
-        return ((is_string($output) || is_numeric($output)) && strlen($output) > 0);
+        return (\is_string($output) || is_numeric($output)) && \strlen($output) > 0;
     }
 
     /**
      * Search for the method within the string
      * and route it if we find one.
      *
-     * @param  string $method
-     * @param  string $name
+     * @param string $method
+     * @param string $name
      *
-     * @return string The new string without the executed method.
+     * @return string the new string without the executed method
      */
     protected function parseStyleMethod($method, $name)
     {
         // If the name starts with this method string...
-        if (substr($name, 0, strlen($method)) == $method) {
+        if (substr($name, 0, \strlen($method)) == $method) {
             // ...remove the method name from the beginning of the string...
-            $name = substr($name, strlen($method));
+            $name = substr($name, \strlen($method));
 
             // ...and trim off any of those underscores hanging around
             $name = ltrim($name, '_');
@@ -320,8 +335,8 @@ class CLImate
     /**
      * Search for any style methods within the name and apply them
      *
-     * @param  string $name
-     * @param  array $method_search
+     * @param string $name
+     * @param array  $method_search
      *
      * @return string Anything left over after applying styles
      */
@@ -334,7 +349,7 @@ class CLImate
 
         // While we still have a name left and we keep finding methods,
         // loop through the possibilities
-        if (strlen($new_name) > 0 && $new_name != $name) {
+        if (\strlen($new_name) > 0 && $new_name != $name) {
             return $this->applyStyleMethods($new_name, $method_search);
         }
 
@@ -345,7 +360,8 @@ class CLImate
      * Search for style methods in the current name
      *
      * @param string $name
-     * @param array $search
+     * @param array  $search
+     *
      * @return string
      */
     protected function searchForStyleMethods($name, $search)
@@ -363,9 +379,9 @@ class CLImate
      * Build up the terminal object and return it
      *
      * @param string $name
-     * @param array $arguments
+     * @param array  $arguments
      *
-     * @return object|null
+     * @return null|object
      */
     protected function buildTerminalObject($name, $arguments)
     {
@@ -388,9 +404,8 @@ class CLImate
      * Route anything leftover after styles were applied
      *
      * @param string $name
-     * @param array $arguments
      *
-     * @return object|null
+     * @return null|object
      */
     protected function routeRemainingMethod($name, array $arguments)
     {
@@ -399,7 +414,7 @@ class CLImate
             $obj = $this->buildTerminalObject($name, $arguments);
 
             // If something was returned, return it
-            if (is_object($obj)) {
+            if (\is_object($obj)) {
                 return $obj;
             }
         } elseif ($this->settings->exists($name)) {
@@ -409,37 +424,5 @@ class CLImate
             // If we can't find it at this point, let's fail gracefully
             $this->out(reset($arguments));
         }
-    }
-
-    /**
-     * Magic method for anything called that doesn't exist
-     *
-     * @param string $requested_method
-     * @param array  $arguments
-     *
-     * @return \League\CLImate\CLImate|\League\CLImate\TerminalObject\Dynamic\DynamicTerminalObject
-     *
-     * List of many of the possible method being called here
-     * documented at the top of this class.
-     */
-    public function __call($requested_method, $arguments)
-    {
-        // Apply any style methods that we can find first
-        $name = $this->applyStyleMethods(Helper::snakeCase($requested_method));
-
-        // The first argument is the string|array|object we want to echo out
-        $output = reset($arguments);
-
-        if (strlen($name)) {
-            // If we have something left, let's try and route it to the appropriate place
-            if ($result = $this->routeRemainingMethod($name, $arguments)) {
-                return $result;
-            }
-        } elseif ($this->hasOutput($output)) {
-            // If we have fulfilled all of the requested methods and we have output, output it
-            $this->out($output);
-        }
-
-        return $this;
     }
 }

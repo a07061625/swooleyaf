@@ -14,7 +14,7 @@ class RejectedPromise implements PromiseInterface
 
     public function __construct($reason)
     {
-        if (is_object($reason) && method_exists($reason, 'then')) {
+        if (\is_object($reason) && method_exists($reason, 'then')) {
             throw new \InvalidArgumentException(
                 'You cannot create a RejectedPromise with a promise.'
             );
@@ -24,8 +24,8 @@ class RejectedPromise implements PromiseInterface
     }
 
     public function then(
-        callable $onFulfilled = null,
-        callable $onRejected = null
+        ?callable $onFulfilled = null,
+        ?callable $onRejected = null
     ) {
         // If there's no onRejected callback then just return self.
         if (!$onRejected) {
@@ -63,8 +63,6 @@ class RejectedPromise implements PromiseInterface
         if ($unwrap) {
             throw Create::exceptionFor($this->reason);
         }
-
-        return null;
     }
 
     public function getState()
@@ -74,13 +72,13 @@ class RejectedPromise implements PromiseInterface
 
     public function resolve($value)
     {
-        throw new \LogicException("Cannot resolve a rejected promise");
+        throw new \LogicException('Cannot resolve a rejected promise');
     }
 
     public function reject($reason)
     {
         if ($reason !== $this->reason) {
-            throw new \LogicException("Cannot reject a rejected promise");
+            throw new \LogicException('Cannot reject a rejected promise');
         }
     }
 

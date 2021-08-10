@@ -11,35 +11,35 @@ class Output
     /**
      * The content to be output
      *
-     * @var string $content
+     * @var string
      */
     protected $content;
 
     /**
      * Whether or not to add a new line after the output
      *
-     * @var boolean $new_line
+     * @var bool
      */
     protected $new_line = true;
 
     /**
      * The array of available writers
      *
-     * @var array[] $writers
+     * @var array[]
      */
     protected $writers = [];
 
     /**
      * Default writers when one isn't specifed
      *
-     * @var WriterInterface[] $default
+     * @var WriterInterface[]
      */
     protected $default = [];
 
     /**
      * Writers to be used just once
      *
-     * @var null|array $once
+     * @var null|array
      */
     protected $once;
 
@@ -47,9 +47,9 @@ class Output
 
     public function __construct()
     {
-        $this->add('out', new Writer\StdOut);
-        $this->add('error', new Writer\StdErr);
-        $this->add('buffer', new Writer\Buffer);
+        $this->add('out', new Writer\StdOut());
+        $this->add('error', new Writer\StdErr());
+        $this->add('buffer', new Writer\Buffer());
 
         $this->defaultTo('out');
     }
@@ -67,8 +67,8 @@ class Output
     /**
      * Add a writer to the available writers
      *
-     * @param string $key
-     * @param WriterInterface|array $writer
+     * @param string                $key
+     * @param array|WriterInterface $writer
      *
      * @return \League\CLImate\Util\Output
      */
@@ -82,7 +82,7 @@ class Output
     /**
      * Set the default writer
      *
-     * @param string|array $keys
+     * @param array|string $keys
      */
     public function defaultTo($keys)
     {
@@ -92,7 +92,7 @@ class Output
     /**
      * Add a default writer
      *
-     * @param string|array $keys
+     * @param array|string $keys
      */
     public function addDefault($keys)
     {
@@ -102,7 +102,7 @@ class Output
     /**
      * Register a writer to be used just once
      *
-     * @param string|array $keys
+     * @param array|string $keys
      *
      * @return \League\CLImate\Util\Output
      */
@@ -122,7 +122,7 @@ class Output
      */
     public function persist($persist = true)
     {
-        $this->persist = (bool) $persist;
+        $this->persist = (bool)$persist;
 
         if (!$this->persist) {
             $this->resetOneTimers();
@@ -136,16 +136,17 @@ class Output
      *
      * @param string $writer
      *
-     * @return WriterInterface|array
+     * @return array|WriterInterface
+     *
      * @throws UnexpectedValueException if writer key doesn't exist
      */
     public function get($writer)
     {
-        if (!array_key_exists($writer, $this->writers)) {
+        if (!\array_key_exists($writer, $this->writers)) {
             throw new UnexpectedValueException('Unknown writer [' . $writer . ']');
         }
 
-        if (count($this->writers[$writer]) == 1) {
+        if (1 == \count($this->writers[$writer])) {
             return reset($this->writers[$writer]);
         }
 
@@ -171,7 +172,7 @@ class Output
     /**
      * Write the content using the provided writer
      *
-     * @param  string $content
+     * @param string $content
      */
     public function write($content)
     {
@@ -189,13 +190,13 @@ class Output
     /**
      * Resolve the writer(s) down to an array of WriterInterface classes
      *
-     * @param WriterInterface|array|string $writer
+     * @param array|string|WriterInterface $writer
      *
      * @return array
      */
     protected function resolve($writer)
     {
-        $resolver = 'resolve' . ucwords(gettype($writer)) . 'Writer';
+        $resolver = 'resolve' . ucwords(\gettype($writer)) . 'Writer';
 
         if (method_exists($this, $resolver) && $resolved = $this->{$resolver}($writer)) {
             return $resolved;
@@ -217,7 +218,7 @@ class Output
     /**
      * @param object $writer
      *
-     * @return WriterInterface|false
+     * @return false|WriterInterface
      */
     protected function resolveObjectWriter($writer)
     {
@@ -235,7 +236,7 @@ class Output
      */
     protected function resolveStringWriter($writer)
     {
-        if (is_string($writer) && array_key_exists($writer, $this->writers)) {
+        if (\is_string($writer) && \array_key_exists($writer, $this->writers)) {
             return $this->writers[$writer];
         }
 
@@ -244,14 +245,15 @@ class Output
 
     /**
      * @param mixed $writer
+     *
      * @throws InvalidArgumentException For non-valid writer
      */
     protected function handleUnknownWriter($writer)
     {
         // If we've gotten this far and don't know what it is,
         // let's at least try and give a helpful error message
-        if (is_object($writer)) {
-            throw new InvalidArgumentException('Class [' . get_class($writer) . '] must implement '
+        if (\is_object($writer)) {
+            throw new InvalidArgumentException('Class [' . \get_class($writer) . '] must implement '
                                     . 'League\CLImate\Util\Writer\WriterInterface.');
         }
 
@@ -262,15 +264,13 @@ class Output
     /**
      * Get the readable version of the writer(s)
      *
-     * @param array $writer
-     *
-     * @return string|array
+     * @return array|string
      */
     protected function getReadable(array $writer)
     {
         $classes = array_map('get_class', $writer);
 
-        if (count($classes) == 1) {
+        if (1 == \count($classes)) {
             return reset($classes);
         }
 
@@ -280,7 +280,7 @@ class Output
     /**
      * Get the writers based on their keys
      *
-     * @param string|array $keys
+     * @param array|string $keys
      *
      * @return array
      */

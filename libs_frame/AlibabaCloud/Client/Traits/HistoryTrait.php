@@ -4,6 +4,7 @@ namespace AlibabaCloud\Client\Traits;
 
 /**
  * Trait HistoryTrait
+ *
  * @package AlibabaCloud\Client\Traits
  */
 trait HistoryTrait
@@ -61,6 +62,6 @@ trait HistoryTrait
      */
     public static function countHistory()
     {
-        return count(self::$history);
+        return \count(self::$history);
     }
 }

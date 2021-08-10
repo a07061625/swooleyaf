@@ -88,7 +88,7 @@ class Parser
 
         $mbEncoding = null;
 
-        if (2 /* MB_OVERLOAD_STRING */ & (int) ini_get('mbstring.func_overload')) {
+        if (2 /* MB_OVERLOAD_STRING */ & (int)ini_get('mbstring.func_overload')) {
             $mbEncoding = mb_internal_encoding();
             mb_internal_encoding('UTF-8');
         }
@@ -111,6 +111,75 @@ class Parser
         return $data;
     }
 
+    /**
+     * Returns the current line number (takes the offset into account).
+     *
+     * @internal
+     *
+     * @return int The current line number
+     */
+    public function getRealCurrentLineNb(): int
+    {
+        $realCurrentLineNumber = $this->currentLineNb + $this->offset;
+
+        foreach ($this->skippedLineNumbers as $skippedLineNumber) {
+            if ($skippedLineNumber > $realCurrentLineNumber) {
+                break;
+            }
+
+            ++$realCurrentLineNumber;
+        }
+
+        return $realCurrentLineNumber;
+    }
+
+    /**
+     * A local wrapper for "preg_match" which will throw a ParseException if there
+     * is an internal error in the PCRE engine.
+     *
+     * This avoids us needing to check for "false" every time PCRE is used
+     * in the YAML engine
+     *
+     * @throws ParseException on a PCRE internal error
+     *
+     * @see preg_last_error()
+     *
+     * @internal
+     */
+    public static function preg_match(string $pattern, string $subject, ?array &$matches = null, int $flags = 0, int $offset = 0): int
+    {
+        if (false === $ret = preg_match($pattern, $subject, $matches, $flags, $offset)) {
+            switch (preg_last_error()) {
+                case \PREG_INTERNAL_ERROR:
+                    $error = 'Internal PCRE error.';
+
+                    break;
+                case \PREG_BACKTRACK_LIMIT_ERROR:
+                    $error = 'pcre.backtrack_limit reached.';
+
+                    break;
+                case \PREG_RECURSION_LIMIT_ERROR:
+                    $error = 'pcre.recursion_limit reached.';
+
+                    break;
+                case \PREG_BAD_UTF8_ERROR:
+                    $error = 'Malformed UTF-8 data.';
+
+                    break;
+                case \PREG_BAD_UTF8_OFFSET_ERROR:
+                    $error = 'Offset doesn\'t correspond to the begin of a valid UTF-8 code point.';
+
+                    break;
+                default:
+                    $error = 'Error.';
+            }
+
+            throw new ParseException($error);
+        }
+
+        return $ret;
+    }
+
     private function doParse(string $value, int $flags)
     {
         $this->currentLineNb = -1;
@@ -125,7 +194,7 @@ class Parser
         }
 
         if (!$this->moveToNextLine()) {
-            return null;
+            return;
         }
 
         $data = [];
@@ -134,7 +203,7 @@ class Parser
 
         while ($this->isCurrentLineEmpty()) {
             if (!$this->moveToNextLine()) {
-                return null;
+                return;
             }
         }
 
@@ -179,7 +248,7 @@ class Parser
 
                     $sequenceIndentation = \strlen($values['leadspaces']) + 1;
                     $sequenceYaml = substr($this->currentLine, $sequenceIndentation);
-                    $sequenceYaml .= "\n".$this->getNextEmbedBlock($sequenceIndentation, true);
+                    $sequenceYaml .= "\n" . $this->getNextEmbedBlock($sequenceIndentation, true);
 
                     $data[] = $this->parseBlock($currentLineNumber, rtrim($sequenceYaml), $flags);
                 } elseif (!isset($values['value']) || '' == trim($values['value'], ' ') || 0 === strpos(ltrim($values['value'], ' '), '#')) {
@@ -194,13 +263,13 @@ class Parser
                         isset($values['leadspaces'])
                         && (
                             '!' === $values['value'][0]
-                            || self::preg_match('#^(?P<key>'.Inline::REGEX_QUOTED_STRING.'|[^ \'"\{\[].*?) *\:(\s+(?P<value>.+?))?\s*$#u', $this->trimTag($values['value']), $matches)
+                            || self::preg_match('#^(?P<key>' . Inline::REGEX_QUOTED_STRING . '|[^ \'"\{\[].*?) *\:(\s+(?P<value>.+?))?\s*$#u', $this->trimTag($values['value']), $matches)
                         )
                     ) {
                         // this is a compact notation element, add to next block and parse
                         $block = $values['value'];
                         if ($this->isNextLineIndented()) {
-                            $block .= "\n".$this->getNextEmbedBlock($this->getCurrentLineIndentation() + \strlen($values['leadspaces']) + 1);
+                            $block .= "\n" . $this->getNextEmbedBlock($this->getCurrentLineIndentation() + \strlen($values['leadspaces']) + 1);
                         }
 
                         $data[] = $this->parseBlock($this->getRealCurrentLineNb(), $block, $flags);
@@ -213,7 +282,7 @@ class Parser
                     array_pop($this->refsBeingParsed);
                 }
             } elseif (
-                self::preg_match('#^(?P<key>(?:![^\s]++\s++)?(?:'.Inline::REGEX_QUOTED_STRING.'|(?:!?!php/const:)?[^ \'"\[\{!].*?)) *\:(( |\t)++(?P<value>.+))?$#u', rtrim($this->currentLine), $values)
+                self::preg_match('#^(?P<key>(?:![^\s]++\s++)?(?:' . Inline::REGEX_QUOTED_STRING . '|(?:!?!php/const:)?[^ \'"\[\{!].*?)) *\:(( |\t)++(?P<value>.+))?$#u', rtrim($this->currentLine), $values)
                 && (false === strpos($values['key'], ' #') || \in_array($values['key'][0], ['"', "'"]))
             ) {
                 if ($context && 'sequence' == $context) {
@@ -231,12 +300,12 @@ class Parser
                 }
 
                 if (!\is_string($key) && !\is_int($key)) {
-                    throw new ParseException((is_numeric($key) ? 'Numeric' : 'Non-string').' keys are not supported. Quote your evaluable mapping keys instead.', $this->getRealCurrentLineNb() + 1, $this->currentLine);
+                    throw new ParseException((is_numeric($key) ? 'Numeric' : 'Non-string') . ' keys are not supported. Quote your evaluable mapping keys instead.', $this->getRealCurrentLineNb() + 1, $this->currentLine);
                 }
 
                 // Convert float keys to strings, to avoid being converted to integers by PHP
                 if (\is_float($key)) {
-                    $key = (string) $key;
+                    $key = (string)$key;
                 }
 
                 if ('<<' === $key && (!isset($values['value']) || '&' !== $values['value'][0] || !self::preg_match('#^&(?P<ref>[^ ]+)#u', $values['value'], $refMatches))) {
@@ -255,7 +324,7 @@ class Parser
                         $refValue = $this->refs[$refName];
 
                         if (Yaml::PARSE_OBJECT_FOR_MAP & $flags && $refValue instanceof \stdClass) {
-                            $refValue = (array) $refValue;
+                            $refValue = (array)$refValue;
                         }
 
                         if (!\is_array($refValue)) {
@@ -272,7 +341,7 @@ class Parser
                         $parsed = $this->parseBlock($this->getRealCurrentLineNb() + 1, $value, $flags);
 
                         if (Yaml::PARSE_OBJECT_FOR_MAP & $flags && $parsed instanceof \stdClass) {
-                            $parsed = (array) $parsed;
+                            $parsed = (array)$parsed;
                         }
 
                         if (!\is_array($parsed)) {
@@ -285,7 +354,7 @@ class Parser
                             // in the sequence override keys specified in later mapping nodes.
                             foreach ($parsed as $parsedItem) {
                                 if (Yaml::PARSE_OBJECT_FOR_MAP & $flags && $parsedItem instanceof \stdClass) {
-                                    $parsedItem = (array) $parsedItem;
+                                    $parsedItem = (array)$parsedItem;
                                 }
 
                                 if (!\is_array($parsedItem)) {
@@ -332,7 +401,7 @@ class Parser
                             $this->refs[$refMatches['ref']] = $value;
 
                             if (Yaml::PARSE_OBJECT_FOR_MAP & $flags && $value instanceof \stdClass) {
-                                $value = (array) $value;
+                                $value = (array)$value;
                             }
 
                             $data += $value;
@@ -504,7 +573,7 @@ class Parser
             $object = new \stdClass();
 
             foreach ($data as $key => $value) {
-                $object->$key = $value;
+                $object->{$key} = $value;
             }
 
             $data = $object;
@@ -536,28 +605,6 @@ class Parser
     }
 
     /**
-     * Returns the current line number (takes the offset into account).
-     *
-     * @internal
-     *
-     * @return int The current line number
-     */
-    public function getRealCurrentLineNb(): int
-    {
-        $realCurrentLineNumber = $this->currentLineNb + $this->offset;
-
-        foreach ($this->skippedLineNumbers as $skippedLineNumber) {
-            if ($skippedLineNumber > $realCurrentLineNumber) {
-                break;
-            }
-
-            ++$realCurrentLineNumber;
-        }
-
-        return $realCurrentLineNumber;
-    }
-
-    /**
      * Returns the current line indentation.
      *
      * @return int The current line indentation
@@ -574,14 +621,14 @@ class Parser
     /**
      * Returns the next embed block of YAML.
      *
-     * @param int|null $indentation The indent level at which the block is to be read, or null for default
+     * @param null|int $indentation The indent level at which the block is to be read, or null for default
      * @param bool     $inSequence  True if the enclosing data structure is a sequence
      *
      * @return string A YAML string
      *
      * @throws ParseException When indentation problem are detected
      */
-    private function getNextEmbedBlock(int $indentation = null, bool $inSequence = false): string
+    private function getNextEmbedBlock(?int $indentation = null, bool $inSequence = false): string
     {
         $oldLineIndentation = $this->getCurrentLineIndentation();
 
@@ -654,11 +701,13 @@ class Parser
 
             if ($isItUnindentedCollection && !$this->isCurrentLineEmpty() && !$this->isStringUnIndentedCollectionItem() && $newIndent === $indent) {
                 $this->moveToPreviousLine();
+
                 break;
             }
 
             if ($this->isCurrentLineBlank()) {
                 $data[] = substr($this->currentLine, $newIndent);
+
                 continue;
             }
 
@@ -742,10 +791,10 @@ class Parser
             return $this->refs[$value];
         }
 
-        if (\in_array($value[0], ['!', '|', '>'], true) && self::preg_match('/^(?:'.self::TAG_PATTERN.' +)?'.self::BLOCK_SCALAR_HEADER_PATTERN.'$/', $value, $matches)) {
+        if (\in_array($value[0], ['!', '|', '>'], true) && self::preg_match('/^(?:' . self::TAG_PATTERN . ' +)?' . self::BLOCK_SCALAR_HEADER_PATTERN . '$/', $value, $matches)) {
             $modifiers = $matches['modifiers'] ?? '';
 
-            $data = $this->parseBlockScalar($matches['separator'], preg_replace('#\d+#', '', $modifiers), abs((int) $modifiers));
+            $data = $this->parseBlockScalar($matches['separator'], preg_replace('#\d+#', '', $modifiers), abs((int)$modifiers));
 
             if ('' !== $matches['tag'] && '!' !== $matches['tag']) {
                 if ('!!binary' === $matches['tag']) {
@@ -763,7 +812,8 @@ class Parser
                 $cursor = \strlen(rtrim($this->currentLine)) - \strlen(rtrim($value));
 
                 return Inline::parse($this->lexInlineMapping($cursor), $flags, $this->refs);
-            } elseif ('' !== $value && '[' === $value[0]) {
+            }
+            if ('' !== $value && '[' === $value[0]) {
                 $cursor = \strlen(rtrim($this->currentLine)) - \strlen(rtrim($value));
 
                 return Inline::parse($this->lexInlineSequence($cursor), $flags, $this->refs);
@@ -802,7 +852,7 @@ class Parser
                             $value .= $lines[$i];
                             $previousLineBlank = false;
                         } else {
-                            $value .= ' '.$lines[$i];
+                            $value .= ' ' . $lines[$i];
                             $previousLineBlank = false;
                         }
                     }
@@ -905,11 +955,11 @@ class Parser
                     $previousLineIndented = false;
                     $previousLineBlank = true;
                 } elseif (' ' === $blockLines[$i][0]) {
-                    $text .= "\n".$blockLines[$i];
+                    $text .= "\n" . $blockLines[$i];
                     $previousLineIndented = true;
                     $previousLineBlank = false;
                 } elseif ($previousLineIndented) {
-                    $text .= "\n".$blockLines[$i];
+                    $text .= "\n" . $blockLines[$i];
                     $previousLineIndented = false;
                     $previousLineBlank = false;
                 } elseif ($previousLineBlank || 0 === $i) {
@@ -917,7 +967,7 @@ class Parser
                     $previousLineIndented = false;
                     $previousLineBlank = false;
                 } else {
-                    $text .= ' '.$blockLines[$i];
+                    $text .= ' ' . $blockLines[$i];
                     $previousLineIndented = false;
                     $previousLineBlank = false;
                 }
@@ -1085,48 +1135,6 @@ class Parser
     }
 
     /**
-     * A local wrapper for "preg_match" which will throw a ParseException if there
-     * is an internal error in the PCRE engine.
-     *
-     * This avoids us needing to check for "false" every time PCRE is used
-     * in the YAML engine
-     *
-     * @throws ParseException on a PCRE internal error
-     *
-     * @see preg_last_error()
-     *
-     * @internal
-     */
-    public static function preg_match(string $pattern, string $subject, array &$matches = null, int $flags = 0, int $offset = 0): int
-    {
-        if (false === $ret = preg_match($pattern, $subject, $matches, $flags, $offset)) {
-            switch (preg_last_error()) {
-                case \PREG_INTERNAL_ERROR:
-                    $error = 'Internal PCRE error.';
-                    break;
-                case \PREG_BACKTRACK_LIMIT_ERROR:
-                    $error = 'pcre.backtrack_limit reached.';
-                    break;
-                case \PREG_RECURSION_LIMIT_ERROR:
-                    $error = 'pcre.recursion_limit reached.';
-                    break;
-                case \PREG_BAD_UTF8_ERROR:
-                    $error = 'Malformed UTF-8 data.';
-                    break;
-                case \PREG_BAD_UTF8_OFFSET_ERROR:
-                    $error = 'Offset doesn\'t correspond to the begin of a valid UTF-8 code point.';
-                    break;
-                default:
-                    $error = 'Error.';
-            }
-
-            throw new ParseException($error);
-        }
-
-        return $ret;
-    }
-
-    /**
      * Trim the tag on top of the value.
      *
      * Prevent values such as "!foo {quz: bar}" to be considered as
@@ -1143,7 +1151,7 @@ class Parser
 
     private function getLineTag(string $value, int $flags, bool $nextLineCheck = true): ?string
     {
-        if ('' === $value || '!' !== $value[0] || 1 !== self::preg_match('/^'.self::TAG_PATTERN.' *( +#.*)?$/', $value, $matches)) {
+        if ('' === $value || '!' !== $value[0] || 1 !== self::preg_match('/^' . self::TAG_PATTERN . ' *( +#.*)?$/', $value, $matches)) {
             return null;
         }
 
@@ -1192,7 +1200,7 @@ class Parser
                         if ("'" === $quotation) {
                             $value .= '\\';
                         } elseif (isset($this->currentLine[++$cursor])) {
-                            $value .= '\\'.$this->currentLine[$cursor];
+                            $value .= '\\' . $this->currentLine[$cursor];
                         }
 
                         break;
@@ -1201,10 +1209,11 @@ class Parser
 
                         if ("'" === $quotation && isset($this->currentLine[$cursor]) && "'" === $this->currentLine[$cursor]) {
                             $value .= "''";
+
                             break;
                         }
 
-                        return $value.$quotation;
+                        return $value . $quotation;
                     default:
                         $value .= $this->currentLine[$cursor];
                 }
@@ -1264,17 +1273,21 @@ class Parser
                     case '"':
                     case "'":
                         $value .= $this->lexInlineQuotedString($cursor);
+
                         break;
                     case ':':
                     case ',':
                         $value .= $this->currentLine[$cursor];
                         ++$cursor;
+
                         break;
                     case '{':
                         $value .= $this->lexInlineMapping($cursor);
+
                         break;
                     case '[':
                         $value .= $this->lexInlineSequence($cursor);
+
                         break;
                     case $closingTag:
                         $value .= $this->currentLine[$cursor];

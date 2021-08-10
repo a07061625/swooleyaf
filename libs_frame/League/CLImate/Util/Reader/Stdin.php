@@ -57,6 +57,7 @@ class Stdin implements ReaderInterface
      * Lazily re-opens STDIN after hitting an EOF
      *
      * @return resource
+     *
      * @throws RuntimeException
      */
     protected function getStdIn()
@@ -77,12 +78,11 @@ class Stdin implements ReaderInterface
     /**
      * Attempt to set the stdin property
      *
-     * @return void
      * @throws RuntimeException
      */
     protected function setStdIn()
     {
-        if ($this->stdIn !== false) {
+        if (false !== $this->stdIn) {
             fclose($this->stdIn);
         }
 
