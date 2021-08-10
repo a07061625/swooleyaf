@@ -4,6 +4,7 @@ namespace AlibabaCloud\Client;
 
 /**
  * Class Encode
+ *
  * @package AlibabaCloud\Client
  */
 class Encode
@@ -14,21 +15,19 @@ class Encode
     private $data;
 
     /**
-     * @param array $data
+     * Encode constructor.
+     */
+    private function __construct(array $data)
+    {
+        $this->data = $data;
+    }
+
+    /**
      * @return static
      */
     public static function create(array $data)
     {
         return new static($data);
-    }
-
-    /**
-     * Encode constructor.
-     * @param array $data
-     */
-    private function __construct(array $data)
-    {
-        $this->data = $data;
     }
 
     /**
@@ -39,15 +38,15 @@ class Encode
         $string = '';
         foreach ($this->data as $key => $value) {
             $encode = rawurlencode($value);
-            if ($encode === '') {
-                $string .= "$key&";
+            if ('' === $encode) {
+                $string .= "{$key}&";
             } else {
-                $string .= "$key=$encode&";
+                $string .= "{$key}={$encode}&";
             }
         }
 
-        if (0 < count($this->data)) {
-            $string = substr($string, 0, - 1);
+        if (0 < \count($this->data)) {
+            $string = substr($string, 0, -1);
         }
 
         return $string;

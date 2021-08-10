@@ -2,14 +2,10 @@
 
 namespace League\CLImate\TerminalObject\Basic;
 
+use function array_keys;
+use function get_object_vars;
 use League\CLImate\Exceptions\InvalidArgumentException;
 use League\CLImate\TerminalObject\Helper\StringLength;
-
-use function array_keys;
-use function count;
-use function get_object_vars;
-use function is_array;
-use function is_object;
 use function max;
 use function preg_split;
 
@@ -20,113 +16,55 @@ class Table extends BasicTerminalObject
     /**
      * The data for the table, an array of (arrays|objects)
      *
-     * @var array $data
+     * @var array
      */
-    protected $data           = [];
+    protected $data = [];
 
     /**
      * An array of the widths of each column in the table
      *
-     * @var array $column_widths
+     * @var array
      */
-    protected $column_widths  = [];
+    protected $column_widths = [];
 
     /**
      * The width of the table
      *
-     * @var integer $table_width
+     * @var int
      */
-    protected $table_width    = 0;
+    protected $table_width = 0;
 
     /**
      * The divider between table cells
      *
-     * @var string $column_divider
+     * @var string
      */
     protected $column_divider = ' | ';
 
     /**
      * The border to divide each row of the table
      *
-     * @var string $border
+     * @var string
      */
     protected $border;
 
     /**
      * The array of rows that will ultimately be returned
      *
-     * @var array $rows
+     * @var array
      */
-    protected $rows           = [];
+    protected $rows = [];
 
     /**
-     * @var string $pregix A string to be output before each row is output.
+     * @var string a string to be output before each row is output
      */
-    private $prefix = "";
+    private $prefix = '';
 
-
-    public function __construct(array $data, $prefix = "")
+    public function __construct(array $data, $prefix = '')
     {
         $this->data = $this->getData($data);
         $this->prefix = $prefix;
     }
-
-
-    /**
-     * @param array $input
-     *
-     * @return array
-     */
-    private function getData(array $input)
-    {
-        $output = [];
-
-        foreach ($input as $item) {
-            if (is_object($item)) {
-                $item = get_object_vars($item);
-            }
-
-            if (!is_array($item)) {
-                throw new InvalidArgumentException("Invalid table data, you must pass an array of arrays or objects");
-            }
-
-            $output[] = $item;
-        }
-
-        return $this->splitRows($output);
-    }
-
-    /**
-     * Split each row in $data into an array of arrays
-     * Where each value represents a line in a cell
-     *
-     * @param array $data
-     *
-     * @return array
-     */
-    private function splitRows($data)
-    {
-        foreach ($data as $row_key => $row) {
-            $height = 1;
-            $lines = [];
-            foreach ($row as $key => $column) {
-                $lines[$key] = preg_split('/(\r\n|\r|\n)/u', $column);
-                $height = max($height, count($lines[$key]));
-            }
-            $keys = array_keys($row);
-            $new_rows = [];
-            for ($i = 0; $i < $height; $i++) {
-                $new_row = [];
-                foreach ($keys as $key) {
-                    $new_row[$key] = $lines[$key][$i] ?? '';
-                }
-                $new_rows[] = $new_row;
-            }
-            $data[$row_key] = $new_rows;
-        }
-        return $data;
-    }
-
 
     /**
      * Return the built rows
@@ -136,8 +74,8 @@ class Table extends BasicTerminalObject
     public function result()
     {
         $this->column_widths = $this->getColumnWidths();
-        $this->table_width   = $this->getWidth();
-        $this->border        = $this->getBorder();
+        $this->table_width = $this->getWidth();
+        $this->border = $this->getBorder();
 
         $this->buildHeaderRow();
 
@@ -152,22 +90,9 @@ class Table extends BasicTerminalObject
     }
 
     /**
-     * Append a line to the output.
-     *
-     * @param string $line The line to output
-     *
-     * @return void
-     */
-    private function addLine($line)
-    {
-        $this->rows[] = $this->prefix . $line;
-    }
-
-
-    /**
      * Determine the width of the table
      *
-     * @return integer
+     * @return int
      */
     protected function getWidth()
     {
@@ -197,14 +122,14 @@ class Table extends BasicTerminalObject
         $header_row = $this->getHeaderRow();
         if ($header_row) {
             $this->addLine($this->buildRow($header_row));
-            $this->addLine((new Border)->char('=')->length($this->table_width)->result());
+            $this->addLine((new Border())->char('=')->length($this->table_width)->result());
         }
     }
 
     /**
      * Get table row
      *
-     * @param  mixed  $columns
+     * @param mixed $columns
      *
      * @return string
      */
@@ -224,8 +149,8 @@ class Table extends BasicTerminalObject
     /**
      * Build the string for this particular table cell
      *
-     * @param  mixed  $key
-     * @param  string $column
+     * @param mixed  $key
+     * @param string $column
      *
      * @return string
      */
@@ -244,11 +169,11 @@ class Table extends BasicTerminalObject
         $first_item = reset($this->data);
         $first_item = reset($first_item);
 
-        $keys       = array_keys($first_item);
-        $first_key  = reset($keys);
+        $keys = array_keys($first_item);
+        $first_key = reset($keys);
 
         // We have an associative array (probably), let's have a header row
-        if (!is_int($first_key)) {
+        if (!\is_int($first_key)) {
             return array_combine($keys, $keys);
         }
 
@@ -282,8 +207,6 @@ class Table extends BasicTerminalObject
     /**
      * Set up an array of default column widths
      *
-     * @param array $columns
-     *
      * @return array
      */
     protected function getDefaultColumnWidths(array $columns)
@@ -299,10 +222,74 @@ class Table extends BasicTerminalObject
      * @param array  $current_width
      * @param string $str
      *
-     * @return integer
+     * @return int
      */
     protected function getCellWidth($current_width, $str)
     {
         return max($current_width, $this->lengthWithoutTags($str));
+    }
+
+    /**
+     * @return array
+     */
+    private function getData(array $input)
+    {
+        $output = [];
+
+        foreach ($input as $item) {
+            if (\is_object($item)) {
+                $item = get_object_vars($item);
+            }
+
+            if (!\is_array($item)) {
+                throw new InvalidArgumentException('Invalid table data, you must pass an array of arrays or objects');
+            }
+
+            $output[] = $item;
+        }
+
+        return $this->splitRows($output);
+    }
+
+    /**
+     * Split each row in $data into an array of arrays
+     * Where each value represents a line in a cell
+     *
+     * @param array $data
+     *
+     * @return array
+     */
+    private function splitRows($data)
+    {
+        foreach ($data as $row_key => $row) {
+            $height = 1;
+            $lines = [];
+            foreach ($row as $key => $column) {
+                $lines[$key] = preg_split('/(\r\n|\r|\n)/u', $column);
+                $height = max($height, \count($lines[$key]));
+            }
+            $keys = array_keys($row);
+            $new_rows = [];
+            for ($i = 0; $i < $height; ++$i) {
+                $new_row = [];
+                foreach ($keys as $key) {
+                    $new_row[$key] = $lines[$key][$i] ?? '';
+                }
+                $new_rows[] = $new_row;
+            }
+            $data[$row_key] = $new_rows;
+        }
+
+        return $data;
+    }
+
+    /**
+     * Append a line to the output.
+     *
+     * @param string $line The line to output
+     */
+    private function addLine($line)
+    {
+        $this->rows[] = $this->prefix . $line;
     }
 }

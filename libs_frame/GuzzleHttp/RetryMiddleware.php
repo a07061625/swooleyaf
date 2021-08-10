@@ -10,6 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 /**
  * Middleware that retries requests based on the boolean result of
  * invoking the provided "decider" function.
+ *
  * @final
  */
 class RetryMiddleware
@@ -28,29 +29,20 @@ class RetryMiddleware
     private $delay;
 
     /**
-     * @param callable $decider Function that accepts the number of retries,a request, [response], and [exception]
-     *                          and returns true if the request is to be retried.
-     * @param callable(RequestInterface, array): PromiseInterface $nextHandler Next handler to invoke.
-     * @param null|callable(int): int $delay Function that accepts the number of retries
-     *                                       and returns the number of milliseconds to delay.
+     * @param callable                                            $decider     function that accepts the number of retries,a request, [response], and [exception]
+     *                                                                         and returns true if the request is to be retried
+     * @param callable(RequestInterface, array): PromiseInterface $nextHandler Next handler to invoke
+     * @param null|callable(int): int                             $delay       Function that accepts the number of retries
+     *                                                                         and returns the number of milliseconds to delay
      */
-    public function __construct(callable $decider, callable $nextHandler, callable $delay = null)
+    public function __construct(callable $decider, callable $nextHandler, ?callable $delay = null)
     {
         $this->decider = $decider;
         $this->nextHandler = $nextHandler;
-        $this->delay = $delay ? : __CLASS__ . '::exponentialDelay';
+        $this->delay = $delay ?: __CLASS__ . '::exponentialDelay';
     }
 
-    /**
-     * Default exponential backoff delay function.
-     * @return int milliseconds.
-     */
-    public static function exponentialDelay(int $retries) : int
-    {
-        return (int)\pow(2, $retries - 1) * 1000;
-    }
-
-    public function __invoke(RequestInterface $request, array $options) : PromiseInterface
+    public function __invoke(RequestInterface $request, array $options): PromiseInterface
     {
         if (!isset($options['retries'])) {
             $options['retries'] = 0;
@@ -62,11 +54,21 @@ class RetryMiddleware
     }
 
     /**
+     * Default exponential backoff delay function.
+     *
+     * @return int milliseconds
+     */
+    public static function exponentialDelay(int $retries): int
+    {
+        return (int)pow(2, $retries - 1) * 1000;
+    }
+
+    /**
      * Execute fulfilled closure
      */
-    private function onFulfilled(RequestInterface $request, array $options) : callable
+    private function onFulfilled(RequestInterface $request, array $options): callable
     {
-        return function($value) use ($request, $options){
+        return function ($value) use ($request, $options) {
             if (!($this->decider)($options['retries'], $request, $value, null)) {
                 return $value;
             }
@@ -78,9 +80,9 @@ class RetryMiddleware
     /**
      * Execute rejected closure
      */
-    private function onRejected(RequestInterface $req, array $options) : callable
+    private function onRejected(RequestInterface $req, array $options): callable
     {
-        return function($reason) use ($req, $options){
+        return function ($reason) use ($req, $options) {
             if (!($this->decider)($options['retries'], $req, null, $reason)) {
                 return P\Create::rejectionFor($reason);
             }
@@ -89,9 +91,9 @@ class RetryMiddleware
         };
     }
 
-    private function doRetry(RequestInterface $request, array $options, ResponseInterface $response = null) : PromiseInterface
+    private function doRetry(RequestInterface $request, array $options, ?ResponseInterface $response = null): PromiseInterface
     {
-        $options['delay'] = ($this->delay)(++ $options['retries'], $response);
+        $options['delay'] = ($this->delay)(++$options['retries'], $response);
 
         return $this($request, $options);
     }

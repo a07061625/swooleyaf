@@ -2,19 +2,22 @@
 
 namespace AlibabaCloud\Client\Credentials\Requests;
 
-use AlibabaCloud\Client\Request\RpcRequest;
-use AlibabaCloud\Client\Exception\ClientException;
 use AlibabaCloud\Client\Credentials\Providers\Provider;
+use AlibabaCloud\Client\Exception\ClientException;
+use AlibabaCloud\Client\Request\RpcRequest;
 
 /**
  * Use the RSA key pair to complete the authentication (supported only on Japanese site)
+ *
  * @package   AlibabaCloud\Client\Credentials\Requests
  */
 class GenerateSessionAccessKey extends RpcRequest
 {
     /**
      * GenerateSessionAccessKey constructor.
+     *
      * @param string $publicKeyId
+     *
      * @throws ClientException
      */
     public function __construct($publicKeyId)

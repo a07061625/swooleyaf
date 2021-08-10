@@ -9,25 +9,25 @@ class File implements WriterInterface
     /** @var resource|string */
     protected $resource;
 
-    /** @var boolean $close_locally */
+    /** @var bool */
     protected $close_locally = false;
 
-    /** @var boolean $use_locking */
+    /** @var bool */
     protected $use_locking = false;
 
-    /** @var boolean $gzip_file */
+    /** @var bool */
     protected $gzip_file = false;
 
     /**
-     * @param string|resource $resource
-     * @param bool $use_locking
-     * @param bool $gzip_file
+     * @param resource|string $resource
+     * @param bool            $use_locking
+     * @param bool            $gzip_file
      */
     public function __construct($resource, $use_locking = false, $gzip_file = false)
     {
-        $this->resource    = $resource;
+        $this->resource = $resource;
         $this->use_locking = $use_locking;
-        $this->gzip_file   = $gzip_file;
+        $this->gzip_file = $gzip_file;
     }
 
     public function lock()
@@ -47,7 +47,7 @@ class File implements WriterInterface
     /**
      * Write the content to the stream
      *
-     * @param  string $content
+     * @param string $content
      */
     public function write($content)
     {
@@ -64,9 +64,16 @@ class File implements WriterInterface
         }
     }
 
+    public function _destruct()
+    {
+        if ($this->close_locally) {
+            gzclose($this->getResource());
+        }
+    }
+
     protected function getResource()
     {
-        if (is_resource($this->resource)) {
+        if (\is_resource($this->resource)) {
             return $this->resource;
         }
 
@@ -77,7 +84,7 @@ class File implements WriterInterface
         }
 
         if (!($this->resource = $this->openResource())) {
-            throw new RuntimeException("The resource could not be opened");
+            throw new RuntimeException('The resource could not be opened');
         }
 
         return $this->resource;
@@ -90,12 +97,5 @@ class File implements WriterInterface
         }
 
         return fopen($this->resource, 'a');
-    }
-
-    public function _destruct()
-    {
-        if ($this->close_locally) {
-            gzclose($this->getResource());
-        }
     }
 }

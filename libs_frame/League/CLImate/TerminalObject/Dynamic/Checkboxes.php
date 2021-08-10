@@ -10,14 +10,14 @@ class Checkboxes extends InputAbstract
     /**
      * The options to choose from
      *
-     * @var Checkbox\CheckboxGroup $checkboxes
+     * @var Checkbox\CheckboxGroup
      */
     protected $checkboxes;
 
-    public function __construct($prompt, array $options, ReaderInterface $reader = null)
+    public function __construct($prompt, array $options, ?ReaderInterface $reader = null)
     {
-        $this->prompt  = $prompt;
-        $this->reader  = $reader ?: new Stdin();
+        $this->prompt = $prompt;
+        $this->reader = $reader ?: new Stdin();
 
         $this->checkboxes = $this->buildCheckboxes($options);
     }
@@ -40,8 +40,6 @@ class Checkboxes extends InputAbstract
 
     /**
      * Build out the checkboxes
-     *
-     * @param array $options
      *
      * @return Checkbox\CheckboxGroup
      */
@@ -102,14 +100,15 @@ class Checkboxes extends InputAbstract
             case "\n":
                 $this->output->sameLine()->write($this->util->cursor->defaultStyle());
                 $this->output->sameLine()->write("\e[0m");
-            return true; // Break the while loop as well
 
+            return true; // Break the while loop as well
             case "\e":
                 $this->handleAnsi();
-            break;
 
+            break;
             case ' ':
                 $this->checkboxes->toggleCurrent();
+
             break;
         }
 
@@ -136,11 +135,12 @@ class Checkboxes extends InputAbstract
             // Up arrow
             case '[A':
                 $this->checkboxes->setCurrent('previous');
-            break;
 
+            break;
             // Down arrow
             case '[B':
                 $this->checkboxes->setCurrent('next');
+
             break;
         }
     }

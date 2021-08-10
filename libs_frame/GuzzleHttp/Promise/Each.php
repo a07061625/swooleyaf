@@ -14,19 +14,19 @@ final class Each
      * $onRejected is a function that accepts the rejection reason, iterator
      * index, and the aggregate promise. The callback can invoke any necessary
      * side effects and choose to resolve or reject the aggregate if needed.
-     * @param mixed $iterable Iterator or array to iterate over.
-     * @param callable|null $onFulfilled
-     * @param callable|null $onRejected
+     *
+     * @param mixed $iterable iterator or array to iterate over
+     *
      * @return PromiseInterface
      */
     public static function of(
         $iterable,
-        callable $onFulfilled = null,
-        callable $onRejected = null
+        ?callable $onFulfilled = null,
+        ?callable $onRejected = null
     ) {
         return (new EachPromise($iterable, [
             'fulfilled' => $onFulfilled,
-            'rejected'  => $onRejected
+            'rejected' => $onRejected,
         ]))->promise();
     }
 
@@ -39,7 +39,7 @@ final class Each
      * for dynamic a concurrency size.
      *
      * @param mixed        $iterable
-     * @param int|callable $concurrency
+     * @param callable|int $concurrency
      * @param callable     $onFulfilled
      * @param callable     $onRejected
      *
@@ -48,13 +48,13 @@ final class Each
     public static function ofLimit(
         $iterable,
         $concurrency,
-        callable $onFulfilled = null,
-        callable $onRejected = null
+        ?callable $onFulfilled = null,
+        ?callable $onRejected = null
     ) {
         return (new EachPromise($iterable, [
-            'fulfilled'   => $onFulfilled,
-            'rejected'    => $onRejected,
-            'concurrency' => $concurrency
+            'fulfilled' => $onFulfilled,
+            'rejected' => $onRejected,
+            'concurrency' => $concurrency,
         ]))->promise();
     }
 
@@ -64,7 +64,7 @@ final class Each
      * rejected with the encountered rejection.
      *
      * @param mixed        $iterable
-     * @param int|callable $concurrency
+     * @param callable|int $concurrency
      * @param callable     $onFulfilled
      *
      * @return PromiseInterface
@@ -72,7 +72,7 @@ final class Each
     public static function ofLimitAll(
         $iterable,
         $concurrency,
-        callable $onFulfilled = null
+        ?callable $onFulfilled = null
     ) {
         return each_limit(
             $iterable,

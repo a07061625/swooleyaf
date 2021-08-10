@@ -11,7 +11,7 @@ final class ClearLine extends Repeatable
      */
     public function result()
     {
-        $string = "";
+        $string = '';
         while ($this->count > 0) {
             $string .= $this->util->cursor->startOfCurrentLine();
             $string .= $this->util->cursor->deleteCurrentLine();
@@ -25,9 +25,8 @@ final class ClearLine extends Repeatable
         return $string;
     }
 
-
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function sameLine()
     {

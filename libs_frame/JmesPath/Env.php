@@ -1,4 +1,5 @@
 <?php
+
 namespace JmesPath;
 
 /**
@@ -27,7 +28,7 @@ final class Env
         static $runtime;
 
         if (!$runtime) {
-            $runtime = Env::createRuntime();
+            $runtime = self::createRuntime();
         }
 
         return $runtime($expression, $data);
@@ -55,7 +56,7 @@ final class Env
      * Delete all previously compiled JMESPath files from the JP_COMPILE_DIR
      * directory or sys_get_temp_dir().
      *
-     * @return int Returns the number of deleted files.
+     * @return int returns the number of deleted files
      */
     public static function cleanCompileDir()
     {
@@ -63,7 +64,7 @@ final class Env
         $compileDir = self::getEnvVariable(self::COMPILE_DIR) ?: sys_get_temp_dir();
 
         foreach (glob("{$compileDir}/jmespath_*.php") as $file) {
-            $total++;
+            ++$total;
             unlink($file);
         }
 
@@ -75,20 +76,20 @@ final class Env
      *
      * @param string $name
      *
-     * @return string|null
+     * @return null|string
      */
     private static function getEnvVariable($name)
     {
-        if (array_key_exists($name, $_SERVER)) {
+        if (\array_key_exists($name, $_SERVER)) {
             return $_SERVER[$name];
         }
 
-        if (array_key_exists($name, $_ENV)) {
+        if (\array_key_exists($name, $_ENV)) {
             return $_ENV[$name];
         }
 
         $value = getenv($name);
 
-        return $value === false ? null : $value;
+        return false === $value ? null : $value;
     }
 }

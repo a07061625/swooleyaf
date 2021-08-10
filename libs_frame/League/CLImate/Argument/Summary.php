@@ -7,28 +7,26 @@ use League\CLImate\CLImate;
 class Summary
 {
     /**
-     * @var \League\CLImate\CLImate $climate
+     * @var \League\CLImate\CLImate
      */
     protected $climate;
 
     /**
-     * @var string $description
+     * @var string
      */
     protected $description;
 
     /**
-     * @var string $command
+     * @var string
      */
     protected $command;
 
     /**
-     * @var Filter $filter
+     * @var Filter
      */
     protected $filter;
 
     /**
-     * @param \League\CLImate\CLImate $climate
-     *
      * @return \League\CLImate\Argument\Summary
      */
     public function setClimate(CLImate $climate)
@@ -63,7 +61,7 @@ class Summary
     }
 
     /**
-     * @param Filter $filter
+     * @param Filter     $filter
      * @param Argument[] $arguments
      *
      * @return \League\CLImate\Argument\Summary
@@ -114,13 +112,11 @@ class Summary
      * For example, "-u username, --user username", "--force", or
      * "-c count (default: 7)".
      *
-     * @param Argument $argument
-     *
      * @return string
      */
     public function argument(Argument $argument)
     {
-        $summary     = $this->prefixedArguments($argument);
+        $summary = $this->prefixedArguments($argument);
         $printedName = mb_strstr($summary, ' ' . $argument->name());
 
         // Print the argument name if it's not printed yet.
@@ -129,7 +125,7 @@ class Summary
         }
 
         if ($defaults = $argument->defaultValue()) {
-            if (count($defaults) == 1) {
+            if (1 == \count($defaults)) {
                 $summary .= " (default: {$defaults[0]})";
             } else {
                 $summary .= ' (defaults: ' . implode(', ', $defaults) . ')';
@@ -141,8 +137,6 @@ class Summary
 
     /**
      * Build argument summary surrounded by brackets
-     *
-     * @param Argument $argument
      *
      * @return string
      */
@@ -164,12 +158,12 @@ class Summary
     /**
      * Print out the argument list
      *
-     * @param array $arguments
+     * @param array  $arguments
      * @param string $type
      */
     protected function outputArguments($arguments, $type)
     {
-        if (count($arguments) == 0) {
+        if (0 == \count($arguments)) {
             return;
         }
 
@@ -187,14 +181,12 @@ class Summary
     /**
      * Builds the summary for any prefixed arguments
      *
-     * @param Argument $argument
-     *
      * @return string
      */
     protected function prefixedArguments(Argument $argument)
     {
         $prefixes = [$argument->prefix(), $argument->longPrefix()];
-        $summary  = [];
+        $summary = [];
 
         foreach ($prefixes as $key => $prefix) {
             if (!$prefix) {

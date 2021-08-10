@@ -10,62 +10,62 @@ class Manager
     /**
      * An array of arguments passed to the program.
      *
-     * @var Argument[] $arguments
+     * @var Argument[]
      */
     protected $arguments = [];
 
     /**
      * A program's description.
      *
-     * @var string $description
+     * @var string
      */
     protected $description;
 
     /**
      * Filter class to find various types of arguments
      *
-     * @var \League\CLImate\Argument\Filter $filter
+     * @var \League\CLImate\Argument\Filter
      */
     protected $filter;
 
     /**
      * Summary builder class
      *
-     * @var \League\CLImate\Argument\Summary $summary
+     * @var \League\CLImate\Argument\Summary
      */
     protected $summary;
 
     /**
      * Argument parser class
      *
-     * @var \League\CLImate\Argument\Parser $parser
+     * @var \League\CLImate\Argument\Parser
      */
     protected $parser;
 
     public function __construct()
     {
-        $this->filter  = new Filter();
+        $this->filter = new Filter();
         $this->summary = new Summary();
-        $this->parser  = new Parser();
+        $this->parser = new Parser();
     }
 
     /**
      * Add an argument.
      *
-     * @param Argument|string|array $argument
+     * @param Argument|array|string $argument
      * @param $options
      *
-     * @return void
-     * @throws InvalidArgumentException if $argument isn't an array or Argument object.
+     * @throws InvalidArgumentException if $argument isn't an array or Argument object
      */
     public function add($argument, array $options = [])
     {
-        if (is_array($argument)) {
+        if (\is_array($argument)) {
             $this->addMany($argument);
+
             return;
         }
 
-        if (is_string($argument)) {
+        if (\is_string($argument)) {
             $argument = Argument::createFromArray($argument, $options);
         }
 
@@ -77,21 +77,10 @@ class Manager
     }
 
     /**
-     * Add multiple arguments to a CLImate script.
-     *
-     * @param array $arguments
-     */
-    protected function addMany(array $arguments = [])
-    {
-        foreach ($arguments as $name => $options) {
-            $this->add($name, $options);
-        }
-    }
-
-    /**
      * Determine if an argument exists.
      *
      * @param string $name
+     *
      * @return bool
      */
     public function exists($name)
@@ -103,7 +92,8 @@ class Manager
      * Retrieve an argument's value.
      *
      * @param string $name
-     * @return string|int|float|bool|null
+     *
+     * @return null|bool|float|int|string
      */
     public function get($name)
     {
@@ -114,7 +104,8 @@ class Manager
      * Retrieve an argument's all values as an array.
      *
      * @param string $name
-     * @return string[]|int[]|float[]|bool[]
+     *
+     * @return bool[]|float[]|int[]|string[]
      */
     public function getArray($name)
     {
@@ -138,11 +129,11 @@ class Manager
      * line before parse()'ing them into argument objects.
      *
      * @param string $name
-     * @param array $argv
+     * @param array  $argv
      *
      * @return bool
      */
-    public function defined($name, array $argv = null)
+    public function defined($name, ?array $argv = null)
     {
         // The argument isn't defined if it's not defined by the calling code.
         if (!$this->exists($name)) {
@@ -154,30 +145,6 @@ class Manager
 
         foreach ($command_arguments as $command_argument) {
             if ($this->isArgument($argument, $command_argument)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Check if the defined argument matches the command argument.
-     *
-     * @param Argument $argument
-     * @param string $command_argument
-     *
-     * @return bool
-     */
-    protected function isArgument($argument, $command_argument)
-    {
-        $possibilities = [
-            $argument->prefix()     => "-{$argument->prefix()}",
-            $argument->longPrefix() => "--{$argument->longPrefix()}",
-        ];
-
-        foreach ($possibilities as $key => $search) {
-            if ($key && strpos($command_argument, $search) === 0) {
                 return true;
             }
         }
@@ -214,17 +181,16 @@ class Manager
     /**
      * Output a script's usage statement.
      *
-     * @param CLImate $climate
      * @param array $argv
      */
-    public function usage(CLImate $climate, array $argv = null)
+    public function usage(CLImate $climate, ?array $argv = null)
     {
         $this->summary
-                ->setClimate($climate)
-                ->setDescription($this->description)
-                ->setCommand($this->parser->command($argv))
-                ->setFilter($this->filter, $this->all())
-                ->output();
+            ->setClimate($climate)
+            ->setDescription($this->description)
+            ->setCommand($this->parser->command($argv))
+            ->setFilter($this->filter, $this->all())
+            ->output();
     }
 
     /**
@@ -232,7 +198,7 @@ class Manager
      *
      * @param array $argv
      */
-    public function parse(array $argv = null)
+    public function parse(?array $argv = null)
     {
         $this->parser->setFilter($this->filter, $this->all());
 
@@ -242,7 +208,7 @@ class Manager
     /**
      * Get the trailing arguments
      *
-     * @return string|null
+     * @return null|string
      */
     public function trailing()
     {
@@ -252,10 +218,44 @@ class Manager
     /**
      * Get the trailing arguments as an array
      *
-     * @return array|null
+     * @return null|array
      */
     public function trailingArray()
     {
         return $this->parser->trailingArray();
+    }
+
+    /**
+     * Add multiple arguments to a CLImate script.
+     */
+    protected function addMany(array $arguments = [])
+    {
+        foreach ($arguments as $name => $options) {
+            $this->add($name, $options);
+        }
+    }
+
+    /**
+     * Check if the defined argument matches the command argument.
+     *
+     * @param Argument $argument
+     * @param string   $command_argument
+     *
+     * @return bool
+     */
+    protected function isArgument($argument, $command_argument)
+    {
+        $possibilities = [
+            $argument->prefix() => "-{$argument->prefix()}",
+            $argument->longPrefix() => "--{$argument->longPrefix()}",
+        ];
+
+        foreach ($possibilities as $key => $search) {
+            if ($key && 0 === strpos($command_argument, $search)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

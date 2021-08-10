@@ -11,7 +11,7 @@ final class Is
      */
     public static function pending(PromiseInterface $promise)
     {
-        return $promise->getState() === PromiseInterface::PENDING;
+        return PromiseInterface::PENDING === $promise->getState();
     }
 
     /**
@@ -21,7 +21,7 @@ final class Is
      */
     public static function settled(PromiseInterface $promise)
     {
-        return $promise->getState() !== PromiseInterface::PENDING;
+        return PromiseInterface::PENDING !== $promise->getState();
     }
 
     /**
@@ -31,7 +31,7 @@ final class Is
      */
     public static function fulfilled(PromiseInterface $promise)
     {
-        return $promise->getState() === PromiseInterface::FULFILLED;
+        return PromiseInterface::FULFILLED === $promise->getState();
     }
 
     /**
@@ -41,6 +41,6 @@ final class Is
      */
     public static function rejected(PromiseInterface $promise)
     {
-        return $promise->getState() === PromiseInterface::REJECTED;
+        return PromiseInterface::REJECTED === $promise->getState();
     }
 }

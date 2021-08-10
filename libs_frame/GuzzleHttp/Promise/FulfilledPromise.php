@@ -14,7 +14,7 @@ class FulfilledPromise implements PromiseInterface
 
     public function __construct($value)
     {
-        if (is_object($value) && method_exists($value, 'then')) {
+        if (\is_object($value) && method_exists($value, 'then')) {
             throw new \InvalidArgumentException(
                 'You cannot create a FulfilledPromise with a promise.'
             );
@@ -24,8 +24,8 @@ class FulfilledPromise implements PromiseInterface
     }
 
     public function then(
-        callable $onFulfilled = null,
-        callable $onRejected = null
+        ?callable $onFulfilled = null,
+        ?callable $onRejected = null
     ) {
         // Return itself if there is no onFulfilled function.
         if (!$onFulfilled) {
@@ -66,13 +66,13 @@ class FulfilledPromise implements PromiseInterface
     public function resolve($value)
     {
         if ($value !== $this->value) {
-            throw new \LogicException("Cannot resolve a fulfilled promise");
+            throw new \LogicException('Cannot resolve a fulfilled promise');
         }
     }
 
     public function reject($reason)
     {
-        throw new \LogicException("Cannot reject a fulfilled promise");
+        throw new \LogicException('Cannot reject a fulfilled promise');
     }
 
     public function cancel()

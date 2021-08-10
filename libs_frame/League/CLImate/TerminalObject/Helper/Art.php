@@ -3,7 +3,6 @@
 namespace League\CLImate\TerminalObject\Helper;
 
 use League\CLImate\Exceptions\UnexpectedValueException;
-
 use function preg_quote;
 
 trait Art
@@ -11,21 +10,21 @@ trait Art
     /**
      * The directories we should be looking for art in
      *
-     * @var array $art_dirs
+     * @var array
      */
     protected $art_dirs = [];
 
     /**
      * The default art if we can't find what the user requested
      *
-     * @var string $default_art
+     * @var string
      */
     protected $default_art = '404';
 
     /**
      * The art requested by the user
      *
-     * @var string $art
+     * @var string
      */
     protected $art = '';
 
@@ -91,12 +90,12 @@ trait Art
     {
         $files = $this->fileSearch($art, '(\.[^' . preg_quote(\DIRECTORY_SEPARATOR) . ']*)?$');
 
-        if (count($files) === 0) {
+        if (0 === \count($files)) {
             $this->addDir(__DIR__ . \DIRECTORY_SEPARATOR);
             $files = $this->fileSearch($this->default_art, '.*');
         }
 
-        if (count($files) === 0) {
+        if (0 === \count($files)) {
             throw new UnexpectedValueException("Unable to find an art file with the name '{$art}'");
         }
 
@@ -153,8 +152,7 @@ trait Art
     {
         $output = file_get_contents($path);
         $output = explode("\n", $output);
-        $output = array_map('rtrim', $output);
 
-        return $output;
+        return array_map('rtrim', $output);
     }
 }

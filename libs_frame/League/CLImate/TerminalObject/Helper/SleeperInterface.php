@@ -5,7 +5,7 @@ namespace League\CLImate\TerminalObject\Helper;
 interface SleeperInterface
 {
     /**
-     * @param int|float $percentage
+     * @param float|int $percentage
      */
     public function speed($percentage);
 

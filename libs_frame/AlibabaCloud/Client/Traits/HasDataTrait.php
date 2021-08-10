@@ -3,12 +3,13 @@
 namespace AlibabaCloud\Client\Traits;
 
 use Adbar\Dot;
+use AlibabaCloud\Client\Result\Result;
 use ArrayIterator;
 use JmesPath\Env as JmesPath;
-use AlibabaCloud\Client\Result\Result;
 
 /**
  * Trait HasDataTrait
+ *
  * @package   AlibabaCloud\Client\Traits
  * @mixin     Result
  */
@@ -16,13 +17,62 @@ trait HasDataTrait
 {
     /**
      * Instance of the Dot.
+     *
      * @var Dot
      */
     protected $dot;
 
     /**
+     * @param string $name
+     *
+     * @return null|mixed
+     */
+    public function __get($name)
+    {
+        if (!isset($this->all()[$name])) {
+            return;
+        }
+
+        return json_decode(json_encode($this->all()))->{$name};
+    }
+
+    /**
+     * @param string $name
+     * @param mixed  $value
+     */
+    public function __set($name, $value)
+    {
+        $this->add($name, $value);
+    }
+
+    /*
+     * --------------------------------------------------------------
+     * ObjectAccess
+     * --------------------------------------------------------------
+     */
+
+    /**
+     * @param string $name
+     *
+     * @return bool
+     */
+    public function __isset($name)
+    {
+        return $this->has($name);
+    }
+
+    /**
+     * @param $name
+     */
+    public function __unset($name)
+    {
+        $this->delete($name);
+    }
+
+    /**
      * @param string $expression
-     * @return mixed|null
+     *
+     * @return null|mixed
      */
     public function search($expression)
     {
@@ -31,7 +81,8 @@ trait HasDataTrait
 
     /**
      * Delete the contents of a given key or keys
-     * @param array|int|string|null $keys
+     *
+     * @param null|array|int|string $keys
      */
     public function clear($keys = null)
     {
@@ -40,9 +91,11 @@ trait HasDataTrait
 
     /**
      * Flatten an array with the given character as a key delimiter
-     * @param string $delimiter
-     * @param array|null $items
-     * @param string $prepend
+     *
+     * @param string     $delimiter
+     * @param null|array $items
+     * @param string     $prepend
+     *
      * @return array
      */
     public function flatten($delimiter = '.', $items = null, $prepend = '')
@@ -52,8 +105,10 @@ trait HasDataTrait
 
     /**
      * Return the value of a given key
-     * @param int|string|null $key
-     * @param mixed $default
+     *
+     * @param null|int|string $key
+     * @param mixed           $default
+     *
      * @return mixed
      */
     public function get($key = null, $default = null)
@@ -63,8 +118,9 @@ trait HasDataTrait
 
     /**
      * Set a given key / value pair or pairs
+     *
      * @param array|int|string $keys
-     * @param mixed $value
+     * @param mixed            $value
      */
     public function set($keys, $value = null)
     {
@@ -73,7 +129,9 @@ trait HasDataTrait
 
     /**
      * Check if a given key or keys are empty
-     * @param array|int|string|null $keys
+     *
+     * @param null|array|int|string $keys
+     *
      * @return bool
      */
     public function isEmpty($keys = null)
@@ -83,7 +141,6 @@ trait HasDataTrait
 
     /**
      * Replace all items with a given array as a reference
-     * @param array $items
      */
     public function setReference(array &$items)
     {
@@ -92,8 +149,10 @@ trait HasDataTrait
 
     /**
      * Return the value of a given key or all the values as JSON
+     *
      * @param mixed $key
-     * @param int $options
+     * @param int   $options
+     *
      * @return string
      */
     public function toJson($key = null, $options = 0)
@@ -111,7 +170,9 @@ trait HasDataTrait
 
     /**
      * Check if a given key exists
+     *
      * @param int|string $key
+     *
      * @return bool
      */
     public function offsetExists($key)
@@ -121,7 +182,9 @@ trait HasDataTrait
 
     /**
      * Return the value of a given key
+     *
      * @param int|string $key
+     *
      * @return mixed
      */
     public function offsetGet($key)
@@ -131,8 +194,9 @@ trait HasDataTrait
 
     /**
      * Set a given value to the given key
-     * @param int|string|null $key
-     * @param mixed $value
+     *
+     * @param null|int|string $key
+     * @param mixed           $value
      */
     public function offsetSet($key, $value)
     {
@@ -141,6 +205,7 @@ trait HasDataTrait
 
     /**
      * Delete the given key
+     *
      * @param int|string $key
      */
     public function offsetUnset($key)
@@ -150,6 +215,7 @@ trait HasDataTrait
 
     /**
      * Delete the given key or keys
+     *
      * @param array|int|string $keys
      */
     public function delete($keys)
@@ -165,7 +231,9 @@ trait HasDataTrait
 
     /**
      * Return the number of items in a given key
-     * @param int|string|null $key
+     *
+     * @param null|int|string $key
+     *
      * @return int
      */
     public function count($key = null)
@@ -175,6 +243,7 @@ trait HasDataTrait
 
     /**
      * Get an iterator for the stored items
+     *
      * @return ArrayIterator
      */
     public function getIterator()
@@ -184,24 +253,12 @@ trait HasDataTrait
 
     /**
      * Return items for JSON serialization
+     *
      * @return array
      */
     public function jsonSerialize()
     {
         return $this->dot->jsonSerialize();
-    }
-
-    /**
-     * @param string $name
-     * @return mixed|null
-     */
-    public function __get($name)
-    {
-        if (!isset($this->all()[$name])) {
-            return null;
-        }
-
-        return \json_decode(\json_encode($this->all()))->$name;
     }
 
     /*
@@ -212,6 +269,7 @@ trait HasDataTrait
 
     /**
      * Return all the stored items
+     *
      * @return array
      */
     public function all()
@@ -220,44 +278,22 @@ trait HasDataTrait
     }
 
     /**
-     * @param string $name
-     * @param mixed $value
-     */
-    public function __set($name, $value)
-    {
-        $this->add($name, $value);
-    }
-
-    /**
      * Set a given key / value pair or pairs
      * if the key doesn't exist already
+     *
      * @param array|int|string $keys
-     * @param mixed $value
+     * @param mixed            $value
      */
     public function add($keys, $value = null)
     {
         $this->dot->add($keys, $value);
     }
 
-
-    /*
-     * --------------------------------------------------------------
-     * ObjectAccess
-     * --------------------------------------------------------------
-     */
-
-    /**
-     * @param string $name
-     * @return bool
-     */
-    public function __isset($name)
-    {
-        return $this->has($name);
-    }
-
     /**
      * Check if a given key or keys exists
+     *
      * @param array|int|string $keys
+     *
      * @return bool
      */
     public function has($keys)
@@ -265,18 +301,6 @@ trait HasDataTrait
         return $this->dot->has($keys);
     }
 
-    /**
-     * @param $name
-     * @return void
-     */
-    public function __unset($name)
-    {
-        $this->delete($name);
-    }
-
-    /**
-     * @param array $data
-     */
     protected function dot(array $data = [])
     {
         $this->dot = new Dot($data);

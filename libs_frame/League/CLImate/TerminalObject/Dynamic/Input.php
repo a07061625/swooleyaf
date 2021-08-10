@@ -10,14 +10,14 @@ class Input extends InputAbstract
     /**
      * An array of acceptable responses
      *
-     * @var array|object $acceptable
+     * @var array|object
      */
     protected $acceptable;
 
     /**
      * Whether we should be strict about the response given
      *
-     * @var boolean $strict
+     * @var bool
      */
     protected $strict = false;
 
@@ -26,14 +26,14 @@ class Input extends InputAbstract
      *
      * Terminated by ^D
      *
-     * @var boolean $multiLine
+     * @var bool
      */
     protected $multiLine = false;
 
     /**
      * Whether we should display the acceptable responses to the user
      *
-     * @var boolean $show_acceptable
+     * @var bool
      */
     protected $show_acceptable = false;
 
@@ -45,7 +45,7 @@ class Input extends InputAbstract
      */
     protected $default = '';
 
-    public function __construct($prompt, ReaderInterface $reader = null)
+    public function __construct($prompt, ?ReaderInterface $reader = null)
     {
         $this->prompt = $prompt;
         $this->reader = $reader ?: new Stdin();
@@ -73,14 +73,14 @@ class Input extends InputAbstract
      * Define the acceptable responses and whether or not to
      * display them to the user
      *
-     * @param  array|object $acceptable
-     * @param  boolean $show
+     * @param array|object $acceptable
+     * @param bool         $show
      *
      * @return \League\CLImate\TerminalObject\Dynamic\Input
      */
     public function accept($acceptable, $show = false)
     {
-        $this->acceptable      = $acceptable;
+        $this->acceptable = $acceptable;
         $this->show_acceptable = $show;
 
         return $this;
@@ -156,7 +156,7 @@ class Input extends InputAbstract
      */
     protected function valueOrDefault($response)
     {
-        if (strlen($response) == 0 && strlen($this->default)) {
+        if (0 == \strlen($response) && \strlen($this->default)) {
             return $this->default;
         }
 
@@ -170,7 +170,7 @@ class Input extends InputAbstract
      */
     protected function acceptableFormatted()
     {
-        if (!is_array($this->acceptable)) {
+        if (!\is_array($this->acceptable)) {
             return '';
         }
 
@@ -214,7 +214,8 @@ class Input extends InputAbstract
     /**
      * Apply some string manipulation functions for normalization
      *
-     * @param string|array $var
+     * @param array|string $var
+     *
      * @return array
      */
     protected function levelPlayingField($var)
@@ -222,7 +223,7 @@ class Input extends InputAbstract
         $levelers = ['trim', 'mb_strtolower'];
 
         foreach ($levelers as $leveler) {
-            if (is_array($var)) {
+            if (\is_array($var)) {
                 $var = array_map($leveler, $var);
             } else {
                 $var = $leveler($var);
@@ -235,11 +236,11 @@ class Input extends InputAbstract
     /**
      * Determine whether or not the acceptable property is of type closure
      *
-     * @return boolean
+     * @return bool
      */
     protected function acceptableIsClosure()
     {
-        return (is_object($this->acceptable) && $this->acceptable instanceof \Closure);
+        return \is_object($this->acceptable) && $this->acceptable instanceof \Closure;
     }
 
     /**
@@ -247,18 +248,18 @@ class Input extends InputAbstract
      *
      * @param string $response
      *
-     * @return boolean $response
+     * @return bool $response
      */
     protected function isAcceptableResponse($response)
     {
         if ($this->strict) {
-            return in_array($response, $this->acceptable);
+            return \in_array($response, $this->acceptable);
         }
 
         $acceptable = $this->levelPlayingField($this->acceptable);
-        $response   = $this->levelPlayingField($response);
+        $response = $this->levelPlayingField($response);
 
-        return in_array($response, $acceptable);
+        return \in_array($response, $acceptable);
     }
 
     /**
@@ -266,7 +267,7 @@ class Input extends InputAbstract
      *
      * @param string $response
      *
-     * @return boolean $response
+     * @return bool $response
      */
     protected function isValidResponse($response)
     {
@@ -275,7 +276,7 @@ class Input extends InputAbstract
         }
 
         if ($this->acceptableIsClosure()) {
-            return call_user_func($this->acceptable, $response);
+            return \call_user_func($this->acceptable, $response);
         }
 
         return $this->isAcceptableResponse($response);

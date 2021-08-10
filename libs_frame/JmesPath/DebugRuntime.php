@@ -1,4 +1,5 @@
 <?php
+
 namespace JmesPath;
 
 /**
@@ -33,6 +34,7 @@ class DebugRuntime
         return $this->debugCallback(
             function () use ($expression, $data) {
                 $runtime = $this->runtime;
+
                 return $runtime($expression, $data);
             },
             $expression,
@@ -45,6 +47,7 @@ class DebugRuntime
         $result = $this->debugCallback(
             function () use ($expression, $data) {
                 $runtime = $this->runtime;
+
                 return $runtime($expression, $data);
             },
             $expression,
@@ -64,7 +67,9 @@ class DebugRuntime
         foreach ($tokens as $t) {
             fprintf(
                 $this->out,
-                "%3d  %-13s  %s\n", $t['pos'], $t['type'],
+                "%3d  %-13s  %s\n",
+                $t['pos'],
+                $t['type'],
                 json_encode($t['value'])
             );
         }

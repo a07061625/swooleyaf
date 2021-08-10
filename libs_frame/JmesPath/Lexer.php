@@ -1,4 +1,5 @@
 <?php
+
 namespace JmesPath;
 
 /**
@@ -49,94 +50,94 @@ class Lexer
 
     /** @var array We know what token we are consuming based on each char */
     private static $transitionTable = [
-        '<'  => self::STATE_LT,
-        '>'  => self::STATE_GT,
-        '='  => self::STATE_EQ,
-        '!'  => self::STATE_NOT,
-        '['  => self::STATE_LBRACKET,
-        '|'  => self::STATE_PIPE,
-        '&'  => self::STATE_AND,
-        '`'  => self::STATE_JSON_LITERAL,
-        '"'  => self::STATE_QUOTED_STRING,
-        "'"  => self::STATE_STRING_LITERAL,
-        '-'  => self::STATE_NUMBER,
-        '0'  => self::STATE_NUMBER,
-        '1'  => self::STATE_NUMBER,
-        '2'  => self::STATE_NUMBER,
-        '3'  => self::STATE_NUMBER,
-        '4'  => self::STATE_NUMBER,
-        '5'  => self::STATE_NUMBER,
-        '6'  => self::STATE_NUMBER,
-        '7'  => self::STATE_NUMBER,
-        '8'  => self::STATE_NUMBER,
-        '9'  => self::STATE_NUMBER,
-        ' '  => self::STATE_WHITESPACE,
+        '<' => self::STATE_LT,
+        '>' => self::STATE_GT,
+        '=' => self::STATE_EQ,
+        '!' => self::STATE_NOT,
+        '[' => self::STATE_LBRACKET,
+        '|' => self::STATE_PIPE,
+        '&' => self::STATE_AND,
+        '`' => self::STATE_JSON_LITERAL,
+        '"' => self::STATE_QUOTED_STRING,
+        "'" => self::STATE_STRING_LITERAL,
+        '-' => self::STATE_NUMBER,
+        '0' => self::STATE_NUMBER,
+        '1' => self::STATE_NUMBER,
+        '2' => self::STATE_NUMBER,
+        '3' => self::STATE_NUMBER,
+        '4' => self::STATE_NUMBER,
+        '5' => self::STATE_NUMBER,
+        '6' => self::STATE_NUMBER,
+        '7' => self::STATE_NUMBER,
+        '8' => self::STATE_NUMBER,
+        '9' => self::STATE_NUMBER,
+        ' ' => self::STATE_WHITESPACE,
         "\t" => self::STATE_WHITESPACE,
         "\n" => self::STATE_WHITESPACE,
         "\r" => self::STATE_WHITESPACE,
-        '.'  => self::STATE_SINGLE_CHAR,
-        '*'  => self::STATE_SINGLE_CHAR,
-        ']'  => self::STATE_SINGLE_CHAR,
-        ','  => self::STATE_SINGLE_CHAR,
-        ':'  => self::STATE_SINGLE_CHAR,
-        '@'  => self::STATE_SINGLE_CHAR,
-        '('  => self::STATE_SINGLE_CHAR,
-        ')'  => self::STATE_SINGLE_CHAR,
-        '{'  => self::STATE_SINGLE_CHAR,
-        '}'  => self::STATE_SINGLE_CHAR,
-        '_'  => self::STATE_IDENTIFIER,
-        'A'  => self::STATE_IDENTIFIER,
-        'B'  => self::STATE_IDENTIFIER,
-        'C'  => self::STATE_IDENTIFIER,
-        'D'  => self::STATE_IDENTIFIER,
-        'E'  => self::STATE_IDENTIFIER,
-        'F'  => self::STATE_IDENTIFIER,
-        'G'  => self::STATE_IDENTIFIER,
-        'H'  => self::STATE_IDENTIFIER,
-        'I'  => self::STATE_IDENTIFIER,
-        'J'  => self::STATE_IDENTIFIER,
-        'K'  => self::STATE_IDENTIFIER,
-        'L'  => self::STATE_IDENTIFIER,
-        'M'  => self::STATE_IDENTIFIER,
-        'N'  => self::STATE_IDENTIFIER,
-        'O'  => self::STATE_IDENTIFIER,
-        'P'  => self::STATE_IDENTIFIER,
-        'Q'  => self::STATE_IDENTIFIER,
-        'R'  => self::STATE_IDENTIFIER,
-        'S'  => self::STATE_IDENTIFIER,
-        'T'  => self::STATE_IDENTIFIER,
-        'U'  => self::STATE_IDENTIFIER,
-        'V'  => self::STATE_IDENTIFIER,
-        'W'  => self::STATE_IDENTIFIER,
-        'X'  => self::STATE_IDENTIFIER,
-        'Y'  => self::STATE_IDENTIFIER,
-        'Z'  => self::STATE_IDENTIFIER,
-        'a'  => self::STATE_IDENTIFIER,
-        'b'  => self::STATE_IDENTIFIER,
-        'c'  => self::STATE_IDENTIFIER,
-        'd'  => self::STATE_IDENTIFIER,
-        'e'  => self::STATE_IDENTIFIER,
-        'f'  => self::STATE_IDENTIFIER,
-        'g'  => self::STATE_IDENTIFIER,
-        'h'  => self::STATE_IDENTIFIER,
-        'i'  => self::STATE_IDENTIFIER,
-        'j'  => self::STATE_IDENTIFIER,
-        'k'  => self::STATE_IDENTIFIER,
-        'l'  => self::STATE_IDENTIFIER,
-        'm'  => self::STATE_IDENTIFIER,
-        'n'  => self::STATE_IDENTIFIER,
-        'o'  => self::STATE_IDENTIFIER,
-        'p'  => self::STATE_IDENTIFIER,
-        'q'  => self::STATE_IDENTIFIER,
-        'r'  => self::STATE_IDENTIFIER,
-        's'  => self::STATE_IDENTIFIER,
-        't'  => self::STATE_IDENTIFIER,
-        'u'  => self::STATE_IDENTIFIER,
-        'v'  => self::STATE_IDENTIFIER,
-        'w'  => self::STATE_IDENTIFIER,
-        'x'  => self::STATE_IDENTIFIER,
-        'y'  => self::STATE_IDENTIFIER,
-        'z'  => self::STATE_IDENTIFIER,
+        '.' => self::STATE_SINGLE_CHAR,
+        '*' => self::STATE_SINGLE_CHAR,
+        ']' => self::STATE_SINGLE_CHAR,
+        ',' => self::STATE_SINGLE_CHAR,
+        ':' => self::STATE_SINGLE_CHAR,
+        '@' => self::STATE_SINGLE_CHAR,
+        '(' => self::STATE_SINGLE_CHAR,
+        ')' => self::STATE_SINGLE_CHAR,
+        '{' => self::STATE_SINGLE_CHAR,
+        '}' => self::STATE_SINGLE_CHAR,
+        '_' => self::STATE_IDENTIFIER,
+        'A' => self::STATE_IDENTIFIER,
+        'B' => self::STATE_IDENTIFIER,
+        'C' => self::STATE_IDENTIFIER,
+        'D' => self::STATE_IDENTIFIER,
+        'E' => self::STATE_IDENTIFIER,
+        'F' => self::STATE_IDENTIFIER,
+        'G' => self::STATE_IDENTIFIER,
+        'H' => self::STATE_IDENTIFIER,
+        'I' => self::STATE_IDENTIFIER,
+        'J' => self::STATE_IDENTIFIER,
+        'K' => self::STATE_IDENTIFIER,
+        'L' => self::STATE_IDENTIFIER,
+        'M' => self::STATE_IDENTIFIER,
+        'N' => self::STATE_IDENTIFIER,
+        'O' => self::STATE_IDENTIFIER,
+        'P' => self::STATE_IDENTIFIER,
+        'Q' => self::STATE_IDENTIFIER,
+        'R' => self::STATE_IDENTIFIER,
+        'S' => self::STATE_IDENTIFIER,
+        'T' => self::STATE_IDENTIFIER,
+        'U' => self::STATE_IDENTIFIER,
+        'V' => self::STATE_IDENTIFIER,
+        'W' => self::STATE_IDENTIFIER,
+        'X' => self::STATE_IDENTIFIER,
+        'Y' => self::STATE_IDENTIFIER,
+        'Z' => self::STATE_IDENTIFIER,
+        'a' => self::STATE_IDENTIFIER,
+        'b' => self::STATE_IDENTIFIER,
+        'c' => self::STATE_IDENTIFIER,
+        'd' => self::STATE_IDENTIFIER,
+        'e' => self::STATE_IDENTIFIER,
+        'f' => self::STATE_IDENTIFIER,
+        'g' => self::STATE_IDENTIFIER,
+        'h' => self::STATE_IDENTIFIER,
+        'i' => self::STATE_IDENTIFIER,
+        'j' => self::STATE_IDENTIFIER,
+        'k' => self::STATE_IDENTIFIER,
+        'l' => self::STATE_IDENTIFIER,
+        'm' => self::STATE_IDENTIFIER,
+        'n' => self::STATE_IDENTIFIER,
+        'o' => self::STATE_IDENTIFIER,
+        'p' => self::STATE_IDENTIFIER,
+        'q' => self::STATE_IDENTIFIER,
+        'r' => self::STATE_IDENTIFIER,
+        's' => self::STATE_IDENTIFIER,
+        't' => self::STATE_IDENTIFIER,
+        'u' => self::STATE_IDENTIFIER,
+        'v' => self::STATE_IDENTIFIER,
+        'w' => self::STATE_IDENTIFIER,
+        'x' => self::STATE_IDENTIFIER,
+        'y' => self::STATE_IDENTIFIER,
+        'z' => self::STATE_IDENTIFIER,
     ];
 
     /** @var array Valid identifier characters after first character */
@@ -159,7 +160,7 @@ class Lexer
     /** @var array Valid number characters after the first character */
     private $numbers = [
         '0' => true, '1' => true, '2' => true, '3' => true, '4' => true,
-        '5' => true, '6' => true, '7' => true, '8' => true, '9' => true
+        '5' => true, '6' => true, '7' => true, '8' => true, '9' => true,
     ];
 
     /** @var array Map of simple single character tokens */
@@ -183,165 +184,140 @@ class Lexer
      * @param string $input JMESPath input
      *
      * @return array
+     *
      * @throws SyntaxErrorException
      */
     public function tokenize($input)
     {
         $tokens = [];
 
-        if ($input === '') {
+        if ('' === $input) {
             goto eof;
         }
 
         $chars = str_split($input);
 
         while (false !== ($current = current($chars))) {
-
             // Every character must be in the transition character table.
             if (!isset(self::$transitionTable[$current])) {
                 $tokens[] = [
-                    'type'  => self::T_UNKNOWN,
-                    'pos'   => key($chars),
-                    'value' => $current
+                    'type' => self::T_UNKNOWN,
+                    'pos' => key($chars),
+                    'value' => $current,
                 ];
                 next($chars);
+
                 continue;
             }
 
             $state = self::$transitionTable[$current];
 
-            if ($state === self::STATE_SINGLE_CHAR) {
-
+            if (self::STATE_SINGLE_CHAR === $state) {
                 // Consume simple tokens like ".", ",", "@", etc.
                 $tokens[] = [
-                    'type'  => $this->simpleTokens[$current],
-                    'pos'   => key($chars),
-                    'value' => $current
+                    'type' => $this->simpleTokens[$current],
+                    'pos' => key($chars),
+                    'value' => $current,
                 ];
                 next($chars);
-
-            } elseif ($state === self::STATE_IDENTIFIER) {
-
+            } elseif (self::STATE_IDENTIFIER === $state) {
                 // Consume identifiers
                 $start = key($chars);
                 $buffer = '';
                 do {
                     $buffer .= $current;
                     $current = next($chars);
-                } while ($current !== false && isset($this->validIdentifier[$current]));
+                } while (false !== $current && isset($this->validIdentifier[$current]));
                 $tokens[] = [
-                    'type'  => self::T_IDENTIFIER,
+                    'type' => self::T_IDENTIFIER,
                     'value' => $buffer,
-                    'pos'   => $start
+                    'pos' => $start,
                 ];
-
-            } elseif ($state === self::STATE_WHITESPACE) {
-
+            } elseif (self::STATE_WHITESPACE === $state) {
                 // Skip whitespace
                 next($chars);
-
-            } elseif ($state === self::STATE_LBRACKET) {
-
+            } elseif (self::STATE_LBRACKET === $state) {
                 // Consume "[", "[?", and "[]"
                 $position = key($chars);
                 $actual = next($chars);
-                if ($actual === ']') {
+                if (']' === $actual) {
                     next($chars);
                     $tokens[] = [
-                        'type'  => self::T_FLATTEN,
-                        'pos'   => $position,
-                        'value' => '[]'
+                        'type' => self::T_FLATTEN,
+                        'pos' => $position,
+                        'value' => '[]',
                     ];
-                } elseif ($actual === '?') {
+                } elseif ('?' === $actual) {
                     next($chars);
                     $tokens[] = [
-                        'type'  => self::T_FILTER,
-                        'pos'   => $position,
-                        'value' => '[?'
+                        'type' => self::T_FILTER,
+                        'pos' => $position,
+                        'value' => '[?',
                     ];
                 } else {
                     $tokens[] = [
-                        'type'  => self::T_LBRACKET,
-                        'pos'   => $position,
-                        'value' => '['
+                        'type' => self::T_LBRACKET,
+                        'pos' => $position,
+                        'value' => '[',
                     ];
                 }
-
-            } elseif ($state === self::STATE_STRING_LITERAL) {
-
+            } elseif (self::STATE_STRING_LITERAL === $state) {
                 // Consume raw string literals
                 $t = $this->inside($chars, "'", self::T_LITERAL);
                 $t['value'] = str_replace("\\'", "'", $t['value']);
                 $tokens[] = $t;
-
-            } elseif ($state === self::STATE_PIPE) {
-
+            } elseif (self::STATE_PIPE === $state) {
                 // Consume pipe and OR
                 $tokens[] = $this->matchOr($chars, '|', '|', self::T_OR, self::T_PIPE);
-
-            } elseif ($state == self::STATE_JSON_LITERAL) {
-
+            } elseif (self::STATE_JSON_LITERAL == $state) {
                 // Consume JSON literals
                 $token = $this->inside($chars, '`', self::T_LITERAL);
-                if ($token['type'] === self::T_LITERAL) {
+                if (self::T_LITERAL === $token['type']) {
                     $token['value'] = str_replace('\\`', '`', $token['value']);
                     $token = $this->parseJson($token);
                 }
                 $tokens[] = $token;
-
-            } elseif ($state == self::STATE_NUMBER) {
-
+            } elseif (self::STATE_NUMBER == $state) {
                 // Consume numbers
                 $start = key($chars);
                 $buffer = '';
                 do {
                     $buffer .= $current;
                     $current = next($chars);
-                } while ($current !== false && isset($this->numbers[$current]));
+                } while (false !== $current && isset($this->numbers[$current]));
                 $tokens[] = [
-                    'type'  => self::T_NUMBER,
+                    'type' => self::T_NUMBER,
                     'value' => (int)$buffer,
-                    'pos'   => $start
+                    'pos' => $start,
                 ];
-
-            } elseif ($state === self::STATE_QUOTED_STRING) {
-
+            } elseif (self::STATE_QUOTED_STRING === $state) {
                 // Consume quoted identifiers
                 $token = $this->inside($chars, '"', self::T_QUOTED_IDENTIFIER);
-                if ($token['type'] === self::T_QUOTED_IDENTIFIER) {
+                if (self::T_QUOTED_IDENTIFIER === $token['type']) {
                     $token['value'] = '"' . $token['value'] . '"';
                     $token = $this->parseJson($token);
                 }
                 $tokens[] = $token;
-
-            } elseif ($state === self::STATE_EQ) {
-
+            } elseif (self::STATE_EQ === $state) {
                 // Consume equals
                 $tokens[] = $this->matchOr($chars, '=', '=', self::T_COMPARATOR, self::T_UNKNOWN);
-
-            } elseif ($state == self::STATE_AND) {
-
+            } elseif (self::STATE_AND == $state) {
                 $tokens[] = $this->matchOr($chars, '&', '&', self::T_AND, self::T_EXPREF);
-
-            } elseif ($state === self::STATE_NOT) {
-
+            } elseif (self::STATE_NOT === $state) {
                 // Consume not equal
                 $tokens[] = $this->matchOr($chars, '!', '=', self::T_COMPARATOR, self::T_NOT);
-
             } else {
-
                 // either '<' or '>'
                 // Consume less than and greater than
                 $tokens[] = $this->matchOr($chars, $current, '=', self::T_COMPARATOR, self::T_COMPARATOR);
-
             }
         }
 
         eof:
         $tokens[] = [
-            'type'  => self::T_EOF,
-            'pos'   => mb_strlen($input, 'UTF-8'),
-            'value' => null
+            'type' => self::T_EOF,
+            'pos' => mb_strlen($input, 'UTF-8'),
+            'value' => null,
         ];
 
         return $tokens;
@@ -352,29 +328,30 @@ class Lexer
      * expected value. If it does, a token of "$type" is returned. Otherwise,
      * a token of "$orElse" type is returned.
      *
-     * @param array  $chars    Array of characters by reference.
-     * @param string $current  The current character.
-     * @param string $expected Expected character.
-     * @param string $type     Expected result type.
-     * @param string $orElse   Otherwise return a token of this type.
+     * @param array  $chars    array of characters by reference
+     * @param string $current  the current character
+     * @param string $expected expected character
+     * @param string $type     expected result type
+     * @param string $orElse   otherwise return a token of this type
      *
-     * @return array Returns a conditional token.
+     * @return array returns a conditional token
      */
     private function matchOr(array &$chars, $current, $expected, $type, $orElse)
     {
         if (next($chars) === $expected) {
             next($chars);
+
             return [
-                'type'  => $type,
-                'pos'   => key($chars) - 1,
-                'value' => $current . $expected
+                'type' => $type,
+                'pos' => key($chars) - 1,
+                'value' => $current . $expected,
             ];
         }
 
         return [
-            'type'  => $orElse,
-            'pos'   => key($chars) - 1,
-            'value' => $current
+            'type' => $orElse,
+            'pos' => key($chars) - 1,
+            'value' => $current,
         ];
     }
 
@@ -383,11 +360,11 @@ class Lexer
      * characters. Escaped delimiters will be adjusted before returning a
      * value. If the token is not closed, "unknown" is returned.
      *
-     * @param array  $chars Array of characters by reference.
-     * @param string $delim The delimiter character.
-     * @param string $type  Token type.
+     * @param array  $chars array of characters by reference
+     * @param string $delim the delimiter character
+     * @param string $type  token type
      *
-     * @return array Returns the consumed token.
+     * @return array returns the consumed token
      */
     private function inside(array &$chars, $delim, $type)
     {
@@ -396,16 +373,16 @@ class Lexer
         $buffer = '';
 
         while ($current !== $delim) {
-            if ($current === '\\') {
+            if ('\\' === $current) {
                 $buffer .= '\\';
                 $current = next($chars);
             }
-            if ($current === false) {
+            if (false === $current) {
                 // Unclosed delimiter
                 return [
-                    'type'  => self::T_UNKNOWN,
+                    'type' => self::T_UNKNOWN,
                     'value' => $buffer,
-                    'pos'   => $position
+                    'pos' => $position,
                 ];
             }
             $buffer .= $current;
@@ -420,9 +397,9 @@ class Lexer
     /**
      * Parses a JSON token or sets the token type to "unknown" on error.
      *
-     * @param array $token Token that needs parsing.
+     * @param array $token token that needs parsing
      *
-     * @return array Returns a token with a parsed value.
+     * @return array returns a token with a parsed value
      */
     private function parseJson(array $token)
     {
@@ -434,11 +411,13 @@ class Lexer
             $value = json_decode('"' . $token['value'] . '"', true);
             if ($error = json_last_error()) {
                 $token['type'] = self::T_UNKNOWN;
+
                 return $token;
             }
         }
 
         $token['value'] = $value;
+
         return $token;
     }
 }

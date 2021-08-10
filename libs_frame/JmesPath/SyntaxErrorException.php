@@ -1,4 +1,5 @@
 <?php
+
 namespace JmesPath;
 
 /**
@@ -18,7 +19,7 @@ class SyntaxErrorException extends \InvalidArgumentException
     ) {
         $message = "Syntax error at character {$token['pos']}\n"
             . $expression . "\n" . str_repeat(' ', max($token['pos'], 0)) . "^\n";
-        $message .= !is_array($expectedTypesOrMessage)
+        $message .= !\is_array($expectedTypesOrMessage)
             ? $expectedTypesOrMessage
             : $this->createTokenMessage($token, $expectedTypesOrMessage);
         parent::__construct($message);

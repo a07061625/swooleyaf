@@ -17,21 +17,14 @@ abstract class System
     }
 
     /**
-     * @return integer|null
+     * @return null|int
      */
     abstract public function width();
 
     /**
-     * @return integer|null
+     * @return null|int
      */
     abstract public function height();
-
-    /**
-     * Check if the stream supports ansi escape characters.
-     *
-     * @return bool
-     */
-    abstract protected function systemHasAnsiSupport();
 
     /**
      * Check if we are forcing ansi, fallback to system support
@@ -40,7 +33,7 @@ abstract class System
      */
     public function hasAnsiSupport()
     {
-        if (is_bool($this->force_ansi)) {
+        if (\is_bool($this->force_ansi)) {
             return $this->force_ansi;
         }
 
@@ -51,9 +44,9 @@ abstract class System
      * Wraps exec function, allowing the dimension methods to decouple
      *
      * @param string $command
-     * @param boolean $full
+     * @param bool   $full
      *
-     * @return string|array
+     * @return array|string
      */
     public function exec($command, $full = false)
     {
@@ -65,4 +58,11 @@ abstract class System
 
         return exec($command);
     }
+
+    /**
+     * Check if the stream supports ansi escape characters.
+     *
+     * @return bool
+     */
+    abstract protected function systemHasAnsiSupport();
 }

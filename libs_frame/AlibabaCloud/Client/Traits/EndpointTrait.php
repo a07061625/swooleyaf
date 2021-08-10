@@ -14,21 +14,25 @@ use InvalidArgumentException;
 
 /**
  * Help developers set up and get host.
+ *
  * @package   AlibabaCloud\Client\Traits
  * @mixin     AlibabaCloud
  */
 trait EndpointTrait
 {
     /**
-     * @var array Host cache.
+     * @var array host cache
      */
     private static $hosts = [];
 
     /**
      * Resolve host based on product name and region.
+     *
      * @param string $product
      * @param string $regionId
+     *
      * @return string
+     *
      * @throws ClientException
      */
     public static function resolveHost($product, $regionId = LocationService::GLOBAL_REGION)
@@ -51,6 +55,7 @@ trait EndpointTrait
 
     /**
      * @param $productCode
+     *
      * @return bool
      */
     public static function isGlobalProduct($productCode)
@@ -67,6 +72,7 @@ trait EndpointTrait
     /**
      * @param string $product
      * @param string $regionId
+     *
      * @return string
      */
     public static function resolveHostByStatic($product, $regionId)
@@ -80,10 +86,11 @@ trait EndpointTrait
 
     /**
      * Add host based on product name and region.
+     *
      * @param string $product
      * @param string $host
      * @param string $regionId
-     * @return void
+     *
      * @throws ClientException
      */
     public static function addHost($product, $host, $regionId = LocationService::GLOBAL_REGION)
@@ -100,25 +107,25 @@ trait EndpointTrait
     }
 
     /**
-     * @param Request $request
      * @return string
+     *
      * @throws ClientException
      */
     public static function resolveHostByRule(Request $request)
     {
-        $network = $request->network ? : 'public';
+        $network = $request->network ?: 'public';
         $suffix = $request->endpointSuffix;
-        if ($network === 'public') {
+        if ('public' === $network) {
             $network = '';
         }
 
-        if ($request->endpointRegional === 'regional') {
+        if ('regional' === $request->endpointRegional) {
             $regionId = $request->realRegionId();
 
             return "{$request->product}{$suffix}{$network}.{$regionId}.aliyuncs.com";
         }
 
-        if ($request->endpointRegional === 'central') {
+        if ('central' === $request->endpointRegional) {
             return "{$request->product}{$suffix}{$network}.aliyuncs.com";
         }
 

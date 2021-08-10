@@ -4,6 +4,7 @@ namespace AlibabaCloud\Client;
 
 /**
  * Class SDK
+ *
  * @package AlibabaCloud\Client
  */
 class SDK
@@ -35,7 +36,6 @@ class SDK
     /**
      * Service Not Found
      */
-
     const SERVICE_NOT_FOUND = 'SDK.ServiceNotFound';
     /**
      * Service Unknown Error

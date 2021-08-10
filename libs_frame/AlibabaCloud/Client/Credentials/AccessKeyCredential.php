@@ -2,11 +2,12 @@
 
 namespace AlibabaCloud\Client\Credentials;
 
-use AlibabaCloud\Client\Filter\CredentialFilter;
 use AlibabaCloud\Client\Exception\ClientException;
+use AlibabaCloud\Client\Filter\CredentialFilter;
 
 /**
  * Use the AccessKey to complete the authentication.
+ *
  * @package   AlibabaCloud\Client\Credentials
  */
 class AccessKeyCredential implements CredentialsInterface
@@ -22,8 +23,10 @@ class AccessKeyCredential implements CredentialsInterface
 
     /**
      * AccessKeyCredential constructor.
-     * @param string $accessKeyId Access key ID
+     *
+     * @param string $accessKeyId     Access key ID
      * @param string $accessKeySecret Access Key Secret
+     *
      * @throws ClientException
      */
     public function __construct($accessKeyId, $accessKeySecret)
@@ -32,6 +35,14 @@ class AccessKeyCredential implements CredentialsInterface
 
         $this->accessKeyId = $accessKeyId;
         $this->accessKeySecret = $accessKeySecret;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return "{$this->accessKeyId}#{$this->accessKeySecret}";
     }
 
     /**
@@ -48,13 +59,5 @@ class AccessKeyCredential implements CredentialsInterface
     public function getAccessKeySecret()
     {
         return $this->accessKeySecret;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return "$this->accessKeyId#$this->accessKeySecret";
     }
 }

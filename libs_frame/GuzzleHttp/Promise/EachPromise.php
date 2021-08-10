@@ -12,22 +12,22 @@ class EachPromise implements PromisorInterface
 
     private $nextPendingIndex = 0;
 
-    /** @var \Iterator|null */
+    /** @var null|\Iterator */
     private $iterable;
 
-    /** @var callable|int|null */
+    /** @var null|callable|int */
     private $concurrency;
 
-    /** @var callable|null */
+    /** @var null|callable */
     private $onFulfilled;
 
-    /** @var callable|null */
+    /** @var null|callable */
     private $onRejected;
 
-    /** @var Promise|null */
+    /** @var null|Promise */
     private $aggregate;
 
-    /** @var bool|null */
+    /** @var null|bool */
     private $mutex;
 
     /**
@@ -48,7 +48,7 @@ class EachPromise implements PromisorInterface
      *   allowed number of outstanding concurrently executing promises,
      *   creating a capped pool of promises. There is no limit by default.
      *
-     * @param mixed $iterable Promises or values to iterate.
+     * @param mixed $iterable promises or values to iterate
      * @param array $config   Configuration options
      */
     public function __construct($iterable, array $config = [])
@@ -77,26 +77,26 @@ class EachPromise implements PromisorInterface
 
         try {
             $this->createPromise();
-            /** @psalm-assert Promise $this->aggregate */
+            // @psalm-assert Promise $this->aggregate
             $this->iterable->rewind();
             if (!$this->checkIfFinished()) {
                 $this->refillPending();
             }
         } catch (\Throwable $e) {
-            /**
+            /*
              * @psalm-suppress NullReference
              * @phpstan-ignore-next-line
              */
             $this->aggregate->reject($e);
         } catch (\Exception $e) {
-            /**
+            /*
              * @psalm-suppress NullReference
              * @phpstan-ignore-next-line
              */
             $this->aggregate->reject($e);
         }
 
-        /**
+        /*
          * @psalm-suppress NullableReturnStatement
          * @phpstan-ignore-next-line
          */
@@ -134,14 +134,15 @@ class EachPromise implements PromisorInterface
         if (!$this->concurrency) {
             // Add all pending promises.
             while ($this->addPending() && $this->advanceIterator());
+
             return;
         }
 
         // Add only up to N pending promises.
-        $concurrency = is_callable($this->concurrency)
-            ? call_user_func($this->concurrency, count($this->pending))
+        $concurrency = \is_callable($this->concurrency)
+            ? \call_user_func($this->concurrency, \count($this->pending))
             : $this->concurrency;
-        $concurrency = max($concurrency - count($this->pending), 0);
+        $concurrency = max($concurrency - \count($this->pending), 0);
         // Concurrency may be set to 0 to disallow new promises.
         if (!$concurrency) {
             return;
@@ -173,7 +174,7 @@ class EachPromise implements PromisorInterface
         $this->pending[$idx] = $promise->then(
             function ($value) use ($idx, $key) {
                 if ($this->onFulfilled) {
-                    call_user_func(
+                    \call_user_func(
                         $this->onFulfilled,
                         $value,
                         $key,
@@ -184,7 +185,7 @@ class EachPromise implements PromisorInterface
             },
             function ($reason) use ($idx, $key) {
                 if ($this->onRejected) {
-                    call_user_func(
+                    \call_user_func(
                         $this->onRejected,
                         $reason,
                         $key,
@@ -211,14 +212,17 @@ class EachPromise implements PromisorInterface
         try {
             $this->iterable->next();
             $this->mutex = false;
+
             return true;
         } catch (\Throwable $e) {
             $this->aggregate->reject($e);
             $this->mutex = false;
+
             return false;
         } catch (\Exception $e) {
             $this->aggregate->reject($e);
             $this->mutex = false;
+
             return false;
         }
     }
@@ -246,6 +250,7 @@ class EachPromise implements PromisorInterface
         if (!$this->pending && !$this->iterable->valid()) {
             // Resolve the promise if there's nothing left to do.
             $this->aggregate->resolve(null);
+
             return true;
         }
 

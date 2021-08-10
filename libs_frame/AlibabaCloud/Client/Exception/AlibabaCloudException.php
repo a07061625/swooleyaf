@@ -7,6 +7,7 @@ use RuntimeException;
 
 /**
  * Class AlibabaCloudException
+ *
  * @package   AlibabaCloud\Client\Exception
  */
 abstract class AlibabaCloudException extends Exception
@@ -30,6 +31,7 @@ abstract class AlibabaCloudException extends Exception
 
     /**
      * @codeCoverageIgnore
+     *
      * @deprecated
      */
     public function setErrorCode()
@@ -47,7 +49,9 @@ abstract class AlibabaCloudException extends Exception
 
     /**
      * @codeCoverageIgnore
+     *
      * @param $errorMessage
+     *
      * @deprecated
      */
     public function setErrorMessage($errorMessage)
@@ -57,6 +61,7 @@ abstract class AlibabaCloudException extends Exception
 
     /**
      * @codeCoverageIgnore
+     *
      * @deprecated
      */
     public function setErrorType()

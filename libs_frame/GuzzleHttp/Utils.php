@@ -16,8 +16,8 @@ final class Utils
      *
      * @param mixed $input
      *
-     * @return string Returns a string containing the type of the variable and
-     *                if a class is provided, the class name.
+     * @return string returns a string containing the type of the variable and
+     *                if a class is provided, the class name
      */
     public static function describeType($input): string
     {
@@ -27,13 +27,13 @@ final class Utils
             case 'array':
                 return 'array(' . \count($input) . ')';
             default:
-                \ob_start();
-                \var_dump($input);
+                ob_start();
+                var_dump($input);
                 // normalize float vs double
                 /** @var string $varDumpContent */
-                $varDumpContent = \ob_get_clean();
+                $varDumpContent = ob_get_clean();
 
-                return \str_replace('double(', 'float(', \rtrim($varDumpContent));
+                return str_replace('double(', 'float(', rtrim($varDumpContent));
         }
     }
 
@@ -48,8 +48,8 @@ final class Utils
         $headers = [];
 
         foreach ($lines as $line) {
-            $parts = \explode(':', $line, 2);
-            $headers[\trim($parts[0])][] = isset($parts[1]) ? \trim($parts[1]) : null;
+            $parts = explode(':', $line, 2);
+            $headers[trim($parts[0])][] = isset($parts[1]) ? trim($parts[1]) : null;
         }
 
         return $headers;
@@ -79,9 +79,9 @@ final class Utils
      *
      * The returned handler is not wrapped by any default middlewares.
      *
-     * @throws \RuntimeException if no viable Handler is available.
+     * @throws \RuntimeException if no viable Handler is available
      *
-     * @return callable(\Psr\Http\Message\RequestInterface, array): \GuzzleHttp\Promise\PromiseInterface Returns the best handler for the given system.
+     * @return callable(\Psr\Http\Message\RequestInterface, array): \GuzzleHttp\Promise\PromiseInterface Returns the best handler for the given system
      */
     public static function chooseHandler(): callable
     {
@@ -94,7 +94,7 @@ final class Utils
             $handler = new CurlMultiHandler();
         }
 
-        if (\ini_get('allow_url_fopen')) {
+        if (ini_get('allow_url_fopen')) {
             $handler = $handler
                 ? Proxy::wrapStreaming($handler, new StreamHandler())
                 : new StreamHandler();
@@ -124,7 +124,7 @@ final class Utils
      *
      * Note: the result of this function is cached for subsequent calls.
      *
-     * @throws \RuntimeException if no bundle can be found.
+     * @throws \RuntimeException if no bundle can be found
      *
      * @deprecated Utils::defaultCaBundle will be removed in guzzlehttp/guzzle:8.0. This method is not needed in PHP 5.6+.
      */
@@ -153,22 +153,22 @@ final class Utils
             return $cached;
         }
 
-        if ($ca = \ini_get('openssl.cafile')) {
+        if ($ca = ini_get('openssl.cafile')) {
             return $cached = $ca;
         }
 
-        if ($ca = \ini_get('curl.cainfo')) {
+        if ($ca = ini_get('curl.cainfo')) {
             return $cached = $ca;
         }
 
         foreach ($cafiles as $filename) {
-            if (\file_exists($filename)) {
+            if (file_exists($filename)) {
                 return $cached = $filename;
             }
         }
 
         throw new \RuntimeException(
-            <<< EOT
+            <<< 'EOT'
 No system CA bundle could be found in any of the the common system locations.
 PHP versions earlier than 5.6 are not properly configured to use the system's
 CA bundle by default. In order to verify peer certificates, you will need to
@@ -192,8 +192,8 @@ EOT
     public static function normalizeHeaderKeys(array $headers): array
     {
         $result = [];
-        foreach (\array_keys($headers) as $key) {
-            $result[\strtolower($key)] = $key;
+        foreach (array_keys($headers) as $key) {
+            $result[strtolower($key)] = $key;
         }
 
         return $result;
@@ -213,23 +213,23 @@ EOT
      * 3. The area starts with "." and the area is the last part of the host. e.g.
      *    '.mit.edu' will match any host that ends with '.mit.edu'.
      *
-     * @param string   $host         Host to check against the patterns.
-     * @param string[] $noProxyArray An array of host patterns.
+     * @param string   $host         host to check against the patterns
+     * @param string[] $noProxyArray an array of host patterns
      *
      * @throws InvalidArgumentException
      */
     public static function isHostInNoProxy(string $host, array $noProxyArray): bool
     {
-        if (\strlen($host) === 0) {
+        if (0 === \strlen($host)) {
             throw new InvalidArgumentException('Empty host provided');
         }
 
         // Strip port if present.
-        [$host] = \explode(':', $host, 2);
+        list($host) = explode(':', $host, 2);
 
         foreach ($noProxyArray as $area) {
             // Always match on wildcards.
-            if ($area === '*') {
+            if ('*' === $area) {
                 return true;
             }
 
@@ -244,8 +244,8 @@ EOT
             }
             // Special match if the area when prefixed with ".". Remove any
             // existing leading "." and add a new leading ".".
-            $area = '.' . \ltrim($area, '.');
-            if (\substr($host, -(\strlen($area))) === $area) {
+            $area = '.' . ltrim($area, '.');
+            if (substr($host, -(\strlen($area))) === $area) {
                 return true;
             }
         }
@@ -257,22 +257,22 @@ EOT
      * Wrapper for json_decode that throws when an error occurs.
      *
      * @param string $json    JSON data to parse
-     * @param bool   $assoc   When true, returned objects will be converted
-     *                        into associative arrays.
-     * @param int    $depth   User specified recursion depth.
-     * @param int    $options Bitmask of JSON decode options.
+     * @param bool   $assoc   when true, returned objects will be converted
+     *                        into associative arrays
+     * @param int    $depth   user specified recursion depth
+     * @param int    $options bitmask of JSON decode options
      *
-     * @return object|array|string|int|float|bool|null
+     * @return null|array|bool|float|int|object|string
      *
-     * @throws InvalidArgumentException if the JSON cannot be decoded.
+     * @throws InvalidArgumentException if the JSON cannot be decoded
      *
-     * @link https://www.php.net/manual/en/function.json-decode.php
+     * @see https://www.php.net/manual/en/function.json-decode.php
      */
     public static function jsonDecode(string $json, bool $assoc = false, int $depth = 512, int $options = 0)
     {
-        $data = \json_decode($json, $assoc, $depth, $options);
-        if (\JSON_ERROR_NONE !== \json_last_error()) {
-            throw new InvalidArgumentException('json_decode error: ' . \json_last_error_msg());
+        $data = json_decode($json, $assoc, $depth, $options);
+        if (\JSON_ERROR_NONE !== json_last_error()) {
+            throw new InvalidArgumentException('json_decode error: ' . json_last_error_msg());
         }
 
         return $data;
@@ -285,18 +285,18 @@ EOT
      * @param int   $options JSON encode option bitmask
      * @param int   $depth   Set the maximum depth. Must be greater than zero.
      *
-     * @throws InvalidArgumentException if the JSON cannot be encoded.
+     * @throws InvalidArgumentException if the JSON cannot be encoded
      *
-     * @link https://www.php.net/manual/en/function.json-encode.php
+     * @see https://www.php.net/manual/en/function.json-encode.php
      */
     public static function jsonEncode($value, int $options = 0, int $depth = 512): string
     {
-        $json = \json_encode($value, $options, $depth);
-        if (\JSON_ERROR_NONE !== \json_last_error()) {
-            throw new InvalidArgumentException('json_encode error: ' . \json_last_error_msg());
+        $json = json_encode($value, $options, $depth);
+        if (\JSON_ERROR_NONE !== json_last_error()) {
+            throw new InvalidArgumentException('json_encode error: ' . json_last_error_msg());
         }
 
-        /** @var string */
+        // @var string
         return $json;
     }
 
@@ -310,7 +310,7 @@ EOT
      */
     public static function currentTime(): float
     {
-        return (float) \function_exists('hrtime') ? \hrtime(true) / 1e9 : \microtime(true);
+        return (float)\function_exists('hrtime') ? hrtime(true) / 1e9 : microtime(true);
     }
 
     /**
@@ -322,16 +322,16 @@ EOT
     {
         if ($uri->getHost()) {
             $asciiHost = self::idnToAsci($uri->getHost(), $options, $info);
-            if ($asciiHost === false) {
+            if (false === $asciiHost) {
                 $errorBitSet = $info['errors'] ?? 0;
 
                 $errorConstants = array_filter(array_keys(get_defined_constants()), static function (string $name): bool {
-                    return substr($name, 0, 11) === 'IDNA_ERROR_';
+                    return 'IDNA_ERROR_' === substr($name, 0, 11);
                 });
 
                 $errors = [];
                 foreach ($errorConstants as $errorConstant) {
-                    if ($errorBitSet & constant($errorConstant)) {
+                    if ($errorBitSet & \constant($errorConstant)) {
                         $errors[] = $errorConstant;
                     }
                 }
@@ -358,23 +358,23 @@ EOT
     public static function getenv(string $name): ?string
     {
         if (isset($_SERVER[$name])) {
-            return (string) $_SERVER[$name];
+            return (string)$_SERVER[$name];
         }
 
-        if (\PHP_SAPI === 'cli' && ($value = \getenv($name)) !== false && $value !== null) {
-            return (string) $value;
+        if (\PHP_SAPI === 'cli' && ($value = getenv($name)) !== false && null !== $value) {
+            return (string)$value;
         }
 
         return null;
     }
 
     /**
-     * @return string|false
+     * @return false|string
      */
     private static function idnToAsci(string $domain, int $options, ?array &$info = [])
     {
         if (\function_exists('idn_to_ascii') && \defined('INTL_IDNA_VARIANT_UTS46')) {
-            return \idn_to_ascii($domain, $options, \INTL_IDNA_VARIANT_UTS46, $info);
+            return idn_to_ascii($domain, $options, \INTL_IDNA_VARIANT_UTS46, $info);
         }
 
         throw new \Error('ext-idn or symfony/polyfill-intl-idn not loaded or too old');

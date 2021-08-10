@@ -2,11 +2,12 @@
 
 namespace AlibabaCloud\Client\Credentials;
 
-use AlibabaCloud\Client\Filter\CredentialFilter;
 use AlibabaCloud\Client\Exception\ClientException;
+use AlibabaCloud\Client\Filter\CredentialFilter;
 
 /**
  * Use the AssumeRole of the RAM account to complete  the authentication.
+ *
  * @package   AlibabaCloud\Client\Credentials
  */
 class RamRoleArnCredential implements CredentialsInterface
@@ -34,11 +35,13 @@ class RamRoleArnCredential implements CredentialsInterface
 
     /**
      * Class constructor.
-     * @param string $accessKeyId
-     * @param string $accessKeySecret
-     * @param string $roleArn
-     * @param string $roleSessionName
-     * @param string|array $policy
+     *
+     * @param string       $accessKeyId
+     * @param string       $accessKeySecret
+     * @param string       $roleArn
+     * @param string       $roleSessionName
+     * @param array|string $policy
+     *
      * @throws ClientException
      */
     public function __construct($accessKeyId, $accessKeySecret, $roleArn, $roleSessionName, $policy = '')
@@ -50,6 +53,14 @@ class RamRoleArnCredential implements CredentialsInterface
         $this->roleArn = $roleArn;
         $this->roleSessionName = $roleSessionName;
         $this->policy = $policy;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return "{$this->accessKeyId}#{$this->accessKeySecret}#{$this->roleArn}#{$this->roleSessionName}";
     }
 
     /**
@@ -90,13 +101,5 @@ class RamRoleArnCredential implements CredentialsInterface
     public function getPolicy()
     {
         return $this->policy;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return "$this->accessKeyId#$this->accessKeySecret#$this->roleArn#$this->roleSessionName";
     }
 }

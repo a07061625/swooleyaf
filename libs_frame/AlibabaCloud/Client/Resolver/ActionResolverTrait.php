@@ -2,17 +2,18 @@
 
 namespace AlibabaCloud\Client\Resolver;
 
+use AlibabaCloud\Client\AlibabaCloud;
+use AlibabaCloud\Client\Exception\ClientException;
+use AlibabaCloud\Client\Request\Request;
 use ReflectionClass;
 use ReflectionException;
-use AlibabaCloud\Client\AlibabaCloud;
-use AlibabaCloud\Client\Request\Request;
-use AlibabaCloud\Client\Exception\ClientException;
 
 /**
  * @codeCoverageIgnore
  * @mixin Rpc
  * @mixin Roa
  * @mixin Request
+ *
  * @package AlibabaCloud\Client\Resolver
  */
 trait ActionResolverTrait
@@ -23,13 +24,14 @@ trait ActionResolverTrait
     private function resolveActionName()
     {
         if (!$this->action) {
-            $array = explode('\\', get_class($this));
+            $array = explode('\\', static::class);
             $this->action = array_pop($array);
         }
     }
 
     /**
      * Append SDK version into User-Agent
+     *
      * @throws ClientException
      * @throws ReflectionException
      */

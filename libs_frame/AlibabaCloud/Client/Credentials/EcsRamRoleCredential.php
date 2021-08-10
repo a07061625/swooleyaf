@@ -2,11 +2,12 @@
 
 namespace AlibabaCloud\Client\Credentials;
 
-use AlibabaCloud\Client\Filter\CredentialFilter;
 use AlibabaCloud\Client\Exception\ClientException;
+use AlibabaCloud\Client\Filter\CredentialFilter;
 
 /**
  * Use the RAM role of an ECS instance to complete the authentication.
+ *
  * @package   AlibabaCloud\Client\Credentials
  */
 class EcsRamRoleCredential implements CredentialsInterface
@@ -18,7 +19,9 @@ class EcsRamRoleCredential implements CredentialsInterface
 
     /**
      * Class constructor.
+     *
      * @param string $roleName
+     *
      * @throws ClientException
      */
     public function __construct($roleName)
@@ -31,16 +34,16 @@ class EcsRamRoleCredential implements CredentialsInterface
     /**
      * @return string
      */
-    public function getRoleName()
+    public function __toString()
     {
-        return $this->roleName;
+        return "roleName#{$this->roleName}";
     }
 
     /**
      * @return string
      */
-    public function __toString()
+    public function getRoleName()
     {
-        return "roleName#$this->roleName";
+        return $this->roleName;
     }
 }

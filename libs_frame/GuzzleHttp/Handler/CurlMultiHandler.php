@@ -15,7 +15,7 @@ use Psr\Http\Message\RequestInterface;
  * associative array of curl option constants mapping to values in the
  * **curl** key of the provided request options.
  *
- * @property resource|\CurlMultiHandle $_mh Internal use only. Lazy loaded multi-handle.
+ * @property \CurlMultiHandle|resource $_mh Internal use only. Lazy loaded multi-handle.
  *
  * @final
  */
@@ -32,19 +32,19 @@ class CurlMultiHandler
     private $selectTimeout;
 
     /**
-     * @var resource|\CurlMultiHandle|null the currently executing resource in `curl_multi_exec`.
+     * @var null|\CurlMultiHandle|resource the currently executing resource in `curl_multi_exec`
      */
     private $active;
 
     /**
-     * @var array Request entry handles, indexed by handle id in `addRequest`.
+     * @var array request entry handles, indexed by handle id in `addRequest`
      *
      * @see CurlMultiHandler::addRequest
      */
     private $handles = [];
 
     /**
-     * @var array<int, float> An array of delay times, indexed by handle id in `addRequest`.
+     * @var array<int, float> an array of delay times, indexed by handle id in `addRequest`
      *
      * @see CurlMultiHandler::addRequest
      */
@@ -72,7 +72,7 @@ class CurlMultiHandler
             $this->selectTimeout = $options['select_timeout'];
         } elseif ($selectTimeout = Utils::getenv('GUZZLE_CURL_SELECT_TIMEOUT')) {
             @trigger_error('Since guzzlehttp/guzzle 7.2.0: Using environment variable GUZZLE_CURL_SELECT_TIMEOUT is deprecated. Use option "select_timeout" instead.', \E_USER_DEPRECATED);
-            $this->selectTimeout = (int) $selectTimeout;
+            $this->selectTimeout = (int)$selectTimeout;
         } else {
             $this->selectTimeout = 1;
         }
@@ -80,21 +80,29 @@ class CurlMultiHandler
         $this->options = $options['options'] ?? [];
     }
 
+    public function __destruct()
+    {
+        if (isset($this->_mh)) {
+            curl_multi_close($this->_mh);
+            $this->_mh = null;
+        }
+    }
+
     /**
      * @param string $name
      *
-     * @return resource|\CurlMultiHandle
+     * @return \CurlMultiHandle|resource
      *
      * @throws \BadMethodCallException when another field as `_mh` will be gotten
      * @throws \RuntimeException       when curl can not initialize a multi handle
      */
     public function __get($name)
     {
-        if ($name !== '_mh') {
+        if ('_mh' !== $name) {
             throw new \BadMethodCallException("Can not get other property as '_mh'.");
         }
 
-        $multiHandle = \curl_multi_init();
+        $multiHandle = curl_multi_init();
 
         if (false === $multiHandle) {
             throw new \RuntimeException('Can not initialize curl multi handle.');
@@ -110,18 +118,10 @@ class CurlMultiHandler
         return $this->_mh;
     }
 
-    public function __destruct()
-    {
-        if (isset($this->_mh)) {
-            \curl_multi_close($this->_mh);
-            unset($this->_mh);
-        }
-    }
-
     public function __invoke(RequestInterface $request, array $options): PromiseInterface
     {
         $easy = $this->factory->create($request, $options);
-        $id = (int) $easy->handle;
+        $id = (int)$easy->handle;
 
         $promise = new Promise(
             [$this, 'execute'],
@@ -146,7 +146,7 @@ class CurlMultiHandler
             foreach ($this->delays as $id => $delay) {
                 if ($currentTime >= $delay) {
                     unset($this->delays[$id]);
-                    \curl_multi_add_handle(
+                    curl_multi_add_handle(
                         $this->_mh,
                         $this->handles[$id]['easy']->handle
                     );
@@ -157,13 +157,13 @@ class CurlMultiHandler
         // Step through the task queue which may add additional requests.
         P\Utils::queue()->run();
 
-        if ($this->active && \curl_multi_select($this->_mh, $this->selectTimeout) === -1) {
+        if ($this->active && -1 === curl_multi_select($this->_mh, $this->selectTimeout)) {
             // Perform a usleep if a select returns -1.
             // See: https://bugs.php.net/bug.php?id=61141
-            \usleep(250);
+            usleep(250);
         }
 
-        while (\curl_multi_exec($this->_mh, $this->active) === \CURLM_CALL_MULTI_PERFORM);
+        while (\CURLM_CALL_MULTI_PERFORM === curl_multi_exec($this->_mh, $this->active));
 
         $this->processMessages();
     }
@@ -178,7 +178,7 @@ class CurlMultiHandler
         while ($this->handles || !$queue->isEmpty()) {
             // If there are no transfers, then sleep for the next delay
             if (!$this->active && $this->delays) {
-                \usleep($this->timeToNext());
+                usleep($this->timeToNext());
             }
             $this->tick();
         }
@@ -187,10 +187,10 @@ class CurlMultiHandler
     private function addRequest(array $entry): void
     {
         $easy = $entry['easy'];
-        $id = (int) $easy->handle;
+        $id = (int)$easy->handle;
         $this->handles[$id] = $entry;
         if (empty($easy->options['delay'])) {
-            \curl_multi_add_handle($this->_mh, $easy->handle);
+            curl_multi_add_handle($this->_mh, $easy->handle);
         } else {
             $this->delays[$id] = Utils::currentTime() + ($easy->options['delay'] / 1000);
         }
@@ -199,13 +199,13 @@ class CurlMultiHandler
     /**
      * Cancels a handle from sending and removes references to it.
      *
-     * @param int $id Handle ID to cancel and remove.
+     * @param int $id handle ID to cancel and remove
      *
-     * @return bool True on success, false on failure.
+     * @return bool true on success, false on failure
      */
     private function cancel($id): bool
     {
-        if (!is_int($id)) {
+        if (!\is_int($id)) {
             trigger_deprecation('guzzlehttp/guzzle', '7.4', 'Not passing an integer to %s::%s() is deprecated and will cause an error in 8.0.', __CLASS__, __FUNCTION__);
         }
 
@@ -216,17 +216,17 @@ class CurlMultiHandler
 
         $handle = $this->handles[$id]['easy']->handle;
         unset($this->delays[$id], $this->handles[$id]);
-        \curl_multi_remove_handle($this->_mh, $handle);
-        \curl_close($handle);
+        curl_multi_remove_handle($this->_mh, $handle);
+        curl_close($handle);
 
         return true;
     }
 
     private function processMessages(): void
     {
-        while ($done = \curl_multi_info_read($this->_mh)) {
-            $id = (int) $done['handle'];
-            \curl_multi_remove_handle($this->_mh, $done['handle']);
+        while ($done = curl_multi_info_read($this->_mh)) {
+            $id = (int)$done['handle'];
+            curl_multi_remove_handle($this->_mh, $done['handle']);
 
             if (!isset($this->handles[$id])) {
                 // Probably was cancelled.
@@ -252,6 +252,6 @@ class CurlMultiHandler
             }
         }
 
-        return ((int) \max(0, $nextTime - $currentTime)) * 1000000;
+        return ((int)max(0, $nextTime - $currentTime)) * 1000000;
     }
 }

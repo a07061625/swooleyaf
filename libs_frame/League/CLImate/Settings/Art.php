@@ -6,7 +6,8 @@ class Art implements SettingsInterface
 {
     /**
      * An array of valid art directories
-     *  @var array[] $dirs
+     *
+     *  @var array[]
      */
     public $dirs = [];
 
@@ -15,7 +16,7 @@ class Art implements SettingsInterface
      */
     public function add()
     {
-        $this->dirs = array_merge($this->dirs, func_get_args());
+        $this->dirs = array_merge($this->dirs, \func_get_args());
         $this->dirs = array_filter($this->dirs);
         $this->dirs = array_values($this->dirs);
     }

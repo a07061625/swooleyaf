@@ -8,8 +8,6 @@ class Filter
 
     /**
      * Set the available arguments
-     *
-     * @param array $arguments
      */
     public function setArguments(array $arguments)
     {
@@ -69,6 +67,22 @@ class Filter
     }
 
     /**
+     * Compare two arguments by their short and long prefixes.
+     *
+     * @see usort()
+     *
+     * @return int
+     */
+    public function compareByPrefix(Argument $a, Argument $b)
+    {
+        if ($this->prefixCompareString($a) < $this->prefixCompareString($b)) {
+            return -1;
+        }
+
+        return 1;
+    }
+
+    /**
      * Filter defined arguments as to whether they are required or not
      *
      * @param string[] $filters
@@ -83,7 +97,7 @@ class Filter
             $arguments = array_filter($arguments, [$this, $filter]);
         }
 
-        if (in_array('hasPrefix', $filters)) {
+        if (\in_array('hasPrefix', $filters)) {
             usort($arguments, [$this, 'compareByPrefix']);
         }
 
@@ -147,32 +161,11 @@ class Filter
      */
     protected function noValue($argument)
     {
-        return $argument->values() == [];
-    }
-
-    /**
-     * Compare two arguments by their short and long prefixes.
-     *
-     * @see usort()
-     *
-     * @param Argument $a
-     * @param Argument $b
-     *
-     * @return int
-     */
-    public function compareByPrefix(Argument $a, Argument $b)
-    {
-        if ($this->prefixCompareString($a) < $this->prefixCompareString($b)) {
-            return -1;
-        }
-
-        return 1;
+        return [] == $argument->values();
     }
 
     /**
      * Prep the prefix string for comparison
-     *
-     * @param Argument $argument
      *
      * @return string
      */

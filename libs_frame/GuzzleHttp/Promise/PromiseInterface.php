@@ -9,7 +9,7 @@ namespace GuzzleHttp\Promise;
  * which registers callbacks to receive either a promise’s eventual value or
  * the reason why the promise cannot be fulfilled.
  *
- * @link https://promisesaplus.com/
+ * @see https://promisesaplus.com/
  */
 interface PromiseInterface
 {
@@ -21,14 +21,14 @@ interface PromiseInterface
      * Appends fulfillment and rejection handlers to the promise, and returns
      * a new promise resolving to the return value of the called handler.
      *
-     * @param callable $onFulfilled Invoked when the promise fulfills.
-     * @param callable $onRejected  Invoked when the promise is rejected.
+     * @param callable $onFulfilled invoked when the promise fulfills
+     * @param callable $onRejected  invoked when the promise is rejected
      *
      * @return PromiseInterface
      */
     public function then(
-        callable $onFulfilled = null,
-        callable $onRejected = null
+        ?callable $onFulfilled = null,
+        ?callable $onRejected = null
     );
 
     /**
@@ -37,7 +37,7 @@ interface PromiseInterface
      * or to its original fulfillment value if the promise is instead
      * fulfilled.
      *
-     * @param callable $onRejected Invoked when the promise is rejected.
+     * @param callable $onRejected invoked when the promise is rejected
      *
      * @return PromiseInterface
      */
@@ -58,7 +58,7 @@ interface PromiseInterface
      *
      * @param mixed $value
      *
-     * @throws \RuntimeException if the promise is already resolved.
+     * @throws \RuntimeException if the promise is already resolved
      */
     public function resolve($value);
 
@@ -67,14 +67,14 @@ interface PromiseInterface
      *
      * @param mixed $reason
      *
-     * @throws \RuntimeException if the promise is already resolved.
+     * @throws \RuntimeException if the promise is already resolved
      */
     public function reject($reason);
 
     /**
      * Cancels the promise if possible.
      *
-     * @link https://github.com/promises-aplus/cancellation-spec/issues/7
+     * @see https://github.com/promises-aplus/cancellation-spec/issues/7
      */
     public function cancel();
 
@@ -91,7 +91,7 @@ interface PromiseInterface
      * @return mixed
      *
      * @throws \LogicException if the promise has no wait function or if the
-     *                         promise does not settle after waiting.
+     *                         promise does not settle after waiting
      */
     public function wait($unwrap = true);
 }

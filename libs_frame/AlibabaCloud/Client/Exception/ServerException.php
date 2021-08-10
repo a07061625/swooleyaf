@@ -2,13 +2,13 @@
 
 namespace AlibabaCloud\Client\Exception;
 
-use Stringy\Stringy;
-use RuntimeException;
-use AlibabaCloud\Client\SDK;
 use AlibabaCloud\Client\Result\Result;
+use AlibabaCloud\Client\SDK;
+use Stringy\Stringy;
 
 /**
  * Class ServerException
+ *
  * @package   AlibabaCloud\Client\Exception
  */
 class ServerException extends AlibabaCloudException
@@ -24,13 +24,16 @@ class ServerException extends AlibabaCloudException
 
     /**
      * ServerException constructor.
-     * @param Result|null $result
-     * @param string $errorMessage
-     * @param string $errorCode
+     *
+     * @param null|Result $result
+     * @param string      $errorMessage
+     * @param string      $errorCode
      */
-    public function __construct(Result $result,
+    public function __construct(
+        Result $result,
         $errorMessage = SDK::RESPONSE_EMPTY,
-        $errorCode = SDK::SERVICE_UNKNOWN_ERROR)
+        $errorCode = SDK::SERVICE_UNKNOWN_ERROR
+    )
     {
         $this->result = $result;
         $this->errorMessage = $errorMessage;
@@ -43,8 +46,43 @@ class ServerException extends AlibabaCloudException
     }
 
     /**
+     * @return Result
+     */
+    public function getResult()
+    {
+        return $this->result;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRequestId()
+    {
+        return $this->requestId;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     *
+     * @deprecated
+     */
+    public function getErrorType()
+    {
+        return 'Server';
+    }
+
+    /**
+     * @codeCoverageIgnore
+     *
+     * @deprecated
+     */
+    public function getHttpStatus()
+    {
+        return $this->getResult()->getStatusCode();
+    }
+
+    /**
      * Resolve the error message based on the return of the server.
-     * @return void
      */
     private function resolvePropertiesByReturn()
     {
@@ -87,62 +125,29 @@ class ServerException extends AlibabaCloudException
     private function bodyAsErrorMessage()
     {
         $body = (string)$this->result->getBody();
-        if ($this->errorMessage === SDK::RESPONSE_EMPTY && $body) {
+        if (SDK::RESPONSE_EMPTY === $this->errorMessage && $body) {
             $this->errorMessage = $body;
         }
     }
 
     /**
      * Get standard exception message.
+     *
      * @return string
      */
     private function getMessageString()
     {
-        $message = "$this->errorCode: $this->errorMessage RequestId: $this->requestId";
+        $message = "{$this->errorCode}: {$this->errorMessage} RequestId: {$this->requestId}";
 
         if ($this->getResult()->getRequest()) {
             $method = $this->getResult()->getRequest()->method;
             $uri = (string)$this->getResult()->getRequest()->uri;
-            $message .= " $method \"$uri\"";
+            $message .= " {$method} \"{$uri}\"";
             if ($this->result) {
                 $message .= ' ' . $this->result->getStatusCode();
             }
         }
 
         return $message;
-    }
-
-    /**
-     * @return Result
-     */
-    public function getResult()
-    {
-        return $this->result;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRequestId()
-    {
-        return $this->requestId;
-    }
-
-    /**
-     * @codeCoverageIgnore
-     * @deprecated
-     */
-    public function getErrorType()
-    {
-        return 'Server';
-    }
-
-    /**
-     * @codeCoverageIgnore
-     * @deprecated
-     */
-    public function getHttpStatus()
-    {
-        return $this->getResult()->getStatusCode();
     }
 }

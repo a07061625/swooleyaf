@@ -2,17 +2,18 @@
 
 namespace AlibabaCloud\Client\Credentials\Ini;
 
-use AlibabaCloud\Client\SDK;
-use AlibabaCloud\Client\Clients\Client;
 use AlibabaCloud\Client\Clients\AccessKeyClient;
+use AlibabaCloud\Client\Clients\BearerTokenClient;
+use AlibabaCloud\Client\Clients\Client;
+use AlibabaCloud\Client\Clients\EcsRamRoleClient;
 use AlibabaCloud\Client\Clients\RamRoleArnClient;
 use AlibabaCloud\Client\Clients\RsaKeyPairClient;
-use AlibabaCloud\Client\Clients\EcsRamRoleClient;
 use AlibabaCloud\Client\Exception\ClientException;
-use AlibabaCloud\Client\Clients\BearerTokenClient;
+use AlibabaCloud\Client\SDK;
 
 /**
  * Trait CreateTrait
+ *
  * @package   AlibabaCloud\Client\Credentials\Ini
  * @mixin     IniCredential
  */
@@ -20,8 +21,9 @@ trait CreateTrait
 {
     /**
      * @param string $clientName
-     * @param array $credential
-     * @return Client|bool
+     *
+     * @return bool|Client
+     *
      * @throws ClientException
      */
     protected function createClient($clientName, array $credential)
@@ -39,13 +41,14 @@ trait CreateTrait
 
     /**
      * @param string $clientName
-     * @param array $credential
+     *
      * @return AccessKeyClient|BearerTokenClient|EcsRamRoleClient|RamRoleArnClient|RsaKeyPairClient
+     *
      * @throws ClientException
      */
     private function createClientByType($clientName, array $credential)
     {
-        switch (\strtolower($credential['type'])) {
+        switch (strtolower($credential['type'])) {
             case 'access_key':
                 return $this->accessKeyClient($clientName, $credential);
             case 'ecs_ram_role':
@@ -57,15 +60,18 @@ trait CreateTrait
             case 'rsa_key_pair':
                 return $this->rsaKeyPairClient($clientName, $credential);
             default:
-                throw new ClientException("Invalid type '{$credential['type']}' for '$clientName' in {$this->filename}",
-                    SDK::INVALID_CREDENTIAL);
+                throw new ClientException(
+                    "Invalid type '{$credential['type']}' for '{$clientName}' in {$this->filename}",
+                    SDK::INVALID_CREDENTIAL
+                );
         }
     }
 
     /**
-     * @param array $credential
      * @param string $clientName
+     *
      * @return AccessKeyClient
+     *
      * @throws ClientException
      */
     private function accessKeyClient($clientName, array $credential)
@@ -83,8 +89,9 @@ trait CreateTrait
 
     /**
      * @param string $clientName
-     * @param array $credential
+     *
      * @return EcsRamRoleClient
+     *
      * @throws ClientException
      */
     private function ecsRamRoleClient($clientName, array $credential)
@@ -98,8 +105,9 @@ trait CreateTrait
 
     /**
      * @param string $clientName
-     * @param array $credential
+     *
      * @return RamRoleArnClient
+     *
      * @throws ClientException
      */
     private function ramRoleArnClient($clientName, array $credential)
@@ -120,14 +128,19 @@ trait CreateTrait
             $this->missingRequired('role_session_name', $clientName);
         }
 
-        return new RamRoleArnClient($credential['access_key_id'], $credential['access_key_secret'], $credential['role_arn'],
-            $credential['role_session_name']);
+        return new RamRoleArnClient(
+            $credential['access_key_id'],
+            $credential['access_key_secret'],
+            $credential['role_arn'],
+            $credential['role_session_name']
+        );
     }
 
     /**
      * @param string $clientName
-     * @param array $credential
+     *
      * @return BearerTokenClient
+     *
      * @throws ClientException
      */
     private function bearerTokenClient($clientName, array $credential)
@@ -140,9 +153,10 @@ trait CreateTrait
     }
 
     /**
-     * @param array $credential
      * @param string $clientName
+     *
      * @return RsaKeyPairClient
+     *
      * @throws ClientException
      */
     private function rsaKeyPairClient($clientName, array $credential)

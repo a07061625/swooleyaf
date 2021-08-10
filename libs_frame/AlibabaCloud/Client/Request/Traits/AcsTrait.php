@@ -13,7 +13,9 @@ use GuzzleHttp\Psr7\Uri;
 
 /**
  * Trait AcsTrait
+ *
  * @package   AlibabaCloud\Client\Request\Traits
+ *
  * @property Uri $uri
  * @mixin     Request
  */
@@ -40,15 +42,15 @@ trait AcsTrait
      */
     public $endpointType = 'openAPI';
     /**
-     * @var string|null
+     * @var null|string
      */
     public $network = 'public';
     /**
-     * @var array|null
+     * @var null|array
      */
     public $endpointMap;
     /**
-     * @var string|null
+     * @var null|string
      */
     public $endpointRegional;
     /**
@@ -58,7 +60,9 @@ trait AcsTrait
 
     /**
      * @param string $action
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function action($action)
@@ -70,8 +74,11 @@ trait AcsTrait
 
     /**
      * @codeCoverageIgnore
+     *
      * @param string $endpointSuffix
+     *
      * @return AcsTrait
+     *
      * @throws ClientException
      */
     public function endpointSuffix($endpointSuffix)
@@ -93,7 +100,9 @@ trait AcsTrait
 
     /**
      * @param string $version
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function version($version)
@@ -105,7 +114,9 @@ trait AcsTrait
 
     /**
      * @param string $product
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function product($product)
@@ -117,7 +128,9 @@ trait AcsTrait
 
     /**
      * @param string $endpointType
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function endpointType($endpointType)
@@ -129,7 +142,9 @@ trait AcsTrait
 
     /**
      * @param string $serviceCode
+     *
      * @return $this
+     *
      * @throws ClientException
      */
     public function serviceCode($serviceCode)
@@ -141,13 +156,14 @@ trait AcsTrait
 
     /**
      * Resolve Host.
+     *
      * @throws ClientException
      * @throws ServerException
      */
     public function resolveHost()
     {
         // Return if specified
-        if ($this->uri->getHost() !== 'localhost') {
+        if ('localhost' !== $this->uri->getHost()) {
             return;
         }
 
@@ -165,8 +181,35 @@ trait AcsTrait
     }
 
     /**
+     * @return string
+     *
+     * @throws ClientException
+     */
+    public function realRegionId()
+    {
+        if (null !== $this->regionId) {
+            return $this->regionId;
+        }
+
+        if (null !== $this->httpClient()->regionId) {
+            return $this->httpClient()->regionId;
+        }
+
+        if (null !== AlibabaCloud::getDefaultRegionId()) {
+            return AlibabaCloud::getDefaultRegionId();
+        }
+
+        if ($this->product && AlibabaCloud::isGlobalProduct($this->product)) {
+            return 'global';
+        }
+
+        throw new ClientException("Missing required 'RegionId' for Request", SDK::INVALID_REGION_ID);
+    }
+
+    /**
      * @param string $host
      * @param string $region_id
+     *
      * @throws ClientException
      * @throws ServerException
      */
@@ -175,7 +218,7 @@ trait AcsTrait
         $host = AlibabaCloud::resolveHostByStatic($this->product, $region_id);
 
         // 1. Find host by map.
-        if (!$host && $this->network === 'public' && isset($this->endpointMap[$region_id])) {
+        if (!$host && 'public' === $this->network && isset($this->endpointMap[$region_id])) {
             $host = $this->endpointMap[$region_id];
         }
 
@@ -186,15 +229,17 @@ trait AcsTrait
 
     /**
      * @codeCoverageIgnore
+     *
      * @param string $host
      * @param string $region_id
+     *
      * @throws ClientException
      * @throws ServerException
      */
     private function hostResolver(&$host, $region_id)
     {
         // 2. Find host by rules.
-        if ($this->endpointRegional !== null) {
+        if (null !== $this->endpointRegional) {
             $host = AlibabaCloud::resolveHostByRule($this);
         }
 
@@ -207,30 +252,5 @@ trait AcsTrait
         if (!$host && $this->serviceCode) {
             $host = LocationService::resolveHost($this);
         }
-    }
-
-    /**
-     * @return string
-     * @throws ClientException
-     */
-    public function realRegionId()
-    {
-        if ($this->regionId !== null) {
-            return $this->regionId;
-        }
-
-        if ($this->httpClient()->regionId !== null) {
-            return $this->httpClient()->regionId;
-        }
-
-        if (AlibabaCloud::getDefaultRegionId() !== null) {
-            return AlibabaCloud::getDefaultRegionId();
-        }
-
-        if ($this->product && AlibabaCloud::isGlobalProduct($this->product)) {
-            return 'global';
-        }
-
-        throw new ClientException("Missing required 'RegionId' for Request", SDK::INVALID_REGION_ID);
     }
 }

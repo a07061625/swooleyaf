@@ -2,8 +2,8 @@
 
 namespace League\CLImate\Util;
 
-use League\CLImate\Util\System\SystemFactory;
 use League\CLImate\Util\System\System;
+use League\CLImate\Util\System\SystemFactory;
 
 class UtilFactory
 {
@@ -12,7 +12,6 @@ class UtilFactory
      *
      * @var \League\CLImate\Util\System\System
      */
-
     public $system;
 
     /**
@@ -22,7 +21,7 @@ class UtilFactory
      */
     public $cursor;
 
-    public function __construct(System $system = null, Cursor $cursor = null)
+    public function __construct(?System $system = null, ?Cursor $cursor = null)
     {
         $this->system = $system ?: SystemFactory::getInstance();
         $this->cursor = $cursor ?: new Cursor();
@@ -31,34 +30,31 @@ class UtilFactory
     /**
      * Get the width of the terminal
      *
-     * @return integer
+     * @return int
      */
-
     public function width()
     {
-        return (int) $this->getDimension($this->system->width(), 80);
+        return (int)$this->getDimension($this->system->width(), 80);
     }
 
     /**
      * Get the height of the terminal
      *
-     * @return integer
+     * @return int
      */
-
     public function height()
     {
-        return (int) $this->getDimension($this->system->height(), 25);
+        return (int)$this->getDimension($this->system->height(), 25);
     }
 
     /**
      * Determine if the value is numeric, fallback to a default if not
      *
-     * @param integer|null $dimension
-     * @param integer $default
+     * @param null|int $dimension
+     * @param int      $default
      *
-     * @return integer
+     * @return int
      */
-
     protected function getDimension($dimension, $default)
     {
         return (is_numeric($dimension)) ? $dimension : $default;

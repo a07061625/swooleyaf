@@ -7,7 +7,7 @@ trait ParserImporter
     /**
      * An instance of the Parser class
      *
-     * @var \League\CLImate\Decorator\Parser\Parser $parser
+     * @var \League\CLImate\Decorator\Parser\Parser
      */
     protected $parser;
 
