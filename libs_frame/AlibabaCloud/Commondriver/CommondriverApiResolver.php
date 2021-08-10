@@ -29,7 +29,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class GetOrderIdByQueryPurchase extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -49,7 +48,6 @@ class GetOrderIdByQueryPurchase extends Rpc
  */
 class GetOrderIdByCheckBeforePay extends Rpc
 {
-
     /**
      * @param string $value
      *

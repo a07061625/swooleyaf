@@ -71,7 +71,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class GetCheckDuplicationChMedical extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -118,7 +117,6 @@ class GetCheckDuplicationChMedical extends Rpc
  */
 class GetDiagnosisChMedical extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -152,7 +150,6 @@ class GetDiagnosisChMedical extends Rpc
  */
 class GetDpChEcom extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -186,7 +183,6 @@ class GetDpChEcom extends Rpc
  */
 class GetDpChGeneralCTB extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -220,7 +216,6 @@ class GetDpChGeneralCTB extends Rpc
  */
 class GetDpChGeneralStanford extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -254,7 +249,6 @@ class GetDpChGeneralStanford extends Rpc
  */
 class GetEcChGeneral extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -288,7 +282,6 @@ class GetEcChGeneral extends Rpc
  */
 class GetEcEnGeneral extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -322,7 +315,6 @@ class GetEcEnGeneral extends Rpc
  */
 class GetKeywordChEcom extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -356,7 +348,6 @@ class GetKeywordChEcom extends Rpc
  */
 class GetKeywordEnEcom extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -393,7 +384,6 @@ class GetKeywordEnEcom extends Rpc
  */
 class GetMedicineChMedical extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -467,7 +457,6 @@ class GetMedicineChMedical extends Rpc
  */
 class GetNerChEcom extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -514,7 +503,6 @@ class GetNerChEcom extends Rpc
  */
 class GetNerChMedical extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -549,7 +537,6 @@ class GetNerChMedical extends Rpc
  */
 class GetNerCustomizedChEcom extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -597,7 +584,6 @@ class GetNerCustomizedChEcom extends Rpc
  */
 class GetNerCustomizedSeaEcom extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -644,7 +630,6 @@ class GetNerCustomizedSeaEcom extends Rpc
  */
 class GetOperationChMedical extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -680,7 +665,6 @@ class GetOperationChMedical extends Rpc
  */
 class GetPosChEcom extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -742,7 +726,6 @@ class GetPosChEcom extends Rpc
  */
 class GetPosChGeneral extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -802,7 +785,6 @@ class GetPosChGeneral extends Rpc
  */
 class GetSaChGeneral extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -837,7 +819,6 @@ class GetSaChGeneral extends Rpc
  */
 class GetSaSeaEcom extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -885,7 +866,6 @@ class GetSaSeaEcom extends Rpc
  */
 class GetSimilarityChMedical extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -932,7 +912,6 @@ class GetSimilarityChMedical extends Rpc
  */
 class GetSummaryChEcom extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -966,7 +945,6 @@ class GetSummaryChEcom extends Rpc
  */
 class GetTcChEcom extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1000,7 +978,6 @@ class GetTcChEcom extends Rpc
  */
 class GetTcChGeneral extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1036,7 +1013,6 @@ class GetTcChGeneral extends Rpc
  */
 class GetTsChEcom extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1100,7 +1076,6 @@ class GetTsChEcom extends Rpc
  */
 class GetWeChComment extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1190,7 +1165,6 @@ class GetWeChComment extends Rpc
  */
 class GetWeChEcom extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1280,7 +1254,6 @@ class GetWeChEcom extends Rpc
  */
 class GetWeChEntertainment extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1369,7 +1342,6 @@ class GetWeChEntertainment extends Rpc
  */
 class GetWeChGeneral extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1446,7 +1418,6 @@ class GetWeChGeneral extends Rpc
  */
 class GetWeChSearch extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1534,7 +1505,6 @@ class GetWeChSearch extends Rpc
  */
 class GetWsChGeneral extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1596,7 +1566,6 @@ class GetWsChGeneral extends Rpc
  */
 class GetWsCustomizedChEcomComment extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1658,7 +1627,6 @@ class GetWsCustomizedChEcomComment extends Rpc
  */
 class GetWsCustomizedChEcomContent extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1720,7 +1688,6 @@ class GetWsCustomizedChEcomContent extends Rpc
  */
 class GetWsCustomizedChEcomTitle extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1782,7 +1749,6 @@ class GetWsCustomizedChEcomTitle extends Rpc
  */
 class GetWsCustomizedChEntertainment extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1844,7 +1810,6 @@ class GetWsCustomizedChEntertainment extends Rpc
  */
 class GetWsCustomizedChGeneral extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1906,7 +1871,6 @@ class GetWsCustomizedChGeneral extends Rpc
  */
 class GetWsCustomizedChO2O extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1967,7 +1931,6 @@ class GetWsCustomizedChO2O extends Rpc
  */
 class GetWsCustomizedSeaEcom extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2015,7 +1978,6 @@ class GetWsCustomizedSeaEcom extends Rpc
  */
 class GetWsCustomizedSeaGeneral extends Rpc
 {
-
     /**
      * @param string $value
      *

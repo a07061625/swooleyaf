@@ -32,7 +32,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class RegisterDevice extends Rpc
 {
-
     /**
      * @param string $value
      *

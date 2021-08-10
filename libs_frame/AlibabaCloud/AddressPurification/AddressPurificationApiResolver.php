@@ -54,7 +54,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class ClassifyPOI extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -144,7 +143,6 @@ class ClassifyPOI extends Rpc
  */
 class CompleteAddress extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -234,7 +232,6 @@ class CompleteAddress extends Rpc
  */
 class CorrectAddress extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -324,7 +321,6 @@ class CorrectAddress extends Rpc
  */
 class ExtractAddress extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -414,7 +410,6 @@ class ExtractAddress extends Rpc
  */
 class ExtractExpress extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -504,7 +499,6 @@ class ExtractExpress extends Rpc
  */
 class ExtractName extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -594,7 +588,6 @@ class ExtractName extends Rpc
  */
 class ExtractPhone extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -684,7 +677,6 @@ class ExtractPhone extends Rpc
  */
 class GetAddressBlockMapping extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -774,7 +766,6 @@ class GetAddressBlockMapping extends Rpc
  */
 class GetAddressDivisionCode extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -864,7 +855,6 @@ class GetAddressDivisionCode extends Rpc
  */
 class GetAddressEvaluate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -954,7 +944,6 @@ class GetAddressEvaluate extends Rpc
  */
 class GetAddressGeocode extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1044,7 +1033,6 @@ class GetAddressGeocode extends Rpc
  */
 class GetAddressSearch extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1134,7 +1122,6 @@ class GetAddressSearch extends Rpc
  */
 class GetAddressSimilarity extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1224,7 +1211,6 @@ class GetAddressSimilarity extends Rpc
  */
 class GetInputSearch extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1314,7 +1300,6 @@ class GetInputSearch extends Rpc
  */
 class GetZipcode extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1404,7 +1389,6 @@ class GetZipcode extends Rpc
  */
 class PredictPOI extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1494,7 +1478,6 @@ class PredictPOI extends Rpc
  */
 class StructureAddress extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1585,7 +1568,6 @@ class StructureAddress extends Rpc
  */
 class TransferCoord extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1684,7 +1666,6 @@ class TransferCoord extends Rpc
  */
 class UpdateProject extends Rpc
 {
-
     /**
      * @param string $value
      *

@@ -57,7 +57,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class DescribeTieringJobs extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -84,7 +83,6 @@ class DescribeTieringJobs extends Rpc
  */
 class ModifyTieringJob extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 }
@@ -97,7 +95,6 @@ class ModifyTieringJob extends Rpc
  */
 class DeleteTieringJob extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -128,7 +125,6 @@ class CreateTieringJob extends Rpc
 
 class DescribeTieringPolicies extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -139,7 +135,6 @@ class DescribeTieringPolicies extends Rpc
  */
 class DeleteTieringPolicy extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -164,7 +159,6 @@ class DeleteTieringPolicy extends Rpc
  */
 class ModifyTieringPolicy extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 }

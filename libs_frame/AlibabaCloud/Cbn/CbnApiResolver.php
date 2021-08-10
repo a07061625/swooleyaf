@@ -296,245 +296,212 @@ class CreateCenChildInstanceRouteEntryToCen extends Rpc
  */
 class CreateCenRouteMap extends Rpc
 {
-
     /**
-     * @param array $destinationRegionIds
-     *
      * @return $this
      */
-	public function withDestinationRegionIds(array $destinationRegionIds)
-	{
-	    $this->data['DestinationRegionIds'] = $destinationRegionIds;
-		foreach ($destinationRegionIds as $i => $iValue) {
-			$this->options['query']['DestinationRegionIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDestinationRegionIds(array $destinationRegionIds)
+    {
+        $this->data['DestinationRegionIds'] = $destinationRegionIds;
+        foreach ($destinationRegionIds as $i => $iValue) {
+            $this->options['query']['DestinationRegionIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $destinationCidrBlocks
-     *
      * @return $this
      */
-	public function withDestinationCidrBlocks(array $destinationCidrBlocks)
-	{
-	    $this->data['DestinationCidrBlocks'] = $destinationCidrBlocks;
-		foreach ($destinationCidrBlocks as $i => $iValue) {
-			$this->options['query']['DestinationCidrBlocks.' . ($i + 1)] = $iValue;
-		}
+    public function withDestinationCidrBlocks(array $destinationCidrBlocks)
+    {
+        $this->data['DestinationCidrBlocks'] = $destinationCidrBlocks;
+        foreach ($destinationCidrBlocks as $i => $iValue) {
+            $this->options['query']['DestinationCidrBlocks.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $originalRouteTableIds
-     *
      * @return $this
      */
-	public function withOriginalRouteTableIds(array $originalRouteTableIds)
-	{
-	    $this->data['OriginalRouteTableIds'] = $originalRouteTableIds;
-		foreach ($originalRouteTableIds as $i => $iValue) {
-			$this->options['query']['OriginalRouteTableIds.' . ($i + 1)] = $iValue;
-		}
+    public function withOriginalRouteTableIds(array $originalRouteTableIds)
+    {
+        $this->data['OriginalRouteTableIds'] = $originalRouteTableIds;
+        foreach ($originalRouteTableIds as $i => $iValue) {
+            $this->options['query']['OriginalRouteTableIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $sourceInstanceIds
-     *
      * @return $this
      */
-	public function withSourceInstanceIds(array $sourceInstanceIds)
-	{
-	    $this->data['SourceInstanceIds'] = $sourceInstanceIds;
-		foreach ($sourceInstanceIds as $i => $iValue) {
-			$this->options['query']['SourceInstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withSourceInstanceIds(array $sourceInstanceIds)
+    {
+        $this->data['SourceInstanceIds'] = $sourceInstanceIds;
+        foreach ($sourceInstanceIds as $i => $iValue) {
+            $this->options['query']['SourceInstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $sourceRegionIds
-     *
      * @return $this
      */
-	public function withSourceRegionIds(array $sourceRegionIds)
-	{
-	    $this->data['SourceRegionIds'] = $sourceRegionIds;
-		foreach ($sourceRegionIds as $i => $iValue) {
-			$this->options['query']['SourceRegionIds.' . ($i + 1)] = $iValue;
-		}
+    public function withSourceRegionIds(array $sourceRegionIds)
+    {
+        $this->data['SourceRegionIds'] = $sourceRegionIds;
+        foreach ($sourceRegionIds as $i => $iValue) {
+            $this->options['query']['SourceRegionIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $matchAsns
-     *
      * @return $this
      */
-	public function withMatchAsns(array $matchAsns)
-	{
-	    $this->data['MatchAsns'] = $matchAsns;
-		foreach ($matchAsns as $i => $iValue) {
-			$this->options['query']['MatchAsns.' . ($i + 1)] = $iValue;
-		}
+    public function withMatchAsns(array $matchAsns)
+    {
+        $this->data['MatchAsns'] = $matchAsns;
+        foreach ($matchAsns as $i => $iValue) {
+            $this->options['query']['MatchAsns.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $destinationChildInstanceTypes
-     *
      * @return $this
      */
-	public function withDestinationChildInstanceTypes(array $destinationChildInstanceTypes)
-	{
-	    $this->data['DestinationChildInstanceTypes'] = $destinationChildInstanceTypes;
-		foreach ($destinationChildInstanceTypes as $i => $iValue) {
-			$this->options['query']['DestinationChildInstanceTypes.' . ($i + 1)] = $iValue;
-		}
+    public function withDestinationChildInstanceTypes(array $destinationChildInstanceTypes)
+    {
+        $this->data['DestinationChildInstanceTypes'] = $destinationChildInstanceTypes;
+        foreach ($destinationChildInstanceTypes as $i => $iValue) {
+            $this->options['query']['DestinationChildInstanceTypes.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $sourceRouteTableIds
-     *
      * @return $this
      */
-	public function withSourceRouteTableIds(array $sourceRouteTableIds)
-	{
-	    $this->data['SourceRouteTableIds'] = $sourceRouteTableIds;
-		foreach ($sourceRouteTableIds as $i => $iValue) {
-			$this->options['query']['SourceRouteTableIds.' . ($i + 1)] = $iValue;
-		}
+    public function withSourceRouteTableIds(array $sourceRouteTableIds)
+    {
+        $this->data['SourceRouteTableIds'] = $sourceRouteTableIds;
+        foreach ($sourceRouteTableIds as $i => $iValue) {
+            $this->options['query']['SourceRouteTableIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $sourceChildInstanceTypes
-     *
      * @return $this
      */
-	public function withSourceChildInstanceTypes(array $sourceChildInstanceTypes)
-	{
-	    $this->data['SourceChildInstanceTypes'] = $sourceChildInstanceTypes;
-		foreach ($sourceChildInstanceTypes as $i => $iValue) {
-			$this->options['query']['SourceChildInstanceTypes.' . ($i + 1)] = $iValue;
-		}
+    public function withSourceChildInstanceTypes(array $sourceChildInstanceTypes)
+    {
+        $this->data['SourceChildInstanceTypes'] = $sourceChildInstanceTypes;
+        foreach ($sourceChildInstanceTypes as $i => $iValue) {
+            $this->options['query']['SourceChildInstanceTypes.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $operateCommunitySet
-     *
      * @return $this
      */
-	public function withOperateCommunitySet(array $operateCommunitySet)
-	{
-	    $this->data['OperateCommunitySet'] = $operateCommunitySet;
-		foreach ($operateCommunitySet as $i => $iValue) {
-			$this->options['query']['OperateCommunitySet.' . ($i + 1)] = $iValue;
-		}
+    public function withOperateCommunitySet(array $operateCommunitySet)
+    {
+        $this->data['OperateCommunitySet'] = $operateCommunitySet;
+        foreach ($operateCommunitySet as $i => $iValue) {
+            $this->options['query']['OperateCommunitySet.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $routeTypes
-     *
      * @return $this
      */
-	public function withRouteTypes(array $routeTypes)
-	{
-	    $this->data['RouteTypes'] = $routeTypes;
-		foreach ($routeTypes as $i => $iValue) {
-			$this->options['query']['RouteTypes.' . ($i + 1)] = $iValue;
-		}
+    public function withRouteTypes(array $routeTypes)
+    {
+        $this->data['RouteTypes'] = $routeTypes;
+        foreach ($routeTypes as $i => $iValue) {
+            $this->options['query']['RouteTypes.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $destinationRouteTableIds
-     *
      * @return $this
      */
-	public function withDestinationRouteTableIds(array $destinationRouteTableIds)
-	{
-	    $this->data['DestinationRouteTableIds'] = $destinationRouteTableIds;
-		foreach ($destinationRouteTableIds as $i => $iValue) {
-			$this->options['query']['DestinationRouteTableIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDestinationRouteTableIds(array $destinationRouteTableIds)
+    {
+        $this->data['DestinationRouteTableIds'] = $destinationRouteTableIds;
+        foreach ($destinationRouteTableIds as $i => $iValue) {
+            $this->options['query']['DestinationRouteTableIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $sourceZoneIds
-     *
      * @return $this
      */
-	public function withSourceZoneIds(array $sourceZoneIds)
-	{
-	    $this->data['SourceZoneIds'] = $sourceZoneIds;
-		foreach ($sourceZoneIds as $i => $iValue) {
-			$this->options['query']['SourceZoneIds.' . ($i + 1)] = $iValue;
-		}
+    public function withSourceZoneIds(array $sourceZoneIds)
+    {
+        $this->data['SourceZoneIds'] = $sourceZoneIds;
+        foreach ($sourceZoneIds as $i => $iValue) {
+            $this->options['query']['SourceZoneIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $destinationInstanceIds
-     *
      * @return $this
      */
-	public function withDestinationInstanceIds(array $destinationInstanceIds)
-	{
-	    $this->data['DestinationInstanceIds'] = $destinationInstanceIds;
-		foreach ($destinationInstanceIds as $i => $iValue) {
-			$this->options['query']['DestinationInstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDestinationInstanceIds(array $destinationInstanceIds)
+    {
+        $this->data['DestinationInstanceIds'] = $destinationInstanceIds;
+        foreach ($destinationInstanceIds as $i => $iValue) {
+            $this->options['query']['DestinationInstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $prependAsPath
-     *
      * @return $this
      */
-	public function withPrependAsPath(array $prependAsPath)
-	{
-	    $this->data['PrependAsPath'] = $prependAsPath;
-		foreach ($prependAsPath as $i => $iValue) {
-			$this->options['query']['PrependAsPath.' . ($i + 1)] = $iValue;
-		}
+    public function withPrependAsPath(array $prependAsPath)
+    {
+        $this->data['PrependAsPath'] = $prependAsPath;
+        foreach ($prependAsPath as $i => $iValue) {
+            $this->options['query']['PrependAsPath.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $matchCommunitySet
-     *
      * @return $this
      */
-	public function withMatchCommunitySet(array $matchCommunitySet)
-	{
-	    $this->data['MatchCommunitySet'] = $matchCommunitySet;
-		foreach ($matchCommunitySet as $i => $iValue) {
-			$this->options['query']['MatchCommunitySet.' . ($i + 1)] = $iValue;
-		}
+    public function withMatchCommunitySet(array $matchCommunitySet)
+    {
+        $this->data['MatchCommunitySet'] = $matchCommunitySet;
+        foreach ($matchCommunitySet as $i => $iValue) {
+            $this->options['query']['MatchCommunitySet.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -778,45 +745,40 @@ class DescribeCenAttachedChildInstances extends Rpc
  */
 class DescribeCenBandwidthPackages extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $filter
-     *
      * @return $this
      */
-	public function withFilter(array $filter)
-	{
-	    $this->data['Filter'] = $filter;
-		foreach ($filter as $depth1 => $depth1Value) {
-			foreach ($depth1Value['Value'] as $i => $iValue) {
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withFilter(array $filter)
+    {
+        $this->data['Filter'] = $filter;
+        foreach ($filter as $depth1 => $depth1Value) {
+            foreach ($depth1Value['Value'] as $i => $iValue) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -987,25 +949,22 @@ class DescribeCenRegionDomainRouteEntries extends Rpc
  */
 class DescribeCenRouteMaps extends Rpc
 {
-
     /**
-     * @param array $filter
-     *
      * @return $this
      */
-	public function withFilter(array $filter)
-	{
-	    $this->data['Filter'] = $filter;
-		foreach ($filter as $depth1 => $depth1Value) {
-			foreach ($depth1Value['Value'] as $i => $iValue) {
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withFilter(array $filter)
+    {
+        $this->data['Filter'] = $filter;
+        foreach ($filter as $depth1 => $depth1Value) {
+            foreach ($depth1Value['Value'] as $i => $iValue) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1027,45 +986,40 @@ class DescribeCenRouteMaps extends Rpc
  */
 class DescribeCens extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $filter
-     *
      * @return $this
      */
-	public function withFilter(array $filter)
-	{
-	    $this->data['Filter'] = $filter;
-		foreach ($filter as $depth1 => $depth1Value) {
-			foreach ($depth1Value['Value'] as $i => $iValue) {
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withFilter(array $filter)
+    {
+        $this->data['Filter'] = $filter;
+        foreach ($filter as $depth1 => $depth1Value) {
+            foreach ($depth1Value['Value'] as $i => $iValue) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1365,40 +1319,35 @@ class EnableCenVbrHealthCheck extends Rpc
  */
 class ListTagResources extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1524,245 +1473,212 @@ class ModifyCenBandwidthPackageSpec extends Rpc
  */
 class ModifyCenRouteMap extends Rpc
 {
-
     /**
-     * @param array $destinationRegionIds
-     *
      * @return $this
      */
-	public function withDestinationRegionIds(array $destinationRegionIds)
-	{
-	    $this->data['DestinationRegionIds'] = $destinationRegionIds;
-		foreach ($destinationRegionIds as $i => $iValue) {
-			$this->options['query']['DestinationRegionIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDestinationRegionIds(array $destinationRegionIds)
+    {
+        $this->data['DestinationRegionIds'] = $destinationRegionIds;
+        foreach ($destinationRegionIds as $i => $iValue) {
+            $this->options['query']['DestinationRegionIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $destinationCidrBlocks
-     *
      * @return $this
      */
-	public function withDestinationCidrBlocks(array $destinationCidrBlocks)
-	{
-	    $this->data['DestinationCidrBlocks'] = $destinationCidrBlocks;
-		foreach ($destinationCidrBlocks as $i => $iValue) {
-			$this->options['query']['DestinationCidrBlocks.' . ($i + 1)] = $iValue;
-		}
+    public function withDestinationCidrBlocks(array $destinationCidrBlocks)
+    {
+        $this->data['DestinationCidrBlocks'] = $destinationCidrBlocks;
+        foreach ($destinationCidrBlocks as $i => $iValue) {
+            $this->options['query']['DestinationCidrBlocks.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $originalRouteTableIds
-     *
      * @return $this
      */
-	public function withOriginalRouteTableIds(array $originalRouteTableIds)
-	{
-	    $this->data['OriginalRouteTableIds'] = $originalRouteTableIds;
-		foreach ($originalRouteTableIds as $i => $iValue) {
-			$this->options['query']['OriginalRouteTableIds.' . ($i + 1)] = $iValue;
-		}
+    public function withOriginalRouteTableIds(array $originalRouteTableIds)
+    {
+        $this->data['OriginalRouteTableIds'] = $originalRouteTableIds;
+        foreach ($originalRouteTableIds as $i => $iValue) {
+            $this->options['query']['OriginalRouteTableIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $sourceInstanceIds
-     *
      * @return $this
      */
-	public function withSourceInstanceIds(array $sourceInstanceIds)
-	{
-	    $this->data['SourceInstanceIds'] = $sourceInstanceIds;
-		foreach ($sourceInstanceIds as $i => $iValue) {
-			$this->options['query']['SourceInstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withSourceInstanceIds(array $sourceInstanceIds)
+    {
+        $this->data['SourceInstanceIds'] = $sourceInstanceIds;
+        foreach ($sourceInstanceIds as $i => $iValue) {
+            $this->options['query']['SourceInstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $sourceRegionIds
-     *
      * @return $this
      */
-	public function withSourceRegionIds(array $sourceRegionIds)
-	{
-	    $this->data['SourceRegionIds'] = $sourceRegionIds;
-		foreach ($sourceRegionIds as $i => $iValue) {
-			$this->options['query']['SourceRegionIds.' . ($i + 1)] = $iValue;
-		}
+    public function withSourceRegionIds(array $sourceRegionIds)
+    {
+        $this->data['SourceRegionIds'] = $sourceRegionIds;
+        foreach ($sourceRegionIds as $i => $iValue) {
+            $this->options['query']['SourceRegionIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $matchAsns
-     *
      * @return $this
      */
-	public function withMatchAsns(array $matchAsns)
-	{
-	    $this->data['MatchAsns'] = $matchAsns;
-		foreach ($matchAsns as $i => $iValue) {
-			$this->options['query']['MatchAsns.' . ($i + 1)] = $iValue;
-		}
+    public function withMatchAsns(array $matchAsns)
+    {
+        $this->data['MatchAsns'] = $matchAsns;
+        foreach ($matchAsns as $i => $iValue) {
+            $this->options['query']['MatchAsns.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $destinationChildInstanceTypes
-     *
      * @return $this
      */
-	public function withDestinationChildInstanceTypes(array $destinationChildInstanceTypes)
-	{
-	    $this->data['DestinationChildInstanceTypes'] = $destinationChildInstanceTypes;
-		foreach ($destinationChildInstanceTypes as $i => $iValue) {
-			$this->options['query']['DestinationChildInstanceTypes.' . ($i + 1)] = $iValue;
-		}
+    public function withDestinationChildInstanceTypes(array $destinationChildInstanceTypes)
+    {
+        $this->data['DestinationChildInstanceTypes'] = $destinationChildInstanceTypes;
+        foreach ($destinationChildInstanceTypes as $i => $iValue) {
+            $this->options['query']['DestinationChildInstanceTypes.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $sourceRouteTableIds
-     *
      * @return $this
      */
-	public function withSourceRouteTableIds(array $sourceRouteTableIds)
-	{
-	    $this->data['SourceRouteTableIds'] = $sourceRouteTableIds;
-		foreach ($sourceRouteTableIds as $i => $iValue) {
-			$this->options['query']['SourceRouteTableIds.' . ($i + 1)] = $iValue;
-		}
+    public function withSourceRouteTableIds(array $sourceRouteTableIds)
+    {
+        $this->data['SourceRouteTableIds'] = $sourceRouteTableIds;
+        foreach ($sourceRouteTableIds as $i => $iValue) {
+            $this->options['query']['SourceRouteTableIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $sourceChildInstanceTypes
-     *
      * @return $this
      */
-	public function withSourceChildInstanceTypes(array $sourceChildInstanceTypes)
-	{
-	    $this->data['SourceChildInstanceTypes'] = $sourceChildInstanceTypes;
-		foreach ($sourceChildInstanceTypes as $i => $iValue) {
-			$this->options['query']['SourceChildInstanceTypes.' . ($i + 1)] = $iValue;
-		}
+    public function withSourceChildInstanceTypes(array $sourceChildInstanceTypes)
+    {
+        $this->data['SourceChildInstanceTypes'] = $sourceChildInstanceTypes;
+        foreach ($sourceChildInstanceTypes as $i => $iValue) {
+            $this->options['query']['SourceChildInstanceTypes.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $operateCommunitySet
-     *
      * @return $this
      */
-	public function withOperateCommunitySet(array $operateCommunitySet)
-	{
-	    $this->data['OperateCommunitySet'] = $operateCommunitySet;
-		foreach ($operateCommunitySet as $i => $iValue) {
-			$this->options['query']['OperateCommunitySet.' . ($i + 1)] = $iValue;
-		}
+    public function withOperateCommunitySet(array $operateCommunitySet)
+    {
+        $this->data['OperateCommunitySet'] = $operateCommunitySet;
+        foreach ($operateCommunitySet as $i => $iValue) {
+            $this->options['query']['OperateCommunitySet.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $routeTypes
-     *
      * @return $this
      */
-	public function withRouteTypes(array $routeTypes)
-	{
-	    $this->data['RouteTypes'] = $routeTypes;
-		foreach ($routeTypes as $i => $iValue) {
-			$this->options['query']['RouteTypes.' . ($i + 1)] = $iValue;
-		}
+    public function withRouteTypes(array $routeTypes)
+    {
+        $this->data['RouteTypes'] = $routeTypes;
+        foreach ($routeTypes as $i => $iValue) {
+            $this->options['query']['RouteTypes.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $destinationRouteTableIds
-     *
      * @return $this
      */
-	public function withDestinationRouteTableIds(array $destinationRouteTableIds)
-	{
-	    $this->data['DestinationRouteTableIds'] = $destinationRouteTableIds;
-		foreach ($destinationRouteTableIds as $i => $iValue) {
-			$this->options['query']['DestinationRouteTableIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDestinationRouteTableIds(array $destinationRouteTableIds)
+    {
+        $this->data['DestinationRouteTableIds'] = $destinationRouteTableIds;
+        foreach ($destinationRouteTableIds as $i => $iValue) {
+            $this->options['query']['DestinationRouteTableIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $sourceZoneIds
-     *
      * @return $this
      */
-	public function withSourceZoneIds(array $sourceZoneIds)
-	{
-	    $this->data['SourceZoneIds'] = $sourceZoneIds;
-		foreach ($sourceZoneIds as $i => $iValue) {
-			$this->options['query']['SourceZoneIds.' . ($i + 1)] = $iValue;
-		}
+    public function withSourceZoneIds(array $sourceZoneIds)
+    {
+        $this->data['SourceZoneIds'] = $sourceZoneIds;
+        foreach ($sourceZoneIds as $i => $iValue) {
+            $this->options['query']['SourceZoneIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $destinationInstanceIds
-     *
      * @return $this
      */
-	public function withDestinationInstanceIds(array $destinationInstanceIds)
-	{
-	    $this->data['DestinationInstanceIds'] = $destinationInstanceIds;
-		foreach ($destinationInstanceIds as $i => $iValue) {
-			$this->options['query']['DestinationInstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDestinationInstanceIds(array $destinationInstanceIds)
+    {
+        $this->data['DestinationInstanceIds'] = $destinationInstanceIds;
+        foreach ($destinationInstanceIds as $i => $iValue) {
+            $this->options['query']['DestinationInstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $prependAsPath
-     *
      * @return $this
      */
-	public function withPrependAsPath(array $prependAsPath)
-	{
-	    $this->data['PrependAsPath'] = $prependAsPath;
-		foreach ($prependAsPath as $i => $iValue) {
-			$this->options['query']['PrependAsPath.' . ($i + 1)] = $iValue;
-		}
+    public function withPrependAsPath(array $prependAsPath)
+    {
+        $this->data['PrependAsPath'] = $prependAsPath;
+        foreach ($prependAsPath as $i => $iValue) {
+            $this->options['query']['PrependAsPath.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $matchCommunitySet
-     *
      * @return $this
      */
-	public function withMatchCommunitySet(array $matchCommunitySet)
-	{
-	    $this->data['MatchCommunitySet'] = $matchCommunitySet;
-		foreach ($matchCommunitySet as $i => $iValue) {
-			$this->options['query']['MatchCommunitySet.' . ($i + 1)] = $iValue;
-		}
+    public function withMatchCommunitySet(array $matchCommunitySet)
+    {
+        $this->data['MatchCommunitySet'] = $matchCommunitySet;
+        foreach ($matchCommunitySet as $i => $iValue) {
+            $this->options['query']['MatchCommunitySet.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1839,20 +1755,17 @@ class PublishRouteEntries extends Rpc
  */
 class ResolveAndRouteServiceInCen extends Rpc
 {
-
     /**
-     * @param array $accessRegionIds
-     *
      * @return $this
      */
-	public function withAccessRegionIds(array $accessRegionIds)
-	{
-	    $this->data['AccessRegionIds'] = $accessRegionIds;
-		foreach ($accessRegionIds as $i => $iValue) {
-			$this->options['query']['AccessRegionIds.' . ($i + 1)] = $iValue;
-		}
+    public function withAccessRegionIds(array $accessRegionIds)
+    {
+        $this->data['AccessRegionIds'] = $accessRegionIds;
+        foreach ($accessRegionIds as $i => $iValue) {
+            $this->options['query']['AccessRegionIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1918,40 +1831,35 @@ class SetCenInterRegionBandwidthLimit extends Rpc
  */
 class TagResources extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2029,35 +1937,30 @@ class UnroutePrivateZoneInCenToVpc extends Rpc
  */
 class UntagResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tagKey
-     *
      * @return $this
      */
-	public function withTagKey(array $tagKey)
-	{
-	    $this->data['TagKey'] = $tagKey;
-		foreach ($tagKey as $i => $iValue) {
-			$this->options['query']['TagKey.' . ($i + 1)] = $iValue;
-		}
+    public function withTagKey(array $tagKey)
+    {
+        $this->data['TagKey'] = $tagKey;
+        foreach ($tagKey as $i => $iValue) {
+            $this->options['query']['TagKey.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 

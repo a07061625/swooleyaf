@@ -518,28 +518,25 @@ class GetToken extends Rpc
  */
 class IvrCall extends Rpc
 {
-
     /**
-     * @param array $menuKeyMap
-     *
      * @return $this
      */
-	public function withMenuKeyMap(array $menuKeyMap)
-	{
-	    $this->data['MenuKeyMap'] = $menuKeyMap;
-		foreach ($menuKeyMap as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Code'])){
-				$this->options['query']['MenuKeyMap.' . ($depth1 + 1) . '.Code'] = $depth1Value['Code'];
-			}
-			if(isset($depth1Value['TtsParams'])){
-				$this->options['query']['MenuKeyMap.' . ($depth1 + 1) . '.TtsParams'] = $depth1Value['TtsParams'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['MenuKeyMap.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withMenuKeyMap(array $menuKeyMap)
+    {
+        $this->data['MenuKeyMap'] = $menuKeyMap;
+        foreach ($menuKeyMap as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Code'])) {
+                $this->options['query']['MenuKeyMap.' . ($depth1 + 1) . '.Code'] = $depth1Value['Code'];
+            }
+            if (isset($depth1Value['TtsParams'])) {
+                $this->options['query']['MenuKeyMap.' . ($depth1 + 1) . '.TtsParams'] = $depth1Value['TtsParams'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['MenuKeyMap.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1014,25 +1011,22 @@ class SendVerification extends Rpc
  */
 class SetTransferCalleePoolConfig extends Rpc
 {
-
     /**
-     * @param array $details
-     *
      * @return $this
      */
-	public function withDetails(array $details)
-	{
-	    $this->data['Details'] = $details;
-		foreach ($details as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Caller'])){
-				$this->options['query']['Details.' . ($depth1 + 1) . '.Caller'] = $depth1Value['Caller'];
-			}
-			if(isset($depth1Value['Called'])){
-				$this->options['query']['Details.' . ($depth1 + 1) . '.Called'] = $depth1Value['Called'];
-			}
-		}
+    public function withDetails(array $details)
+    {
+        $this->data['Details'] = $details;
+        foreach ($details as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Caller'])) {
+                $this->options['query']['Details.' . ($depth1 + 1) . '.Caller'] = $depth1Value['Caller'];
+            }
+            if (isset($depth1Value['Called'])) {
+                $this->options['query']['Details.' . ($depth1 + 1) . '.Called'] = $depth1Value['Called'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1251,28 +1245,25 @@ class StopRobotTask extends Rpc
  */
 class SubmitHotlineTransferRegister extends Rpc
 {
-
     /**
-     * @param array $transferPhoneNumberInfos
-     *
      * @return $this
      */
-	public function withTransferPhoneNumberInfos(array $transferPhoneNumberInfos)
-	{
-	    $this->data['TransferPhoneNumberInfos'] = $transferPhoneNumberInfos;
-		foreach ($transferPhoneNumberInfos as $depth1 => $depth1Value) {
-			if(isset($depth1Value['PhoneNumber'])){
-				$this->options['query']['TransferPhoneNumberInfos.' . ($depth1 + 1) . '.PhoneNumber'] = $depth1Value['PhoneNumber'];
-			}
-			if(isset($depth1Value['PhoneNumberOwnerName'])){
-				$this->options['query']['TransferPhoneNumberInfos.' . ($depth1 + 1) . '.PhoneNumberOwnerName'] = $depth1Value['PhoneNumberOwnerName'];
-			}
-			if(isset($depth1Value['IdentityCard'])){
-				$this->options['query']['TransferPhoneNumberInfos.' . ($depth1 + 1) . '.IdentityCard'] = $depth1Value['IdentityCard'];
-			}
-		}
+    public function withTransferPhoneNumberInfos(array $transferPhoneNumberInfos)
+    {
+        $this->data['TransferPhoneNumberInfos'] = $transferPhoneNumberInfos;
+        foreach ($transferPhoneNumberInfos as $depth1 => $depth1Value) {
+            if (isset($depth1Value['PhoneNumber'])) {
+                $this->options['query']['TransferPhoneNumberInfos.' . ($depth1 + 1) . '.PhoneNumber'] = $depth1Value['PhoneNumber'];
+            }
+            if (isset($depth1Value['PhoneNumberOwnerName'])) {
+                $this->options['query']['TransferPhoneNumberInfos.' . ($depth1 + 1) . '.PhoneNumberOwnerName'] = $depth1Value['PhoneNumberOwnerName'];
+            }
+            if (isset($depth1Value['IdentityCard'])) {
+                $this->options['query']['TransferPhoneNumberInfos.' . ($depth1 + 1) . '.IdentityCard'] = $depth1Value['IdentityCard'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 

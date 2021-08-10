@@ -387,20 +387,17 @@ class AddCommonBandwidthPackageIp extends Rpc
  */
 class AddCommonBandwidthPackageIps extends Rpc
 {
-
     /**
-     * @param array $ipInstanceIds
-     *
      * @return $this
      */
-	public function withIpInstanceIds(array $ipInstanceIds)
-	{
-	    $this->data['IpInstanceIds'] = $ipInstanceIds;
-		foreach ($ipInstanceIds as $i => $iValue) {
-			$this->options['query']['IpInstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withIpInstanceIds(array $ipInstanceIds)
+    {
+        $this->data['IpInstanceIds'] = $ipInstanceIds;
+        foreach ($ipInstanceIds as $i => $iValue) {
+            $this->options['query']['IpInstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -461,20 +458,17 @@ class AddIPv6TranslatorAclListEntry extends Rpc
  */
 class AddSourcesToTrafficMirrorSession extends Rpc
 {
-
     /**
-     * @param array $trafficMirrorSourceIds
-     *
      * @return $this
      */
-	public function withTrafficMirrorSourceIds(array $trafficMirrorSourceIds)
-	{
-	    $this->data['TrafficMirrorSourceIds'] = $trafficMirrorSourceIds;
-		foreach ($trafficMirrorSourceIds as $i => $iValue) {
-			$this->options['query']['TrafficMirrorSourceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withTrafficMirrorSourceIds(array $trafficMirrorSourceIds)
+    {
+        $this->data['TrafficMirrorSourceIds'] = $trafficMirrorSourceIds;
+        foreach ($trafficMirrorSourceIds as $i => $iValue) {
+            $this->options['query']['TrafficMirrorSourceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -637,34 +631,31 @@ class AllocateIpv6InternetBandwidth extends Rpc
  */
 class ApplyPhysicalConnectionLOA extends Rpc
 {
-
     /**
-     * @param array $pMInfo
-     *
      * @return $this
      */
-	public function withPMInfo(array $pMInfo)
-	{
-	    $this->data['PMInfo'] = $pMInfo;
-		foreach ($pMInfo as $depth1 => $depth1Value) {
-			if(isset($depth1Value['PMCertificateNo'])){
-				$this->options['query']['PMInfo.' . ($depth1 + 1) . '.PMCertificateNo'] = $depth1Value['PMCertificateNo'];
-			}
-			if(isset($depth1Value['PMName'])){
-				$this->options['query']['PMInfo.' . ($depth1 + 1) . '.PMName'] = $depth1Value['PMName'];
-			}
-			if(isset($depth1Value['PMCertificateType'])){
-				$this->options['query']['PMInfo.' . ($depth1 + 1) . '.PMCertificateType'] = $depth1Value['PMCertificateType'];
-			}
-			if(isset($depth1Value['PMContactInfo'])){
-				$this->options['query']['PMInfo.' . ($depth1 + 1) . '.PMContactInfo'] = $depth1Value['PMContactInfo'];
-			}
-			if(isset($depth1Value['PMGender'])){
-				$this->options['query']['PMInfo.' . ($depth1 + 1) . '.PMGender'] = $depth1Value['PMGender'];
-			}
-		}
+    public function withPMInfo(array $pMInfo)
+    {
+        $this->data['PMInfo'] = $pMInfo;
+        foreach ($pMInfo as $depth1 => $depth1Value) {
+            if (isset($depth1Value['PMCertificateNo'])) {
+                $this->options['query']['PMInfo.' . ($depth1 + 1) . '.PMCertificateNo'] = $depth1Value['PMCertificateNo'];
+            }
+            if (isset($depth1Value['PMName'])) {
+                $this->options['query']['PMInfo.' . ($depth1 + 1) . '.PMName'] = $depth1Value['PMName'];
+            }
+            if (isset($depth1Value['PMCertificateType'])) {
+                $this->options['query']['PMInfo.' . ($depth1 + 1) . '.PMCertificateType'] = $depth1Value['PMCertificateType'];
+            }
+            if (isset($depth1Value['PMContactInfo'])) {
+                $this->options['query']['PMInfo.' . ($depth1 + 1) . '.PMContactInfo'] = $depth1Value['PMContactInfo'];
+            }
+            if (isset($depth1Value['PMGender'])) {
+                $this->options['query']['PMInfo.' . ($depth1 + 1) . '.PMGender'] = $depth1Value['PMGender'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -755,25 +746,22 @@ class AssociateHaVip extends Rpc
  */
 class AssociateNetworkAcl extends Rpc
 {
-
     /**
-     * @param array $resource
-     *
      * @return $this
      */
-	public function withResource(array $resource)
-	{
-	    $this->data['Resource'] = $resource;
-		foreach ($resource as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ResourceType'])){
-				$this->options['query']['Resource.' . ($depth1 + 1) . '.ResourceType'] = $depth1Value['ResourceType'];
-			}
-			if(isset($depth1Value['ResourceId'])){
-				$this->options['query']['Resource.' . ($depth1 + 1) . '.ResourceId'] = $depth1Value['ResourceId'];
-			}
-		}
+    public function withResource(array $resource)
+    {
+        $this->data['Resource'] = $resource;
+        foreach ($resource as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ResourceType'])) {
+                $this->options['query']['Resource.' . ($depth1 + 1) . '.ResourceType'] = $depth1Value['ResourceType'];
+            }
+            if (isset($depth1Value['ResourceId'])) {
+                $this->options['query']['Resource.' . ($depth1 + 1) . '.ResourceId'] = $depth1Value['ResourceId'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -878,7 +866,6 @@ class AssociateVpcCidrBlock extends Rpc
  */
 class AssociateVpnGatewayWithCertificate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1378,7 +1365,6 @@ class CreateHaVip extends Rpc
  */
 class CreateIpsecServer extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1564,34 +1550,31 @@ class CreateIPv6TranslatorEntry extends Rpc
  */
 class CreateNatGateway extends Rpc
 {
-
     /**
-     * @param array $bandwidthPackage
-     *
      * @return $this
      */
-	public function withBandwidthPackage(array $bandwidthPackage)
-	{
-	    $this->data['BandwidthPackage'] = $bandwidthPackage;
-		foreach ($bandwidthPackage as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Bandwidth'])){
-				$this->options['query']['BandwidthPackage.' . ($depth1 + 1) . '.Bandwidth'] = $depth1Value['Bandwidth'];
-			}
-			if(isset($depth1Value['Zone'])){
-				$this->options['query']['BandwidthPackage.' . ($depth1 + 1) . '.Zone'] = $depth1Value['Zone'];
-			}
-			if(isset($depth1Value['InternetChargeType'])){
-				$this->options['query']['BandwidthPackage.' . ($depth1 + 1) . '.InternetChargeType'] = $depth1Value['InternetChargeType'];
-			}
-			if(isset($depth1Value['ISP'])){
-				$this->options['query']['BandwidthPackage.' . ($depth1 + 1) . '.ISP'] = $depth1Value['ISP'];
-			}
-			if(isset($depth1Value['IpCount'])){
-				$this->options['query']['BandwidthPackage.' . ($depth1 + 1) . '.IpCount'] = $depth1Value['IpCount'];
-			}
-		}
+    public function withBandwidthPackage(array $bandwidthPackage)
+    {
+        $this->data['BandwidthPackage'] = $bandwidthPackage;
+        foreach ($bandwidthPackage as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Bandwidth'])) {
+                $this->options['query']['BandwidthPackage.' . ($depth1 + 1) . '.Bandwidth'] = $depth1Value['Bandwidth'];
+            }
+            if (isset($depth1Value['Zone'])) {
+                $this->options['query']['BandwidthPackage.' . ($depth1 + 1) . '.Zone'] = $depth1Value['Zone'];
+            }
+            if (isset($depth1Value['InternetChargeType'])) {
+                $this->options['query']['BandwidthPackage.' . ($depth1 + 1) . '.InternetChargeType'] = $depth1Value['InternetChargeType'];
+            }
+            if (isset($depth1Value['ISP'])) {
+                $this->options['query']['BandwidthPackage.' . ($depth1 + 1) . '.ISP'] = $depth1Value['ISP'];
+            }
+            if (isset($depth1Value['IpCount'])) {
+                $this->options['query']['BandwidthPackage.' . ($depth1 + 1) . '.IpCount'] = $depth1Value['IpCount'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1648,7 +1631,6 @@ class CreateNetworkAcl extends Rpc
  */
 class CreatePhysicalConnection extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1744,28 +1726,25 @@ class CreatePhysicalConnectionSetupOrder extends Rpc
  */
 class CreateRouteEntry extends Rpc
 {
-
     /**
-     * @param array $nextHopList
-     *
      * @return $this
      */
-	public function withNextHopList(array $nextHopList)
-	{
-	    $this->data['NextHopList'] = $nextHopList;
-		foreach ($nextHopList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Weight'])){
-				$this->options['query']['NextHopList.' . ($depth1 + 1) . '.Weight'] = $depth1Value['Weight'];
-			}
-			if(isset($depth1Value['NextHopId'])){
-				$this->options['query']['NextHopList.' . ($depth1 + 1) . '.NextHopId'] = $depth1Value['NextHopId'];
-			}
-			if(isset($depth1Value['NextHopType'])){
-				$this->options['query']['NextHopList.' . ($depth1 + 1) . '.NextHopType'] = $depth1Value['NextHopType'];
-			}
-		}
+    public function withNextHopList(array $nextHopList)
+    {
+        $this->data['NextHopList'] = $nextHopList;
+        foreach ($nextHopList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Weight'])) {
+                $this->options['query']['NextHopList.' . ($depth1 + 1) . '.Weight'] = $depth1Value['Weight'];
+            }
+            if (isset($depth1Value['NextHopId'])) {
+                $this->options['query']['NextHopList.' . ($depth1 + 1) . '.NextHopId'] = $depth1Value['NextHopId'];
+            }
+            if (isset($depth1Value['NextHopType'])) {
+                $this->options['query']['NextHopList.' . ($depth1 + 1) . '.NextHopType'] = $depth1Value['NextHopType'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1951,75 +1930,70 @@ class CreateSslVpnServer extends Rpc
  */
 class CreateTrafficMirrorFilter extends Rpc
 {
-
     /**
-     * @param array $ingressRules
-     *
      * @return $this
      */
-	public function withIngressRules(array $ingressRules)
-	{
-	    $this->data['IngressRules'] = $ingressRules;
-		foreach ($ingressRules as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Priority'])){
-				$this->options['query']['IngressRules.' . ($depth1 + 1) . '.Priority'] = $depth1Value['Priority'];
-			}
-			if(isset($depth1Value['Action'])){
-				$this->options['query']['IngressRules.' . ($depth1 + 1) . '.Action'] = $depth1Value['Action'];
-			}
-			if(isset($depth1Value['Protocol'])){
-				$this->options['query']['IngressRules.' . ($depth1 + 1) . '.Protocol'] = $depth1Value['Protocol'];
-			}
-			if(isset($depth1Value['DestinationCidrBlock'])){
-				$this->options['query']['IngressRules.' . ($depth1 + 1) . '.DestinationCidrBlock'] = $depth1Value['DestinationCidrBlock'];
-			}
-			if(isset($depth1Value['SourceCidrBlock'])){
-				$this->options['query']['IngressRules.' . ($depth1 + 1) . '.SourceCidrBlock'] = $depth1Value['SourceCidrBlock'];
-			}
-			if(isset($depth1Value['DestinationPortRange'])){
-				$this->options['query']['IngressRules.' . ($depth1 + 1) . '.DestinationPortRange'] = $depth1Value['DestinationPortRange'];
-			}
-			if(isset($depth1Value['SourcePortRange'])){
-				$this->options['query']['IngressRules.' . ($depth1 + 1) . '.SourcePortRange'] = $depth1Value['SourcePortRange'];
-			}
-		}
+    public function withIngressRules(array $ingressRules)
+    {
+        $this->data['IngressRules'] = $ingressRules;
+        foreach ($ingressRules as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Priority'])) {
+                $this->options['query']['IngressRules.' . ($depth1 + 1) . '.Priority'] = $depth1Value['Priority'];
+            }
+            if (isset($depth1Value['Action'])) {
+                $this->options['query']['IngressRules.' . ($depth1 + 1) . '.Action'] = $depth1Value['Action'];
+            }
+            if (isset($depth1Value['Protocol'])) {
+                $this->options['query']['IngressRules.' . ($depth1 + 1) . '.Protocol'] = $depth1Value['Protocol'];
+            }
+            if (isset($depth1Value['DestinationCidrBlock'])) {
+                $this->options['query']['IngressRules.' . ($depth1 + 1) . '.DestinationCidrBlock'] = $depth1Value['DestinationCidrBlock'];
+            }
+            if (isset($depth1Value['SourceCidrBlock'])) {
+                $this->options['query']['IngressRules.' . ($depth1 + 1) . '.SourceCidrBlock'] = $depth1Value['SourceCidrBlock'];
+            }
+            if (isset($depth1Value['DestinationPortRange'])) {
+                $this->options['query']['IngressRules.' . ($depth1 + 1) . '.DestinationPortRange'] = $depth1Value['DestinationPortRange'];
+            }
+            if (isset($depth1Value['SourcePortRange'])) {
+                $this->options['query']['IngressRules.' . ($depth1 + 1) . '.SourcePortRange'] = $depth1Value['SourcePortRange'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $egressRules
-     *
      * @return $this
      */
-	public function withEgressRules(array $egressRules)
-	{
-	    $this->data['EgressRules'] = $egressRules;
-		foreach ($egressRules as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Priority'])){
-				$this->options['query']['EgressRules.' . ($depth1 + 1) . '.Priority'] = $depth1Value['Priority'];
-			}
-			if(isset($depth1Value['Action'])){
-				$this->options['query']['EgressRules.' . ($depth1 + 1) . '.Action'] = $depth1Value['Action'];
-			}
-			if(isset($depth1Value['Protocol'])){
-				$this->options['query']['EgressRules.' . ($depth1 + 1) . '.Protocol'] = $depth1Value['Protocol'];
-			}
-			if(isset($depth1Value['DestinationCidrBlock'])){
-				$this->options['query']['EgressRules.' . ($depth1 + 1) . '.DestinationCidrBlock'] = $depth1Value['DestinationCidrBlock'];
-			}
-			if(isset($depth1Value['SourceCidrBlock'])){
-				$this->options['query']['EgressRules.' . ($depth1 + 1) . '.SourceCidrBlock'] = $depth1Value['SourceCidrBlock'];
-			}
-			if(isset($depth1Value['DestinationPortRange'])){
-				$this->options['query']['EgressRules.' . ($depth1 + 1) . '.DestinationPortRange'] = $depth1Value['DestinationPortRange'];
-			}
-			if(isset($depth1Value['SourcePortRange'])){
-				$this->options['query']['EgressRules.' . ($depth1 + 1) . '.SourcePortRange'] = $depth1Value['SourcePortRange'];
-			}
-		}
+    public function withEgressRules(array $egressRules)
+    {
+        $this->data['EgressRules'] = $egressRules;
+        foreach ($egressRules as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Priority'])) {
+                $this->options['query']['EgressRules.' . ($depth1 + 1) . '.Priority'] = $depth1Value['Priority'];
+            }
+            if (isset($depth1Value['Action'])) {
+                $this->options['query']['EgressRules.' . ($depth1 + 1) . '.Action'] = $depth1Value['Action'];
+            }
+            if (isset($depth1Value['Protocol'])) {
+                $this->options['query']['EgressRules.' . ($depth1 + 1) . '.Protocol'] = $depth1Value['Protocol'];
+            }
+            if (isset($depth1Value['DestinationCidrBlock'])) {
+                $this->options['query']['EgressRules.' . ($depth1 + 1) . '.DestinationCidrBlock'] = $depth1Value['DestinationCidrBlock'];
+            }
+            if (isset($depth1Value['SourceCidrBlock'])) {
+                $this->options['query']['EgressRules.' . ($depth1 + 1) . '.SourceCidrBlock'] = $depth1Value['SourceCidrBlock'];
+            }
+            if (isset($depth1Value['DestinationPortRange'])) {
+                $this->options['query']['EgressRules.' . ($depth1 + 1) . '.DestinationPortRange'] = $depth1Value['DestinationPortRange'];
+            }
+            if (isset($depth1Value['SourcePortRange'])) {
+                $this->options['query']['EgressRules.' . ($depth1 + 1) . '.SourcePortRange'] = $depth1Value['SourcePortRange'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2043,75 +2017,70 @@ class CreateTrafficMirrorFilter extends Rpc
  */
 class CreateTrafficMirrorFilterRules extends Rpc
 {
-
     /**
-     * @param array $ingressRules
-     *
      * @return $this
      */
-	public function withIngressRules(array $ingressRules)
-	{
-	    $this->data['IngressRules'] = $ingressRules;
-		foreach ($ingressRules as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Priority'])){
-				$this->options['query']['IngressRules.' . ($depth1 + 1) . '.Priority'] = $depth1Value['Priority'];
-			}
-			if(isset($depth1Value['Action'])){
-				$this->options['query']['IngressRules.' . ($depth1 + 1) . '.Action'] = $depth1Value['Action'];
-			}
-			if(isset($depth1Value['Protocol'])){
-				$this->options['query']['IngressRules.' . ($depth1 + 1) . '.Protocol'] = $depth1Value['Protocol'];
-			}
-			if(isset($depth1Value['DestinationCidrBlock'])){
-				$this->options['query']['IngressRules.' . ($depth1 + 1) . '.DestinationCidrBlock'] = $depth1Value['DestinationCidrBlock'];
-			}
-			if(isset($depth1Value['SourceCidrBlock'])){
-				$this->options['query']['IngressRules.' . ($depth1 + 1) . '.SourceCidrBlock'] = $depth1Value['SourceCidrBlock'];
-			}
-			if(isset($depth1Value['DestinationPortRange'])){
-				$this->options['query']['IngressRules.' . ($depth1 + 1) . '.DestinationPortRange'] = $depth1Value['DestinationPortRange'];
-			}
-			if(isset($depth1Value['SourcePortRange'])){
-				$this->options['query']['IngressRules.' . ($depth1 + 1) . '.SourcePortRange'] = $depth1Value['SourcePortRange'];
-			}
-		}
+    public function withIngressRules(array $ingressRules)
+    {
+        $this->data['IngressRules'] = $ingressRules;
+        foreach ($ingressRules as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Priority'])) {
+                $this->options['query']['IngressRules.' . ($depth1 + 1) . '.Priority'] = $depth1Value['Priority'];
+            }
+            if (isset($depth1Value['Action'])) {
+                $this->options['query']['IngressRules.' . ($depth1 + 1) . '.Action'] = $depth1Value['Action'];
+            }
+            if (isset($depth1Value['Protocol'])) {
+                $this->options['query']['IngressRules.' . ($depth1 + 1) . '.Protocol'] = $depth1Value['Protocol'];
+            }
+            if (isset($depth1Value['DestinationCidrBlock'])) {
+                $this->options['query']['IngressRules.' . ($depth1 + 1) . '.DestinationCidrBlock'] = $depth1Value['DestinationCidrBlock'];
+            }
+            if (isset($depth1Value['SourceCidrBlock'])) {
+                $this->options['query']['IngressRules.' . ($depth1 + 1) . '.SourceCidrBlock'] = $depth1Value['SourceCidrBlock'];
+            }
+            if (isset($depth1Value['DestinationPortRange'])) {
+                $this->options['query']['IngressRules.' . ($depth1 + 1) . '.DestinationPortRange'] = $depth1Value['DestinationPortRange'];
+            }
+            if (isset($depth1Value['SourcePortRange'])) {
+                $this->options['query']['IngressRules.' . ($depth1 + 1) . '.SourcePortRange'] = $depth1Value['SourcePortRange'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $egressRules
-     *
      * @return $this
      */
-	public function withEgressRules(array $egressRules)
-	{
-	    $this->data['EgressRules'] = $egressRules;
-		foreach ($egressRules as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Priority'])){
-				$this->options['query']['EgressRules.' . ($depth1 + 1) . '.Priority'] = $depth1Value['Priority'];
-			}
-			if(isset($depth1Value['Action'])){
-				$this->options['query']['EgressRules.' . ($depth1 + 1) . '.Action'] = $depth1Value['Action'];
-			}
-			if(isset($depth1Value['Protocol'])){
-				$this->options['query']['EgressRules.' . ($depth1 + 1) . '.Protocol'] = $depth1Value['Protocol'];
-			}
-			if(isset($depth1Value['DestinationCidrBlock'])){
-				$this->options['query']['EgressRules.' . ($depth1 + 1) . '.DestinationCidrBlock'] = $depth1Value['DestinationCidrBlock'];
-			}
-			if(isset($depth1Value['SourceCidrBlock'])){
-				$this->options['query']['EgressRules.' . ($depth1 + 1) . '.SourceCidrBlock'] = $depth1Value['SourceCidrBlock'];
-			}
-			if(isset($depth1Value['DestinationPortRange'])){
-				$this->options['query']['EgressRules.' . ($depth1 + 1) . '.DestinationPortRange'] = $depth1Value['DestinationPortRange'];
-			}
-			if(isset($depth1Value['SourcePortRange'])){
-				$this->options['query']['EgressRules.' . ($depth1 + 1) . '.SourcePortRange'] = $depth1Value['SourcePortRange'];
-			}
-		}
+    public function withEgressRules(array $egressRules)
+    {
+        $this->data['EgressRules'] = $egressRules;
+        foreach ($egressRules as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Priority'])) {
+                $this->options['query']['EgressRules.' . ($depth1 + 1) . '.Priority'] = $depth1Value['Priority'];
+            }
+            if (isset($depth1Value['Action'])) {
+                $this->options['query']['EgressRules.' . ($depth1 + 1) . '.Action'] = $depth1Value['Action'];
+            }
+            if (isset($depth1Value['Protocol'])) {
+                $this->options['query']['EgressRules.' . ($depth1 + 1) . '.Protocol'] = $depth1Value['Protocol'];
+            }
+            if (isset($depth1Value['DestinationCidrBlock'])) {
+                $this->options['query']['EgressRules.' . ($depth1 + 1) . '.DestinationCidrBlock'] = $depth1Value['DestinationCidrBlock'];
+            }
+            if (isset($depth1Value['SourceCidrBlock'])) {
+                $this->options['query']['EgressRules.' . ($depth1 + 1) . '.SourceCidrBlock'] = $depth1Value['SourceCidrBlock'];
+            }
+            if (isset($depth1Value['DestinationPortRange'])) {
+                $this->options['query']['EgressRules.' . ($depth1 + 1) . '.DestinationPortRange'] = $depth1Value['DestinationPortRange'];
+            }
+            if (isset($depth1Value['SourcePortRange'])) {
+                $this->options['query']['EgressRules.' . ($depth1 + 1) . '.SourcePortRange'] = $depth1Value['SourcePortRange'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2150,20 +2119,17 @@ class CreateTrafficMirrorFilterRules extends Rpc
  */
 class CreateTrafficMirrorSession extends Rpc
 {
-
     /**
-     * @param array $trafficMirrorSourceIds
-     *
      * @return $this
      */
-	public function withTrafficMirrorSourceIds(array $trafficMirrorSourceIds)
-	{
-	    $this->data['TrafficMirrorSourceIds'] = $trafficMirrorSourceIds;
-		foreach ($trafficMirrorSourceIds as $i => $iValue) {
-			$this->options['query']['TrafficMirrorSourceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withTrafficMirrorSourceIds(array $trafficMirrorSourceIds)
+    {
+        $this->data['TrafficMirrorSourceIds'] = $trafficMirrorSourceIds;
+        foreach ($trafficMirrorSourceIds as $i => $iValue) {
+            $this->options['query']['TrafficMirrorSourceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2706,7 +2672,6 @@ class DeleteHaVip extends Rpc
  */
 class DeleteIpsecServer extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2902,25 +2867,22 @@ class DeletePhysicalConnection extends Rpc
  */
 class DeleteRouteEntry extends Rpc
 {
-
     /**
-     * @param array $nextHopList
-     *
      * @return $this
      */
-	public function withNextHopList(array $nextHopList)
-	{
-	    $this->data['NextHopList'] = $nextHopList;
-		foreach ($nextHopList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['NextHopId'])){
-				$this->options['query']['NextHopList.' . ($depth1 + 1) . '.NextHopId'] = $depth1Value['NextHopId'];
-			}
-			if(isset($depth1Value['NextHopType'])){
-				$this->options['query']['NextHopList.' . ($depth1 + 1) . '.NextHopType'] = $depth1Value['NextHopType'];
-			}
-		}
+    public function withNextHopList(array $nextHopList)
+    {
+        $this->data['NextHopList'] = $nextHopList;
+        foreach ($nextHopList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['NextHopId'])) {
+                $this->options['query']['NextHopList.' . ($depth1 + 1) . '.NextHopId'] = $depth1Value['NextHopId'];
+            }
+            if (isset($depth1Value['NextHopType'])) {
+                $this->options['query']['NextHopList.' . ($depth1 + 1) . '.NextHopType'] = $depth1Value['NextHopType'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3053,20 +3015,17 @@ class DeleteTrafficMirrorFilter extends Rpc
  */
 class DeleteTrafficMirrorFilterRules extends Rpc
 {
-
     /**
-     * @param array $trafficMirrorFilterRuleIds
-     *
      * @return $this
      */
-	public function withTrafficMirrorFilterRuleIds(array $trafficMirrorFilterRuleIds)
-	{
-	    $this->data['TrafficMirrorFilterRuleIds'] = $trafficMirrorFilterRuleIds;
-		foreach ($trafficMirrorFilterRuleIds as $i => $iValue) {
-			$this->options['query']['TrafficMirrorFilterRuleIds.' . ($i + 1)] = $iValue;
-		}
+    public function withTrafficMirrorFilterRuleIds(array $trafficMirrorFilterRuleIds)
+    {
+        $this->data['TrafficMirrorFilterRuleIds'] = $trafficMirrorFilterRuleIds;
+        foreach ($trafficMirrorFilterRuleIds as $i => $iValue) {
+            $this->options['query']['TrafficMirrorFilterRuleIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3291,25 +3250,22 @@ class DeletionProtection extends Rpc
  */
 class DescribeAccessPoints extends Rpc
 {
-
     /**
-     * @param array $filter
-     *
      * @return $this
      */
-	public function withFilter(array $filter)
-	{
-	    $this->data['Filter'] = $filter;
-		foreach ($filter as $depth1 => $depth1Value) {
-			foreach ($depth1Value['Value'] as $i => $iValue) {
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withFilter(array $filter)
+    {
+        $this->data['Filter'] = $filter;
+        foreach ($filter as $depth1 => $depth1Value) {
+            foreach ($depth1Value['Value'] as $i => $iValue) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3410,25 +3366,22 @@ class DescribeBgpPeers extends Rpc
  */
 class DescribeCommonBandwidthPackages extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3513,7 +3466,6 @@ class DescribeCustomerGateways extends Rpc
  */
 class DescribeEipAddresses extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3541,23 +3493,21 @@ class DescribeEipAddresses extends Rpc
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -3664,25 +3614,22 @@ class DescribeEipSegment extends Rpc
  */
 class DescribeExpressCloudConnections extends Rpc
 {
-
     /**
-     * @param array $filter
-     *
      * @return $this
      */
-	public function withFilter(array $filter)
-	{
-	    $this->data['Filter'] = $filter;
-		foreach ($filter as $depth1 => $depth1Value) {
-			foreach ($depth1Value['Value'] as $i => $iValue) {
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withFilter(array $filter)
+    {
+        $this->data['Filter'] = $filter;
+        foreach ($filter as $depth1 => $depth1Value) {
+            foreach ($depth1Value['Value'] as $i => $iValue) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3831,25 +3778,22 @@ class DescribeGrantRulesToCen extends Rpc
  */
 class DescribeHaVips extends Rpc
 {
-
     /**
-     * @param array $filter
-     *
      * @return $this
      */
-	public function withFilter(array $filter)
-	{
-	    $this->data['Filter'] = $filter;
-		foreach ($filter as $depth1 => $depth1Value) {
-			foreach ($depth1Value['Value'] as $i => $iValue) {
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withFilter(array $filter)
+    {
+        $this->data['Filter'] = $filter;
+        foreach ($filter as $depth1 => $depth1Value) {
+            foreach ($depth1Value['Value'] as $i => $iValue) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4150,25 +4094,22 @@ class DescribeIPv6Translators extends Rpc
  */
 class DescribeNatGateways extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4277,25 +4218,22 @@ class DescribePhysicalConnectionLOA extends Rpc
  */
 class DescribePhysicalConnections extends Rpc
 {
-
     /**
-     * @param array $filter
-     *
      * @return $this
      */
-	public function withFilter(array $filter)
-	{
-	    $this->data['Filter'] = $filter;
-		foreach ($filter as $depth1 => $depth1Value) {
-			foreach ($depth1Value['Value'] as $i => $iValue) {
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withFilter(array $filter)
+    {
+        $this->data['Filter'] = $filter;
+        foreach ($filter as $depth1 => $depth1Value) {
+            foreach ($depth1Value['Value'] as $i => $iValue) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4382,25 +4320,22 @@ class DescribeRouterInterfaceAttribute extends Rpc
  */
 class DescribeRouterInterfaces extends Rpc
 {
-
     /**
-     * @param array $filter
-     *
      * @return $this
      */
-	public function withFilter(array $filter)
-	{
-	    $this->data['Filter'] = $filter;
-		foreach ($filter as $depth1 => $depth1Value) {
-			foreach ($depth1Value['Value'] as $i => $iValue) {
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withFilter(array $filter)
+    {
+        $this->data['Filter'] = $filter;
+        foreach ($filter as $depth1 => $depth1Value) {
+            foreach ($depth1Value['Value'] as $i => $iValue) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4433,25 +4368,22 @@ class DescribeRouterInterfaces extends Rpc
  */
 class DescribeRouteTableList extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4636,25 +4568,22 @@ class DescribeVbrHa extends Rpc
  */
 class DescribeVirtualBorderRouters extends Rpc
 {
-
     /**
-     * @param array $filter
-     *
      * @return $this
      */
-	public function withFilter(array $filter)
-	{
-	    $this->data['Filter'] = $filter;
-		foreach ($filter as $depth1 => $depth1Value) {
-			foreach ($depth1Value['Value'] as $i => $iValue) {
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withFilter(array $filter)
+    {
+        $this->data['Filter'] = $filter;
+        foreach ($filter as $depth1 => $depth1Value) {
+            foreach ($depth1Value['Value'] as $i => $iValue) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4675,25 +4604,22 @@ class DescribeVirtualBorderRouters extends Rpc
  */
 class DescribeVirtualBorderRoutersForPhysicalConnection extends Rpc
 {
-
     /**
-     * @param array $filter
-     *
      * @return $this
      */
-	public function withFilter(array $filter)
-	{
-	    $this->data['Filter'] = $filter;
-		foreach ($filter as $depth1 => $depth1Value) {
-			foreach ($depth1Value['Value'] as $i => $iValue) {
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withFilter(array $filter)
+    {
+        $this->data['Filter'] = $filter;
+        foreach ($filter as $depth1 => $depth1Value) {
+            foreach ($depth1Value['Value'] as $i => $iValue) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4750,25 +4676,22 @@ class DescribeVpcAttribute extends Rpc
  */
 class DescribeVpcs extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4857,25 +4780,22 @@ class DescribeVpnGateway extends Rpc
  */
 class DescribeVpnGateways extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -5022,25 +4942,22 @@ class DescribeVSwitchAttributes extends Rpc
  */
 class DescribeVSwitches extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -5129,7 +5046,6 @@ class DisableVpcClassicLink extends Rpc
  */
 class DissociateVpnGatewayWithCertificate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5307,20 +5223,17 @@ class GrantInstanceToCen extends Rpc
  */
 class ListDhcpOptionsSets extends Rpc
 {
-
     /**
-     * @param array $dhcpOptionsSetId
-     *
      * @return $this
      */
-	public function withDhcpOptionsSetId(array $dhcpOptionsSetId)
-	{
-	    $this->data['DhcpOptionsSetId'] = $dhcpOptionsSetId;
-		foreach ($dhcpOptionsSetId as $i => $iValue) {
-			$this->options['query']['DhcpOptionsSetId.' . ($i + 1)] = $iValue;
-		}
+    public function withDhcpOptionsSetId(array $dhcpOptionsSetId)
+    {
+        $this->data['DhcpOptionsSetId'] = $dhcpOptionsSetId;
+        foreach ($dhcpOptionsSetId as $i => $iValue) {
+            $this->options['query']['DhcpOptionsSetId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -5354,7 +5267,6 @@ class ListEnhanhcedNatGatewayAvailableZones extends Rpc
  */
 class ListIpsecServers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5369,18 +5281,16 @@ class ListIpsecServers extends Rpc
     }
 
     /**
-     * @param array $ipsecServerId
-     *
      * @return $this
      */
-	public function withIpsecServerId(array $ipsecServerId)
-	{
-	    $this->data['IpsecServerId'] = $ipsecServerId;
-		foreach ($ipsecServerId as $i => $iValue) {
-			$this->options['query']['IpsecServerId.' . ($i + 1)] = $iValue;
-		}
+    public function withIpsecServerId(array $ipsecServerId)
+    {
+        $this->data['IpsecServerId'] = $ipsecServerId;
+        foreach ($ipsecServerId as $i => $iValue) {
+            $this->options['query']['IpsecServerId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -5444,40 +5354,35 @@ class ListPhysicalConnectionFeatures extends Rpc
  */
 class ListTagResources extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -5500,20 +5405,17 @@ class ListTagResources extends Rpc
  */
 class ListTrafficMirrorFilters extends Rpc
 {
-
     /**
-     * @param array $trafficMirrorFilterIds
-     *
      * @return $this
      */
-	public function withTrafficMirrorFilterIds(array $trafficMirrorFilterIds)
-	{
-	    $this->data['TrafficMirrorFilterIds'] = $trafficMirrorFilterIds;
-		foreach ($trafficMirrorFilterIds as $i => $iValue) {
-			$this->options['query']['TrafficMirrorFilterIds.' . ($i + 1)] = $iValue;
-		}
+    public function withTrafficMirrorFilterIds(array $trafficMirrorFilterIds)
+    {
+        $this->data['TrafficMirrorFilterIds'] = $trafficMirrorFilterIds;
+        foreach ($trafficMirrorFilterIds as $i => $iValue) {
+            $this->options['query']['TrafficMirrorFilterIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -5548,20 +5450,17 @@ class ListTrafficMirrorFilters extends Rpc
  */
 class ListTrafficMirrorSessions extends Rpc
 {
-
     /**
-     * @param array $trafficMirrorSessionIds
-     *
      * @return $this
      */
-	public function withTrafficMirrorSessionIds(array $trafficMirrorSessionIds)
-	{
-	    $this->data['TrafficMirrorSessionIds'] = $trafficMirrorSessionIds;
-		foreach ($trafficMirrorSessionIds as $i => $iValue) {
-			$this->options['query']['TrafficMirrorSessionIds.' . ($i + 1)] = $iValue;
-		}
+    public function withTrafficMirrorSessionIds(array $trafficMirrorSessionIds)
+    {
+        $this->data['TrafficMirrorSessionIds'] = $trafficMirrorSessionIds;
+        foreach ($trafficMirrorSessionIds as $i => $iValue) {
+            $this->options['query']['TrafficMirrorSessionIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -5580,35 +5479,30 @@ class ListTrafficMirrorSessions extends Rpc
  */
 class ListVpnCertificateAssociations extends Rpc
 {
-
     /**
-     * @param array $certificateId
-     *
      * @return $this
      */
-	public function withCertificateId(array $certificateId)
-	{
-	    $this->data['CertificateId'] = $certificateId;
-		foreach ($certificateId as $i => $iValue) {
-			$this->options['query']['CertificateId.' . ($i + 1)] = $iValue;
-		}
+    public function withCertificateId(array $certificateId)
+    {
+        $this->data['CertificateId'] = $certificateId;
+        foreach ($certificateId as $i => $iValue) {
+            $this->options['query']['CertificateId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $vpnGatewayId
-     *
      * @return $this
      */
-	public function withVpnGatewayId(array $vpnGatewayId)
-	{
-	    $this->data['VpnGatewayId'] = $vpnGatewayId;
-		foreach ($vpnGatewayId as $i => $iValue) {
-			$this->options['query']['VpnGatewayId.' . ($i + 1)] = $iValue;
-		}
+    public function withVpnGatewayId(array $vpnGatewayId)
+    {
+        $this->data['VpnGatewayId'] = $vpnGatewayId;
+        foreach ($vpnGatewayId as $i => $iValue) {
+            $this->options['query']['VpnGatewayId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -6318,7 +6212,6 @@ class ModifyNetworkAclAttributes extends Rpc
  */
 class ModifyPhysicalConnectionAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6950,20 +6843,17 @@ class RemoveIPv6TranslatorAclListEntry extends Rpc
  */
 class RemoveSourcesFromTrafficMirrorSession extends Rpc
 {
-
     /**
-     * @param array $trafficMirrorSourceIds
-     *
      * @return $this
      */
-	public function withTrafficMirrorSourceIds(array $trafficMirrorSourceIds)
-	{
-	    $this->data['TrafficMirrorSourceIds'] = $trafficMirrorSourceIds;
-		foreach ($trafficMirrorSourceIds as $i => $iValue) {
-			$this->options['query']['TrafficMirrorSourceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withTrafficMirrorSourceIds(array $trafficMirrorSourceIds)
+    {
+        $this->data['TrafficMirrorSourceIds'] = $trafficMirrorSourceIds;
+        foreach ($trafficMirrorSourceIds as $i => $iValue) {
+            $this->options['query']['TrafficMirrorSourceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -7049,40 +6939,35 @@ class RevokeInstanceFromCen extends Rpc
  */
 class TagResources extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -7205,25 +7090,22 @@ class UnassociateHaVip extends Rpc
  */
 class UnassociateNetworkAcl extends Rpc
 {
-
     /**
-     * @param array $resource
-     *
      * @return $this
      */
-	public function withResource(array $resource)
-	{
-	    $this->data['Resource'] = $resource;
-		foreach ($resource as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ResourceType'])){
-				$this->options['query']['Resource.' . ($depth1 + 1) . '.ResourceType'] = $depth1Value['ResourceType'];
-			}
-			if(isset($depth1Value['ResourceId'])){
-				$this->options['query']['Resource.' . ($depth1 + 1) . '.ResourceId'] = $depth1Value['ResourceId'];
-			}
-		}
+    public function withResource(array $resource)
+    {
+        $this->data['Resource'] = $resource;
+        foreach ($resource as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ResourceType'])) {
+                $this->options['query']['Resource.' . ($depth1 + 1) . '.ResourceType'] = $depth1Value['ResourceType'];
+            }
+            if (isset($depth1Value['ResourceId'])) {
+                $this->options['query']['Resource.' . ($depth1 + 1) . '.ResourceId'] = $depth1Value['ResourceId'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -7306,55 +7188,48 @@ class UnassociateVpcCidrBlock extends Rpc
  */
 class UnTagResources extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tagKey
-     *
      * @return $this
      */
-	public function withTagKey(array $tagKey)
-	{
-	    $this->data['TagKey'] = $tagKey;
-		foreach ($tagKey as $i => $iValue) {
-			$this->options['query']['TagKey.' . ($i + 1)] = $iValue;
-		}
+    public function withTagKey(array $tagKey)
+    {
+        $this->data['TagKey'] = $tagKey;
+        foreach ($tagKey as $i => $iValue) {
+            $this->options['query']['TagKey.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -7423,7 +7298,6 @@ class UpdateDhcpOptionsSetAttribute extends Rpc
  */
 class UpdateIpsecServer extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7482,81 +7356,76 @@ class UpdateNatGatewayNatType extends Rpc
  */
 class UpdateNetworkAclEntries extends Rpc
 {
-
     /**
-     * @param array $egressAclEntries
-     *
      * @return $this
      */
-	public function withEgressAclEntries(array $egressAclEntries)
-	{
-	    $this->data['EgressAclEntries'] = $egressAclEntries;
-		foreach ($egressAclEntries as $depth1 => $depth1Value) {
-			if(isset($depth1Value['NetworkAclEntryName'])){
-				$this->options['query']['EgressAclEntries.' . ($depth1 + 1) . '.NetworkAclEntryName'] = $depth1Value['NetworkAclEntryName'];
-			}
-			if(isset($depth1Value['NetworkAclEntryId'])){
-				$this->options['query']['EgressAclEntries.' . ($depth1 + 1) . '.NetworkAclEntryId'] = $depth1Value['NetworkAclEntryId'];
-			}
-			if(isset($depth1Value['Policy'])){
-				$this->options['query']['EgressAclEntries.' . ($depth1 + 1) . '.Policy'] = $depth1Value['Policy'];
-			}
-			if(isset($depth1Value['Protocol'])){
-				$this->options['query']['EgressAclEntries.' . ($depth1 + 1) . '.Protocol'] = $depth1Value['Protocol'];
-			}
-			if(isset($depth1Value['DestinationCidrIp'])){
-				$this->options['query']['EgressAclEntries.' . ($depth1 + 1) . '.DestinationCidrIp'] = $depth1Value['DestinationCidrIp'];
-			}
-			if(isset($depth1Value['Port'])){
-				$this->options['query']['EgressAclEntries.' . ($depth1 + 1) . '.Port'] = $depth1Value['Port'];
-			}
-			if(isset($depth1Value['EntryType'])){
-				$this->options['query']['EgressAclEntries.' . ($depth1 + 1) . '.EntryType'] = $depth1Value['EntryType'];
-			}
-			if(isset($depth1Value['Description'])){
-				$this->options['query']['EgressAclEntries.' . ($depth1 + 1) . '.Description'] = $depth1Value['Description'];
-			}
-		}
+    public function withEgressAclEntries(array $egressAclEntries)
+    {
+        $this->data['EgressAclEntries'] = $egressAclEntries;
+        foreach ($egressAclEntries as $depth1 => $depth1Value) {
+            if (isset($depth1Value['NetworkAclEntryName'])) {
+                $this->options['query']['EgressAclEntries.' . ($depth1 + 1) . '.NetworkAclEntryName'] = $depth1Value['NetworkAclEntryName'];
+            }
+            if (isset($depth1Value['NetworkAclEntryId'])) {
+                $this->options['query']['EgressAclEntries.' . ($depth1 + 1) . '.NetworkAclEntryId'] = $depth1Value['NetworkAclEntryId'];
+            }
+            if (isset($depth1Value['Policy'])) {
+                $this->options['query']['EgressAclEntries.' . ($depth1 + 1) . '.Policy'] = $depth1Value['Policy'];
+            }
+            if (isset($depth1Value['Protocol'])) {
+                $this->options['query']['EgressAclEntries.' . ($depth1 + 1) . '.Protocol'] = $depth1Value['Protocol'];
+            }
+            if (isset($depth1Value['DestinationCidrIp'])) {
+                $this->options['query']['EgressAclEntries.' . ($depth1 + 1) . '.DestinationCidrIp'] = $depth1Value['DestinationCidrIp'];
+            }
+            if (isset($depth1Value['Port'])) {
+                $this->options['query']['EgressAclEntries.' . ($depth1 + 1) . '.Port'] = $depth1Value['Port'];
+            }
+            if (isset($depth1Value['EntryType'])) {
+                $this->options['query']['EgressAclEntries.' . ($depth1 + 1) . '.EntryType'] = $depth1Value['EntryType'];
+            }
+            if (isset($depth1Value['Description'])) {
+                $this->options['query']['EgressAclEntries.' . ($depth1 + 1) . '.Description'] = $depth1Value['Description'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $ingressAclEntries
-     *
      * @return $this
      */
-	public function withIngressAclEntries(array $ingressAclEntries)
-	{
-	    $this->data['IngressAclEntries'] = $ingressAclEntries;
-		foreach ($ingressAclEntries as $depth1 => $depth1Value) {
-			if(isset($depth1Value['NetworkAclEntryName'])){
-				$this->options['query']['IngressAclEntries.' . ($depth1 + 1) . '.NetworkAclEntryName'] = $depth1Value['NetworkAclEntryName'];
-			}
-			if(isset($depth1Value['NetworkAclEntryId'])){
-				$this->options['query']['IngressAclEntries.' . ($depth1 + 1) . '.NetworkAclEntryId'] = $depth1Value['NetworkAclEntryId'];
-			}
-			if(isset($depth1Value['Policy'])){
-				$this->options['query']['IngressAclEntries.' . ($depth1 + 1) . '.Policy'] = $depth1Value['Policy'];
-			}
-			if(isset($depth1Value['Protocol'])){
-				$this->options['query']['IngressAclEntries.' . ($depth1 + 1) . '.Protocol'] = $depth1Value['Protocol'];
-			}
-			if(isset($depth1Value['SourceCidrIp'])){
-				$this->options['query']['IngressAclEntries.' . ($depth1 + 1) . '.SourceCidrIp'] = $depth1Value['SourceCidrIp'];
-			}
-			if(isset($depth1Value['Port'])){
-				$this->options['query']['IngressAclEntries.' . ($depth1 + 1) . '.Port'] = $depth1Value['Port'];
-			}
-			if(isset($depth1Value['EntryType'])){
-				$this->options['query']['IngressAclEntries.' . ($depth1 + 1) . '.EntryType'] = $depth1Value['EntryType'];
-			}
-			if(isset($depth1Value['Description'])){
-				$this->options['query']['IngressAclEntries.' . ($depth1 + 1) . '.Description'] = $depth1Value['Description'];
-			}
-		}
+    public function withIngressAclEntries(array $ingressAclEntries)
+    {
+        $this->data['IngressAclEntries'] = $ingressAclEntries;
+        foreach ($ingressAclEntries as $depth1 => $depth1Value) {
+            if (isset($depth1Value['NetworkAclEntryName'])) {
+                $this->options['query']['IngressAclEntries.' . ($depth1 + 1) . '.NetworkAclEntryName'] = $depth1Value['NetworkAclEntryName'];
+            }
+            if (isset($depth1Value['NetworkAclEntryId'])) {
+                $this->options['query']['IngressAclEntries.' . ($depth1 + 1) . '.NetworkAclEntryId'] = $depth1Value['NetworkAclEntryId'];
+            }
+            if (isset($depth1Value['Policy'])) {
+                $this->options['query']['IngressAclEntries.' . ($depth1 + 1) . '.Policy'] = $depth1Value['Policy'];
+            }
+            if (isset($depth1Value['Protocol'])) {
+                $this->options['query']['IngressAclEntries.' . ($depth1 + 1) . '.Protocol'] = $depth1Value['Protocol'];
+            }
+            if (isset($depth1Value['SourceCidrIp'])) {
+                $this->options['query']['IngressAclEntries.' . ($depth1 + 1) . '.SourceCidrIp'] = $depth1Value['SourceCidrIp'];
+            }
+            if (isset($depth1Value['Port'])) {
+                $this->options['query']['IngressAclEntries.' . ($depth1 + 1) . '.Port'] = $depth1Value['Port'];
+            }
+            if (isset($depth1Value['EntryType'])) {
+                $this->options['query']['IngressAclEntries.' . ($depth1 + 1) . '.EntryType'] = $depth1Value['EntryType'];
+            }
+            if (isset($depth1Value['Description'])) {
+                $this->options['query']['IngressAclEntries.' . ($depth1 + 1) . '.Description'] = $depth1Value['Description'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 

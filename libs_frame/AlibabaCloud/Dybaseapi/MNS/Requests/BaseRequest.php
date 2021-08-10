@@ -42,7 +42,7 @@ abstract class BaseRequest
      */
     public function __construct($method, $resourcePath)
     {
-        $this->method       = $method;
+        $this->method = $method;
         $this->resourcePath = $resourcePath;
     }
 

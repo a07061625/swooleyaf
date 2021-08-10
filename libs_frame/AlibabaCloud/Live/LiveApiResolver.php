@@ -324,20 +324,17 @@ class AddCasterComponent extends Rpc
  */
 class AddCasterEpisode extends Rpc
 {
-
     /**
-     * @param array $componentId
-     *
      * @return $this
      */
-	public function withComponentId(array $componentId)
-	{
-	    $this->data['ComponentId'] = $componentId;
-		foreach ($componentId as $i => $iValue) {
-			$this->options['query']['ComponentId.' . ($i + 1)] = $iValue;
-		}
+    public function withComponentId(array $componentId)
+    {
+        $this->data['ComponentId'] = $componentId;
+        foreach ($componentId as $i => $iValue) {
+            $this->options['query']['ComponentId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -360,25 +357,22 @@ class AddCasterEpisode extends Rpc
  */
 class AddCasterEpisodeGroup extends Rpc
 {
-
     /**
-     * @param array $item
-     *
      * @return $this
      */
-	public function withItem(array $item)
-	{
-	    $this->data['Item'] = $item;
-		foreach ($item as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ItemName'])){
-				$this->options['query']['Item.' . ($depth1 + 1) . '.ItemName'] = $depth1Value['ItemName'];
-			}
-			if(isset($depth1Value['VodUrl'])){
-				$this->options['query']['Item.' . ($depth1 + 1) . '.VodUrl'] = $depth1Value['VodUrl'];
-			}
-		}
+    public function withItem(array $item)
+    {
+        $this->data['Item'] = $item;
+        foreach ($item as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ItemName'])) {
+                $this->options['query']['Item.' . ($depth1 + 1) . '.ItemName'] = $depth1Value['ItemName'];
+            }
+            if (isset($depth1Value['VodUrl'])) {
+                $this->options['query']['Item.' . ($depth1 + 1) . '.VodUrl'] = $depth1Value['VodUrl'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -406,90 +400,81 @@ class AddCasterEpisodeGroupContent extends Rpc
  */
 class AddCasterLayout extends Rpc
 {
-
     /**
-     * @param array $blendList
-     *
      * @return $this
      */
-	public function withBlendList(array $blendList)
-	{
-	    $this->data['BlendList'] = $blendList;
-		foreach ($blendList as $i => $iValue) {
-			$this->options['query']['BlendList.' . ($i + 1)] = $iValue;
-		}
+    public function withBlendList(array $blendList)
+    {
+        $this->data['BlendList'] = $blendList;
+        foreach ($blendList as $i => $iValue) {
+            $this->options['query']['BlendList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $audioLayer
-     *
      * @return $this
      */
-	public function withAudioLayer(array $audioLayer)
-	{
-	    $this->data['AudioLayer'] = $audioLayer;
-		foreach ($audioLayer as $depth1 => $depth1Value) {
-			if(isset($depth1Value['VolumeRate'])){
-				$this->options['query']['AudioLayer.' . ($depth1 + 1) . '.VolumeRate'] = $depth1Value['VolumeRate'];
-			}
-			if(isset($depth1Value['ValidChannel'])){
-				$this->options['query']['AudioLayer.' . ($depth1 + 1) . '.ValidChannel'] = $depth1Value['ValidChannel'];
-			}
-			if(isset($depth1Value['FixedDelayDuration'])){
-				$this->options['query']['AudioLayer.' . ($depth1 + 1) . '.FixedDelayDuration'] = $depth1Value['FixedDelayDuration'];
-			}
-		}
+    public function withAudioLayer(array $audioLayer)
+    {
+        $this->data['AudioLayer'] = $audioLayer;
+        foreach ($audioLayer as $depth1 => $depth1Value) {
+            if (isset($depth1Value['VolumeRate'])) {
+                $this->options['query']['AudioLayer.' . ($depth1 + 1) . '.VolumeRate'] = $depth1Value['VolumeRate'];
+            }
+            if (isset($depth1Value['ValidChannel'])) {
+                $this->options['query']['AudioLayer.' . ($depth1 + 1) . '.ValidChannel'] = $depth1Value['ValidChannel'];
+            }
+            if (isset($depth1Value['FixedDelayDuration'])) {
+                $this->options['query']['AudioLayer.' . ($depth1 + 1) . '.FixedDelayDuration'] = $depth1Value['FixedDelayDuration'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $videoLayer
-     *
      * @return $this
      */
-	public function withVideoLayer(array $videoLayer)
-	{
-	    $this->data['VideoLayer'] = $videoLayer;
-		foreach ($videoLayer as $depth1 => $depth1Value) {
-			if(isset($depth1Value['FillMode'])){
-				$this->options['query']['VideoLayer.' . ($depth1 + 1) . '.FillMode'] = $depth1Value['FillMode'];
-			}
-			if(isset($depth1Value['HeightNormalized'])){
-				$this->options['query']['VideoLayer.' . ($depth1 + 1) . '.HeightNormalized'] = $depth1Value['HeightNormalized'];
-			}
-			if(isset($depth1Value['WidthNormalized'])){
-				$this->options['query']['VideoLayer.' . ($depth1 + 1) . '.WidthNormalized'] = $depth1Value['WidthNormalized'];
-			}
-			if(isset($depth1Value['PositionRefer'])){
-				$this->options['query']['VideoLayer.' . ($depth1 + 1) . '.PositionRefer'] = $depth1Value['PositionRefer'];
-			}
-			foreach ($depth1Value['PositionNormalized'] as $i => $iValue) {
-				$this->options['query']['VideoLayer.' . ($depth1 + 1) . '.PositionNormalized.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['FixedDelayDuration'])){
-				$this->options['query']['VideoLayer.' . ($depth1 + 1) . '.FixedDelayDuration'] = $depth1Value['FixedDelayDuration'];
-			}
-		}
+    public function withVideoLayer(array $videoLayer)
+    {
+        $this->data['VideoLayer'] = $videoLayer;
+        foreach ($videoLayer as $depth1 => $depth1Value) {
+            if (isset($depth1Value['FillMode'])) {
+                $this->options['query']['VideoLayer.' . ($depth1 + 1) . '.FillMode'] = $depth1Value['FillMode'];
+            }
+            if (isset($depth1Value['HeightNormalized'])) {
+                $this->options['query']['VideoLayer.' . ($depth1 + 1) . '.HeightNormalized'] = $depth1Value['HeightNormalized'];
+            }
+            if (isset($depth1Value['WidthNormalized'])) {
+                $this->options['query']['VideoLayer.' . ($depth1 + 1) . '.WidthNormalized'] = $depth1Value['WidthNormalized'];
+            }
+            if (isset($depth1Value['PositionRefer'])) {
+                $this->options['query']['VideoLayer.' . ($depth1 + 1) . '.PositionRefer'] = $depth1Value['PositionRefer'];
+            }
+            foreach ($depth1Value['PositionNormalized'] as $i => $iValue) {
+                $this->options['query']['VideoLayer.' . ($depth1 + 1) . '.PositionNormalized.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['FixedDelayDuration'])) {
+                $this->options['query']['VideoLayer.' . ($depth1 + 1) . '.FixedDelayDuration'] = $depth1Value['FixedDelayDuration'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $mixList
-     *
      * @return $this
      */
-	public function withMixList(array $mixList)
-	{
-	    $this->data['MixList'] = $mixList;
-		foreach ($mixList as $i => $iValue) {
-			$this->options['query']['MixList.' . ($i + 1)] = $iValue;
-		}
+    public function withMixList(array $mixList)
+    {
+        $this->data['MixList'] = $mixList;
+        foreach ($mixList as $i => $iValue) {
+            $this->options['query']['MixList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -502,40 +487,37 @@ class AddCasterLayout extends Rpc
  */
 class AddCasterProgram extends Rpc
 {
-
     /**
-     * @param array $episode
-     *
      * @return $this
      */
-	public function withEpisode(array $episode)
-	{
-	    $this->data['Episode'] = $episode;
-		foreach ($episode as $depth1 => $depth1Value) {
-			if(isset($depth1Value['EpisodeType'])){
-				$this->options['query']['Episode.' . ($depth1 + 1) . '.EpisodeType'] = $depth1Value['EpisodeType'];
-			}
-			if(isset($depth1Value['EpisodeName'])){
-				$this->options['query']['Episode.' . ($depth1 + 1) . '.EpisodeName'] = $depth1Value['EpisodeName'];
-			}
-			if(isset($depth1Value['ResourceId'])){
-				$this->options['query']['Episode.' . ($depth1 + 1) . '.ResourceId'] = $depth1Value['ResourceId'];
-			}
-			foreach ($depth1Value['ComponentId'] as $i => $iValue) {
-				$this->options['query']['Episode.' . ($depth1 + 1) . '.ComponentId.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['StartTime'])){
-				$this->options['query']['Episode.' . ($depth1 + 1) . '.StartTime'] = $depth1Value['StartTime'];
-			}
-			if(isset($depth1Value['EndTime'])){
-				$this->options['query']['Episode.' . ($depth1 + 1) . '.EndTime'] = $depth1Value['EndTime'];
-			}
-			if(isset($depth1Value['SwitchType'])){
-				$this->options['query']['Episode.' . ($depth1 + 1) . '.SwitchType'] = $depth1Value['SwitchType'];
-			}
-		}
+    public function withEpisode(array $episode)
+    {
+        $this->data['Episode'] = $episode;
+        foreach ($episode as $depth1 => $depth1Value) {
+            if (isset($depth1Value['EpisodeType'])) {
+                $this->options['query']['Episode.' . ($depth1 + 1) . '.EpisodeType'] = $depth1Value['EpisodeType'];
+            }
+            if (isset($depth1Value['EpisodeName'])) {
+                $this->options['query']['Episode.' . ($depth1 + 1) . '.EpisodeName'] = $depth1Value['EpisodeName'];
+            }
+            if (isset($depth1Value['ResourceId'])) {
+                $this->options['query']['Episode.' . ($depth1 + 1) . '.ResourceId'] = $depth1Value['ResourceId'];
+            }
+            foreach ($depth1Value['ComponentId'] as $i => $iValue) {
+                $this->options['query']['Episode.' . ($depth1 + 1) . '.ComponentId.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['StartTime'])) {
+                $this->options['query']['Episode.' . ($depth1 + 1) . '.StartTime'] = $depth1Value['StartTime'];
+            }
+            if (isset($depth1Value['EndTime'])) {
+                $this->options['query']['Episode.' . ($depth1 + 1) . '.EndTime'] = $depth1Value['EndTime'];
+            }
+            if (isset($depth1Value['SwitchType'])) {
+                $this->options['query']['Episode.' . ($depth1 + 1) . '.SwitchType'] = $depth1Value['SwitchType'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -662,31 +644,28 @@ class AddDRMCertificate extends Rpc
  */
 class AddLiveAppRecordConfig extends Rpc
 {
-
     /**
-     * @param array $recordFormat
-     *
      * @return $this
      */
-	public function withRecordFormat(array $recordFormat)
-	{
-	    $this->data['RecordFormat'] = $recordFormat;
-		foreach ($recordFormat as $depth1 => $depth1Value) {
-			if(isset($depth1Value['SliceOssObjectPrefix'])){
-				$this->options['query']['RecordFormat.' . ($depth1 + 1) . '.SliceOssObjectPrefix'] = $depth1Value['SliceOssObjectPrefix'];
-			}
-			if(isset($depth1Value['Format'])){
-				$this->options['query']['RecordFormat.' . ($depth1 + 1) . '.Format'] = $depth1Value['Format'];
-			}
-			if(isset($depth1Value['OssObjectPrefix'])){
-				$this->options['query']['RecordFormat.' . ($depth1 + 1) . '.OssObjectPrefix'] = $depth1Value['OssObjectPrefix'];
-			}
-			if(isset($depth1Value['CycleDuration'])){
-				$this->options['query']['RecordFormat.' . ($depth1 + 1) . '.CycleDuration'] = $depth1Value['CycleDuration'];
-			}
-		}
+    public function withRecordFormat(array $recordFormat)
+    {
+        $this->data['RecordFormat'] = $recordFormat;
+        foreach ($recordFormat as $depth1 => $depth1Value) {
+            if (isset($depth1Value['SliceOssObjectPrefix'])) {
+                $this->options['query']['RecordFormat.' . ($depth1 + 1) . '.SliceOssObjectPrefix'] = $depth1Value['SliceOssObjectPrefix'];
+            }
+            if (isset($depth1Value['Format'])) {
+                $this->options['query']['RecordFormat.' . ($depth1 + 1) . '.Format'] = $depth1Value['Format'];
+            }
+            if (isset($depth1Value['OssObjectPrefix'])) {
+                $this->options['query']['RecordFormat.' . ($depth1 + 1) . '.OssObjectPrefix'] = $depth1Value['OssObjectPrefix'];
+            }
+            if (isset($depth1Value['CycleDuration'])) {
+                $this->options['query']['RecordFormat.' . ($depth1 + 1) . '.CycleDuration'] = $depth1Value['CycleDuration'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -923,20 +902,17 @@ class AddLiveRecordVodConfig extends Rpc
  */
 class AddLiveSnapshotDetectPornConfig extends Rpc
 {
-
     /**
-     * @param array $scene
-     *
      * @return $this
      */
-	public function withScene(array $scene)
-	{
-	    $this->data['Scene'] = $scene;
-		foreach ($scene as $i => $iValue) {
-			$this->options['query']['Scene.' . ($i + 1)] = $iValue;
-		}
+    public function withScene(array $scene)
+    {
+        $this->data['Scene'] = $scene;
+        foreach ($scene as $i => $iValue) {
+            $this->options['query']['Scene.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1231,7 +1207,6 @@ class CompleteBoardRecord extends Rpc
  */
 class ControlHtmlResource extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1322,7 +1297,6 @@ class CreateCaster extends Rpc
  */
 class CreateLiveRealTimeLogDelivery extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1504,7 +1478,6 @@ class DeleteCasterVideoResource extends Rpc
  */
 class DeleteHtmlResource extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1681,7 +1654,6 @@ class DeleteLivePullStreamInfoConfig extends Rpc
  */
 class DeleteLiveRealtimeLogDelivery extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1698,7 +1670,6 @@ class DeleteLiveRealtimeLogDelivery extends Rpc
  */
 class DeleteLiveRealTimeLogLogstore extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2119,7 +2090,6 @@ class DescribeForbidPushStreamRoomList extends Rpc
  */
 class DescribeHlsLiveStreamRealTimeBpsData extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2135,7 +2105,6 @@ class DescribeHlsLiveStreamRealTimeBpsData extends Rpc
  */
 class DescribeHtmlResource extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2354,7 +2323,6 @@ class DescribeLiveDomainLimit extends Rpc
  */
 class DescribeLiveDomainMapping extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2441,7 +2409,6 @@ class DescribeLiveDomainPvUvData extends Rpc
  */
 class DescribeLiveDomainRealTimeBpsData extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2472,7 +2439,6 @@ class DescribeLiveDomainRealTimeHttpCodeData extends Rpc
  */
 class DescribeLiveDomainRealtimeLogDelivery extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2693,7 +2659,6 @@ class DescribeLiveRealtimeDeliveryAcc extends Rpc
  */
 class DescribeLiveRealtimeLogAuthorized extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2836,7 +2801,6 @@ class DescribeLiveStreamBitRateData extends Rpc
  */
 class DescribeLiveStreamCount extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -3105,40 +3069,35 @@ class DescribeLiveStreamTranscodeStreamNum extends Rpc
  */
 class DescribeLiveTagResources extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3179,25 +3138,22 @@ class DescribeLiveTopDomainsByFlow extends Rpc
  */
 class DescribeLiveUserDomains extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3433,7 +3389,6 @@ class DescribeUpPeakPublishStreamData extends Rpc
  */
 class DisableLiveRealtimeLogDelivery extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -3453,7 +3408,6 @@ class DisableLiveRealtimeLogDelivery extends Rpc
  */
 class EditHtmlResource extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3516,7 +3470,6 @@ class EffectCasterVideoResource extends Rpc
  */
 class EnableLiveRealtimeLogDelivery extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -3605,7 +3558,6 @@ class JoinBoard extends Rpc
  */
 class ListLiveRealtimeLogDelivery extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -3622,7 +3574,6 @@ class ListLiveRealtimeLogDelivery extends Rpc
  */
 class ListLiveRealtimeLogDeliveryDomains extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -3635,7 +3586,6 @@ class ListLiveRealtimeLogDeliveryDomains extends Rpc
  */
 class ListLiveRealtimeLogDeliveryInfos extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -3713,20 +3663,17 @@ class ModifyCasterComponent extends Rpc
  */
 class ModifyCasterEpisode extends Rpc
 {
-
     /**
-     * @param array $componentId
-     *
      * @return $this
      */
-	public function withComponentId(array $componentId)
-	{
-	    $this->data['ComponentId'] = $componentId;
-		foreach ($componentId as $i => $iValue) {
-			$this->options['query']['ComponentId.' . ($i + 1)] = $iValue;
-		}
+    public function withComponentId(array $componentId)
+    {
+        $this->data['ComponentId'] = $componentId;
+        foreach ($componentId as $i => $iValue) {
+            $this->options['query']['ComponentId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3744,90 +3691,81 @@ class ModifyCasterEpisode extends Rpc
  */
 class ModifyCasterLayout extends Rpc
 {
-
     /**
-     * @param array $blendList
-     *
      * @return $this
      */
-	public function withBlendList(array $blendList)
-	{
-	    $this->data['BlendList'] = $blendList;
-		foreach ($blendList as $i => $iValue) {
-			$this->options['query']['BlendList.' . ($i + 1)] = $iValue;
-		}
+    public function withBlendList(array $blendList)
+    {
+        $this->data['BlendList'] = $blendList;
+        foreach ($blendList as $i => $iValue) {
+            $this->options['query']['BlendList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $audioLayer
-     *
      * @return $this
      */
-	public function withAudioLayer(array $audioLayer)
-	{
-	    $this->data['AudioLayer'] = $audioLayer;
-		foreach ($audioLayer as $depth1 => $depth1Value) {
-			if(isset($depth1Value['VolumeRate'])){
-				$this->options['query']['AudioLayer.' . ($depth1 + 1) . '.VolumeRate'] = $depth1Value['VolumeRate'];
-			}
-			if(isset($depth1Value['ValidChannel'])){
-				$this->options['query']['AudioLayer.' . ($depth1 + 1) . '.ValidChannel'] = $depth1Value['ValidChannel'];
-			}
-			if(isset($depth1Value['FixedDelayDuration'])){
-				$this->options['query']['AudioLayer.' . ($depth1 + 1) . '.FixedDelayDuration'] = $depth1Value['FixedDelayDuration'];
-			}
-		}
+    public function withAudioLayer(array $audioLayer)
+    {
+        $this->data['AudioLayer'] = $audioLayer;
+        foreach ($audioLayer as $depth1 => $depth1Value) {
+            if (isset($depth1Value['VolumeRate'])) {
+                $this->options['query']['AudioLayer.' . ($depth1 + 1) . '.VolumeRate'] = $depth1Value['VolumeRate'];
+            }
+            if (isset($depth1Value['ValidChannel'])) {
+                $this->options['query']['AudioLayer.' . ($depth1 + 1) . '.ValidChannel'] = $depth1Value['ValidChannel'];
+            }
+            if (isset($depth1Value['FixedDelayDuration'])) {
+                $this->options['query']['AudioLayer.' . ($depth1 + 1) . '.FixedDelayDuration'] = $depth1Value['FixedDelayDuration'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $videoLayer
-     *
      * @return $this
      */
-	public function withVideoLayer(array $videoLayer)
-	{
-	    $this->data['VideoLayer'] = $videoLayer;
-		foreach ($videoLayer as $depth1 => $depth1Value) {
-			if(isset($depth1Value['FillMode'])){
-				$this->options['query']['VideoLayer.' . ($depth1 + 1) . '.FillMode'] = $depth1Value['FillMode'];
-			}
-			if(isset($depth1Value['HeightNormalized'])){
-				$this->options['query']['VideoLayer.' . ($depth1 + 1) . '.HeightNormalized'] = $depth1Value['HeightNormalized'];
-			}
-			if(isset($depth1Value['WidthNormalized'])){
-				$this->options['query']['VideoLayer.' . ($depth1 + 1) . '.WidthNormalized'] = $depth1Value['WidthNormalized'];
-			}
-			if(isset($depth1Value['PositionRefer'])){
-				$this->options['query']['VideoLayer.' . ($depth1 + 1) . '.PositionRefer'] = $depth1Value['PositionRefer'];
-			}
-			foreach ($depth1Value['PositionNormalized'] as $i => $iValue) {
-				$this->options['query']['VideoLayer.' . ($depth1 + 1) . '.PositionNormalized.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['FixedDelayDuration'])){
-				$this->options['query']['VideoLayer.' . ($depth1 + 1) . '.FixedDelayDuration'] = $depth1Value['FixedDelayDuration'];
-			}
-		}
+    public function withVideoLayer(array $videoLayer)
+    {
+        $this->data['VideoLayer'] = $videoLayer;
+        foreach ($videoLayer as $depth1 => $depth1Value) {
+            if (isset($depth1Value['FillMode'])) {
+                $this->options['query']['VideoLayer.' . ($depth1 + 1) . '.FillMode'] = $depth1Value['FillMode'];
+            }
+            if (isset($depth1Value['HeightNormalized'])) {
+                $this->options['query']['VideoLayer.' . ($depth1 + 1) . '.HeightNormalized'] = $depth1Value['HeightNormalized'];
+            }
+            if (isset($depth1Value['WidthNormalized'])) {
+                $this->options['query']['VideoLayer.' . ($depth1 + 1) . '.WidthNormalized'] = $depth1Value['WidthNormalized'];
+            }
+            if (isset($depth1Value['PositionRefer'])) {
+                $this->options['query']['VideoLayer.' . ($depth1 + 1) . '.PositionRefer'] = $depth1Value['PositionRefer'];
+            }
+            foreach ($depth1Value['PositionNormalized'] as $i => $iValue) {
+                $this->options['query']['VideoLayer.' . ($depth1 + 1) . '.PositionNormalized.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['FixedDelayDuration'])) {
+                $this->options['query']['VideoLayer.' . ($depth1 + 1) . '.FixedDelayDuration'] = $depth1Value['FixedDelayDuration'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $mixList
-     *
      * @return $this
      */
-	public function withMixList(array $mixList)
-	{
-	    $this->data['MixList'] = $mixList;
-		foreach ($mixList as $i => $iValue) {
-			$this->options['query']['MixList.' . ($i + 1)] = $iValue;
-		}
+    public function withMixList(array $mixList)
+    {
+        $this->data['MixList'] = $mixList;
+        foreach ($mixList as $i => $iValue) {
+            $this->options['query']['MixList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3840,43 +3778,40 @@ class ModifyCasterLayout extends Rpc
  */
 class ModifyCasterProgram extends Rpc
 {
-
     /**
-     * @param array $episode
-     *
      * @return $this
      */
-	public function withEpisode(array $episode)
-	{
-	    $this->data['Episode'] = $episode;
-		foreach ($episode as $depth1 => $depth1Value) {
-			if(isset($depth1Value['EpisodeId'])){
-				$this->options['query']['Episode.' . ($depth1 + 1) . '.EpisodeId'] = $depth1Value['EpisodeId'];
-			}
-			if(isset($depth1Value['EpisodeType'])){
-				$this->options['query']['Episode.' . ($depth1 + 1) . '.EpisodeType'] = $depth1Value['EpisodeType'];
-			}
-			if(isset($depth1Value['EpisodeName'])){
-				$this->options['query']['Episode.' . ($depth1 + 1) . '.EpisodeName'] = $depth1Value['EpisodeName'];
-			}
-			if(isset($depth1Value['ResourceId'])){
-				$this->options['query']['Episode.' . ($depth1 + 1) . '.ResourceId'] = $depth1Value['ResourceId'];
-			}
-			foreach ($depth1Value['ComponentId'] as $i => $iValue) {
-				$this->options['query']['Episode.' . ($depth1 + 1) . '.ComponentId.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['StartTime'])){
-				$this->options['query']['Episode.' . ($depth1 + 1) . '.StartTime'] = $depth1Value['StartTime'];
-			}
-			if(isset($depth1Value['EndTime'])){
-				$this->options['query']['Episode.' . ($depth1 + 1) . '.EndTime'] = $depth1Value['EndTime'];
-			}
-			if(isset($depth1Value['SwitchType'])){
-				$this->options['query']['Episode.' . ($depth1 + 1) . '.SwitchType'] = $depth1Value['SwitchType'];
-			}
-		}
+    public function withEpisode(array $episode)
+    {
+        $this->data['Episode'] = $episode;
+        foreach ($episode as $depth1 => $depth1Value) {
+            if (isset($depth1Value['EpisodeId'])) {
+                $this->options['query']['Episode.' . ($depth1 + 1) . '.EpisodeId'] = $depth1Value['EpisodeId'];
+            }
+            if (isset($depth1Value['EpisodeType'])) {
+                $this->options['query']['Episode.' . ($depth1 + 1) . '.EpisodeType'] = $depth1Value['EpisodeType'];
+            }
+            if (isset($depth1Value['EpisodeName'])) {
+                $this->options['query']['Episode.' . ($depth1 + 1) . '.EpisodeName'] = $depth1Value['EpisodeName'];
+            }
+            if (isset($depth1Value['ResourceId'])) {
+                $this->options['query']['Episode.' . ($depth1 + 1) . '.ResourceId'] = $depth1Value['ResourceId'];
+            }
+            foreach ($depth1Value['ComponentId'] as $i => $iValue) {
+                $this->options['query']['Episode.' . ($depth1 + 1) . '.ComponentId.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['StartTime'])) {
+                $this->options['query']['Episode.' . ($depth1 + 1) . '.StartTime'] = $depth1Value['StartTime'];
+            }
+            if (isset($depth1Value['EndTime'])) {
+                $this->options['query']['Episode.' . ($depth1 + 1) . '.EndTime'] = $depth1Value['EndTime'];
+            }
+            if (isset($depth1Value['SwitchType'])) {
+                $this->options['query']['Episode.' . ($depth1 + 1) . '.SwitchType'] = $depth1Value['SwitchType'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3934,7 +3869,6 @@ class ModifyLiveDomainSchdmByProperty extends Rpc
  */
 class ModifyLiveRealtimeLogDelivery extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -4182,20 +4116,17 @@ class SetCasterConfig extends Rpc
  */
 class SetCasterSceneConfig extends Rpc
 {
-
     /**
-     * @param array $componentId
-     *
      * @return $this
      */
-	public function withComponentId(array $componentId)
-	{
-	    $this->data['ComponentId'] = $componentId;
-		foreach ($componentId as $i => $iValue) {
-			$this->options['query']['ComponentId.' . ($i + 1)] = $iValue;
-		}
+    public function withComponentId(array $componentId)
+    {
+        $this->data['ComponentId'] = $componentId;
+        foreach ($componentId as $i => $iValue) {
+            $this->options['query']['ComponentId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4208,31 +4139,28 @@ class SetCasterSceneConfig extends Rpc
  */
 class SetCasterSyncGroup extends Rpc
 {
-
     /**
-     * @param array $syncGroup
-     *
      * @return $this
      */
-	public function withSyncGroup(array $syncGroup)
-	{
-	    $this->data['SyncGroup'] = $syncGroup;
-		foreach ($syncGroup as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Mode'])){
-				$this->options['query']['SyncGroup.' . ($depth1 + 1) . '.Mode'] = $depth1Value['Mode'];
-			}
-			if(isset($depth1Value['SyncDelayThreshold'])){
-				$this->options['query']['SyncGroup.' . ($depth1 + 1) . '.SyncDelayThreshold'] = $depth1Value['SyncDelayThreshold'];
-			}
-			if(isset($depth1Value['HostResourceId'])){
-				$this->options['query']['SyncGroup.' . ($depth1 + 1) . '.HostResourceId'] = $depth1Value['HostResourceId'];
-			}
-			foreach ($depth1Value['ResourceIds'] as $i => $iValue) {
-				$this->options['query']['SyncGroup.' . ($depth1 + 1) . '.ResourceIds.' . ($i + 1)] = $iValue;
-			}
-		}
+    public function withSyncGroup(array $syncGroup)
+    {
+        $this->data['SyncGroup'] = $syncGroup;
+        foreach ($syncGroup as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Mode'])) {
+                $this->options['query']['SyncGroup.' . ($depth1 + 1) . '.Mode'] = $depth1Value['Mode'];
+            }
+            if (isset($depth1Value['SyncDelayThreshold'])) {
+                $this->options['query']['SyncGroup.' . ($depth1 + 1) . '.SyncDelayThreshold'] = $depth1Value['SyncDelayThreshold'];
+            }
+            if (isset($depth1Value['HostResourceId'])) {
+                $this->options['query']['SyncGroup.' . ($depth1 + 1) . '.HostResourceId'] = $depth1Value['HostResourceId'];
+            }
+            foreach ($depth1Value['ResourceIds'] as $i => $iValue) {
+                $this->options['query']['SyncGroup.' . ($depth1 + 1) . '.ResourceIds.' . ($i + 1)] = $iValue;
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4516,40 +4444,35 @@ class StopPlaylist extends Rpc
  */
 class TagLiveResources extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4565,35 +4488,30 @@ class TagLiveResources extends Rpc
  */
 class UnTagLiveResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tagKey
-     *
      * @return $this
      */
-	public function withTagKey(array $tagKey)
-	{
-	    $this->data['TagKey'] = $tagKey;
-		foreach ($tagKey as $i => $iValue) {
-			$this->options['query']['TagKey.' . ($i + 1)] = $iValue;
-		}
+    public function withTagKey(array $tagKey)
+    {
+        $this->data['TagKey'] = $tagKey;
+        foreach ($tagKey as $i => $iValue) {
+            $this->options['query']['TagKey.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4643,43 +4561,38 @@ class UpdateBoardCallback extends Rpc
  */
 class UpdateCasterSceneAudio extends Rpc
 {
-
     /**
-     * @param array $audioLayer
-     *
      * @return $this
      */
-	public function withAudioLayer(array $audioLayer)
-	{
-	    $this->data['AudioLayer'] = $audioLayer;
-		foreach ($audioLayer as $depth1 => $depth1Value) {
-			if(isset($depth1Value['VolumeRate'])){
-				$this->options['query']['AudioLayer.' . ($depth1 + 1) . '.VolumeRate'] = $depth1Value['VolumeRate'];
-			}
-			if(isset($depth1Value['ValidChannel'])){
-				$this->options['query']['AudioLayer.' . ($depth1 + 1) . '.ValidChannel'] = $depth1Value['ValidChannel'];
-			}
-			if(isset($depth1Value['FixedDelayDuration'])){
-				$this->options['query']['AudioLayer.' . ($depth1 + 1) . '.FixedDelayDuration'] = $depth1Value['FixedDelayDuration'];
-			}
-		}
+    public function withAudioLayer(array $audioLayer)
+    {
+        $this->data['AudioLayer'] = $audioLayer;
+        foreach ($audioLayer as $depth1 => $depth1Value) {
+            if (isset($depth1Value['VolumeRate'])) {
+                $this->options['query']['AudioLayer.' . ($depth1 + 1) . '.VolumeRate'] = $depth1Value['VolumeRate'];
+            }
+            if (isset($depth1Value['ValidChannel'])) {
+                $this->options['query']['AudioLayer.' . ($depth1 + 1) . '.ValidChannel'] = $depth1Value['ValidChannel'];
+            }
+            if (isset($depth1Value['FixedDelayDuration'])) {
+                $this->options['query']['AudioLayer.' . ($depth1 + 1) . '.FixedDelayDuration'] = $depth1Value['FixedDelayDuration'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $mixList
-     *
      * @return $this
      */
-	public function withMixList(array $mixList)
-	{
-	    $this->data['MixList'] = $mixList;
-		foreach ($mixList as $i => $iValue) {
-			$this->options['query']['MixList.' . ($i + 1)] = $iValue;
-		}
+    public function withMixList(array $mixList)
+    {
+        $this->data['MixList'] = $mixList;
+        foreach ($mixList as $i => $iValue) {
+            $this->options['query']['MixList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4696,20 +4609,17 @@ class UpdateCasterSceneAudio extends Rpc
  */
 class UpdateCasterSceneConfig extends Rpc
 {
-
     /**
-     * @param array $componentId
-     *
      * @return $this
      */
-	public function withComponentId(array $componentId)
-	{
-	    $this->data['ComponentId'] = $componentId;
-		foreach ($componentId as $i => $iValue) {
-			$this->options['query']['ComponentId.' . ($i + 1)] = $iValue;
-		}
+    public function withComponentId(array $componentId)
+    {
+        $this->data['ComponentId'] = $componentId;
+        foreach ($componentId as $i => $iValue) {
+            $this->options['query']['ComponentId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4831,7 +4741,6 @@ class UpdateLiveDetectNotifyConfig extends Rpc
  */
 class UpdateLivePullStreamInfoConfig extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -4875,20 +4784,17 @@ class UpdateLiveRecordNotifyConfig extends Rpc
  */
 class UpdateLiveSnapshotDetectPornConfig extends Rpc
 {
-
     /**
-     * @param array $scene
-     *
      * @return $this
      */
-	public function withScene(array $scene)
-	{
-	    $this->data['Scene'] = $scene;
-		foreach ($scene as $i => $iValue) {
-			$this->options['query']['Scene.' . ($i + 1)] = $iValue;
-		}
+    public function withScene(array $scene)
+    {
+        $this->data['Scene'] = $scene;
+        foreach ($scene as $i => $iValue) {
+            $this->options['query']['Scene.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 

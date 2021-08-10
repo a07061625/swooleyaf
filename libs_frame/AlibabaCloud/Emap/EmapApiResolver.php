@@ -28,7 +28,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class QueryMapInfoOpen extends Rpc
 {
-
     /**
      * @param string $value
      *

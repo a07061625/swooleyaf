@@ -93,7 +93,6 @@ class DescribeContainerGroupMetric extends Rpc
  */
 class UpdateContainerGroupByTemplate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -123,7 +122,6 @@ class UpdateContainerGroupByTemplate extends Rpc
  */
 class CreateContainerGroupFromTemplate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -202,10 +200,7 @@ class RestartContainerGroup extends Rpc
  */
 class UpdateContainerGroup extends Rpc
 {
-
     /**
-     * @param array $container
-     *
      * @return $this
      */
     public function withContainer(array $container)
@@ -272,8 +267,6 @@ class UpdateContainerGroup extends Rpc
     }
 
     /**
-     * @param array $initContainer
-     *
      * @return $this
      */
     public function withInitContainer(array $initContainer)
@@ -321,8 +314,6 @@ class UpdateContainerGroup extends Rpc
     }
 
     /**
-     * @param array $imageRegistryCredential
-     *
      * @return $this
      */
     public function withImageRegistryCredential(array $imageRegistryCredential)
@@ -338,8 +329,6 @@ class UpdateContainerGroup extends Rpc
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
     public function withTag(array $tag)
@@ -354,8 +343,6 @@ class UpdateContainerGroup extends Rpc
     }
 
     /**
-     * @param array $dnsConfigNameServer
-     *
      * @return $this
      */
     public function withDnsConfigNameServer(array $dnsConfigNameServer)
@@ -369,8 +356,6 @@ class UpdateContainerGroup extends Rpc
     }
 
     /**
-     * @param array $dnsConfigOption
-     *
      * @return $this
      */
     public function withDnsConfigOption(array $dnsConfigOption)
@@ -385,8 +370,6 @@ class UpdateContainerGroup extends Rpc
     }
 
     /**
-     * @param array $dnsConfigSearch
-     *
      * @return $this
      */
     public function withDnsConfigSearch(array $dnsConfigSearch)
@@ -400,8 +383,6 @@ class UpdateContainerGroup extends Rpc
     }
 
     /**
-     * @param array $volume
-     *
      * @return $this
      */
     public function withVolume(array $volume)
@@ -531,10 +512,7 @@ class DescribeContainerLog extends Rpc
  */
 class CreateContainerGroup extends Rpc
 {
-
     /**
-     * @param array $container
-     *
      * @return $this
      */
     public function withContainer(array $container)
@@ -606,8 +584,6 @@ class CreateContainerGroup extends Rpc
     }
 
     /**
-     * @param array $hostAliase
-     *
      * @return $this
      */
     public function withHostAliase(array $hostAliase)
@@ -624,8 +600,6 @@ class CreateContainerGroup extends Rpc
     }
 
     /**
-     * @param array $initContainer
-     *
      * @return $this
      */
     public function withInitContainer(array $initContainer)
@@ -670,8 +644,6 @@ class CreateContainerGroup extends Rpc
     }
 
     /**
-     * @param array $imageRegistryCredential
-     *
      * @return $this
      */
     public function withImageRegistryCredential(array $imageRegistryCredential)
@@ -687,8 +659,6 @@ class CreateContainerGroup extends Rpc
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
     public function withTag(array $tag)
@@ -703,8 +673,6 @@ class CreateContainerGroup extends Rpc
     }
 
     /**
-     * @param array $arn
-     *
      * @return $this
      */
     public function withArn(array $arn)
@@ -720,8 +688,6 @@ class CreateContainerGroup extends Rpc
     }
 
     /**
-     * @param array $dnsConfigNameServer
-     *
      * @return $this
      */
     public function withDnsConfigNameServer(array $dnsConfigNameServer)
@@ -735,8 +701,6 @@ class CreateContainerGroup extends Rpc
     }
 
     /**
-     * @param array $securityContextSysctl
-     *
      * @return $this
      */
     public function withSecurityContextSysctl(array $securityContextSysctl)
@@ -751,8 +715,6 @@ class CreateContainerGroup extends Rpc
     }
 
     /**
-     * @param array $dnsConfigOption
-     *
      * @return $this
      */
     public function withDnsConfigOption(array $dnsConfigOption)
@@ -767,8 +729,6 @@ class CreateContainerGroup extends Rpc
     }
 
     /**
-     * @param array $dnsConfigSearch
-     *
      * @return $this
      */
     public function withDnsConfigSearch(array $dnsConfigSearch)
@@ -782,8 +742,6 @@ class CreateContainerGroup extends Rpc
     }
 
     /**
-     * @param array $volume
-     *
      * @return $this
      */
     public function withVolume(array $volume)
@@ -835,10 +793,7 @@ class CreateContainerGroup extends Rpc
  */
 class DescribeContainerGroups extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
     public function withTag(array $tag)

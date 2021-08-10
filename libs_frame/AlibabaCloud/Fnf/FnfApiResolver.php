@@ -51,7 +51,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class CreateFlow extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -146,7 +145,6 @@ class CreateFlow extends Rpc
  */
 class CreateSchedule extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -361,7 +359,6 @@ class ListSchedules extends Rpc
  */
 class ReportTaskFailed extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -401,7 +398,6 @@ class ReportTaskFailed extends Rpc
  */
 class ReportTaskSucceeded extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -429,7 +425,6 @@ class ReportTaskSucceeded extends Rpc
  */
 class StartExecution extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -496,7 +491,6 @@ class StartExecution extends Rpc
  */
 class StopExecution extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -565,7 +559,6 @@ class StopExecution extends Rpc
  */
 class UpdateFlow extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -660,7 +653,6 @@ class UpdateFlow extends Rpc
  */
 class UpdateSchedule extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 

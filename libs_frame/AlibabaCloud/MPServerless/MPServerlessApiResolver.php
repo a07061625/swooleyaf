@@ -54,7 +54,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class CreateFunction extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -153,7 +152,6 @@ class CreateFunction extends Rpc
  */
 class CreateFunctionDeployment extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -195,7 +193,6 @@ class CreateMarketCellSpace extends Rpc
  */
 class CreateTaobaoISVMpkCell extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -230,7 +227,6 @@ class CreateTaobaoISVMpkCell extends Rpc
  */
 class CreateTaobaoMerchantMpkCell extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -278,7 +274,6 @@ class CreateTaobaoMerchantMpkCell extends Rpc
  */
 class CreateTaobaoSpace extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -325,7 +320,6 @@ class CreateTaobaoSpace extends Rpc
  */
 class DeleteFunction extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -359,7 +353,6 @@ class DeleteFunction extends Rpc
  */
 class DeployFunction extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -393,7 +386,6 @@ class DeployFunction extends Rpc
  */
 class DescribeFunction extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -433,7 +425,6 @@ class DescribeFunction extends Rpc
  */
 class DescribeFunctionMetricList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -545,7 +536,6 @@ class DescribeFunctionMetricList extends Rpc
  */
 class DescribeTaobaoSpace extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -578,7 +568,6 @@ class DescribeTaobaoSpace extends Rpc
  */
 class EnableExtension extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -599,7 +588,6 @@ class EnableExtension extends Rpc
  */
 class ListExtensions extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -666,7 +654,6 @@ class ListFunctions extends Rpc
  */
 class ListFunctionSpecs extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -687,7 +674,6 @@ class ListFunctionSpecs extends Rpc
  */
 class RunFunction extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -726,7 +712,6 @@ class RunFunction extends Rpc
  */
 class UpdateFunction extends Rpc
 {
-
     /**
      * @param string $value
      *

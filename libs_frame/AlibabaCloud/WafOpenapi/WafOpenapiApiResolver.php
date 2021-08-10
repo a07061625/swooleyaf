@@ -241,7 +241,6 @@ class DescribeCertificates extends Rpc
  */
 class DescribeCertMatchStatus extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }
@@ -319,20 +318,17 @@ class DescribeDomainBasicConfigs extends Rpc
  */
 class DescribeDomainList extends Rpc
 {
-
     /**
-     * @param array $domainNames
-     *
      * @return $this
      */
-	public function withDomainNames(array $domainNames)
-	{
-	    $this->data['DomainNames'] = $domainNames;
-		foreach ($domainNames as $i => $iValue) {
-			$this->options['query']['DomainNames.' . ($i + 1)] = $iValue;
-		}
+    public function withDomainNames(array $domainNames)
+    {
+        $this->data['DomainNames'] = $domainNames;
+        foreach ($domainNames as $i => $iValue) {
+            $this->options['query']['DomainNames.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -429,20 +425,17 @@ class DescribeInstanceSpecInfo extends Rpc
  */
 class DescribeLogServiceStatus extends Rpc
 {
-
     /**
-     * @param array $domainNames
-     *
      * @return $this
      */
-	public function withDomainNames(array $domainNames)
-	{
-	    $this->data['DomainNames'] = $domainNames;
-		foreach ($domainNames as $i => $iValue) {
-			$this->options['query']['DomainNames.' . ($i + 1)] = $iValue;
-		}
+    public function withDomainNames(array $domainNames)
+    {
+        $this->data['DomainNames'] = $domainNames;
+        foreach ($domainNames as $i => $iValue) {
+            $this->options['query']['DomainNames.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 

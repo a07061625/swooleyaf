@@ -28,10 +28,10 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
     public $method = 'POST';
 
     /** @var string */
-    protected $scheme = 'https';
+    public $serviceCode = 'cf';
 
     /** @var string */
-    public $serviceCode = 'cf';
+    protected $scheme = 'https';
 }
 
 /**
@@ -39,7 +39,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class CFMonthlyPayment extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -62,7 +61,6 @@ class CFMonthlyPayment extends Rpc
  */
 class MonthlyPaymentCheckOrder extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 

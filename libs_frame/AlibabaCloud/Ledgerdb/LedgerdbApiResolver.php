@@ -52,7 +52,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AcceptMember extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -101,7 +100,6 @@ class AcceptMember extends Rpc
  */
 class CreateVpcEndpoint extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -193,7 +191,6 @@ class DeleteVpcEndpoint extends Rpc
  */
 class DescribeLedger extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -206,7 +203,6 @@ class DescribeLedger extends Rpc
  */
 class DescribeLedgers extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -221,7 +217,6 @@ class DescribeRegions extends Rpc
  */
 class DisableMember extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -255,7 +250,6 @@ class DisableMember extends Rpc
  */
 class EnableMember extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -291,7 +285,6 @@ class EnableMember extends Rpc
  */
 class GetJournal extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -304,7 +297,6 @@ class GetJournal extends Rpc
  */
 class GetMember extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -315,7 +307,6 @@ class GetMember extends Rpc
  */
 class InviteMembers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -357,7 +348,6 @@ class InviteMembers extends Rpc
  */
 class ListJournals extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -372,7 +362,6 @@ class ListJournals extends Rpc
  */
 class ListMembers extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -389,7 +378,6 @@ class ListMembers extends Rpc
  */
 class ListTimeAnchors extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -404,7 +392,6 @@ class ListTimeAnchors extends Rpc
  */
 class ListVpcEndpoints extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -416,7 +403,6 @@ class ListVpcEndpoints extends Rpc
  */
 class ModifyLedgerAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -464,7 +450,6 @@ class ModifyLedgerAttribute extends Rpc
  */
 class ModifyMemberACLs extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -513,7 +498,6 @@ class ModifyMemberACLs extends Rpc
  */
 class ModifyMemberKey extends Rpc
 {
-
     /**
      * @param string $value
      *

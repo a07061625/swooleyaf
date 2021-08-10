@@ -89,10 +89,10 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
     public $method = 'POST';
 
     /** @var string */
-    protected $scheme = 'https';
+    public $serviceCode = 'kms';
 
     /** @var string */
-    public $serviceCode = 'kms';
+    protected $scheme = 'https';
 }
 
 /**
@@ -862,7 +862,6 @@ class UpdateRotationPolicy extends Rpc
  */
 class UpdateSecret extends Rpc
 {
-
     /**
      * @param string $value
      *

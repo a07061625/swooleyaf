@@ -623,7 +623,6 @@ class ListDevices extends Rpc
  */
 class ListHistoricalAgentReport extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -744,7 +743,6 @@ class ListPrivilegesOfUser extends Rpc
  */
 class ListRealtimeAgentStates extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -787,7 +785,6 @@ class ListRealtimeAgentStates extends Rpc
  */
 class ListRecentCallDetailRecords extends Rpc
 {
-
     /**
      * @param string $value
      *

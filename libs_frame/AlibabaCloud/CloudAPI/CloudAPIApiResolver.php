@@ -175,35 +175,30 @@ class CreateInstance extends Rpc
  */
 class UntagResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tagKey
-     *
      * @return $this
      */
-	public function withTagKey(array $tagKey)
-	{
-	    $this->data['TagKey'] = $tagKey;
-		foreach ($tagKey as $i => $iValue) {
-			$this->options['query']['TagKey.' . ($i + 1)] = $iValue;
-		}
+    public function withTagKey(array $tagKey)
+    {
+        $this->data['TagKey'] = $tagKey;
+        foreach ($tagKey as $i => $iValue) {
+            $this->options['query']['TagKey.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -219,36 +214,31 @@ class UntagResources extends Rpc
  */
 class ListTagResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -262,36 +252,31 @@ class ListTagResources extends Rpc
  */
 class TagResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -338,7 +323,6 @@ class CreateIntranetDomain extends Rpc
  */
 class ImportSwagger extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -516,21 +500,18 @@ class DeleteIpControl extends Rpc
  */
 class CreateIpControl extends Rpc
 {
-
     /**
-     * @param array $ipControlPolicys
-     *
      * @return $this
      */
-	public function withIpControlPolicys(array $ipControlPolicys)
-	{
-	    $this->data['IpControlPolicys'] = $ipControlPolicys;
-		foreach ($ipControlPolicys as $depth1 => $depth1Value) {
-			$this->options['query']['IpControlPolicys.' . ($depth1 + 1) . '.AppId'] = $depth1Value['AppId'];
-			$this->options['query']['IpControlPolicys.' . ($depth1 + 1) . '.CidrIp'] = $depth1Value['CidrIp'];
-		}
+    public function withIpControlPolicys(array $ipControlPolicys)
+    {
+        $this->data['IpControlPolicys'] = $ipControlPolicys;
+        foreach ($ipControlPolicys as $depth1 => $depth1Value) {
+            $this->options['query']['IpControlPolicys.' . ($depth1 + 1) . '.AppId'] = $depth1Value['AppId'];
+            $this->options['query']['IpControlPolicys.' . ($depth1 + 1) . '.CidrIp'] = $depth1Value['CidrIp'];
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1019,21 +1000,18 @@ class ModifySignature extends Rpc
  */
 class ModifyApp extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1050,21 +1028,18 @@ class ModifyApp extends Rpc
  */
 class ModifyApiGroup extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1319,21 +1294,18 @@ class DescribeDomain extends Rpc
  */
 class DescribeDeployedApis extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1398,21 +1370,18 @@ class DescribeAuthorizedApis extends Rpc
  */
 class DescribeAppSecurity extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1449,21 +1418,18 @@ class DescribeApps extends Rpc
  */
 class DescribeAppAttributes extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1570,21 +1536,18 @@ class DescribeApisBySignature extends Rpc
  */
 class DescribeApis extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1653,21 +1616,18 @@ class DescribeApiHistory extends Rpc
  */
 class DescribeApiGroups extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1680,21 +1640,18 @@ class DescribeApiGroups extends Rpc
  */
 class DescribeApiGroup extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1825,21 +1782,18 @@ class DeleteDomain extends Rpc
  */
 class DeleteApp extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1852,21 +1806,18 @@ class DeleteApp extends Rpc
  */
 class DeleteApiGroup extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1937,21 +1888,18 @@ class CreateSignature extends Rpc
  */
 class CreateApp extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1970,21 +1918,18 @@ class CreateApp extends Rpc
  */
 class CreateApiGroup extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+        }
 
-		return $this;
+        return $this;
     }
 }
 

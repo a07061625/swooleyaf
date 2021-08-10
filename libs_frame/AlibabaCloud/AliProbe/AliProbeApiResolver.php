@@ -60,7 +60,6 @@ class CreateTaskWithSecurityCheck extends Rpc
  */
 class GetTask extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }

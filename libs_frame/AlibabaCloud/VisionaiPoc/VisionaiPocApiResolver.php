@@ -36,7 +36,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class CheckMultiagent extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -85,7 +84,6 @@ class CheckMultiagent extends Rpc
  */
 class PredictCategory extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -146,7 +144,6 @@ class PredictCategory extends Rpc
  */
 class RecognizeCar extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -194,7 +191,6 @@ class RecognizeCar extends Rpc
  */
 class RecognizeEntity extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -242,7 +238,6 @@ class RecognizeEntity extends Rpc
  */
 class RecognizeFlower extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -290,7 +285,6 @@ class RecognizeFlower extends Rpc
  */
 class RecognizeLabel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -338,7 +332,6 @@ class RecognizeLabel extends Rpc
  */
 class RecognizePet extends Rpc
 {
-
     /**
      * @param string $value
      *

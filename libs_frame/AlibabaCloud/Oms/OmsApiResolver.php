@@ -48,7 +48,6 @@ class GetDataOpenConfig extends Rpc
  */
 class GetProductDefine extends Rpc
 {
-
     /**
      * @param string $value
      *

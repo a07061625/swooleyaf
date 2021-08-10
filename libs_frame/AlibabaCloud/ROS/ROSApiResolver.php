@@ -79,10 +79,7 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class CreateStack extends Rpc
 {
-
     /**
-     * @param array $notificationURLs
-     *
      * @return $this
      */
     public function withNotificationURLs(array $notificationURLs)
@@ -96,8 +93,6 @@ class CreateStack extends Rpc
     }
 
     /**
-     * @param array $parameters
-     *
      * @return $this
      */
     public function withParameters(array $parameters)
@@ -163,10 +158,7 @@ class DeleteStack extends Rpc
  */
 class UpdateStack extends Rpc
 {
-
     /**
-     * @param array $parameters
-     *
      * @return $this
      */
     public function withParameters(array $parameters)
@@ -195,10 +187,7 @@ class UpdateStack extends Rpc
  */
 class ListStacks extends Rpc
 {
-
     /**
-     * @param array $stackName
-     *
      * @return $this
      */
     public function withStackName(array $stackName)
@@ -212,8 +201,6 @@ class ListStacks extends Rpc
     }
 
     /**
-     * @param array $status
-     *
      * @return $this
      */
     public function withStatus(array $status)
@@ -248,10 +235,7 @@ class ListStacks extends Rpc
  */
 class PreviewStack extends Rpc
 {
-
     /**
-     * @param array $parameters
-     *
      * @return $this
      */
     public function withParameters(array $parameters)
@@ -277,10 +261,7 @@ class PreviewStack extends Rpc
  */
 class GetTemplateEstimateCost extends Rpc
 {
-
     /**
-     * @param array $parameters
-     *
      * @return $this
      */
     public function withParameters(array $parameters)
@@ -312,10 +293,7 @@ class CancelUpdateStack extends Rpc
  */
 class ContinueCreateStack extends Rpc
 {
-
     /**
-     * @param array $recreatingResources
-     *
      * @return $this
      */
     public function withRecreatingResources(array $recreatingResources)
@@ -392,10 +370,7 @@ class GetChangeSet extends Rpc
  */
 class ListChangeSets extends Rpc
 {
-
     /**
-     * @param array $executionStatus
-     *
      * @return $this
      */
     public function withExecutionStatus(array $executionStatus)
@@ -409,8 +384,6 @@ class ListChangeSets extends Rpc
     }
 
     /**
-     * @param array $changeSetName
-     *
      * @return $this
      */
     public function withChangeSetName(array $changeSetName)
@@ -424,8 +397,6 @@ class ListChangeSets extends Rpc
     }
 
     /**
-     * @param array $status
-     *
      * @return $this
      */
     public function withStatus(array $status)
@@ -468,10 +439,7 @@ class DeleteChangeSet extends Rpc
  */
 class ListStackEvents extends Rpc
 {
-
     /**
-     * @param array $logicalResourceId
-     *
      * @return $this
      */
     public function withLogicalResourceId(array $logicalResourceId)
@@ -485,8 +453,6 @@ class ListStackEvents extends Rpc
     }
 
     /**
-     * @param array $resourceType
-     *
      * @return $this
      */
     public function withResourceType(array $resourceType)
@@ -500,8 +466,6 @@ class ListStackEvents extends Rpc
     }
 
     /**
-     * @param array $status
-     *
      * @return $this
      */
     public function withStatus(array $status)
@@ -627,10 +591,7 @@ class DescribeRegions extends Rpc
  */
 class CreateChangeSet extends Rpc
 {
-
     /**
-     * @param array $notificationURLs
-     *
      * @return $this
      */
     public function withNotificationURLs(array $notificationURLs)
@@ -644,8 +605,6 @@ class CreateChangeSet extends Rpc
     }
 
     /**
-     * @param array $parameters
-     *
      * @return $this
      */
     public function withParameters(array $parameters)

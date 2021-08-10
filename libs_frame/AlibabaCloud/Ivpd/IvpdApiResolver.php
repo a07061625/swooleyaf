@@ -55,7 +55,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class ChangeImageSize extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -104,25 +103,22 @@ class ChangeImageSize extends Rpc
  */
 class CreateSegmentBodyJob extends Rpc
 {
-
     /**
-     * @param array $dataList
-     *
      * @return $this
      */
-	public function withDataList(array $dataList)
-	{
-	    $this->data['DataList'] = $dataList;
-		foreach ($dataList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['DataId'])){
-				$this->options['form_params']['DataList.' . ($depth1 + 1) . '.DataId'] = $depth1Value['DataId'];
-			}
-			if(isset($depth1Value['ImageUrl'])){
-				$this->options['form_params']['DataList.' . ($depth1 + 1) . '.ImageUrl'] = $depth1Value['ImageUrl'];
-			}
-		}
+    public function withDataList(array $dataList)
+    {
+        $this->data['DataList'] = $dataList;
+        foreach ($dataList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['DataId'])) {
+                $this->options['form_params']['DataList.' . ($depth1 + 1) . '.DataId'] = $depth1Value['DataId'];
+            }
+            if (isset($depth1Value['ImageUrl'])) {
+                $this->options['form_params']['DataList.' . ($depth1 + 1) . '.ImageUrl'] = $depth1Value['ImageUrl'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -170,7 +166,6 @@ class CreateSegmentBodyJob extends Rpc
  */
 class DetectImageElements extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -193,31 +188,28 @@ class DetectImageElements extends Rpc
  */
 class EraseLogoInVideo extends Rpc
 {
-
     /**
-     * @param array $boxes
-     *
      * @return $this
      */
-	public function withBoxes(array $boxes)
-	{
-	    $this->data['Boxes'] = $boxes;
-		foreach ($boxes as $depth1 => $depth1Value) {
-			if(isset($depth1Value['W'])){
-				$this->options['form_params']['Boxes.' . ($depth1 + 1) . '.W'] = $depth1Value['W'];
-			}
-			if(isset($depth1Value['H'])){
-				$this->options['form_params']['Boxes.' . ($depth1 + 1) . '.H'] = $depth1Value['H'];
-			}
-			if(isset($depth1Value['X'])){
-				$this->options['form_params']['Boxes.' . ($depth1 + 1) . '.X'] = $depth1Value['X'];
-			}
-			if(isset($depth1Value['Y'])){
-				$this->options['form_params']['Boxes.' . ($depth1 + 1) . '.Y'] = $depth1Value['Y'];
-			}
-		}
+    public function withBoxes(array $boxes)
+    {
+        $this->data['Boxes'] = $boxes;
+        foreach ($boxes as $depth1 => $depth1Value) {
+            if (isset($depth1Value['W'])) {
+                $this->options['form_params']['Boxes.' . ($depth1 + 1) . '.W'] = $depth1Value['W'];
+            }
+            if (isset($depth1Value['H'])) {
+                $this->options['form_params']['Boxes.' . ($depth1 + 1) . '.H'] = $depth1Value['H'];
+            }
+            if (isset($depth1Value['X'])) {
+                $this->options['form_params']['Boxes.' . ($depth1 + 1) . '.X'] = $depth1Value['X'];
+            }
+            if (isset($depth1Value['Y'])) {
+                $this->options['form_params']['Boxes.' . ($depth1 + 1) . '.Y'] = $depth1Value['Y'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -266,7 +258,6 @@ class EraseLogoInVideo extends Rpc
  */
 class ExtendImageStyle extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -300,7 +291,6 @@ class ExtendImageStyle extends Rpc
  */
 class GetAsyncJobResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -333,7 +323,6 @@ class GetAsyncJobResult extends Rpc
  */
 class GetAsyncResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -353,7 +342,6 @@ class GetAsyncResult extends Rpc
  */
 class GetJobResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -373,7 +361,6 @@ class GetJobResult extends Rpc
  */
 class GetJobStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -393,7 +380,6 @@ class GetJobStatus extends Rpc
  */
 class GetRenderResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -418,7 +404,6 @@ class GetUserBucketConfig extends Rpc
  */
 class HighlightGameVideo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -455,22 +440,19 @@ class ListPackageDesignModelTypes extends Rpc
  */
 class ListUserBuckets extends Rpc
 {
-
     /**
-     * @param array $data
-     *
      * @return $this
      */
-	public function withData(array $data)
-	{
-	    $this->data['Data'] = $data;
-		foreach ($data as $depth1 => $depth1Value) {
-			if(isset($depth1Value['RegionId'])){
-				$this->options['form_params']['Data.' . ($depth1 + 1) . '.RegionId'] = $depth1Value['RegionId'];
-			}
-		}
+    public function withData(array $data)
+    {
+        $this->data['Data'] = $data;
+        foreach ($data as $depth1 => $depth1Value) {
+            if (isset($depth1Value['RegionId'])) {
+                $this->options['form_params']['Data.' . ($depth1 + 1) . '.RegionId'] = $depth1Value['RegionId'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -479,7 +461,6 @@ class ListUserBuckets extends Rpc
  */
 class MakeSuperResolutionImage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -504,7 +485,6 @@ class MakeSuperResolutionImage extends Rpc
  */
 class PreviewModelForPackageDesign extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -519,23 +499,21 @@ class PreviewModelForPackageDesign extends Rpc
     }
 
     /**
-     * @param array $elementList
-     *
      * @return $this
      */
-	public function withElementList(array $elementList)
-	{
-	    $this->data['ElementList'] = $elementList;
-		foreach ($elementList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ImageUrl'])){
-				$this->options['form_params']['ElementList.' . ($depth1 + 1) . '.ImageUrl'] = $depth1Value['ImageUrl'];
-			}
-			if(isset($depth1Value['SideName'])){
-				$this->options['form_params']['ElementList.' . ($depth1 + 1) . '.SideName'] = $depth1Value['SideName'];
-			}
-		}
+    public function withElementList(array $elementList)
+    {
+        $this->data['ElementList'] = $elementList;
+        foreach ($elementList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ImageUrl'])) {
+                $this->options['form_params']['ElementList.' . ($depth1 + 1) . '.ImageUrl'] = $depth1Value['ImageUrl'];
+            }
+            if (isset($depth1Value['SideName'])) {
+                $this->options['form_params']['ElementList.' . ($depth1 + 1) . '.SideName'] = $depth1Value['SideName'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -597,7 +575,6 @@ class PreviewModelForPackageDesign extends Rpc
  */
 class RecognizeImageColor extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -630,7 +607,6 @@ class RecognizeImageColor extends Rpc
  */
 class RecognizeImageStyle extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -654,22 +630,19 @@ class RecognizeImageStyle extends Rpc
  */
 class RecolorImage extends Rpc
 {
-
     /**
-     * @param array $colorTemplate
-     *
      * @return $this
      */
-	public function withColorTemplate(array $colorTemplate)
-	{
-	    $this->data['ColorTemplate'] = $colorTemplate;
-		foreach ($colorTemplate as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Color'])){
-				$this->options['form_params']['ColorTemplate.' . ($depth1 + 1) . '.Color'] = $depth1Value['Color'];
-			}
-		}
+    public function withColorTemplate(array $colorTemplate)
+    {
+        $this->data['ColorTemplate'] = $colorTemplate;
+        foreach ($colorTemplate as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Color'])) {
+                $this->options['form_params']['ColorTemplate.' . ($depth1 + 1) . '.Color'] = $depth1Value['Color'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -738,7 +711,6 @@ class RecolorImage extends Rpc
  */
 class RenderImageForPackageDesign extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -818,23 +790,21 @@ class RenderImageForPackageDesign extends Rpc
     }
 
     /**
-     * @param array $elementList
-     *
      * @return $this
      */
-	public function withElementList(array $elementList)
-	{
-	    $this->data['ElementList'] = $elementList;
-		foreach ($elementList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ImageUrl'])){
-				$this->options['form_params']['ElementList.' . ($depth1 + 1) . '.ImageUrl'] = $depth1Value['ImageUrl'];
-			}
-			if(isset($depth1Value['SideName'])){
-				$this->options['form_params']['ElementList.' . ($depth1 + 1) . '.SideName'] = $depth1Value['SideName'];
-			}
-		}
+    public function withElementList(array $elementList)
+    {
+        $this->data['ElementList'] = $elementList;
+        foreach ($elementList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ImageUrl'])) {
+                $this->options['form_params']['ElementList.' . ($depth1 + 1) . '.ImageUrl'] = $depth1Value['ImageUrl'];
+            }
+            if (isset($depth1Value['SideName'])) {
+                $this->options['form_params']['ElementList.' . ($depth1 + 1) . '.SideName'] = $depth1Value['SideName'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -869,7 +839,6 @@ class RenderImageForPackageDesign extends Rpc
  */
 class SegmentBody extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -889,7 +858,6 @@ class SegmentBody extends Rpc
  */
 class SegmentImage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -909,24 +877,21 @@ class SegmentImage extends Rpc
  */
 class UpdateUserBucketConfig extends Rpc
 {
-
     /**
-     * @param array $data
-     *
      * @return $this
      */
-	public function withData(array $data)
-	{
-	    $this->data['Data'] = $data;
-		foreach ($data as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Bucket'])){
-				$this->options['form_params']['Data.' . ($depth1 + 1) . '.Bucket'] = $depth1Value['Bucket'];
-			}
-			if(isset($depth1Value['Region'])){
-				$this->options['form_params']['Data.' . ($depth1 + 1) . '.Region'] = $depth1Value['Region'];
-			}
-		}
+    public function withData(array $data)
+    {
+        $this->data['Data'] = $data;
+        foreach ($data as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Bucket'])) {
+                $this->options['form_params']['Data.' . ($depth1 + 1) . '.Bucket'] = $depth1Value['Bucket'];
+            }
+            if (isset($depth1Value['Region'])) {
+                $this->options['form_params']['Data.' . ($depth1 + 1) . '.Region'] = $depth1Value['Region'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }

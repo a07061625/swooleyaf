@@ -34,7 +34,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class CreateLubanrulerTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -68,7 +67,6 @@ class CreateLubanrulerTask extends Rpc
  */
 class UpdateLubanrulerTask extends Rpc
 {
-
     /**
      * @param string $value
      *

@@ -86,7 +86,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AddCdrsMonitor extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -246,7 +245,6 @@ class AddCdrsMonitor extends Rpc
  */
 class AddMonitor extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -399,7 +397,6 @@ class AddMonitor extends Rpc
  */
 class BindDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -414,23 +411,21 @@ class BindDevice extends Rpc
     }
 
     /**
-     * @param array $devices
-     *
      * @return $this
      */
-	public function withDevices(array $devices)
-	{
-	    $this->data['Devices'] = $devices;
-		foreach ($devices as $depth1 => $depth1Value) {
-			if(isset($depth1Value['CorpId'])){
-				$this->options['form_params']['Devices.' . ($depth1 + 1) . '.CorpId'] = $depth1Value['CorpId'];
-			}
-			if(isset($depth1Value['DeviceId'])){
-				$this->options['form_params']['Devices.' . ($depth1 + 1) . '.DeviceId'] = $depth1Value['DeviceId'];
-			}
-		}
+    public function withDevices(array $devices)
+    {
+        $this->data['Devices'] = $devices;
+        foreach ($devices as $depth1 => $depth1Value) {
+            if (isset($depth1Value['CorpId'])) {
+                $this->options['form_params']['Devices.' . ($depth1 + 1) . '.CorpId'] = $depth1Value['CorpId'];
+            }
+            if (isset($depth1Value['DeviceId'])) {
+                $this->options['form_params']['Devices.' . ($depth1 + 1) . '.DeviceId'] = $depth1Value['DeviceId'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -471,7 +466,6 @@ class BindDevice extends Rpc
  */
 class CreateProject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -572,7 +566,6 @@ class CreateProject extends Rpc
  */
 class GetCdrsMonitorList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -637,7 +630,6 @@ class GetCdrsMonitorList extends Rpc
  */
 class GetCdrsMonitorResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -738,7 +730,6 @@ class GetCdrsMonitorResult extends Rpc
  */
 class GetMonitorList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -803,7 +794,6 @@ class GetMonitorList extends Rpc
  */
 class GetMonitorResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -908,7 +898,6 @@ class GetMonitorResult extends Rpc
  */
 class ListAreaHotSpotMetrics extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1021,7 +1010,6 @@ class ListAreaHotSpotMetrics extends Rpc
  */
 class ListCityMapAois extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1069,7 +1057,6 @@ class ListCityMapAois extends Rpc
  */
 class ListCityMapCameraResults extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1119,7 +1106,6 @@ class ListCityMapCameraResults extends Rpc
  */
 class ListCityMapCameraStatistics extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1193,7 +1179,6 @@ class ListCityMapCameraStatistics extends Rpc
  */
 class ListCityMapImageDetails extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1245,7 +1230,6 @@ class ListCityMapImageDetails extends Rpc
  */
 class ListCityMapPersonFlow extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1348,7 +1332,6 @@ class ListCityMapPersonFlow extends Rpc
  */
 class ListCityMapRangeStatistic extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1442,7 +1425,6 @@ class ListCityMapRangeStatistic extends Rpc
  */
 class ListCorpMetricsStatistic extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1580,7 +1562,6 @@ class ListCorpMetricsStatistic extends Rpc
  */
 class ListDataStatistics extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1615,7 +1596,6 @@ class ListDataStatistics extends Rpc
  */
 class ListDataStatisticsByDay extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1664,7 +1644,6 @@ class ListDataStatisticsByDay extends Rpc
  */
 class ListDeviceDetail extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1726,7 +1705,6 @@ class ListDeviceDetail extends Rpc
  */
 class ListDeviceGenderStatistics extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1791,7 +1769,6 @@ class ListDeviceGenderStatistics extends Rpc
  */
 class ListDevicePerson extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1893,7 +1870,6 @@ class ListDevicePerson extends Rpc
  */
 class ListDevicePersonStatistics extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1967,7 +1943,6 @@ class ListDevicePersonStatistics extends Rpc
  */
 class ListDeviceRelation extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2013,7 +1988,6 @@ class ListDeviceRelation extends Rpc
  */
 class ListMapRouteDetails extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2039,7 +2013,6 @@ class ListMapRouteDetails extends Rpc
  */
 class ListPersonDetails extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2145,7 +2118,6 @@ class ListPersonDetails extends Rpc
  */
 class ListPersonResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2273,7 +2245,6 @@ class ListPersonResult extends Rpc
  */
 class ListPersonTag extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2351,7 +2322,6 @@ class ListPersonTag extends Rpc
  */
 class ListPersonTop extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2457,7 +2427,6 @@ class ListPersonTop extends Rpc
  */
 class ListPersonTrack extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2585,7 +2554,6 @@ class ListPersonTrack extends Rpc
  */
 class ListRangeDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2657,7 +2625,6 @@ class ListRangeDevice extends Rpc
  */
 class ListStorageStatistics extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2678,7 +2645,6 @@ class ListStorageStatistics extends Rpc
  */
 class ListStructureStatistics extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2718,7 +2684,6 @@ class ListStructureStatistics extends Rpc
  */
 class ListTagMetrics extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2834,7 +2799,6 @@ class ListTagMetrics extends Rpc
  */
 class ListVehicleDetails extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2926,7 +2890,6 @@ class ListVehicleDetails extends Rpc
  */
 class ListVehicleResults extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3040,7 +3003,6 @@ class ListVehicleResults extends Rpc
  */
 class ListVehicleTagDistribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3104,7 +3066,6 @@ class ListVehicleTagDistribute extends Rpc
  */
 class ListVehicleTop extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3194,7 +3155,6 @@ class ListVehicleTop extends Rpc
  */
 class ListVehicleTrack extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3284,7 +3244,6 @@ class ListVehicleTrack extends Rpc
  */
 class PaginateDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3375,7 +3334,6 @@ class PaginateDevice extends Rpc
  */
 class PaginateProject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3478,7 +3436,6 @@ class PaginateProject extends Rpc
  */
 class RecognizeImage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3575,7 +3532,6 @@ class RecognizeImage extends Rpc
  */
 class SearchAggregateObject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3762,7 +3718,6 @@ class SearchAggregateObject extends Rpc
  */
 class SearchObject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3928,7 +3883,6 @@ class SearchObject extends Rpc
  */
 class StopCdrsMonitor extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3990,7 +3944,6 @@ class StopCdrsMonitor extends Rpc
  */
 class StopMonitor extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4052,7 +4005,6 @@ class StopMonitor extends Rpc
  */
 class UnbindDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4129,7 +4081,6 @@ class UnbindDevice extends Rpc
  */
 class UpdateCdrsMonitor extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4402,7 +4353,6 @@ class UpdateCdrsMonitor extends Rpc
  */
 class UpdateMonitor extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4675,7 +4625,6 @@ class UpdateMonitor extends Rpc
  */
 class UpdateProject extends Rpc
 {
-
     /**
      * @param string $value
      *

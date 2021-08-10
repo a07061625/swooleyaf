@@ -904,7 +904,6 @@ class DescribeAnalysisLogs extends Rpc
  */
 class DescribeJoinRuleList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1345,7 +1344,6 @@ class DescribeStrategyProcess extends Rpc
  */
 class DescribeGroupStruct extends Rpc
 {
-
     /**
      * @param string $value
      *

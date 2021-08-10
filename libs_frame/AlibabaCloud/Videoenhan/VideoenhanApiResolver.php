@@ -52,7 +52,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AbstractEcommerceVideo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -126,7 +125,6 @@ class AbstractEcommerceVideo extends Rpc
  */
 class AbstractFilmVideo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -174,7 +172,6 @@ class AbstractFilmVideo extends Rpc
  */
 class AddFaceVideoTemplate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -225,7 +222,6 @@ class AddFaceVideoTemplate extends Rpc
  */
 class AdjustVideoColor extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -319,7 +315,6 @@ class AdjustVideoColor extends Rpc
  */
 class ChangeVideoSize extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -460,7 +455,6 @@ class ChangeVideoSize extends Rpc
  */
 class ConvertHdrVideo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -533,7 +527,6 @@ class ConvertHdrVideo extends Rpc
  */
 class DeleteFaceVideoTemplate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -573,7 +566,6 @@ class DeleteFaceVideoTemplate extends Rpc
  */
 class EnhanceVideoQuality extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -686,31 +678,28 @@ class EnhanceVideoQuality extends Rpc
  */
 class EraseVideoLogo extends Rpc
 {
-
     /**
-     * @param array $boxes
-     *
      * @return $this
      */
-	public function withBoxes(array $boxes)
-	{
-	    $this->data['Boxes'] = $boxes;
-		foreach ($boxes as $depth1 => $depth1Value) {
-			if(isset($depth1Value['W'])){
-				$this->options['form_params']['Boxes.' . ($depth1 + 1) . '.W'] = $depth1Value['W'];
-			}
-			if(isset($depth1Value['H'])){
-				$this->options['form_params']['Boxes.' . ($depth1 + 1) . '.H'] = $depth1Value['H'];
-			}
-			if(isset($depth1Value['X'])){
-				$this->options['form_params']['Boxes.' . ($depth1 + 1) . '.X'] = $depth1Value['X'];
-			}
-			if(isset($depth1Value['Y'])){
-				$this->options['form_params']['Boxes.' . ($depth1 + 1) . '.Y'] = $depth1Value['Y'];
-			}
-		}
+    public function withBoxes(array $boxes)
+    {
+        $this->data['Boxes'] = $boxes;
+        foreach ($boxes as $depth1 => $depth1Value) {
+            if (isset($depth1Value['W'])) {
+                $this->options['form_params']['Boxes.' . ($depth1 + 1) . '.W'] = $depth1Value['W'];
+            }
+            if (isset($depth1Value['H'])) {
+                $this->options['form_params']['Boxes.' . ($depth1 + 1) . '.H'] = $depth1Value['H'];
+            }
+            if (isset($depth1Value['X'])) {
+                $this->options['form_params']['Boxes.' . ($depth1 + 1) . '.X'] = $depth1Value['X'];
+            }
+            if (isset($depth1Value['Y'])) {
+                $this->options['form_params']['Boxes.' . ($depth1 + 1) . '.Y'] = $depth1Value['Y'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -750,7 +739,6 @@ class EraseVideoLogo extends Rpc
  */
 class EraseVideoSubtitles extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -846,7 +834,6 @@ class EraseVideoSubtitles extends Rpc
  */
 class GenerateVideo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -926,26 +913,24 @@ class GenerateVideo extends Rpc
     }
 
     /**
-     * @param array $fileList
-     *
      * @return $this
      */
-	public function withFileList(array $fileList)
-	{
-	    $this->data['FileList'] = $fileList;
-		foreach ($fileList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['FileName'])){
-				$this->options['form_params']['FileList.' . ($depth1 + 1) . '.FileName'] = $depth1Value['FileName'];
-			}
-			if(isset($depth1Value['FileUrl'])){
-				$this->options['form_params']['FileList.' . ($depth1 + 1) . '.FileUrl'] = $depth1Value['FileUrl'];
-			}
-			if(isset($depth1Value['Type'])){
-				$this->options['form_params']['FileList.' . ($depth1 + 1) . '.Type'] = $depth1Value['Type'];
-			}
-		}
+    public function withFileList(array $fileList)
+    {
+        $this->data['FileList'] = $fileList;
+        foreach ($fileList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['FileName'])) {
+                $this->options['form_params']['FileList.' . ($depth1 + 1) . '.FileName'] = $depth1Value['FileName'];
+            }
+            if (isset($depth1Value['FileUrl'])) {
+                $this->options['form_params']['FileList.' . ($depth1 + 1) . '.FileUrl'] = $depth1Value['FileUrl'];
+            }
+            if (isset($depth1Value['Type'])) {
+                $this->options['form_params']['FileList.' . ($depth1 + 1) . '.Type'] = $depth1Value['Type'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1020,7 +1005,6 @@ class GenerateVideo extends Rpc
  */
 class GetAsyncJobResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1056,7 +1040,6 @@ class GetAsyncJobResult extends Rpc
  */
 class InterpolateVideoFrame extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1118,7 +1101,6 @@ class InterpolateVideoFrame extends Rpc
  */
 class MergeVideoFace extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1180,7 +1162,6 @@ class MergeVideoFace extends Rpc
  */
 class MergeVideoModelFace extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1251,7 +1232,6 @@ class QueryFaceVideoTemplate extends Rpc
  */
 class SuperResolveVideo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1300,7 +1280,6 @@ class SuperResolveVideo extends Rpc
  */
 class ToneSdrVideo extends Rpc
 {
-
     /**
      * @param string $value
      *

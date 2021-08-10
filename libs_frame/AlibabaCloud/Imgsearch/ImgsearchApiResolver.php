@@ -40,7 +40,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AddImage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -99,7 +98,6 @@ class AddImage extends Rpc
  */
 class CreateImageDb extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -120,7 +118,6 @@ class CreateImageDb extends Rpc
  */
 class DeleteImage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -153,7 +150,6 @@ class DeleteImage extends Rpc
  */
 class DeleteImageDb extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -182,7 +178,6 @@ class ListImageDbs extends Rpc
  */
 class ListImages extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -269,7 +264,6 @@ class ListImages extends Rpc
  */
 class SearchImage extends Rpc
 {
-
     /**
      * @param string $value
      *

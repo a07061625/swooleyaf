@@ -40,7 +40,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class CheckContacts extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -101,7 +100,6 @@ class CheckContacts extends Rpc
  */
 class SendMessage extends Rpc
 {
-
     /**
      * @param string $value
      *

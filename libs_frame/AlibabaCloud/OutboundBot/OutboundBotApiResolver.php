@@ -113,35 +113,30 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AssignJobs extends Rpc
 {
-
     /**
-     * @param array $jobsJson
-     *
      * @return $this
      */
-	public function withJobsJson(array $jobsJson)
-	{
-	    $this->data['JobsJson'] = $jobsJson;
-		foreach ($jobsJson as $i => $iValue) {
-			$this->options['query']['JobsJson.' . ($i + 1)] = $iValue;
-		}
+    public function withJobsJson(array $jobsJson)
+    {
+        $this->data['JobsJson'] = $jobsJson;
+        foreach ($jobsJson as $i => $iValue) {
+            $this->options['query']['JobsJson.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $callingNumber
-     *
      * @return $this
      */
-	public function withCallingNumber(array $callingNumber)
-	{
-	    $this->data['CallingNumber'] = $callingNumber;
-		foreach ($callingNumber as $i => $iValue) {
-			$this->options['query']['CallingNumber.' . ($i + 1)] = $iValue;
-		}
+    public function withCallingNumber(array $callingNumber)
+    {
+        $this->data['CallingNumber'] = $callingNumber;
+        foreach ($callingNumber as $i => $iValue) {
+            $this->options['query']['CallingNumber.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -159,35 +154,30 @@ class AssignJobs extends Rpc
  */
 class CancelJobs extends Rpc
 {
-
     /**
-     * @param array $jobReferenceId
-     *
      * @return $this
      */
-	public function withJobReferenceId(array $jobReferenceId)
-	{
-	    $this->data['JobReferenceId'] = $jobReferenceId;
-		foreach ($jobReferenceId as $i => $iValue) {
-			$this->options['query']['JobReferenceId.' . ($i + 1)] = $iValue;
-		}
+    public function withJobReferenceId(array $jobReferenceId)
+    {
+        $this->data['JobReferenceId'] = $jobReferenceId;
+        foreach ($jobReferenceId as $i => $iValue) {
+            $this->options['query']['JobReferenceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $jobId
-     *
      * @return $this
      */
-	public function withJobId(array $jobId)
-	{
-	    $this->data['JobId'] = $jobId;
-		foreach ($jobId as $i => $iValue) {
-			$this->options['query']['JobId.' . ($i + 1)] = $iValue;
-		}
+    public function withJobId(array $jobId)
+    {
+        $this->data['JobId'] = $jobId;
+        foreach ($jobId as $i => $iValue) {
+            $this->options['query']['JobId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -212,20 +202,17 @@ class CancelJobs extends Rpc
  */
 class CreateBatchJobs extends Rpc
 {
-
     /**
-     * @param array $callingNumber
-     *
      * @return $this
      */
-	public function withCallingNumber(array $callingNumber)
-	{
-	    $this->data['CallingNumber'] = $callingNumber;
-		foreach ($callingNumber as $i => $iValue) {
-			$this->options['query']['CallingNumber.' . ($i + 1)] = $iValue;
-		}
+    public function withCallingNumber(array $callingNumber)
+    {
+        $this->data['CallingNumber'] = $callingNumber;
+        foreach ($callingNumber as $i => $iValue) {
+            $this->options['query']['CallingNumber.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -318,20 +305,17 @@ class CreateIntent extends Rpc
  */
 class CreateJobGroup extends Rpc
 {
-
     /**
-     * @param array $callingNumber
-     *
      * @return $this
      */
-	public function withCallingNumber(array $callingNumber)
-	{
-	    $this->data['CallingNumber'] = $callingNumber;
-		foreach ($callingNumber as $i => $iValue) {
-			$this->options['query']['CallingNumber.' . ($i + 1)] = $iValue;
-		}
+    public function withCallingNumber(array $callingNumber)
+    {
+        $this->data['CallingNumber'] = $callingNumber;
+        foreach ($callingNumber as $i => $iValue) {
+            $this->options['query']['CallingNumber.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -538,20 +522,17 @@ class DescribeJob extends Rpc
  */
 class DescribeJobGroup extends Rpc
 {
-
     /**
-     * @param array $briefTypes
-     *
      * @return $this
      */
-	public function withBriefTypes(array $briefTypes)
-	{
-	    $this->data['BriefTypes'] = $briefTypes;
-		foreach ($briefTypes as $i => $iValue) {
-			$this->options['query']['BriefTypes.' . ($i + 1)] = $iValue;
-		}
+    public function withBriefTypes(array $briefTypes)
+    {
+        $this->data['BriefTypes'] = $briefTypes;
+        foreach ($briefTypes as $i => $iValue) {
+            $this->options['query']['BriefTypes.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -764,20 +745,17 @@ class ListJobGroups extends Rpc
  */
 class ListJobs extends Rpc
 {
-
     /**
-     * @param array $jobId
-     *
      * @return $this
      */
-	public function withJobId(array $jobId)
-	{
-	    $this->data['JobId'] = $jobId;
-		foreach ($jobId as $i => $iValue) {
-			$this->options['query']['JobId.' . ($i + 1)] = $iValue;
-		}
+    public function withJobId(array $jobId)
+    {
+        $this->data['JobId'] = $jobId;
+        foreach ($jobId as $i => $iValue) {
+            $this->options['query']['JobId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -906,20 +884,17 @@ class ListTags extends Rpc
  */
 class ModifyBatchJobs extends Rpc
 {
-
     /**
-     * @param array $callingNumber
-     *
      * @return $this
      */
-	public function withCallingNumber(array $callingNumber)
-	{
-	    $this->data['CallingNumber'] = $callingNumber;
-		foreach ($callingNumber as $i => $iValue) {
-			$this->options['query']['CallingNumber.' . ($i + 1)] = $iValue;
-		}
+    public function withCallingNumber(array $callingNumber)
+    {
+        $this->data['CallingNumber'] = $callingNumber;
+        foreach ($callingNumber as $i => $iValue) {
+            $this->options['query']['CallingNumber.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1022,20 +997,17 @@ class ModifyIntent extends Rpc
  */
 class ModifyJobGroup extends Rpc
 {
-
     /**
-     * @param array $callingNumber
-     *
      * @return $this
      */
-	public function withCallingNumber(array $callingNumber)
-	{
-	    $this->data['CallingNumber'] = $callingNumber;
-		foreach ($callingNumber as $i => $iValue) {
-			$this->options['query']['CallingNumber.' . ($i + 1)] = $iValue;
-		}
+    public function withCallingNumber(array $callingNumber)
+    {
+        $this->data['CallingNumber'] = $callingNumber;
+        foreach ($callingNumber as $i => $iValue) {
+            $this->options['query']['CallingNumber.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1186,20 +1158,17 @@ class QueryJobs extends Rpc
  */
 class QueryScriptsByStatus extends Rpc
 {
-
     /**
-     * @param array $statusList
-     *
      * @return $this
      */
-	public function withStatusList(array $statusList)
-	{
-	    $this->data['StatusList'] = $statusList;
-		foreach ($statusList as $i => $iValue) {
-			$this->options['query']['StatusList.' . ($i + 1)] = $iValue;
-		}
+    public function withStatusList(array $statusList)
+    {
+        $this->data['StatusList'] = $statusList;
+        foreach ($statusList as $i => $iValue) {
+            $this->options['query']['StatusList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1251,35 +1220,30 @@ class RecordFailure extends Rpc
  */
 class ResumeJobs extends Rpc
 {
-
     /**
-     * @param array $jobReferenceId
-     *
      * @return $this
      */
-	public function withJobReferenceId(array $jobReferenceId)
-	{
-	    $this->data['JobReferenceId'] = $jobReferenceId;
-		foreach ($jobReferenceId as $i => $iValue) {
-			$this->options['query']['JobReferenceId.' . ($i + 1)] = $iValue;
-		}
+    public function withJobReferenceId(array $jobReferenceId)
+    {
+        $this->data['JobReferenceId'] = $jobReferenceId;
+        foreach ($jobReferenceId as $i => $iValue) {
+            $this->options['query']['JobReferenceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $jobId
-     *
      * @return $this
      */
-	public function withJobId(array $jobId)
-	{
-	    $this->data['JobId'] = $jobId;
-		foreach ($jobId as $i => $iValue) {
-			$this->options['query']['JobId.' . ($i + 1)] = $iValue;
-		}
+    public function withJobId(array $jobId)
+    {
+        $this->data['JobId'] = $jobId;
+        foreach ($jobId as $i => $iValue) {
+            $this->options['query']['JobId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1310,20 +1274,17 @@ class RollbackScript extends Rpc
  */
 class StartJob extends Rpc
 {
-
     /**
-     * @param array $callingNumber
-     *
      * @return $this
      */
-	public function withCallingNumber(array $callingNumber)
-	{
-	    $this->data['CallingNumber'] = $callingNumber;
-		foreach ($callingNumber as $i => $iValue) {
-			$this->options['query']['CallingNumber.' . ($i + 1)] = $iValue;
-		}
+    public function withCallingNumber(array $callingNumber)
+    {
+        $this->data['CallingNumber'] = $callingNumber;
+        foreach ($callingNumber as $i => $iValue) {
+            $this->options['query']['CallingNumber.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1379,35 +1340,30 @@ class SubmitScriptReview extends Rpc
  */
 class SuspendJobs extends Rpc
 {
-
     /**
-     * @param array $jobReferenceId
-     *
      * @return $this
      */
-	public function withJobReferenceId(array $jobReferenceId)
-	{
-	    $this->data['JobReferenceId'] = $jobReferenceId;
-		foreach ($jobReferenceId as $i => $iValue) {
-			$this->options['query']['JobReferenceId.' . ($i + 1)] = $iValue;
-		}
+    public function withJobReferenceId(array $jobReferenceId)
+    {
+        $this->data['JobReferenceId'] = $jobReferenceId;
+        foreach ($jobReferenceId as $i => $iValue) {
+            $this->options['query']['JobReferenceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $jobId
-     *
      * @return $this
      */
-	public function withJobId(array $jobId)
-	{
-	    $this->data['JobId'] = $jobId;
-		foreach ($jobId as $i => $iValue) {
-			$this->options['query']['JobId.' . ($i + 1)] = $iValue;
-		}
+    public function withJobId(array $jobId)
+    {
+        $this->data['JobId'] = $jobId;
+        foreach ($jobId as $i => $iValue) {
+            $this->options['query']['JobId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 

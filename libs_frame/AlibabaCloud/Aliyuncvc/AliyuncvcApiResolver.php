@@ -49,7 +49,6 @@ class ActiveMeeting extends Rpc
  */
 class BatchDeleteDevices extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -107,7 +106,6 @@ class CreateEvaluation extends Rpc
  */
 class CreateMeeting extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -141,7 +139,6 @@ class CreateMeeting extends Rpc
  */
 class CreateUser extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -174,7 +171,6 @@ class CreateUser extends Rpc
  */
 class GetMeeting extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -194,7 +190,6 @@ class GetMeeting extends Rpc
  */
 class GetMembers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -215,7 +210,6 @@ class GetMembers extends Rpc
  */
 class JoinMeeting extends Rpc
 {
-
     /**
      * @param string $value
      *

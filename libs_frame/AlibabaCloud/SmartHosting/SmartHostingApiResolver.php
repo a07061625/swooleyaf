@@ -61,40 +61,35 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class ListManagedHosts extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $managedHostId
-     *
      * @return $this
      */
-	public function withManagedHostId(array $managedHostId)
-	{
-	    $this->data['ManagedHostId'] = $managedHostId;
-		foreach ($managedHostId as $i => $iValue) {
-			$this->options['query']['ManagedHostId.' . ($i + 1)] = $iValue;
-		}
+    public function withManagedHostId(array $managedHostId)
+    {
+        $this->data['ManagedHostId'] = $managedHostId;
+        foreach ($managedHostId as $i => $iValue) {
+            $this->options['query']['ManagedHostId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -122,40 +117,35 @@ class ListManagedHosts extends Rpc
  */
 class ListManagedPrivateSpaces extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $managedPrivateSpaceId
-     *
      * @return $this
      */
-	public function withManagedPrivateSpaceId(array $managedPrivateSpaceId)
-	{
-	    $this->data['ManagedPrivateSpaceId'] = $managedPrivateSpaceId;
-		foreach ($managedPrivateSpaceId as $i => $iValue) {
-			$this->options['query']['ManagedPrivateSpaceId.' . ($i + 1)] = $iValue;
-		}
+    public function withManagedPrivateSpaceId(array $managedPrivateSpaceId)
+    {
+        $this->data['ManagedPrivateSpaceId'] = $managedPrivateSpaceId;
+        foreach ($managedPrivateSpaceId as $i => $iValue) {
+            $this->options['query']['ManagedPrivateSpaceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -182,20 +172,17 @@ class ListManagedPrivateSpaces extends Rpc
  */
 class ListManagedRacks extends Rpc
 {
-
     /**
-     * @param array $managedRackId
-     *
      * @return $this
      */
-	public function withManagedRackId(array $managedRackId)
-	{
-	    $this->data['ManagedRackId'] = $managedRackId;
-		foreach ($managedRackId as $i => $iValue) {
-			$this->options['query']['ManagedRackId.' . ($i + 1)] = $iValue;
-		}
+    public function withManagedRackId(array $managedRackId)
+    {
+        $this->data['ManagedRackId'] = $managedRackId;
+        foreach ($managedRackId as $i => $iValue) {
+            $this->options['query']['ManagedRackId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 

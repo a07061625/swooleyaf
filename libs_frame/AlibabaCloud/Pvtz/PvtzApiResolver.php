@@ -94,25 +94,22 @@ class AddZoneRecord extends Rpc
  */
 class BindZoneVpc extends Rpc
 {
-
     /**
-     * @param array $vpcs
-     *
      * @return $this
      */
-	public function withVpcs(array $vpcs)
-	{
-	    $this->data['Vpcs'] = $vpcs;
-		foreach ($vpcs as $depth1 => $depth1Value) {
-			if(isset($depth1Value['RegionId'])){
-				$this->options['query']['Vpcs.' . ($depth1 + 1) . '.RegionId'] = $depth1Value['RegionId'];
-			}
-			if(isset($depth1Value['VpcId'])){
-				$this->options['query']['Vpcs.' . ($depth1 + 1) . '.VpcId'] = $depth1Value['VpcId'];
-			}
-		}
+    public function withVpcs(array $vpcs)
+    {
+        $this->data['Vpcs'] = $vpcs;
+        foreach ($vpcs as $depth1 => $depth1Value) {
+            if (isset($depth1Value['RegionId'])) {
+                $this->options['query']['Vpcs.' . ($depth1 + 1) . '.RegionId'] = $depth1Value['RegionId'];
+            }
+            if (isset($depth1Value['VpcId'])) {
+                $this->options['query']['Vpcs.' . ($depth1 + 1) . '.VpcId'] = $depth1Value['VpcId'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 

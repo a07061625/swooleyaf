@@ -41,7 +41,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class DetectEdge extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -61,7 +60,6 @@ class DetectEdge extends Rpc
  */
 class DetectMultiObject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -81,7 +79,6 @@ class DetectMultiObject extends Rpc
  */
 class DetectTransparent extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -101,7 +98,6 @@ class DetectTransparent extends Rpc
  */
 class DetectWhitebg extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -121,7 +117,6 @@ class DetectWhitebg extends Rpc
  */
 class IdentifyAnimal extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -141,7 +136,6 @@ class IdentifyAnimal extends Rpc
  */
 class IdentifyPlant extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -161,7 +155,6 @@ class IdentifyPlant extends Rpc
  */
 class RecognizeProdcategory extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -181,7 +174,6 @@ class RecognizeProdcategory extends Rpc
  */
 class RecognizeProdmlabel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -201,7 +193,6 @@ class RecognizeProdmlabel extends Rpc
  */
 class RecognizeVehicle extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -221,7 +212,6 @@ class RecognizeVehicle extends Rpc
  */
 class SegmentBody extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -241,7 +231,6 @@ class SegmentBody extends Rpc
  */
 class SegmentProdcategory extends Rpc
 {
-
     /**
      * @param string $value
      *

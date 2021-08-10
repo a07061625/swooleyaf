@@ -41,7 +41,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class CreateProject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -117,7 +116,6 @@ class DescribeProject extends Rpc
  */
 class GetPredictResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -153,7 +151,6 @@ class ListProjects extends Rpc
  */
 class ModifiyProject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -201,7 +198,6 @@ class ModifiyProject extends Rpc
  */
 class UploadDictionary extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -249,7 +245,6 @@ class UploadDictionary extends Rpc
  */
 class UploadDocument extends Rpc
 {
-
     /**
      * @param string $value
      *

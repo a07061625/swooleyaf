@@ -88,10 +88,7 @@ class GetAliyunPkByAliyunId extends Rpc
  */
 class BatchGetAliyunIdByAliyunPk extends Rpc
 {
-
     /**
-     * @param array $pkList
-     *
      * @return $this
      */
     public function withPkList(array $pkList)

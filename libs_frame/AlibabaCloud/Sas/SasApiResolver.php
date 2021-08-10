@@ -226,20 +226,17 @@ class AddVpcHoneyPot extends Rpc
  */
 class CheckQuaraFileId extends Rpc
 {
-
     /**
-     * @param array $quaraFileIds
-     *
      * @return $this
      */
-	public function withQuaraFileIds(array $quaraFileIds)
-	{
-	    $this->data['QuaraFileIds'] = $quaraFileIds;
-		foreach ($quaraFileIds as $i => $iValue) {
-			$this->options['query']['QuaraFileIds.' . ($i + 1)] = $iValue;
-		}
+    public function withQuaraFileIds(array $quaraFileIds)
+    {
+        $this->data['QuaraFileIds'] = $quaraFileIds;
+        foreach ($quaraFileIds as $i => $iValue) {
+            $this->options['query']['QuaraFileIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -252,20 +249,17 @@ class CheckQuaraFileId extends Rpc
  */
 class CheckSecurityEventId extends Rpc
 {
-
     /**
-     * @param array $securityEventIds
-     *
      * @return $this
      */
-	public function withSecurityEventIds(array $securityEventIds)
-	{
-	    $this->data['SecurityEventIds'] = $securityEventIds;
-		foreach ($securityEventIds as $i => $iValue) {
-			$this->options['query']['SecurityEventIds.' . ($i + 1)] = $iValue;
-		}
+    public function withSecurityEventIds(array $securityEventIds)
+    {
+        $this->data['SecurityEventIds'] = $securityEventIds;
+        foreach ($securityEventIds as $i => $iValue) {
+            $this->options['query']['SecurityEventIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -290,20 +284,17 @@ class CheckSecurityEventId extends Rpc
  */
 class CreateAntiBruteForceRule extends Rpc
 {
-
     /**
-     * @param array $uuidList
-     *
      * @return $this
      */
-	public function withUuidList(array $uuidList)
-	{
-	    $this->data['UuidList'] = $uuidList;
-		foreach ($uuidList as $i => $iValue) {
-			$this->options['query']['UuidList.' . ($i + 1)] = $iValue;
-		}
+    public function withUuidList(array $uuidList)
+    {
+        $this->data['UuidList'] = $uuidList;
+        foreach ($uuidList as $i => $iValue) {
+            $this->options['query']['UuidList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -324,20 +315,17 @@ class CreateAntiBruteForceRule extends Rpc
  */
 class CreateBackupPolicy extends Rpc
 {
-
     /**
-     * @param array $uuidList
-     *
      * @return $this
      */
-	public function withUuidList(array $uuidList)
-	{
-	    $this->data['UuidList'] = $uuidList;
-		foreach ($uuidList as $i => $iValue) {
-			$this->options['query']['UuidList.' . ($i + 1)] = $iValue;
-		}
+    public function withUuidList(array $uuidList)
+    {
+        $this->data['UuidList'] = $uuidList;
+        foreach ($uuidList as $i => $iValue) {
+            $this->options['query']['UuidList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -468,20 +456,17 @@ class DeleteBackupPolicy extends Rpc
  */
 class DeleteBackupPolicyMachine extends Rpc
 {
-
     /**
-     * @param array $uuidList
-     *
      * @return $this
      */
-	public function withUuidList(array $uuidList)
-	{
-	    $this->data['UuidList'] = $uuidList;
-		foreach ($uuidList as $i => $iValue) {
-			$this->options['query']['UuidList.' . ($i + 1)] = $iValue;
-		}
+    public function withUuidList(array $uuidList)
+    {
+        $this->data['UuidList'] = $uuidList;
+        foreach ($uuidList as $i => $iValue) {
+            $this->options['query']['UuidList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -580,20 +565,17 @@ class DescribeAccesskeyLeakList extends Rpc
  */
 class DescribeAffectedMaliciousFileImages extends Rpc
 {
-
     /**
-     * @param array $uuids
-     *
      * @return $this
      */
-	public function withUuids(array $uuids)
-	{
-	    $this->data['Uuids'] = $uuids;
-		foreach ($uuids as $i => $iValue) {
-			$this->options['query']['Uuids.' . ($i + 1)] = $iValue;
-		}
+    public function withUuids(array $uuids)
+    {
+        $this->data['Uuids'] = $uuids;
+        foreach ($uuids as $i => $iValue) {
+            $this->options['query']['Uuids.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -646,20 +628,17 @@ class DescribeAlarmEventDetail extends Rpc
  */
 class DescribeAlarmEventList extends Rpc
 {
-
     /**
-     * @param array $operateErrorCodeList
-     *
      * @return $this
      */
-	public function withOperateErrorCodeList(array $operateErrorCodeList)
-	{
-	    $this->data['OperateErrorCodeList'] = $operateErrorCodeList;
-		foreach ($operateErrorCodeList as $i => $iValue) {
-			$this->options['query']['OperateErrorCodeList.' . ($i + 1)] = $iValue;
-		}
+    public function withOperateErrorCodeList(array $operateErrorCodeList)
+    {
+        $this->data['OperateErrorCodeList'] = $operateErrorCodeList;
+        foreach ($operateErrorCodeList as $i => $iValue) {
+            $this->options['query']['OperateErrorCodeList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1314,20 +1293,17 @@ class DescribeGroupedInstances extends Rpc
  */
 class DescribeGroupedMaliciousFiles extends Rpc
 {
-
     /**
-     * @param array $uuids
-     *
      * @return $this
      */
-	public function withUuids(array $uuids)
-	{
-	    $this->data['Uuids'] = $uuids;
-		foreach ($uuids as $i => $iValue) {
-			$this->options['query']['Uuids.' . ($i + 1)] = $iValue;
-		}
+    public function withUuids(array $uuids)
+    {
+        $this->data['Uuids'] = $uuids;
+        foreach ($uuids as $i => $iValue) {
+            $this->options['query']['Uuids.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1570,20 +1546,17 @@ class DescribeInstallCaptcha extends Rpc
  */
 class DescribeInstanceAntiBruteForceRules extends Rpc
 {
-
     /**
-     * @param array $uuidList
-     *
      * @return $this
      */
-	public function withUuidList(array $uuidList)
-	{
-	    $this->data['UuidList'] = $uuidList;
-		foreach ($uuidList as $i => $iValue) {
-			$this->options['query']['UuidList.' . ($i + 1)] = $iValue;
-		}
+    public function withUuidList(array $uuidList)
+    {
+        $this->data['UuidList'] = $uuidList;
+        foreach ($uuidList as $i => $iValue) {
+            $this->options['query']['UuidList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1942,20 +1915,17 @@ class DescribeRiskCheckItemResult extends Rpc
  */
 class DescribeRiskCheckResult extends Rpc
 {
-
     /**
-     * @param array $itemIds
-     *
      * @return $this
      */
-	public function withItemIds(array $itemIds)
-	{
-	    $this->data['ItemIds'] = $itemIds;
-		foreach ($itemIds as $i => $iValue) {
-			$this->options['query']['ItemIds.' . ($i + 1)] = $iValue;
-		}
+    public function withItemIds(array $itemIds)
+    {
+        $this->data['ItemIds'] = $itemIds;
+        foreach ($itemIds as $i => $iValue) {
+            $this->options['query']['ItemIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2000,20 +1970,17 @@ class DescribeRiskItemType extends Rpc
  */
 class DescribeRiskListCheckResult extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2094,20 +2061,17 @@ class DescribeSecurityEventOperations extends Rpc
  */
 class DescribeSecurityEventOperationStatus extends Rpc
 {
-
     /**
-     * @param array $securityEventIds
-     *
      * @return $this
      */
-	public function withSecurityEventIds(array $securityEventIds)
-	{
-	    $this->data['SecurityEventIds'] = $securityEventIds;
-		foreach ($securityEventIds as $i => $iValue) {
-			$this->options['query']['SecurityEventIds.' . ($i + 1)] = $iValue;
-		}
+    public function withSecurityEventIds(array $securityEventIds)
+    {
+        $this->data['SecurityEventIds'] = $securityEventIds;
+        foreach ($securityEventIds as $i => $iValue) {
+            $this->options['query']['SecurityEventIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2298,20 +2262,17 @@ class DescribeSuspEventQuaraFiles extends Rpc
  */
 class DescribeSuspEvents extends Rpc
 {
-
     /**
-     * @param array $operateErrorCodeList
-     *
      * @return $this
      */
-	public function withOperateErrorCodeList(array $operateErrorCodeList)
-	{
-	    $this->data['OperateErrorCodeList'] = $operateErrorCodeList;
-		foreach ($operateErrorCodeList as $i => $iValue) {
-			$this->options['query']['OperateErrorCodeList.' . ($i + 1)] = $iValue;
-		}
+    public function withOperateErrorCodeList(array $operateErrorCodeList)
+    {
+        $this->data['OperateErrorCodeList'] = $operateErrorCodeList;
+        foreach ($operateErrorCodeList as $i => $iValue) {
+            $this->options['query']['OperateErrorCodeList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2388,20 +2349,17 @@ class DescribeUserLayoutAuthorization extends Rpc
  */
 class DescribeUuidsByVulNames extends Rpc
 {
-
     /**
-     * @param array $vulNames
-     *
      * @return $this
      */
-	public function withVulNames(array $vulNames)
-	{
-	    $this->data['VulNames'] = $vulNames;
-		foreach ($vulNames as $i => $iValue) {
-			$this->options['query']['VulNames.' . ($i + 1)] = $iValue;
-		}
+    public function withVulNames(array $vulNames)
+    {
+        $this->data['VulNames'] = $vulNames;
+        foreach ($vulNames as $i => $iValue) {
+            $this->options['query']['VulNames.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2706,20 +2664,17 @@ class GetVulStatistics extends Rpc
  */
 class HandleSecurityEvents extends Rpc
 {
-
     /**
-     * @param array $securityEventIds
-     *
      * @return $this
      */
-	public function withSecurityEventIds(array $securityEventIds)
-	{
-	    $this->data['SecurityEventIds'] = $securityEventIds;
-		foreach ($securityEventIds as $i => $iValue) {
-			$this->options['query']['SecurityEventIds.' . ($i + 1)] = $iValue;
-		}
+    public function withSecurityEventIds(array $securityEventIds)
+    {
+        $this->data['SecurityEventIds'] = $securityEventIds;
+        foreach ($securityEventIds as $i => $iValue) {
+            $this->options['query']['SecurityEventIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2772,20 +2727,17 @@ class IgnoreHcCheckWarnings extends Rpc
  */
 class InstallBackupClient extends Rpc
 {
-
     /**
-     * @param array $uuidList
-     *
      * @return $this
      */
-	public function withUuidList(array $uuidList)
-	{
-	    $this->data['UuidList'] = $uuidList;
-		foreach ($uuidList as $i => $iValue) {
-			$this->options['query']['UuidList.' . ($i + 1)] = $iValue;
-		}
+    public function withUuidList(array $uuidList)
+    {
+        $this->data['UuidList'] = $uuidList;
+        foreach ($uuidList as $i => $iValue) {
+            $this->options['query']['UuidList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2812,20 +2764,17 @@ class InstallBackupClient extends Rpc
  */
 class ModifyAntiBruteForceRule extends Rpc
 {
-
     /**
-     * @param array $uuidList
-     *
      * @return $this
      */
-	public function withUuidList(array $uuidList)
-	{
-	    $this->data['UuidList'] = $uuidList;
-		foreach ($uuidList as $i => $iValue) {
-			$this->options['query']['UuidList.' . ($i + 1)] = $iValue;
-		}
+    public function withUuidList(array $uuidList)
+    {
+        $this->data['UuidList'] = $uuidList;
+        foreach ($uuidList as $i => $iValue) {
+            $this->options['query']['UuidList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2858,20 +2807,17 @@ class ModifyAssetGroup extends Rpc
  */
 class ModifyBackupPolicy extends Rpc
 {
-
     /**
-     * @param array $uuidList
-     *
      * @return $this
      */
-	public function withUuidList(array $uuidList)
-	{
-	    $this->data['UuidList'] = $uuidList;
-		foreach ($uuidList as $i => $iValue) {
-			$this->options['query']['UuidList.' . ($i + 1)] = $iValue;
-		}
+    public function withUuidList(array $uuidList)
+    {
+        $this->data['UuidList'] = $uuidList;
+        foreach ($uuidList as $i => $iValue) {
+            $this->options['query']['UuidList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3052,20 +2998,17 @@ class ModifyRiskCheckStatus extends Rpc
  */
 class ModifyRiskSingleResultStatus extends Rpc
 {
-
     /**
-     * @param array $ids
-     *
      * @return $this
      */
-	public function withIds(array $ids)
-	{
-	    $this->data['Ids'] = $ids;
-		foreach ($ids as $i => $iValue) {
-			$this->options['query']['Ids.' . ($i + 1)] = $iValue;
-		}
+    public function withIds(array $ids)
+    {
+        $this->data['Ids'] = $ids;
+        foreach ($ids as $i => $iValue) {
+            $this->options['query']['Ids.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3299,35 +3242,30 @@ class OperateSuspiciousTargetConfig extends Rpc
  */
 class OperateVuls extends Rpc
 {
-
     /**
-     * @param array $vulNames
-     *
      * @return $this
      */
-	public function withVulNames(array $vulNames)
-	{
-	    $this->data['VulNames'] = $vulNames;
-		foreach ($vulNames as $i => $iValue) {
-			$this->options['query']['VulNames.' . ($i + 1)] = $iValue;
-		}
+    public function withVulNames(array $vulNames)
+    {
+        $this->data['VulNames'] = $vulNames;
+        foreach ($vulNames as $i => $iValue) {
+            $this->options['query']['VulNames.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $uuids
-     *
      * @return $this
      */
-	public function withUuids(array $uuids)
-	{
-	    $this->data['Uuids'] = $uuids;
-		foreach ($uuids as $i => $iValue) {
-			$this->options['query']['Uuids.' . ($i + 1)] = $iValue;
-		}
+    public function withUuids(array $uuids)
+    {
+        $this->data['Uuids'] = $uuids;
+        foreach ($uuids as $i => $iValue) {
+            $this->options['query']['Uuids.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3407,35 +3345,30 @@ class SasInstallCode extends Rpc
  */
 class StartBaselineSecurityCheck extends Rpc
 {
-
     /**
-     * @param array $itemIds
-     *
      * @return $this
      */
-	public function withItemIds(array $itemIds)
-	{
-	    $this->data['ItemIds'] = $itemIds;
-		foreach ($itemIds as $i => $iValue) {
-			$this->options['query']['ItemIds.' . ($i + 1)] = $iValue;
-		}
+    public function withItemIds(array $itemIds)
+    {
+        $this->data['ItemIds'] = $itemIds;
+        foreach ($itemIds as $i => $iValue) {
+            $this->options['query']['ItemIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $assets
-     *
      * @return $this
      */
-	public function withAssets(array $assets)
-	{
-	    $this->data['Assets'] = $assets;
-		foreach ($assets as $i => $iValue) {
-			$this->options['query']['Assets.' . ($i + 1)] = $iValue;
-		}
+    public function withAssets(array $assets)
+    {
+        $this->data['Assets'] = $assets;
+        foreach ($assets as $i => $iValue) {
+            $this->options['query']['Assets.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3464,20 +3397,17 @@ class StartBaselineSecurityCheck extends Rpc
  */
 class StartImageVulScan extends Rpc
 {
-
     /**
-     * @param array $registryTypes
-     *
      * @return $this
      */
-	public function withRegistryTypes(array $registryTypes)
-	{
-	    $this->data['RegistryTypes'] = $registryTypes;
-		foreach ($registryTypes as $i => $iValue) {
-			$this->options['query']['RegistryTypes.' . ($i + 1)] = $iValue;
-		}
+    public function withRegistryTypes(array $registryTypes)
+    {
+        $this->data['RegistryTypes'] = $registryTypes;
+        foreach ($registryTypes as $i => $iValue) {
+            $this->options['query']['RegistryTypes.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3514,20 +3444,17 @@ class UnbindAegis extends Rpc
  */
 class UninstallBackupClient extends Rpc
 {
-
     /**
-     * @param array $uuidList
-     *
      * @return $this
      */
-	public function withUuidList(array $uuidList)
-	{
-	    $this->data['UuidList'] = $uuidList;
-		foreach ($uuidList as $i => $iValue) {
-			$this->options['query']['UuidList.' . ($i + 1)] = $iValue;
-		}
+    public function withUuidList(array $uuidList)
+    {
+        $this->data['UuidList'] = $uuidList;
+        foreach ($uuidList as $i => $iValue) {
+            $this->options['query']['UuidList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 

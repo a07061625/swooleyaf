@@ -43,7 +43,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class ClassifyingRubbish extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -63,7 +62,6 @@ class ClassifyingRubbish extends Rpc
  */
 class DetectFruits extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -83,7 +81,6 @@ class DetectFruits extends Rpc
  */
 class DetectImageElements extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -104,7 +101,6 @@ class DetectImageElements extends Rpc
  */
 class EvaluateCertificateQuality extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -140,7 +136,6 @@ class EvaluateCertificateQuality extends Rpc
  */
 class GetAsyncJobResult extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -150,7 +145,6 @@ class GetAsyncJobResult extends Rpc
  */
 class RecognizeFood extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -171,7 +165,6 @@ class RecognizeFood extends Rpc
  */
 class RecognizeImageColor extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -204,7 +197,6 @@ class RecognizeImageColor extends Rpc
  */
 class RecognizeImageStyle extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -224,22 +216,19 @@ class RecognizeImageStyle extends Rpc
  */
 class RecognizeLogo extends Rpc
 {
-
     /**
-     * @param array $tasks
-     *
      * @return $this
      */
-	public function withTasks(array $tasks)
-	{
-	    $this->data['Tasks'] = $tasks;
-		foreach ($tasks as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ImageURL'])){
-				$this->options['form_params']['Tasks.' . ($depth1 + 1) . '.ImageURL'] = $depth1Value['ImageURL'];
-			}
-		}
+    public function withTasks(array $tasks)
+    {
+        $this->data['Tasks'] = $tasks;
+        foreach ($tasks as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ImageURL'])) {
+                $this->options['form_params']['Tasks.' . ($depth1 + 1) . '.ImageURL'] = $depth1Value['ImageURL'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -249,7 +238,6 @@ class RecognizeLogo extends Rpc
  */
 class RecognizeScene extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -282,7 +270,6 @@ class RecognizeScene extends Rpc
  */
 class RecognizeVehicleType extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -304,7 +291,6 @@ class RecognizeVehicleType extends Rpc
  */
 class TaggingAdImage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -353,7 +339,6 @@ class TaggingAdImage extends Rpc
  */
 class TaggingImage extends Rpc
 {
-
     /**
      * @param string $value
      *

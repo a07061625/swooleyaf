@@ -81,7 +81,6 @@ class BindImagePackage extends Rpc
  */
 class CreateCommodity extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -168,7 +167,6 @@ class DeleteCommodity extends Rpc
  */
 class DescribeCommodities extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -179,7 +177,6 @@ class DescribeCommodities extends Rpc
  */
 class DescribeCommodity extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -265,25 +262,22 @@ class DescribeProduct extends Rpc
  */
 class DescribeProducts extends Rpc
 {
-
     /**
-     * @param array $filter
-     *
      * @return $this
      */
-	public function withFilter(array $filter)
-	{
-	    $this->data['Filter'] = $filter;
-		foreach ($filter as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withFilter(array $filter)
+    {
+        $this->data['Filter'] = $filter;
+        foreach ($filter as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 

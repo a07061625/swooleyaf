@@ -51,7 +51,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class CreateDocTranslateTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -140,7 +139,6 @@ class CreateDocTranslateTask extends Rpc
  */
 class CreateImageTranslateTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -217,7 +215,6 @@ class CreateImageTranslateTask extends Rpc
  */
 class GetBatchTranslate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -302,7 +299,6 @@ class GetBatchTranslate extends Rpc
  */
 class GetDetectLanguage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -323,7 +319,6 @@ class GetDetectLanguage extends Rpc
  */
 class GetDocTranslateTask extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -334,7 +329,6 @@ class GetDocTranslateTask extends Rpc
  */
 class GetImageDiagnose extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -370,7 +364,6 @@ class GetImageDiagnose extends Rpc
  */
 class GetImageTranslate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -429,7 +422,6 @@ class GetImageTranslate extends Rpc
  */
 class GetImageTranslateTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -453,7 +445,6 @@ class GetImageTranslateTask extends Rpc
  */
 class GetTitleDiagnose extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -531,7 +522,6 @@ class GetTitleDiagnose extends Rpc
  */
 class GetTitleGenerate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -633,7 +623,6 @@ class GetTitleGenerate extends Rpc
  */
 class GetTitleIntelligence extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -719,7 +708,6 @@ class OpenAlimtService extends Rpc
  */
 class Translate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -795,7 +783,6 @@ class Translate extends Rpc
  */
 class TranslateCertificate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -871,7 +858,6 @@ class TranslateCertificate extends Rpc
  */
 class TranslateECommerce extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -947,7 +933,6 @@ class TranslateECommerce extends Rpc
  */
 class TranslateGeneral extends Rpc
 {
-
     /**
      * @param string $value
      *

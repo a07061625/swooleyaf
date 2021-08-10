@@ -192,7 +192,6 @@ class DeleteInstance extends Rpc
  */
 class DescribeConversation extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -205,7 +204,6 @@ class DescribeConversation extends Rpc
  */
 class DescribeConversationContext extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -218,7 +216,6 @@ class DescribeConversationContext extends Rpc
  */
 class DescribeExportProgress extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -229,7 +226,6 @@ class DescribeExportProgress extends Rpc
  */
 class DescribeInstance extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -240,7 +236,6 @@ class DescribeInstance extends Rpc
  */
 class DescribeNavigationConfig extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -253,7 +248,6 @@ class DescribeNavigationConfig extends Rpc
  */
 class DescribeRecording extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -270,7 +264,6 @@ class DescribeRecording extends Rpc
  */
 class DescribeStatisticalData extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -281,7 +274,6 @@ class DescribeStatisticalData extends Rpc
  */
 class DescribeTTSConfig extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -370,7 +362,6 @@ class ExportStatisticalData extends Rpc
  */
 class ListChatbotInstances extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -383,7 +374,6 @@ class ListChatbotInstances extends Rpc
  */
 class ListConversationDetails extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -398,7 +388,6 @@ class ListConversationDetails extends Rpc
  */
 class ListConversations extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -411,7 +400,6 @@ class ListConversations extends Rpc
  */
 class ListInstances extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -516,7 +504,6 @@ class ModifyUnrecognizingConfig extends Rpc
  */
 class QueryConversations extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }

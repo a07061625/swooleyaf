@@ -120,20 +120,17 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AddClusterNode extends Rpc
 {
-
     /**
-     * @param array $ecsInstanceIdList
-     *
      * @return $this
      */
-	public function withEcsInstanceIdList(array $ecsInstanceIdList)
-	{
-	    $this->data['EcsInstanceIdList'] = $ecsInstanceIdList;
-		foreach ($ecsInstanceIdList as $i => $iValue) {
-			$this->options['query']['EcsInstanceIdList.' . ($i + 1)] = $iValue;
-		}
+    public function withEcsInstanceIdList(array $ecsInstanceIdList)
+    {
+        $this->data['EcsInstanceIdList'] = $ecsInstanceIdList;
+        foreach ($ecsInstanceIdList as $i => $iValue) {
+            $this->options['query']['EcsInstanceIdList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -203,7 +200,6 @@ class CloseDeployOrder extends Rpc
  */
 class CreateAccount extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -273,7 +269,6 @@ class CreateAccount extends Rpc
  */
 class CreateApp extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -353,18 +348,16 @@ class CreateApp extends Rpc
     }
 
     /**
-     * @param array $middleWareIdList
-     *
      * @return $this
      */
-	public function withMiddleWareIdList(array $middleWareIdList)
-	{
-	    $this->data['MiddleWareIdList'] = $middleWareIdList;
-		foreach ($middleWareIdList as $i => $iValue) {
-			$this->options['form_params']['MiddleWareIdList.' . ($i + 1)] = $iValue;
-		}
+    public function withMiddleWareIdList(array $middleWareIdList)
+    {
+        $this->data['MiddleWareIdList'] = $middleWareIdList;
+        foreach ($middleWareIdList as $i => $iValue) {
+            $this->options['form_params']['MiddleWareIdList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -394,26 +387,24 @@ class CreateApp extends Rpc
     }
 
     /**
-     * @param array $userRoles
-     *
      * @return $this
      */
-	public function withUserRoles(array $userRoles)
-	{
-	    $this->data['UserRoles'] = $userRoles;
-		foreach ($userRoles as $depth1 => $depth1Value) {
-			if(isset($depth1Value['RoleName'])){
-				$this->options['form_params']['UserRoles.' . ($depth1 + 1) . '.RoleName'] = $depth1Value['RoleName'];
-			}
-			if(isset($depth1Value['UserType'])){
-				$this->options['form_params']['UserRoles.' . ($depth1 + 1) . '.UserType'] = $depth1Value['UserType'];
-			}
-			if(isset($depth1Value['UserId'])){
-				$this->options['form_params']['UserRoles.' . ($depth1 + 1) . '.UserId'] = $depth1Value['UserId'];
-			}
-		}
+    public function withUserRoles(array $userRoles)
+    {
+        $this->data['UserRoles'] = $userRoles;
+        foreach ($userRoles as $depth1 => $depth1Value) {
+            if (isset($depth1Value['RoleName'])) {
+                $this->options['form_params']['UserRoles.' . ($depth1 + 1) . '.RoleName'] = $depth1Value['RoleName'];
+            }
+            if (isset($depth1Value['UserType'])) {
+                $this->options['form_params']['UserRoles.' . ($depth1 + 1) . '.UserType'] = $depth1Value['UserType'];
+            }
+            if (isset($depth1Value['UserId'])) {
+                $this->options['form_params']['UserRoles.' . ($depth1 + 1) . '.UserId'] = $depth1Value['UserId'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -449,7 +440,6 @@ class CreateApp extends Rpc
  */
 class CreateAppGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -490,20 +480,17 @@ class CreateAppGroup extends Rpc
  */
 class CreateAppMonitors extends Rpc
 {
-
     /**
-     * @param array $appIds
-     *
      * @return $this
      */
-	public function withAppIds(array $appIds)
-	{
-	    $this->data['AppIds'] = $appIds;
-		foreach ($appIds as $i => $iValue) {
-			$this->options['form_params']['AppIds.' . ($i + 1)] = $iValue;
-		}
+    public function withAppIds(array $appIds)
+    {
+        $this->data['AppIds'] = $appIds;
+        foreach ($appIds as $i => $iValue) {
+            $this->options['form_params']['AppIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -560,20 +547,17 @@ class CreateAppResourceAlloc extends Rpc
  */
 class CreateCluster extends Rpc
 {
-
     /**
-     * @param array $vswitchids
-     *
      * @return $this
      */
-	public function withVswitchids(array $vswitchids)
-	{
-	    $this->data['Vswitchids'] = $vswitchids;
-		foreach ($vswitchids as $i => $iValue) {
-			$this->options['query']['Vswitchids.' . ($i + 1)] = $iValue;
-		}
+    public function withVswitchids(array $vswitchids)
+    {
+        $this->data['Vswitchids'] = $vswitchids;
+        foreach ($vswitchids as $i => $iValue) {
+            $this->options['query']['Vswitchids.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -585,7 +569,6 @@ class CreateCluster extends Rpc
  */
 class CreateDb extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -661,35 +644,30 @@ class CreateDb extends Rpc
  */
 class CreateDeployConfig extends Rpc
 {
-
     /**
-     * @param array $configMapList
-     *
      * @return $this
      */
-	public function withConfigMapList(array $configMapList)
-	{
-	    $this->data['ConfigMapList'] = $configMapList;
-		foreach ($configMapList as $i => $iValue) {
-			$this->options['query']['ConfigMapList.' . ($i + 1)] = $iValue;
-		}
+    public function withConfigMapList(array $configMapList)
+    {
+        $this->data['ConfigMapList'] = $configMapList;
+        foreach ($configMapList as $i => $iValue) {
+            $this->options['query']['ConfigMapList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $secretList
-     *
      * @return $this
      */
-	public function withSecretList(array $secretList)
-	{
-	    $this->data['SecretList'] = $secretList;
-		foreach ($secretList as $i => $iValue) {
-			$this->options['query']['SecretList.' . ($i + 1)] = $iValue;
-		}
+    public function withSecretList(array $secretList)
+    {
+        $this->data['SecretList'] = $secretList;
+        foreach ($secretList as $i => $iValue) {
+            $this->options['query']['SecretList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -738,7 +716,6 @@ class CreateNodeLabel extends Rpc
  */
 class CreatePersistentVolume extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -890,34 +867,31 @@ class CreatePersistentVolumeClaim extends Rpc
  */
 class CreateService extends Rpc
 {
-
     /**
-     * @param array $portMappings
-     *
      * @return $this
      */
-	public function withPortMappings(array $portMappings)
-	{
-	    $this->data['PortMappings'] = $portMappings;
-		foreach ($portMappings as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Protocol'])){
-				$this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.Protocol'] = $depth1Value['Protocol'];
-			}
-			if(isset($depth1Value['Port'])){
-				$this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.Port'] = $depth1Value['Port'];
-			}
-			if(isset($depth1Value['Name'])){
-				$this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
-			}
-			if(isset($depth1Value['NodePort'])){
-				$this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.NodePort'] = $depth1Value['NodePort'];
-			}
-			if(isset($depth1Value['TargetPort'])){
-				$this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.TargetPort'] = $depth1Value['TargetPort'];
-			}
-		}
+    public function withPortMappings(array $portMappings)
+    {
+        $this->data['PortMappings'] = $portMappings;
+        foreach ($portMappings as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Protocol'])) {
+                $this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.Protocol'] = $depth1Value['Protocol'];
+            }
+            if (isset($depth1Value['Port'])) {
+                $this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.Port'] = $depth1Value['Port'];
+            }
+            if (isset($depth1Value['Name'])) {
+                $this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+            }
+            if (isset($depth1Value['NodePort'])) {
+                $this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.NodePort'] = $depth1Value['NodePort'];
+            }
+            if (isset($depth1Value['TargetPort'])) {
+                $this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.TargetPort'] = $depth1Value['TargetPort'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -955,7 +929,6 @@ class CreateSlbAP extends Rpc
  */
 class DeleteAppDetail extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1004,7 +977,6 @@ class DeleteCluster extends Rpc
  */
 class DeleteDatabase extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1060,7 +1032,6 @@ class DeleteNodeLabel extends Rpc
  */
 class DeletePersistentVolume extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1106,7 +1077,6 @@ class DeletePersistentVolumeClaim extends Rpc
  */
 class DeleteRdsAccount extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1176,35 +1146,30 @@ class DeleteSlbAP extends Rpc
  */
 class DeployApp extends Rpc
 {
-
     /**
-     * @param array $containerImageList
-     *
      * @return $this
      */
-	public function withContainerImageList(array $containerImageList)
-	{
-	    $this->data['ContainerImageList'] = $containerImageList;
-		foreach ($containerImageList as $i => $iValue) {
-			$this->options['query']['ContainerImageList.' . ($i + 1)] = $iValue;
-		}
+    public function withContainerImageList(array $containerImageList)
+    {
+        $this->data['ContainerImageList'] = $containerImageList;
+        foreach ($containerImageList as $i => $iValue) {
+            $this->options['query']['ContainerImageList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $initContainerImageList
-     *
      * @return $this
      */
-	public function withInitContainerImageList(array $initContainerImageList)
-	{
-	    $this->data['InitContainerImageList'] = $initContainerImageList;
-		foreach ($initContainerImageList as $i => $iValue) {
-			$this->options['query']['InitContainerImageList.' . ($i + 1)] = $iValue;
-		}
+    public function withInitContainerImageList(array $initContainerImageList)
+    {
+        $this->data['InitContainerImageList'] = $initContainerImageList;
+        foreach ($initContainerImageList as $i => $iValue) {
+            $this->options['query']['InitContainerImageList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1224,7 +1189,6 @@ class DescribeAppDetail extends Rpc
  */
 class DescribeAppEnvironmentDetail extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1257,7 +1221,6 @@ class DescribeAppMonitorMetric extends Rpc
  */
 class DescribeAppResourceAlloc extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1276,7 +1239,6 @@ class DescribeClusterDetail extends Rpc
  */
 class DescribeDatabases extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1323,7 +1285,6 @@ class DescribeEventMonitorList extends Rpc
  */
 class DescribeJobLog extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1358,7 +1319,6 @@ class DescribePodEvents extends Rpc
  */
 class DescribePodLog extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1394,7 +1354,6 @@ class DescribePodLog extends Rpc
  */
 class DescribeRdsAccounts extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1422,7 +1381,6 @@ class DescribeSlbAPDetail extends Rpc
  */
 class GetInstTransInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1472,7 +1430,6 @@ class GetInstTransInfo extends Rpc
  */
 class GetRdsBackUp extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1547,7 +1504,6 @@ class GetRdsBackUp extends Rpc
  */
 class GrantDbToAccount extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1609,7 +1565,6 @@ class GrantDbToAccount extends Rpc
  */
 class ListApp extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1626,7 +1581,6 @@ class ListApp extends Rpc
  */
 class ListAppCmsGroups extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1645,7 +1599,6 @@ class ListAppCmsGroups extends Rpc
  */
 class ListAppEnvironment extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1684,7 +1637,6 @@ class ListAppGroupMapping extends Rpc
  */
 class ListAppInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1752,7 +1704,6 @@ class ListAppInstance extends Rpc
  */
 class ListAppResourceAllocs extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1767,7 +1718,6 @@ class ListAppResourceAllocs extends Rpc
  */
 class ListAvailableClusterNode extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1784,7 +1734,6 @@ class ListAvailableClusterNode extends Rpc
  */
 class ListCluster extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1799,7 +1748,6 @@ class ListCluster extends Rpc
  */
 class ListClusterNode extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1860,35 +1808,30 @@ class ListDeployConfig extends Rpc
  */
 class ListDeployOrders extends Rpc
 {
-
     /**
-     * @param array $statusList
-     *
      * @return $this
      */
-	public function withStatusList(array $statusList)
-	{
-	    $this->data['StatusList'] = $statusList;
-		foreach ($statusList as $i => $iValue) {
-			$this->options['form_params']['StatusList.' . ($i + 1)] = $iValue;
-		}
+    public function withStatusList(array $statusList)
+    {
+        $this->data['StatusList'] = $statusList;
+        foreach ($statusList as $i => $iValue) {
+            $this->options['form_params']['StatusList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resultList
-     *
      * @return $this
      */
-	public function withResultList(array $resultList)
-	{
-	    $this->data['ResultList'] = $resultList;
-		foreach ($resultList as $i => $iValue) {
-			$this->options['form_params']['ResultList.' . ($i + 1)] = $iValue;
-		}
+    public function withResultList(array $resultList)
+    {
+        $this->data['ResultList'] = $resultList;
+        foreach ($resultList as $i => $iValue) {
+            $this->options['form_params']['ResultList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1906,7 +1849,6 @@ class ListDeployOrders extends Rpc
  */
 class ListJobHistories extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1927,7 +1869,6 @@ class ListJobHistories extends Rpc
  */
 class ListNodeLabelBindings extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1953,7 +1894,6 @@ class ListNodeLabels extends Rpc
  */
 class ListPersistentVolume extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2020,35 +1960,30 @@ class ListPersistentVolumeClaim extends Rpc
  */
 class ListPods extends Rpc
 {
-
     /**
-     * @param array $statusList
-     *
      * @return $this
      */
-	public function withStatusList(array $statusList)
-	{
-	    $this->data['StatusList'] = $statusList;
-		foreach ($statusList as $i => $iValue) {
-			$this->options['form_params']['StatusList.' . ($i + 1)] = $iValue;
-		}
+    public function withStatusList(array $statusList)
+    {
+        $this->data['StatusList'] = $statusList;
+        foreach ($statusList as $i => $iValue) {
+            $this->options['form_params']['StatusList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resultList
-     *
      * @return $this
      */
-	public function withResultList(array $resultList)
-	{
-	    $this->data['ResultList'] = $resultList;
-		foreach ($resultList as $i => $iValue) {
-			$this->options['form_params']['ResultList.' . ($i + 1)] = $iValue;
-		}
+    public function withResultList(array $resultList)
+    {
+        $this->data['ResultList'] = $resultList;
+        foreach ($resultList as $i => $iValue) {
+            $this->options['form_params']['ResultList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2089,20 +2024,17 @@ class ListServices extends Rpc
  */
 class ListSlbAPs extends Rpc
 {
-
     /**
-     * @param array $protocolList
-     *
      * @return $this
      */
-	public function withProtocolList(array $protocolList)
-	{
-	    $this->data['ProtocolList'] = $protocolList;
-		foreach ($protocolList as $i => $iValue) {
-			$this->options['form_params']['ProtocolList.' . ($i + 1)] = $iValue;
-		}
+    public function withProtocolList(array $protocolList)
+    {
+        $this->data['ProtocolList'] = $protocolList;
+        foreach ($protocolList as $i => $iValue) {
+            $this->options['form_params']['ProtocolList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2114,7 +2046,6 @@ class ListSlbAPs extends Rpc
  */
 class ListUsers extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2128,34 +2059,31 @@ class ListUsers extends Rpc
  */
 class ModifyService extends Rpc
 {
-
     /**
-     * @param array $portMappings
-     *
      * @return $this
      */
-	public function withPortMappings(array $portMappings)
-	{
-	    $this->data['PortMappings'] = $portMappings;
-		foreach ($portMappings as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Protocol'])){
-				$this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.Protocol'] = $depth1Value['Protocol'];
-			}
-			if(isset($depth1Value['Port'])){
-				$this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.Port'] = $depth1Value['Port'];
-			}
-			if(isset($depth1Value['Name'])){
-				$this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
-			}
-			if(isset($depth1Value['NodePort'])){
-				$this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.NodePort'] = $depth1Value['NodePort'];
-			}
-			if(isset($depth1Value['TargetPort'])){
-				$this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.TargetPort'] = $depth1Value['TargetPort'];
-			}
-		}
+    public function withPortMappings(array $portMappings)
+    {
+        $this->data['PortMappings'] = $portMappings;
+        foreach ($portMappings as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Protocol'])) {
+                $this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.Protocol'] = $depth1Value['Protocol'];
+            }
+            if (isset($depth1Value['Port'])) {
+                $this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.Port'] = $depth1Value['Port'];
+            }
+            if (isset($depth1Value['Name'])) {
+                $this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+            }
+            if (isset($depth1Value['NodePort'])) {
+                $this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.NodePort'] = $depth1Value['NodePort'];
+            }
+            if (isset($depth1Value['TargetPort'])) {
+                $this->options['form_params']['PortMappings.' . ($depth1 + 1) . '.TargetPort'] = $depth1Value['TargetPort'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2185,7 +2113,6 @@ class ModifySlbAP extends Rpc
  */
 class QueryClusterDetail extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2209,20 +2136,17 @@ class RebuildAppInstance extends Rpc
  */
 class RemoveClusterNode extends Rpc
 {
-
     /**
-     * @param array $ecsInstanceIdList
-     *
      * @return $this
      */
-	public function withEcsInstanceIdList(array $ecsInstanceIdList)
-	{
-	    $this->data['EcsInstanceIdList'] = $ecsInstanceIdList;
-		foreach ($ecsInstanceIdList as $i => $iValue) {
-			$this->options['query']['EcsInstanceIdList.' . ($i + 1)] = $iValue;
-		}
+    public function withEcsInstanceIdList(array $ecsInstanceIdList)
+    {
+        $this->data['EcsInstanceIdList'] = $ecsInstanceIdList;
+        foreach ($ecsInstanceIdList as $i => $iValue) {
+            $this->options['query']['EcsInstanceIdList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2233,7 +2157,6 @@ class RemoveClusterNode extends Rpc
  */
 class ResetAccountPassword extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2279,7 +2202,6 @@ class ResetAccountPassword extends Rpc
  */
 class ResourceStatusNotify extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2333,43 +2255,40 @@ class SetDeployPauseType extends Rpc
  */
 class SubmitInfo extends Rpc
 {
-
     /**
-     * @param array $ecsDescList
-     *
      * @return $this
      */
-	public function withEcsDescList(array $ecsDescList)
-	{
-	    $this->data['EcsDescList'] = $ecsDescList;
-		foreach ($ecsDescList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ResourceId'])){
-				$this->options['form_params']['EcsDescList.' . ($depth1 + 1) . '.ResourceId'] = $depth1Value['ResourceId'];
-			}
-			if(isset($depth1Value['BussinessDesc'])){
-				$this->options['form_params']['EcsDescList.' . ($depth1 + 1) . '.BussinessDesc'] = $depth1Value['BussinessDesc'];
-			}
-			if(isset($depth1Value['MiddleWareDesc'])){
-				$this->options['form_params']['EcsDescList.' . ($depth1 + 1) . '.MiddleWareDesc'] = $depth1Value['MiddleWareDesc'];
-			}
-			if(isset($depth1Value['OtherMiddleWareDesc'])){
-				$this->options['form_params']['EcsDescList.' . ($depth1 + 1) . '.OtherMiddleWareDesc'] = $depth1Value['OtherMiddleWareDesc'];
-			}
-			if(isset($depth1Value['BussinessType'])){
-				$this->options['form_params']['EcsDescList.' . ($depth1 + 1) . '.BussinessType'] = $depth1Value['BussinessType'];
-			}
-			if(isset($depth1Value['AppType'])){
-				$this->options['form_params']['EcsDescList.' . ($depth1 + 1) . '.AppType'] = $depth1Value['AppType'];
-			}
-			if(isset($depth1Value['EnvType'])){
-				$this->options['form_params']['EcsDescList.' . ($depth1 + 1) . '.EnvType'] = $depth1Value['EnvType'];
-			}
-			if(isset($depth1Value['UserId'])){
-				$this->options['form_params']['EcsDescList.' . ($depth1 + 1) . '.UserId'] = $depth1Value['UserId'];
-			}
-		}
+    public function withEcsDescList(array $ecsDescList)
+    {
+        $this->data['EcsDescList'] = $ecsDescList;
+        foreach ($ecsDescList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ResourceId'])) {
+                $this->options['form_params']['EcsDescList.' . ($depth1 + 1) . '.ResourceId'] = $depth1Value['ResourceId'];
+            }
+            if (isset($depth1Value['BussinessDesc'])) {
+                $this->options['form_params']['EcsDescList.' . ($depth1 + 1) . '.BussinessDesc'] = $depth1Value['BussinessDesc'];
+            }
+            if (isset($depth1Value['MiddleWareDesc'])) {
+                $this->options['form_params']['EcsDescList.' . ($depth1 + 1) . '.MiddleWareDesc'] = $depth1Value['MiddleWareDesc'];
+            }
+            if (isset($depth1Value['OtherMiddleWareDesc'])) {
+                $this->options['form_params']['EcsDescList.' . ($depth1 + 1) . '.OtherMiddleWareDesc'] = $depth1Value['OtherMiddleWareDesc'];
+            }
+            if (isset($depth1Value['BussinessType'])) {
+                $this->options['form_params']['EcsDescList.' . ($depth1 + 1) . '.BussinessType'] = $depth1Value['BussinessType'];
+            }
+            if (isset($depth1Value['AppType'])) {
+                $this->options['form_params']['EcsDescList.' . ($depth1 + 1) . '.AppType'] = $depth1Value['AppType'];
+            }
+            if (isset($depth1Value['EnvType'])) {
+                $this->options['form_params']['EcsDescList.' . ($depth1 + 1) . '.EnvType'] = $depth1Value['EnvType'];
+            }
+            if (isset($depth1Value['UserId'])) {
+                $this->options['form_params']['EcsDescList.' . ($depth1 + 1) . '.UserId'] = $depth1Value['UserId'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2429,7 +2348,6 @@ class UnbindNodeLabel extends Rpc
  */
 class UpdateApp extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2457,26 +2375,24 @@ class UpdateApp extends Rpc
     }
 
     /**
-     * @param array $userRoles
-     *
      * @return $this
      */
-	public function withUserRoles(array $userRoles)
-	{
-	    $this->data['UserRoles'] = $userRoles;
-		foreach ($userRoles as $depth1 => $depth1Value) {
-			if(isset($depth1Value['RoleName'])){
-				$this->options['form_params']['UserRoles.' . ($depth1 + 1) . '.RoleName'] = $depth1Value['RoleName'];
-			}
-			if(isset($depth1Value['UserType'])){
-				$this->options['form_params']['UserRoles.' . ($depth1 + 1) . '.UserType'] = $depth1Value['UserType'];
-			}
-			if(isset($depth1Value['UserId'])){
-				$this->options['form_params']['UserRoles.' . ($depth1 + 1) . '.UserId'] = $depth1Value['UserId'];
-			}
-		}
+    public function withUserRoles(array $userRoles)
+    {
+        $this->data['UserRoles'] = $userRoles;
+        foreach ($userRoles as $depth1 => $depth1Value) {
+            if (isset($depth1Value['RoleName'])) {
+                $this->options['form_params']['UserRoles.' . ($depth1 + 1) . '.RoleName'] = $depth1Value['RoleName'];
+            }
+            if (isset($depth1Value['UserType'])) {
+                $this->options['form_params']['UserRoles.' . ($depth1 + 1) . '.UserType'] = $depth1Value['UserType'];
+            }
+            if (isset($depth1Value['UserId'])) {
+                $this->options['form_params']['UserRoles.' . ($depth1 + 1) . '.UserId'] = $depth1Value['UserId'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -2532,18 +2448,16 @@ class UpdateApp extends Rpc
     }
 
     /**
-     * @param array $middleWareIdList
-     *
      * @return $this
      */
-	public function withMiddleWareIdList(array $middleWareIdList)
-	{
-	    $this->data['MiddleWareIdList'] = $middleWareIdList;
-		foreach ($middleWareIdList as $i => $iValue) {
-			$this->options['form_params']['MiddleWareIdList.' . ($i + 1)] = $iValue;
-		}
+    public function withMiddleWareIdList(array $middleWareIdList)
+    {
+        $this->data['MiddleWareIdList'] = $middleWareIdList;
+        foreach ($middleWareIdList as $i => $iValue) {
+            $this->options['form_params']['MiddleWareIdList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2555,7 +2469,6 @@ class UpdateApp extends Rpc
  */
 class UpdateAppMonitors extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2583,18 +2496,16 @@ class UpdateAppMonitors extends Rpc
     }
 
     /**
-     * @param array $monitorIds
-     *
      * @return $this
      */
-	public function withMonitorIds(array $monitorIds)
-	{
-	    $this->data['MonitorIds'] = $monitorIds;
-		foreach ($monitorIds as $i => $iValue) {
-			$this->options['form_params']['MonitorIds.' . ($i + 1)] = $iValue;
-		}
+    public function withMonitorIds(array $monitorIds)
+    {
+        $this->data['MonitorIds'] = $monitorIds;
+        foreach ($monitorIds as $i => $iValue) {
+            $this->options['form_params']['MonitorIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -2631,35 +2542,30 @@ class UpdateAppMonitors extends Rpc
  */
 class UpdateDeployConfig extends Rpc
 {
-
     /**
-     * @param array $configMapList
-     *
      * @return $this
      */
-	public function withConfigMapList(array $configMapList)
-	{
-	    $this->data['ConfigMapList'] = $configMapList;
-		foreach ($configMapList as $i => $iValue) {
-			$this->options['query']['ConfigMapList.' . ($i + 1)] = $iValue;
-		}
+    public function withConfigMapList(array $configMapList)
+    {
+        $this->data['ConfigMapList'] = $configMapList;
+        foreach ($configMapList as $i => $iValue) {
+            $this->options['query']['ConfigMapList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $secretList
-     *
      * @return $this
      */
-	public function withSecretList(array $secretList)
-	{
-	    $this->data['SecretList'] = $secretList;
-		foreach ($secretList as $i => $iValue) {
-			$this->options['query']['SecretList.' . ($i + 1)] = $iValue;
-		}
+    public function withSecretList(array $secretList)
+    {
+        $this->data['SecretList'] = $secretList;
+        foreach ($secretList as $i => $iValue) {
+            $this->options['query']['SecretList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 

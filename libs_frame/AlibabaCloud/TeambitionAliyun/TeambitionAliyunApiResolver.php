@@ -57,7 +57,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AddProjectMembers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -115,7 +114,6 @@ class AddProjectMembers extends Rpc
  */
 class ApplySmallMicro extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -267,7 +265,6 @@ class ApplySmallMicro extends Rpc
  */
 class BactchInsertMembers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -313,7 +310,6 @@ class BactchInsertMembers extends Rpc
  */
 class CheckAliyunUserExists extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -336,7 +332,6 @@ class CheckAliyunUserExists extends Rpc
  */
 class CreateDevopsOrg extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -397,7 +392,6 @@ class CreateDevopsOrg extends Rpc
  */
 class CreateProject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -449,7 +443,6 @@ class CreateProject extends Rpc
  */
 class CreateProjectSprint extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -560,7 +553,6 @@ class CreateProjectSprint extends Rpc
  */
 class CreateProjectTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -751,7 +743,6 @@ class CreateProjectTask extends Rpc
  */
 class DeleteMembersForOrg extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -798,7 +789,6 @@ class DeleteMembersForOrg extends Rpc
  */
 class DeleteProject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -833,7 +823,6 @@ class DeleteProject extends Rpc
  */
 class DeleteProjectMembers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -880,7 +869,6 @@ class DeleteProjectMembers extends Rpc
  */
 class DeleteProjectSprint extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -914,7 +902,6 @@ class DeleteProjectSprint extends Rpc
  */
 class DeleteProjectTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -947,7 +934,6 @@ class DeleteProjectTask extends Rpc
  */
 class GetOrganizationMembers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -968,7 +954,6 @@ class GetOrganizationMembers extends Rpc
  */
 class GetProjectInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1002,7 +987,6 @@ class GetProjectInfo extends Rpc
  */
 class GetProjectMembers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1036,7 +1020,6 @@ class GetProjectMembers extends Rpc
  */
 class GetProjectSprintInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1070,7 +1053,6 @@ class GetProjectSprintInfo extends Rpc
  */
 class GetProjectTaskInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1104,7 +1086,6 @@ class GetProjectTaskInfo extends Rpc
  */
 class GetUserByUid extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1140,7 +1121,6 @@ class GetUserByUid extends Rpc
  */
 class InsertDevopsMember extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1200,7 +1180,6 @@ class InsertDevopsMember extends Rpc
  */
 class ListProjectSprints extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1234,7 +1213,6 @@ class ListProjectSprints extends Rpc
  */
 class ListProjectTaskFlow extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1268,7 +1246,6 @@ class ListProjectTaskFlow extends Rpc
  */
 class ListProjectTaskFlowStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1302,7 +1279,6 @@ class ListProjectTaskFlowStatus extends Rpc
  */
 class ListProjectTasks extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1336,7 +1312,6 @@ class ListProjectTasks extends Rpc
  */
 class ListScenarioFieldConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1372,7 +1347,6 @@ class ListScenarioFieldConfig extends Rpc
  */
 class UpdateProject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1438,7 +1412,6 @@ class UpdateProject extends Rpc
  */
 class UpdateProjectSprint extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1562,7 +1535,6 @@ class UpdateProjectSprint extends Rpc
  */
 class UpdateProjectTask extends Rpc
 {
-
     /**
      * @param string $value
      *

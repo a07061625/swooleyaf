@@ -78,7 +78,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class ChangeMcubeMiniTaskStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -180,7 +179,6 @@ class ChangeMcubeMiniTaskStatus extends Rpc
  */
 class CreateMcubeMiniApp extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -262,7 +260,6 @@ class CreateMcubeMiniApp extends Rpc
  */
 class CreateMcubeMiniTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -415,7 +412,6 @@ class CreateMcubeMiniTask extends Rpc
  */
 class CreateMcubeVhost extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -478,7 +474,6 @@ class CreateMcubeVhost extends Rpc
  */
 class CreateMcubeWhitelist extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -554,7 +549,6 @@ class CreateMcubeWhitelist extends Rpc
  */
 class CreateMcubeWhitelistForIde extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -629,7 +623,6 @@ class CreateMcubeWhitelistForIde extends Rpc
  */
 class CreateMsaEnhance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -701,7 +694,6 @@ class CreateMsaEnhance extends Rpc
  */
 class CreateOpenGlobalData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -902,7 +894,6 @@ class CreateOpenGlobalData extends Rpc
  */
 class CreateOpenSingleData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1081,7 +1072,6 @@ class CreateOpenSingleData extends Rpc
  */
 class DeleteMcubeMiniApp extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1143,7 +1133,6 @@ class DeleteMcubeMiniApp extends Rpc
  */
 class DeleteMcubeWhitelist extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1211,7 +1200,6 @@ class DeleteMcubeWhitelist extends Rpc
  */
 class DeleteMpaasMrtcArtvcRecordfile extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1350,7 +1338,6 @@ class DeleteMpaasMrtcArtvcRecordfile extends Rpc
  */
 class ExistMcubeRsaKey extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1401,7 +1388,6 @@ class ExistMcubeRsaKey extends Rpc
  */
 class ExportMappCenterAppConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1489,7 +1475,6 @@ class ExportMappCenterAppConfig extends Rpc
  */
 class GetMcubeFileToken extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1566,7 +1551,6 @@ class ListMappCenterWorkspaces extends Rpc
  */
 class ListMcdpAim extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1718,7 +1702,6 @@ class ListMcdpAim extends Rpc
  */
 class ListMcubeMiniApps extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1768,7 +1751,6 @@ class ListMcubeMiniApps extends Rpc
  */
 class ListMcubeMiniPackages extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1843,7 +1825,6 @@ class ListMcubeMiniPackages extends Rpc
  */
 class ListMcubeMiniTasks extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1904,7 +1885,6 @@ class ListMcubeMiniTasks extends Rpc
  */
 class ListMcubeWhitelists extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1965,7 +1945,6 @@ class ListMcubeWhitelists extends Rpc
  */
 class ListMgsApi extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2182,7 +2161,6 @@ class ListMgsApi extends Rpc
  */
 class ListMPaaSMasTinyApp extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2241,7 +2219,6 @@ class ListMPaaSMasTinyApp extends Rpc
  */
 class PushBroadcast extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2440,7 +2417,6 @@ class PushBroadcast extends Rpc
  */
 class PushMultiple extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2546,29 +2522,27 @@ class PushMultiple extends Rpc
     }
 
     /**
-     * @param array $targetMsg
-     *
      * @return $this
      */
-	public function withTargetMsg(array $targetMsg)
-	{
-	    $this->data['TargetMsg'] = $targetMsg;
-		foreach ($targetMsg as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ExtendedParams'])){
-				$this->options['form_params']['TargetMsg.' . ($depth1 + 1) . '.ExtendedParams'] = $depth1Value['ExtendedParams'];
-			}
-			if(isset($depth1Value['TemplateKeyValue'])){
-				$this->options['form_params']['TargetMsg.' . ($depth1 + 1) . '.TemplateKeyValue'] = $depth1Value['TemplateKeyValue'];
-			}
-			if(isset($depth1Value['MsgKey'])){
-				$this->options['form_params']['TargetMsg.' . ($depth1 + 1) . '.MsgKey'] = $depth1Value['MsgKey'];
-			}
-			if(isset($depth1Value['Target'])){
-				$this->options['form_params']['TargetMsg.' . ($depth1 + 1) . '.Target'] = $depth1Value['Target'];
-			}
-		}
+    public function withTargetMsg(array $targetMsg)
+    {
+        $this->data['TargetMsg'] = $targetMsg;
+        foreach ($targetMsg as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ExtendedParams'])) {
+                $this->options['form_params']['TargetMsg.' . ($depth1 + 1) . '.ExtendedParams'] = $depth1Value['ExtendedParams'];
+            }
+            if (isset($depth1Value['TemplateKeyValue'])) {
+                $this->options['form_params']['TargetMsg.' . ($depth1 + 1) . '.TemplateKeyValue'] = $depth1Value['TemplateKeyValue'];
+            }
+            if (isset($depth1Value['MsgKey'])) {
+                $this->options['form_params']['TargetMsg.' . ($depth1 + 1) . '.MsgKey'] = $depth1Value['MsgKey'];
+            }
+            if (isset($depth1Value['Target'])) {
+                $this->options['form_params']['TargetMsg.' . ($depth1 + 1) . '.Target'] = $depth1Value['Target'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -2615,7 +2589,6 @@ class PushMultiple extends Rpc
  */
 class PushSimple extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2802,7 +2775,6 @@ class PushSimple extends Rpc
  */
 class PushTemplate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2966,7 +2938,6 @@ class PushTemplate extends Rpc
  */
 class QueryMappCenterApp extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3003,7 +2974,6 @@ class QueryMappCenterApp extends Rpc
  */
 class QueryMcubeMiniPackage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3078,7 +3048,6 @@ class QueryMcubeMiniPackage extends Rpc
  */
 class QueryMcubeMiniTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3139,7 +3108,6 @@ class QueryMcubeMiniTask extends Rpc
  */
 class QueryMcubeVhost extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3200,7 +3168,6 @@ class QueryMcubeVhost extends Rpc
  */
 class QueryMgsApipage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3420,7 +3387,6 @@ class QueryMgsApipage extends Rpc
  */
 class QueryMgsApirest extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3509,7 +3475,6 @@ class QueryMgsApirest extends Rpc
  */
 class QueryMgsTestreqbodyautogen extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3585,7 +3550,6 @@ class QueryMgsTestreqbodyautogen extends Rpc
  */
 class QueryMPaaSMasTinyAppDailyData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3666,7 +3630,6 @@ class QueryMPaaSMasTinyAppDailyData extends Rpc
  */
 class QueryMPaaSMasTinyAppDailyPageView extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3807,7 +3770,6 @@ class QueryMPaaSMasTinyAppDailyPageView extends Rpc
  */
 class QueryMPaaSMasTinyAppHistoryData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3888,7 +3850,6 @@ class QueryMPaaSMasTinyAppHistoryData extends Rpc
  */
 class QueryMpaasMrtcArtvcRecordfile extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4028,7 +3989,6 @@ class QueryMpaasMrtcArtvcRecordfile extends Rpc
  */
 class RunMsaDiff extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4090,7 +4050,6 @@ class RunMsaDiff extends Rpc
  */
 class SaveMgsApirest extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4155,7 +4114,6 @@ class SaveMgsApirest extends Rpc
  */
 class UpdateMcubeWhitelist extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4259,7 +4217,6 @@ class UpdateMcubeWhitelist extends Rpc
  */
 class UpdateMpaasAppInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4380,7 +4337,6 @@ class UpdateMpaasAppInfo extends Rpc
  */
 class UploadMcubeMiniPackage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4703,7 +4659,6 @@ class UploadMcubeMiniPackage extends Rpc
  */
 class UploadMcubeRsaKey extends Rpc
 {
-
     /**
      * @param string $value
      *

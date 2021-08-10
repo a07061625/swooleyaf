@@ -35,7 +35,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class LivenessDetect extends Rpc
 {
-
     /**
      * @param string $value
      *

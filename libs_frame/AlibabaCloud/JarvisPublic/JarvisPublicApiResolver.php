@@ -111,7 +111,6 @@ class DescribeAttackedIp extends Rpc
  */
 class DescribePhoneInfo extends Rpc
 {
-
     /**
      * @param string $value
      *

@@ -92,10 +92,10 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
     public $method = 'POST';
 
     /** @var string */
-    protected $scheme = 'https';
+    public $serviceCode = 'cloudphoto';
 
     /** @var string */
-    public $serviceCode = 'cloudphoto';
+    protected $scheme = 'https';
 }
 
 /**
@@ -179,10 +179,7 @@ class FetchAlbumTagPhotos extends Rpc
  */
 class GetAlbumsByNames extends Rpc
 {
-
     /**
-     * @param array $name
-     *
      * @return $this
      */
     public function withName(array $name)
@@ -350,10 +347,7 @@ class GetSimilarPhotos extends Rpc
  */
 class TagPhoto extends Rpc
 {
-
     /**
-     * @param array $confidence
-     *
      * @return $this
      */
     public function withConfidence(array $confidence)
@@ -367,8 +361,6 @@ class TagPhoto extends Rpc
     }
 
     /**
-     * @param array $tagKey
-     *
      * @return $this
      */
     public function withTagKey(array $tagKey)
@@ -403,10 +395,7 @@ class RegisterTag extends Rpc
  */
 class ListRegisteredTags extends Rpc
 {
-
     /**
-     * @param array $lang
-     *
      * @return $this
      */
     public function withLang(array $lang)
@@ -456,10 +445,7 @@ class EditPhotoStore extends Rpc
  */
 class ToggleFeatures extends Rpc
 {
-
     /**
-     * @param array $disabledFeatures
-     *
      * @return $this
      */
     public function withDisabledFeatures(array $disabledFeatures)
@@ -473,8 +459,6 @@ class ToggleFeatures extends Rpc
     }
 
     /**
-     * @param array $enabledFeatures
-     *
      * @return $this
      */
     public function withEnabledFeatures(array $enabledFeatures)
@@ -573,10 +557,7 @@ class LikePhoto extends Rpc
  */
 class GetPublicAccessUrls extends Rpc
 {
-
     /**
-     * @param array $photoId
-     *
      * @return $this
      */
     public function withPhotoId(array $photoId)
@@ -601,10 +582,7 @@ class GetPublicAccessUrls extends Rpc
  */
 class GetPrivateAccessUrls extends Rpc
 {
-
     /**
-     * @param array $photoId
-     *
      * @return $this
      */
     public function withPhotoId(array $photoId)
@@ -629,10 +607,7 @@ class GetPrivateAccessUrls extends Rpc
  */
 class GetPhotosByMd5s extends Rpc
 {
-
     /**
-     * @param array $md5
-     *
      * @return $this
      */
     public function withMd5(array $md5)
@@ -657,10 +632,7 @@ class GetPhotosByMd5s extends Rpc
  */
 class GetFramedPhotoUrls extends Rpc
 {
-
     /**
-     * @param array $photoId
-     *
      * @return $this
      */
     public function withPhotoId(array $photoId)
@@ -691,10 +663,7 @@ class GetFramedPhotoUrls extends Rpc
  */
 class EditPhotos extends Rpc
 {
-
     /**
-     * @param array $photoId
-     *
      * @return $this
      */
     public function withPhotoId(array $photoId)
@@ -717,10 +686,7 @@ class EditPhotos extends Rpc
  */
 class ActivatePhotos extends Rpc
 {
-
     /**
-     * @param array $photoId
-     *
      * @return $this
      */
     public function withPhotoId(array $photoId)
@@ -745,10 +711,7 @@ class ActivatePhotos extends Rpc
  */
 class GetThumbnails extends Rpc
 {
-
     /**
-     * @param array $photoId
-     *
      * @return $this
      */
     public function withPhotoId(array $photoId)
@@ -771,10 +734,7 @@ class GetThumbnails extends Rpc
  */
 class GetDownloadUrls extends Rpc
 {
-
     /**
-     * @param array $photoId
-     *
      * @return $this
      */
     public function withPhotoId(array $photoId)
@@ -797,10 +757,7 @@ class GetDownloadUrls extends Rpc
  */
 class GetPhotos extends Rpc
 {
-
     /**
-     * @param array $photoId
-     *
      * @return $this
      */
     public function withPhotoId(array $photoId)
@@ -921,10 +878,7 @@ class RenameAlbum extends Rpc
  */
 class RemoveFacePhotos extends Rpc
 {
-
     /**
-     * @param array $photoId
-     *
      * @return $this
      */
     public function withPhotoId(array $photoId)
@@ -949,10 +903,7 @@ class RemoveFacePhotos extends Rpc
  */
 class RemoveAlbumPhotos extends Rpc
 {
-
     /**
-     * @param array $photoId
-     *
      * @return $this
      */
     public function withPhotoId(array $photoId)
@@ -975,10 +926,7 @@ class RemoveAlbumPhotos extends Rpc
  */
 class ReactivatePhotos extends Rpc
 {
-
     /**
-     * @param array $photoId
-     *
      * @return $this
      */
     public function withPhotoId(array $photoId)
@@ -1005,10 +953,7 @@ class ReactivatePhotos extends Rpc
  */
 class MoveFacePhotos extends Rpc
 {
-
     /**
-     * @param array $photoId
-     *
      * @return $this
      */
     public function withPhotoId(array $photoId)
@@ -1035,10 +980,7 @@ class MoveFacePhotos extends Rpc
  */
 class MoveAlbumPhotos extends Rpc
 {
-
     /**
-     * @param array $photoId
-     *
      * @return $this
      */
     public function withPhotoId(array $photoId)
@@ -1063,10 +1005,7 @@ class MoveAlbumPhotos extends Rpc
  */
 class MergeFaces extends Rpc
 {
-
     /**
-     * @param array $faceId
-     *
      * @return $this
      */
     public function withFaceId(array $faceId)
@@ -1275,10 +1214,7 @@ class ListAlbumPhotos extends Rpc
  */
 class InactivatePhotos extends Rpc
 {
-
     /**
-     * @param array $photoId
-     *
      * @return $this
      */
     public function withPhotoId(array $photoId)
@@ -1367,10 +1303,7 @@ class DeletePhotoStore extends Rpc
  */
 class DeletePhotos extends Rpc
 {
-
     /**
-     * @param array $photoId
-     *
      * @return $this
      */
     public function withPhotoId(array $photoId)
@@ -1393,10 +1326,7 @@ class DeletePhotos extends Rpc
  */
 class DeleteFaces extends Rpc
 {
-
     /**
-     * @param array $faceId
-     *
      * @return $this
      */
     public function withFaceId(array $faceId)
@@ -1419,10 +1349,7 @@ class DeleteFaces extends Rpc
  */
 class DeleteAlbums extends Rpc
 {
-
     /**
-     * @param array $albumId
-     *
      * @return $this
      */
     public function withAlbumId(array $albumId)
@@ -1519,10 +1446,7 @@ class CreateAlbum extends Rpc
  */
 class AddAlbumPhotos extends Rpc
 {
-
     /**
-     * @param array $photoId
-     *
      * @return $this
      */
     public function withPhotoId(array $photoId)

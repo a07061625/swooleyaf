@@ -83,10 +83,7 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class UntagResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
     public function withResourceId(array $resourceId)
@@ -100,8 +97,6 @@ class UntagResources extends Rpc
     }
 
     /**
-     * @param array $tagKey
-     *
      * @return $this
      */
     public function withTagKey(array $tagKey)
@@ -131,10 +126,7 @@ class UntagResources extends Rpc
  */
 class TagResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
     public function withResourceId(array $resourceId)
@@ -148,8 +140,6 @@ class TagResources extends Rpc
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
     public function withTag(array $tag)
@@ -182,10 +172,7 @@ class TagResources extends Rpc
  */
 class ListTagResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
     public function withResourceId(array $resourceId)
@@ -199,8 +186,6 @@ class ListTagResources extends Rpc
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
     public function withTag(array $tag)

@@ -215,7 +215,6 @@ class CreateDBInstance extends Rpc
  */
 class CreatePolarxInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -314,7 +313,6 @@ class DescribeBackupPolicy extends Rpc
  */
 class DescribeBackupSetList extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }

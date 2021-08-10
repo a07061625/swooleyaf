@@ -59,20 +59,17 @@ class ApplyToken extends Rpc
  */
 class BatchQuerySessionByClientIds extends Rpc
 {
-
     /**
-     * @param array $clientIdList
-     *
      * @return $this
      */
-	public function withClientIdList(array $clientIdList)
-	{
-	    $this->data['ClientIdList'] = $clientIdList;
-		foreach ($clientIdList as $i => $iValue) {
-			$this->options['query']['ClientIdList.' . ($i + 1)] = $iValue;
-		}
+    public function withClientIdList(array $clientIdList)
+    {
+        $this->data['ClientIdList'] = $clientIdList;
+        foreach ($clientIdList as $i => $iValue) {
+            $this->options['query']['ClientIdList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 

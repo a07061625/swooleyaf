@@ -42,7 +42,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class GetProductStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -104,7 +103,6 @@ class GetProductStatus extends Rpc
  */
 class CloseProductAccount extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -163,7 +161,6 @@ class CloseProductAccount extends Rpc
  */
 class GetRegionStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -186,7 +183,6 @@ class GetRegionStatus extends Rpc
  */
 class OpenProductAccount extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -246,7 +242,6 @@ class OpenProductAccount extends Rpc
  */
 class GetAllowIP extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -284,7 +279,6 @@ class DescribeRegionList extends Rpc
  */
 class GetEndPointByDomain extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -317,7 +311,6 @@ class GetEndPointByDomain extends Rpc
  */
 class QueryEndPointList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -340,7 +333,6 @@ class QueryEndPointList extends Rpc
  */
 class SetAllowIP extends Rpc
 {
-
     /**
      * @param string $value
      *

@@ -46,7 +46,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class ClassifyVehicleInsurance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -66,7 +65,6 @@ class ClassifyVehicleInsurance extends Rpc
  */
 class DetectIPCObject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -94,7 +92,6 @@ class DetectMainBody extends Rpc
  */
 class DetectObject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -114,7 +111,6 @@ class DetectObject extends Rpc
  */
 class DetectTransparentImage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -135,7 +131,6 @@ class DetectTransparentImage extends Rpc
  */
 class DetectVehicle extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -170,7 +165,6 @@ class DetectVehicle extends Rpc
  */
 class DetectVehicleICongestion extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -217,7 +211,6 @@ class DetectVehicleICongestion extends Rpc
  */
 class DetectVehicleIllegalParking extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -251,7 +244,6 @@ class DetectVehicleIllegalParking extends Rpc
  */
 class DetectVideoIPCObject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -284,7 +276,6 @@ class DetectVideoIPCObject extends Rpc
  */
 class DetectWhiteBaseImage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -304,25 +295,22 @@ class DetectWhiteBaseImage extends Rpc
  */
 class GenerateVehicleRepairPlan extends Rpc
 {
-
     /**
-     * @param array $damageImageList
-     *
      * @return $this
      */
-	public function withDamageImageList(array $damageImageList)
-	{
-	    $this->data['DamageImageList'] = $damageImageList;
-		foreach ($damageImageList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ImageUrl'])){
-				$this->options['form_params']['DamageImageList.' . ($depth1 + 1) . '.ImageUrl'] = $depth1Value['ImageUrl'];
-			}
-			if(isset($depth1Value['CreateTimeStamp'])){
-				$this->options['form_params']['DamageImageList.' . ($depth1 + 1) . '.CreateTimeStamp'] = $depth1Value['CreateTimeStamp'];
-			}
-		}
+    public function withDamageImageList(array $damageImageList)
+    {
+        $this->data['DamageImageList'] = $damageImageList;
+        foreach ($damageImageList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ImageUrl'])) {
+                $this->options['form_params']['DamageImageList.' . ($depth1 + 1) . '.ImageUrl'] = $depth1Value['ImageUrl'];
+            }
+            if (isset($depth1Value['CreateTimeStamp'])) {
+                $this->options['form_params']['DamageImageList.' . ($depth1 + 1) . '.CreateTimeStamp'] = $depth1Value['CreateTimeStamp'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -332,7 +320,6 @@ class GenerateVehicleRepairPlan extends Rpc
  */
 class GetAsyncJobResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -367,7 +354,6 @@ class GetAsyncJobResult extends Rpc
  */
 class GetVehicleRepairPlan extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -413,7 +399,6 @@ class GetVehicleRepairPlan extends Rpc
  */
 class RecognizeVehicleDamage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -433,7 +418,6 @@ class RecognizeVehicleDamage extends Rpc
  */
 class RecognizeVehicleDashboard extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -453,7 +437,6 @@ class RecognizeVehicleDashboard extends Rpc
  */
 class RecognizeVehicleParts extends Rpc
 {
-
     /**
      * @param string $value
      *

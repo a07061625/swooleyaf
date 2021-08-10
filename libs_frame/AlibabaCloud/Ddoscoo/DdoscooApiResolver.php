@@ -313,35 +313,30 @@ class ConfigWebCCTemplate extends Rpc
  */
 class ConfigWebIpSet extends Rpc
 {
-
     /**
-     * @param array $blackList
-     *
      * @return $this
      */
-	public function withBlackList(array $blackList)
-	{
-	    $this->data['BlackList'] = $blackList;
-		foreach ($blackList as $i => $iValue) {
-			$this->options['query']['BlackList.' . ($i + 1)] = $iValue;
-		}
+    public function withBlackList(array $blackList)
+    {
+        $this->data['BlackList'] = $blackList;
+        foreach ($blackList as $i => $iValue) {
+            $this->options['query']['BlackList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $whiteList
-     *
      * @return $this
      */
-	public function withWhiteList(array $whiteList)
-	{
-	    $this->data['WhiteList'] = $whiteList;
-		foreach ($whiteList as $i => $iValue) {
-			$this->options['query']['WhiteList.' . ($i + 1)] = $iValue;
-		}
+    public function withWhiteList(array $whiteList)
+    {
+        $this->data['WhiteList'] = $whiteList;
+        foreach ($whiteList as $i => $iValue) {
+            $this->options['query']['WhiteList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -376,55 +371,48 @@ class CreateAsyncTask extends Rpc
  */
 class CreateDomainResource extends Rpc
 {
-
     /**
-     * @param array $realServers
-     *
      * @return $this
      */
-	public function withRealServers(array $realServers)
-	{
-	    $this->data['RealServers'] = $realServers;
-		foreach ($realServers as $i => $iValue) {
-			$this->options['query']['RealServers.' . ($i + 1)] = $iValue;
-		}
+    public function withRealServers(array $realServers)
+    {
+        $this->data['RealServers'] = $realServers;
+        foreach ($realServers as $i => $iValue) {
+            $this->options['query']['RealServers.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $proxyTypes
-     *
      * @return $this
      */
-	public function withProxyTypes(array $proxyTypes)
-	{
-	    $this->data['ProxyTypes'] = $proxyTypes;
-		foreach ($proxyTypes as $depth1 => $depth1Value) {
-			foreach ($depth1Value['ProxyPorts'] as $i => $iValue) {
-				$this->options['query']['ProxyTypes.' . ($depth1 + 1) . '.ProxyPorts.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['ProxyType'])){
-				$this->options['query']['ProxyTypes.' . ($depth1 + 1) . '.ProxyType'] = $depth1Value['ProxyType'];
-			}
-		}
+    public function withProxyTypes(array $proxyTypes)
+    {
+        $this->data['ProxyTypes'] = $proxyTypes;
+        foreach ($proxyTypes as $depth1 => $depth1Value) {
+            foreach ($depth1Value['ProxyPorts'] as $i => $iValue) {
+                $this->options['query']['ProxyTypes.' . ($depth1 + 1) . '.ProxyPorts.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['ProxyType'])) {
+                $this->options['query']['ProxyTypes.' . ($depth1 + 1) . '.ProxyType'] = $depth1Value['ProxyType'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -453,20 +441,17 @@ class CreateNetworkRules extends Rpc
  */
 class CreatePort extends Rpc
 {
-
     /**
-     * @param array $realServers
-     *
      * @return $this
      */
-	public function withRealServers(array $realServers)
-	{
-	    $this->data['RealServers'] = $realServers;
-		foreach ($realServers as $i => $iValue) {
-			$this->options['query']['RealServers.' . ($i + 1)] = $iValue;
-		}
+    public function withRealServers(array $realServers)
+    {
+        $this->data['RealServers'] = $realServers;
+        foreach ($realServers as $i => $iValue) {
+            $this->options['query']['RealServers.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -516,40 +501,35 @@ class CreateSchedulerRule extends Rpc
  */
 class CreateTagResources extends Rpc
 {
-
     /**
-     * @param array $tags
-     *
      * @return $this
      */
-	public function withTags(array $tags)
-	{
-	    $this->data['Tags'] = $tags;
-		foreach ($tags as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tags.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tags.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTags(array $tags)
+    {
+        $this->data['Tags'] = $tags;
+        foreach ($tags as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tags.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tags.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resourceIds
-     *
      * @return $this
      */
-	public function withResourceIds(array $resourceIds)
-	{
-	    $this->data['ResourceIds'] = $resourceIds;
-		foreach ($resourceIds as $i => $iValue) {
-			$this->options['query']['ResourceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceIds(array $resourceIds)
+    {
+        $this->data['ResourceIds'] = $resourceIds;
+        foreach ($resourceIds as $i => $iValue) {
+            $this->options['query']['ResourceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -598,20 +578,17 @@ class CreateWebCCRule extends Rpc
  */
 class CreateWebRule extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -688,20 +665,17 @@ class DeleteNetworkRule extends Rpc
  */
 class DeletePort extends Rpc
 {
-
     /**
-     * @param array $realServers
-     *
      * @return $this
      */
-	public function withRealServers(array $realServers)
-	{
-	    $this->data['RealServers'] = $realServers;
-		foreach ($realServers as $i => $iValue) {
-			$this->options['query']['RealServers.' . ($i + 1)] = $iValue;
-		}
+    public function withRealServers(array $realServers)
+    {
+        $this->data['RealServers'] = $realServers;
+        foreach ($realServers as $i => $iValue) {
+            $this->options['query']['RealServers.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -741,35 +715,30 @@ class DeleteSchedulerRule extends Rpc
  */
 class DeleteTagResources extends Rpc
 {
-
     /**
-     * @param array $tagKey
-     *
      * @return $this
      */
-	public function withTagKey(array $tagKey)
-	{
-	    $this->data['TagKey'] = $tagKey;
-		foreach ($tagKey as $i => $iValue) {
-			$this->options['query']['TagKey.' . ($i + 1)] = $iValue;
-		}
+    public function withTagKey(array $tagKey)
+    {
+        $this->data['TagKey'] = $tagKey;
+        foreach ($tagKey as $i => $iValue) {
+            $this->options['query']['TagKey.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resourceIds
-     *
      * @return $this
      */
-	public function withResourceIds(array $resourceIds)
-	{
-	    $this->data['ResourceIds'] = $resourceIds;
-		foreach ($resourceIds as $i => $iValue) {
-			$this->options['query']['ResourceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceIds(array $resourceIds)
+    {
+        $this->data['ResourceIds'] = $resourceIds;
+        foreach ($resourceIds as $i => $iValue) {
+            $this->options['query']['ResourceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -784,20 +753,17 @@ class DeleteTagResources extends Rpc
  */
 class DeleteWebCacheCustomRule extends Rpc
 {
-
     /**
-     * @param array $ruleNames
-     *
      * @return $this
      */
-	public function withRuleNames(array $ruleNames)
-	{
-	    $this->data['RuleNames'] = $ruleNames;
-		foreach ($ruleNames as $i => $iValue) {
-			$this->options['query']['RuleNames.' . ($i + 1)] = $iValue;
-		}
+    public function withRuleNames(array $ruleNames)
+    {
+        $this->data['RuleNames'] = $ruleNames;
+        foreach ($ruleNames as $i => $iValue) {
+            $this->options['query']['RuleNames.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -826,20 +792,17 @@ class DeleteWebCCRule extends Rpc
  */
 class DeleteWebPreciseAccessRule extends Rpc
 {
-
     /**
-     * @param array $ruleNames
-     *
      * @return $this
      */
-	public function withRuleNames(array $ruleNames)
-	{
-	    $this->data['RuleNames'] = $ruleNames;
-		foreach ($ruleNames as $i => $iValue) {
-			$this->options['query']['RuleNames.' . ($i + 1)] = $iValue;
-		}
+    public function withRuleNames(array $ruleNames)
+    {
+        $this->data['RuleNames'] = $ruleNames;
+        foreach ($ruleNames as $i => $iValue) {
+            $this->options['query']['RuleNames.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -946,20 +909,17 @@ class DescribeBackSourceCidr extends Rpc
  */
 class DescribeBlackholeStatus extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -974,20 +934,17 @@ class DescribeBlackholeStatus extends Rpc
  */
 class DescribeBlockStatus extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1012,20 +969,17 @@ class DescribeCerts extends Rpc
  */
 class DescribeCnameReuses extends Rpc
 {
-
     /**
-     * @param array $domains
-     *
      * @return $this
      */
-	public function withDomains(array $domains)
-	{
-	    $this->data['Domains'] = $domains;
-		foreach ($domains as $i => $iValue) {
-			$this->options['query']['Domains.' . ($i + 1)] = $iValue;
-		}
+    public function withDomains(array $domains)
+    {
+        $this->data['Domains'] = $domains;
+        foreach ($domains as $i => $iValue) {
+            $this->options['query']['Domains.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1118,20 +1072,17 @@ class DescribeDDosEventMax extends Rpc
  */
 class DescribeDDoSEvents extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1268,20 +1219,17 @@ class DescribeDomainQpsWithCache extends Rpc
  */
 class DescribeDomainResource extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1296,20 +1244,17 @@ class DescribeDomainResource extends Rpc
  */
 class DescribeDomains extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1468,20 +1413,17 @@ class DescribeHealthCheckStatus extends Rpc
  */
 class DescribeInstanceDetails extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1496,20 +1438,17 @@ class DescribeInstanceDetails extends Rpc
  */
 class DescribeInstanceIds extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1540,55 +1479,48 @@ class DescribeInstanceIds extends Rpc
  */
 class DescribeInstances extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $status
-     *
      * @return $this
      */
-	public function withStatus(array $status)
-	{
-	    $this->data['Status'] = $status;
-		foreach ($status as $i => $iValue) {
-			$this->options['query']['Status.' . ($i + 1)] = $iValue;
-		}
+    public function withStatus(array $status)
+    {
+        $this->data['Status'] = $status;
+        foreach ($status as $i => $iValue) {
+            $this->options['query']['Status.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1599,20 +1531,17 @@ class DescribeInstances extends Rpc
  */
 class DescribeInstanceSpecs extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1623,20 +1552,17 @@ class DescribeInstanceSpecs extends Rpc
  */
 class DescribeInstanceStatistics extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1663,20 +1589,17 @@ class DescribeInstanceStatus extends Rpc
  */
 class DescribeL7RsPolicy extends Rpc
 {
-
     /**
-     * @param array $realServers
-     *
      * @return $this
      */
-	public function withRealServers(array $realServers)
-	{
-	    $this->data['RealServers'] = $realServers;
-		foreach ($realServers as $i => $iValue) {
-			$this->options['query']['RealServers.' . ($i + 1)] = $iValue;
-		}
+    public function withRealServers(array $realServers)
+    {
+        $this->data['RealServers'] = $realServers;
+        foreach ($realServers as $i => $iValue) {
+            $this->options['query']['RealServers.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1787,20 +1710,17 @@ class DescribePort extends Rpc
  */
 class DescribePortAttackMaxFlow extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1811,20 +1731,17 @@ class DescribePortAttackMaxFlow extends Rpc
  */
 class DescribePortAutoCcStatus extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1843,20 +1760,17 @@ class DescribePortAutoCcStatus extends Rpc
  */
 class DescribePortConnsCount extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1877,20 +1791,17 @@ class DescribePortConnsCount extends Rpc
  */
 class DescribePortConnsList extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1909,20 +1820,17 @@ class DescribePortConnsList extends Rpc
  */
 class DescribePortFlowList extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1939,20 +1847,17 @@ class DescribePortFlowList extends Rpc
  */
 class DescribePortMaxConns extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1969,20 +1874,17 @@ class DescribePortMaxConns extends Rpc
  */
 class DescribePortViewSourceCountries extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1999,20 +1901,17 @@ class DescribePortViewSourceCountries extends Rpc
  */
 class DescribePortViewSourceIsps extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2029,20 +1928,17 @@ class DescribePortViewSourceIsps extends Rpc
  */
 class DescribePortViewSourceProvinces extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2170,40 +2066,35 @@ class DescribeTagKeys extends Rpc
  */
 class DescribeTagResources extends Rpc
 {
-
     /**
-     * @param array $tags
-     *
      * @return $this
      */
-	public function withTags(array $tags)
-	{
-	    $this->data['Tags'] = $tags;
-		foreach ($tags as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tags.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tags.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTags(array $tags)
+    {
+        $this->data['Tags'] = $tags;
+        foreach ($tags as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tags.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tags.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resourceIds
-     *
      * @return $this
      */
-	public function withResourceIds(array $resourceIds)
-	{
-	    $this->data['ResourceIds'] = $resourceIds;
-		foreach ($resourceIds as $i => $iValue) {
-			$this->options['query']['ResourceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceIds(array $resourceIds)
+    {
+        $this->data['ResourceIds'] = $resourceIds;
+        foreach ($resourceIds as $i => $iValue) {
+            $this->options['query']['ResourceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2288,20 +2179,17 @@ class DescribeWebAccessLogStatus extends Rpc
  */
 class DescribeWebAccessMode extends Rpc
 {
-
     /**
-     * @param array $domains
-     *
      * @return $this
      */
-	public function withDomains(array $domains)
-	{
-	    $this->data['Domains'] = $domains;
-		foreach ($domains as $i => $iValue) {
-			$this->options['query']['Domains.' . ($i + 1)] = $iValue;
-		}
+    public function withDomains(array $domains)
+    {
+        $this->data['Domains'] = $domains;
+        foreach ($domains as $i => $iValue) {
+            $this->options['query']['Domains.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2314,20 +2202,17 @@ class DescribeWebAccessMode extends Rpc
  */
 class DescribeWebAreaBlockConfigs extends Rpc
 {
-
     /**
-     * @param array $domains
-     *
      * @return $this
      */
-	public function withDomains(array $domains)
-	{
-	    $this->data['Domains'] = $domains;
-		foreach ($domains as $i => $iValue) {
-			$this->options['query']['Domains.' . ($i + 1)] = $iValue;
-		}
+    public function withDomains(array $domains)
+    {
+        $this->data['Domains'] = $domains;
+        foreach ($domains as $i => $iValue) {
+            $this->options['query']['Domains.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2340,20 +2225,17 @@ class DescribeWebAreaBlockConfigs extends Rpc
  */
 class DescribeWebCacheConfigs extends Rpc
 {
-
     /**
-     * @param array $domains
-     *
      * @return $this
      */
-	public function withDomains(array $domains)
-	{
-	    $this->data['Domains'] = $domains;
-		foreach ($domains as $i => $iValue) {
-			$this->options['query']['Domains.' . ($i + 1)] = $iValue;
-		}
+    public function withDomains(array $domains)
+    {
+        $this->data['Domains'] = $domains;
+        foreach ($domains as $i => $iValue) {
+            $this->options['query']['Domains.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2366,20 +2248,17 @@ class DescribeWebCacheConfigs extends Rpc
  */
 class DescribeWebCcProtectSwitch extends Rpc
 {
-
     /**
-     * @param array $domains
-     *
      * @return $this
      */
-	public function withDomains(array $domains)
-	{
-	    $this->data['Domains'] = $domains;
-		foreach ($domains as $i => $iValue) {
-			$this->options['query']['Domains.' . ($i + 1)] = $iValue;
-		}
+    public function withDomains(array $domains)
+    {
+        $this->data['Domains'] = $domains;
+        foreach ($domains as $i => $iValue) {
+            $this->options['query']['Domains.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2424,20 +2303,17 @@ class DescribeWebCustomPorts extends Rpc
  */
 class DescribeWebInstanceRelations extends Rpc
 {
-
     /**
-     * @param array $domains
-     *
      * @return $this
      */
-	public function withDomains(array $domains)
-	{
-	    $this->data['Domains'] = $domains;
-		foreach ($domains as $i => $iValue) {
-			$this->options['query']['Domains.' . ($i + 1)] = $iValue;
-		}
+    public function withDomains(array $domains)
+    {
+        $this->data['Domains'] = $domains;
+        foreach ($domains as $i => $iValue) {
+            $this->options['query']['Domains.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2450,20 +2326,17 @@ class DescribeWebInstanceRelations extends Rpc
  */
 class DescribeWebPreciseAccessRule extends Rpc
 {
-
     /**
-     * @param array $domains
-     *
      * @return $this
      */
-	public function withDomains(array $domains)
-	{
-	    $this->data['Domains'] = $domains;
-		foreach ($domains as $i => $iValue) {
-			$this->options['query']['Domains.' . ($i + 1)] = $iValue;
-		}
+    public function withDomains(array $domains)
+    {
+        $this->data['Domains'] = $domains;
+        foreach ($domains as $i => $iValue) {
+            $this->options['query']['Domains.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2484,20 +2357,17 @@ class DescribeWebPreciseAccessRule extends Rpc
  */
 class DescribeWebRules extends Rpc
 {
-
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2670,20 +2540,17 @@ class ModifyBlackholeStatus extends Rpc
  */
 class ModifyBlockStatus extends Rpc
 {
-
     /**
-     * @param array $lines
-     *
      * @return $this
      */
-	public function withLines(array $lines)
-	{
-	    $this->data['Lines'] = $lines;
-		foreach ($lines as $i => $iValue) {
-			$this->options['query']['Lines.' . ($i + 1)] = $iValue;
-		}
+    public function withLines(array $lines)
+    {
+        $this->data['Lines'] = $lines;
+        foreach ($lines as $i => $iValue) {
+            $this->options['query']['Lines.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2718,55 +2585,48 @@ class ModifyCnameReuse extends Rpc
  */
 class ModifyDomainResource extends Rpc
 {
-
     /**
-     * @param array $realServers
-     *
      * @return $this
      */
-	public function withRealServers(array $realServers)
-	{
-	    $this->data['RealServers'] = $realServers;
-		foreach ($realServers as $i => $iValue) {
-			$this->options['query']['RealServers.' . ($i + 1)] = $iValue;
-		}
+    public function withRealServers(array $realServers)
+    {
+        $this->data['RealServers'] = $realServers;
+        foreach ($realServers as $i => $iValue) {
+            $this->options['query']['RealServers.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $proxyTypes
-     *
      * @return $this
      */
-	public function withProxyTypes(array $proxyTypes)
-	{
-	    $this->data['ProxyTypes'] = $proxyTypes;
-		foreach ($proxyTypes as $depth1 => $depth1Value) {
-			foreach ($depth1Value['ProxyPorts'] as $i => $iValue) {
-				$this->options['query']['ProxyTypes.' . ($depth1 + 1) . '.ProxyPorts.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['ProxyType'])){
-				$this->options['query']['ProxyTypes.' . ($depth1 + 1) . '.ProxyType'] = $depth1Value['ProxyType'];
-			}
-		}
+    public function withProxyTypes(array $proxyTypes)
+    {
+        $this->data['ProxyTypes'] = $proxyTypes;
+        foreach ($proxyTypes as $depth1 => $depth1Value) {
+            foreach ($depth1Value['ProxyPorts'] as $i => $iValue) {
+                $this->options['query']['ProxyTypes.' . ($depth1 + 1) . '.ProxyPorts.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['ProxyType'])) {
+                $this->options['query']['ProxyTypes.' . ($depth1 + 1) . '.ProxyType'] = $depth1Value['ProxyType'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2869,20 +2729,17 @@ class ModifyNetworkRuleAttribute extends Rpc
  */
 class ModifyPort extends Rpc
 {
-
     /**
-     * @param array $realServers
-     *
      * @return $this
      */
-	public function withRealServers(array $realServers)
-	{
-	    $this->data['RealServers'] = $realServers;
-		foreach ($realServers as $i => $iValue) {
-			$this->options['query']['RealServers.' . ($i + 1)] = $iValue;
-		}
+    public function withRealServers(array $realServers)
+    {
+        $this->data['RealServers'] = $realServers;
+        foreach ($realServers as $i => $iValue) {
+            $this->options['query']['RealServers.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3003,20 +2860,17 @@ class ModifyWebAIProtectSwitch extends Rpc
  */
 class ModifyWebAreaBlock extends Rpc
 {
-
     /**
-     * @param array $regions
-     *
      * @return $this
      */
-	public function withRegions(array $regions)
-	{
-	    $this->data['Regions'] = $regions;
-		foreach ($regions as $i => $iValue) {
-			$this->options['query']['Regions.' . ($i + 1)] = $iValue;
-		}
+    public function withRegions(array $regions)
+    {
+        $this->data['Regions'] = $regions;
+        foreach ($regions as $i => $iValue) {
+            $this->options['query']['Regions.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3164,35 +3018,30 @@ class ModifyWebPreciseAccessSwitch extends Rpc
  */
 class ModifyWebRule extends Rpc
 {
-
     /**
-     * @param array $realServers
-     *
      * @return $this
      */
-	public function withRealServers(array $realServers)
-	{
-	    $this->data['RealServers'] = $realServers;
-		foreach ($realServers as $i => $iValue) {
-			$this->options['query']['RealServers.' . ($i + 1)] = $iValue;
-		}
+    public function withRealServers(array $realServers)
+    {
+        $this->data['RealServers'] = $realServers;
+        foreach ($realServers as $i => $iValue) {
+            $this->options['query']['RealServers.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
-	public function withInstanceIds(array $instanceIds)
-	{
-	    $this->data['InstanceIds'] = $instanceIds;
-		foreach ($instanceIds as $i => $iValue) {
-			$this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceIds(array $instanceIds)
+    {
+        $this->data['InstanceIds'] = $instanceIds;
+        foreach ($instanceIds as $i => $iValue) {
+            $this->options['query']['InstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 

@@ -41,7 +41,6 @@ class ClassifyCommodity extends Rpc
  */
 class RecognizeFurnitureAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -64,7 +63,6 @@ class RecognizeFurnitureAttribute extends Rpc
  */
 class RecognizeFurnitureSpu extends Rpc
 {
-
     /**
      * @param string $value
      *

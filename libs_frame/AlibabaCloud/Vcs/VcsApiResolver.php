@@ -118,7 +118,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AddDataSource extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -199,7 +198,6 @@ class AddDataSource extends Rpc
  */
 class AddDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -345,7 +343,6 @@ class AddDevice extends Rpc
  */
 class AddMonitor extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -493,7 +490,6 @@ class AddMonitor extends Rpc
  */
 class AddProfile extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -659,7 +655,6 @@ class AddProfile extends Rpc
  */
 class AddProfileCatalog extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -719,7 +714,6 @@ class AddProfileCatalog extends Rpc
  */
 class BindCorpGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -756,7 +750,6 @@ class BindCorpGroup extends Rpc
  */
 class BindPerson extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -832,7 +825,6 @@ class BindPerson extends Rpc
  */
 class BindUser extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -910,7 +902,6 @@ class BindUser extends Rpc
  */
 class CreateCorp extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1010,7 +1001,6 @@ class CreateCorp extends Rpc
  */
 class CreateCorpGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1068,7 +1058,6 @@ class CreateCorpGroup extends Rpc
  */
 class CreateUser extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1247,7 +1236,6 @@ class CreateUser extends Rpc
  */
 class CreateUserGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1313,7 +1301,6 @@ class CreateUserGroup extends Rpc
  */
 class CreateVideoComposeTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1429,7 +1416,6 @@ class CreateVideoComposeTask extends Rpc
  */
 class CreateVideoSummaryTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1515,7 +1501,6 @@ class CreateVideoSummaryTask extends Rpc
  */
 class DeleteCorpGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1549,7 +1534,6 @@ class DeleteCorpGroup extends Rpc
  */
 class DeleteDataSource extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1583,7 +1567,6 @@ class DeleteDataSource extends Rpc
  */
 class DeleteDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1618,7 +1601,6 @@ class DeleteDevice extends Rpc
  */
 class DeleteProfile extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1666,7 +1648,6 @@ class DeleteProfile extends Rpc
  */
 class DeleteProfileCatalog extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1716,7 +1697,6 @@ class DeleteProfileCatalog extends Rpc
  */
 class DeleteRecords extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1790,7 +1770,6 @@ class DeleteRecords extends Rpc
  */
 class DeleteUser extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1838,7 +1817,6 @@ class DeleteUser extends Rpc
  */
 class DeleteUserGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1885,7 +1863,6 @@ class DeleteUserGroup extends Rpc
  */
 class DeleteVideoSummaryTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1920,7 +1897,6 @@ class DeleteVideoSummaryTask extends Rpc
  */
 class DescribeDevices extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1966,7 +1942,6 @@ class DescribeDevices extends Rpc
  */
 class GetBodyOptions extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1997,7 +1972,6 @@ class GetCatalogList extends Rpc
  */
 class GetDeviceConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2034,7 +2008,6 @@ class GetDeviceConfig extends Rpc
  */
 class GetDeviceLiveUrl extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2111,7 +2084,6 @@ class GetDeviceLiveUrl extends Rpc
  */
 class GetDeviceVideoUrl extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2198,7 +2170,6 @@ class GetDeviceVideoUrl extends Rpc
  */
 class GetFaceModelResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2244,7 +2215,6 @@ class GetFaceModelResult extends Rpc
  */
 class GetFaceOptions extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2264,7 +2234,6 @@ class GetFaceOptions extends Rpc
  */
 class GetInventory extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2286,7 +2255,6 @@ class GetInventory extends Rpc
  */
 class GetMonitorList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2337,7 +2305,6 @@ class GetMonitorList extends Rpc
  */
 class GetMonitorResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2424,7 +2391,6 @@ class GetMonitorResult extends Rpc
  */
 class GetPersonDetail extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2476,7 +2442,6 @@ class GetPersonDetail extends Rpc
  */
 class GetPersonList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2576,7 +2541,6 @@ class GetPersonList extends Rpc
  */
 class GetProfileDetail extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2639,7 +2603,6 @@ class GetProfileDetail extends Rpc
  */
 class GetProfileList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2883,7 +2846,6 @@ class GetProfileList extends Rpc
  */
 class GetUserDetail extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2943,7 +2905,6 @@ class GetUserDetail extends Rpc
  */
 class GetVideoComposeResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2977,7 +2938,6 @@ class GetVideoComposeResult extends Rpc
  */
 class GetVideoSummaryTaskResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3013,7 +2973,6 @@ class GetVideoSummaryTaskResult extends Rpc
  */
 class InvokeMotorModel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3079,7 +3038,6 @@ class InvokeMotorModel extends Rpc
  */
 class ListBodyAlgorithmResults extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3199,7 +3157,6 @@ class ListBodyAlgorithmResults extends Rpc
  */
 class ListCorpGroupMetrics extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3338,7 +3295,6 @@ class ListCorpGroupMetrics extends Rpc
  */
 class ListCorpGroups extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3392,7 +3348,6 @@ class ListCorpGroups extends Rpc
  */
 class ListCorpMetrics extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3518,7 +3473,6 @@ class ListCorpMetrics extends Rpc
  */
 class ListCorps extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3570,7 +3524,6 @@ class ListCorps extends Rpc
  */
 class ListDeviceGroups extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3672,7 +3625,6 @@ class ListDeviceGroups extends Rpc
  */
 class ListDevices extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3754,7 +3706,6 @@ class ListDevices extends Rpc
  */
 class ListEventAlgorithmDetails extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3911,7 +3862,6 @@ class ListEventAlgorithmDetails extends Rpc
  */
 class ListEventAlgorithmResults extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4028,7 +3978,6 @@ class ListEventAlgorithmResults extends Rpc
  */
 class ListFaceAlgorithmResults extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4132,7 +4081,6 @@ class ListFaceAlgorithmResults extends Rpc
  */
 class ListMetrics extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4237,7 +4185,6 @@ class ListMetrics extends Rpc
  */
 class ListMotorAlgorithmResults extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4353,7 +4300,6 @@ class ListMotorAlgorithmResults extends Rpc
  */
 class ListPersons extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4445,7 +4391,6 @@ class ListPersons extends Rpc
  */
 class ListPersonTrace extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4563,7 +4508,6 @@ class ListPersonTrace extends Rpc
  */
 class ListPersonTraceDetails extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4684,7 +4628,6 @@ class ListPersonTraceDetails extends Rpc
  */
 class ListPersonVisitCount extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4871,7 +4814,6 @@ class ListUserGroups extends Rpc
  */
 class ListUsers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5115,7 +5057,6 @@ class ListUsers extends Rpc
  */
 class RecognizeFaceQuality extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5177,7 +5118,6 @@ class RecognizeFaceQuality extends Rpc
  */
 class RecognizeImage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5239,7 +5179,6 @@ class RecognizeImage extends Rpc
  */
 class RegisterDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5305,37 +5244,34 @@ class RegisterDevice extends Rpc
  */
 class ReportDeviceCapacity extends Rpc
 {
-
     /**
-     * @param array $streamCapacities
-     *
      * @return $this
      */
-	public function withStreamCapacities(array $streamCapacities)
-	{
-	    $this->data['StreamCapacities'] = $streamCapacities;
-		foreach ($streamCapacities as $depth1 => $depth1Value) {
-			if(isset($depth1Value['BitrateRange'])){
-				$this->options['form_params']['StreamCapacities.' . ($depth1 + 1) . '.BitrateRange'] = $depth1Value['BitrateRange'];
-			}
-			if(isset($depth1Value['MaxStream'])){
-				$this->options['form_params']['StreamCapacities.' . ($depth1 + 1) . '.MaxStream'] = $depth1Value['MaxStream'];
-			}
-			if(isset($depth1Value['EncodeFormat'])){
-				$this->options['form_params']['StreamCapacities.' . ($depth1 + 1) . '.EncodeFormat'] = $depth1Value['EncodeFormat'];
-			}
-			if(isset($depth1Value['MaxFrameRate'])){
-				$this->options['form_params']['StreamCapacities.' . ($depth1 + 1) . '.MaxFrameRate'] = $depth1Value['MaxFrameRate'];
-			}
-			if(isset($depth1Value['GovLengthRange'])){
-				$this->options['form_params']['StreamCapacities.' . ($depth1 + 1) . '.GovLengthRange'] = $depth1Value['GovLengthRange'];
-			}
-			if(isset($depth1Value['Resolution'])){
-				$this->options['form_params']['StreamCapacities.' . ($depth1 + 1) . '.Resolution'] = $depth1Value['Resolution'];
-			}
-		}
+    public function withStreamCapacities(array $streamCapacities)
+    {
+        $this->data['StreamCapacities'] = $streamCapacities;
+        foreach ($streamCapacities as $depth1 => $depth1Value) {
+            if (isset($depth1Value['BitrateRange'])) {
+                $this->options['form_params']['StreamCapacities.' . ($depth1 + 1) . '.BitrateRange'] = $depth1Value['BitrateRange'];
+            }
+            if (isset($depth1Value['MaxStream'])) {
+                $this->options['form_params']['StreamCapacities.' . ($depth1 + 1) . '.MaxStream'] = $depth1Value['MaxStream'];
+            }
+            if (isset($depth1Value['EncodeFormat'])) {
+                $this->options['form_params']['StreamCapacities.' . ($depth1 + 1) . '.EncodeFormat'] = $depth1Value['EncodeFormat'];
+            }
+            if (isset($depth1Value['MaxFrameRate'])) {
+                $this->options['form_params']['StreamCapacities.' . ($depth1 + 1) . '.MaxFrameRate'] = $depth1Value['MaxFrameRate'];
+            }
+            if (isset($depth1Value['GovLengthRange'])) {
+                $this->options['form_params']['StreamCapacities.' . ($depth1 + 1) . '.GovLengthRange'] = $depth1Value['GovLengthRange'];
+            }
+            if (isset($depth1Value['Resolution'])) {
+                $this->options['form_params']['StreamCapacities.' . ($depth1 + 1) . '.Resolution'] = $depth1Value['Resolution'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -5437,7 +5373,6 @@ class ReportDeviceCapacity extends Rpc
  */
 class SaveVideoSummaryTaskVideo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5489,7 +5424,6 @@ class SaveVideoSummaryTaskVideo extends Rpc
  */
 class SearchBody extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5593,7 +5527,6 @@ class SearchBody extends Rpc
  */
 class SearchFace extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5701,7 +5634,6 @@ class SearchFace extends Rpc
  */
 class SearchObject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5852,7 +5784,6 @@ class SearchObject extends Rpc
  */
 class StopMonitor extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5906,7 +5837,6 @@ class SubscribeSpaceEvent extends Rpc
  */
 class SyncDeviceTime extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5940,7 +5870,6 @@ class SyncDeviceTime extends Rpc
  */
 class UnbindCorpGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5975,7 +5904,6 @@ class UnbindCorpGroup extends Rpc
  */
 class UnbindPerson extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6023,7 +5951,6 @@ class UnbindPerson extends Rpc
  */
 class UnbindUser extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6091,7 +6018,6 @@ class UnsubscribeSpaceEvent extends Rpc
  */
 class UpdateCorp extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6198,7 +6124,6 @@ class UpdateCorp extends Rpc
  */
 class UpdateDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6352,7 +6277,6 @@ class UpdateDevice extends Rpc
  */
 class UpdateMonitor extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6605,7 +6529,6 @@ class UpdateMonitor extends Rpc
  */
 class UpdateProfile extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6784,7 +6707,6 @@ class UpdateProfile extends Rpc
  */
 class UpdateProfileCatalog extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6857,7 +6779,6 @@ class UpdateProfileCatalog extends Rpc
  */
 class UpdateUser extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7062,7 +6983,6 @@ class UpdateUser extends Rpc
  */
 class UpdateUserGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7128,7 +7048,6 @@ class UpdateUserGroup extends Rpc
  */
 class UploadFile extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7239,7 +7158,6 @@ class UploadFile extends Rpc
  */
 class UploadImage extends Rpc
 {
-
     /**
      * @param string $value
      *

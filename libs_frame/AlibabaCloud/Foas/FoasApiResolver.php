@@ -81,10 +81,10 @@ class Roa extends \AlibabaCloud\Client\Resolver\Roa
     public $version = '2018-11-11';
 
     /** @var string */
-    protected $scheme = 'https';
+    public $serviceCode = 'foas';
 
     /** @var string */
-    public $serviceCode = 'foas';
+    protected $scheme = 'https';
 }
 
 /**

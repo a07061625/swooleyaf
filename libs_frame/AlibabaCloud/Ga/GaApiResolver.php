@@ -91,25 +91,22 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AddEntriesToAcl extends Rpc
 {
-
     /**
-     * @param array $aclEntries
-     *
      * @return $this
      */
-	public function withAclEntries(array $aclEntries)
-	{
-	    $this->data['AclEntries'] = $aclEntries;
-		foreach ($aclEntries as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Entry'])){
-				$this->options['query']['AclEntries.' . ($depth1 + 1) . '.Entry'] = $depth1Value['Entry'];
-			}
-			if(isset($depth1Value['EntryDescription'])){
-				$this->options['query']['AclEntries.' . ($depth1 + 1) . '.EntryDescription'] = $depth1Value['EntryDescription'];
-			}
-		}
+    public function withAclEntries(array $aclEntries)
+    {
+        $this->data['AclEntries'] = $aclEntries;
+        foreach ($aclEntries as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Entry'])) {
+                $this->options['query']['AclEntries.' . ($depth1 + 1) . '.Entry'] = $depth1Value['Entry'];
+            }
+            if (isset($depth1Value['EntryDescription'])) {
+                $this->options['query']['AclEntries.' . ($depth1 + 1) . '.EntryDescription'] = $depth1Value['EntryDescription'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -126,20 +123,17 @@ class AddEntriesToAcl extends Rpc
  */
 class AssociateAclsWithListener extends Rpc
 {
-
     /**
-     * @param array $aclIds
-     *
      * @return $this
      */
-	public function withAclIds(array $aclIds)
-	{
-	    $this->data['AclIds'] = $aclIds;
-		foreach ($aclIds as $i => $iValue) {
-			$this->options['query']['AclIds.' . ($i + 1)] = $iValue;
-		}
+    public function withAclIds(array $aclIds)
+    {
+        $this->data['AclIds'] = $aclIds;
+        foreach ($aclIds as $i => $iValue) {
+            $this->options['query']['AclIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -172,20 +166,17 @@ class AttachDdosToAccelerator extends Rpc
  */
 class AttachLogStoreToEndpointGroup extends Rpc
 {
-
     /**
-     * @param array $endpointGroupIds
-     *
      * @return $this
      */
-	public function withEndpointGroupIds(array $endpointGroupIds)
-	{
-	    $this->data['EndpointGroupIds'] = $endpointGroupIds;
-		foreach ($endpointGroupIds as $i => $iValue) {
-			$this->options['query']['EndpointGroupIds.' . ($i + 1)] = $iValue;
-		}
+    public function withEndpointGroupIds(array $endpointGroupIds)
+    {
+        $this->data['EndpointGroupIds'] = $endpointGroupIds;
+        foreach ($endpointGroupIds as $i => $iValue) {
+            $this->options['query']['EndpointGroupIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -264,25 +255,22 @@ class CreateAccelerator extends Rpc
  */
 class CreateAcl extends Rpc
 {
-
     /**
-     * @param array $aclEntries
-     *
      * @return $this
      */
-	public function withAclEntries(array $aclEntries)
-	{
-	    $this->data['AclEntries'] = $aclEntries;
-		foreach ($aclEntries as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Entry'])){
-				$this->options['query']['AclEntries.' . ($depth1 + 1) . '.Entry'] = $depth1Value['Entry'];
-			}
-			if(isset($depth1Value['EntryDescription'])){
-				$this->options['query']['AclEntries.' . ($depth1 + 1) . '.EntryDescription'] = $depth1Value['EntryDescription'];
-			}
-		}
+    public function withAclEntries(array $aclEntries)
+    {
+        $this->data['AclEntries'] = $aclEntries;
+        foreach ($aclEntries as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Entry'])) {
+                $this->options['query']['AclEntries.' . ($depth1 + 1) . '.Entry'] = $depth1Value['Entry'];
+            }
+            if (isset($depth1Value['EntryDescription'])) {
+                $this->options['query']['AclEntries.' . ($depth1 + 1) . '.EntryDescription'] = $depth1Value['EntryDescription'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -354,54 +342,49 @@ class CreateBandwidthPackage extends Rpc
  */
 class CreateEndpointGroup extends Rpc
 {
-
     /**
-     * @param array $portOverrides
-     *
      * @return $this
      */
-	public function withPortOverrides(array $portOverrides)
-	{
-	    $this->data['PortOverrides'] = $portOverrides;
-		foreach ($portOverrides as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ListenerPort'])){
-				$this->options['query']['PortOverrides.' . ($depth1 + 1) . '.ListenerPort'] = $depth1Value['ListenerPort'];
-			}
-			if(isset($depth1Value['EndpointPort'])){
-				$this->options['query']['PortOverrides.' . ($depth1 + 1) . '.EndpointPort'] = $depth1Value['EndpointPort'];
-			}
-		}
+    public function withPortOverrides(array $portOverrides)
+    {
+        $this->data['PortOverrides'] = $portOverrides;
+        foreach ($portOverrides as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ListenerPort'])) {
+                $this->options['query']['PortOverrides.' . ($depth1 + 1) . '.ListenerPort'] = $depth1Value['ListenerPort'];
+            }
+            if (isset($depth1Value['EndpointPort'])) {
+                $this->options['query']['PortOverrides.' . ($depth1 + 1) . '.EndpointPort'] = $depth1Value['EndpointPort'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $endpointConfigurations
-     *
      * @return $this
      */
-	public function withEndpointConfigurations(array $endpointConfigurations)
-	{
-	    $this->data['EndpointConfigurations'] = $endpointConfigurations;
-		foreach ($endpointConfigurations as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Type'])){
-				$this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.Type'] = $depth1Value['Type'];
-			}
-			if(isset($depth1Value['EnableClientIPPreservation'])){
-				$this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.EnableClientIPPreservation'] = $depth1Value['EnableClientIPPreservation'];
-			}
-			if(isset($depth1Value['Weight'])){
-				$this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.Weight'] = $depth1Value['Weight'];
-			}
-			if(isset($depth1Value['EnableProxyProtocol'])){
-				$this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.EnableProxyProtocol'] = $depth1Value['EnableProxyProtocol'];
-			}
-			if(isset($depth1Value['Endpoint'])){
-				$this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.Endpoint'] = $depth1Value['Endpoint'];
-			}
-		}
+    public function withEndpointConfigurations(array $endpointConfigurations)
+    {
+        $this->data['EndpointConfigurations'] = $endpointConfigurations;
+        foreach ($endpointConfigurations as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Type'])) {
+                $this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.Type'] = $depth1Value['Type'];
+            }
+            if (isset($depth1Value['EnableClientIPPreservation'])) {
+                $this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.EnableClientIPPreservation'] = $depth1Value['EnableClientIPPreservation'];
+            }
+            if (isset($depth1Value['Weight'])) {
+                $this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.Weight'] = $depth1Value['Weight'];
+            }
+            if (isset($depth1Value['EnableProxyProtocol'])) {
+                $this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.EnableProxyProtocol'] = $depth1Value['EnableProxyProtocol'];
+            }
+            if (isset($depth1Value['Endpoint'])) {
+                $this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.Endpoint'] = $depth1Value['Endpoint'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -428,28 +411,25 @@ class CreateForwardingRules extends Rpc
  */
 class CreateIpSets extends Rpc
 {
-
     /**
-     * @param array $accelerateRegion
-     *
      * @return $this
      */
-	public function withAccelerateRegion(array $accelerateRegion)
-	{
-	    $this->data['AccelerateRegion'] = $accelerateRegion;
-		foreach ($accelerateRegion as $depth1 => $depth1Value) {
-			if(isset($depth1Value['AccelerateRegionId'])){
-				$this->options['query']['AccelerateRegion.' . ($depth1 + 1) . '.AccelerateRegionId'] = $depth1Value['AccelerateRegionId'];
-			}
-			if(isset($depth1Value['IpVersion'])){
-				$this->options['query']['AccelerateRegion.' . ($depth1 + 1) . '.IpVersion'] = $depth1Value['IpVersion'];
-			}
-			if(isset($depth1Value['Bandwidth'])){
-				$this->options['query']['AccelerateRegion.' . ($depth1 + 1) . '.Bandwidth'] = $depth1Value['Bandwidth'];
-			}
-		}
+    public function withAccelerateRegion(array $accelerateRegion)
+    {
+        $this->data['AccelerateRegion'] = $accelerateRegion;
+        foreach ($accelerateRegion as $depth1 => $depth1Value) {
+            if (isset($depth1Value['AccelerateRegionId'])) {
+                $this->options['query']['AccelerateRegion.' . ($depth1 + 1) . '.AccelerateRegionId'] = $depth1Value['AccelerateRegionId'];
+            }
+            if (isset($depth1Value['IpVersion'])) {
+                $this->options['query']['AccelerateRegion.' . ($depth1 + 1) . '.IpVersion'] = $depth1Value['IpVersion'];
+            }
+            if (isset($depth1Value['Bandwidth'])) {
+                $this->options['query']['AccelerateRegion.' . ($depth1 + 1) . '.Bandwidth'] = $depth1Value['Bandwidth'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -474,62 +454,55 @@ class CreateIpSets extends Rpc
  */
 class CreateListener extends Rpc
 {
-
     /**
-     * @param array $backendPorts
-     *
      * @return $this
      */
-	public function withBackendPorts(array $backendPorts)
-	{
-	    $this->data['BackendPorts'] = $backendPorts;
-		foreach ($backendPorts as $depth1 => $depth1Value) {
-			if(isset($depth1Value['FromPort'])){
-				$this->options['query']['BackendPorts.' . ($depth1 + 1) . '.FromPort'] = $depth1Value['FromPort'];
-			}
-			if(isset($depth1Value['ToPort'])){
-				$this->options['query']['BackendPorts.' . ($depth1 + 1) . '.ToPort'] = $depth1Value['ToPort'];
-			}
-		}
+    public function withBackendPorts(array $backendPorts)
+    {
+        $this->data['BackendPorts'] = $backendPorts;
+        foreach ($backendPorts as $depth1 => $depth1Value) {
+            if (isset($depth1Value['FromPort'])) {
+                $this->options['query']['BackendPorts.' . ($depth1 + 1) . '.FromPort'] = $depth1Value['FromPort'];
+            }
+            if (isset($depth1Value['ToPort'])) {
+                $this->options['query']['BackendPorts.' . ($depth1 + 1) . '.ToPort'] = $depth1Value['ToPort'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $portRanges
-     *
      * @return $this
      */
-	public function withPortRanges(array $portRanges)
-	{
-	    $this->data['PortRanges'] = $portRanges;
-		foreach ($portRanges as $depth1 => $depth1Value) {
-			if(isset($depth1Value['FromPort'])){
-				$this->options['query']['PortRanges.' . ($depth1 + 1) . '.FromPort'] = $depth1Value['FromPort'];
-			}
-			if(isset($depth1Value['ToPort'])){
-				$this->options['query']['PortRanges.' . ($depth1 + 1) . '.ToPort'] = $depth1Value['ToPort'];
-			}
-		}
+    public function withPortRanges(array $portRanges)
+    {
+        $this->data['PortRanges'] = $portRanges;
+        foreach ($portRanges as $depth1 => $depth1Value) {
+            if (isset($depth1Value['FromPort'])) {
+                $this->options['query']['PortRanges.' . ($depth1 + 1) . '.FromPort'] = $depth1Value['FromPort'];
+            }
+            if (isset($depth1Value['ToPort'])) {
+                $this->options['query']['PortRanges.' . ($depth1 + 1) . '.ToPort'] = $depth1Value['ToPort'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $certificates
-     *
      * @return $this
      */
-	public function withCertificates(array $certificates)
-	{
-	    $this->data['Certificates'] = $certificates;
-		foreach ($certificates as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Id'])){
-				$this->options['query']['Certificates.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
-			}
-		}
+    public function withCertificates(array $certificates)
+    {
+        $this->data['Certificates'] = $certificates;
+        foreach ($certificates as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Id'])) {
+                $this->options['query']['Certificates.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -606,20 +579,17 @@ class DeleteIpSet extends Rpc
  */
 class DeleteIpSets extends Rpc
 {
-
     /**
-     * @param array $ipSetIds
-     *
      * @return $this
      */
-	public function withIpSetIds(array $ipSetIds)
-	{
-	    $this->data['IpSetIds'] = $ipSetIds;
-		foreach ($ipSetIds as $i => $iValue) {
-			$this->options['query']['IpSetIds.' . ($i + 1)] = $iValue;
-		}
+    public function withIpSetIds(array $ipSetIds)
+    {
+        $this->data['IpSetIds'] = $ipSetIds;
+        foreach ($ipSetIds as $i => $iValue) {
+            $this->options['query']['IpSetIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -698,20 +668,17 @@ class DetachDdosFromAccelerator extends Rpc
  */
 class DetachLogStoreFromEndpointGroup extends Rpc
 {
-
     /**
-     * @param array $endpointGroupIds
-     *
      * @return $this
      */
-	public function withEndpointGroupIds(array $endpointGroupIds)
-	{
-	    $this->data['EndpointGroupIds'] = $endpointGroupIds;
-		foreach ($endpointGroupIds as $i => $iValue) {
-			$this->options['query']['EndpointGroupIds.' . ($i + 1)] = $iValue;
-		}
+    public function withEndpointGroupIds(array $endpointGroupIds)
+    {
+        $this->data['EndpointGroupIds'] = $endpointGroupIds;
+        foreach ($endpointGroupIds as $i => $iValue) {
+            $this->options['query']['EndpointGroupIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -726,20 +693,17 @@ class DetachLogStoreFromEndpointGroup extends Rpc
  */
 class DissociateAclsFromListener extends Rpc
 {
-
     /**
-     * @param array $aclIds
-     *
      * @return $this
      */
-	public function withAclIds(array $aclIds)
-	{
-	    $this->data['AclIds'] = $aclIds;
-		foreach ($aclIds as $i => $iValue) {
-			$this->options['query']['AclIds.' . ($i + 1)] = $iValue;
-		}
+    public function withAclIds(array $aclIds)
+    {
+        $this->data['AclIds'] = $aclIds;
+        foreach ($aclIds as $i => $iValue) {
+            $this->options['query']['AclIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -902,22 +866,19 @@ class ListListeners extends Rpc
  */
 class RemoveEntriesFromAcl extends Rpc
 {
-
     /**
-     * @param array $aclEntries
-     *
      * @return $this
      */
-	public function withAclEntries(array $aclEntries)
-	{
-	    $this->data['AclEntries'] = $aclEntries;
-		foreach ($aclEntries as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Entry'])){
-				$this->options['query']['AclEntries.' . ($depth1 + 1) . '.Entry'] = $depth1Value['Entry'];
-			}
-		}
+    public function withAclEntries(array $aclEntries)
+    {
+        $this->data['AclEntries'] = $aclEntries;
+        foreach ($aclEntries as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Entry'])) {
+                $this->options['query']['AclEntries.' . ($depth1 + 1) . '.Entry'] = $depth1Value['Entry'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1019,54 +980,49 @@ class UpdateBandwidthPackage extends Rpc
  */
 class UpdateEndpointGroup extends Rpc
 {
-
     /**
-     * @param array $portOverrides
-     *
      * @return $this
      */
-	public function withPortOverrides(array $portOverrides)
-	{
-	    $this->data['PortOverrides'] = $portOverrides;
-		foreach ($portOverrides as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ListenerPort'])){
-				$this->options['query']['PortOverrides.' . ($depth1 + 1) . '.ListenerPort'] = $depth1Value['ListenerPort'];
-			}
-			if(isset($depth1Value['EndpointPort'])){
-				$this->options['query']['PortOverrides.' . ($depth1 + 1) . '.EndpointPort'] = $depth1Value['EndpointPort'];
-			}
-		}
+    public function withPortOverrides(array $portOverrides)
+    {
+        $this->data['PortOverrides'] = $portOverrides;
+        foreach ($portOverrides as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ListenerPort'])) {
+                $this->options['query']['PortOverrides.' . ($depth1 + 1) . '.ListenerPort'] = $depth1Value['ListenerPort'];
+            }
+            if (isset($depth1Value['EndpointPort'])) {
+                $this->options['query']['PortOverrides.' . ($depth1 + 1) . '.EndpointPort'] = $depth1Value['EndpointPort'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $endpointConfigurations
-     *
      * @return $this
      */
-	public function withEndpointConfigurations(array $endpointConfigurations)
-	{
-	    $this->data['EndpointConfigurations'] = $endpointConfigurations;
-		foreach ($endpointConfigurations as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Type'])){
-				$this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.Type'] = $depth1Value['Type'];
-			}
-			if(isset($depth1Value['EnableClientIPPreservation'])){
-				$this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.EnableClientIPPreservation'] = $depth1Value['EnableClientIPPreservation'];
-			}
-			if(isset($depth1Value['Weight'])){
-				$this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.Weight'] = $depth1Value['Weight'];
-			}
-			if(isset($depth1Value['EnableProxyProtocol'])){
-				$this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.EnableProxyProtocol'] = $depth1Value['EnableProxyProtocol'];
-			}
-			if(isset($depth1Value['Endpoint'])){
-				$this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.Endpoint'] = $depth1Value['Endpoint'];
-			}
-		}
+    public function withEndpointConfigurations(array $endpointConfigurations)
+    {
+        $this->data['EndpointConfigurations'] = $endpointConfigurations;
+        foreach ($endpointConfigurations as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Type'])) {
+                $this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.Type'] = $depth1Value['Type'];
+            }
+            if (isset($depth1Value['EnableClientIPPreservation'])) {
+                $this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.EnableClientIPPreservation'] = $depth1Value['EnableClientIPPreservation'];
+            }
+            if (isset($depth1Value['Weight'])) {
+                $this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.Weight'] = $depth1Value['Weight'];
+            }
+            if (isset($depth1Value['EnableProxyProtocol'])) {
+                $this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.EnableProxyProtocol'] = $depth1Value['EnableProxyProtocol'];
+            }
+            if (isset($depth1Value['Endpoint'])) {
+                $this->options['query']['EndpointConfigurations.' . ($depth1 + 1) . '.Endpoint'] = $depth1Value['Endpoint'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1115,25 +1071,22 @@ class UpdateIpSet extends Rpc
  */
 class UpdateIpSets extends Rpc
 {
-
     /**
-     * @param array $ipSets
-     *
      * @return $this
      */
-	public function withIpSets(array $ipSets)
-	{
-	    $this->data['IpSets'] = $ipSets;
-		foreach ($ipSets as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Bandwidth'])){
-				$this->options['query']['IpSets.' . ($depth1 + 1) . '.Bandwidth'] = $depth1Value['Bandwidth'];
-			}
-			if(isset($depth1Value['IpSetId'])){
-				$this->options['query']['IpSets.' . ($depth1 + 1) . '.IpSetId'] = $depth1Value['IpSetId'];
-			}
-		}
+    public function withIpSets(array $ipSets)
+    {
+        $this->data['IpSets'] = $ipSets;
+        foreach ($ipSets as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Bandwidth'])) {
+                $this->options['query']['IpSets.' . ($depth1 + 1) . '.Bandwidth'] = $depth1Value['Bandwidth'];
+            }
+            if (isset($depth1Value['IpSetId'])) {
+                $this->options['query']['IpSets.' . ($depth1 + 1) . '.IpSetId'] = $depth1Value['IpSetId'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1158,61 +1111,54 @@ class UpdateIpSets extends Rpc
  */
 class UpdateListener extends Rpc
 {
-
     /**
-     * @param array $backendPorts
-     *
      * @return $this
      */
-	public function withBackendPorts(array $backendPorts)
-	{
-	    $this->data['BackendPorts'] = $backendPorts;
-		foreach ($backendPorts as $depth1 => $depth1Value) {
-			if(isset($depth1Value['FromPort'])){
-				$this->options['query']['BackendPorts.' . ($depth1 + 1) . '.FromPort'] = $depth1Value['FromPort'];
-			}
-			if(isset($depth1Value['ToPort'])){
-				$this->options['query']['BackendPorts.' . ($depth1 + 1) . '.ToPort'] = $depth1Value['ToPort'];
-			}
-		}
+    public function withBackendPorts(array $backendPorts)
+    {
+        $this->data['BackendPorts'] = $backendPorts;
+        foreach ($backendPorts as $depth1 => $depth1Value) {
+            if (isset($depth1Value['FromPort'])) {
+                $this->options['query']['BackendPorts.' . ($depth1 + 1) . '.FromPort'] = $depth1Value['FromPort'];
+            }
+            if (isset($depth1Value['ToPort'])) {
+                $this->options['query']['BackendPorts.' . ($depth1 + 1) . '.ToPort'] = $depth1Value['ToPort'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $portRanges
-     *
      * @return $this
      */
-	public function withPortRanges(array $portRanges)
-	{
-	    $this->data['PortRanges'] = $portRanges;
-		foreach ($portRanges as $depth1 => $depth1Value) {
-			if(isset($depth1Value['FromPort'])){
-				$this->options['query']['PortRanges.' . ($depth1 + 1) . '.FromPort'] = $depth1Value['FromPort'];
-			}
-			if(isset($depth1Value['ToPort'])){
-				$this->options['query']['PortRanges.' . ($depth1 + 1) . '.ToPort'] = $depth1Value['ToPort'];
-			}
-		}
+    public function withPortRanges(array $portRanges)
+    {
+        $this->data['PortRanges'] = $portRanges;
+        foreach ($portRanges as $depth1 => $depth1Value) {
+            if (isset($depth1Value['FromPort'])) {
+                $this->options['query']['PortRanges.' . ($depth1 + 1) . '.FromPort'] = $depth1Value['FromPort'];
+            }
+            if (isset($depth1Value['ToPort'])) {
+                $this->options['query']['PortRanges.' . ($depth1 + 1) . '.ToPort'] = $depth1Value['ToPort'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $certificates
-     *
      * @return $this
      */
-	public function withCertificates(array $certificates)
-	{
-	    $this->data['Certificates'] = $certificates;
-		foreach ($certificates as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Id'])){
-				$this->options['query']['Certificates.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
-			}
-		}
+    public function withCertificates(array $certificates)
+    {
+        $this->data['Certificates'] = $certificates;
+        foreach ($certificates as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Id'])) {
+                $this->options['query']['Certificates.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }

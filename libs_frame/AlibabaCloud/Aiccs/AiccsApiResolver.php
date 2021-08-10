@@ -62,7 +62,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AddOuterAccount extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -81,7 +80,6 @@ class AddOuterAccount extends Rpc
  */
 class AddSkillGroup extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -94,7 +92,6 @@ class AddSkillGroup extends Rpc
  */
 class DeleteOuterAccount extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -107,7 +104,6 @@ class DeleteOuterAccount extends Rpc
  */
 class DeleteSkillGroup extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -192,7 +188,6 @@ class MakeCall extends Rpc
  */
 class QueryHotlineInQueue extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -331,7 +326,6 @@ class StartMicroOutbound extends Rpc
  */
 class UpdateOuterAccount extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }

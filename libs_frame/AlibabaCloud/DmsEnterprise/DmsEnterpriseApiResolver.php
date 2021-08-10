@@ -215,7 +215,6 @@ class CreateFreeLockCorrectOrder extends Rpc
  */
 class CreateOrder extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -511,7 +510,6 @@ class GetDataExportDownloadURL extends Rpc
  */
 class GetDataExportOrderDetail extends Rpc
 {
-
     /**
      * @param string $value
      *

@@ -35,7 +35,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class CreateDemoAccessToken extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -68,7 +67,6 @@ class CreateDemoAccessToken extends Rpc
  */
 class DescribeDemoAccessToken extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -88,7 +86,6 @@ class DescribeDemoAccessToken extends Rpc
  */
 class ExpireDemoAccessToken extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -108,7 +105,6 @@ class ExpireDemoAccessToken extends Rpc
  */
 class GetDemoTrialAuth extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 

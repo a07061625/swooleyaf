@@ -32,10 +32,10 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
     public $method = 'POST';
 
     /** @var string */
-    protected $scheme = 'https';
+    public $serviceCode = 'mopen';
 
     /** @var string */
-    public $serviceCode = 'mopen';
+    protected $scheme = 'https';
 }
 
 /**
@@ -43,7 +43,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class MoPenFindGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -66,7 +65,6 @@ class MoPenFindGroup extends Rpc
  */
 class MoPenQueryCanvas extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -131,7 +129,6 @@ class MoPenQueryCanvas extends Rpc
  */
 class MoPenDoRecognize extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -230,7 +227,6 @@ class MoPenDoRecognize extends Rpc
  */
 class MoPenSendMqttMessage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -263,7 +259,6 @@ class MoPenSendMqttMessage extends Rpc
  */
 class MopenCreateGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -284,7 +279,6 @@ class MopenCreateGroup extends Rpc
  */
 class MoPenAddGroupMember extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -317,7 +311,6 @@ class MoPenAddGroupMember extends Rpc
  */
 class MoPenDeleteGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -338,7 +331,6 @@ class MoPenDeleteGroup extends Rpc
  */
 class MoPenBindIsv extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -372,7 +364,6 @@ class MoPenBindIsv extends Rpc
  */
 class MoPenDeleteGroupMember extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -406,7 +397,6 @@ class MoPenDeleteGroupMember extends Rpc
  */
 class MoPenCreateDevice extends Rpc
 {
-
     /**
      * @param string $value
      *

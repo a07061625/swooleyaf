@@ -33,7 +33,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class RevokeFeedback extends Rpc
 {
-
     /**
      * @param string $value
      *

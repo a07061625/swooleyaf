@@ -166,7 +166,6 @@ class DeleteIntent extends Rpc
  */
 class UpdateIntent extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -224,7 +223,6 @@ class DisableDialogFlow extends Rpc
  */
 class UpdateEntity extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -264,7 +262,6 @@ class TestDialogFlow extends Rpc
  */
 class AppendEntityMember extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -288,7 +285,6 @@ class AppendEntityMember extends Rpc
  */
 class RemoveEntityMember extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -460,7 +456,6 @@ class RemoveSynonym extends Rpc
  */
 class UpdateKnowledge extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -496,7 +491,6 @@ class DeleteKnowledge extends Rpc
  */
 class CreateKnowledge extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -528,7 +522,6 @@ class QueryCategories extends Rpc
  */
 class CreateIntent extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -556,7 +549,6 @@ class CreateIntent extends Rpc
  */
 class CreateEntity extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -586,7 +578,6 @@ class QuerySystemEntities extends Rpc
  */
 class UpdateDialogFlow extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -684,10 +675,7 @@ class Feedback extends Rpc
  */
 class Chat extends Rpc
 {
-
     /**
-     * @param array $perspective
-     *
      * @return $this
      */
     public function withPerspective(array $perspective)

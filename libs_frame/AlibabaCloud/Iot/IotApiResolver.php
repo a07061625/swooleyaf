@@ -332,7 +332,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class BatchAddDeviceGroupRelations extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -360,23 +359,21 @@ class BatchAddDeviceGroupRelations extends Rpc
     }
 
     /**
-     * @param array $device
-     *
      * @return $this
      */
-	public function withDevice(array $device)
-	{
-	    $this->data['Device'] = $device;
-		foreach ($device as $depth1 => $depth1Value) {
-			if(isset($depth1Value['DeviceName'])){
-				$this->options['query']['Device.' . ($depth1 + 1) . '.DeviceName'] = $depth1Value['DeviceName'];
-			}
-			if(isset($depth1Value['ProductKey'])){
-				$this->options['query']['Device.' . ($depth1 + 1) . '.ProductKey'] = $depth1Value['ProductKey'];
-			}
-		}
+    public function withDevice(array $device)
+    {
+        $this->data['Device'] = $device;
+        foreach ($device as $depth1 => $depth1Value) {
+            if (isset($depth1Value['DeviceName'])) {
+                $this->options['query']['Device.' . ($depth1 + 1) . '.DeviceName'] = $depth1Value['DeviceName'];
+            }
+            if (isset($depth1Value['ProductKey'])) {
+                $this->options['query']['Device.' . ($depth1 + 1) . '.ProductKey'] = $depth1Value['ProductKey'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -395,37 +392,34 @@ class BatchAddDeviceGroupRelations extends Rpc
  */
 class BatchAddThingTopo extends Rpc
 {
-
     /**
-     * @param array $topoAddItem
-     *
      * @return $this
      */
-	public function withTopoAddItem(array $topoAddItem)
-	{
-	    $this->data['TopoAddItem'] = $topoAddItem;
-		foreach ($topoAddItem as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ClientId'])){
-				$this->options['query']['TopoAddItem.' . ($depth1 + 1) . '.ClientId'] = $depth1Value['ClientId'];
-			}
-			if(isset($depth1Value['SignMethod'])){
-				$this->options['query']['TopoAddItem.' . ($depth1 + 1) . '.SignMethod'] = $depth1Value['SignMethod'];
-			}
-			if(isset($depth1Value['Sign'])){
-				$this->options['query']['TopoAddItem.' . ($depth1 + 1) . '.Sign'] = $depth1Value['Sign'];
-			}
-			if(isset($depth1Value['DeviceName'])){
-				$this->options['query']['TopoAddItem.' . ($depth1 + 1) . '.DeviceName'] = $depth1Value['DeviceName'];
-			}
-			if(isset($depth1Value['ProductKey'])){
-				$this->options['query']['TopoAddItem.' . ($depth1 + 1) . '.ProductKey'] = $depth1Value['ProductKey'];
-			}
-			if(isset($depth1Value['Timestamp'])){
-				$this->options['query']['TopoAddItem.' . ($depth1 + 1) . '.Timestamp'] = $depth1Value['Timestamp'];
-			}
-		}
+    public function withTopoAddItem(array $topoAddItem)
+    {
+        $this->data['TopoAddItem'] = $topoAddItem;
+        foreach ($topoAddItem as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ClientId'])) {
+                $this->options['query']['TopoAddItem.' . ($depth1 + 1) . '.ClientId'] = $depth1Value['ClientId'];
+            }
+            if (isset($depth1Value['SignMethod'])) {
+                $this->options['query']['TopoAddItem.' . ($depth1 + 1) . '.SignMethod'] = $depth1Value['SignMethod'];
+            }
+            if (isset($depth1Value['Sign'])) {
+                $this->options['query']['TopoAddItem.' . ($depth1 + 1) . '.Sign'] = $depth1Value['Sign'];
+            }
+            if (isset($depth1Value['DeviceName'])) {
+                $this->options['query']['TopoAddItem.' . ($depth1 + 1) . '.DeviceName'] = $depth1Value['DeviceName'];
+            }
+            if (isset($depth1Value['ProductKey'])) {
+                $this->options['query']['TopoAddItem.' . ($depth1 + 1) . '.ProductKey'] = $depth1Value['ProductKey'];
+            }
+            if (isset($depth1Value['Timestamp'])) {
+                $this->options['query']['TopoAddItem.' . ($depth1 + 1) . '.Timestamp'] = $depth1Value['Timestamp'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -464,7 +458,6 @@ class BatchAddThingTopo extends Rpc
  */
 class BatchBindDevicesIntoProject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -492,23 +485,21 @@ class BatchBindDevicesIntoProject extends Rpc
     }
 
     /**
-     * @param array $devices
-     *
      * @return $this
      */
-	public function withDevices(array $devices)
-	{
-	    $this->data['Devices'] = $devices;
-		foreach ($devices as $depth1 => $depth1Value) {
-			if(isset($depth1Value['DeviceName'])){
-				$this->options['form_params']['Devices.' . ($depth1 + 1) . '.DeviceName'] = $depth1Value['DeviceName'];
-			}
-			if(isset($depth1Value['ProductKey'])){
-				$this->options['form_params']['Devices.' . ($depth1 + 1) . '.ProductKey'] = $depth1Value['ProductKey'];
-			}
-		}
+    public function withDevices(array $devices)
+    {
+        $this->data['Devices'] = $devices;
+        foreach ($devices as $depth1 => $depth1Value) {
+            if (isset($depth1Value['DeviceName'])) {
+                $this->options['form_params']['Devices.' . ($depth1 + 1) . '.DeviceName'] = $depth1Value['DeviceName'];
+            }
+            if (isset($depth1Value['ProductKey'])) {
+                $this->options['form_params']['Devices.' . ($depth1 + 1) . '.ProductKey'] = $depth1Value['ProductKey'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -551,20 +542,17 @@ class BatchBindDevicesIntoProject extends Rpc
  */
 class BatchBindDeviceToEdgeInstanceWithDriver extends Rpc
 {
-
     /**
-     * @param array $iotIds
-     *
      * @return $this
      */
-	public function withIotIds(array $iotIds)
-	{
-	    $this->data['IotIds'] = $iotIds;
-		foreach ($iotIds as $i => $iValue) {
-			$this->options['query']['IotIds.' . ($i + 1)] = $iValue;
-		}
+    public function withIotIds(array $iotIds)
+    {
+        $this->data['IotIds'] = $iotIds;
+        foreach ($iotIds as $i => $iValue) {
+            $this->options['query']['IotIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -603,20 +591,17 @@ class BatchBindDeviceToEdgeInstanceWithDriver extends Rpc
  */
 class BatchBindProductsIntoProject extends Rpc
 {
-
     /**
-     * @param array $productKeys
-     *
      * @return $this
      */
-	public function withProductKeys(array $productKeys)
-	{
-	    $this->data['ProductKeys'] = $productKeys;
-		foreach ($productKeys as $i => $iValue) {
-			$this->options['form_params']['ProductKeys.' . ($i + 1)] = $iValue;
-		}
+    public function withProductKeys(array $productKeys)
+    {
+        $this->data['ProductKeys'] = $productKeys;
+        foreach ($productKeys as $i => $iValue) {
+            $this->options['form_params']['ProductKeys.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -688,25 +673,22 @@ class BatchBindProductsIntoProject extends Rpc
  */
 class BatchCheckDeviceNames extends Rpc
 {
-
     /**
-     * @param array $deviceNameList
-     *
      * @return $this
      */
-	public function withDeviceNameList(array $deviceNameList)
-	{
-	    $this->data['DeviceNameList'] = $deviceNameList;
-		foreach ($deviceNameList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['DeviceNickname'])){
-				$this->options['query']['DeviceNameList.' . ($depth1 + 1) . '.DeviceNickname'] = $depth1Value['DeviceNickname'];
-			}
-			if(isset($depth1Value['DeviceName'])){
-				$this->options['query']['DeviceNameList.' . ($depth1 + 1) . '.DeviceName'] = $depth1Value['DeviceName'];
-			}
-		}
+    public function withDeviceNameList(array $deviceNameList)
+    {
+        $this->data['DeviceNameList'] = $deviceNameList;
+        foreach ($deviceNameList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['DeviceNickname'])) {
+                $this->options['query']['DeviceNameList.' . ($depth1 + 1) . '.DeviceNickname'] = $depth1Value['DeviceNickname'];
+            }
+            if (isset($depth1Value['DeviceName'])) {
+                $this->options['query']['DeviceNameList.' . ($depth1 + 1) . '.DeviceName'] = $depth1Value['DeviceName'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -736,18 +718,16 @@ class BatchCheckDeviceNames extends Rpc
     }
 
     /**
-     * @param array $deviceName
-     *
      * @return $this
      */
-	public function withDeviceName(array $deviceName)
-	{
-	    $this->data['DeviceName'] = $deviceName;
-		foreach ($deviceName as $i => $iValue) {
-			$this->options['query']['DeviceName.' . ($i + 1)] = $iValue;
-		}
+    public function withDeviceName(array $deviceName)
+    {
+        $this->data['DeviceName'] = $deviceName;
+        foreach ($deviceName as $i => $iValue) {
+            $this->options['query']['DeviceName.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -762,20 +742,17 @@ class BatchCheckDeviceNames extends Rpc
  */
 class BatchClearEdgeInstanceDeviceConfig extends Rpc
 {
-
     /**
-     * @param array $iotIds
-     *
      * @return $this
      */
-	public function withIotIds(array $iotIds)
-	{
-	    $this->data['IotIds'] = $iotIds;
-		foreach ($iotIds as $i => $iValue) {
-			$this->options['query']['IotIds.' . ($i + 1)] = $iValue;
-		}
+    public function withIotIds(array $iotIds)
+    {
+        $this->data['IotIds'] = $iotIds;
+        foreach ($iotIds as $i => $iValue) {
+            $this->options['query']['IotIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -820,7 +797,6 @@ class BatchClearEdgeInstanceDeviceConfig extends Rpc
  */
 class BatchDeleteDeviceGroupRelations extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -848,23 +824,21 @@ class BatchDeleteDeviceGroupRelations extends Rpc
     }
 
     /**
-     * @param array $device
-     *
      * @return $this
      */
-	public function withDevice(array $device)
-	{
-	    $this->data['Device'] = $device;
-		foreach ($device as $depth1 => $depth1Value) {
-			if(isset($depth1Value['DeviceName'])){
-				$this->options['query']['Device.' . ($depth1 + 1) . '.DeviceName'] = $depth1Value['DeviceName'];
-			}
-			if(isset($depth1Value['ProductKey'])){
-				$this->options['query']['Device.' . ($depth1 + 1) . '.ProductKey'] = $depth1Value['ProductKey'];
-			}
-		}
+    public function withDevice(array $device)
+    {
+        $this->data['Device'] = $device;
+        foreach ($device as $depth1 => $depth1Value) {
+            if (isset($depth1Value['DeviceName'])) {
+                $this->options['query']['Device.' . ($depth1 + 1) . '.DeviceName'] = $depth1Value['DeviceName'];
+            }
+            if (isset($depth1Value['ProductKey'])) {
+                $this->options['query']['Device.' . ($depth1 + 1) . '.ProductKey'] = $depth1Value['ProductKey'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -881,7 +855,6 @@ class BatchDeleteDeviceGroupRelations extends Rpc
  */
 class BatchDeleteEdgeInstanceChannel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -909,18 +882,16 @@ class BatchDeleteEdgeInstanceChannel extends Rpc
     }
 
     /**
-     * @param array $channelIds
-     *
      * @return $this
      */
-	public function withChannelIds(array $channelIds)
-	{
-	    $this->data['ChannelIds'] = $channelIds;
-		foreach ($channelIds as $i => $iValue) {
-			$this->options['query']['ChannelIds.' . ($i + 1)] = $iValue;
-		}
+    public function withChannelIds(array $channelIds)
+    {
+        $this->data['ChannelIds'] = $channelIds;
+        foreach ($channelIds as $i => $iValue) {
+            $this->options['query']['ChannelIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -933,20 +904,17 @@ class BatchDeleteEdgeInstanceChannel extends Rpc
  */
 class BatchGetDeviceBindStatus extends Rpc
 {
-
     /**
-     * @param array $iotIds
-     *
      * @return $this
      */
-	public function withIotIds(array $iotIds)
-	{
-	    $this->data['IotIds'] = $iotIds;
-		foreach ($iotIds as $i => $iValue) {
-			$this->options['query']['IotIds.' . ($i + 1)] = $iValue;
-		}
+    public function withIotIds(array $iotIds)
+    {
+        $this->data['IotIds'] = $iotIds;
+        foreach ($iotIds as $i => $iValue) {
+            $this->options['query']['IotIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -992,20 +960,17 @@ class BatchGetDeviceBindStatus extends Rpc
  */
 class BatchGetDeviceState extends Rpc
 {
-
     /**
-     * @param array $iotId
-     *
      * @return $this
      */
-	public function withIotId(array $iotId)
-	{
-	    $this->data['IotId'] = $iotId;
-		foreach ($iotId as $i => $iValue) {
-			$this->options['query']['IotId.' . ($i + 1)] = $iValue;
-		}
+    public function withIotId(array $iotId)
+    {
+        $this->data['IotId'] = $iotId;
+        foreach ($iotId as $i => $iValue) {
+            $this->options['query']['IotId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1035,18 +1000,16 @@ class BatchGetDeviceState extends Rpc
     }
 
     /**
-     * @param array $deviceName
-     *
      * @return $this
      */
-	public function withDeviceName(array $deviceName)
-	{
-	    $this->data['DeviceName'] = $deviceName;
-		foreach ($deviceName as $i => $iValue) {
-			$this->options['query']['DeviceName.' . ($i + 1)] = $iValue;
-		}
+    public function withDeviceName(array $deviceName)
+    {
+        $this->data['DeviceName'] = $deviceName;
+        foreach ($deviceName as $i => $iValue) {
+            $this->options['query']['DeviceName.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1059,20 +1022,17 @@ class BatchGetDeviceState extends Rpc
  */
 class BatchGetEdgeDriver extends Rpc
 {
-
     /**
-     * @param array $driverIds
-     *
      * @return $this
      */
-	public function withDriverIds(array $driverIds)
-	{
-	    $this->data['DriverIds'] = $driverIds;
-		foreach ($driverIds as $i => $iValue) {
-			$this->options['query']['DriverIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDriverIds(array $driverIds)
+    {
+        $this->data['DriverIds'] = $driverIds;
+        foreach ($driverIds as $i => $iValue) {
+            $this->options['query']['DriverIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1115,7 +1075,6 @@ class BatchGetEdgeDriver extends Rpc
  */
 class BatchGetEdgeInstanceChannel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1143,18 +1102,16 @@ class BatchGetEdgeInstanceChannel extends Rpc
     }
 
     /**
-     * @param array $channelIds
-     *
      * @return $this
      */
-	public function withChannelIds(array $channelIds)
-	{
-	    $this->data['ChannelIds'] = $channelIds;
-		foreach ($channelIds as $i => $iValue) {
-			$this->options['query']['ChannelIds.' . ($i + 1)] = $iValue;
-		}
+    public function withChannelIds(array $channelIds)
+    {
+        $this->data['ChannelIds'] = $channelIds;
+        foreach ($channelIds as $i => $iValue) {
+            $this->options['query']['ChannelIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1171,20 +1128,17 @@ class BatchGetEdgeInstanceChannel extends Rpc
  */
 class BatchGetEdgeInstanceDeviceChannel extends Rpc
 {
-
     /**
-     * @param array $iotIds
-     *
      * @return $this
      */
-	public function withIotIds(array $iotIds)
-	{
-	    $this->data['IotIds'] = $iotIds;
-		foreach ($iotIds as $i => $iValue) {
-			$this->options['query']['IotIds.' . ($i + 1)] = $iValue;
-		}
+    public function withIotIds(array $iotIds)
+    {
+        $this->data['IotIds'] = $iotIds;
+        foreach ($iotIds as $i => $iValue) {
+            $this->options['query']['IotIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1225,20 +1179,17 @@ class BatchGetEdgeInstanceDeviceChannel extends Rpc
  */
 class BatchGetEdgeInstanceDeviceConfig extends Rpc
 {
-
     /**
-     * @param array $iotIds
-     *
      * @return $this
      */
-	public function withIotIds(array $iotIds)
-	{
-	    $this->data['IotIds'] = $iotIds;
-		foreach ($iotIds as $i => $iValue) {
-			$this->options['query']['IotIds.' . ($i + 1)] = $iValue;
-		}
+    public function withIotIds(array $iotIds)
+    {
+        $this->data['IotIds'] = $iotIds;
+        foreach ($iotIds as $i => $iValue) {
+            $this->options['query']['IotIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1279,20 +1230,17 @@ class BatchGetEdgeInstanceDeviceConfig extends Rpc
  */
 class BatchGetEdgeInstanceDeviceDriver extends Rpc
 {
-
     /**
-     * @param array $iotIds
-     *
      * @return $this
      */
-	public function withIotIds(array $iotIds)
-	{
-	    $this->data['IotIds'] = $iotIds;
-		foreach ($iotIds as $i => $iValue) {
-			$this->options['query']['IotIds.' . ($i + 1)] = $iValue;
-		}
+    public function withIotIds(array $iotIds)
+    {
+        $this->data['IotIds'] = $iotIds;
+        foreach ($iotIds as $i => $iValue) {
+            $this->options['query']['IotIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1333,20 +1281,17 @@ class BatchGetEdgeInstanceDeviceDriver extends Rpc
  */
 class BatchGetEdgeInstanceDriverConfigs extends Rpc
 {
-
     /**
-     * @param array $driverIds
-     *
      * @return $this
      */
-	public function withDriverIds(array $driverIds)
-	{
-	    $this->data['DriverIds'] = $driverIds;
-		foreach ($driverIds as $i => $iValue) {
-			$this->options['query']['DriverIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDriverIds(array $driverIds)
+    {
+        $this->data['DriverIds'] = $driverIds;
+        foreach ($driverIds as $i => $iValue) {
+            $this->options['query']['DriverIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1393,7 +1338,6 @@ class BatchGetEdgeInstanceDriverConfigs extends Rpc
  */
 class BatchPub extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1421,18 +1365,16 @@ class BatchPub extends Rpc
     }
 
     /**
-     * @param array $deviceName
-     *
      * @return $this
      */
-	public function withDeviceName(array $deviceName)
-	{
-	    $this->data['DeviceName'] = $deviceName;
-		foreach ($deviceName as $i => $iValue) {
-			$this->options['query']['DeviceName.' . ($i + 1)] = $iValue;
-		}
+    public function withDeviceName(array $deviceName)
+    {
+        $this->data['DeviceName'] = $deviceName;
+        foreach ($deviceName as $i => $iValue) {
+            $this->options['query']['DeviceName.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1451,7 +1393,6 @@ class BatchPub extends Rpc
  */
 class BatchQueryDeviceDetail extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1479,18 +1420,16 @@ class BatchQueryDeviceDetail extends Rpc
     }
 
     /**
-     * @param array $deviceName
-     *
      * @return $this
      */
-	public function withDeviceName(array $deviceName)
-	{
-	    $this->data['DeviceName'] = $deviceName;
-		foreach ($deviceName as $i => $iValue) {
-			$this->options['query']['DeviceName.' . ($i + 1)] = $iValue;
-		}
+    public function withDeviceName(array $deviceName)
+    {
+        $this->data['DeviceName'] = $deviceName;
+        foreach ($deviceName as $i => $iValue) {
+            $this->options['query']['DeviceName.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1510,7 +1449,6 @@ class BatchQueryDeviceDetail extends Rpc
  */
 class BatchRegisterDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1554,7 +1492,6 @@ class BatchRegisterDevice extends Rpc
  */
 class BatchRegisterDeviceWithApplyId extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1597,20 +1534,17 @@ class BatchRegisterDeviceWithApplyId extends Rpc
  */
 class BatchSetEdgeInstanceDeviceChannel extends Rpc
 {
-
     /**
-     * @param array $iotIds
-     *
      * @return $this
      */
-	public function withIotIds(array $iotIds)
-	{
-	    $this->data['IotIds'] = $iotIds;
-		foreach ($iotIds as $i => $iValue) {
-			$this->options['query']['IotIds.' . ($i + 1)] = $iValue;
-		}
+    public function withIotIds(array $iotIds)
+    {
+        $this->data['IotIds'] = $iotIds;
+        foreach ($iotIds as $i => $iValue) {
+            $this->options['query']['IotIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1651,25 +1585,22 @@ class BatchSetEdgeInstanceDeviceChannel extends Rpc
  */
 class BatchSetEdgeInstanceDeviceConfig extends Rpc
 {
-
     /**
-     * @param array $deviceConfigs
-     *
      * @return $this
      */
-	public function withDeviceConfigs(array $deviceConfigs)
-	{
-	    $this->data['DeviceConfigs'] = $deviceConfigs;
-		foreach ($deviceConfigs as $depth1 => $depth1Value) {
-			if(isset($depth1Value['IotId'])){
-				$this->options['query']['DeviceConfigs.' . ($depth1 + 1) . '.IotId'] = $depth1Value['IotId'];
-			}
-			if(isset($depth1Value['Content'])){
-				$this->options['query']['DeviceConfigs.' . ($depth1 + 1) . '.Content'] = $depth1Value['Content'];
-			}
-		}
+    public function withDeviceConfigs(array $deviceConfigs)
+    {
+        $this->data['DeviceConfigs'] = $deviceConfigs;
+        foreach ($deviceConfigs as $depth1 => $depth1Value) {
+            if (isset($depth1Value['IotId'])) {
+                $this->options['query']['DeviceConfigs.' . ($depth1 + 1) . '.IotId'] = $depth1Value['IotId'];
+            }
+            if (isset($depth1Value['Content'])) {
+                $this->options['query']['DeviceConfigs.' . ($depth1 + 1) . '.Content'] = $depth1Value['Content'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1710,20 +1641,17 @@ class BatchSetEdgeInstanceDeviceConfig extends Rpc
  */
 class BatchUnbindDeviceFromEdgeInstance extends Rpc
 {
-
     /**
-     * @param array $iotIds
-     *
      * @return $this
      */
-	public function withIotIds(array $iotIds)
-	{
-	    $this->data['IotIds'] = $iotIds;
-		foreach ($iotIds as $i => $iValue) {
-			$this->options['query']['IotIds.' . ($i + 1)] = $iValue;
-		}
+    public function withIotIds(array $iotIds)
+    {
+        $this->data['IotIds'] = $iotIds;
+        foreach ($iotIds as $i => $iValue) {
+            $this->options['query']['IotIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1762,7 +1690,6 @@ class BatchUnbindDeviceFromEdgeInstance extends Rpc
  */
 class BatchUnbindProjectDevices extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1790,23 +1717,21 @@ class BatchUnbindProjectDevices extends Rpc
     }
 
     /**
-     * @param array $devices
-     *
      * @return $this
      */
-	public function withDevices(array $devices)
-	{
-	    $this->data['Devices'] = $devices;
-		foreach ($devices as $depth1 => $depth1Value) {
-			if(isset($depth1Value['DeviceName'])){
-				$this->options['form_params']['Devices.' . ($depth1 + 1) . '.DeviceName'] = $depth1Value['DeviceName'];
-			}
-			if(isset($depth1Value['ProductKey'])){
-				$this->options['form_params']['Devices.' . ($depth1 + 1) . '.ProductKey'] = $depth1Value['ProductKey'];
-			}
-		}
+    public function withDevices(array $devices)
+    {
+        $this->data['Devices'] = $devices;
+        foreach ($devices as $depth1 => $depth1Value) {
+            if (isset($depth1Value['DeviceName'])) {
+                $this->options['form_params']['Devices.' . ($depth1 + 1) . '.DeviceName'] = $depth1Value['DeviceName'];
+            }
+            if (isset($depth1Value['ProductKey'])) {
+                $this->options['form_params']['Devices.' . ($depth1 + 1) . '.ProductKey'] = $depth1Value['ProductKey'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1845,20 +1770,17 @@ class BatchUnbindProjectDevices extends Rpc
  */
 class BatchUnbindProjectProducts extends Rpc
 {
-
     /**
-     * @param array $productKeys
-     *
      * @return $this
      */
-	public function withProductKeys(array $productKeys)
-	{
-	    $this->data['ProductKeys'] = $productKeys;
-		foreach ($productKeys as $i => $iValue) {
-			$this->options['form_params']['ProductKeys.' . ($i + 1)] = $iValue;
-		}
+    public function withProductKeys(array $productKeys)
+    {
+        $this->data['ProductKeys'] = $productKeys;
+        foreach ($productKeys as $i => $iValue) {
+            $this->options['form_params']['ProductKeys.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1927,31 +1849,28 @@ class BatchUnbindProjectProducts extends Rpc
  */
 class BatchUpdateDeviceNickname extends Rpc
 {
-
     /**
-     * @param array $deviceNicknameInfo
-     *
      * @return $this
      */
-	public function withDeviceNicknameInfo(array $deviceNicknameInfo)
-	{
-	    $this->data['DeviceNicknameInfo'] = $deviceNicknameInfo;
-		foreach ($deviceNicknameInfo as $depth1 => $depth1Value) {
-			if(isset($depth1Value['IotId'])){
-				$this->options['query']['DeviceNicknameInfo.' . ($depth1 + 1) . '.IotId'] = $depth1Value['IotId'];
-			}
-			if(isset($depth1Value['Nickname'])){
-				$this->options['query']['DeviceNicknameInfo.' . ($depth1 + 1) . '.Nickname'] = $depth1Value['Nickname'];
-			}
-			if(isset($depth1Value['DeviceName'])){
-				$this->options['query']['DeviceNicknameInfo.' . ($depth1 + 1) . '.DeviceName'] = $depth1Value['DeviceName'];
-			}
-			if(isset($depth1Value['ProductKey'])){
-				$this->options['query']['DeviceNicknameInfo.' . ($depth1 + 1) . '.ProductKey'] = $depth1Value['ProductKey'];
-			}
-		}
+    public function withDeviceNicknameInfo(array $deviceNicknameInfo)
+    {
+        $this->data['DeviceNicknameInfo'] = $deviceNicknameInfo;
+        foreach ($deviceNicknameInfo as $depth1 => $depth1Value) {
+            if (isset($depth1Value['IotId'])) {
+                $this->options['query']['DeviceNicknameInfo.' . ($depth1 + 1) . '.IotId'] = $depth1Value['IotId'];
+            }
+            if (isset($depth1Value['Nickname'])) {
+                $this->options['query']['DeviceNicknameInfo.' . ($depth1 + 1) . '.Nickname'] = $depth1Value['Nickname'];
+            }
+            if (isset($depth1Value['DeviceName'])) {
+                $this->options['query']['DeviceNicknameInfo.' . ($depth1 + 1) . '.DeviceName'] = $depth1Value['DeviceName'];
+            }
+            if (isset($depth1Value['ProductKey'])) {
+                $this->options['query']['DeviceNicknameInfo.' . ($depth1 + 1) . '.ProductKey'] = $depth1Value['ProductKey'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1995,7 +1914,6 @@ class BatchUpdateDeviceNickname extends Rpc
  */
 class BindApplicationToEdgeInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2039,7 +1957,6 @@ class BindApplicationToEdgeInstance extends Rpc
  */
 class BindDriverToEdgeInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2083,7 +2000,6 @@ class BindDriverToEdgeInstance extends Rpc
  */
 class BindGatewayToEdgeInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2125,7 +2041,6 @@ class BindGatewayToEdgeInstance extends Rpc
  */
 class BindRoleToEdgeInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2165,7 +2080,6 @@ class BindRoleToEdgeInstance extends Rpc
  */
 class BindSceneRuleToEdgeInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2203,7 +2117,6 @@ class BindSceneRuleToEdgeInstance extends Rpc
  */
 class CancelJob extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2241,7 +2154,6 @@ class CancelJob extends Rpc
  */
 class CancelOTAStrategyByJob extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2284,7 +2196,6 @@ class CancelOTAStrategyByJob extends Rpc
  */
 class CancelOTATaskByDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2312,18 +2223,16 @@ class CancelOTATaskByDevice extends Rpc
     }
 
     /**
-     * @param array $deviceName
-     *
      * @return $this
      */
-	public function withDeviceName(array $deviceName)
-	{
-	    $this->data['DeviceName'] = $deviceName;
-		foreach ($deviceName as $i => $iValue) {
-			$this->options['query']['DeviceName.' . ($i + 1)] = $iValue;
-		}
+    public function withDeviceName(array $deviceName)
+    {
+        $this->data['DeviceName'] = $deviceName;
+        foreach ($deviceName as $i => $iValue) {
+            $this->options['query']['DeviceName.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2347,7 +2256,6 @@ class CancelOTATaskByDevice extends Rpc
  */
 class CancelOTATaskByJob extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2391,7 +2299,6 @@ class CancelOTATaskByJob extends Rpc
  */
 class CancelReleaseProduct extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2431,7 +2338,6 @@ class CancelReleaseProduct extends Rpc
  */
 class ClearEdgeInstanceDriverConfigs extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2469,7 +2375,6 @@ class ClearEdgeInstanceDriverConfigs extends Rpc
  */
 class CloseEdgeInstanceDeployment extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2506,20 +2411,17 @@ class CloseEdgeInstanceDeployment extends Rpc
  */
 class ConfirmOTATask extends Rpc
 {
-
     /**
-     * @param array $taskId
-     *
      * @return $this
      */
-	public function withTaskId(array $taskId)
-	{
-	    $this->data['TaskId'] = $taskId;
-		foreach ($taskId as $i => $iValue) {
-			$this->options['query']['TaskId.' . ($i + 1)] = $iValue;
-		}
+    public function withTaskId(array $taskId)
+    {
+        $this->data['TaskId'] = $taskId;
+        foreach ($taskId as $i => $iValue) {
+            $this->options['query']['TaskId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -2569,7 +2471,6 @@ class ConfirmOTATask extends Rpc
  */
 class CopyThingModel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2611,7 +2512,6 @@ class CopyThingModel extends Rpc
  */
 class CreateConsumerGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2651,7 +2551,6 @@ class CreateConsumerGroup extends Rpc
  */
 class CreateConsumerGroupSubscribeRelation extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2693,34 +2592,31 @@ class CreateConsumerGroupSubscribeRelation extends Rpc
  */
 class CreateDataAPIService extends Rpc
 {
-
     /**
-     * @param array $requestParam
-     *
      * @return $this
      */
-	public function withRequestParam(array $requestParam)
-	{
-	    $this->data['RequestParam'] = $requestParam;
-		foreach ($requestParam as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Name'])){
-				$this->options['form_params']['RequestParam.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
-			}
-			if(isset($depth1Value['Type'])){
-				$this->options['form_params']['RequestParam.' . ($depth1 + 1) . '.Type'] = $depth1Value['Type'];
-			}
-			if(isset($depth1Value['Desc'])){
-				$this->options['form_params']['RequestParam.' . ($depth1 + 1) . '.Desc'] = $depth1Value['Desc'];
-			}
-			if(isset($depth1Value['Example'])){
-				$this->options['form_params']['RequestParam.' . ($depth1 + 1) . '.Example'] = $depth1Value['Example'];
-			}
-			if(isset($depth1Value['Required'])){
-				$this->options['form_params']['RequestParam.' . ($depth1 + 1) . '.Required'] = $depth1Value['Required'];
-			}
-		}
+    public function withRequestParam(array $requestParam)
+    {
+        $this->data['RequestParam'] = $requestParam;
+        foreach ($requestParam as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Name'])) {
+                $this->options['form_params']['RequestParam.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+            }
+            if (isset($depth1Value['Type'])) {
+                $this->options['form_params']['RequestParam.' . ($depth1 + 1) . '.Type'] = $depth1Value['Type'];
+            }
+            if (isset($depth1Value['Desc'])) {
+                $this->options['form_params']['RequestParam.' . ($depth1 + 1) . '.Desc'] = $depth1Value['Desc'];
+            }
+            if (isset($depth1Value['Example'])) {
+                $this->options['form_params']['RequestParam.' . ($depth1 + 1) . '.Example'] = $depth1Value['Example'];
+            }
+            if (isset($depth1Value['Required'])) {
+                $this->options['form_params']['RequestParam.' . ($depth1 + 1) . '.Required'] = $depth1Value['Required'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -2763,32 +2659,30 @@ class CreateDataAPIService extends Rpc
     }
 
     /**
-     * @param array $responseParam
-     *
      * @return $this
      */
-	public function withResponseParam(array $responseParam)
-	{
-	    $this->data['ResponseParam'] = $responseParam;
-		foreach ($responseParam as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Name'])){
-				$this->options['form_params']['ResponseParam.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
-			}
-			if(isset($depth1Value['Type'])){
-				$this->options['form_params']['ResponseParam.' . ($depth1 + 1) . '.Type'] = $depth1Value['Type'];
-			}
-			if(isset($depth1Value['Desc'])){
-				$this->options['form_params']['ResponseParam.' . ($depth1 + 1) . '.Desc'] = $depth1Value['Desc'];
-			}
-			if(isset($depth1Value['Example'])){
-				$this->options['form_params']['ResponseParam.' . ($depth1 + 1) . '.Example'] = $depth1Value['Example'];
-			}
-			if(isset($depth1Value['Required'])){
-				$this->options['form_params']['ResponseParam.' . ($depth1 + 1) . '.Required'] = $depth1Value['Required'];
-			}
-		}
+    public function withResponseParam(array $responseParam)
+    {
+        $this->data['ResponseParam'] = $responseParam;
+        foreach ($responseParam as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Name'])) {
+                $this->options['form_params']['ResponseParam.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+            }
+            if (isset($depth1Value['Type'])) {
+                $this->options['form_params']['ResponseParam.' . ($depth1 + 1) . '.Type'] = $depth1Value['Type'];
+            }
+            if (isset($depth1Value['Desc'])) {
+                $this->options['form_params']['ResponseParam.' . ($depth1 + 1) . '.Desc'] = $depth1Value['Desc'];
+            }
+            if (isset($depth1Value['Example'])) {
+                $this->options['form_params']['ResponseParam.' . ($depth1 + 1) . '.Example'] = $depth1Value['Example'];
+            }
+            if (isset($depth1Value['Required'])) {
+                $this->options['form_params']['ResponseParam.' . ($depth1 + 1) . '.Required'] = $depth1Value['Required'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -2871,7 +2765,6 @@ class CreateDataAPIService extends Rpc
  */
 class CreateDeviceDistributeJob extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2912,20 +2805,18 @@ class CreateDeviceDistributeJob extends Rpc
     }
 
     /**
-     * @param array $targetInstanceConfig
-     *
      * @return $this
      */
-	public function withTargetInstanceConfig(array $targetInstanceConfig)
-	{
-	    $this->data['TargetInstanceConfig'] = $targetInstanceConfig;
-		foreach ($targetInstanceConfig as $depth1 => $depth1Value) {
-			if(isset($depth1Value['TargetInstanceId'])){
-				$this->options['form_params']['TargetInstanceConfig.' . ($depth1 + 1) . '.TargetInstanceId'] = $depth1Value['TargetInstanceId'];
-			}
-		}
+    public function withTargetInstanceConfig(array $targetInstanceConfig)
+    {
+        $this->data['TargetInstanceConfig'] = $targetInstanceConfig;
+        foreach ($targetInstanceConfig as $depth1 => $depth1Value) {
+            if (isset($depth1Value['TargetInstanceId'])) {
+                $this->options['form_params']['TargetInstanceConfig.' . ($depth1 + 1) . '.TargetInstanceId'] = $depth1Value['TargetInstanceId'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -2968,18 +2859,16 @@ class CreateDeviceDistributeJob extends Rpc
     }
 
     /**
-     * @param array $deviceName
-     *
      * @return $this
      */
-	public function withDeviceName(array $deviceName)
-	{
-	    $this->data['DeviceName'] = $deviceName;
-		foreach ($deviceName as $i => $iValue) {
-			$this->options['form_params']['DeviceName.' . ($i + 1)] = $iValue;
-		}
+    public function withDeviceName(array $deviceName)
+    {
+        $this->data['DeviceName'] = $deviceName;
+        foreach ($deviceName as $i => $iValue) {
+            $this->options['form_params']['DeviceName.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -3027,7 +2916,6 @@ class CreateDeviceDistributeJob extends Rpc
  */
 class CreateDeviceGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3073,7 +2961,6 @@ class CreateDeviceGroup extends Rpc
  */
 class CreateEdgeDriver extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3127,7 +3014,6 @@ class CreateEdgeDriver extends Rpc
  */
 class CreateEdgeDriverVersion extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3169,7 +3055,6 @@ class CreateEdgeDriverVersion extends Rpc
  */
 class CreateEdgeInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3212,28 +3097,25 @@ class CreateEdgeInstance extends Rpc
  */
 class CreateEdgeInstanceChannel extends Rpc
 {
-
     /**
-     * @param array $configs
-     *
      * @return $this
      */
-	public function withConfigs(array $configs)
-	{
-	    $this->data['Configs'] = $configs;
-		foreach ($configs as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Format'])){
-				$this->options['query']['Configs.' . ($depth1 + 1) . '.Format'] = $depth1Value['Format'];
-			}
-			if(isset($depth1Value['Content'])){
-				$this->options['query']['Configs.' . ($depth1 + 1) . '.Content'] = $depth1Value['Content'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Configs.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withConfigs(array $configs)
+    {
+        $this->data['Configs'] = $configs;
+        foreach ($configs as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Format'])) {
+                $this->options['query']['Configs.' . ($depth1 + 1) . '.Format'] = $depth1Value['Format'];
+            }
+            if (isset($depth1Value['Content'])) {
+                $this->options['query']['Configs.' . ($depth1 + 1) . '.Content'] = $depth1Value['Content'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Configs.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -3275,7 +3157,6 @@ class CreateEdgeInstanceChannel extends Rpc
  */
 class CreateEdgeInstanceDeployment extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3327,7 +3208,6 @@ class CreateEdgeInstanceDeployment extends Rpc
  */
 class CreateEdgeInstanceMessageRouting extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3373,7 +3253,6 @@ class CreateEdgeInstanceMessageRouting extends Rpc
  */
 class CreateEdgeOssPreSignedAddress extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3427,7 +3306,6 @@ class CreateEdgeOssPreSignedAddress extends Rpc
  */
 class CreateJob extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3466,25 +3344,22 @@ class CreateJob extends Rpc
  */
 class CreateLoRaNodesTask extends Rpc
 {
-
     /**
-     * @param array $deviceInfo
-     *
      * @return $this
      */
-	public function withDeviceInfo(array $deviceInfo)
-	{
-	    $this->data['DeviceInfo'] = $deviceInfo;
-		foreach ($deviceInfo as $depth1 => $depth1Value) {
-			if(isset($depth1Value['PinCode'])){
-				$this->options['query']['DeviceInfo.' . ($depth1 + 1) . '.PinCode'] = $depth1Value['PinCode'];
-			}
-			if(isset($depth1Value['DevEui'])){
-				$this->options['query']['DeviceInfo.' . ($depth1 + 1) . '.DevEui'] = $depth1Value['DevEui'];
-			}
-		}
+    public function withDeviceInfo(array $deviceInfo)
+    {
+        $this->data['DeviceInfo'] = $deviceInfo;
+        foreach ($deviceInfo as $depth1 => $depth1Value) {
+            if (isset($depth1Value['PinCode'])) {
+                $this->options['query']['DeviceInfo.' . ($depth1 + 1) . '.PinCode'] = $depth1Value['PinCode'];
+            }
+            if (isset($depth1Value['DevEui'])) {
+                $this->options['query']['DeviceInfo.' . ($depth1 + 1) . '.DevEui'] = $depth1Value['DevEui'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -3544,40 +3419,35 @@ class CreateLoRaNodesTask extends Rpc
  */
 class CreateOTADynamicUpgradeJob extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $srcVersion
-     *
      * @return $this
      */
-	public function withSrcVersion(array $srcVersion)
-	{
-	    $this->data['SrcVersion'] = $srcVersion;
-		foreach ($srcVersion as $i => $iValue) {
-			$this->options['query']['SrcVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withSrcVersion(array $srcVersion)
+    {
+        $this->data['SrcVersion'] = $srcVersion;
+        foreach ($srcVersion as $i => $iValue) {
+            $this->options['query']['SrcVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -3639,7 +3509,6 @@ class CreateOTADynamicUpgradeJob extends Rpc
  */
 class CreateOTAFirmware extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3683,7 +3552,6 @@ class CreateOTAFirmware extends Rpc
  */
 class CreateOTAModule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3750,40 +3618,35 @@ class CreateOTAModule extends Rpc
  */
 class CreateOTAStaticUpgradeJob extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $srcVersion
-     *
      * @return $this
      */
-	public function withSrcVersion(array $srcVersion)
-	{
-	    $this->data['SrcVersion'] = $srcVersion;
-		foreach ($srcVersion as $i => $iValue) {
-			$this->options['query']['SrcVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withSrcVersion(array $srcVersion)
+    {
+        $this->data['SrcVersion'] = $srcVersion;
+        foreach ($srcVersion as $i => $iValue) {
+            $this->options['query']['SrcVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -3813,18 +3676,16 @@ class CreateOTAStaticUpgradeJob extends Rpc
     }
 
     /**
-     * @param array $targetDeviceName
-     *
      * @return $this
      */
-	public function withTargetDeviceName(array $targetDeviceName)
-	{
-	    $this->data['TargetDeviceName'] = $targetDeviceName;
-		foreach ($targetDeviceName as $i => $iValue) {
-			$this->options['query']['TargetDeviceName.' . ($i + 1)] = $iValue;
-		}
+    public function withTargetDeviceName(array $targetDeviceName)
+    {
+        $this->data['TargetDeviceName'] = $targetDeviceName;
+        foreach ($targetDeviceName as $i => $iValue) {
+            $this->options['query']['TargetDeviceName.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3847,7 +3708,6 @@ class CreateOTAStaticUpgradeJob extends Rpc
  */
 class CreateOTAVerifyJob extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3875,18 +3735,16 @@ class CreateOTAVerifyJob extends Rpc
     }
 
     /**
-     * @param array $targetDeviceName
-     *
      * @return $this
      */
-	public function withTargetDeviceName(array $targetDeviceName)
-	{
-	    $this->data['TargetDeviceName'] = $targetDeviceName;
-		foreach ($targetDeviceName as $i => $iValue) {
-			$this->options['query']['TargetDeviceName.' . ($i + 1)] = $iValue;
-		}
+    public function withTargetDeviceName(array $targetDeviceName)
+    {
+        $this->data['TargetDeviceName'] = $targetDeviceName;
+        foreach ($targetDeviceName as $i => $iValue) {
+            $this->options['query']['TargetDeviceName.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3932,7 +3790,6 @@ class CreateOTAVerifyJob extends Rpc
  */
 class CreateProduct extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3978,7 +3835,6 @@ class CreateProduct extends Rpc
  */
 class CreateProductDistributeJob extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4021,25 +3877,22 @@ class CreateProductDistributeJob extends Rpc
  */
 class CreateProductTags extends Rpc
 {
-
     /**
-     * @param array $productTag
-     *
      * @return $this
      */
-	public function withProductTag(array $productTag)
-	{
-	    $this->data['ProductTag'] = $productTag;
-		foreach ($productTag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['TagValue'])){
-				$this->options['query']['ProductTag.' . ($depth1 + 1) . '.TagValue'] = $depth1Value['TagValue'];
-			}
-			if(isset($depth1Value['TagKey'])){
-				$this->options['query']['ProductTag.' . ($depth1 + 1) . '.TagKey'] = $depth1Value['TagKey'];
-			}
-		}
+    public function withProductTag(array $productTag)
+    {
+        $this->data['ProductTag'] = $productTag;
+        foreach ($productTag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['TagValue'])) {
+                $this->options['query']['ProductTag.' . ($depth1 + 1) . '.TagValue'] = $depth1Value['TagValue'];
+            }
+            if (isset($depth1Value['TagKey'])) {
+                $this->options['query']['ProductTag.' . ($depth1 + 1) . '.TagKey'] = $depth1Value['TagKey'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -4089,7 +3942,6 @@ class CreateProductTags extends Rpc
  */
 class CreateProductTopic extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4145,7 +3997,6 @@ class CreateProductTopic extends Rpc
  */
 class CreateRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4189,7 +4040,6 @@ class CreateRule extends Rpc
  */
 class CreateRuleAction extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4229,7 +4079,6 @@ class CreateRuleAction extends Rpc
  */
 class CreateRulengDistributeJob extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4271,7 +4120,6 @@ class CreateRulengDistributeJob extends Rpc
  */
 class CreateSceneRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4313,7 +4161,6 @@ class CreateSceneRule extends Rpc
  */
 class CreateSpeech extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4456,7 +4303,6 @@ class CreateSpeech extends Rpc
  */
 class CreateStudioAppDomainOpen extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4588,20 +4434,17 @@ class CreateStudioAppDomainOpen extends Rpc
  */
 class CreateSubscribeRelation extends Rpc
 {
-
     /**
-     * @param array $consumerGroupIds
-     *
      * @return $this
      */
-	public function withConsumerGroupIds(array $consumerGroupIds)
-	{
-	    $this->data['ConsumerGroupIds'] = $consumerGroupIds;
-		foreach ($consumerGroupIds as $i => $iValue) {
-			$this->options['query']['ConsumerGroupIds.' . ($i + 1)] = $iValue;
-		}
+    public function withConsumerGroupIds(array $consumerGroupIds)
+    {
+        $this->data['ConsumerGroupIds'] = $consumerGroupIds;
+        foreach ($consumerGroupIds as $i => $iValue) {
+            $this->options['query']['ConsumerGroupIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -4651,7 +4494,6 @@ class CreateSubscribeRelation extends Rpc
  */
 class CreateThingModel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4693,7 +4535,6 @@ class CreateThingModel extends Rpc
  */
 class CreateThingScript extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4736,20 +4577,17 @@ class CreateThingScript extends Rpc
  */
 class CreateTopicRouteTable extends Rpc
 {
-
     /**
-     * @param array $dstTopic
-     *
      * @return $this
      */
-	public function withDstTopic(array $dstTopic)
-	{
-	    $this->data['DstTopic'] = $dstTopic;
-		foreach ($dstTopic as $i => $iValue) {
-			$this->options['query']['DstTopic.' . ($i + 1)] = $iValue;
-		}
+    public function withDstTopic(array $dstTopic)
+    {
+        $this->data['DstTopic'] = $dstTopic;
+        foreach ($dstTopic as $i => $iValue) {
+            $this->options['query']['DstTopic.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -4789,7 +4627,6 @@ class CreateTopicRouteTable extends Rpc
  */
 class DeleteConsumerGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4829,7 +4666,6 @@ class DeleteConsumerGroup extends Rpc
  */
 class DeleteConsumerGroupSubscribeRelation extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4875,7 +4711,6 @@ class DeleteConsumerGroupSubscribeRelation extends Rpc
  */
 class DeleteDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4911,7 +4746,6 @@ class DeleteDevice extends Rpc
  */
 class DeleteDeviceDistributeJob extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4955,7 +4789,6 @@ class DeleteDeviceDistributeJob extends Rpc
  */
 class DeleteDeviceFile extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4997,7 +4830,6 @@ class DeleteDeviceFile extends Rpc
  */
 class DeleteDeviceGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5045,7 +4877,6 @@ class DeleteDeviceGroup extends Rpc
  */
 class DeleteDeviceProp extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5083,7 +4914,6 @@ class DeleteDeviceProp extends Rpc
  */
 class DeleteEdgeDriver extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5123,7 +4953,6 @@ class DeleteEdgeDriver extends Rpc
  */
 class DeleteEdgeDriverVersion extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5161,7 +4990,6 @@ class DeleteEdgeDriverVersion extends Rpc
  */
 class DeleteEdgeInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5201,7 +5029,6 @@ class DeleteEdgeInstance extends Rpc
  */
 class DeleteEdgeInstanceMessageRouting extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5239,7 +5066,6 @@ class DeleteEdgeInstanceMessageRouting extends Rpc
  */
 class DeleteJob extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5277,7 +5103,6 @@ class DeleteJob extends Rpc
  */
 class DeleteOTAFirmware extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5319,7 +5144,6 @@ class DeleteOTAFirmware extends Rpc
  */
 class DeleteOTAModule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5361,7 +5185,6 @@ class DeleteOTAModule extends Rpc
  */
 class DeleteProduct extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5404,20 +5227,17 @@ class DeleteProduct extends Rpc
  */
 class DeleteProductTags extends Rpc
 {
-
     /**
-     * @param array $productTagKey
-     *
      * @return $this
      */
-	public function withProductTagKey(array $productTagKey)
-	{
-	    $this->data['ProductTagKey'] = $productTagKey;
-		foreach ($productTagKey as $i => $iValue) {
-			$this->options['query']['ProductTagKey.' . ($i + 1)] = $iValue;
-		}
+    public function withProductTagKey(array $productTagKey)
+    {
+        $this->data['ProductTagKey'] = $productTagKey;
+        foreach ($productTagKey as $i => $iValue) {
+            $this->options['query']['ProductTagKey.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -5457,7 +5277,6 @@ class DeleteProductTags extends Rpc
  */
 class DeleteProductTopic extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5495,7 +5314,6 @@ class DeleteProductTopic extends Rpc
  */
 class DeleteRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5533,7 +5351,6 @@ class DeleteRule extends Rpc
  */
 class DeleteRuleAction extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5571,7 +5388,6 @@ class DeleteRuleAction extends Rpc
  */
 class DeleteSceneRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5607,7 +5423,6 @@ class DeleteSceneRule extends Rpc
  */
 class DeleteSpeech extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5622,18 +5437,16 @@ class DeleteSpeech extends Rpc
     }
 
     /**
-     * @param array $speechCodeList
-     *
      * @return $this
      */
-	public function withSpeechCodeList(array $speechCodeList)
-	{
-	    $this->data['SpeechCodeList'] = $speechCodeList;
-		foreach ($speechCodeList as $i => $iValue) {
-			$this->options['form_params']['SpeechCodeList.' . ($i + 1)] = $iValue;
-		}
+    public function withSpeechCodeList(array $speechCodeList)
+    {
+        $this->data['SpeechCodeList'] = $speechCodeList;
+        foreach ($speechCodeList as $i => $iValue) {
+            $this->options['form_params']['SpeechCodeList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -5673,7 +5486,6 @@ class DeleteSpeech extends Rpc
  */
 class DeleteStudioAppDomainOpen extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5765,7 +5577,6 @@ class DeleteStudioAppDomainOpen extends Rpc
  */
 class DeleteSubscribeRelation extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5816,35 +5627,30 @@ class DeleteSubscribeRelation extends Rpc
  */
 class DeleteThingModel extends Rpc
 {
-
     /**
-     * @param array $propertyIdentifier
-     *
      * @return $this
      */
-	public function withPropertyIdentifier(array $propertyIdentifier)
-	{
-	    $this->data['PropertyIdentifier'] = $propertyIdentifier;
-		foreach ($propertyIdentifier as $i => $iValue) {
-			$this->options['query']['PropertyIdentifier.' . ($i + 1)] = $iValue;
-		}
+    public function withPropertyIdentifier(array $propertyIdentifier)
+    {
+        $this->data['PropertyIdentifier'] = $propertyIdentifier;
+        foreach ($propertyIdentifier as $i => $iValue) {
+            $this->options['query']['PropertyIdentifier.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $serviceIdentifier
-     *
      * @return $this
      */
-	public function withServiceIdentifier(array $serviceIdentifier)
-	{
-	    $this->data['ServiceIdentifier'] = $serviceIdentifier;
-		foreach ($serviceIdentifier as $i => $iValue) {
-			$this->options['query']['ServiceIdentifier.' . ($i + 1)] = $iValue;
-		}
+    public function withServiceIdentifier(array $serviceIdentifier)
+    {
+        $this->data['ServiceIdentifier'] = $serviceIdentifier;
+        foreach ($serviceIdentifier as $i => $iValue) {
+            $this->options['query']['ServiceIdentifier.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -5874,18 +5680,16 @@ class DeleteThingModel extends Rpc
     }
 
     /**
-     * @param array $eventIdentifier
-     *
      * @return $this
      */
-	public function withEventIdentifier(array $eventIdentifier)
-	{
-	    $this->data['EventIdentifier'] = $eventIdentifier;
-		foreach ($eventIdentifier as $i => $iValue) {
-			$this->options['query']['EventIdentifier.' . ($i + 1)] = $iValue;
-		}
+    public function withEventIdentifier(array $eventIdentifier)
+    {
+        $this->data['EventIdentifier'] = $eventIdentifier;
+        foreach ($eventIdentifier as $i => $iValue) {
+            $this->options['query']['EventIdentifier.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -5900,20 +5704,17 @@ class DeleteThingModel extends Rpc
  */
 class DeleteTopicRouteTable extends Rpc
 {
-
     /**
-     * @param array $dstTopic
-     *
      * @return $this
      */
-	public function withDstTopic(array $dstTopic)
-	{
-	    $this->data['DstTopic'] = $dstTopic;
-		foreach ($dstTopic as $i => $iValue) {
-			$this->options['query']['DstTopic.' . ($i + 1)] = $iValue;
-		}
+    public function withDstTopic(array $dstTopic)
+    {
+        $this->data['DstTopic'] = $dstTopic;
+        foreach ($dstTopic as $i => $iValue) {
+            $this->options['query']['DstTopic.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -5955,7 +5756,6 @@ class DeleteTopicRouteTable extends Rpc
  */
 class DisableDeviceTunnel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5995,7 +5795,6 @@ class DisableDeviceTunnel extends Rpc
  */
 class DisableDeviceTunnelShare extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6033,7 +5832,6 @@ class DisableDeviceTunnelShare extends Rpc
  */
 class DisableSceneRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6079,7 +5877,6 @@ class DisableSceneRule extends Rpc
  */
 class DisableThing extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6119,7 +5916,6 @@ class DisableThing extends Rpc
  */
 class EnableDeviceTunnel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6159,7 +5955,6 @@ class EnableDeviceTunnel extends Rpc
  */
 class EnableDeviceTunnelShare extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6197,7 +5992,6 @@ class EnableDeviceTunnelShare extends Rpc
  */
 class EnableSceneRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6243,7 +6037,6 @@ class EnableSceneRule extends Rpc
  */
 class EnableThing extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6279,7 +6072,6 @@ class EnableThing extends Rpc
  */
 class GenerateDeviceNameListURL extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6321,7 +6113,6 @@ class GenerateDeviceNameListURL extends Rpc
  */
 class GenerateFileUploadURL extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6359,7 +6150,6 @@ class GenerateFileUploadURL extends Rpc
  */
 class GenerateOTAUploadURL extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6395,7 +6185,6 @@ class GenerateOTAUploadURL extends Rpc
  */
 class GetDataAPIServiceDetail extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6461,7 +6250,6 @@ class GetDataAPIServiceDetail extends Rpc
  */
 class GetDeviceShadow extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6503,7 +6291,6 @@ class GetDeviceShadow extends Rpc
  */
 class GetDeviceStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6543,7 +6330,6 @@ class GetDeviceStatus extends Rpc
  */
 class GetDeviceTunnelShareStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6583,7 +6369,6 @@ class GetDeviceTunnelShareStatus extends Rpc
  */
 class GetDeviceTunnelStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6623,7 +6408,6 @@ class GetDeviceTunnelStatus extends Rpc
  */
 class GetEdgeDriverVersion extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6661,7 +6445,6 @@ class GetEdgeDriverVersion extends Rpc
  */
 class GetEdgeInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6701,7 +6484,6 @@ class GetEdgeInstance extends Rpc
  */
 class GetEdgeInstanceDeployment extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6741,7 +6523,6 @@ class GetEdgeInstanceDeployment extends Rpc
  */
 class GetEdgeInstanceMessageRouting extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6783,7 +6564,6 @@ class GetEdgeInstanceMessageRouting extends Rpc
  */
 class GetGatewayBySubDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6821,7 +6601,6 @@ class GetGatewayBySubDevice extends Rpc
  */
 class GetLoraNodesTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6859,7 +6638,6 @@ class GetLoraNodesTask extends Rpc
  */
 class GetNodesAddingTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6897,7 +6675,6 @@ class GetNodesAddingTask extends Rpc
  */
 class GetRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6935,7 +6712,6 @@ class GetRule extends Rpc
  */
 class GetRuleAction extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6973,7 +6749,6 @@ class GetRuleAction extends Rpc
  */
 class GetSceneRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7007,7 +6782,6 @@ class GetSceneRule extends Rpc
  */
 class GetSpeechVoice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7044,7 +6818,6 @@ class GetSpeechVoice extends Rpc
  */
 class GetStudioAppTokenOpen extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7131,7 +6904,6 @@ class GetStudioAppTokenOpen extends Rpc
  */
 class GetThingModelTsl extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7181,7 +6953,6 @@ class GetThingModelTsl extends Rpc
  */
 class GetThingModelTslPublished extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7219,7 +6990,6 @@ class GetThingModelTslPublished extends Rpc
  */
 class GetThingScript extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7259,7 +7029,6 @@ class GetThingScript extends Rpc
  */
 class GetThingTemplate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7309,7 +7078,6 @@ class GetThingTemplate extends Rpc
  */
 class GetThingTopo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7361,7 +7129,6 @@ class GetThingTopo extends Rpc
  */
 class ImportThingModelTsl extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7398,34 +7165,31 @@ class ImportThingModelTsl extends Rpc
  */
 class InvokeDataAPIService extends Rpc
 {
-
     /**
-     * @param array $param
-     *
      * @return $this
      */
-	public function withParam(array $param)
-	{
-	    $this->data['Param'] = $param;
-		foreach ($param as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ParamType'])){
-				$this->options['form_params']['Param.' . ($depth1 + 1) . '.ParamType'] = $depth1Value['ParamType'];
-			}
-			foreach ($depth1Value['ListParamValue'] as $i => $iValue) {
-				$this->options['form_params']['Param.' . ($depth1 + 1) . '.ListParamValue.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['ListParamType'])){
-				$this->options['form_params']['Param.' . ($depth1 + 1) . '.ListParamType'] = $depth1Value['ListParamType'];
-			}
-			if(isset($depth1Value['ParamName'])){
-				$this->options['form_params']['Param.' . ($depth1 + 1) . '.ParamName'] = $depth1Value['ParamName'];
-			}
-			if(isset($depth1Value['ParamValue'])){
-				$this->options['form_params']['Param.' . ($depth1 + 1) . '.ParamValue'] = $depth1Value['ParamValue'];
-			}
-		}
+    public function withParam(array $param)
+    {
+        $this->data['Param'] = $param;
+        foreach ($param as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ParamType'])) {
+                $this->options['form_params']['Param.' . ($depth1 + 1) . '.ParamType'] = $depth1Value['ParamType'];
+            }
+            foreach ($depth1Value['ListParamValue'] as $i => $iValue) {
+                $this->options['form_params']['Param.' . ($depth1 + 1) . '.ListParamValue.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['ListParamType'])) {
+                $this->options['form_params']['Param.' . ($depth1 + 1) . '.ListParamType'] = $depth1Value['ListParamType'];
+            }
+            if (isset($depth1Value['ParamName'])) {
+                $this->options['form_params']['Param.' . ($depth1 + 1) . '.ParamName'] = $depth1Value['ParamName'];
+            }
+            if (isset($depth1Value['ParamValue'])) {
+                $this->options['form_params']['Param.' . ($depth1 + 1) . '.ParamValue'] = $depth1Value['ParamValue'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -7503,7 +7267,6 @@ class InvokeDataAPIService extends Rpc
  */
 class InvokeThingService extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7546,7 +7309,6 @@ class InvokeThingService extends Rpc
  */
 class InvokeThingsService extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7574,18 +7336,16 @@ class InvokeThingsService extends Rpc
     }
 
     /**
-     * @param array $deviceName
-     *
      * @return $this
      */
-	public function withDeviceName(array $deviceName)
-	{
-	    $this->data['DeviceName'] = $deviceName;
-		foreach ($deviceName as $i => $iValue) {
-			$this->options['query']['DeviceName.' . ($i + 1)] = $iValue;
-		}
+    public function withDeviceName(array $deviceName)
+    {
+        $this->data['DeviceName'] = $deviceName;
+        foreach ($deviceName as $i => $iValue) {
+            $this->options['query']['DeviceName.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -7606,34 +7366,31 @@ class InvokeThingsService extends Rpc
  */
 class ListAnalyticsData extends Rpc
 {
-
     /**
-     * @param array $condition
-     *
      * @return $this
      */
-	public function withCondition(array $condition)
-	{
-	    $this->data['Condition'] = $condition;
-		foreach ($condition as $depth1 => $depth1Value) {
-			if(isset($depth1Value['FieldName'])){
-				$this->options['query']['Condition.' . ($depth1 + 1) . '.FieldName'] = $depth1Value['FieldName'];
-			}
-			if(isset($depth1Value['Operate'])){
-				$this->options['query']['Condition.' . ($depth1 + 1) . '.Operate'] = $depth1Value['Operate'];
-			}
-			if(isset($depth1Value['BetweenStart'])){
-				$this->options['query']['Condition.' . ($depth1 + 1) . '.BetweenStart'] = $depth1Value['BetweenStart'];
-			}
-			if(isset($depth1Value['BetweenEnd'])){
-				$this->options['query']['Condition.' . ($depth1 + 1) . '.BetweenEnd'] = $depth1Value['BetweenEnd'];
-			}
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Condition.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-		}
+    public function withCondition(array $condition)
+    {
+        $this->data['Condition'] = $condition;
+        foreach ($condition as $depth1 => $depth1Value) {
+            if (isset($depth1Value['FieldName'])) {
+                $this->options['query']['Condition.' . ($depth1 + 1) . '.FieldName'] = $depth1Value['FieldName'];
+            }
+            if (isset($depth1Value['Operate'])) {
+                $this->options['query']['Condition.' . ($depth1 + 1) . '.Operate'] = $depth1Value['Operate'];
+            }
+            if (isset($depth1Value['BetweenStart'])) {
+                $this->options['query']['Condition.' . ($depth1 + 1) . '.BetweenStart'] = $depth1Value['BetweenStart'];
+            }
+            if (isset($depth1Value['BetweenEnd'])) {
+                $this->options['query']['Condition.' . ($depth1 + 1) . '.BetweenEnd'] = $depth1Value['BetweenEnd'];
+            }
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Condition.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -7680,7 +7437,6 @@ class ListAnalyticsData extends Rpc
  */
 class ListDeviceDistributeJob extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7741,7 +7497,6 @@ class ListDeviceDistributeJob extends Rpc
  */
 class ListDistributedDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7787,7 +7542,6 @@ class ListDistributedDevice extends Rpc
  */
 class ListDistributedProduct extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7829,7 +7583,6 @@ class ListDistributedProduct extends Rpc
  */
 class ListJob extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7873,7 +7626,6 @@ class ListJob extends Rpc
  */
 class ListOTAFirmware extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7919,7 +7671,6 @@ class ListOTAFirmware extends Rpc
  */
 class ListOTAJobByDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7961,7 +7712,6 @@ class ListOTAJobByDevice extends Rpc
  */
 class ListOTAJobByFirmware extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -8001,7 +7751,6 @@ class ListOTAJobByFirmware extends Rpc
  */
 class ListOTAModuleByProduct extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 
@@ -8050,7 +7799,6 @@ class ListOTAModuleByProduct extends Rpc
  */
 class ListOTAModuleVersionsByDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -8095,20 +7843,17 @@ class ListOTAModuleVersionsByDevice extends Rpc
  */
 class ListOTATaskByJob extends Rpc
 {
-
     /**
-     * @param array $deviceNames
-     *
      * @return $this
      */
-	public function withDeviceNames(array $deviceNames)
-	{
-	    $this->data['DeviceNames'] = $deviceNames;
-		foreach ($deviceNames as $i => $iValue) {
-			$this->options['query']['DeviceNames.' . ($i + 1)] = $iValue;
-		}
+    public function withDeviceNames(array $deviceNames)
+    {
+        $this->data['DeviceNames'] = $deviceNames;
+        foreach ($deviceNames as $i => $iValue) {
+            $this->options['query']['DeviceNames.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -8156,7 +7901,6 @@ class ListOTATaskByJob extends Rpc
  */
 class ListOTAUnfinishedTaskByDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -8197,25 +7941,22 @@ class ListOTAUnfinishedTaskByDevice extends Rpc
  */
 class ListProductByTags extends Rpc
 {
-
     /**
-     * @param array $productTag
-     *
      * @return $this
      */
-	public function withProductTag(array $productTag)
-	{
-	    $this->data['ProductTag'] = $productTag;
-		foreach ($productTag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['TagValue'])){
-				$this->options['query']['ProductTag.' . ($depth1 + 1) . '.TagValue'] = $depth1Value['TagValue'];
-			}
-			if(isset($depth1Value['TagKey'])){
-				$this->options['query']['ProductTag.' . ($depth1 + 1) . '.TagKey'] = $depth1Value['TagKey'];
-			}
-		}
+    public function withProductTag(array $productTag)
+    {
+        $this->data['ProductTag'] = $productTag;
+        foreach ($productTag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['TagValue'])) {
+                $this->options['query']['ProductTag.' . ($depth1 + 1) . '.TagValue'] = $depth1Value['TagValue'];
+            }
+            if (isset($depth1Value['TagKey'])) {
+                $this->options['query']['ProductTag.' . ($depth1 + 1) . '.TagKey'] = $depth1Value['TagKey'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -8259,7 +8000,6 @@ class ListProductByTags extends Rpc
  */
 class ListProductTags extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -8303,7 +8043,6 @@ class ListProductTags extends Rpc
  */
 class ListRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -8341,7 +8080,6 @@ class ListRule extends Rpc
  */
 class ListRuleActions extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -8387,7 +8125,6 @@ class ListRuleActions extends Rpc
  */
 class ListTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -8437,7 +8174,6 @@ class ListTask extends Rpc
  */
 class ListTaskByPage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -8475,7 +8211,6 @@ class ListTaskByPage extends Rpc
  */
 class ListThingModelVersion extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -8511,7 +8246,6 @@ class ListThingModelVersion extends Rpc
  */
 class ListThingTemplates extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -8555,7 +8289,6 @@ class ListThingTemplates extends Rpc
  */
 class NotifyAddThingTopo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -8604,7 +8337,6 @@ class OpenIotService extends Rpc
  */
 class PrintByTemplate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -8744,25 +8476,22 @@ class PrintByTemplate extends Rpc
  */
 class Pub extends Rpc
 {
-
     /**
-     * @param array $userProp
-     *
      * @return $this
      */
-	public function withUserProp(array $userProp)
-	{
-	    $this->data['UserProp'] = $userProp;
-		foreach ($userProp as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['UserProp.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['UserProp.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withUserProp(array $userProp)
+    {
+        $this->data['UserProp'] = $userProp;
+        foreach ($userProp as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['UserProp.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['UserProp.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -8806,7 +8535,6 @@ class Pub extends Rpc
  */
 class PubBroadcast extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -8844,7 +8572,6 @@ class PubBroadcast extends Rpc
  */
 class PublishStudioApp extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -8944,7 +8671,6 @@ class PublishStudioApp extends Rpc
  */
 class PublishThingModel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -8987,7 +8713,6 @@ class PublishThingModel extends Rpc
  */
 class PushSpeech extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -9041,18 +8766,16 @@ class PushSpeech extends Rpc
     }
 
     /**
-     * @param array $speechCodeList
-     *
      * @return $this
      */
-	public function withSpeechCodeList(array $speechCodeList)
-	{
-	    $this->data['SpeechCodeList'] = $speechCodeList;
-		foreach ($speechCodeList as $i => $iValue) {
-			$this->options['form_params']['SpeechCodeList.' . ($i + 1)] = $iValue;
-		}
+    public function withSpeechCodeList(array $speechCodeList)
+    {
+        $this->data['SpeechCodeList'] = $speechCodeList;
+        foreach ($speechCodeList as $i => $iValue) {
+            $this->options['form_params']['SpeechCodeList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -9125,55 +8848,48 @@ class PushSpeech extends Rpc
  */
 class QueryAppDeviceList extends Rpc
 {
-
     /**
-     * @param array $tagList
-     *
      * @return $this
      */
-	public function withTagList(array $tagList)
-	{
-	    $this->data['TagList'] = $tagList;
-		foreach ($tagList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['TagName'])){
-				$this->options['query']['TagList.' . ($depth1 + 1) . '.TagName'] = $depth1Value['TagName'];
-			}
-			if(isset($depth1Value['TagValue'])){
-				$this->options['query']['TagList.' . ($depth1 + 1) . '.TagValue'] = $depth1Value['TagValue'];
-			}
-		}
+    public function withTagList(array $tagList)
+    {
+        $this->data['TagList'] = $tagList;
+        foreach ($tagList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['TagName'])) {
+                $this->options['query']['TagList.' . ($depth1 + 1) . '.TagName'] = $depth1Value['TagName'];
+            }
+            if (isset($depth1Value['TagValue'])) {
+                $this->options['query']['TagList.' . ($depth1 + 1) . '.TagValue'] = $depth1Value['TagValue'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $productKeyList
-     *
      * @return $this
      */
-	public function withProductKeyList(array $productKeyList)
-	{
-	    $this->data['ProductKeyList'] = $productKeyList;
-		foreach ($productKeyList as $i => $iValue) {
-			$this->options['query']['ProductKeyList.' . ($i + 1)] = $iValue;
-		}
+    public function withProductKeyList(array $productKeyList)
+    {
+        $this->data['ProductKeyList'] = $productKeyList;
+        foreach ($productKeyList as $i => $iValue) {
+            $this->options['query']['ProductKeyList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $categoryKeyList
-     *
      * @return $this
      */
-	public function withCategoryKeyList(array $categoryKeyList)
-	{
-	    $this->data['CategoryKeyList'] = $categoryKeyList;
-		foreach ($categoryKeyList as $i => $iValue) {
-			$this->options['query']['CategoryKeyList.' . ($i + 1)] = $iValue;
-		}
+    public function withCategoryKeyList(array $categoryKeyList)
+    {
+        $this->data['CategoryKeyList'] = $categoryKeyList;
+        foreach ($categoryKeyList as $i => $iValue) {
+            $this->options['query']['CategoryKeyList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -9219,7 +8935,6 @@ class QueryAppDeviceList extends Rpc
  */
 class QueryBatchRegisterDeviceStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -9257,7 +8972,6 @@ class QueryBatchRegisterDeviceStatus extends Rpc
  */
 class QueryCertUrlByApplyId extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -9295,7 +9009,6 @@ class QueryCertUrlByApplyId extends Rpc
  */
 class QueryConsumerGroupByGroupId extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -9343,7 +9056,6 @@ class QueryConsumerGroupByGroupId extends Rpc
  */
 class QueryConsumerGroupList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -9385,7 +9097,6 @@ class QueryConsumerGroupList extends Rpc
  */
 class QueryConsumerGroupStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -9433,7 +9144,6 @@ class QueryConsumerGroupStatus extends Rpc
  */
 class QueryDetailSceneRuleLog extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -9481,7 +9191,6 @@ class QueryDetailSceneRuleLog extends Rpc
  */
 class QueryDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -9523,7 +9232,6 @@ class QueryDevice extends Rpc
  */
 class QueryDeviceBySQL extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -9575,7 +9283,6 @@ class QueryDeviceBySQL extends Rpc
  */
 class QueryDeviceByStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -9616,25 +9323,22 @@ class QueryDeviceByStatus extends Rpc
  */
 class QueryDeviceByTags extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['TagValue'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.TagValue'] = $depth1Value['TagValue'];
-			}
-			if(isset($depth1Value['TagKey'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.TagKey'] = $depth1Value['TagKey'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['TagValue'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.TagValue'] = $depth1Value['TagValue'];
+            }
+            if (isset($depth1Value['TagKey'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.TagKey'] = $depth1Value['TagKey'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -9676,7 +9380,6 @@ class QueryDeviceByTags extends Rpc
  */
 class QueryDeviceCert extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -9725,20 +9428,17 @@ class QueryDeviceCert extends Rpc
  */
 class QueryDeviceDesiredProperty extends Rpc
 {
-
     /**
-     * @param array $identifier
-     *
      * @return $this
      */
-	public function withIdentifier(array $identifier)
-	{
-	    $this->data['Identifier'] = $identifier;
-		foreach ($identifier as $i => $iValue) {
-			$this->options['query']['Identifier.' . ($i + 1)] = $iValue;
-		}
+    public function withIdentifier(array $identifier)
+    {
+        $this->data['Identifier'] = $identifier;
+        foreach ($identifier as $i => $iValue) {
+            $this->options['query']['Identifier.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -9786,7 +9486,6 @@ class QueryDeviceDesiredProperty extends Rpc
  */
 class QueryDeviceDetail extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -9822,7 +9521,6 @@ class QueryDeviceDetail extends Rpc
  */
 class QueryDeviceDistributeDetail extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -9858,7 +9556,6 @@ class QueryDeviceDistributeDetail extends Rpc
  */
 class QueryDeviceDistributeJob extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -9916,7 +9613,6 @@ class QueryDeviceDistributeJob extends Rpc
  */
 class QueryDeviceEventData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -9960,7 +9656,6 @@ class QueryDeviceEventData extends Rpc
  */
 class QueryDeviceFile extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10006,7 +9701,6 @@ class QueryDeviceFile extends Rpc
  */
 class QueryDeviceFileList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10050,7 +9744,6 @@ class QueryDeviceFileList extends Rpc
  */
 class QueryDeviceGroupByDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10091,25 +9784,22 @@ class QueryDeviceGroupByDevice extends Rpc
  */
 class QueryDeviceGroupByTags extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['TagValue'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.TagValue'] = $depth1Value['TagValue'];
-			}
-			if(isset($depth1Value['TagKey'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.TagKey'] = $depth1Value['TagKey'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['TagValue'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.TagValue'] = $depth1Value['TagValue'];
+            }
+            if (isset($depth1Value['TagKey'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.TagKey'] = $depth1Value['TagKey'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -10153,7 +9843,6 @@ class QueryDeviceGroupByTags extends Rpc
  */
 class QueryDeviceGroupInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10197,7 +9886,6 @@ class QueryDeviceGroupInfo extends Rpc
  */
 class QueryDeviceGroupList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10235,7 +9923,6 @@ class QueryDeviceGroupList extends Rpc
  */
 class QueryDeviceGroupTagList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10281,7 +9968,6 @@ class QueryDeviceGroupTagList extends Rpc
  */
 class QueryDeviceInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10323,7 +10009,6 @@ class QueryDeviceInfo extends Rpc
  */
 class QueryDeviceListByDeviceGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10377,7 +10062,6 @@ class QueryDeviceListByDeviceGroup extends Rpc
  */
 class QueryDeviceOriginalEventData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10431,7 +10115,6 @@ class QueryDeviceOriginalEventData extends Rpc
  */
 class QueryDeviceOriginalPropertyData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10479,7 +10162,6 @@ class QueryDeviceOriginalPropertyData extends Rpc
  */
 class QueryDeviceOriginalPropertyStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10533,7 +10215,6 @@ class QueryDeviceOriginalPropertyStatus extends Rpc
  */
 class QueryDeviceOriginalServiceData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10579,7 +10260,6 @@ class QueryDeviceOriginalServiceData extends Rpc
  */
 class QueryDeviceProp extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10634,20 +10314,17 @@ class QueryDeviceProp extends Rpc
  */
 class QueryDevicePropertiesData extends Rpc
 {
-
     /**
-     * @param array $identifier
-     *
      * @return $this
      */
-	public function withIdentifier(array $identifier)
-	{
-	    $this->data['Identifier'] = $identifier;
-		foreach ($identifier as $i => $iValue) {
-			$this->options['query']['Identifier.' . ($i + 1)] = $iValue;
-		}
+    public function withIdentifier(array $identifier)
+    {
+        $this->data['Identifier'] = $identifier;
+        foreach ($identifier as $i => $iValue) {
+            $this->options['query']['Identifier.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -10705,7 +10382,6 @@ class QueryDevicePropertiesData extends Rpc
  */
 class QueryDevicePropertyData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10753,7 +10429,6 @@ class QueryDevicePropertyData extends Rpc
  */
 class QueryDevicePropertyStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10809,7 +10484,6 @@ class QueryDevicePropertyStatus extends Rpc
  */
 class QueryDeviceServiceData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10853,7 +10527,6 @@ class QueryDeviceServiceData extends Rpc
  */
 class QueryDeviceStatistics extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10897,7 +10570,6 @@ class QueryDeviceStatistics extends Rpc
  */
 class QueryEdgeDriver extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10943,7 +10615,6 @@ class QueryEdgeDriver extends Rpc
  */
 class QueryEdgeDriverVersion extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -10985,7 +10656,6 @@ class QueryEdgeDriverVersion extends Rpc
  */
 class QueryEdgeInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11031,7 +10701,6 @@ class QueryEdgeInstance extends Rpc
  */
 class QueryEdgeInstanceChannel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11073,7 +10742,6 @@ class QueryEdgeInstanceChannel extends Rpc
  */
 class QueryEdgeInstanceDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11119,7 +10787,6 @@ class QueryEdgeInstanceDevice extends Rpc
  */
 class QueryEdgeInstanceDeviceByDriver extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11161,7 +10828,6 @@ class QueryEdgeInstanceDeviceByDriver extends Rpc
  */
 class QueryEdgeInstanceDriver extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11199,7 +10865,6 @@ class QueryEdgeInstanceDriver extends Rpc
  */
 class QueryEdgeInstanceGateway extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11245,7 +10910,6 @@ class QueryEdgeInstanceGateway extends Rpc
  */
 class QueryEdgeInstanceHistoricDeployment extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11287,7 +10951,6 @@ class QueryEdgeInstanceHistoricDeployment extends Rpc
  */
 class QueryEdgeInstanceMessageRouting extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11329,7 +10992,6 @@ class QueryEdgeInstanceMessageRouting extends Rpc
  */
 class QueryEdgeInstanceSceneRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11367,7 +11029,6 @@ class QueryEdgeInstanceSceneRule extends Rpc
  */
 class QueryJob extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11405,7 +11066,6 @@ class QueryJob extends Rpc
  */
 class QueryJobStatistics extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 
@@ -11444,7 +11104,6 @@ class QueryJobStatistics extends Rpc
  */
 class QueryLoRaJoinPermissions extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11482,7 +11141,6 @@ class QueryLoRaJoinPermissions extends Rpc
  */
 class QueryOTAFirmware extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11520,7 +11178,6 @@ class QueryOTAFirmware extends Rpc
  */
 class QueryOTAJob extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11566,7 +11223,6 @@ class QueryOTAJob extends Rpc
  */
 class QueryPageByApplyId extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11608,7 +11264,6 @@ class QueryPageByApplyId extends Rpc
  */
 class QueryProduct extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11646,7 +11301,6 @@ class QueryProduct extends Rpc
  */
 class QueryProductCertInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11694,7 +11348,6 @@ class QueryProductCertInfo extends Rpc
  */
 class QueryProductList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11736,7 +11389,6 @@ class QueryProductList extends Rpc
  */
 class QueryProductTopic extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11778,7 +11430,6 @@ class QueryProductTopic extends Rpc
  */
 class QuerySceneRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11822,7 +11473,6 @@ class QuerySceneRule extends Rpc
  */
 class QuerySolutionDeviceGroupPage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11858,7 +11508,6 @@ class QuerySolutionDeviceGroupPage extends Rpc
  */
 class QuerySpeech extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -11922,7 +11571,6 @@ class QuerySpeech extends Rpc
  */
 class QuerySpeechList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -12016,20 +11664,17 @@ class QuerySpeechList extends Rpc
  */
 class QuerySpeechPushJob extends Rpc
 {
-
     /**
-     * @param array $statusList
-     *
      * @return $this
      */
-	public function withStatusList(array $statusList)
-	{
-	    $this->data['StatusList'] = $statusList;
-		foreach ($statusList as $i => $iValue) {
-			$this->options['form_params']['StatusList.' . ($i + 1)] = $iValue;
-		}
+    public function withStatusList(array $statusList)
+    {
+        $this->data['StatusList'] = $statusList;
+        foreach ($statusList as $i => $iValue) {
+            $this->options['form_params']['StatusList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -12136,7 +11781,6 @@ class QuerySpeechPushJob extends Rpc
  */
 class QuerySpeechPushJobDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -12252,7 +11896,6 @@ class QuerySpeechPushJobDevice extends Rpc
  */
 class QuerySpeechPushJobSpeech extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -12341,7 +11984,6 @@ class QuerySpeechPushJobSpeech extends Rpc
  */
 class QueryStudioAppDomainListOpen extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -12420,7 +12062,6 @@ class QueryStudioAppDomainListOpen extends Rpc
  */
 class QueryStudioAppList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -12461,18 +12102,16 @@ class QueryStudioAppList extends Rpc
     }
 
     /**
-     * @param array $types
-     *
      * @return $this
      */
-	public function withTypes(array $types)
-	{
-	    $this->data['Types'] = $types;
-		foreach ($types as $i => $iValue) {
-			$this->options['form_params']['Types.' . ($i + 1)] = $iValue;
-		}
+    public function withTypes(array $types)
+    {
+        $this->data['Types'] = $types;
+        foreach ($types as $i => $iValue) {
+            $this->options['form_params']['Types.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -12540,7 +12179,6 @@ class QueryStudioAppList extends Rpc
  */
 class QueryStudioAppPageListOpen extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -12656,7 +12294,6 @@ class QueryStudioAppPageListOpen extends Rpc
  */
 class QueryStudioProjectList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -12752,7 +12389,6 @@ class QueryStudioProjectList extends Rpc
  */
 class QuerySubscribeRelation extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -12800,7 +12436,6 @@ class QuerySubscribeRelation extends Rpc
  */
 class QuerySummarySceneRuleLog extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -12838,7 +12473,6 @@ class QuerySummarySceneRuleLog extends Rpc
  */
 class QuerySuperDeviceGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -12876,7 +12510,6 @@ class QuerySuperDeviceGroup extends Rpc
  */
 class QueryTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -12924,7 +12557,6 @@ class QueryTask extends Rpc
  */
 class QueryThingModel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -12972,7 +12604,6 @@ class QueryThingModel extends Rpc
  */
 class QueryThingModelExtendConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13018,7 +12649,6 @@ class QueryThingModelExtendConfig extends Rpc
  */
 class QueryThingModelExtendConfigPublished extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13066,7 +12696,6 @@ class QueryThingModelExtendConfigPublished extends Rpc
  */
 class QueryThingModelPublished extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13104,7 +12733,6 @@ class QueryThingModelPublished extends Rpc
  */
 class QueryTopicReverseRouteTable extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13142,7 +12770,6 @@ class QueryTopicReverseRouteTable extends Rpc
  */
 class QueryTopicRouteTable extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13182,7 +12809,6 @@ class QueryTopicRouteTable extends Rpc
  */
 class RefreshDeviceTunnelSharePassword extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13219,7 +12845,6 @@ class RefreshDeviceTunnelSharePassword extends Rpc
  */
 class RefreshStudioAppTokenOpen extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13314,7 +12939,6 @@ class RefreshStudioAppTokenOpen extends Rpc
  */
 class RegisterDevice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13354,7 +12978,6 @@ class RegisterDevice extends Rpc
  */
 class ReleaseEdgeDriverVersion extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13404,7 +13027,6 @@ class ReleaseEdgeDriverVersion extends Rpc
  */
 class ReleaseProduct extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13446,7 +13068,6 @@ class ReleaseProduct extends Rpc
  */
 class RemoveThingTopo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13488,7 +13109,6 @@ class RemoveThingTopo extends Rpc
  */
 class ReplaceEdgeInstanceGateway extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13526,7 +13146,6 @@ class ReplaceEdgeInstanceGateway extends Rpc
  */
 class ResetConsumerGroupPosition extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13568,7 +13187,6 @@ class ResetConsumerGroupPosition extends Rpc
  */
 class ResetThing extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13614,7 +13232,6 @@ class ResetThing extends Rpc
  */
 class RRpc extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13658,7 +13275,6 @@ class RRpc extends Rpc
  */
 class SaveDeviceProp extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13704,7 +13320,6 @@ class SaveDeviceProp extends Rpc
  */
 class SetDeviceDesiredProperty extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13744,7 +13359,6 @@ class SetDeviceDesiredProperty extends Rpc
  */
 class SetDeviceGroupTags extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13792,7 +13406,6 @@ class SetDeviceGroupTags extends Rpc
  */
 class SetDeviceProperty extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13833,7 +13446,6 @@ class SetDeviceProperty extends Rpc
  */
 class SetDevicesProperty extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13861,18 +13473,16 @@ class SetDevicesProperty extends Rpc
     }
 
     /**
-     * @param array $deviceName
-     *
      * @return $this
      */
-	public function withDeviceName(array $deviceName)
-	{
-	    $this->data['DeviceName'] = $deviceName;
-		foreach ($deviceName as $i => $iValue) {
-			$this->options['query']['DeviceName.' . ($i + 1)] = $iValue;
-		}
+    public function withDeviceName(array $deviceName)
+    {
+        $this->data['DeviceName'] = $deviceName;
+        foreach ($deviceName as $i => $iValue) {
+            $this->options['query']['DeviceName.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -13889,28 +13499,25 @@ class SetDevicesProperty extends Rpc
  */
 class SetEdgeInstanceDriverConfigs extends Rpc
 {
-
     /**
-     * @param array $configs
-     *
      * @return $this
      */
-	public function withConfigs(array $configs)
-	{
-	    $this->data['Configs'] = $configs;
-		foreach ($configs as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Format'])){
-				$this->options['query']['Configs.' . ($depth1 + 1) . '.Format'] = $depth1Value['Format'];
-			}
-			if(isset($depth1Value['Content'])){
-				$this->options['query']['Configs.' . ($depth1 + 1) . '.Content'] = $depth1Value['Content'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Configs.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withConfigs(array $configs)
+    {
+        $this->data['Configs'] = $configs;
+        foreach ($configs as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Format'])) {
+                $this->options['query']['Configs.' . ($depth1 + 1) . '.Format'] = $depth1Value['Format'];
+            }
+            if (isset($depth1Value['Content'])) {
+                $this->options['query']['Configs.' . ($depth1 + 1) . '.Content'] = $depth1Value['Content'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Configs.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -13952,7 +13559,6 @@ class SetEdgeInstanceDriverConfigs extends Rpc
  */
 class SetProductCertInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -13988,7 +13594,6 @@ class SetProductCertInfo extends Rpc
  */
 class SetStudioProjectCooperation extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -14052,7 +13657,6 @@ class SetStudioProjectCooperation extends Rpc
  */
 class SetupStudioAppAuthModeOpen extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -14143,7 +13747,6 @@ class SetupStudioAppAuthModeOpen extends Rpc
  */
 class SpeechByCombination extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -14158,18 +13761,16 @@ class SpeechByCombination extends Rpc
     }
 
     /**
-     * @param array $combinationList
-     *
      * @return $this
      */
-	public function withCombinationList(array $combinationList)
-	{
-	    $this->data['CombinationList'] = $combinationList;
-		foreach ($combinationList as $i => $iValue) {
-			$this->options['form_params']['CombinationList.' . ($i + 1)] = $iValue;
-		}
+    public function withCombinationList(array $combinationList)
+    {
+        $this->data['CombinationList'] = $combinationList;
+        foreach ($combinationList as $i => $iValue) {
+            $this->options['form_params']['CombinationList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -14248,7 +13849,6 @@ class SpeechByCombination extends Rpc
  */
 class StartRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -14286,7 +13886,6 @@ class StartRule extends Rpc
  */
 class StopRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -14325,7 +13924,6 @@ class StopRule extends Rpc
  */
 class SyncSpeechByCombination extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -14340,18 +13938,16 @@ class SyncSpeechByCombination extends Rpc
     }
 
     /**
-     * @param array $combinationList
-     *
      * @return $this
      */
-	public function withCombinationList(array $combinationList)
-	{
-	    $this->data['CombinationList'] = $combinationList;
-		foreach ($combinationList as $i => $iValue) {
-			$this->options['form_params']['CombinationList.' . ($i + 1)] = $iValue;
-		}
+    public function withCombinationList(array $combinationList)
+    {
+        $this->data['CombinationList'] = $combinationList;
+        foreach ($combinationList as $i => $iValue) {
+            $this->options['form_params']['CombinationList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -14433,7 +14029,6 @@ class SyncSpeechByCombination extends Rpc
  */
 class TestSpeech extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -14564,7 +14159,6 @@ class TestSpeech extends Rpc
  */
 class TriggerSceneRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -14604,7 +14198,6 @@ class TriggerSceneRule extends Rpc
  */
 class UnbindApplicationFromEdgeInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -14644,7 +14237,6 @@ class UnbindApplicationFromEdgeInstance extends Rpc
  */
 class UnbindDriverFromEdgeInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -14682,7 +14274,6 @@ class UnbindDriverFromEdgeInstance extends Rpc
  */
 class UnbindRoleFromEdgeInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -14722,7 +14313,6 @@ class UnbindRoleFromEdgeInstance extends Rpc
  */
 class UnbindSceneRuleFromEdgeInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -14762,7 +14352,6 @@ class UnbindSceneRuleFromEdgeInstance extends Rpc
  */
 class UpdateConsumerGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -14802,7 +14391,6 @@ class UpdateConsumerGroup extends Rpc
  */
 class UpdateDeviceGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -14846,7 +14434,6 @@ class UpdateDeviceGroup extends Rpc
  */
 class UpdateDeviceShadow extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -14900,7 +14487,6 @@ class UpdateDeviceShadow extends Rpc
  */
 class UpdateEdgeDriverVersion extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -14946,7 +14532,6 @@ class UpdateEdgeDriverVersion extends Rpc
  */
 class UpdateEdgeInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -14991,28 +14576,25 @@ class UpdateEdgeInstance extends Rpc
  */
 class UpdateEdgeInstanceChannel extends Rpc
 {
-
     /**
-     * @param array $configs
-     *
      * @return $this
      */
-	public function withConfigs(array $configs)
-	{
-	    $this->data['Configs'] = $configs;
-		foreach ($configs as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Format'])){
-				$this->options['query']['Configs.' . ($depth1 + 1) . '.Format'] = $depth1Value['Format'];
-			}
-			if(isset($depth1Value['Content'])){
-				$this->options['query']['Configs.' . ($depth1 + 1) . '.Content'] = $depth1Value['Content'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Configs.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withConfigs(array $configs)
+    {
+        $this->data['Configs'] = $configs;
+        foreach ($configs as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Format'])) {
+                $this->options['query']['Configs.' . ($depth1 + 1) . '.Format'] = $depth1Value['Format'];
+            }
+            if (isset($depth1Value['Content'])) {
+                $this->options['query']['Configs.' . ($depth1 + 1) . '.Content'] = $depth1Value['Content'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Configs.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -15068,7 +14650,6 @@ class UpdateEdgeInstanceChannel extends Rpc
  */
 class UpdateEdgeInstanceMessageRouting extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -15112,7 +14693,6 @@ class UpdateEdgeInstanceMessageRouting extends Rpc
  */
 class UpdateJob extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -15156,7 +14736,6 @@ class UpdateJob extends Rpc
  */
 class UpdateOTAModule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -15202,7 +14781,6 @@ class UpdateOTAModule extends Rpc
  */
 class UpdateProduct extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -15244,7 +14822,6 @@ class UpdateProduct extends Rpc
  */
 class UpdateProductFilterConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -15283,25 +14860,22 @@ class UpdateProductFilterConfig extends Rpc
  */
 class UpdateProductTags extends Rpc
 {
-
     /**
-     * @param array $productTag
-     *
      * @return $this
      */
-	public function withProductTag(array $productTag)
-	{
-	    $this->data['ProductTag'] = $productTag;
-		foreach ($productTag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['TagValue'])){
-				$this->options['query']['ProductTag.' . ($depth1 + 1) . '.TagValue'] = $depth1Value['TagValue'];
-			}
-			if(isset($depth1Value['TagKey'])){
-				$this->options['query']['ProductTag.' . ($depth1 + 1) . '.TagKey'] = $depth1Value['TagKey'];
-			}
-		}
+    public function withProductTag(array $productTag)
+    {
+        $this->data['ProductTag'] = $productTag;
+        foreach ($productTag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['TagValue'])) {
+                $this->options['query']['ProductTag.' . ($depth1 + 1) . '.TagValue'] = $depth1Value['TagValue'];
+            }
+            if (isset($depth1Value['TagKey'])) {
+                $this->options['query']['ProductTag.' . ($depth1 + 1) . '.TagKey'] = $depth1Value['TagKey'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -15347,7 +14921,6 @@ class UpdateProductTags extends Rpc
  */
 class UpdateProductTopic extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -15401,7 +14974,6 @@ class UpdateProductTopic extends Rpc
  */
 class UpdateRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -15443,7 +15015,6 @@ class UpdateRule extends Rpc
  */
 class UpdateRuleAction extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -15487,7 +15058,6 @@ class UpdateRuleAction extends Rpc
  */
 class UpdateSceneRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -15527,7 +15097,6 @@ class UpdateSceneRule extends Rpc
  */
 class UpdateSpeech extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -15668,20 +15237,17 @@ class UpdateSpeech extends Rpc
  */
 class UpdateSubscribeRelation extends Rpc
 {
-
     /**
-     * @param array $consumerGroupIds
-     *
      * @return $this
      */
-	public function withConsumerGroupIds(array $consumerGroupIds)
-	{
-	    $this->data['ConsumerGroupIds'] = $consumerGroupIds;
-		foreach ($consumerGroupIds as $i => $iValue) {
-			$this->options['query']['ConsumerGroupIds.' . ($i + 1)] = $iValue;
-		}
+    public function withConsumerGroupIds(array $consumerGroupIds)
+    {
+        $this->data['ConsumerGroupIds'] = $consumerGroupIds;
+        foreach ($consumerGroupIds as $i => $iValue) {
+            $this->options['query']['ConsumerGroupIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -15733,7 +15299,6 @@ class UpdateSubscribeRelation extends Rpc
  */
 class UpdateThingModel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -15773,7 +15338,6 @@ class UpdateThingModel extends Rpc
  */
 class UpdateThingModelValidationConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -15815,7 +15379,6 @@ class UpdateThingModelValidationConfig extends Rpc
  */
 class UpdateThingScript extends Rpc
 {
-
     /**
      * @param string $value
      *

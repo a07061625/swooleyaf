@@ -49,7 +49,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AssessComposition extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -69,7 +68,6 @@ class AssessComposition extends Rpc
  */
 class AssessExposure extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -89,7 +87,6 @@ class AssessExposure extends Rpc
  */
 class AssessSharpness extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -111,7 +108,6 @@ class AssessSharpness extends Rpc
  */
 class ChangeImageSize extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -157,7 +153,6 @@ class ChangeImageSize extends Rpc
  */
 class ColorizeImage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -179,7 +174,6 @@ class ColorizeImage extends Rpc
  */
 class EnhanceImageColor extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -226,7 +220,6 @@ class EnhanceImageColor extends Rpc
  */
 class ErasePerson extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -260,7 +253,6 @@ class ErasePerson extends Rpc
  */
 class ExtendImageStyle extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -294,7 +286,6 @@ class ExtendImageStyle extends Rpc
  */
 class GenerateDynamicImage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -328,7 +319,6 @@ class GenerateDynamicImage extends Rpc
  */
 class GetAsyncJobResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -366,7 +356,6 @@ class GetAsyncJobResult extends Rpc
  */
 class ImageBlindCharacterWatermark extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -456,7 +445,6 @@ class ImageBlindCharacterWatermark extends Rpc
  */
 class ImageBlindPicWatermark extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -542,7 +530,6 @@ class ImageBlindPicWatermark extends Rpc
  */
 class ImitatePhotoStyle extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -576,7 +563,6 @@ class ImitatePhotoStyle extends Rpc
  */
 class IntelligentComposition extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -611,7 +597,6 @@ class IntelligentComposition extends Rpc
  */
 class MakeSuperResolutionImage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -663,22 +648,19 @@ class MakeSuperResolutionImage extends Rpc
  */
 class RecolorHDImage extends Rpc
 {
-
     /**
-     * @param array $colorTemplate
-     *
      * @return $this
      */
-	public function withColorTemplate(array $colorTemplate)
-	{
-	    $this->data['ColorTemplate'] = $colorTemplate;
-		foreach ($colorTemplate as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Color'])){
-				$this->options['form_params']['ColorTemplate.' . ($depth1 + 1) . '.Color'] = $depth1Value['Color'];
-			}
-		}
+    public function withColorTemplate(array $colorTemplate)
+    {
+        $this->data['ColorTemplate'] = $colorTemplate;
+        foreach ($colorTemplate as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Color'])) {
+                $this->options['form_params']['ColorTemplate.' . ($depth1 + 1) . '.Color'] = $depth1Value['Color'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -769,22 +751,19 @@ class RecolorHDImage extends Rpc
  */
 class RecolorImage extends Rpc
 {
-
     /**
-     * @param array $colorTemplate
-     *
      * @return $this
      */
-	public function withColorTemplate(array $colorTemplate)
-	{
-	    $this->data['ColorTemplate'] = $colorTemplate;
-		foreach ($colorTemplate as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Color'])){
-				$this->options['form_params']['ColorTemplate.' . ($depth1 + 1) . '.Color'] = $depth1Value['Color'];
-			}
-		}
+    public function withColorTemplate(array $colorTemplate)
+    {
+        $this->data['ColorTemplate'] = $colorTemplate;
+        foreach ($colorTemplate as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Color'])) {
+                $this->options['form_params']['ColorTemplate.' . ($depth1 + 1) . '.Color'] = $depth1Value['Color'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -849,7 +828,6 @@ class RecolorImage extends Rpc
  */
 class RemoveImageSubtitles extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -921,7 +899,6 @@ class RemoveImageSubtitles extends Rpc
  */
 class RemoveImageWatermark extends Rpc
 {
-
     /**
      * @param string $value
      *

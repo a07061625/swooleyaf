@@ -54,7 +54,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class CheckAudienceExportStatus extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 
@@ -94,7 +93,6 @@ class ConsumeMediaResourcePackage extends Rpc
  */
 class CreateDataset extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -214,7 +212,6 @@ class CreateDataSource extends Rpc
  */
 class CreateExportTask extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }
@@ -229,7 +226,6 @@ class CreateExportTask extends Rpc
  */
 class GetInstanceInstance extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }
@@ -244,7 +240,6 @@ class GetInstanceInstance extends Rpc
  */
 class GetInstanceInstanceInstance extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }
@@ -299,7 +294,6 @@ class ListAccount extends Rpc
  */
 class ListAudience extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -316,7 +310,6 @@ class ListAudience extends Rpc
  */
 class ListDataset extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -353,7 +346,6 @@ class ListTable extends Rpc
  */
 class ListWorkspace extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -383,20 +375,17 @@ class LoadDataToExternalAudience extends Rpc
  */
 class LoadDataToLabelDataSet extends Rpc
 {
-
     /**
-     * @param array $colNameList
-     *
      * @return $this
      */
-	public function withColNameList(array $colNameList)
-	{
-	    $this->data['ColNameList'] = $colNameList;
-		foreach ($colNameList as $i => $iValue) {
-			$this->options['query']['ColNameList.' . ($i + 1)] = $iValue;
-		}
+    public function withColNameList(array $colNameList)
+    {
+        $this->data['ColNameList'] = $colNameList;
+        foreach ($colNameList as $i => $iValue) {
+            $this->options['query']['ColNameList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -427,7 +416,6 @@ class QueryMediaResourcePackage extends Rpc
  */
 class RecreateTable extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -529,37 +517,34 @@ class SaveExternalAudience extends Rpc
  */
 class SaveLabelDataSet extends Rpc
 {
-
     /**
-     * @param array $datasetLabelList
-     *
      * @return $this
      */
-	public function withDatasetLabelList(array $datasetLabelList)
-	{
-	    $this->data['DatasetLabelList'] = $datasetLabelList;
-		foreach ($datasetLabelList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ColumnComment'])){
-				$this->options['query']['DatasetLabelList.' . ($depth1 + 1) . '.ColumnComment'] = $depth1Value['ColumnComment'];
-			}
-			if(isset($depth1Value['MappingType'])){
-				$this->options['query']['DatasetLabelList.' . ($depth1 + 1) . '.MappingType'] = $depth1Value['MappingType'];
-			}
-			if(isset($depth1Value['UniqueIdentification'])){
-				$this->options['query']['DatasetLabelList.' . ($depth1 + 1) . '.UniqueIdentification'] = $depth1Value['UniqueIdentification'];
-			}
-			if(isset($depth1Value['Remark'])){
-				$this->options['query']['DatasetLabelList.' . ($depth1 + 1) . '.Remark'] = $depth1Value['Remark'];
-			}
-			if(isset($depth1Value['ColumnName'])){
-				$this->options['query']['DatasetLabelList.' . ($depth1 + 1) . '.ColumnName'] = $depth1Value['ColumnName'];
-			}
-			if(isset($depth1Value['ColumnType'])){
-				$this->options['query']['DatasetLabelList.' . ($depth1 + 1) . '.ColumnType'] = $depth1Value['ColumnType'];
-			}
-		}
+    public function withDatasetLabelList(array $datasetLabelList)
+    {
+        $this->data['DatasetLabelList'] = $datasetLabelList;
+        foreach ($datasetLabelList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ColumnComment'])) {
+                $this->options['query']['DatasetLabelList.' . ($depth1 + 1) . '.ColumnComment'] = $depth1Value['ColumnComment'];
+            }
+            if (isset($depth1Value['MappingType'])) {
+                $this->options['query']['DatasetLabelList.' . ($depth1 + 1) . '.MappingType'] = $depth1Value['MappingType'];
+            }
+            if (isset($depth1Value['UniqueIdentification'])) {
+                $this->options['query']['DatasetLabelList.' . ($depth1 + 1) . '.UniqueIdentification'] = $depth1Value['UniqueIdentification'];
+            }
+            if (isset($depth1Value['Remark'])) {
+                $this->options['query']['DatasetLabelList.' . ($depth1 + 1) . '.Remark'] = $depth1Value['Remark'];
+            }
+            if (isset($depth1Value['ColumnName'])) {
+                $this->options['query']['DatasetLabelList.' . ($depth1 + 1) . '.ColumnName'] = $depth1Value['ColumnName'];
+            }
+            if (isset($depth1Value['ColumnType'])) {
+                $this->options['query']['DatasetLabelList.' . ($depth1 + 1) . '.ColumnType'] = $depth1Value['ColumnType'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -574,7 +559,6 @@ class SaveLabelDataSet extends Rpc
  */
 class UpdateDataset extends Rpc
 {
-
     /**
      * @param string $value
      *

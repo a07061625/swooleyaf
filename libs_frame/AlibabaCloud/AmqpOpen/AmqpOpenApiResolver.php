@@ -51,7 +51,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class CreateBinding extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -158,7 +157,6 @@ class CreateBinding extends Rpc
  */
 class CreateExchange extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -269,7 +267,6 @@ class CreateExchange extends Rpc
  */
 class CreateQueue extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -423,7 +420,6 @@ class CreateQueue extends Rpc
  */
 class CreateVirtualHost extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -464,7 +460,6 @@ class CreateVirtualHost extends Rpc
  */
 class DeleteBinding extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -554,7 +549,6 @@ class DeleteBinding extends Rpc
  */
 class DeleteExchange extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -605,7 +599,6 @@ class DeleteExchange extends Rpc
  */
 class DeleteQueue extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -655,7 +648,6 @@ class DeleteQueue extends Rpc
  */
 class DeleteVirtualHost extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 

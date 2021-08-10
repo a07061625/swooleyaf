@@ -32,7 +32,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class DescribeBusinessStatus extends Rpc
 {
-
     /**
      * @param string $value
      *

@@ -74,7 +74,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class DeleteWhiteListDbItemConditional extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -104,7 +103,6 @@ class DeleteWhiteListDbItemConditional extends Rpc
  */
 class DeleteWhiteListConditional extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -198,7 +196,6 @@ class DescribeEcsListPage extends Rpc
  */
 class DescribeConsoleAccessWhiteList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -417,7 +414,6 @@ class DescribeAccessWhiteListEipList extends Rpc
  */
 class DescribePunishList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -488,7 +484,6 @@ class DescribePunishList extends Rpc
  */
 class DescribeRiskListDetail extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -617,7 +612,6 @@ class DescribeRiskListDetail extends Rpc
  */
 class DescribeDdosDefenseInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -655,7 +649,6 @@ class DescribeDdosDefenseInfo extends Rpc
  */
 class DescribePhoneInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -851,7 +844,6 @@ class DescribeResetRecordQueryCount extends Rpc
  */
 class DescribeResetRecordList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -897,7 +889,6 @@ class DescribeResetRecordList extends Rpc
  */
 class DescribeCpmcPunishList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -948,7 +939,6 @@ class DescribeCpmcPunishList extends Rpc
  */
 class DescribeAccessWhiteListGroup extends Rpc
 {
-
     /**
      * @param string $value
      *

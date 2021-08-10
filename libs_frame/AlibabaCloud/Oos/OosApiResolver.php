@@ -518,28 +518,25 @@ class ListInstanceStateReports extends Rpc
  */
 class ListInventoryEntries extends Rpc
 {
-
     /**
-     * @param array $filter
-     *
      * @return $this
      */
-	public function withFilter(array $filter)
-	{
-	    $this->data['Filter'] = $filter;
-		foreach ($filter as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Name'])){
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
-			}
-			foreach ($depth1Value['Value'] as $i => $iValue) {
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['Operator'])){
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Operator'] = $depth1Value['Operator'];
-			}
-		}
+    public function withFilter(array $filter)
+    {
+        $this->data['Filter'] = $filter;
+        foreach ($filter as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Name'])) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+            }
+            foreach ($depth1Value['Value'] as $i => $iValue) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['Operator'])) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Operator'] = $depth1Value['Operator'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -831,43 +828,38 @@ class RegisterDefaultPatchBaseline extends Rpc
  */
 class SearchInventory extends Rpc
 {
-
     /**
-     * @param array $aggregator
-     *
      * @return $this
      */
-	public function withAggregator(array $aggregator)
-	{
-	    $this->data['Aggregator'] = $aggregator;
-		foreach ($aggregator as $i => $iValue) {
-			$this->options['query']['Aggregator.' . ($i + 1)] = $iValue;
-		}
+    public function withAggregator(array $aggregator)
+    {
+        $this->data['Aggregator'] = $aggregator;
+        foreach ($aggregator as $i => $iValue) {
+            $this->options['query']['Aggregator.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $filter
-     *
      * @return $this
      */
-	public function withFilter(array $filter)
-	{
-	    $this->data['Filter'] = $filter;
-		foreach ($filter as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Name'])){
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
-			}
-			foreach ($depth1Value['Value'] as $i => $iValue) {
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['Operator'])){
-				$this->options['query']['Filter.' . ($depth1 + 1) . '.Operator'] = $depth1Value['Operator'];
-			}
-		}
+    public function withFilter(array $filter)
+    {
+        $this->data['Filter'] = $filter;
+        foreach ($filter as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Name'])) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+            }
+            foreach ($depth1Value['Value'] as $i => $iValue) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Value.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['Operator'])) {
+                $this->options['query']['Filter.' . ($depth1 + 1) . '.Operator'] = $depth1Value['Operator'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 

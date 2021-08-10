@@ -63,7 +63,6 @@ class ChangeSky extends Rpc
  */
 class GetAsyncJobResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -105,7 +104,6 @@ class ParseFace extends Rpc
  */
 class RefineMask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -152,7 +150,6 @@ class SegmentAnimal extends Rpc
  */
 class SegmentBody extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -218,7 +215,6 @@ class SegmentFood extends Rpc
  */
 class SegmentFurniture extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -255,7 +251,6 @@ class SegmentHDBody extends Rpc
  */
 class SegmentHDCommonImage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -288,7 +283,6 @@ class SegmentHDCommonImage extends Rpc
  */
 class SegmentHDSky extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -334,7 +328,6 @@ class SegmentScene extends Rpc
  */
 class SegmentSkin extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -362,7 +355,6 @@ class SegmentSky extends Rpc
  */
 class SegmentVehicle extends Rpc
 {
-
     /**
      * @param string $value
      *

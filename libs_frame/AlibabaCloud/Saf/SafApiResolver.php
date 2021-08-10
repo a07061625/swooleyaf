@@ -26,10 +26,10 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
     public $method = 'POST';
 
     /** @var string */
-    protected $scheme = 'https';
+    public $serviceCode = 'saf';
 
     /** @var string */
-    public $serviceCode = 'saf';
+    protected $scheme = 'https';
 }
 
 /**
@@ -42,7 +42,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class ExecuteExtendService extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 }

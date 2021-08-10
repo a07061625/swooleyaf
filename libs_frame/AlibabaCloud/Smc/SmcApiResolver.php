@@ -96,79 +96,72 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class CreateReplicationJob extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $systemDiskPart
-     *
      * @return $this
      */
-	public function withSystemDiskPart(array $systemDiskPart)
-	{
-	    $this->data['SystemDiskPart'] = $systemDiskPart;
-		foreach ($systemDiskPart as $depth1 => $depth1Value) {
-			if(isset($depth1Value['SizeBytes'])){
-				$this->options['query']['SystemDiskPart.' . ($depth1 + 1) . '.SizeBytes'] = $depth1Value['SizeBytes'];
-			}
-			if(isset($depth1Value['Block'])){
-				$this->options['query']['SystemDiskPart.' . ($depth1 + 1) . '.Block'] = $depth1Value['Block'];
-			}
-			if(isset($depth1Value['Device'])){
-				$this->options['query']['SystemDiskPart.' . ($depth1 + 1) . '.Device'] = $depth1Value['Device'];
-			}
-		}
+    public function withSystemDiskPart(array $systemDiskPart)
+    {
+        $this->data['SystemDiskPart'] = $systemDiskPart;
+        foreach ($systemDiskPart as $depth1 => $depth1Value) {
+            if (isset($depth1Value['SizeBytes'])) {
+                $this->options['query']['SystemDiskPart.' . ($depth1 + 1) . '.SizeBytes'] = $depth1Value['SizeBytes'];
+            }
+            if (isset($depth1Value['Block'])) {
+                $this->options['query']['SystemDiskPart.' . ($depth1 + 1) . '.Block'] = $depth1Value['Block'];
+            }
+            if (isset($depth1Value['Device'])) {
+                $this->options['query']['SystemDiskPart.' . ($depth1 + 1) . '.Device'] = $depth1Value['Device'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $dataDisk
-     *
      * @return $this
      */
-	public function withDataDisk(array $dataDisk)
-	{
-	    $this->data['DataDisk'] = $dataDisk;
-		foreach ($dataDisk as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Size'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Size'] = $depth1Value['Size'];
-			}
-			foreach ($depth1Value['Part'] as $depth2 => $depth2Value) {
-				if(isset($depth2Value['SizeBytes'])){
-					$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Part.' . ($depth2 + 1) . '.SizeBytes'] = $depth2Value['SizeBytes'];
-				}
-				if(isset($depth2Value['Block'])){
-					$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Part.' . ($depth2 + 1) . '.Block'] = $depth2Value['Block'];
-				}
-				if(isset($depth2Value['Device'])){
-					$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Part.' . ($depth2 + 1) . '.Device'] = $depth2Value['Device'];
-				}
-			}
-			if(isset($depth1Value['Index'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Index'] = $depth1Value['Index'];
-			}
-		}
+    public function withDataDisk(array $dataDisk)
+    {
+        $this->data['DataDisk'] = $dataDisk;
+        foreach ($dataDisk as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Size'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Size'] = $depth1Value['Size'];
+            }
+            foreach ($depth1Value['Part'] as $depth2 => $depth2Value) {
+                if (isset($depth2Value['SizeBytes'])) {
+                    $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Part.' . ($depth2 + 1) . '.SizeBytes'] = $depth2Value['SizeBytes'];
+                }
+                if (isset($depth2Value['Block'])) {
+                    $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Part.' . ($depth2 + 1) . '.Block'] = $depth2Value['Block'];
+                }
+                if (isset($depth2Value['Device'])) {
+                    $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Part.' . ($depth2 + 1) . '.Device'] = $depth2Value['Device'];
+                }
+            }
+            if (isset($depth1Value['Index'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Index'] = $depth1Value['Index'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -218,35 +211,30 @@ class DeleteSourceServer extends Rpc
  */
 class DescribeReplicationJobs extends Rpc
 {
-
     /**
-     * @param array $jobId
-     *
      * @return $this
      */
-	public function withJobId(array $jobId)
-	{
-	    $this->data['JobId'] = $jobId;
-		foreach ($jobId as $i => $iValue) {
-			$this->options['query']['JobId.' . ($i + 1)] = $iValue;
-		}
+    public function withJobId(array $jobId)
+    {
+        $this->data['JobId'] = $jobId;
+        foreach ($jobId as $i => $iValue) {
+            $this->options['query']['JobId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $sourceId
-     *
      * @return $this
      */
-	public function withSourceId(array $sourceId)
-	{
-	    $this->data['SourceId'] = $sourceId;
-		foreach ($sourceId as $i => $iValue) {
-			$this->options['query']['SourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withSourceId(array $sourceId)
+    {
+        $this->data['SourceId'] = $sourceId;
+        foreach ($sourceId as $i => $iValue) {
+            $this->options['query']['SourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -269,20 +257,17 @@ class DescribeReplicationJobs extends Rpc
  */
 class DescribeSourceServers extends Rpc
 {
-
     /**
-     * @param array $sourceId
-     *
      * @return $this
      */
-	public function withSourceId(array $sourceId)
-	{
-	    $this->data['SourceId'] = $sourceId;
-		foreach ($sourceId as $i => $iValue) {
-			$this->options['query']['SourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withSourceId(array $sourceId)
+    {
+        $this->data['SourceId'] = $sourceId;
+        foreach ($sourceId as $i => $iValue) {
+            $this->options['query']['SourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -300,40 +285,35 @@ class DescribeSourceServers extends Rpc
  */
 class ListTagResources extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -383,59 +363,54 @@ class ListTagResources extends Rpc
  */
 class ModifyReplicationJobAttribute extends Rpc
 {
-
     /**
-     * @param array $systemDiskPart
-     *
      * @return $this
      */
-	public function withSystemDiskPart(array $systemDiskPart)
-	{
-	    $this->data['SystemDiskPart'] = $systemDiskPart;
-		foreach ($systemDiskPart as $depth1 => $depth1Value) {
-			if(isset($depth1Value['SizeBytes'])){
-				$this->options['query']['SystemDiskPart.' . ($depth1 + 1) . '.SizeBytes'] = $depth1Value['SizeBytes'];
-			}
-			if(isset($depth1Value['Block'])){
-				$this->options['query']['SystemDiskPart.' . ($depth1 + 1) . '.Block'] = $depth1Value['Block'];
-			}
-			if(isset($depth1Value['Device'])){
-				$this->options['query']['SystemDiskPart.' . ($depth1 + 1) . '.Device'] = $depth1Value['Device'];
-			}
-		}
+    public function withSystemDiskPart(array $systemDiskPart)
+    {
+        $this->data['SystemDiskPart'] = $systemDiskPart;
+        foreach ($systemDiskPart as $depth1 => $depth1Value) {
+            if (isset($depth1Value['SizeBytes'])) {
+                $this->options['query']['SystemDiskPart.' . ($depth1 + 1) . '.SizeBytes'] = $depth1Value['SizeBytes'];
+            }
+            if (isset($depth1Value['Block'])) {
+                $this->options['query']['SystemDiskPart.' . ($depth1 + 1) . '.Block'] = $depth1Value['Block'];
+            }
+            if (isset($depth1Value['Device'])) {
+                $this->options['query']['SystemDiskPart.' . ($depth1 + 1) . '.Device'] = $depth1Value['Device'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $dataDisk
-     *
      * @return $this
      */
-	public function withDataDisk(array $dataDisk)
-	{
-	    $this->data['DataDisk'] = $dataDisk;
-		foreach ($dataDisk as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Size'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Size'] = $depth1Value['Size'];
-			}
-			foreach ($depth1Value['Part'] as $depth2 => $depth2Value) {
-				if(isset($depth2Value['SizeBytes'])){
-					$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Part.' . ($depth2 + 1) . '.SizeBytes'] = $depth2Value['SizeBytes'];
-				}
-				if(isset($depth2Value['Block'])){
-					$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Part.' . ($depth2 + 1) . '.Block'] = $depth2Value['Block'];
-				}
-				if(isset($depth2Value['Device'])){
-					$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Part.' . ($depth2 + 1) . '.Device'] = $depth2Value['Device'];
-				}
-			}
-			if(isset($depth1Value['Index'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Index'] = $depth1Value['Index'];
-			}
-		}
+    public function withDataDisk(array $dataDisk)
+    {
+        $this->data['DataDisk'] = $dataDisk;
+        foreach ($dataDisk as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Size'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Size'] = $depth1Value['Size'];
+            }
+            foreach ($depth1Value['Part'] as $depth2 => $depth2Value) {
+                if (isset($depth2Value['SizeBytes'])) {
+                    $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Part.' . ($depth2 + 1) . '.SizeBytes'] = $depth2Value['SizeBytes'];
+                }
+                if (isset($depth2Value['Block'])) {
+                    $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Part.' . ($depth2 + 1) . '.Block'] = $depth2Value['Block'];
+                }
+                if (isset($depth2Value['Device'])) {
+                    $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Part.' . ($depth2 + 1) . '.Device'] = $depth2Value['Device'];
+                }
+            }
+            if (isset($depth1Value['Index'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Index'] = $depth1Value['Index'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -491,40 +466,35 @@ class StopReplicationJob extends Rpc
  */
 class TagResources extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -542,34 +512,29 @@ class TagResources extends Rpc
  */
 class UntagResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tagKey
-     *
      * @return $this
      */
-	public function withTagKey(array $tagKey)
-	{
-	    $this->data['TagKey'] = $tagKey;
-		foreach ($tagKey as $i => $iValue) {
-			$this->options['query']['TagKey.' . ($i + 1)] = $iValue;
-		}
+    public function withTagKey(array $tagKey)
+    {
+        $this->data['TagKey'] = $tagKey;
+        foreach ($tagKey as $i => $iValue) {
+            $this->options['query']['TagKey.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }

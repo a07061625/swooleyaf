@@ -55,7 +55,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class CreateCoverTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -107,7 +106,6 @@ class CreateFacePerson extends Rpc
  */
 class CreateGifTask extends Rpc
 {
-
     /**
      * @param string $value
      *

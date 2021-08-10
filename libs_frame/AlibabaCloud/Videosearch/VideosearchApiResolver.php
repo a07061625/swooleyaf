@@ -34,7 +34,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AddDeletionVideoTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -77,7 +76,6 @@ class AddDeletionVideoTask extends Rpc
  */
 class AddSearchVideoTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -207,7 +205,6 @@ class AddSearchVideoTask extends Rpc
  */
 class AddStorageVideoTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -282,7 +279,6 @@ class AddStorageVideoTask extends Rpc
  */
 class GetTaskStatus extends Rpc
 {
-
     /**
      * @param string $value
      *

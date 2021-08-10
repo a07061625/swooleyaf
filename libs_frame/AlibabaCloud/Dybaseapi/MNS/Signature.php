@@ -16,14 +16,13 @@ class Signature
     const MNS_HEADER_PREFIX = 'x-mns';
 
     /**
-     * @param string      $accessKey
-     * @param BaseRequest $request
+     * @param string $accessKey
      *
      * @return string
      */
     public static function SignRequest($accessKey, BaseRequest $request)
     {
-        $headers    = $request->getHeaders();
+        $headers = $request->getHeaders();
         $contentMd5 = '';
         if (isset($headers['Content-MD5'])) {
             $contentMd5 = $headers['Content-MD5'];
@@ -32,10 +31,10 @@ class Signature
         if (isset($headers['Content-Type'])) {
             $contentType = $headers['Content-Type'];
         }
-        $date                  = $headers['Date'];
-        $queryString           = $request->getQueryString();
+        $date = $headers['Date'];
+        $queryString = $request->getQueryString();
         $canonicalizedResource = $request->getResourcePath();
-        if ($queryString !== null) {
+        if (null !== $queryString) {
             $canonicalizedResource .= '?' . $request->getQueryString();
         }
         if (0 !== strpos($canonicalizedResource, '/')) {

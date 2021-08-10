@@ -33,7 +33,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class TranslateText extends Rpc
 {
-
     /**
      * @param string $value
      *

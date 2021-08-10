@@ -79,7 +79,6 @@ class CreateFaceGroup extends Rpc
  */
 class CreateStreamPredict extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 }
@@ -106,7 +105,6 @@ class DeleteFaceGroup extends Rpc
  */
 class DeleteStreamPredict extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 }
@@ -151,7 +149,6 @@ class DescribeFaceGroups extends Rpc
  */
 class DescribeStreamPredictResult extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 }
@@ -174,7 +171,6 @@ class DescribeStreamPredictResult extends Rpc
  */
 class DescribeStreamPredicts extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 }
@@ -239,7 +235,6 @@ class SearchFace extends Rpc
  */
 class StartStreamPredict extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 }
@@ -254,7 +249,6 @@ class StartStreamPredict extends Rpc
  */
 class StopStreamPredict extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 }

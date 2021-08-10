@@ -54,7 +54,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class CreateAsyncPredict extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -193,7 +192,6 @@ class CreateAsyncPredict extends Rpc
  */
 class CreateDataset extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -241,7 +239,6 @@ class CreateDataset extends Rpc
  */
 class CreateDatasetRecord extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -294,7 +291,6 @@ class CreateDatasetRecord extends Rpc
  */
 class CreateModel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -408,7 +404,6 @@ class CreateModel extends Rpc
  */
 class CreateProject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -469,7 +464,6 @@ class CreateProject extends Rpc
  */
 class DeleteModel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -519,7 +513,6 @@ class DeleteModel extends Rpc
  */
 class DeployModel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -594,7 +587,6 @@ class DeployModel extends Rpc
  */
 class GetAsyncPredict extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -607,7 +599,6 @@ class GetAsyncPredict extends Rpc
  */
 class GetModel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -671,7 +662,6 @@ class GetModel extends Rpc
  */
 class GetPredictResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -759,7 +749,6 @@ class GetPredictResult extends Rpc
  */
 class ListDataset extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -821,7 +810,6 @@ class ListDataset extends Rpc
  */
 class ListModels extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -882,7 +870,6 @@ class ListModels extends Rpc
  */
 class RunContactReview extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -931,7 +918,6 @@ class RunContactReview extends Rpc
  */
 class RunPreTrainService extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -994,7 +980,6 @@ class RunPreTrainService extends Rpc
  */
 class RunSmartCallService extends Rpc
 {
-
     /**
      * @param string $value
      *

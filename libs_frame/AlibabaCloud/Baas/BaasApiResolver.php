@@ -223,7 +223,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class UpdateChannelConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -284,7 +283,6 @@ class UpdateChannelConfig extends Rpc
  */
 class ApplyPublicAntChain extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -337,7 +335,6 @@ class ApplyPublicAntChain extends Rpc
  */
 class ApplyPublicAntChainWithKeyAutoCreation extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -448,7 +445,6 @@ class ApplyPublicAntChainWithKeyAutoCreation extends Rpc
  */
 class DescribePublicAntChainDownloadPaths extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -468,7 +464,6 @@ class DescribePublicAntChainDownloadPaths extends Rpc
  */
 class ResetPublicAntChainCertificate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -491,7 +486,6 @@ class ResetPublicAntChainCertificate extends Rpc
  */
 class CreatePublicAntChainAccount extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -555,7 +549,6 @@ class CreatePublicAntChainAccount extends Rpc
  */
 class CreatePublicAccountWithKeyPairAutoCreation extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -612,7 +605,6 @@ class CreatePublicAccountWithKeyPairAutoCreation extends Rpc
  */
 class ApplyAntChainWithKeyAutoCreation extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -738,7 +730,6 @@ class ApplyAntChainWithKeyAutoCreation extends Rpc
  */
 class CreateAccountWithKeyPairAutoCreation extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -794,7 +785,6 @@ class CreateAccountWithKeyPairAutoCreation extends Rpc
  */
 class ApplyBlockchainWithKeyAutoCreation extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -906,7 +896,6 @@ class ApplyBlockchainWithKeyAutoCreation extends Rpc
  */
 class DescribeAntChainConfigOptions extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 }
@@ -916,7 +905,6 @@ class DescribeAntChainConfigOptions extends Rpc
  */
 class DeleteAntChainConsortium extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -941,7 +929,6 @@ class DeleteAntChainConsortium extends Rpc
  */
 class InviteAntChainMember extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -990,7 +977,6 @@ class InviteAntChainMember extends Rpc
  */
 class AgreeAntChainInvitation extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -1015,7 +1001,6 @@ class AgreeAntChainInvitation extends Rpc
  */
 class ApplyAntChain extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1064,7 +1049,6 @@ class ApplyAntChain extends Rpc
  */
 class DescribeBlockchainApplication extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1125,7 +1109,6 @@ class DescribeBlockchainApplication extends Rpc
  */
 class UpdateAntChainConsortium extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -1176,7 +1159,6 @@ class UpdateAntChainConsortium extends Rpc
  */
 class UpdateAntChainMember extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -1226,7 +1208,6 @@ class UpdateAntChainMember extends Rpc
  */
 class CreateAntChainConsortium extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -1270,7 +1251,6 @@ class CreateAntChainConsortium extends Rpc
  */
 class CreateBlockchain extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1397,7 +1377,6 @@ class CreateBlockchain extends Rpc
  */
 class CreateAntChainAccount extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -1459,7 +1438,6 @@ class CreateAntChainAccount extends Rpc
  */
 class DescribeLatestBlocks extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1479,7 +1457,6 @@ class DescribeLatestBlocks extends Rpc
  */
 class DescribeLatestTransactionDigests extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1499,7 +1476,6 @@ class DescribeLatestTransactionDigests extends Rpc
  */
 class DescribeAntChainInformation extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1520,7 +1496,6 @@ class DescribeAntChainInformation extends Rpc
  */
 class DescribeBlockchainCreationConfigOptions extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 }
@@ -1531,7 +1506,6 @@ class DescribeBlockchainCreationConfigOptions extends Rpc
  */
 class DescribeAntChainBlock extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1564,7 +1538,6 @@ class DescribeAntChainBlock extends Rpc
  */
 class DescribeDownloadPaths extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1584,7 +1557,6 @@ class DescribeDownloadPaths extends Rpc
  */
 class DescribeAntChainDownloadPaths extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1608,7 +1580,6 @@ class DescribeMyBlockchanInfos extends Rpc
  */
 class DescribeBlockchainSchemaFileOSSProperties extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1629,7 +1600,6 @@ class DescribeBlockchainSchemaFileOSSProperties extends Rpc
  */
 class FreezeAntChainAccount extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -1670,7 +1640,6 @@ class DescribeResourceTypes extends Rpc
  */
 class DescribeBlockchainSchemaDetail extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1704,7 +1673,6 @@ class DescribeBlockchainSchemaDetail extends Rpc
  */
 class UnfreezeAntChainAccount extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -1740,7 +1708,6 @@ class UnfreezeAntChainAccount extends Rpc
  */
 class ResetAntChainCertificate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1765,7 +1732,6 @@ class DescribeBlockchainSchemaTemplates extends Rpc
  */
 class DescribeAntChainConsortiums extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -1805,7 +1771,6 @@ class DescribeAntChainConsortiums extends Rpc
  */
 class UpdateBlockchainSchema extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1879,7 +1844,6 @@ class UpdateBlockchainSchema extends Rpc
  */
 class DescribeAntChainMembers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1928,7 +1892,6 @@ class DescribeAntChainMembers extends Rpc
  */
 class DescribeAntChainApplications extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -1998,7 +1961,6 @@ class DescribeAntChainApplications extends Rpc
  */
 class CreateAntChain extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -2128,7 +2090,6 @@ class CreateAntChain extends Rpc
  */
 class ResetAntChainUserCertificate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2187,7 +2148,6 @@ class ResetAntChainUserCertificate extends Rpc
  */
 class DescribeAntChainLatestBlocks extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2209,7 +2169,6 @@ class DescribeAntChainLatestBlocks extends Rpc
  */
 class UpdateAntChain extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -2258,7 +2217,6 @@ class UpdateAntChain extends Rpc
  */
 class DescribeAntChainLatestTransactionDigests extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2279,7 +2237,6 @@ class DescribeAntChainLatestTransactionDigests extends Rpc
  */
 class DescribeAntChainTransaction extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2312,7 +2269,6 @@ class DescribeAntChainTransaction extends Rpc
  */
 class DescribeAntChainRegionNames extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -2332,14 +2288,12 @@ class DescribeAntChainRegionNames extends Rpc
 
 class DescribeAntChainRegionsForSale extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 }
 
 class DescribeAntChainResourceTypes extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 }
@@ -2352,7 +2306,6 @@ class DescribeAntChainResourceTypes extends Rpc
  */
 class CreateOwnAccount extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -2414,7 +2367,6 @@ class CreateOwnAccount extends Rpc
  */
 class DescribeMemberRole extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2436,7 +2388,6 @@ class DescribeMemberRole extends Rpc
  */
 class DescribeTransactionFor2CBrowser extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2483,7 +2434,6 @@ class DescribeTransactionFor2CBrowser extends Rpc
  */
 class DescribeTransactionQRCode extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2518,7 +2468,6 @@ class DescribeTransactionQRCode extends Rpc
  */
 class DescribeTransactionReceiptFor2CBrowser extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2564,7 +2513,6 @@ class DescribeTransactionReceiptFor2CBrowser extends Rpc
  */
 class DescribeQRCodeAuthority extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2585,7 +2533,6 @@ class DescribeQRCodeAuthority extends Rpc
  */
 class UpdateQRCodeAuthority extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2618,7 +2565,6 @@ class UpdateQRCodeAuthority extends Rpc
  */
 class DescribeQRCodeAccessLog extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2638,7 +2584,6 @@ class DescribeQRCodeAccessLog extends Rpc
  */
 class DescribeAntRegions extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -2662,7 +2607,6 @@ class DescribeAntRegions extends Rpc
  */
 class DescribeBlockchainConfigOption extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 }
@@ -2672,7 +2616,6 @@ class DescribeBlockchainConfigOption extends Rpc
  */
 class DescribeDownloadPathsOfContractChain extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2692,7 +2635,6 @@ class DescribeDownloadPathsOfContractChain extends Rpc
  */
 class DescribeDownloadPathsOfNotaryChain extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2712,7 +2654,6 @@ class DescribeDownloadPathsOfNotaryChain extends Rpc
  */
 class DescribeLatest15Blocks extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2732,7 +2673,6 @@ class DescribeLatest15Blocks extends Rpc
  */
 class DescribeLatest15TransDigests extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2753,7 +2693,6 @@ class DescribeLatest15TransDigests extends Rpc
  */
 class RenameBlockchain extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -2791,7 +2730,6 @@ class RenameBlockchain extends Rpc
  */
 class DescribeMembers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2840,7 +2778,6 @@ class DescribeMembers extends Rpc
  */
 class UpdateMemberRole extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -2905,7 +2842,6 @@ class UpdateMemberRole extends Rpc
  */
 class CreateAccount extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -2968,7 +2904,6 @@ class CreateAccount extends Rpc
  */
 class FreezeAccount extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3005,7 +2940,6 @@ class FreezeAccount extends Rpc
  */
 class UnfreezeAccount extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3041,7 +2975,6 @@ class UnfreezeAccount extends Rpc
  */
 class DescribeEthereum extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3064,7 +2997,6 @@ class DescribeEthereum extends Rpc
  */
 class DescribeEthereumNode extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3088,7 +3020,6 @@ class DescribeEthereumNode extends Rpc
  */
 class DescribeChaincodeCollectionConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3121,7 +3052,6 @@ class DescribeChaincodeCollectionConfig extends Rpc
  */
 class QueryEthereumDeletable extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3144,7 +3074,6 @@ class QueryEthereumDeletable extends Rpc
  */
 class DestroyEthereum extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3167,7 +3096,6 @@ class DestroyEthereum extends Rpc
  */
 class DescribeEthereumDeletable extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3197,7 +3125,6 @@ class DescribeEthereumDeletable extends Rpc
  */
 class CreateEthereum extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3228,8 +3155,6 @@ class CreateEthereum extends Rpc
     }
 
     /**
-     * @param array $node
-     *
      * @return $this
      */
     public function withNode(array $node)
@@ -3310,7 +3235,6 @@ class CreateEthereum extends Rpc
 
 class DescribeEthereums extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 }
@@ -3322,7 +3246,6 @@ class DescribeEthereums extends Rpc
  */
 class UpdateEthereum extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3368,7 +3291,6 @@ class UpdateEthereum extends Rpc
 
 class DescribeEthereumNodes extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 }
@@ -3380,7 +3302,6 @@ class DescribeEthereumNodes extends Rpc
  */
 class UpdateEthereumNode extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3432,7 +3353,6 @@ class UpdateEthereumNode extends Rpc
  */
 class AddEthereumNode extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3494,7 +3414,6 @@ class AddEthereumNode extends Rpc
  */
 class DescribeEthereumNodeInfo extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3517,7 +3436,6 @@ class DescribeEthereumNodeInfo extends Rpc
  */
 class DescribeEthereumClientUsers extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3542,7 +3460,6 @@ class DescribeEthereumClientUsers extends Rpc
  */
 class UpdateEthereumClientUserPassword extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3593,7 +3510,6 @@ class UpdateEthereumClientUserPassword extends Rpc
  */
 class DescribeEthereumNodeLogs extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3642,7 +3558,6 @@ class DescribeEthereumNodeLogs extends Rpc
  */
 class CreateEthereumInvitation extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3665,7 +3580,6 @@ class CreateEthereumInvitation extends Rpc
  */
 class DescribeEthereumInvitaion extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3689,7 +3603,6 @@ class DescribeEthereumInvitaion extends Rpc
  */
 class AcceptEthereumInvitation extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3725,7 +3638,6 @@ class AcceptEthereumInvitation extends Rpc
  */
 class DescribeNetstatURL extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3748,7 +3660,6 @@ class DescribeNetstatURL extends Rpc
  */
 class DescribeExplorerURL extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3772,7 +3683,6 @@ class DescribeExplorerURL extends Rpc
  */
 class ApproveEthereumInvitee extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3790,8 +3700,6 @@ class ApproveEthereumInvitee extends Rpc
     }
 
     /**
-     * @param array $invitee
-     *
      * @return $this
      */
     public function withInvitee(array $invitee)
@@ -3810,7 +3718,6 @@ class ApproveEthereumInvitee extends Rpc
  */
 class DescribeEthereumInvitee extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3833,7 +3740,6 @@ class DescribeEthereumInvitee extends Rpc
  */
 class DescribeEthereumNodeConfiguration extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3864,7 +3770,6 @@ class DescribeEthereumNodeConfiguration extends Rpc
  */
 class UpdateEthereumNodeConfiguration extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -3995,7 +3900,6 @@ class DescribeResourceType extends Rpc
  */
 class DescribeBlockchainSchema extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4023,7 +3927,6 @@ class DescribeBlockchainSchema extends Rpc
  */
 class CreateBlockchainApplication extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4151,7 +4054,6 @@ class DescribeMySuccessfulApplication extends Rpc
  */
 class DownloadSDK2 extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4172,7 +4074,6 @@ class DownloadSDK2 extends Rpc
  */
 class DescribeSchemaDetail extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4206,7 +4107,6 @@ class DescribeSchemaDetail extends Rpc
  */
 class DescribeBlock extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4245,7 +4145,6 @@ class DescribeBlock extends Rpc
  */
 class DescribeMetric extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4318,7 +4217,6 @@ class DescribeMetric extends Rpc
  */
 class DescribeTransaction extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4351,7 +4249,6 @@ class DescribeTransaction extends Rpc
  */
 class ResetCertificate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4374,7 +4271,6 @@ class ResetCertificate extends Rpc
  */
 class DescribeApplies extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4433,7 +4329,6 @@ class DescribeApplies extends Rpc
  */
 class DescribeBcSchema extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4454,7 +4349,6 @@ class DescribeBcSchema extends Rpc
  */
 class DescribeBlockchainCreateTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4487,7 +4381,6 @@ class DescribeBlockchainCreateTask extends Rpc
  */
 class DescribeBlockchainInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4515,7 +4408,6 @@ class DescribeMySuccessApplies extends Rpc
  */
 class DescribeOssProperties extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4539,7 +4431,6 @@ class DescribeTemplates extends Rpc
  */
 class DownloadAll extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4584,7 +4475,6 @@ class DescribeOrdererLogs extends Rpc
  */
 class GetBlockchainCreateTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4617,7 +4507,6 @@ class GetBlockchainCreateTask extends Rpc
  */
 class GetOssProperties extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4641,7 +4530,6 @@ class GetOssProperties extends Rpc
  */
 class UpdateSchema extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4714,7 +4602,6 @@ class UpdateSchema extends Rpc
  */
 class SchemaDetail extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4750,7 +4637,6 @@ class SchemaDetail extends Rpc
  */
 class ResetUser extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4812,7 +4698,6 @@ class ResetUser extends Rpc
  */
 class RejectUser extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4872,7 +4757,6 @@ class RejectUser extends Rpc
  */
 class QueryTransaction extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4911,7 +4795,6 @@ class QueryTransaction extends Rpc
  */
 class QueryMetric extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4984,7 +4867,6 @@ class QueryMetric extends Rpc
  */
 class QueryBlock extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5020,7 +4902,6 @@ class QueryBlock extends Rpc
  */
 class OperateUser extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5082,7 +4963,6 @@ class OperateUser extends Rpc
  */
 class InviteUser extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5153,7 +5033,6 @@ class GetMyBlockchains extends Rpc
  */
 class GetBlockchainInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5173,7 +5052,6 @@ class GetBlockchainInfo extends Rpc
  */
 class GetBcSchema extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5196,7 +5074,6 @@ class GetBcSchema extends Rpc
  */
 class GetApplies extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5256,7 +5133,6 @@ class GetApplies extends Rpc
  */
 class DownloadSignedData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5289,7 +5165,6 @@ class DownloadSignedData extends Rpc
  */
 class DownloadSdk extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5309,7 +5184,6 @@ class DownloadSdk extends Rpc
  */
 class DownloadBizview extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5332,7 +5206,6 @@ class DownloadBizview extends Rpc
  */
 class CreateBlockchainApply extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5395,7 +5268,6 @@ class CreateBlockchainApply extends Rpc
  */
 class ApplyBlockchain extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5469,7 +5341,6 @@ class ApplyBlockchain extends Rpc
  */
 class DescribeConsortiumDeletable extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -5494,7 +5365,6 @@ class DescribeConsortiumDeletable extends Rpc
  */
 class DescribeOrganizationDeletable extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5516,7 +5386,6 @@ class DescribeOrganizationDeletable extends Rpc
  */
 class QueryOrganizationDeletable extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5538,7 +5407,6 @@ class QueryOrganizationDeletable extends Rpc
  */
 class QueryConsortiumDeletable extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -5561,7 +5429,6 @@ class QueryConsortiumDeletable extends Rpc
  */
 class DeleteChaincode extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5582,7 +5449,6 @@ class DeleteChaincode extends Rpc
  */
 class DescribeConsortiumMembers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5615,7 +5481,6 @@ class DescribeConsortiumMembers extends Rpc
  */
 class DescribeOrganizations extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -5640,7 +5505,6 @@ class DescribeOrganizations extends Rpc
  */
 class DescribeOrganizationChannels extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -5664,7 +5528,6 @@ class DescribeOrganizationChannels extends Rpc
  */
 class AcceptInvitation extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -5701,7 +5564,6 @@ class AcceptInvitation extends Rpc
  */
 class DescribeOrganizationChaincodes extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5731,7 +5593,6 @@ class DescribeOrganizationChaincodes extends Rpc
 
 class DescribeRegions extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 }
@@ -5743,7 +5604,6 @@ class DescribeRegions extends Rpc
  */
 class DescribeOrganizationUsers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5765,7 +5625,6 @@ class DescribeOrganizationUsers extends Rpc
  */
 class DescribeOrganizationPeers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5785,7 +5644,6 @@ class DescribeOrganizationPeers extends Rpc
  */
 class DescribeInvitationList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5805,7 +5663,6 @@ class DescribeInvitationList extends Rpc
  */
 class DescribeChaincodeUploadPolicy extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5825,7 +5682,6 @@ class DescribeChaincodeUploadPolicy extends Rpc
  */
 class DescribeConsortiumAdminStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5847,7 +5703,6 @@ class DescribeConsortiumAdminStatus extends Rpc
  */
 class DescribeOrganization extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5899,7 +5754,6 @@ class DescribeRootDomain extends Rpc
  */
 class CreateEcosphere extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -5982,8 +5836,6 @@ class CreateEcosphere extends Rpc
     }
 
     /**
-     * @param array $organization
-     *
      * @return $this
      */
     public function withOrganization(array $organization)
@@ -6094,7 +5946,6 @@ class CreateEcosphere extends Rpc
  */
 class CreateConsortium extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6174,8 +6025,6 @@ class CreateConsortium extends Rpc
     }
 
     /**
-     * @param array $organization
-     *
      * @return $this
      */
     public function withOrganization(array $organization)
@@ -6273,7 +6122,6 @@ class CreateConsortium extends Rpc
  */
 class SynchronizeChaincode extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -6313,7 +6161,6 @@ class SynchronizeChaincode extends Rpc
  */
 class DownloadOrganizationSDK extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6336,7 +6183,6 @@ class DownloadOrganizationSDK extends Rpc
  */
 class ResetOrganizationUserPassword extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6395,7 +6241,6 @@ class ResetOrganizationUserPassword extends Rpc
  */
 class DescribeInvitationCode extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6416,7 +6261,6 @@ class DescribeInvitationCode extends Rpc
  */
 class DescribeOrganizationUserCerts extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -6455,7 +6299,6 @@ class DescribeOrganizationUserCerts extends Rpc
  */
 class CreateOrganizationUser extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6520,10 +6363,7 @@ class DescribeTasks extends Rpc
  */
 class CreateChannelMember extends Rpc
 {
-
     /**
-     * @param array $organization
-     *
      * @return $this
      */
     public function withOrganization(array $organization)
@@ -6544,7 +6384,6 @@ class CreateChannelMember extends Rpc
  */
 class DescribeConsortiumMemberApproval extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6568,7 +6407,6 @@ class DescribeConsortiumMemberApproval extends Rpc
  */
 class JoinChannel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6589,7 +6427,6 @@ class JoinChannel extends Rpc
  */
 class DescribeConsortiumOrderers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6622,7 +6459,6 @@ class DescribeConsortiumOrderers extends Rpc
  */
 class DescribeInviter extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6642,7 +6478,6 @@ class DescribeInviter extends Rpc
  */
 class DescribeCandidateOrganizations extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6666,10 +6501,7 @@ class DescribeCandidateOrganizations extends Rpc
  */
 class CreateConsortiumMember extends Rpc
 {
-
     /**
-     * @param array $organization
-     *
      * @return $this
      */
     public function withOrganization(array $organization)
@@ -6689,7 +6521,6 @@ class CreateConsortiumMember extends Rpc
  */
 class DescribeOrganizationMembers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6724,13 +6555,10 @@ class DescribeOrganizationMembers extends Rpc
  */
 class ConfirmConsortiumMember extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
     /**
-     * @param array $organization
-     *
      * @return $this
      */
     public function withOrganization(array $organization)
@@ -6749,7 +6577,6 @@ class ConfirmConsortiumMember extends Rpc
  */
 class CheckConsortiumDomain extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6770,7 +6597,6 @@ class CheckConsortiumDomain extends Rpc
  */
 class CheckOrganizationDomain extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6803,7 +6629,6 @@ class CheckOrganizationDomain extends Rpc
  */
 class DestroyConsortium extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -6826,7 +6651,6 @@ class DestroyConsortium extends Rpc
  */
 class DestroyOrganization extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -6855,7 +6679,6 @@ class DestroyOrganization extends Rpc
  */
 class DescribeExplorer extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -6880,7 +6703,6 @@ class DescribeExplorer extends Rpc
  */
 class DescribeConsortiums extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -6927,7 +6749,6 @@ class CreateOrganization extends Rpc
  */
 class DescribeConsortiumChannels extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -6957,7 +6778,6 @@ class DescribeConsortiumChannels extends Rpc
  */
 class CreateChannel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6985,8 +6805,6 @@ class CreateChannel extends Rpc
     }
 
     /**
-     * @param array $organization
-     *
      * @return $this
      */
     public function withOrganization(array $organization)
@@ -7027,7 +6845,6 @@ class DescribeChannelMembers extends Rpc
  */
 class DescribeOrgnaizationChaincodes extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7061,7 +6878,6 @@ class DescribeOrgnaizationChaincodes extends Rpc
  */
 class DescribeConsortiumChaincodes extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7100,7 +6916,6 @@ class DescribeConsortiumChaincodes extends Rpc
  */
 class CreateChaincode extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -7203,7 +7018,6 @@ class CreateChaincode extends Rpc
  */
 class InstallChaincode extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7253,7 +7067,6 @@ class InstallChaincode extends Rpc
  */
 class UpgradeChaincode extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -7329,7 +7142,6 @@ class UpgradeChaincode extends Rpc
  */
 class InstantiateChaincode extends Rpc
 {
-
     /**
      * @param string $value
      *

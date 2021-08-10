@@ -291,35 +291,30 @@ class ActiveFlowLog extends Rpc
  */
 class AddACLRule extends Rpc
 {
-
     /**
-     * @param array $dpiGroupIds
-     *
      * @return $this
      */
-	public function withDpiGroupIds(array $dpiGroupIds)
-	{
-	    $this->data['DpiGroupIds'] = $dpiGroupIds;
-		foreach ($dpiGroupIds as $i => $iValue) {
-			$this->options['query']['DpiGroupIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDpiGroupIds(array $dpiGroupIds)
+    {
+        $this->data['DpiGroupIds'] = $dpiGroupIds;
+        foreach ($dpiGroupIds as $i => $iValue) {
+            $this->options['query']['DpiGroupIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $dpiSignatureIds
-     *
      * @return $this
      */
-	public function withDpiSignatureIds(array $dpiSignatureIds)
-	{
-	    $this->data['DpiSignatureIds'] = $dpiSignatureIds;
-		foreach ($dpiSignatureIds as $i => $iValue) {
-			$this->options['query']['DpiSignatureIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDpiSignatureIds(array $dpiSignatureIds)
+    {
+        $this->data['DpiSignatureIds'] = $dpiSignatureIds;
+        foreach ($dpiSignatureIds as $i => $iValue) {
+            $this->options['query']['DpiSignatureIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -480,20 +475,17 @@ class AssociateQos extends Rpc
  */
 class AttachNetworkOptimizationSags extends Rpc
 {
-
     /**
-     * @param array $smartAGIds
-     *
      * @return $this
      */
-	public function withSmartAGIds(array $smartAGIds)
-	{
-	    $this->data['SmartAGIds'] = $smartAGIds;
-		foreach ($smartAGIds as $i => $iValue) {
-			$this->options['query']['SmartAGIds.' . ($i + 1)] = $iValue;
-		}
+    public function withSmartAGIds(array $smartAGIds)
+    {
+        $this->data['SmartAGIds'] = $smartAGIds;
+        foreach ($smartAGIds as $i => $iValue) {
+            $this->options['query']['SmartAGIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -590,7 +582,6 @@ class ClearSagCipher extends Rpc
  */
 class ClearSagRouteableAddress extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -841,35 +832,30 @@ class CreateQosCar extends Rpc
  */
 class CreateQosPolicy extends Rpc
 {
-
     /**
-     * @param array $dpiGroupIds
-     *
      * @return $this
      */
-	public function withDpiGroupIds(array $dpiGroupIds)
-	{
-	    $this->data['DpiGroupIds'] = $dpiGroupIds;
-		foreach ($dpiGroupIds as $i => $iValue) {
-			$this->options['query']['DpiGroupIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDpiGroupIds(array $dpiGroupIds)
+    {
+        $this->data['DpiGroupIds'] = $dpiGroupIds;
+        foreach ($dpiGroupIds as $i => $iValue) {
+            $this->options['query']['DpiGroupIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $dpiSignatureIds
-     *
      * @return $this
      */
-	public function withDpiSignatureIds(array $dpiSignatureIds)
-	{
-	    $this->data['DpiSignatureIds'] = $dpiSignatureIds;
-		foreach ($dpiSignatureIds as $i => $iValue) {
-			$this->options['query']['DpiSignatureIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDpiSignatureIds(array $dpiSignatureIds)
+    {
+        $this->data['DpiSignatureIds'] = $dpiSignatureIds;
+        foreach ($dpiSignatureIds as $i => $iValue) {
+            $this->options['query']['DpiSignatureIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1498,25 +1484,22 @@ class DescribeClientUserDNS extends Rpc
  */
 class DescribeCloudConnectNetworks extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2123,20 +2106,17 @@ class DescribeSagManagementPort extends Rpc
  */
 class DescribeSagOnlineClientStatistics extends Rpc
 {
-
     /**
-     * @param array $smartAGIds
-     *
      * @return $this
      */
-	public function withSmartAGIds(array $smartAGIds)
-	{
-	    $this->data['SmartAGIds'] = $smartAGIds;
-		foreach ($smartAGIds as $i => $iValue) {
-			$this->options['query']['SmartAGIds.' . ($i + 1)] = $iValue;
-		}
+    public function withSmartAGIds(array $smartAGIds)
+    {
+        $this->data['SmartAGIds'] = $smartAGIds;
+        foreach ($smartAGIds as $i => $iValue) {
+            $this->options['query']['SmartAGIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2331,20 +2311,17 @@ class DescribeSagUserDns extends Rpc
  */
 class DescribeSagVbrRelations extends Rpc
 {
-
     /**
-     * @param array $vbrInstanceIds
-     *
      * @return $this
      */
-	public function withVbrInstanceIds(array $vbrInstanceIds)
-	{
-	    $this->data['VbrInstanceIds'] = $vbrInstanceIds;
-		foreach ($vbrInstanceIds as $i => $iValue) {
-			$this->options['query']['VbrInstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withVbrInstanceIds(array $vbrInstanceIds)
+    {
+        $this->data['VbrInstanceIds'] = $vbrInstanceIds;
+        foreach ($vbrInstanceIds as $i => $iValue) {
+            $this->options['query']['VbrInstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2521,20 +2498,17 @@ class DescribeSmartAccessGatewayHa extends Rpc
  */
 class DescribeSmartAccessGateways extends Rpc
 {
-
     /**
-     * @param array $smartAGIds
-     *
      * @return $this
      */
-	public function withSmartAGIds(array $smartAGIds)
-	{
-	    $this->data['SmartAGIds'] = $smartAGIds;
-		foreach ($smartAGIds as $i => $iValue) {
-			$this->options['query']['SmartAGIds.' . ($i + 1)] = $iValue;
-		}
+    public function withSmartAGIds(array $smartAGIds)
+    {
+        $this->data['SmartAGIds'] = $smartAGIds;
+        foreach ($smartAGIds as $i => $iValue) {
+            $this->options['query']['SmartAGIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2609,20 +2583,17 @@ class DescribeUnbindFlowLogSags extends Rpc
  */
 class DescribeUserFlowStatistics extends Rpc
 {
-
     /**
-     * @param array $userNames
-     *
      * @return $this
      */
-	public function withUserNames(array $userNames)
-	{
-	    $this->data['UserNames'] = $userNames;
-		foreach ($userNames as $i => $iValue) {
-			$this->options['query']['UserNames.' . ($i + 1)] = $iValue;
-		}
+    public function withUserNames(array $userNames)
+    {
+        $this->data['UserNames'] = $userNames;
+        foreach ($userNames as $i => $iValue) {
+            $this->options['query']['UserNames.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2659,20 +2630,17 @@ class DescribeUserOnlineClients extends Rpc
  */
 class DescribeUserOnlineClientStatistics extends Rpc
 {
-
     /**
-     * @param array $userNames
-     *
      * @return $this
      */
-	public function withUserNames(array $userNames)
-	{
-	    $this->data['UserNames'] = $userNames;
-		foreach ($userNames as $i => $iValue) {
-			$this->options['query']['UserNames.' . ($i + 1)] = $iValue;
-		}
+    public function withUserNames(array $userNames)
+    {
+        $this->data['UserNames'] = $userNames;
+        foreach ($userNames as $i => $iValue) {
+            $this->options['query']['UserNames.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2691,20 +2659,17 @@ class DescribeUserOnlineClientStatistics extends Rpc
  */
 class DetachNetworkOptimizationSags extends Rpc
 {
-
     /**
-     * @param array $smartAGIds
-     *
      * @return $this
      */
-	public function withSmartAGIds(array $smartAGIds)
-	{
-	    $this->data['SmartAGIds'] = $smartAGIds;
-		foreach ($smartAGIds as $i => $iValue) {
-			$this->options['query']['SmartAGIds.' . ($i + 1)] = $iValue;
-		}
+    public function withSmartAGIds(array $smartAGIds)
+    {
+        $this->data['SmartAGIds'] = $smartAGIds;
+        foreach ($smartAGIds as $i => $iValue) {
+            $this->options['query']['SmartAGIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3138,35 +3103,30 @@ class ListDpiConfigError extends Rpc
  */
 class ListDpiGroups extends Rpc
 {
-
     /**
-     * @param array $dpiGroupIds
-     *
      * @return $this
      */
-	public function withDpiGroupIds(array $dpiGroupIds)
-	{
-	    $this->data['DpiGroupIds'] = $dpiGroupIds;
-		foreach ($dpiGroupIds as $i => $iValue) {
-			$this->options['query']['DpiGroupIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDpiGroupIds(array $dpiGroupIds)
+    {
+        $this->data['DpiGroupIds'] = $dpiGroupIds;
+        foreach ($dpiGroupIds as $i => $iValue) {
+            $this->options['query']['DpiGroupIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $dpiGroupNames
-     *
      * @return $this
      */
-	public function withDpiGroupNames(array $dpiGroupNames)
-	{
-	    $this->data['DpiGroupNames'] = $dpiGroupNames;
-		foreach ($dpiGroupNames as $i => $iValue) {
-			$this->options['query']['DpiGroupNames.' . ($i + 1)] = $iValue;
-		}
+    public function withDpiGroupNames(array $dpiGroupNames)
+    {
+        $this->data['DpiGroupNames'] = $dpiGroupNames;
+        foreach ($dpiGroupNames as $i => $iValue) {
+            $this->options['query']['DpiGroupNames.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3190,35 +3150,30 @@ class ListDpiGroups extends Rpc
  */
 class ListDpiSignatures extends Rpc
 {
-
     /**
-     * @param array $dpiSignatureNames
-     *
      * @return $this
      */
-	public function withDpiSignatureNames(array $dpiSignatureNames)
-	{
-	    $this->data['DpiSignatureNames'] = $dpiSignatureNames;
-		foreach ($dpiSignatureNames as $i => $iValue) {
-			$this->options['query']['DpiSignatureNames.' . ($i + 1)] = $iValue;
-		}
+    public function withDpiSignatureNames(array $dpiSignatureNames)
+    {
+        $this->data['DpiSignatureNames'] = $dpiSignatureNames;
+        foreach ($dpiSignatureNames as $i => $iValue) {
+            $this->options['query']['DpiSignatureNames.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $dpiSignatureIds
-     *
      * @return $this
      */
-	public function withDpiSignatureIds(array $dpiSignatureIds)
-	{
-	    $this->data['DpiSignatureIds'] = $dpiSignatureIds;
-		foreach ($dpiSignatureIds as $i => $iValue) {
-			$this->options['query']['DpiSignatureIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDpiSignatureIds(array $dpiSignatureIds)
+    {
+        $this->data['DpiSignatureIds'] = $dpiSignatureIds;
+        foreach ($dpiSignatureIds as $i => $iValue) {
+            $this->options['query']['DpiSignatureIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3336,35 +3291,30 @@ class ModifyACL extends Rpc
  */
 class ModifyACLRule extends Rpc
 {
-
     /**
-     * @param array $dpiGroupIds
-     *
      * @return $this
      */
-	public function withDpiGroupIds(array $dpiGroupIds)
-	{
-	    $this->data['DpiGroupIds'] = $dpiGroupIds;
-		foreach ($dpiGroupIds as $i => $iValue) {
-			$this->options['query']['DpiGroupIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDpiGroupIds(array $dpiGroupIds)
+    {
+        $this->data['DpiGroupIds'] = $dpiGroupIds;
+        foreach ($dpiGroupIds as $i => $iValue) {
+            $this->options['query']['DpiGroupIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $dpiSignatureIds
-     *
      * @return $this
      */
-	public function withDpiSignatureIds(array $dpiSignatureIds)
-	{
-	    $this->data['DpiSignatureIds'] = $dpiSignatureIds;
-		foreach ($dpiSignatureIds as $i => $iValue) {
-			$this->options['query']['DpiSignatureIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDpiSignatureIds(array $dpiSignatureIds)
+    {
+        $this->data['DpiSignatureIds'] = $dpiSignatureIds;
+        foreach ($dpiSignatureIds as $i => $iValue) {
+            $this->options['query']['DpiSignatureIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3384,35 +3334,30 @@ class ModifyACLRule extends Rpc
  */
 class ModifyClientUserDNS extends Rpc
 {
-
     /**
-     * @param array $recoveredDNS
-     *
      * @return $this
      */
-	public function withRecoveredDNS(array $recoveredDNS)
-	{
-	    $this->data['RecoveredDNS'] = $recoveredDNS;
-		foreach ($recoveredDNS as $i => $iValue) {
-			$this->options['query']['RecoveredDNS.' . ($i + 1)] = $iValue;
-		}
+    public function withRecoveredDNS(array $recoveredDNS)
+    {
+        $this->data['RecoveredDNS'] = $recoveredDNS;
+        foreach ($recoveredDNS as $i => $iValue) {
+            $this->options['query']['RecoveredDNS.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $appDNS
-     *
      * @return $this
      */
-	public function withAppDNS(array $appDNS)
-	{
-	    $this->data['AppDNS'] = $appDNS;
-		foreach ($appDNS as $i => $iValue) {
-			$this->options['query']['AppDNS.' . ($i + 1)] = $iValue;
-		}
+    public function withAppDNS(array $appDNS)
+    {
+        $this->data['AppDNS'] = $appDNS;
+        foreach ($appDNS as $i => $iValue) {
+            $this->options['query']['AppDNS.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3662,35 +3607,30 @@ class ModifyQosCar extends Rpc
  */
 class ModifyQosPolicy extends Rpc
 {
-
     /**
-     * @param array $dpiGroupIds
-     *
      * @return $this
      */
-	public function withDpiGroupIds(array $dpiGroupIds)
-	{
-	    $this->data['DpiGroupIds'] = $dpiGroupIds;
-		foreach ($dpiGroupIds as $i => $iValue) {
-			$this->options['query']['DpiGroupIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDpiGroupIds(array $dpiGroupIds)
+    {
+        $this->data['DpiGroupIds'] = $dpiGroupIds;
+        foreach ($dpiGroupIds as $i => $iValue) {
+            $this->options['query']['DpiGroupIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $dpiSignatureIds
-     *
      * @return $this
      */
-	public function withDpiSignatureIds(array $dpiSignatureIds)
-	{
-	    $this->data['DpiSignatureIds'] = $dpiSignatureIds;
-		foreach ($dpiSignatureIds as $i => $iValue) {
-			$this->options['query']['DpiSignatureIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDpiSignatureIds(array $dpiSignatureIds)
+    {
+        $this->data['DpiSignatureIds'] = $dpiSignatureIds;
+        foreach ($dpiSignatureIds as $i => $iValue) {
+            $this->options['query']['DpiSignatureIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4315,20 +4255,17 @@ class OrchestrateSagECRouteBackup extends Rpc
  */
 class ProbeAccessPointNetworkQuality extends Rpc
 {
-
     /**
-     * @param array $accessPointIds
-     *
      * @return $this
      */
-	public function withAccessPointIds(array $accessPointIds)
-	{
-	    $this->data['AccessPointIds'] = $accessPointIds;
-		foreach ($accessPointIds as $i => $iValue) {
-			$this->options['query']['AccessPointIds.' . ($i + 1)] = $iValue;
-		}
+    public function withAccessPointIds(array $accessPointIds)
+    {
+        $this->data['AccessPointIds'] = $accessPointIds;
+        foreach ($accessPointIds as $i => $iValue) {
+            $this->options['query']['AccessPointIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4463,7 +4400,6 @@ class RoamClientUser extends Rpc
  */
 class SetSagRouteableAddress extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4579,43 +4515,40 @@ class UnbindVbr extends Rpc
  */
 class UnicomOrderConfirm extends Rpc
 {
-
     /**
-     * @param array $orderItem
-     *
      * @return $this
      */
-	public function withOrderItem(array $orderItem)
-	{
-	    $this->data['OrderItem'] = $orderItem;
-		foreach ($orderItem as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ScItemName'])){
-				$this->options['query']['OrderItem.' . ($depth1 + 1) . '.ScItemName'] = $depth1Value['ScItemName'];
-			}
-			if(isset($depth1Value['ItemAmount'])){
-				$this->options['query']['OrderItem.' . ($depth1 + 1) . '.ItemAmount'] = $depth1Value['ItemAmount'];
-			}
-			foreach ($depth1Value['SnList'] as $i => $iValue) {
-				$this->options['query']['OrderItem.' . ($depth1 + 1) . '.SnList.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['OrderItemId'])){
-				$this->options['query']['OrderItem.' . ($depth1 + 1) . '.OrderItemId'] = $depth1Value['OrderItemId'];
-			}
-			if(isset($depth1Value['ScItemCode'])){
-				$this->options['query']['OrderItem.' . ($depth1 + 1) . '.ScItemCode'] = $depth1Value['ScItemCode'];
-			}
-			if(isset($depth1Value['ItemQuantity'])){
-				$this->options['query']['OrderItem.' . ($depth1 + 1) . '.ItemQuantity'] = $depth1Value['ItemQuantity'];
-			}
-			if(isset($depth1Value['TradeId'])){
-				$this->options['query']['OrderItem.' . ($depth1 + 1) . '.TradeId'] = $depth1Value['TradeId'];
-			}
-			if(isset($depth1Value['TradeItemId'])){
-				$this->options['query']['OrderItem.' . ($depth1 + 1) . '.TradeItemId'] = $depth1Value['TradeItemId'];
-			}
-		}
+    public function withOrderItem(array $orderItem)
+    {
+        $this->data['OrderItem'] = $orderItem;
+        foreach ($orderItem as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ScItemName'])) {
+                $this->options['query']['OrderItem.' . ($depth1 + 1) . '.ScItemName'] = $depth1Value['ScItemName'];
+            }
+            if (isset($depth1Value['ItemAmount'])) {
+                $this->options['query']['OrderItem.' . ($depth1 + 1) . '.ItemAmount'] = $depth1Value['ItemAmount'];
+            }
+            foreach ($depth1Value['SnList'] as $i => $iValue) {
+                $this->options['query']['OrderItem.' . ($depth1 + 1) . '.SnList.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['OrderItemId'])) {
+                $this->options['query']['OrderItem.' . ($depth1 + 1) . '.OrderItemId'] = $depth1Value['OrderItemId'];
+            }
+            if (isset($depth1Value['ScItemCode'])) {
+                $this->options['query']['OrderItem.' . ($depth1 + 1) . '.ScItemCode'] = $depth1Value['ScItemCode'];
+            }
+            if (isset($depth1Value['ItemQuantity'])) {
+                $this->options['query']['OrderItem.' . ($depth1 + 1) . '.ItemQuantity'] = $depth1Value['ItemQuantity'];
+            }
+            if (isset($depth1Value['TradeId'])) {
+                $this->options['query']['OrderItem.' . ($depth1 + 1) . '.TradeId'] = $depth1Value['TradeId'];
+            }
+            if (isset($depth1Value['TradeItemId'])) {
+                $this->options['query']['OrderItem.' . ($depth1 + 1) . '.TradeItemId'] = $depth1Value['TradeItemId'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4632,31 +4565,28 @@ class UnicomOrderConfirm extends Rpc
  */
 class UnicomSignConfirm extends Rpc
 {
-
     /**
-     * @param array $tmsOrder
-     *
      * @return $this
      */
-	public function withTmsOrder(array $tmsOrder)
-	{
-	    $this->data['TmsOrder'] = $tmsOrder;
-		foreach ($tmsOrder as $depth1 => $depth1Value) {
-			if(isset($depth1Value['TmsCode'])){
-				$this->options['query']['TmsOrder.' . ($depth1 + 1) . '.TmsCode'] = $depth1Value['TmsCode'];
-			}
-			if(isset($depth1Value['SigningTime'])){
-				$this->options['query']['TmsOrder.' . ($depth1 + 1) . '.SigningTime'] = $depth1Value['SigningTime'];
-			}
-			if(isset($depth1Value['TmsOrderCode'])){
-				$this->options['query']['TmsOrder.' . ($depth1 + 1) . '.TmsOrderCode'] = $depth1Value['TmsOrderCode'];
-			}
-			if(isset($depth1Value['TradeId'])){
-				$this->options['query']['TmsOrder.' . ($depth1 + 1) . '.TradeId'] = $depth1Value['TradeId'];
-			}
-		}
+    public function withTmsOrder(array $tmsOrder)
+    {
+        $this->data['TmsOrder'] = $tmsOrder;
+        foreach ($tmsOrder as $depth1 => $depth1Value) {
+            if (isset($depth1Value['TmsCode'])) {
+                $this->options['query']['TmsOrder.' . ($depth1 + 1) . '.TmsCode'] = $depth1Value['TmsCode'];
+            }
+            if (isset($depth1Value['SigningTime'])) {
+                $this->options['query']['TmsOrder.' . ($depth1 + 1) . '.SigningTime'] = $depth1Value['SigningTime'];
+            }
+            if (isset($depth1Value['TmsOrderCode'])) {
+                $this->options['query']['TmsOrder.' . ($depth1 + 1) . '.TmsOrderCode'] = $depth1Value['TmsOrderCode'];
+            }
+            if (isset($depth1Value['TradeId'])) {
+                $this->options['query']['TmsOrder.' . ($depth1 + 1) . '.TradeId'] = $depth1Value['TradeId'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 

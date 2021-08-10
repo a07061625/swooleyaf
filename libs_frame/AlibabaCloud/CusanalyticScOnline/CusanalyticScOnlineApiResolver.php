@@ -43,7 +43,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class GetImageUrl extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -89,7 +88,6 @@ class GetImageUrl extends Rpc
  */
 class GetActionCursor extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -113,7 +111,6 @@ class GetActionCursor extends Rpc
  */
 class DescribeActionData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -185,7 +182,6 @@ class DescribeActionData extends Rpc
  */
 class DescribeLocations extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -206,7 +202,6 @@ class DescribeLocations extends Rpc
  */
 class SearchPersonByImg extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -239,7 +234,6 @@ class SearchPersonByImg extends Rpc
  */
 class GetLocations extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -270,7 +264,6 @@ class GetLocations extends Rpc
  */
 class ListVisitors extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -441,7 +434,6 @@ class ListVisitors extends Rpc
  */
 class GetAnalyzeCommodityData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -566,7 +558,6 @@ class GetAnalyzeCommodityData extends Rpc
  */
 class GetHeatMapData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -600,7 +591,6 @@ class GetHeatMapData extends Rpc
  */
 class GetEMap extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -640,7 +630,6 @@ class GetEMap extends Rpc
  */
 class GetAnalyzePlaceData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -753,7 +742,6 @@ class GetAnalyzePlaceData extends Rpc
  */
 class GetPortrayal extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -800,7 +788,6 @@ class GetPortrayal extends Rpc
  */
 class GetOverviewData extends Rpc
 {
-
     /**
      * @param string $value
      *

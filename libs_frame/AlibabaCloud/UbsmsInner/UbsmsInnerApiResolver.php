@@ -96,10 +96,7 @@ class DoPhysicalDeleteResource extends Rpc
  */
 class DescribeBidUserBusinessStatus extends Rpc
 {
-
     /**
-     * @param array $statusKey
-     *
      * @return $this
      */
     public function withStatusKey(array $statusKey)
@@ -138,10 +135,7 @@ class DescribeBidUserBusinessStatus extends Rpc
  */
 class DescribeBusinessStatusOfUser extends Rpc
 {
-
     /**
-     * @param array $statusKey
-     *
      * @return $this
      */
     public function withStatusKey(array $statusKey)
@@ -179,10 +173,7 @@ class DescribeBusinessStatusOfUser extends Rpc
  */
 class DescribeUserNetworkTypes extends Rpc
 {
-
     /**
-     * @param array $regionIds
-     *
      * @return $this
      */
     public function withRegionIds(array $regionIds)
@@ -215,7 +206,6 @@ class DescribeUserNetworkType extends Rpc
  */
 class DescribeBusinessStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -363,7 +353,6 @@ class NotifyUserBusinessCommand extends Rpc
  */
 class DescribeUserBusinessStatus extends Rpc
 {
-
     /**
      * @param string $value
      *

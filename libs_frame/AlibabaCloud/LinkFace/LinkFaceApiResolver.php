@@ -51,7 +51,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class DeleteDeviceGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -112,7 +111,6 @@ class DeleteDeviceGroup extends Rpc
  */
 class DeleteDeviceAllGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -159,7 +157,6 @@ class DeleteDeviceAllGroup extends Rpc
  */
 class SearchFace extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -194,7 +191,6 @@ class SearchFace extends Rpc
  */
 class QueryLicenses extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -245,7 +241,6 @@ class QueryLicenses extends Rpc
  */
 class QueryAuthentication extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -333,7 +328,6 @@ class QueryAuthentication extends Rpc
  */
 class QueryAddUserInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -393,7 +387,6 @@ class QueryAddUserInfo extends Rpc
  */
 class UnlinkFace extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -427,7 +420,6 @@ class UnlinkFace extends Rpc
  */
 class QueryAllGroups extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -463,7 +455,6 @@ class QueryAllGroups extends Rpc
  */
 class SyncFacePictures extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -525,7 +516,6 @@ class SyncFacePictures extends Rpc
  */
 class QuerySyncPicSchedule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -586,7 +576,6 @@ class QuerySyncPicSchedule extends Rpc
  */
 class QueryGroupUsers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -632,7 +621,6 @@ class QueryGroupUsers extends Rpc
  */
 class QueryFace extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -654,7 +642,6 @@ class QueryFace extends Rpc
  */
 class UpdateFace extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -701,7 +688,6 @@ class UpdateFace extends Rpc
  */
 class DeleteFace extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -737,7 +723,6 @@ class DeleteFace extends Rpc
  */
 class RegisterFace extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -797,7 +782,6 @@ class RegisterFace extends Rpc
  */
 class LinkFace extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -830,7 +814,6 @@ class LinkFace extends Rpc
  */
 class DeleteGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -850,7 +833,6 @@ class DeleteGroup extends Rpc
  */
 class CreateGroup extends Rpc
 {
-
     /**
      * @param string $value
      *

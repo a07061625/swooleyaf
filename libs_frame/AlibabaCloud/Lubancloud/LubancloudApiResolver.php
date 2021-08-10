@@ -36,10 +36,7 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class SubmitCutoutTask extends Rpc
 {
-
     /**
-     * @param array $pictureUrl
-     *
      * @return $this
      */
     public function withPictureUrl(array $pictureUrl)
@@ -80,10 +77,7 @@ class QueryCutoutTaskResult extends Rpc
  */
 class SubmitGenerateTask extends Rpc
 {
-
     /**
-     * @param array $majorImagePath
-     *
      * @return $this
      */
     public function withMajorImagePath(array $majorImagePath)
@@ -97,8 +91,6 @@ class SubmitGenerateTask extends Rpc
     }
 
     /**
-     * @param array $copyWrite
-     *
      * @return $this
      */
     public function withCopyWrite(array $copyWrite)
@@ -112,8 +104,6 @@ class SubmitGenerateTask extends Rpc
     }
 
     /**
-     * @param array $propertyId
-     *
      * @return $this
      */
     public function withPropertyId(array $propertyId)
@@ -144,10 +134,7 @@ class GetStyles extends Rpc
  */
 class BuyOriginPictures extends Rpc
 {
-
     /**
-     * @param array $pictureId
-     *
      * @return $this
      */
     public function withPictureId(array $pictureId)

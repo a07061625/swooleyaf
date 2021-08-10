@@ -259,10 +259,7 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class ConfigAutoRenew extends Rpc
 {
-
     /**
-     * @param array $apList
-     *
      * @return $this
      */
     public function withApList(array $apList)
@@ -333,10 +330,7 @@ class GetApStaMiscAgg extends Rpc
  */
 class QueryRenewPrice extends Rpc
 {
-
     /**
-     * @param array $apList
-     *
      * @return $this
      */
     public function withApList(array $apList)
@@ -357,10 +351,7 @@ class QueryRenewPrice extends Rpc
  */
 class CreateRenewOrder extends Rpc
 {
-
     /**
-     * @param array $apList
-     *
      * @return $this
      */
     public function withApList(array $apList)
@@ -389,10 +380,7 @@ class GetPageProperties extends Rpc
  */
 class ModifySubAccountPermission extends Rpc
 {
-
     /**
-     * @param array $shopGroupIds
-     *
      * @return $this
      */
     public function withShopGroupIds(array $shopGroupIds)
@@ -406,8 +394,6 @@ class ModifySubAccountPermission extends Rpc
     }
 
     /**
-     * @param array $shopIds
-     *
      * @return $this
      */
     public function withShopIds(array $shopIds)
@@ -421,8 +407,6 @@ class ModifySubAccountPermission extends Rpc
     }
 
     /**
-     * @param array $businessIds
-     *
      * @return $this
      */
     public function withBusinessIds(array $businessIds)
@@ -501,10 +485,7 @@ class GetBids4Uid4Root extends Rpc
  */
 class GetAllActiveShopByGroup extends Rpc
 {
-
     /**
-     * @param array $gids
-     *
      * @return $this
      */
     public function withGids(array $gids)
@@ -539,10 +520,7 @@ class DelSubAccountPermission extends Rpc
  */
 class CreateSubAccountPermission extends Rpc
 {
-
     /**
-     * @param array $shopGroupIds
-     *
      * @return $this
      */
     public function withShopGroupIds(array $shopGroupIds)
@@ -556,8 +534,6 @@ class CreateSubAccountPermission extends Rpc
     }
 
     /**
-     * @param array $shopIds
-     *
      * @return $this
      */
     public function withShopIds(array $shopIds)
@@ -571,8 +547,6 @@ class CreateSubAccountPermission extends Rpc
     }
 
     /**
-     * @param array $businessIds
-     *
      * @return $this
      */
     public function withBusinessIds(array $businessIds)
@@ -805,10 +779,7 @@ class DelPageConfigTemplate extends Rpc
  */
 class UpgradeAPGroup extends Rpc
 {
-
     /**
-     * @param array $ids
-     *
      * @return $this
      */
     public function withIds(array $ids)
@@ -827,10 +798,7 @@ class UpgradeAPGroup extends Rpc
  */
 class UpgradeAP extends Rpc
 {
-
     /**
-     * @param array $ids
-     *
      * @return $this
      */
     public function withIds(array $ids)
@@ -865,10 +833,7 @@ class SetUpgradeImgByModel extends Rpc
  */
 class SendCommandByMac extends Rpc
 {
-
     /**
-     * @param array $macList
-     *
      * @return $this
      */
     public function withMacList(array $macList)
@@ -1171,10 +1136,7 @@ class ReportDay extends Rpc
  */
 class SetScanMode extends Rpc
 {
-
     /**
-     * @param array $macList
-     *
      * @return $this
      */
     public function withMacList(array $macList)
@@ -1207,10 +1169,7 @@ class SetScanMode extends Rpc
  */
 class SaveProbeDataSubscriber extends Rpc
 {
-
     /**
-     * @param array $resourceIds
-     *
      * @return $this
      */
     public function withResourceIds(array $resourceIds)
@@ -1233,10 +1192,7 @@ class GetSubAccountStatus extends Rpc
  */
 class GetScanMode extends Rpc
 {
-
     /**
-     * @param array $macList
-     *
      * @return $this
      */
     public function withMacList(array $macList)
@@ -3119,7 +3075,6 @@ class AddApgroupConfig extends Rpc
  */
 class InnerProduceCloudWF extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3139,7 +3094,6 @@ class InnerProduceCloudWF extends Rpc
  */
 class InnerCheckOrder extends Rpc
 {
-
     /**
      * @param string $value
      *

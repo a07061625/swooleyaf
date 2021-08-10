@@ -60,7 +60,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class GetAlarmLog extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -161,7 +160,6 @@ class GetAlarmLog extends Rpc
  */
 class GetAppDailyDeviceCount extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -221,7 +219,6 @@ class GetAppDailyDeviceCount extends Rpc
  */
 class GetAppFilePolicy extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -257,7 +254,6 @@ class GetAppFilePolicy extends Rpc
  */
 class GetAppMonthlyDeviceCount extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -316,7 +312,6 @@ class GetAppMonthlyDeviceCount extends Rpc
  */
 class GetAppStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -338,7 +333,6 @@ class GetAppStatus extends Rpc
  */
 class GetCrashSummary extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -384,7 +378,6 @@ class GetCrashSummary extends Rpc
  */
 class GetSdkConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -410,7 +403,6 @@ class GetSdkConfig extends Rpc
  */
 class QueryApiAvgDurationGroupTrend extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -490,18 +482,16 @@ class QueryApiAvgDurationGroupTrend extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -518,7 +508,6 @@ class QueryApiAvgDurationGroupTrend extends Rpc
  */
 class QueryApiAvgDurationTrend extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -572,18 +561,16 @@ class QueryApiAvgDurationTrend extends Rpc
     }
 
     /**
-     * @param array $ip
-     *
      * @return $this
      */
-	public function withIp(array $ip)
-	{
-	    $this->data['Ip'] = $ip;
-		foreach ($ip as $i => $iValue) {
-			$this->options['form_params']['Ip.' . ($i + 1)] = $iValue;
-		}
+    public function withIp(array $ip)
+    {
+        $this->data['Ip'] = $ip;
+        foreach ($ip as $i => $iValue) {
+            $this->options['form_params']['Ip.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -600,33 +587,29 @@ class QueryApiAvgDurationTrend extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $urlPath
-     *
      * @return $this
      */
-	public function withUrlPath(array $urlPath)
-	{
-	    $this->data['UrlPath'] = $urlPath;
-		foreach ($urlPath as $i => $iValue) {
-			$this->options['form_params']['UrlPath.' . ($i + 1)] = $iValue;
-		}
+    public function withUrlPath(array $urlPath)
+    {
+        $this->data['UrlPath'] = $urlPath;
+        foreach ($urlPath as $i => $iValue) {
+            $this->options['form_params']['UrlPath.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -657,7 +640,6 @@ class QueryApiAvgDurationTrend extends Rpc
  */
 class QueryApiDurationDistribution extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -724,18 +706,16 @@ class QueryApiDurationDistribution extends Rpc
     }
 
     /**
-     * @param array $ip
-     *
      * @return $this
      */
-	public function withIp(array $ip)
-	{
-	    $this->data['Ip'] = $ip;
-		foreach ($ip as $i => $iValue) {
-			$this->options['form_params']['Ip.' . ($i + 1)] = $iValue;
-		}
+    public function withIp(array $ip)
+    {
+        $this->data['Ip'] = $ip;
+        foreach ($ip as $i => $iValue) {
+            $this->options['form_params']['Ip.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -752,33 +732,29 @@ class QueryApiDurationDistribution extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $urlPath
-     *
      * @return $this
      */
-	public function withUrlPath(array $urlPath)
-	{
-	    $this->data['UrlPath'] = $urlPath;
-		foreach ($urlPath as $i => $iValue) {
-			$this->options['form_params']['UrlPath.' . ($i + 1)] = $iValue;
-		}
+    public function withUrlPath(array $urlPath)
+    {
+        $this->data['UrlPath'] = $urlPath;
+        foreach ($urlPath as $i => $iValue) {
+            $this->options['form_params']['UrlPath.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -806,7 +782,6 @@ class QueryApiDurationDistribution extends Rpc
  */
 class QueryApiErrorGroupTrend extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -886,18 +861,16 @@ class QueryApiErrorGroupTrend extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -914,7 +887,6 @@ class QueryApiErrorGroupTrend extends Rpc
  */
 class QueryApiErrorTrend extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -968,18 +940,16 @@ class QueryApiErrorTrend extends Rpc
     }
 
     /**
-     * @param array $ip
-     *
      * @return $this
      */
-	public function withIp(array $ip)
-	{
-	    $this->data['Ip'] = $ip;
-		foreach ($ip as $i => $iValue) {
-			$this->options['form_params']['Ip.' . ($i + 1)] = $iValue;
-		}
+    public function withIp(array $ip)
+    {
+        $this->data['Ip'] = $ip;
+        foreach ($ip as $i => $iValue) {
+            $this->options['form_params']['Ip.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -996,33 +966,29 @@ class QueryApiErrorTrend extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $urlPath
-     *
      * @return $this
      */
-	public function withUrlPath(array $urlPath)
-	{
-	    $this->data['UrlPath'] = $urlPath;
-		foreach ($urlPath as $i => $iValue) {
-			$this->options['form_params']['UrlPath.' . ($i + 1)] = $iValue;
-		}
+    public function withUrlPath(array $urlPath)
+    {
+        $this->data['UrlPath'] = $urlPath;
+        foreach ($urlPath as $i => $iValue) {
+            $this->options['form_params']['UrlPath.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1050,7 +1016,6 @@ class QueryApiErrorTrend extends Rpc
  */
 class QueryApiStatusCodeGroupTrend extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1130,18 +1095,16 @@ class QueryApiStatusCodeGroupTrend extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1158,7 +1121,6 @@ class QueryApiStatusCodeGroupTrend extends Rpc
  */
 class QueryApiStatusCodeTrend extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1212,18 +1174,16 @@ class QueryApiStatusCodeTrend extends Rpc
     }
 
     /**
-     * @param array $ip
-     *
      * @return $this
      */
-	public function withIp(array $ip)
-	{
-	    $this->data['Ip'] = $ip;
-		foreach ($ip as $i => $iValue) {
-			$this->options['form_params']['Ip.' . ($i + 1)] = $iValue;
-		}
+    public function withIp(array $ip)
+    {
+        $this->data['Ip'] = $ip;
+        foreach ($ip as $i => $iValue) {
+            $this->options['form_params']['Ip.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1240,33 +1200,29 @@ class QueryApiStatusCodeTrend extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $urlPath
-     *
      * @return $this
      */
-	public function withUrlPath(array $urlPath)
-	{
-	    $this->data['UrlPath'] = $urlPath;
-		foreach ($urlPath as $i => $iValue) {
-			$this->options['form_params']['UrlPath.' . ($i + 1)] = $iValue;
-		}
+    public function withUrlPath(array $urlPath)
+    {
+        $this->data['UrlPath'] = $urlPath;
+        foreach ($urlPath as $i => $iValue) {
+            $this->options['form_params']['UrlPath.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1296,7 +1252,6 @@ class QueryApiStatusCodeTrend extends Rpc
  */
 class QueryCrashTrend extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1376,33 +1331,29 @@ class QueryCrashTrend extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $errorType
-     *
      * @return $this
      */
-	public function withErrorType(array $errorType)
-	{
-	    $this->data['ErrorType'] = $errorType;
-		foreach ($errorType as $i => $iValue) {
-			$this->options['form_params']['ErrorType.' . ($i + 1)] = $iValue;
-		}
+    public function withErrorType(array $errorType)
+    {
+        $this->data['ErrorType'] = $errorType;
+        foreach ($errorType as $i => $iValue) {
+            $this->options['form_params']['ErrorType.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1433,7 +1384,6 @@ class QueryCrashTrend extends Rpc
  */
 class QueryLaunchTimeDistribution extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1487,18 +1437,16 @@ class QueryLaunchTimeDistribution extends Rpc
     }
 
     /**
-     * @param array $province
-     *
      * @return $this
      */
-	public function withProvince(array $province)
-	{
-	    $this->data['Province'] = $province;
-		foreach ($province as $i => $iValue) {
-			$this->options['form_params']['Province.' . ($i + 1)] = $iValue;
-		}
+    public function withProvince(array $province)
+    {
+        $this->data['Province'] = $province;
+        foreach ($province as $i => $iValue) {
+            $this->options['form_params']['Province.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1554,18 +1502,16 @@ class QueryLaunchTimeDistribution extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1583,7 +1529,6 @@ class QueryLaunchTimeDistribution extends Rpc
  */
 class QueryLaunchTimeTrend extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1637,18 +1582,16 @@ class QueryLaunchTimeTrend extends Rpc
     }
 
     /**
-     * @param array $province
-     *
      * @return $this
      */
-	public function withProvince(array $province)
-	{
-	    $this->data['Province'] = $province;
-		foreach ($province as $i => $iValue) {
-			$this->options['form_params']['Province.' . ($i + 1)] = $iValue;
-		}
+    public function withProvince(array $province)
+    {
+        $this->data['Province'] = $province;
+        foreach ($province as $i => $iValue) {
+            $this->options['form_params']['Province.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1704,18 +1647,16 @@ class QueryLaunchTimeTrend extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1733,7 +1674,6 @@ class QueryLaunchTimeTrend extends Rpc
  */
 class QueryLaunchTimeTrendGroupByProvince extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1839,18 +1779,16 @@ class QueryLaunchTimeTrendGroupByProvince extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1880,7 +1818,6 @@ class QueryLaunchTimeTrendGroupByProvince extends Rpc
  */
 class QueryLaunchTimeTrendWithCarrier extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1973,33 +1910,29 @@ class QueryLaunchTimeTrendWithCarrier extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $carrier
-     *
      * @return $this
      */
-	public function withCarrier(array $carrier)
-	{
-	    $this->data['Carrier'] = $carrier;
-		foreach ($carrier as $i => $iValue) {
-			$this->options['form_params']['Carrier.' . ($i + 1)] = $iValue;
-		}
+    public function withCarrier(array $carrier)
+    {
+        $this->data['Carrier'] = $carrier;
+        foreach ($carrier as $i => $iValue) {
+            $this->options['form_params']['Carrier.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2018,7 +1951,6 @@ class QueryLaunchTimeTrendWithCarrier extends Rpc
  */
 class QueryPagePerfDistribution extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2072,18 +2004,16 @@ class QueryPagePerfDistribution extends Rpc
     }
 
     /**
-     * @param array $province
-     *
      * @return $this
      */
-	public function withProvince(array $province)
-	{
-	    $this->data['Province'] = $province;
-		foreach ($province as $i => $iValue) {
-			$this->options['form_params']['Province.' . ($i + 1)] = $iValue;
-		}
+    public function withProvince(array $province)
+    {
+        $this->data['Province'] = $province;
+        foreach ($province as $i => $iValue) {
+            $this->options['form_params']['Province.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -2139,33 +2069,29 @@ class QueryPagePerfDistribution extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $page
-     *
      * @return $this
      */
-	public function withPage(array $page)
-	{
-	    $this->data['Page'] = $page;
-		foreach ($page as $i => $iValue) {
-			$this->options['form_params']['Page.' . ($i + 1)] = $iValue;
-		}
+    public function withPage(array $page)
+    {
+        $this->data['Page'] = $page;
+        foreach ($page as $i => $iValue) {
+            $this->options['form_params']['Page.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2184,7 +2110,6 @@ class QueryPagePerfDistribution extends Rpc
  */
 class QueryPagePerfTrend extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2238,18 +2163,16 @@ class QueryPagePerfTrend extends Rpc
     }
 
     /**
-     * @param array $province
-     *
      * @return $this
      */
-	public function withProvince(array $province)
-	{
-	    $this->data['Province'] = $province;
-		foreach ($province as $i => $iValue) {
-			$this->options['form_params']['Province.' . ($i + 1)] = $iValue;
-		}
+    public function withProvince(array $province)
+    {
+        $this->data['Province'] = $province;
+        foreach ($province as $i => $iValue) {
+            $this->options['form_params']['Province.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -2305,33 +2228,29 @@ class QueryPagePerfTrend extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $page
-     *
      * @return $this
      */
-	public function withPage(array $page)
-	{
-	    $this->data['Page'] = $page;
-		foreach ($page as $i => $iValue) {
-			$this->options['form_params']['Page.' . ($i + 1)] = $iValue;
-		}
+    public function withPage(array $page)
+    {
+        $this->data['Page'] = $page;
+        foreach ($page as $i => $iValue) {
+            $this->options['form_params']['Page.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2350,7 +2269,6 @@ class QueryPagePerfTrend extends Rpc
  */
 class QueryPagePerfTrendGroupByPageName extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2404,18 +2322,16 @@ class QueryPagePerfTrendGroupByPageName extends Rpc
     }
 
     /**
-     * @param array $province
-     *
      * @return $this
      */
-	public function withProvince(array $province)
-	{
-	    $this->data['Province'] = $province;
-		foreach ($province as $i => $iValue) {
-			$this->options['form_params']['Province.' . ($i + 1)] = $iValue;
-		}
+    public function withProvince(array $province)
+    {
+        $this->data['Province'] = $province;
+        foreach ($province as $i => $iValue) {
+            $this->options['form_params']['Province.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -2484,18 +2400,16 @@ class QueryPagePerfTrendGroupByPageName extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2513,7 +2427,6 @@ class QueryPagePerfTrendGroupByPageName extends Rpc
  */
 class QueryPagePerfTrendGroupByProvince extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2619,18 +2532,16 @@ class QueryPagePerfTrendGroupByProvince extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -2659,7 +2570,6 @@ class QueryPagePerfTrendGroupByProvince extends Rpc
  */
 class QuerySingleDomainApiAvgDurationGroupTrend extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2739,18 +2649,16 @@ class QuerySingleDomainApiAvgDurationGroupTrend extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -2779,7 +2687,6 @@ class QuerySingleDomainApiAvgDurationGroupTrend extends Rpc
  */
 class QuerySingleDomainApiErrorGroupTrend extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2859,18 +2766,16 @@ class QuerySingleDomainApiErrorGroupTrend extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -2899,7 +2804,6 @@ class QuerySingleDomainApiErrorGroupTrend extends Rpc
  */
 class QuerySingleDomainApiStatusCodeGroupTrend extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2979,18 +2883,16 @@ class QuerySingleDomainApiStatusCodeGroupTrend extends Rpc
     }
 
     /**
-     * @param array $appVersion
-     *
      * @return $this
      */
-	public function withAppVersion(array $appVersion)
-	{
-	    $this->data['AppVersion'] = $appVersion;
-		foreach ($appVersion as $i => $iValue) {
-			$this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
-		}
+    public function withAppVersion(array $appVersion)
+    {
+        $this->data['AppVersion'] = $appVersion;
+        foreach ($appVersion as $i => $iValue) {
+            $this->options['form_params']['AppVersion.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -3016,7 +2918,6 @@ class QuerySingleDomainApiStatusCodeGroupTrend extends Rpc
  */
 class SaveAppFile extends Rpc
 {
-
     /**
      * @param string $value
      *

@@ -111,7 +111,6 @@ class AddCodeupSourceToPipeline extends Rpc
  */
 class BatchInsertMembers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -160,7 +159,6 @@ class BatchInsertMembers extends Rpc
  */
 class CancelPipeline extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -219,7 +217,6 @@ class CancelPipeline extends Rpc
  */
 class CheckAliyunAccountExists extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -243,7 +240,6 @@ class CheckAliyunAccountExists extends Rpc
  */
 class CreateCommonGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -320,7 +316,6 @@ class CreateCommonGroup extends Rpc
  */
 class CreateCredential extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -408,7 +403,6 @@ class CreateCredential extends Rpc
  */
 class CreateDevopsOrganization extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -469,7 +463,6 @@ class CreateDevopsOrganization extends Rpc
  */
 class CreateDevopsProject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -521,7 +514,6 @@ class CreateDevopsProject extends Rpc
  */
 class CreateDevopsProjectSprint extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -632,7 +624,6 @@ class CreateDevopsProjectSprint extends Rpc
  */
 class CreateDevopsProjectTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -823,7 +814,6 @@ class CreateDevopsProjectTask extends Rpc
  */
 class CreatePipeline extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -883,7 +873,6 @@ class CreatePipelineFromTemplate extends Rpc
  */
 class CreateServiceConnection extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -931,7 +920,6 @@ class CreateServiceConnection extends Rpc
  */
 class DeleteCommonGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -977,7 +965,6 @@ class DeleteCommonGroup extends Rpc
  */
 class DeleteDevopsOrganization extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -999,7 +986,6 @@ class DeleteDevopsOrganization extends Rpc
  */
 class DeleteDevopsOrganizationMembers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1046,7 +1032,6 @@ class DeleteDevopsOrganizationMembers extends Rpc
  */
 class DeleteDevopsProject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1081,7 +1066,6 @@ class DeleteDevopsProject extends Rpc
  */
 class DeleteDevopsProjectMembers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1128,7 +1112,6 @@ class DeleteDevopsProjectMembers extends Rpc
  */
 class DeleteDevopsProjectSprint extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1162,7 +1145,6 @@ class DeleteDevopsProjectSprint extends Rpc
  */
 class DeleteDevopsProjectTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1200,7 +1182,6 @@ class DeleteDevopsProjectTask extends Rpc
  */
 class DeletePipelineMember extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1236,7 +1217,6 @@ class DeletePipelineMember extends Rpc
  */
 class ExecutePipeline extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1295,7 +1275,6 @@ class ExecutePipeline extends Rpc
  */
 class GetDevopsOrganizationMembers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1316,7 +1295,6 @@ class GetDevopsOrganizationMembers extends Rpc
  */
 class GetDevopsProjectInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1352,7 +1330,6 @@ class GetDevopsProjectInfo extends Rpc
  */
 class GetDevopsProjectMembers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1412,7 +1389,6 @@ class GetDevopsProjectMembers extends Rpc
  */
 class GetDevopsProjectSprintInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1446,7 +1422,6 @@ class GetDevopsProjectSprintInfo extends Rpc
  */
 class GetDevopsProjectTaskInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1480,7 +1455,6 @@ class GetDevopsProjectTaskInfo extends Rpc
  */
 class GetLastWorkspace extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1518,7 +1492,6 @@ class GetLastWorkspace extends Rpc
  */
 class GetPipelineInstanceBuildNumberStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1556,7 +1529,6 @@ class GetPipelineInstanceBuildNumberStatus extends Rpc
  */
 class GetPipelineInstanceGroupStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1592,7 +1564,6 @@ class GetPipelineInstanceGroupStatus extends Rpc
  */
 class GetPipelineInstanceInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1657,7 +1628,6 @@ class GetPipelineInstanceInfo extends Rpc
  */
 class GetPipelineInstanceStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1683,7 +1653,6 @@ class GetPipelineInstanceStatus extends Rpc
  */
 class GetPipelineInstHistory extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1784,7 +1753,6 @@ class GetPipelineInstHistory extends Rpc
  */
 class GetPipelineLog extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1849,7 +1817,6 @@ class GetPipelineLog extends Rpc
  */
 class GetPipelineStepLog extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1951,7 +1918,6 @@ class GetPipelineStepLog extends Rpc
  */
 class GetPipleineLatestInstanceStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1974,7 +1940,6 @@ class GetPipleineLatestInstanceStatus extends Rpc
  */
 class GetProjectOption extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2035,7 +2000,6 @@ class GetProjectOption extends Rpc
  */
 class GetTaskDetailActivity extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2083,7 +2047,6 @@ class GetTaskDetailActivity extends Rpc
  */
 class GetTaskDetailBase extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2148,7 +2111,6 @@ class GetTaskDetailBase extends Rpc
  */
 class GetTaskListFilter extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2416,7 +2378,6 @@ class GetTaskListFilter extends Rpc
  */
 class GetUserByAliyunUid extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2450,7 +2411,6 @@ class GetUserByAliyunUid extends Rpc
  */
 class GetUserName extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2486,7 +2446,6 @@ class GetUserName extends Rpc
  */
 class InsertDevopsUser extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2551,7 +2510,6 @@ class InsertDevopsUser extends Rpc
  */
 class InsertPipelineMember extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2599,7 +2557,6 @@ class InsertPipelineMember extends Rpc
  */
 class InsertProjectMembers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2648,7 +2605,6 @@ class InsertProjectMembers extends Rpc
  */
 class ListCommonGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2708,7 +2664,6 @@ class ListCommonGroup extends Rpc
  */
 class ListCredentials extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2745,7 +2700,6 @@ class ListCredentials extends Rpc
  */
 class ListDevopsProjects extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2820,7 +2774,6 @@ class ListDevopsProjects extends Rpc
  */
 class ListDevopsProjectSprints extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2880,7 +2833,6 @@ class ListDevopsProjectSprints extends Rpc
  */
 class ListDevopsProjectTaskFlow extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2914,7 +2866,6 @@ class ListDevopsProjectTaskFlow extends Rpc
  */
 class ListDevopsProjectTaskFlowStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2948,7 +2899,6 @@ class ListDevopsProjectTaskFlowStatus extends Rpc
  */
 class ListDevopsProjectTaskList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2982,7 +2932,6 @@ class ListDevopsProjectTaskList extends Rpc
  */
 class ListDevopsProjectTasks extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3016,7 +2965,6 @@ class ListDevopsProjectTasks extends Rpc
  */
 class ListDevopsScenarioFieldConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3061,7 +3009,6 @@ class ListDevopsScenarioFieldConfig extends Rpc
  */
 class ListPipelines extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3216,7 +3163,6 @@ class ListPipelines extends Rpc
  */
 class ListPipelineTemplates extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -3227,7 +3173,6 @@ class ListPipelineTemplates extends Rpc
  */
 class ListProjectCustomFields extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3262,7 +3207,6 @@ class ListProjectCustomFields extends Rpc
  */
 class ListServiceConnections extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3309,7 +3253,6 @@ class ListServiceConnections extends Rpc
  */
 class ListSmartGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3342,7 +3285,6 @@ class ListSmartGroup extends Rpc
  */
 class ListUserOrganization extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3367,7 +3309,6 @@ class ListUserOrganization extends Rpc
  */
 class TransferPipelineOwner extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3405,7 +3346,6 @@ class TransferPipelineOwner extends Rpc
  */
 class UpdateCommonGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3493,7 +3433,6 @@ class UpdateCommonGroup extends Rpc
  */
 class UpdateDevopsProject extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3559,7 +3498,6 @@ class UpdateDevopsProject extends Rpc
  */
 class UpdateDevopsProjectSprint extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3683,7 +3621,6 @@ class UpdateDevopsProjectSprint extends Rpc
  */
 class UpdateDevopsProjectTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3890,7 +3827,6 @@ class UpdatePipelineEnvVars extends Rpc
  */
 class UpdatePipelineMember extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3953,7 +3889,6 @@ class UpdatePipelineMember extends Rpc
  */
 class UpdateTaskDetail extends Rpc
 {
-
     /**
      * @param string $value
      *

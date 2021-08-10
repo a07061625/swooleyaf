@@ -25,14 +25,13 @@ class BatchDeleteMessage extends BaseRequest
     /**
      * BatchDeleteMessage constructor.
      *
-     * @param       $queueName
-     * @param array $receiptHandles
+     * @param $queueName
      */
     public function __construct($queueName, array $receiptHandles)
     {
         parent::__construct('delete', 'queues/' . $queueName . '/messages');
 
-        $this->queueName      = $queueName;
+        $this->queueName = $queueName;
         $this->receiptHandles = $receiptHandles;
     }
 
@@ -57,7 +56,7 @@ class BatchDeleteMessage extends BaseRequest
      */
     public function generateBody()
     {
-        $xmlWriter = new XMLWriter;
+        $xmlWriter = new XMLWriter();
         $xmlWriter->openMemory();
         $xmlWriter->startDocument('1.0', 'UTF-8');
         $xmlWriter->startElementNs(null, Constants::RECEIPT_HANDLES, Constants::MNS_XML_NAMESPACE);
@@ -70,11 +69,7 @@ class BatchDeleteMessage extends BaseRequest
         return $xmlWriter->outputMemory();
     }
 
-    /**
-     * @return null
-     */
     public function generateQueryString()
     {
-        return null;
     }
 }

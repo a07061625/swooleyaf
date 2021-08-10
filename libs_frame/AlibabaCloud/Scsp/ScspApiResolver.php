@@ -112,7 +112,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AnswerCall extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -215,7 +214,6 @@ class AppMessagePush extends Rpc
  */
 class AssignTicket extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -290,7 +288,6 @@ class AssignTicket extends Rpc
  */
 class ChangeChatAgentStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -353,7 +350,6 @@ class ChangeChatAgentStatus extends Rpc
  */
 class CloseTicket extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -430,7 +426,6 @@ class CloseTicket extends Rpc
  */
 class CreateAgent extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -558,7 +553,6 @@ class CreateCustomer extends Rpc
  */
 class CreateEntityIvrRoute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -707,7 +701,6 @@ class CreateEntityIvrRoute extends Rpc
  */
 class CreateOuterCallCenterData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -887,7 +880,6 @@ class CreateOuterCallCenterData extends Rpc
  */
 class CreateRole extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -928,18 +920,16 @@ class CreateRole extends Rpc
     }
 
     /**
-     * @param array $permissionId
-     *
      * @return $this
      */
-	public function withPermissionId(array $permissionId)
-	{
-	    $this->data['PermissionId'] = $permissionId;
-		foreach ($permissionId as $i => $iValue) {
-			$this->options['form_params']['PermissionId.' . ($i + 1)] = $iValue;
-		}
+    public function withPermissionId(array $permissionId)
+    {
+        $this->data['PermissionId'] = $permissionId;
+        foreach ($permissionId as $i => $iValue) {
+            $this->options['form_params']['PermissionId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -966,7 +956,6 @@ class CreateRole extends Rpc
  */
 class CreateSkillGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1058,7 +1047,6 @@ class CreateSkillGroup extends Rpc
  */
 class CreateThirdSsoAgent extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1181,7 +1169,6 @@ class CreateThirdSsoAgent extends Rpc
  */
 class CreateTicket extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1370,7 +1357,6 @@ class CreateTicket extends Rpc
  */
 class CreateTicketWithBizData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1564,7 +1550,6 @@ class CreateTicketWithBizData extends Rpc
  */
 class DeleteAgent extends Rpc
 {
-
     /** @var string */
     public $method = 'DELETE';
 }
@@ -1575,7 +1560,6 @@ class DeleteAgent extends Rpc
  */
 class DeleteEntityRoute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1610,7 +1594,6 @@ class DeleteEntityRoute extends Rpc
  */
 class DisableRole extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1666,7 +1649,6 @@ class DisableRole extends Rpc
  */
 class EditEntityRoute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1818,7 +1800,6 @@ class EditEntityRoute extends Rpc
  */
 class EnableRole extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1869,7 +1850,6 @@ class EnableRole extends Rpc
  */
 class ExecuteActivity extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1960,7 +1940,6 @@ class ExecuteActivity extends Rpc
  */
 class FetchCall extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2060,7 +2039,6 @@ class FetchCall extends Rpc
  */
 class FinishHotlineService extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2108,7 +2086,6 @@ class FinishHotlineService extends Rpc
  */
 class GenerateWebSocketSign extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2159,7 +2136,6 @@ class GenerateWebSocketSign extends Rpc
  */
 class GetAgent extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2200,7 +2176,6 @@ class GetAuthInfo extends Rpc
  */
 class GetCallsPerDay extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2229,7 +2204,6 @@ class GetCMSIdByForeignId extends Rpc
  */
 class GetEntityRoute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2318,7 +2292,6 @@ class GetEntityRoute extends Rpc
  */
 class GetEntityRouteList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2392,7 +2365,6 @@ class GetEntityRouteList extends Rpc
  */
 class GetEntityTagRelation extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2443,7 +2415,6 @@ class GetEntityTagRelation extends Rpc
  */
 class GetGrantedRoleIds extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2458,7 +2429,6 @@ class GetGrantedRoleIds extends Rpc
  */
 class GetHotlineAgentDetail extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2479,35 +2449,30 @@ class GetHotlineAgentDetail extends Rpc
  */
 class GetHotlineAgentDetailReport extends Rpc
 {
-
     /**
-     * @param array $depIds
-     *
      * @return $this
      */
-	public function withDepIds(array $depIds)
-	{
-	    $this->data['DepIds'] = $depIds;
-		foreach ($depIds as $i => $iValue) {
-			$this->options['query']['DepIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDepIds(array $depIds)
+    {
+        $this->data['DepIds'] = $depIds;
+        foreach ($depIds as $i => $iValue) {
+            $this->options['query']['DepIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $groupIds
-     *
      * @return $this
      */
-	public function withGroupIds(array $groupIds)
-	{
-	    $this->data['GroupIds'] = $groupIds;
-		foreach ($groupIds as $i => $iValue) {
-			$this->options['query']['GroupIds.' . ($i + 1)] = $iValue;
-		}
+    public function withGroupIds(array $groupIds)
+    {
+        $this->data['GroupIds'] = $groupIds;
+        foreach ($groupIds as $i => $iValue) {
+            $this->options['query']['GroupIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2517,7 +2482,6 @@ class GetHotlineAgentDetailReport extends Rpc
  */
 class GetHotlineAgentStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2561,35 +2525,30 @@ class GetHotlineAgentStatus extends Rpc
  */
 class GetHotlineGroupDetailReport extends Rpc
 {
-
     /**
-     * @param array $depIds
-     *
      * @return $this
      */
-	public function withDepIds(array $depIds)
-	{
-	    $this->data['DepIds'] = $depIds;
-		foreach ($depIds as $i => $iValue) {
-			$this->options['query']['DepIds.' . ($i + 1)] = $iValue;
-		}
+    public function withDepIds(array $depIds)
+    {
+        $this->data['DepIds'] = $depIds;
+        foreach ($depIds as $i => $iValue) {
+            $this->options['query']['DepIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $groupIds
-     *
      * @return $this
      */
-	public function withGroupIds(array $groupIds)
-	{
-	    $this->data['GroupIds'] = $groupIds;
-		foreach ($groupIds as $i => $iValue) {
-			$this->options['query']['GroupIds.' . ($i + 1)] = $iValue;
-		}
+    public function withGroupIds(array $groupIds)
+    {
+        $this->data['GroupIds'] = $groupIds;
+        foreach ($groupIds as $i => $iValue) {
+            $this->options['query']['GroupIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2603,7 +2562,6 @@ class GetHotlineGroupDetailReport extends Rpc
  */
 class GetHotlineWaitingNumber extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2618,7 +2576,6 @@ class GetHotlineWaitingNumber extends Rpc
  */
 class GetNumLocation extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2630,7 +2587,6 @@ class GetNumLocation extends Rpc
  */
 class GetOutbounNumList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2682,7 +2638,6 @@ class GetOutbounNumList extends Rpc
  */
 class GetOuterCallCenterDataList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2782,7 +2737,6 @@ class GetOuterCallCenterDataList extends Rpc
  */
 class GetTagList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2833,7 +2787,6 @@ class GetTagList extends Rpc
  */
 class GetTicketTemplateSchema extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2846,7 +2799,6 @@ class GetTicketTemplateSchema extends Rpc
  */
 class GetUserToken extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2909,7 +2861,6 @@ class GetUserToken extends Rpc
  */
 class GrantRoles extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2950,18 +2901,16 @@ class GrantRoles extends Rpc
     }
 
     /**
-     * @param array $roleId
-     *
      * @return $this
      */
-	public function withRoleId(array $roleId)
-	{
-	    $this->data['RoleId'] = $roleId;
-		foreach ($roleId as $i => $iValue) {
-			$this->options['form_params']['RoleId.' . ($i + 1)] = $iValue;
-		}
+    public function withRoleId(array $roleId)
+    {
+        $this->data['RoleId'] = $roleId;
+        foreach ($roleId as $i => $iValue) {
+            $this->options['form_params']['RoleId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -2988,7 +2937,6 @@ class GrantRoles extends Rpc
  */
 class HangupCall extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3078,7 +3026,6 @@ class HangupCall extends Rpc
  */
 class HangupThirdCall extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3168,7 +3115,6 @@ class HangupThirdCall extends Rpc
  */
 class HoldCall extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3259,7 +3205,6 @@ class HoldCall extends Rpc
  */
 class JoinThirdCall extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3362,7 +3307,6 @@ class JoinThirdCall extends Rpc
  */
 class ListAgentBySkillGroupId extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -3377,7 +3321,6 @@ class ListAgentBySkillGroupId extends Rpc
  */
 class ListHotlineRecord extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -3392,7 +3335,6 @@ class ListHotlineRecord extends Rpc
  */
 class ListOutboundPhoneNumber extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -3407,7 +3349,6 @@ class ListOutboundPhoneNumber extends Rpc
  */
 class ListSkillGroup extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -3467,7 +3408,6 @@ class QueryHotlineSession extends Rpc
  */
 class QueryRingDetailList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3596,7 +3536,6 @@ class QueryRingDetailList extends Rpc
  */
 class QueryServiceConfig extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -3628,7 +3567,6 @@ class QuerySkillGroups extends Rpc
  */
 class QueryTicketActions extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3656,18 +3594,16 @@ class QueryTicketActions extends Rpc
     }
 
     /**
-     * @param array $actionCodeList
-     *
      * @return $this
      */
-	public function withActionCodeList(array $actionCodeList)
-	{
-	    $this->data['ActionCodeList'] = $actionCodeList;
-		foreach ($actionCodeList as $i => $iValue) {
-			$this->options['form_params']['ActionCodeList.' . ($i + 1)] = $iValue;
-		}
+    public function withActionCodeList(array $actionCodeList)
+    {
+        $this->data['ActionCodeList'] = $actionCodeList;
+        foreach ($actionCodeList as $i => $iValue) {
+            $this->options['form_params']['ActionCodeList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3701,7 +3637,6 @@ class QueryTicketCount extends Rpc
  */
 class QueryTickets extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3892,7 +3827,6 @@ class QueryTickets extends Rpc
  */
 class RemoveSkillGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3945,7 +3879,6 @@ class RemoveSkillGroup extends Rpc
  */
 class SearchTicketById extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -3972,7 +3905,6 @@ class SearchTicketById extends Rpc
  */
 class SearchTicketByPhone extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -3997,7 +3929,6 @@ class SearchTicketByPhone extends Rpc
  */
 class SearchTicketList extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -4010,7 +3941,6 @@ class SearchTicketList extends Rpc
  */
 class SendHotlineHeartBeat extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4073,7 +4003,6 @@ class SendHotlineHeartBeat extends Rpc
  */
 class SendOutboundCommand extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4149,7 +4078,6 @@ class SendOutboundCommand extends Rpc
  */
 class StartCall extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4226,7 +4154,6 @@ class StartCall extends Rpc
  */
 class StartCallV2 extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4315,7 +4242,6 @@ class StartCallV2 extends Rpc
  */
 class StartChatWork extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4389,7 +4315,6 @@ class StartChatWork extends Rpc
  */
 class StartHotlineService extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4438,7 +4363,6 @@ class StartHotlineService extends Rpc
  */
 class SuspendHotlineService extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4506,7 +4430,6 @@ class SuspendHotlineService extends Rpc
  */
 class TransferCallToAgent extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4655,7 +4578,6 @@ class TransferCallToAgent extends Rpc
  */
 class TransferCallToPhone extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4840,7 +4762,6 @@ class TransferCallToPhone extends Rpc
  */
 class TransferCallToSkillGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4983,7 +4904,6 @@ class TransferCallToSkillGroup extends Rpc
  */
 class TransferToThirdCall extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5086,7 +5006,6 @@ class TransferToThirdCall extends Rpc
  */
 class UpdateAgent extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 
@@ -5143,33 +5062,29 @@ class UpdateAgent extends Rpc
     }
 
     /**
-     * @param array $skillGroupId
-     *
      * @return $this
      */
-	public function withSkillGroupId(array $skillGroupId)
-	{
-	    $this->data['SkillGroupId'] = $skillGroupId;
-		foreach ($skillGroupId as $i => $iValue) {
-			$this->options['form_params']['SkillGroupId.' . ($i + 1)] = $iValue;
-		}
+    public function withSkillGroupId(array $skillGroupId)
+    {
+        $this->data['SkillGroupId'] = $skillGroupId;
+        foreach ($skillGroupId as $i => $iValue) {
+            $this->options['form_params']['SkillGroupId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $skillGroupIdList
-     *
      * @return $this
      */
-	public function withSkillGroupIdList(array $skillGroupIdList)
-	{
-	    $this->data['SkillGroupIdList'] = $skillGroupIdList;
-		foreach ($skillGroupIdList as $i => $iValue) {
-			$this->options['form_params']['SkillGroupIdList.' . ($i + 1)] = $iValue;
-		}
+    public function withSkillGroupIdList(array $skillGroupIdList)
+    {
+        $this->data['SkillGroupIdList'] = $skillGroupIdList;
+        foreach ($skillGroupIdList as $i => $iValue) {
+            $this->options['form_params']['SkillGroupIdList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -5215,7 +5130,6 @@ class UpdateCustomer extends Rpc
  */
 class UpdateEntityTagRelation extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5251,7 +5165,6 @@ class UpdateEntityTagRelation extends Rpc
  */
 class UpdateRingStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5315,7 +5228,6 @@ class UpdateRingStatus extends Rpc
  */
 class UpdateRole extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5369,18 +5281,16 @@ class UpdateRole extends Rpc
     }
 
     /**
-     * @param array $permissionId
-     *
      * @return $this
      */
-	public function withPermissionId(array $permissionId)
-	{
-	    $this->data['PermissionId'] = $permissionId;
-		foreach ($permissionId as $i => $iValue) {
-			$this->options['form_params']['PermissionId.' . ($i + 1)] = $iValue;
-		}
+    public function withPermissionId(array $permissionId)
+    {
+        $this->data['PermissionId'] = $permissionId;
+        foreach ($permissionId as $i => $iValue) {
+            $this->options['form_params']['PermissionId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -5426,7 +5336,6 @@ class UpdateSkillGroup extends Rpc
  */
 class UpdateTicket extends Rpc
 {
-
     /**
      * @param string $value
      *

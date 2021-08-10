@@ -151,55 +151,48 @@ class ListSpanNames extends Rpc
  */
 class QueryMetric extends Rpc
 {
-
     /**
-     * @param array $filters
-     *
      * @return $this
      */
-	public function withFilters(array $filters)
-	{
-	    $this->data['Filters'] = $filters;
-		foreach ($filters as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Filters.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Filters.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withFilters(array $filters)
+    {
+        $this->data['Filters'] = $filters;
+        foreach ($filters as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Filters.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Filters.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $measures
-     *
      * @return $this
      */
-	public function withMeasures(array $measures)
-	{
-	    $this->data['Measures'] = $measures;
-		foreach ($measures as $i => $iValue) {
-			$this->options['query']['Measures.' . ($i + 1)] = $iValue;
-		}
+    public function withMeasures(array $measures)
+    {
+        $this->data['Measures'] = $measures;
+        foreach ($measures as $i => $iValue) {
+            $this->options['query']['Measures.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $dimensions
-     *
      * @return $this
      */
-	public function withDimensions(array $dimensions)
-	{
-	    $this->data['Dimensions'] = $dimensions;
-		foreach ($dimensions as $i => $iValue) {
-			$this->options['query']['Dimensions.' . ($i + 1)] = $iValue;
-		}
+    public function withDimensions(array $dimensions)
+    {
+        $this->data['Dimensions'] = $dimensions;
+        foreach ($dimensions as $i => $iValue) {
+            $this->options['query']['Dimensions.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -228,24 +221,21 @@ class QueryMetric extends Rpc
  */
 class SearchTraces extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }

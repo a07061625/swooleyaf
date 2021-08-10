@@ -45,10 +45,7 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class WhereInDimQuery extends Rpc
 {
-
     /**
-     * @param array $measures
-     *
      * @return $this
      */
     public function withMeasures(array $measures)
@@ -62,8 +59,6 @@ class WhereInDimQuery extends Rpc
     }
 
     /**
-     * @param array $whereInValues
-     *
      * @return $this
      */
     public function withWhereInValues(array $whereInValues)
@@ -77,8 +72,6 @@ class WhereInDimQuery extends Rpc
     }
 
     /**
-     * @param array $dimensions
-     *
      * @return $this
      */
     public function withDimensions(array $dimensions)
@@ -111,10 +104,7 @@ class WhereInDimQuery extends Rpc
  */
 class ARMSQueryDataSet extends Rpc
 {
-
     /**
-     * @param array $measures
-     *
      * @return $this
      */
     public function withMeasures(array $measures)
@@ -128,8 +118,6 @@ class ARMSQueryDataSet extends Rpc
     }
 
     /**
-     * @param array $dimensions
-     *
      * @return $this
      */
     public function withDimensions(array $dimensions)

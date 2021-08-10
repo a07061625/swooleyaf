@@ -129,7 +129,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AddAccessControlListEntry extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -163,7 +162,6 @@ class AddAccessControlListEntry extends Rpc
  */
 class AddBackendServers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -201,7 +199,6 @@ class AddBackendServers extends Rpc
  */
 class AddListenerWhiteListItem extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -233,7 +230,6 @@ class AddListenerWhiteListItem extends Rpc
  */
 class AddTags extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -267,7 +263,6 @@ class AddTags extends Rpc
  */
 class AddVServerGroupBackendServers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -303,7 +298,6 @@ class AddVServerGroupBackendServers extends Rpc
  */
 class CreateAccessControlList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -343,7 +337,6 @@ class CreateAccessControlList extends Rpc
  */
 class CreateDomainExtension extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -358,41 +351,37 @@ class CreateDomainExtension extends Rpc
     }
 
     /**
-     * @param array $serverCertificate
-     *
      * @return $this
      */
-	public function withServerCertificate(array $serverCertificate)
-	{
-	    $this->data['ServerCertificate'] = $serverCertificate;
-		foreach ($serverCertificate as $depth1 => $depth1Value) {
-			if(isset($depth1Value['BindingType'])){
-				$this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.BindingType'] = $depth1Value['BindingType'];
-			}
-			if(isset($depth1Value['CertificateId'])){
-				$this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.CertificateId'] = $depth1Value['CertificateId'];
-			}
-			if(isset($depth1Value['StandardType'])){
-				$this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.StandardType'] = $depth1Value['StandardType'];
-			}
-		}
+    public function withServerCertificate(array $serverCertificate)
+    {
+        $this->data['ServerCertificate'] = $serverCertificate;
+        foreach ($serverCertificate as $depth1 => $depth1Value) {
+            if (isset($depth1Value['BindingType'])) {
+                $this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.BindingType'] = $depth1Value['BindingType'];
+            }
+            if (isset($depth1Value['CertificateId'])) {
+                $this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.CertificateId'] = $depth1Value['CertificateId'];
+            }
+            if (isset($depth1Value['StandardType'])) {
+                $this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.StandardType'] = $depth1Value['StandardType'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $certificateId
-     *
      * @return $this
      */
-	public function withCertificateId(array $certificateId)
-	{
-	    $this->data['CertificateId'] = $certificateId;
-		foreach ($certificateId as $i => $iValue) {
-			$this->options['query']['CertificateId.' . ($i + 1)] = $iValue;
-		}
+    public function withCertificateId(array $certificateId)
+    {
+        $this->data['CertificateId'] = $certificateId;
+        foreach ($certificateId as $i => $iValue) {
+            $this->options['query']['CertificateId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -461,7 +450,6 @@ class CreateDomainExtension extends Rpc
  */
 class CreateLoadBalancer extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -566,7 +554,6 @@ class CreateLoadBalancer extends Rpc
  */
 class CreateLoadBalancerHTTPListener extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -749,28 +736,25 @@ class CreateLoadBalancerHTTPListener extends Rpc
  */
 class CreateLoadBalancerHTTPSListener extends Rpc
 {
-
     /**
-     * @param array $serverCertificate
-     *
      * @return $this
      */
-	public function withServerCertificate(array $serverCertificate)
-	{
-	    $this->data['ServerCertificate'] = $serverCertificate;
-		foreach ($serverCertificate as $depth1 => $depth1Value) {
-			if(isset($depth1Value['BindingType'])){
-				$this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.BindingType'] = $depth1Value['BindingType'];
-			}
-			if(isset($depth1Value['CertificateId'])){
-				$this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.CertificateId'] = $depth1Value['CertificateId'];
-			}
-			if(isset($depth1Value['StandardType'])){
-				$this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.StandardType'] = $depth1Value['StandardType'];
-			}
-		}
+    public function withServerCertificate(array $serverCertificate)
+    {
+        $this->data['ServerCertificate'] = $serverCertificate;
+        foreach ($serverCertificate as $depth1 => $depth1Value) {
+            if (isset($depth1Value['BindingType'])) {
+                $this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.BindingType'] = $depth1Value['BindingType'];
+            }
+            if (isset($depth1Value['CertificateId'])) {
+                $this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.CertificateId'] = $depth1Value['CertificateId'];
+            }
+            if (isset($depth1Value['StandardType'])) {
+                $this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.StandardType'] = $depth1Value['StandardType'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1041,25 +1025,22 @@ class CreateLoadBalancerHTTPSListener extends Rpc
  */
 class CreateLoadBalancerTCPListener extends Rpc
 {
-
     /**
-     * @param array $portRange
-     *
      * @return $this
      */
-	public function withPortRange(array $portRange)
-	{
-	    $this->data['PortRange'] = $portRange;
-		foreach ($portRange as $depth1 => $depth1Value) {
-			if(isset($depth1Value['StartPort'])){
-				$this->options['query']['PortRange.' . ($depth1 + 1) . '.StartPort'] = $depth1Value['StartPort'];
-			}
-			if(isset($depth1Value['EndPort'])){
-				$this->options['query']['PortRange.' . ($depth1 + 1) . '.EndPort'] = $depth1Value['EndPort'];
-			}
-		}
+    public function withPortRange(array $portRange)
+    {
+        $this->data['PortRange'] = $portRange;
+        foreach ($portRange as $depth1 => $depth1Value) {
+            if (isset($depth1Value['StartPort'])) {
+                $this->options['query']['PortRange.' . ($depth1 + 1) . '.StartPort'] = $depth1Value['StartPort'];
+            }
+            if (isset($depth1Value['EndPort'])) {
+                $this->options['query']['PortRange.' . ($depth1 + 1) . '.EndPort'] = $depth1Value['EndPort'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1174,25 +1155,22 @@ class CreateLoadBalancerTCPListener extends Rpc
  */
 class CreateLoadBalancerUDPListener extends Rpc
 {
-
     /**
-     * @param array $portRange
-     *
      * @return $this
      */
-	public function withPortRange(array $portRange)
-	{
-	    $this->data['PortRange'] = $portRange;
-		foreach ($portRange as $depth1 => $depth1Value) {
-			if(isset($depth1Value['StartPort'])){
-				$this->options['query']['PortRange.' . ($depth1 + 1) . '.StartPort'] = $depth1Value['StartPort'];
-			}
-			if(isset($depth1Value['EndPort'])){
-				$this->options['query']['PortRange.' . ($depth1 + 1) . '.EndPort'] = $depth1Value['EndPort'];
-			}
-		}
+    public function withPortRange(array $portRange)
+    {
+        $this->data['PortRange'] = $portRange;
+        foreach ($portRange as $depth1 => $depth1Value) {
+            if (isset($depth1Value['StartPort'])) {
+                $this->options['query']['PortRange.' . ($depth1 + 1) . '.StartPort'] = $depth1Value['StartPort'];
+            }
+            if (isset($depth1Value['EndPort'])) {
+                $this->options['query']['PortRange.' . ($depth1 + 1) . '.EndPort'] = $depth1Value['EndPort'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1269,7 +1247,6 @@ class CreateLoadBalancerUDPListener extends Rpc
  */
 class CreateMasterSlaveServerGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1307,7 +1284,6 @@ class CreateMasterSlaveServerGroup extends Rpc
  */
 class CreateRules extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1339,7 +1315,6 @@ class CreateRules extends Rpc
  */
 class CreateTLSCipherPolicy extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1354,33 +1329,29 @@ class CreateTLSCipherPolicy extends Rpc
     }
 
     /**
-     * @param array $ciphers
-     *
      * @return $this
      */
-	public function withCiphers(array $ciphers)
-	{
-	    $this->data['Ciphers'] = $ciphers;
-		foreach ($ciphers as $i => $iValue) {
-			$this->options['query']['Ciphers.' . ($i + 1)] = $iValue;
-		}
+    public function withCiphers(array $ciphers)
+    {
+        $this->data['Ciphers'] = $ciphers;
+        foreach ($ciphers as $i => $iValue) {
+            $this->options['query']['Ciphers.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tLSVersions
-     *
      * @return $this
      */
-	public function withTLSVersions(array $tLSVersions)
-	{
-	    $this->data['TLSVersions'] = $tLSVersions;
-		foreach ($tLSVersions as $i => $iValue) {
-			$this->options['query']['TLSVersions.' . ($i + 1)] = $iValue;
-		}
+    public function withTLSVersions(array $tLSVersions)
+    {
+        $this->data['TLSVersions'] = $tLSVersions;
+        foreach ($tLSVersions as $i => $iValue) {
+            $this->options['query']['TLSVersions.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1405,7 +1376,6 @@ class CreateTLSCipherPolicy extends Rpc
  */
 class CreateVServerGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1437,7 +1407,6 @@ class CreateVServerGroup extends Rpc
  */
 class DeleteAccessControlList extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1467,7 +1436,6 @@ class DeleteAccessControlList extends Rpc
  */
 class DeleteCACertificate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1499,7 +1467,6 @@ class DeleteCACertificate extends Rpc
  */
 class DeleteDomainExtension extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1531,7 +1498,6 @@ class DeleteDomainExtension extends Rpc
  */
 class DeleteLoadBalancer extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1567,7 +1533,6 @@ class DeleteLoadBalancer extends Rpc
  */
 class DeleteLoadBalancerListener extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1599,7 +1564,6 @@ class DeleteLoadBalancerListener extends Rpc
  */
 class DeleteMasterSlaveServerGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1631,7 +1595,6 @@ class DeleteMasterSlaveServerGroup extends Rpc
  */
 class DeleteRules extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1663,7 +1626,6 @@ class DeleteRules extends Rpc
  */
 class DeleteServerCertificate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1693,7 +1655,6 @@ class DeleteServerCertificate extends Rpc
  */
 class DeleteTLSCipherPolicy extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1725,7 +1686,6 @@ class DeleteTLSCipherPolicy extends Rpc
  */
 class DeleteVServerGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1759,7 +1719,6 @@ class DeleteVServerGroup extends Rpc
  */
 class DescribeAccessControlListAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1800,7 +1759,6 @@ class DescribeAccessControlListAttribute extends Rpc
  */
 class DescribeAccessControlLists extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1815,23 +1773,21 @@ class DescribeAccessControlLists extends Rpc
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1852,7 +1808,6 @@ class DescribeAccessControlLists extends Rpc
  */
 class DescribeAvailableResource extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1885,7 +1840,6 @@ class DescribeAvailableResource extends Rpc
  */
 class DescribeCACertificates extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1900,23 +1854,21 @@ class DescribeCACertificates extends Rpc
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1937,7 +1889,6 @@ class DescribeCACertificates extends Rpc
  */
 class DescribeDomainExtensionAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1973,7 +1924,6 @@ class DescribeDomainExtensionAttribute extends Rpc
  */
 class DescribeDomainExtensions extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2009,7 +1959,6 @@ class DescribeDomainExtensions extends Rpc
  */
 class DescribeHealthStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2045,7 +1994,6 @@ class DescribeHealthStatus extends Rpc
  */
 class DescribeListenerAccessControlAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2079,7 +2027,6 @@ class DescribeListenerAccessControlAttribute extends Rpc
  */
 class DescribeLoadBalancerAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2113,7 +2060,6 @@ class DescribeLoadBalancerAttribute extends Rpc
  */
 class DescribeLoadBalancerHTTPListenerAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2147,7 +2093,6 @@ class DescribeLoadBalancerHTTPListenerAttribute extends Rpc
  */
 class DescribeLoadBalancerHTTPSListenerAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2181,20 +2126,17 @@ class DescribeLoadBalancerHTTPSListenerAttribute extends Rpc
  */
 class DescribeLoadBalancerListeners extends Rpc
 {
-
     /**
-     * @param array $loadBalancerId
-     *
      * @return $this
      */
-	public function withLoadBalancerId(array $loadBalancerId)
-	{
-	    $this->data['LoadBalancerId'] = $loadBalancerId;
-		foreach ($loadBalancerId as $i => $iValue) {
-			$this->options['query']['LoadBalancerId.' . ($i + 1)] = $iValue;
-		}
+    public function withLoadBalancerId(array $loadBalancerId)
+    {
+        $this->data['LoadBalancerId'] = $loadBalancerId;
+        foreach ($loadBalancerId as $i => $iValue) {
+            $this->options['query']['LoadBalancerId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2258,25 +2200,22 @@ class DescribeLoadBalancerListeners extends Rpc
  */
 class DescribeLoadBalancers extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -2312,7 +2251,6 @@ class DescribeLoadBalancers extends Rpc
  */
 class DescribeLoadBalancerTCPListenerAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2346,7 +2284,6 @@ class DescribeLoadBalancerTCPListenerAttribute extends Rpc
  */
 class DescribeLoadBalancerUDPListenerAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2378,7 +2315,6 @@ class DescribeLoadBalancerUDPListenerAttribute extends Rpc
  */
 class DescribeMasterSlaveServerGroupAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2412,7 +2348,6 @@ class DescribeMasterSlaveServerGroupAttribute extends Rpc
  */
 class DescribeMasterSlaveServerGroups extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2444,7 +2379,6 @@ class DescribeMasterSlaveServerGroups extends Rpc
  */
 class DescribeRegions extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2476,7 +2410,6 @@ class DescribeRegions extends Rpc
  */
 class DescribeRuleAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2512,7 +2445,6 @@ class DescribeRuleAttribute extends Rpc
  */
 class DescribeRules extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2547,7 +2479,6 @@ class DescribeRules extends Rpc
  */
 class DescribeServerCertificates extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2562,23 +2493,21 @@ class DescribeServerCertificates extends Rpc
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2605,7 +2534,6 @@ class DescribeServerCertificates extends Rpc
  */
 class DescribeTags extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2637,7 +2565,6 @@ class DescribeTags extends Rpc
  */
 class DescribeVServerGroupAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2673,7 +2600,6 @@ class DescribeVServerGroupAttribute extends Rpc
  */
 class DescribeVServerGroups extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2703,7 +2629,6 @@ class DescribeVServerGroups extends Rpc
  */
 class DescribeZones extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2737,7 +2662,6 @@ class DescribeZones extends Rpc
  */
 class ListTagResources extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2752,38 +2676,34 @@ class ListTagResources extends Rpc
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2810,7 +2730,6 @@ class ListTagResources extends Rpc
  */
 class ListTLSCipherPolicies extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2846,7 +2765,6 @@ class ListTLSCipherPolicies extends Rpc
  */
 class ModifyLoadBalancerInstanceSpec extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2886,7 +2804,6 @@ class ModifyLoadBalancerInstanceSpec extends Rpc
  */
 class ModifyLoadBalancerInternetSpec extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2926,7 +2843,6 @@ class ModifyLoadBalancerInternetSpec extends Rpc
  */
 class ModifyLoadBalancerPayType extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2962,7 +2878,6 @@ class ModifyLoadBalancerPayType extends Rpc
  */
 class ModifyVServerGroupBackendServers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2996,7 +2911,6 @@ class ModifyVServerGroupBackendServers extends Rpc
  */
 class RemoveAccessControlListEntry extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3030,7 +2944,6 @@ class RemoveAccessControlListEntry extends Rpc
  */
 class RemoveBackendServers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3068,7 +2981,6 @@ class RemoveBackendServers extends Rpc
  */
 class RemoveListenerWhiteListItem extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3100,7 +3012,6 @@ class RemoveListenerWhiteListItem extends Rpc
  */
 class RemoveTags extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3134,7 +3045,6 @@ class RemoveTags extends Rpc
  */
 class RemoveVServerGroupBackendServers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3168,7 +3078,6 @@ class RemoveVServerGroupBackendServers extends Rpc
  */
 class SetAccessControlListAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3202,7 +3111,6 @@ class SetAccessControlListAttribute extends Rpc
  */
 class SetBackendServers extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3234,7 +3142,6 @@ class SetBackendServers extends Rpc
  */
 class SetCACertificateName extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3270,7 +3177,6 @@ class SetCACertificateName extends Rpc
  */
 class SetDomainExtensionAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3285,41 +3191,37 @@ class SetDomainExtensionAttribute extends Rpc
     }
 
     /**
-     * @param array $serverCertificate
-     *
      * @return $this
      */
-	public function withServerCertificate(array $serverCertificate)
-	{
-	    $this->data['ServerCertificate'] = $serverCertificate;
-		foreach ($serverCertificate as $depth1 => $depth1Value) {
-			if(isset($depth1Value['BindingType'])){
-				$this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.BindingType'] = $depth1Value['BindingType'];
-			}
-			if(isset($depth1Value['CertificateId'])){
-				$this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.CertificateId'] = $depth1Value['CertificateId'];
-			}
-			if(isset($depth1Value['StandardType'])){
-				$this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.StandardType'] = $depth1Value['StandardType'];
-			}
-		}
+    public function withServerCertificate(array $serverCertificate)
+    {
+        $this->data['ServerCertificate'] = $serverCertificate;
+        foreach ($serverCertificate as $depth1 => $depth1Value) {
+            if (isset($depth1Value['BindingType'])) {
+                $this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.BindingType'] = $depth1Value['BindingType'];
+            }
+            if (isset($depth1Value['CertificateId'])) {
+                $this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.CertificateId'] = $depth1Value['CertificateId'];
+            }
+            if (isset($depth1Value['StandardType'])) {
+                $this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.StandardType'] = $depth1Value['StandardType'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $certificateId
-     *
      * @return $this
      */
-	public function withCertificateId(array $certificateId)
-	{
-	    $this->data['CertificateId'] = $certificateId;
-		foreach ($certificateId as $i => $iValue) {
-			$this->options['query']['CertificateId.' . ($i + 1)] = $iValue;
-		}
+    public function withCertificateId(array $certificateId)
+    {
+        $this->data['CertificateId'] = $certificateId;
+        foreach ($certificateId as $i => $iValue) {
+            $this->options['query']['CertificateId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3346,7 +3248,6 @@ class SetDomainExtensionAttribute extends Rpc
  */
 class SetListenerAccessControlStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3380,7 +3281,6 @@ class SetListenerAccessControlStatus extends Rpc
  */
 class SetLoadBalancerDeleteProtection extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3479,7 +3379,6 @@ class SetLoadBalancerDeleteProtection extends Rpc
  */
 class SetLoadBalancerHTTPListenerAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3660,28 +3559,25 @@ class SetLoadBalancerHTTPListenerAttribute extends Rpc
  */
 class SetLoadBalancerHTTPSListenerAttribute extends Rpc
 {
-
     /**
-     * @param array $serverCertificate
-     *
      * @return $this
      */
-	public function withServerCertificate(array $serverCertificate)
-	{
-	    $this->data['ServerCertificate'] = $serverCertificate;
-		foreach ($serverCertificate as $depth1 => $depth1Value) {
-			if(isset($depth1Value['BindingType'])){
-				$this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.BindingType'] = $depth1Value['BindingType'];
-			}
-			if(isset($depth1Value['CertificateId'])){
-				$this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.CertificateId'] = $depth1Value['CertificateId'];
-			}
-			if(isset($depth1Value['StandardType'])){
-				$this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.StandardType'] = $depth1Value['StandardType'];
-			}
-		}
+    public function withServerCertificate(array $serverCertificate)
+    {
+        $this->data['ServerCertificate'] = $serverCertificate;
+        foreach ($serverCertificate as $depth1 => $depth1Value) {
+            if (isset($depth1Value['BindingType'])) {
+                $this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.BindingType'] = $depth1Value['BindingType'];
+            }
+            if (isset($depth1Value['CertificateId'])) {
+                $this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.CertificateId'] = $depth1Value['CertificateId'];
+            }
+            if (isset($depth1Value['StandardType'])) {
+                $this->options['query']['ServerCertificate.' . ($depth1 + 1) . '.StandardType'] = $depth1Value['StandardType'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -3906,7 +3802,6 @@ class SetLoadBalancerModificationProtection extends Rpc
  */
 class SetLoadBalancerName extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3940,7 +3835,6 @@ class SetLoadBalancerName extends Rpc
  */
 class SetLoadBalancerStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4045,25 +3939,22 @@ class SetLoadBalancerStatus extends Rpc
  */
 class SetLoadBalancerTCPListenerAttribute extends Rpc
 {
-
     /**
-     * @param array $portRange
-     *
      * @return $this
      */
-	public function withPortRange(array $portRange)
-	{
-	    $this->data['PortRange'] = $portRange;
-		foreach ($portRange as $depth1 => $depth1Value) {
-			if(isset($depth1Value['StartPort'])){
-				$this->options['query']['PortRange.' . ($depth1 + 1) . '.StartPort'] = $depth1Value['StartPort'];
-			}
-			if(isset($depth1Value['EndPort'])){
-				$this->options['query']['PortRange.' . ($depth1 + 1) . '.EndPort'] = $depth1Value['EndPort'];
-			}
-		}
+    public function withPortRange(array $portRange)
+    {
+        $this->data['PortRange'] = $portRange;
+        foreach ($portRange as $depth1 => $depth1Value) {
+            if (isset($depth1Value['StartPort'])) {
+                $this->options['query']['PortRange.' . ($depth1 + 1) . '.StartPort'] = $depth1Value['StartPort'];
+            }
+            if (isset($depth1Value['EndPort'])) {
+                $this->options['query']['PortRange.' . ($depth1 + 1) . '.EndPort'] = $depth1Value['EndPort'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -4168,25 +4059,22 @@ class SetLoadBalancerTCPListenerAttribute extends Rpc
  */
 class SetLoadBalancerUDPListenerAttribute extends Rpc
 {
-
     /**
-     * @param array $portRange
-     *
      * @return $this
      */
-	public function withPortRange(array $portRange)
-	{
-	    $this->data['PortRange'] = $portRange;
-		foreach ($portRange as $depth1 => $depth1Value) {
-			if(isset($depth1Value['StartPort'])){
-				$this->options['query']['PortRange.' . ($depth1 + 1) . '.StartPort'] = $depth1Value['StartPort'];
-			}
-			if(isset($depth1Value['EndPort'])){
-				$this->options['query']['PortRange.' . ($depth1 + 1) . '.EndPort'] = $depth1Value['EndPort'];
-			}
-		}
+    public function withPortRange(array $portRange)
+    {
+        $this->data['PortRange'] = $portRange;
+        foreach ($portRange as $depth1 => $depth1Value) {
+            if (isset($depth1Value['StartPort'])) {
+                $this->options['query']['PortRange.' . ($depth1 + 1) . '.StartPort'] = $depth1Value['StartPort'];
+            }
+            if (isset($depth1Value['EndPort'])) {
+                $this->options['query']['PortRange.' . ($depth1 + 1) . '.EndPort'] = $depth1Value['EndPort'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -4280,7 +4168,6 @@ class SetLoadBalancerUDPListenerAttribute extends Rpc
  */
 class SetRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4314,7 +4201,6 @@ class SetRule extends Rpc
  */
 class SetServerCertificateName extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4348,7 +4234,6 @@ class SetServerCertificateName extends Rpc
  */
 class SetTLSCipherPolicyAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4363,33 +4248,29 @@ class SetTLSCipherPolicyAttribute extends Rpc
     }
 
     /**
-     * @param array $ciphers
-     *
      * @return $this
      */
-	public function withCiphers(array $ciphers)
-	{
-	    $this->data['Ciphers'] = $ciphers;
-		foreach ($ciphers as $i => $iValue) {
-			$this->options['query']['Ciphers.' . ($i + 1)] = $iValue;
-		}
+    public function withCiphers(array $ciphers)
+    {
+        $this->data['Ciphers'] = $ciphers;
+        foreach ($ciphers as $i => $iValue) {
+            $this->options['query']['Ciphers.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tLSVersions
-     *
      * @return $this
      */
-	public function withTLSVersions(array $tLSVersions)
-	{
-	    $this->data['TLSVersions'] = $tLSVersions;
-		foreach ($tLSVersions as $i => $iValue) {
-			$this->options['query']['TLSVersions.' . ($i + 1)] = $iValue;
-		}
+    public function withTLSVersions(array $tLSVersions)
+    {
+        $this->data['TLSVersions'] = $tLSVersions;
+        foreach ($tLSVersions as $i => $iValue) {
+            $this->options['query']['TLSVersions.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4414,7 +4295,6 @@ class SetTLSCipherPolicyAttribute extends Rpc
  */
 class SetVServerGroupAttribute extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4450,7 +4330,6 @@ class SetVServerGroupAttribute extends Rpc
  */
 class StartLoadBalancerListener extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4486,7 +4365,6 @@ class StartLoadBalancerListener extends Rpc
  */
 class StopLoadBalancerListener extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4518,7 +4396,6 @@ class StopLoadBalancerListener extends Rpc
  */
 class TagResources extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4533,38 +4410,34 @@ class TagResources extends Rpc
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4587,7 +4460,6 @@ class TagResources extends Rpc
  */
 class UntagResources extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4602,33 +4474,29 @@ class UntagResources extends Rpc
     }
 
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tagKey
-     *
      * @return $this
      */
-	public function withTagKey(array $tagKey)
-	{
-	    $this->data['TagKey'] = $tagKey;
-		foreach ($tagKey as $i => $iValue) {
-			$this->options['query']['TagKey.' . ($i + 1)] = $iValue;
-		}
+    public function withTagKey(array $tagKey)
+    {
+        $this->data['TagKey'] = $tagKey;
+        foreach ($tagKey as $i => $iValue) {
+            $this->options['query']['TagKey.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4653,7 +4521,6 @@ class UntagResources extends Rpc
  */
 class UploadCACertificate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4699,7 +4566,6 @@ class UploadCACertificate extends Rpc
  */
 class UploadServerCertificate extends Rpc
 {
-
     /**
      * @param string $value
      *

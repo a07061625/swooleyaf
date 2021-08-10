@@ -98,10 +98,7 @@ class ProcessAfterUploadFile extends Rpc
  */
 class Auth2Brand extends Rpc
 {
-
     /**
-     * @param array $channelBrandReqs
-     *
      * @return $this
      */
     public function withChannelBrandReqs(array $channelBrandReqs)
@@ -123,10 +120,7 @@ class Auth2Brand extends Rpc
  */
 class DescribeAuthBrand extends Rpc
 {
-
     /**
-     * @param array $accountIds
-     *
      * @return $this
      */
     public function withAccountIds(array $accountIds)
@@ -145,7 +139,6 @@ class DescribeAuthBrand extends Rpc
  */
 class UpdateCrowd extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -184,7 +177,6 @@ class RequestUploadFile extends Rpc
  */
 class DefineTag extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -251,8 +243,6 @@ class DefineTag extends Rpc
     }
 
     /**
-     * @param array $optionDefines
-     *
      * @return $this
      */
     public function withOptionDefines(array $optionDefines)
@@ -308,7 +298,6 @@ class DefineTag extends Rpc
  */
 class RedefineTag extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -375,8 +364,6 @@ class RedefineTag extends Rpc
     }
 
     /**
-     * @param array $optionDefines
-     *
      * @return $this
      */
     public function withOptionDefines(array $optionDefines)
@@ -435,7 +422,6 @@ class CreateBrand extends Rpc
  */
 class UpdateBrand extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -483,7 +469,6 @@ class UpdateBrand extends Rpc
  */
 class DescribeBrand extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -553,7 +538,6 @@ class DescribeChannelBrand extends Rpc
  */
 class DefineCrowd extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -587,10 +571,7 @@ class FetchFileSchema extends Rpc
  */
 class DefineFileSchema extends Rpc
 {
-
     /**
-     * @param array $fileColumns
-     *
      * @return $this
      */
     public function withFileColumns(array $fileColumns)
@@ -621,10 +602,7 @@ class DefineFileSchema extends Rpc
  */
 class DescribeFile extends Rpc
 {
-
     /**
-     * @param array $dataSchemaStatusList
-     *
      * @return $this
      */
     public function withDataSchemaStatusList(array $dataSchemaStatusList)
@@ -643,7 +621,6 @@ class DescribeFile extends Rpc
  */
 class CalCrowdScale extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -689,10 +666,7 @@ class FetchCrowd extends Rpc
  */
 class AnalysisCrowd extends Rpc
 {
-
     /**
-     * @param array $tagIds
-     *
      * @return $this
      */
     public function withTagIds(array $tagIds)
@@ -723,10 +697,7 @@ class AnalysisCrowd extends Rpc
  */
 class DescribeTag extends Rpc
 {
-
     /**
-     * @param array $statusList
-     *
      * @return $this
      */
     public function withStatusList(array $statusList)
@@ -749,10 +720,7 @@ class DescribeTag extends Rpc
  */
 class FavoriteTag extends Rpc
 {
-
     /**
-     * @param array $tagIds
-     *
      * @return $this
      */
     public function withTagIds(array $tagIds)
@@ -771,7 +739,6 @@ class FavoriteTag extends Rpc
  */
 class UpdateCategory extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -821,10 +788,7 @@ class DownloadCrowd extends Rpc
  */
 class SyncCrowd extends Rpc
 {
-
     /**
-     * @param array $channelBrands
-     *
      * @return $this
      */
     public function withChannelBrands(array $channelBrands)

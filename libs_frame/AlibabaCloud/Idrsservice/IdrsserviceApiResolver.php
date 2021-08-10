@@ -185,20 +185,17 @@ class CreateStatisticsRecord extends Rpc
  */
 class CreateStatisticsTask extends Rpc
 {
-
     /**
-     * @param array $departmentId
-     *
      * @return $this
      */
-	public function withDepartmentId(array $departmentId)
-	{
-	    $this->data['DepartmentId'] = $departmentId;
-		foreach ($departmentId as $i => $iValue) {
-			$this->options['query']['DepartmentId.' . ($i + 1)] = $iValue;
-		}
+    public function withDepartmentId(array $departmentId)
+    {
+        $this->data['DepartmentId'] = $departmentId;
+        foreach ($departmentId as $i => $iValue) {
+            $this->options['query']['DepartmentId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -224,35 +221,30 @@ class CreateStatisticsTask extends Rpc
  */
 class CreateTaskGroup extends Rpc
 {
-
     /**
-     * @param array $day
-     *
      * @return $this
      */
-	public function withDay(array $day)
-	{
-	    $this->data['Day'] = $day;
-		foreach ($day as $i => $iValue) {
-			$this->options['query']['Day.' . ($i + 1)] = $iValue;
-		}
+    public function withDay(array $day)
+    {
+        $this->data['Day'] = $day;
+        foreach ($day as $i => $iValue) {
+            $this->options['query']['Day.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $videoUrl
-     *
      * @return $this
      */
-	public function withVideoUrl(array $videoUrl)
-	{
-	    $this->data['VideoUrl'] = $videoUrl;
-		foreach ($videoUrl as $i => $iValue) {
-			$this->options['query']['VideoUrl.' . ($i + 1)] = $iValue;
-		}
+    public function withVideoUrl(array $videoUrl)
+    {
+        $this->data['VideoUrl'] = $videoUrl;
+        foreach ($videoUrl as $i => $iValue) {
+            $this->options['query']['VideoUrl.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -262,35 +254,30 @@ class CreateTaskGroup extends Rpc
  */
 class CreateUserDepartments extends Rpc
 {
-
     /**
-     * @param array $departmentId
-     *
      * @return $this
      */
-	public function withDepartmentId(array $departmentId)
-	{
-	    $this->data['DepartmentId'] = $departmentId;
-		foreach ($departmentId as $i => $iValue) {
-			$this->options['query']['DepartmentId.' . ($i + 1)] = $iValue;
-		}
+    public function withDepartmentId(array $departmentId)
+    {
+        $this->data['DepartmentId'] = $departmentId;
+        foreach ($departmentId as $i => $iValue) {
+            $this->options['query']['DepartmentId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $userId
-     *
      * @return $this
      */
-	public function withUserId(array $userId)
-	{
-	    $this->data['UserId'] = $userId;
-		foreach ($userId as $i => $iValue) {
-			$this->options['query']['UserId.' . ($i + 1)] = $iValue;
-		}
+    public function withUserId(array $userId)
+    {
+        $this->data['UserId'] = $userId;
+        foreach ($userId as $i => $iValue) {
+            $this->options['query']['UserId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -332,35 +319,30 @@ class DeleteUser extends Rpc
  */
 class DeleteUserDepartments extends Rpc
 {
-
     /**
-     * @param array $departmentId
-     *
      * @return $this
      */
-	public function withDepartmentId(array $departmentId)
-	{
-	    $this->data['DepartmentId'] = $departmentId;
-		foreach ($departmentId as $i => $iValue) {
-			$this->options['query']['DepartmentId.' . ($i + 1)] = $iValue;
-		}
+    public function withDepartmentId(array $departmentId)
+    {
+        $this->data['DepartmentId'] = $departmentId;
+        foreach ($departmentId as $i => $iValue) {
+            $this->options['query']['DepartmentId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $userId
-     *
      * @return $this
      */
-	public function withUserId(array $userId)
-	{
-	    $this->data['UserId'] = $userId;
-		foreach ($userId as $i => $iValue) {
-			$this->options['form_params']['UserId.' . ($i + 1)] = $iValue;
-		}
+    public function withUserId(array $userId)
+    {
+        $this->data['UserId'] = $userId;
+        foreach ($userId as $i => $iValue) {
+            $this->options['form_params']['UserId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -419,20 +401,17 @@ class GetDetection extends Rpc
  */
 class GetModelSignedUrl extends Rpc
 {
-
     /**
-     * @param array $modelPath
-     *
      * @return $this
      */
-	public function withModelPath(array $modelPath)
-	{
-	    $this->data['ModelPath'] = $modelPath;
-		foreach ($modelPath as $i => $iValue) {
-			$this->options['form_params']['ModelPath.' . ($i + 1)] = $iValue;
-		}
+    public function withModelPath(array $modelPath)
+    {
+        $this->data['ModelPath'] = $modelPath;
+        foreach ($modelPath as $i => $iValue) {
+            $this->options['form_params']['ModelPath.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -441,7 +420,6 @@ class GetModelSignedUrl extends Rpc
  */
 class GetPreSignedUrl extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -477,7 +455,6 @@ class GetServiceConfiguration extends Rpc
  */
 class GetSignedUrl extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -509,20 +486,17 @@ class GetSlrConfiguration extends Rpc
  */
 class GetStatistics extends Rpc
 {
-
     /**
-     * @param array $departmentId
-     *
      * @return $this
      */
-	public function withDepartmentId(array $departmentId)
-	{
-	    $this->data['DepartmentId'] = $departmentId;
-		foreach ($departmentId as $i => $iValue) {
-			$this->options['query']['DepartmentId.' . ($i + 1)] = $iValue;
-		}
+    public function withDepartmentId(array $departmentId)
+    {
+        $this->data['DepartmentId'] = $departmentId;
+        foreach ($departmentId as $i => $iValue) {
+            $this->options['query']['DepartmentId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -620,7 +594,6 @@ class ListDetections extends Rpc
  */
 class ListFiles extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -753,7 +726,6 @@ class UpdateApp extends Rpc
  */
 class UpdateDepartment extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -855,20 +827,17 @@ class UpdateServiceConfiguration extends Rpc
  */
 class UpdateSlrConfiguration extends Rpc
 {
-
     /**
-     * @param array $mqEvent
-     *
      * @return $this
      */
-	public function withMqEvent(array $mqEvent)
-	{
-	    $this->data['MqEvent'] = $mqEvent;
-		foreach ($mqEvent as $i => $iValue) {
-			$this->options['query']['MqEvent.' . ($i + 1)] = $iValue;
-		}
+    public function withMqEvent(array $mqEvent)
+    {
+        $this->data['MqEvent'] = $mqEvent;
+        foreach ($mqEvent as $i => $iValue) {
+            $this->options['query']['MqEvent.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 

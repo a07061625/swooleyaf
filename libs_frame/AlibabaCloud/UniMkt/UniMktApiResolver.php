@@ -113,7 +113,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class ChangeMediaStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -203,7 +202,6 @@ class ChangeMediaStatus extends Rpc
  */
 class ChangeSlotStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -291,7 +289,6 @@ class ChangeSlotStatus extends Rpc
  */
 class ChangeTenantStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -352,7 +349,6 @@ class ChargeLaunch extends Rpc
  */
 class CheckDevice extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 
@@ -390,7 +386,6 @@ class CheckDevice extends Rpc
  */
 class CheckReceivingDetail extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 
@@ -491,7 +486,6 @@ class CreateCalculation extends Rpc
  */
 class CreateMedia extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -549,7 +543,6 @@ class CreateProxyBrandUser extends Rpc
  */
 class CreateRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -585,7 +578,6 @@ class CreateRule extends Rpc
  */
 class CreateSlot extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -621,7 +613,6 @@ class CreateSlot extends Rpc
  */
 class CreatesSlotTemplate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -657,7 +648,6 @@ class CreatesSlotTemplate extends Rpc
  */
 class CreateTenant extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -759,7 +749,6 @@ class GetUnionTaskStatus extends Rpc
  */
 class KeepAlive extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 
@@ -1114,7 +1103,6 @@ class ListTenantName extends Rpc
  */
 class ModifyMedia extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1148,7 +1136,6 @@ class ModifyMedia extends Rpc
  */
 class ModifyRule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1182,7 +1169,6 @@ class ModifyRule extends Rpc
  */
 class ModifySlot extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1218,7 +1204,6 @@ class ModifySlot extends Rpc
  */
 class ModifySlotTemplate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1252,7 +1237,6 @@ class ModifySlotTemplate extends Rpc
  */
 class ModifyTenantInfo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1274,7 +1258,6 @@ class ModifyTenantInfo extends Rpc
  */
 class PushDeviceStatus extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 
@@ -1331,7 +1314,6 @@ class PushDeviceStatus extends Rpc
  */
 class PushExtraTradeDetail extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 
@@ -1463,7 +1445,6 @@ class PushExtraTradeDetail extends Rpc
  */
 class PushFaultEvent extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 
@@ -1564,7 +1545,6 @@ class PushFaultEvent extends Rpc
  */
 class PushTradeDetail extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 
@@ -1935,7 +1915,6 @@ class QueryMedia extends Rpc
  */
 class QueryPromotion extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 
@@ -2243,7 +2222,6 @@ class ReduceAmount extends Rpc
  */
 class RegistDevice extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 
@@ -2457,7 +2435,6 @@ class RegistDevice extends Rpc
  */
 class SaveCpmTrade extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }
@@ -2516,7 +2493,6 @@ class SaveCpmTrade extends Rpc
  */
 class ScanCodeNotification extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }
@@ -2548,7 +2524,6 @@ class ScanCodeNotification extends Rpc
  */
 class SendTaokeInfo extends Rpc
 {
-
     /**
      * @param string $value
      *

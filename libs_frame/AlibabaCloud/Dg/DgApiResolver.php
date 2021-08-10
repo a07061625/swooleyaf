@@ -43,10 +43,10 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
     public $method = 'POST';
 
     /** @var string */
-    protected $scheme = 'https';
+    public $serviceCode = 'dg';
 
     /** @var string */
-    public $serviceCode = 'dg';
+    protected $scheme = 'https';
 }
 
 /**
@@ -62,7 +62,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AddDatabase extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -187,7 +186,6 @@ class AddDatabase extends Rpc
  */
 class AddDatabaseList extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -229,7 +227,6 @@ class AddDatabaseList extends Rpc
  */
 class ConnectDatabase extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -332,7 +329,6 @@ class ConnectDatabase extends Rpc
  */
 class CreateDatabaseAccessPoint extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -418,7 +414,6 @@ class CreateDatabaseAccessPoint extends Rpc
  */
 class CreateGateway extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -451,7 +446,6 @@ class CreateGateway extends Rpc
  */
 class CreateGatewayVerifyCode extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -471,7 +465,6 @@ class CreateGatewayVerifyCode extends Rpc
  */
 class DeleteDatabase extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -495,7 +488,6 @@ class DeleteDatabase extends Rpc
  */
 class DeleteDatabaseAccessPoint extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -567,7 +559,6 @@ class DeleteDatabaseAccessPoint extends Rpc
  */
 class DeleteGateway extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -588,7 +579,6 @@ class DeleteGateway extends Rpc
  */
 class DeleteGatewayInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -618,7 +608,6 @@ class DeleteGatewayInstance extends Rpc
 
 class DescribeRegions extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 }
@@ -629,7 +618,6 @@ class DescribeRegions extends Rpc
  */
 class DownloadGatewayProgram extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -662,7 +650,6 @@ class DownloadGatewayProgram extends Rpc
  */
 class FindUserGatewayById extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -689,7 +676,6 @@ class FindUserGatewayById extends Rpc
  */
 class GetUserDatabases extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -800,7 +786,6 @@ class GetUserDatabases extends Rpc
  */
 class GetUserGatewayInstances extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -822,7 +807,6 @@ class GetUserGatewayInstances extends Rpc
  */
 class GetUserGateways extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -878,7 +862,6 @@ class GetUserGateways extends Rpc
  */
 class ListDatabaseAccessPoint extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -996,7 +979,6 @@ class ListDatabaseAccessPoint extends Rpc
  */
 class ModifyDatabase extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1109,7 +1091,6 @@ class ModifyDatabase extends Rpc
  */
 class ModifyGateway extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1163,7 +1144,6 @@ class ModifyGateway extends Rpc
  */
 class RetryDatabase extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -1291,7 +1271,6 @@ class RetryDatabase extends Rpc
  */
 class StopGateway extends Rpc
 {
-
     /**
      * @param string $value
      *

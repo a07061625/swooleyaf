@@ -49,7 +49,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class UpdateInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -77,7 +76,6 @@ class UpdateInstance extends Rpc
  */
 class UnbindInstance2Vpc extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -106,7 +104,6 @@ class UnbindInstance2Vpc extends Rpc
  */
 class ListVpcInfoByVpc extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 
@@ -124,8 +121,6 @@ class ListVpcInfoByVpc extends Rpc
     }
 
     /**
-     * @param array $tagInfo
-     *
      * @return $this
      */
     public function withTagInfo(array $tagInfo)
@@ -153,7 +148,6 @@ class ListVpcInfoByVpc extends Rpc
  */
 class ListVpcInfoByInstance extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 
@@ -185,7 +179,6 @@ class ListVpcInfoByInstance extends Rpc
  */
 class ListTags extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -200,8 +193,6 @@ class ListTags extends Rpc
     }
 
     /**
-     * @param array $tagInfo
-     *
      * @return $this
      */
     public function withTagInfo(array $tagInfo)
@@ -228,7 +219,6 @@ class ListTags extends Rpc
  */
 class ListInstance extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 
@@ -246,8 +236,6 @@ class ListInstance extends Rpc
     }
 
     /**
-     * @param array $tagInfo
-     *
      * @return $this
      */
     public function withTagInfo(array $tagInfo)
@@ -269,7 +257,6 @@ class ListInstance extends Rpc
  */
 class ListClusterType extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 
@@ -297,7 +284,6 @@ class ListClusterType extends Rpc
  */
 class InsertTags extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -312,8 +298,6 @@ class InsertTags extends Rpc
     }
 
     /**
-     * @param array $tagInfo
-     *
      * @return $this
      */
     public function withTagInfo(array $tagInfo)
@@ -344,7 +328,6 @@ class InsertTags extends Rpc
  */
 class InsertInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -359,8 +342,6 @@ class InsertInstance extends Rpc
     }
 
     /**
-     * @param array $tagInfo
-     *
      * @return $this
      */
     public function withTagInfo(array $tagInfo)
@@ -384,7 +365,6 @@ class InsertInstance extends Rpc
  */
 class GetInstance extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 
@@ -412,7 +392,6 @@ class GetInstance extends Rpc
  */
 class DeleteTags extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -427,8 +406,6 @@ class DeleteTags extends Rpc
     }
 
     /**
-     * @param array $tagInfo
-     *
      * @return $this
      */
     public function withTagInfo(array $tagInfo)
@@ -452,7 +429,6 @@ class DeleteTags extends Rpc
  */
 class DeleteInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -486,7 +462,6 @@ class DeleteInstance extends Rpc
  */
 class BindInstance2Vpc extends Rpc
 {
-
     /**
      * @param string $value
      *

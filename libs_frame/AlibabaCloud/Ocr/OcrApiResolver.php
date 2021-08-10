@@ -57,7 +57,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class DetectCardScreenshot extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -78,7 +77,6 @@ class DetectCardScreenshot extends Rpc
  */
 class GetAsyncJobResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -112,7 +110,6 @@ class GetAsyncJobResult extends Rpc
  */
 class RecognizeAccountPage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -146,7 +143,6 @@ class RecognizeAccountPage extends Rpc
  */
 class RecognizeBankCard extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -180,7 +176,6 @@ class RecognizeBankCard extends Rpc
  */
 class RecognizeBusinessCard extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -214,7 +209,6 @@ class RecognizeBusinessCard extends Rpc
  */
 class RecognizeBusinessLicense extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -250,7 +244,6 @@ class RecognizeBusinessLicense extends Rpc
  */
 class RecognizeCharacter extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -309,7 +302,6 @@ class RecognizeCharacter extends Rpc
  */
 class RecognizeChinapassport extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -331,7 +323,6 @@ class RecognizeChinapassport extends Rpc
  */
 class RecognizeDriverLicense extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -379,7 +370,6 @@ class RecognizeDriverLicense extends Rpc
  */
 class RecognizeDrivingLicense extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -427,7 +417,6 @@ class RecognizeDrivingLicense extends Rpc
  */
 class RecognizeIdentityCard extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -474,7 +463,6 @@ class RecognizeIdentityCard extends Rpc
  */
 class RecognizeLicensePlate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -507,7 +495,6 @@ class RecognizeLicensePlate extends Rpc
  */
 class RecognizePassportMRZ extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -527,7 +514,6 @@ class RecognizePassportMRZ extends Rpc
  */
 class RecognizePDF extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -547,7 +533,6 @@ class RecognizePDF extends Rpc
  */
 class RecognizePoiName extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -567,22 +552,19 @@ class RecognizePoiName extends Rpc
  */
 class RecognizeQrCode extends Rpc
 {
-
     /**
-     * @param array $tasks
-     *
      * @return $this
      */
-	public function withTasks(array $tasks)
-	{
-	    $this->data['Tasks'] = $tasks;
-		foreach ($tasks as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ImageURL'])){
-				$this->options['form_params']['Tasks.' . ($depth1 + 1) . '.ImageURL'] = $depth1Value['ImageURL'];
-			}
-		}
+    public function withTasks(array $tasks)
+    {
+        $this->data['Tasks'] = $tasks;
+        foreach ($tasks as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ImageURL'])) {
+                $this->options['form_params']['Tasks.' . ($depth1 + 1) . '.ImageURL'] = $depth1Value['ImageURL'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -591,7 +573,6 @@ class RecognizeQrCode extends Rpc
  */
 class RecognizeQuotaInvoice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -612,7 +593,6 @@ class RecognizeQuotaInvoice extends Rpc
  */
 class RecognizeStamp extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -651,7 +631,6 @@ class RecognizeStamp extends Rpc
  */
 class RecognizeTable extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -749,7 +728,6 @@ class RecognizeTable extends Rpc
  */
 class RecognizeTakeoutOrder extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -770,7 +748,6 @@ class RecognizeTakeoutOrder extends Rpc
  */
 class RecognizeTaxiInvoice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -803,7 +780,6 @@ class RecognizeTaxiInvoice extends Rpc
  */
 class RecognizeTicketInvoice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -824,7 +800,6 @@ class RecognizeTicketInvoice extends Rpc
  */
 class RecognizeTrainTicket extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -858,7 +833,6 @@ class RecognizeTrainTicket extends Rpc
  */
 class RecognizeVATInvoice extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -891,7 +865,6 @@ class RecognizeVATInvoice extends Rpc
  */
 class RecognizeVerificationcode extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -924,7 +897,6 @@ class RecognizeVINCode extends Rpc
  */
 class TrimDocument extends Rpc
 {
-
     /**
      * @param string $value
      *

@@ -56,7 +56,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class DescribeBaseStatistics extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -130,7 +129,6 @@ class DescribeBaseStatistics extends Rpc
  */
 class DescribeCameraStatistics extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -177,7 +175,6 @@ class DescribeCameraStatistics extends Rpc
  */
 class DescribeCursor extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -217,7 +214,6 @@ class DescribeCursor extends Rpc
  */
 class DescribeCustomerFlowByLocation extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -328,7 +324,6 @@ class DescribeCustomerFlowByLocation extends Rpc
  */
 class DescribeDevices extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -350,7 +345,6 @@ class DescribeDevices extends Rpc
  */
 class DescribeHeatMap extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -398,7 +392,6 @@ class DescribeHeatMap extends Rpc
  */
 class DescribeImageUrls extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -446,7 +439,6 @@ class DescribeImageUrls extends Rpc
  */
 class DescribeIpcLiveAddress extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -493,7 +485,6 @@ class DescribeIpcLiveAddress extends Rpc
  */
 class DescribeOverviewData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -527,7 +518,6 @@ class DescribeOverviewData extends Rpc
  */
 class GetFootwearEvent extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -562,7 +552,6 @@ class GetFootwearEvent extends Rpc
  */
 class GetFootwearPosition extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -615,7 +604,6 @@ class GetFootwearPosition extends Rpc
  */
 class ImportSpecialPersonnel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -731,7 +719,6 @@ class ImportSpecialPersonnel extends Rpc
  */
 class ListActionData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -817,7 +804,6 @@ class ListActionData extends Rpc
  */
 class ListDevicesImages extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -850,7 +836,6 @@ class ListDevicesImages extends Rpc
  */
 class ListEmap extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -870,7 +855,6 @@ class ListEmap extends Rpc
  */
 class ListLocation extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -894,7 +878,6 @@ class ListLocation extends Rpc
  */
 class ListMaskDetectionResults extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -967,7 +950,6 @@ class ListMaskDetectionResults extends Rpc
  */
 class ListPersonByImage extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1007,7 +989,6 @@ class ListStore extends Rpc
  */
 class PullActionData extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1068,7 +1049,6 @@ class PullActionData extends Rpc
  */
 class PullTakeShoesEvent extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1119,7 +1099,6 @@ class PullTakeShoesEvent extends Rpc
  */
 class PullTryOnShoesEvent extends Rpc
 {
-
     /**
      * @param string $value
      *

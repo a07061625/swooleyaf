@@ -35,7 +35,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class GetAsyncJobResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -69,7 +68,6 @@ class GetAsyncJobResult extends Rpc
  */
 class SegmentGreenScreenVideo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -103,7 +101,6 @@ class SegmentGreenScreenVideo extends Rpc
  */
 class SegmentHalfBody extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -137,7 +134,6 @@ class SegmentHalfBody extends Rpc
  */
 class SegmentVideoBody extends Rpc
 {
-
     /**
      * @param string $value
      *

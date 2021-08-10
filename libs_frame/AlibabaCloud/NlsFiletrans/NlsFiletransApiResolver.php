@@ -32,7 +32,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class GetTaskResult extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }

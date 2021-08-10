@@ -175,63 +175,56 @@ class CheckSqlAuditEnableStatus extends Rpc
  */
 class CreateDrdsDB extends Rpc
 {
-
     /**
-     * @param array $rdsInstance
-     *
      * @return $this
      */
-	public function withRdsInstance(array $rdsInstance)
-	{
-	    $this->data['RdsInstance'] = $rdsInstance;
-		foreach ($rdsInstance as $i => $iValue) {
-			$this->options['query']['RdsInstance.' . ($i + 1)] = $iValue;
-		}
+    public function withRdsInstance(array $rdsInstance)
+    {
+        $this->data['RdsInstance'] = $rdsInstance;
+        foreach ($rdsInstance as $i => $iValue) {
+            $this->options['query']['RdsInstance.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $rdsSuperAccount
-     *
      * @return $this
      */
-	public function withRdsSuperAccount(array $rdsSuperAccount)
-	{
-	    $this->data['RdsSuperAccount'] = $rdsSuperAccount;
-		foreach ($rdsSuperAccount as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Password'])){
-				$this->options['query']['RdsSuperAccount.' . ($depth1 + 1) . '.Password'] = $depth1Value['Password'];
-			}
-			if(isset($depth1Value['AccountName'])){
-				$this->options['query']['RdsSuperAccount.' . ($depth1 + 1) . '.AccountName'] = $depth1Value['AccountName'];
-			}
-			if(isset($depth1Value['DbInstanceId'])){
-				$this->options['query']['RdsSuperAccount.' . ($depth1 + 1) . '.DbInstanceId'] = $depth1Value['DbInstanceId'];
-			}
-		}
+    public function withRdsSuperAccount(array $rdsSuperAccount)
+    {
+        $this->data['RdsSuperAccount'] = $rdsSuperAccount;
+        foreach ($rdsSuperAccount as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Password'])) {
+                $this->options['query']['RdsSuperAccount.' . ($depth1 + 1) . '.Password'] = $depth1Value['Password'];
+            }
+            if (isset($depth1Value['AccountName'])) {
+                $this->options['query']['RdsSuperAccount.' . ($depth1 + 1) . '.AccountName'] = $depth1Value['AccountName'];
+            }
+            if (isset($depth1Value['DbInstanceId'])) {
+                $this->options['query']['RdsSuperAccount.' . ($depth1 + 1) . '.DbInstanceId'] = $depth1Value['DbInstanceId'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $instDbName
-     *
      * @return $this
      */
-	public function withInstDbName(array $instDbName)
-	{
-	    $this->data['InstDbName'] = $instDbName;
-		foreach ($instDbName as $depth1 => $depth1Value) {
-			foreach ($depth1Value['ShardDbName'] as $i => $iValue) {
-				$this->options['query']['InstDbName.' . ($depth1 + 1) . '.ShardDbName.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['DbInstanceId'])){
-				$this->options['query']['InstDbName.' . ($depth1 + 1) . '.DbInstanceId'] = $depth1Value['DbInstanceId'];
-			}
-		}
+    public function withInstDbName(array $instDbName)
+    {
+        $this->data['InstDbName'] = $instDbName;
+        foreach ($instDbName as $depth1 => $depth1Value) {
+            foreach ($depth1Value['ShardDbName'] as $i => $iValue) {
+                $this->options['query']['InstDbName.' . ($depth1 + 1) . '.ShardDbName.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['DbInstanceId'])) {
+                $this->options['query']['InstDbName.' . ($depth1 + 1) . '.DbInstanceId'] = $depth1Value['DbInstanceId'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -272,7 +265,6 @@ class CreateDrdsDB extends Rpc
  */
 class CreateDrdsInstance extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -298,25 +290,22 @@ class CreateDrdsInstance extends Rpc
  */
 class CreateInstanceAccount extends Rpc
 {
-
     /**
-     * @param array $dbPrivilege
-     *
      * @return $this
      */
-	public function withDbPrivilege(array $dbPrivilege)
-	{
-	    $this->data['DbPrivilege'] = $dbPrivilege;
-		foreach ($dbPrivilege as $depth1 => $depth1Value) {
-			if(isset($depth1Value['DbName'])){
-				$this->options['query']['DbPrivilege.' . ($depth1 + 1) . '.DbName'] = $depth1Value['DbName'];
-			}
-			if(isset($depth1Value['Privilege'])){
-				$this->options['query']['DbPrivilege.' . ($depth1 + 1) . '.Privilege'] = $depth1Value['Privilege'];
-			}
-		}
+    public function withDbPrivilege(array $dbPrivilege)
+    {
+        $this->data['DbPrivilege'] = $dbPrivilege;
+        foreach ($dbPrivilege as $depth1 => $depth1Value) {
+            if (isset($depth1Value['DbName'])) {
+                $this->options['query']['DbPrivilege.' . ($depth1 + 1) . '.DbName'] = $depth1Value['DbName'];
+            }
+            if (isset($depth1Value['Privilege'])) {
+                $this->options['query']['DbPrivilege.' . ($depth1 + 1) . '.Privilege'] = $depth1Value['Privilege'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -621,25 +610,22 @@ class DescribeDrdsInstanceMonitor extends Rpc
  */
 class DescribeDrdsInstances extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -858,20 +844,17 @@ class DescribeRDSPerformance extends Rpc
  */
 class DescribeRdsPerformanceSummary extends Rpc
 {
-
     /**
-     * @param array $rdsInstanceId
-     *
      * @return $this
      */
-	public function withRdsInstanceId(array $rdsInstanceId)
-	{
-	    $this->data['RdsInstanceId'] = $rdsInstanceId;
-		foreach ($rdsInstanceId as $i => $iValue) {
-			$this->options['query']['RdsInstanceId.' . ($i + 1)] = $iValue;
-		}
+    public function withRdsInstanceId(array $rdsInstanceId)
+    {
+        $this->data['RdsInstanceId'] = $rdsInstanceId;
+        foreach ($rdsInstanceId as $i => $iValue) {
+            $this->options['query']['RdsInstanceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -884,20 +867,17 @@ class DescribeRdsPerformanceSummary extends Rpc
  */
 class DescribeRdsSuperAccountInstances extends Rpc
 {
-
     /**
-     * @param array $rdsInstance
-     *
      * @return $this
      */
-	public function withRdsInstance(array $rdsInstance)
-	{
-	    $this->data['RdsInstance'] = $rdsInstance;
-		foreach ($rdsInstance as $i => $iValue) {
-			$this->options['query']['RdsInstance.' . ($i + 1)] = $iValue;
-		}
+    public function withRdsInstance(array $rdsInstance)
+    {
+        $this->data['RdsInstance'] = $rdsInstance;
+        foreach ($rdsInstance as $i => $iValue) {
+            $this->options['query']['RdsInstance.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1053,40 +1033,35 @@ class EnableSqlFlashbackMatchSwitch extends Rpc
  */
 class ListTagResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1269,20 +1244,17 @@ class SetBackupPolicy extends Rpc
  */
 class SetupBroadcastTables extends Rpc
 {
-
     /**
-     * @param array $tableName
-     *
      * @return $this
      */
-	public function withTableName(array $tableName)
-	{
-	    $this->data['TableName'] = $tableName;
-		foreach ($tableName as $i => $iValue) {
-			$this->options['query']['TableName.' . ($i + 1)] = $iValue;
-		}
+    public function withTableName(array $tableName)
+    {
+        $this->data['TableName'] = $tableName;
+        foreach ($tableName as $i => $iValue) {
+            $this->options['query']['TableName.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1295,34 +1267,31 @@ class SetupBroadcastTables extends Rpc
  */
 class SetupDrdsParams extends Rpc
 {
-
     /**
-     * @param array $data
-     *
      * @return $this
      */
-	public function withData(array $data)
-	{
-	    $this->data['Data'] = $data;
-		foreach ($data as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ParamType'])){
-				$this->options['query']['Data.' . ($depth1 + 1) . '.ParamType'] = $depth1Value['ParamType'];
-			}
-			if(isset($depth1Value['DbName'])){
-				$this->options['query']['Data.' . ($depth1 + 1) . '.DbName'] = $depth1Value['DbName'];
-			}
-			if(isset($depth1Value['ParamRanges'])){
-				$this->options['query']['Data.' . ($depth1 + 1) . '.ParamRanges'] = $depth1Value['ParamRanges'];
-			}
-			if(isset($depth1Value['ParamVariableName'])){
-				$this->options['query']['Data.' . ($depth1 + 1) . '.ParamVariableName'] = $depth1Value['ParamVariableName'];
-			}
-			if(isset($depth1Value['ParamValue'])){
-				$this->options['query']['Data.' . ($depth1 + 1) . '.ParamValue'] = $depth1Value['ParamValue'];
-			}
-		}
+    public function withData(array $data)
+    {
+        $this->data['Data'] = $data;
+        foreach ($data as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ParamType'])) {
+                $this->options['query']['Data.' . ($depth1 + 1) . '.ParamType'] = $depth1Value['ParamType'];
+            }
+            if (isset($depth1Value['DbName'])) {
+                $this->options['query']['Data.' . ($depth1 + 1) . '.DbName'] = $depth1Value['DbName'];
+            }
+            if (isset($depth1Value['ParamRanges'])) {
+                $this->options['query']['Data.' . ($depth1 + 1) . '.ParamRanges'] = $depth1Value['ParamRanges'];
+            }
+            if (isset($depth1Value['ParamVariableName'])) {
+                $this->options['query']['Data.' . ($depth1 + 1) . '.ParamVariableName'] = $depth1Value['ParamVariableName'];
+            }
+            if (isset($depth1Value['ParamValue'])) {
+                $this->options['query']['Data.' . ($depth1 + 1) . '.ParamValue'] = $depth1Value['ParamValue'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1337,20 +1306,17 @@ class SetupDrdsParams extends Rpc
  */
 class SetupTable extends Rpc
 {
-
     /**
-     * @param array $tableName
-     *
      * @return $this
      */
-	public function withTableName(array $tableName)
-	{
-	    $this->data['TableName'] = $tableName;
-		foreach ($tableName as $i => $iValue) {
-			$this->options['query']['TableName.' . ($i + 1)] = $iValue;
-		}
+    public function withTableName(array $tableName)
+    {
+        $this->data['TableName'] = $tableName;
+        foreach ($tableName as $i => $iValue) {
+            $this->options['query']['TableName.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1399,20 +1365,17 @@ class SubmitCleanTask extends Rpc
  */
 class SubmitHotExpandPreCheckTask extends Rpc
 {
-
     /**
-     * @param array $tableList
-     *
      * @return $this
      */
-	public function withTableList(array $tableList)
-	{
-	    $this->data['TableList'] = $tableList;
-		foreach ($tableList as $i => $iValue) {
-			$this->options['query']['TableList.' . ($i + 1)] = $iValue;
-		}
+    public function withTableList(array $tableList)
+    {
+        $this->data['TableList'] = $tableList;
+        foreach ($tableList as $i => $iValue) {
+            $this->options['query']['TableList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1432,103 +1395,94 @@ class SubmitHotExpandPreCheckTask extends Rpc
  */
 class SubmitHotExpandTask extends Rpc
 {
-
     /**
-     * @param array $mapping
-     *
      * @return $this
      */
-	public function withMapping(array $mapping)
-	{
-	    $this->data['Mapping'] = $mapping;
-		foreach ($mapping as $depth1 => $depth1Value) {
-			if(isset($depth1Value['DbShardColumn'])){
-				$this->options['query']['Mapping.' . ($depth1 + 1) . '.DbShardColumn'] = $depth1Value['DbShardColumn'];
-			}
-			if(isset($depth1Value['TbShardColumn'])){
-				$this->options['query']['Mapping.' . ($depth1 + 1) . '.TbShardColumn'] = $depth1Value['TbShardColumn'];
-			}
-			if(isset($depth1Value['ShardTbValue'])){
-				$this->options['query']['Mapping.' . ($depth1 + 1) . '.ShardTbValue'] = $depth1Value['ShardTbValue'];
-			}
-			if(isset($depth1Value['HotDbName'])){
-				$this->options['query']['Mapping.' . ($depth1 + 1) . '.HotDbName'] = $depth1Value['HotDbName'];
-			}
-			if(isset($depth1Value['ShardDbValue'])){
-				$this->options['query']['Mapping.' . ($depth1 + 1) . '.ShardDbValue'] = $depth1Value['ShardDbValue'];
-			}
-			if(isset($depth1Value['HotTableName'])){
-				$this->options['query']['Mapping.' . ($depth1 + 1) . '.HotTableName'] = $depth1Value['HotTableName'];
-			}
-			if(isset($depth1Value['LogicTable'])){
-				$this->options['query']['Mapping.' . ($depth1 + 1) . '.LogicTable'] = $depth1Value['LogicTable'];
-			}
-		}
+    public function withMapping(array $mapping)
+    {
+        $this->data['Mapping'] = $mapping;
+        foreach ($mapping as $depth1 => $depth1Value) {
+            if (isset($depth1Value['DbShardColumn'])) {
+                $this->options['query']['Mapping.' . ($depth1 + 1) . '.DbShardColumn'] = $depth1Value['DbShardColumn'];
+            }
+            if (isset($depth1Value['TbShardColumn'])) {
+                $this->options['query']['Mapping.' . ($depth1 + 1) . '.TbShardColumn'] = $depth1Value['TbShardColumn'];
+            }
+            if (isset($depth1Value['ShardTbValue'])) {
+                $this->options['query']['Mapping.' . ($depth1 + 1) . '.ShardTbValue'] = $depth1Value['ShardTbValue'];
+            }
+            if (isset($depth1Value['HotDbName'])) {
+                $this->options['query']['Mapping.' . ($depth1 + 1) . '.HotDbName'] = $depth1Value['HotDbName'];
+            }
+            if (isset($depth1Value['ShardDbValue'])) {
+                $this->options['query']['Mapping.' . ($depth1 + 1) . '.ShardDbValue'] = $depth1Value['ShardDbValue'];
+            }
+            if (isset($depth1Value['HotTableName'])) {
+                $this->options['query']['Mapping.' . ($depth1 + 1) . '.HotTableName'] = $depth1Value['HotTableName'];
+            }
+            if (isset($depth1Value['LogicTable'])) {
+                $this->options['query']['Mapping.' . ($depth1 + 1) . '.LogicTable'] = $depth1Value['LogicTable'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $supperAccountMapping
-     *
      * @return $this
      */
-	public function withSupperAccountMapping(array $supperAccountMapping)
-	{
-	    $this->data['SupperAccountMapping'] = $supperAccountMapping;
-		foreach ($supperAccountMapping as $depth1 => $depth1Value) {
-			if(isset($depth1Value['InstanceName'])){
-				$this->options['query']['SupperAccountMapping.' . ($depth1 + 1) . '.InstanceName'] = $depth1Value['InstanceName'];
-			}
-			if(isset($depth1Value['SupperAccount'])){
-				$this->options['query']['SupperAccountMapping.' . ($depth1 + 1) . '.SupperAccount'] = $depth1Value['SupperAccount'];
-			}
-			if(isset($depth1Value['SupperPassword'])){
-				$this->options['query']['SupperAccountMapping.' . ($depth1 + 1) . '.SupperPassword'] = $depth1Value['SupperPassword'];
-			}
-		}
+    public function withSupperAccountMapping(array $supperAccountMapping)
+    {
+        $this->data['SupperAccountMapping'] = $supperAccountMapping;
+        foreach ($supperAccountMapping as $depth1 => $depth1Value) {
+            if (isset($depth1Value['InstanceName'])) {
+                $this->options['query']['SupperAccountMapping.' . ($depth1 + 1) . '.InstanceName'] = $depth1Value['InstanceName'];
+            }
+            if (isset($depth1Value['SupperAccount'])) {
+                $this->options['query']['SupperAccountMapping.' . ($depth1 + 1) . '.SupperAccount'] = $depth1Value['SupperAccount'];
+            }
+            if (isset($depth1Value['SupperPassword'])) {
+                $this->options['query']['SupperAccountMapping.' . ($depth1 + 1) . '.SupperPassword'] = $depth1Value['SupperPassword'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $extendedMapping
-     *
      * @return $this
      */
-	public function withExtendedMapping(array $extendedMapping)
-	{
-	    $this->data['ExtendedMapping'] = $extendedMapping;
-		foreach ($extendedMapping as $depth1 => $depth1Value) {
-			if(isset($depth1Value['SrcInstanceId'])){
-				$this->options['query']['ExtendedMapping.' . ($depth1 + 1) . '.SrcInstanceId'] = $depth1Value['SrcInstanceId'];
-			}
-			if(isset($depth1Value['SrcDb'])){
-				$this->options['query']['ExtendedMapping.' . ($depth1 + 1) . '.SrcDb'] = $depth1Value['SrcDb'];
-			}
-		}
+    public function withExtendedMapping(array $extendedMapping)
+    {
+        $this->data['ExtendedMapping'] = $extendedMapping;
+        foreach ($extendedMapping as $depth1 => $depth1Value) {
+            if (isset($depth1Value['SrcInstanceId'])) {
+                $this->options['query']['ExtendedMapping.' . ($depth1 + 1) . '.SrcInstanceId'] = $depth1Value['SrcInstanceId'];
+            }
+            if (isset($depth1Value['SrcDb'])) {
+                $this->options['query']['ExtendedMapping.' . ($depth1 + 1) . '.SrcDb'] = $depth1Value['SrcDb'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $instanceDbMapping
-     *
      * @return $this
      */
-	public function withInstanceDbMapping(array $instanceDbMapping)
-	{
-	    $this->data['InstanceDbMapping'] = $instanceDbMapping;
-		foreach ($instanceDbMapping as $depth1 => $depth1Value) {
-			if(isset($depth1Value['DbList'])){
-				$this->options['query']['InstanceDbMapping.' . ($depth1 + 1) . '.DbList'] = $depth1Value['DbList'];
-			}
-			if(isset($depth1Value['InstanceName'])){
-				$this->options['query']['InstanceDbMapping.' . ($depth1 + 1) . '.InstanceName'] = $depth1Value['InstanceName'];
-			}
-		}
+    public function withInstanceDbMapping(array $instanceDbMapping)
+    {
+        $this->data['InstanceDbMapping'] = $instanceDbMapping;
+        foreach ($instanceDbMapping as $depth1 => $depth1Value) {
+            if (isset($depth1Value['DbList'])) {
+                $this->options['query']['InstanceDbMapping.' . ($depth1 + 1) . '.DbList'] = $depth1Value['DbList'];
+            }
+            if (isset($depth1Value['InstanceName'])) {
+                $this->options['query']['InstanceDbMapping.' . ($depth1 + 1) . '.InstanceName'] = $depth1Value['InstanceName'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1566,54 +1520,49 @@ class SubmitSmoothExpandPreCheckTask extends Rpc
  */
 class SubmitSmoothExpandTask extends Rpc
 {
-
     /**
-     * @param array $rdsSuperInstances
-     *
      * @return $this
      */
-	public function withRdsSuperInstances(array $rdsSuperInstances)
-	{
-	    $this->data['RdsSuperInstances'] = $rdsSuperInstances;
-		foreach ($rdsSuperInstances as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Password'])){
-				$this->options['query']['RdsSuperInstances.' . ($depth1 + 1) . '.Password'] = $depth1Value['Password'];
-			}
-			if(isset($depth1Value['AccountName'])){
-				$this->options['query']['RdsSuperInstances.' . ($depth1 + 1) . '.AccountName'] = $depth1Value['AccountName'];
-			}
-			if(isset($depth1Value['RdsName'])){
-				$this->options['query']['RdsSuperInstances.' . ($depth1 + 1) . '.RdsName'] = $depth1Value['RdsName'];
-			}
-		}
+    public function withRdsSuperInstances(array $rdsSuperInstances)
+    {
+        $this->data['RdsSuperInstances'] = $rdsSuperInstances;
+        foreach ($rdsSuperInstances as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Password'])) {
+                $this->options['query']['RdsSuperInstances.' . ($depth1 + 1) . '.Password'] = $depth1Value['Password'];
+            }
+            if (isset($depth1Value['AccountName'])) {
+                $this->options['query']['RdsSuperInstances.' . ($depth1 + 1) . '.AccountName'] = $depth1Value['AccountName'];
+            }
+            if (isset($depth1Value['RdsName'])) {
+                $this->options['query']['RdsSuperInstances.' . ($depth1 + 1) . '.RdsName'] = $depth1Value['RdsName'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $transferTaskInfos
-     *
      * @return $this
      */
-	public function withTransferTaskInfos(array $transferTaskInfos)
-	{
-	    $this->data['TransferTaskInfos'] = $transferTaskInfos;
-		foreach ($transferTaskInfos as $depth1 => $depth1Value) {
-			if(isset($depth1Value['DbName'])){
-				$this->options['query']['TransferTaskInfos.' . ($depth1 + 1) . '.DbName'] = $depth1Value['DbName'];
-			}
-			if(isset($depth1Value['SrcInstanceName'])){
-				$this->options['query']['TransferTaskInfos.' . ($depth1 + 1) . '.SrcInstanceName'] = $depth1Value['SrcInstanceName'];
-			}
-			if(isset($depth1Value['InstanceType'])){
-				$this->options['query']['TransferTaskInfos.' . ($depth1 + 1) . '.InstanceType'] = $depth1Value['InstanceType'];
-			}
-			if(isset($depth1Value['DstInstanceName'])){
-				$this->options['query']['TransferTaskInfos.' . ($depth1 + 1) . '.DstInstanceName'] = $depth1Value['DstInstanceName'];
-			}
-		}
+    public function withTransferTaskInfos(array $transferTaskInfos)
+    {
+        $this->data['TransferTaskInfos'] = $transferTaskInfos;
+        foreach ($transferTaskInfos as $depth1 => $depth1Value) {
+            if (isset($depth1Value['DbName'])) {
+                $this->options['query']['TransferTaskInfos.' . ($depth1 + 1) . '.DbName'] = $depth1Value['DbName'];
+            }
+            if (isset($depth1Value['SrcInstanceName'])) {
+                $this->options['query']['TransferTaskInfos.' . ($depth1 + 1) . '.SrcInstanceName'] = $depth1Value['SrcInstanceName'];
+            }
+            if (isset($depth1Value['InstanceType'])) {
+                $this->options['query']['TransferTaskInfos.' . ($depth1 + 1) . '.InstanceType'] = $depth1Value['InstanceType'];
+            }
+            if (isset($depth1Value['DstInstanceName'])) {
+                $this->options['query']['TransferTaskInfos.' . ($depth1 + 1) . '.DstInstanceName'] = $depth1Value['DstInstanceName'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1679,40 +1628,35 @@ class SwitchGlobalBroadcastType extends Rpc
  */
 class TagResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1728,35 +1672,30 @@ class TagResources extends Rpc
  */
 class UntagResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tagKey
-     *
      * @return $this
      */
-	public function withTagKey(array $tagKey)
-	{
-	    $this->data['TagKey'] = $tagKey;
-		foreach ($tagKey as $i => $iValue) {
-			$this->options['query']['TagKey.' . ($i + 1)] = $iValue;
-		}
+    public function withTagKey(array $tagKey)
+    {
+        $this->data['TagKey'] = $tagKey;
+        foreach ($tagKey as $i => $iValue) {
+            $this->options['query']['TagKey.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 

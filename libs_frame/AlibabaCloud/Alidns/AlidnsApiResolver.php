@@ -169,25 +169,22 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AddCustomLine extends Rpc
 {
-
     /**
-     * @param array $ipSegment
-     *
      * @return $this
      */
-	public function withIpSegment(array $ipSegment)
-	{
-	    $this->data['IpSegment'] = $ipSegment;
-		foreach ($ipSegment as $depth1 => $depth1Value) {
-			if(isset($depth1Value['EndIp'])){
-				$this->options['query']['IpSegment.' . ($depth1 + 1) . '.EndIp'] = $depth1Value['EndIp'];
-			}
-			if(isset($depth1Value['StartIp'])){
-				$this->options['query']['IpSegment.' . ($depth1 + 1) . '.StartIp'] = $depth1Value['StartIp'];
-			}
-		}
+    public function withIpSegment(array $ipSegment)
+    {
+        $this->data['IpSegment'] = $ipSegment;
+        foreach ($ipSegment as $depth1 => $depth1Value) {
+            if (isset($depth1Value['EndIp'])) {
+                $this->options['query']['IpSegment.' . ($depth1 + 1) . '.EndIp'] = $depth1Value['EndIp'];
+            }
+            if (isset($depth1Value['StartIp'])) {
+                $this->options['query']['IpSegment.' . ($depth1 + 1) . '.StartIp'] = $depth1Value['StartIp'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -214,25 +211,22 @@ class AddCustomLine extends Rpc
  */
 class AddDnsCacheDomain extends Rpc
 {
-
     /**
-     * @param array $sourceDnsServer
-     *
      * @return $this
      */
-	public function withSourceDnsServer(array $sourceDnsServer)
-	{
-	    $this->data['SourceDnsServer'] = $sourceDnsServer;
-		foreach ($sourceDnsServer as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Port'])){
-				$this->options['query']['SourceDnsServer.' . ($depth1 + 1) . '.Port'] = $depth1Value['Port'];
-			}
-			if(isset($depth1Value['Host'])){
-				$this->options['query']['SourceDnsServer.' . ($depth1 + 1) . '.Host'] = $depth1Value['Host'];
-			}
-		}
+    public function withSourceDnsServer(array $sourceDnsServer)
+    {
+        $this->data['SourceDnsServer'] = $sourceDnsServer;
+        foreach ($sourceDnsServer as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Port'])) {
+                $this->options['query']['SourceDnsServer.' . ($depth1 + 1) . '.Port'] = $depth1Value['Port'];
+            }
+            if (isset($depth1Value['Host'])) {
+                $this->options['query']['SourceDnsServer.' . ($depth1 + 1) . '.Host'] = $depth1Value['Host'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -274,45 +268,40 @@ class AddDnsCacheDomain extends Rpc
  */
 class AddDnsGtmAccessStrategy extends Rpc
 {
-
     /**
-     * @param array $defaultAddrPool
-     *
      * @return $this
      */
-	public function withDefaultAddrPool(array $defaultAddrPool)
-	{
-	    $this->data['DefaultAddrPool'] = $defaultAddrPool;
-		foreach ($defaultAddrPool as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Id'])){
-				$this->options['query']['DefaultAddrPool.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
-			}
-			if(isset($depth1Value['LbaWeight'])){
-				$this->options['query']['DefaultAddrPool.' . ($depth1 + 1) . '.LbaWeight'] = $depth1Value['LbaWeight'];
-			}
-		}
+    public function withDefaultAddrPool(array $defaultAddrPool)
+    {
+        $this->data['DefaultAddrPool'] = $defaultAddrPool;
+        foreach ($defaultAddrPool as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Id'])) {
+                $this->options['query']['DefaultAddrPool.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+            }
+            if (isset($depth1Value['LbaWeight'])) {
+                $this->options['query']['DefaultAddrPool.' . ($depth1 + 1) . '.LbaWeight'] = $depth1Value['LbaWeight'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $failoverAddrPool
-     *
      * @return $this
      */
-	public function withFailoverAddrPool(array $failoverAddrPool)
-	{
-	    $this->data['FailoverAddrPool'] = $failoverAddrPool;
-		foreach ($failoverAddrPool as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Id'])){
-				$this->options['query']['FailoverAddrPool.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
-			}
-			if(isset($depth1Value['LbaWeight'])){
-				$this->options['query']['FailoverAddrPool.' . ($depth1 + 1) . '.LbaWeight'] = $depth1Value['LbaWeight'];
-			}
-		}
+    public function withFailoverAddrPool(array $failoverAddrPool)
+    {
+        $this->data['FailoverAddrPool'] = $failoverAddrPool;
+        foreach ($failoverAddrPool as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Id'])) {
+                $this->options['query']['FailoverAddrPool.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+            }
+            if (isset($depth1Value['LbaWeight'])) {
+                $this->options['query']['FailoverAddrPool.' . ($depth1 + 1) . '.LbaWeight'] = $depth1Value['LbaWeight'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -346,54 +335,49 @@ class AddDnsGtmAccessStrategy extends Rpc
  */
 class AddDnsGtmAddressPool extends Rpc
 {
-
     /**
-     * @param array $addr
-     *
      * @return $this
      */
-	public function withAddr(array $addr)
-	{
-	    $this->data['Addr'] = $addr;
-		foreach ($addr as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Mode'])){
-				$this->options['query']['Addr.' . ($depth1 + 1) . '.Mode'] = $depth1Value['Mode'];
-			}
-			if(isset($depth1Value['AttributeInfo'])){
-				$this->options['query']['Addr.' . ($depth1 + 1) . '.AttributeInfo'] = $depth1Value['AttributeInfo'];
-			}
-			if(isset($depth1Value['Remark'])){
-				$this->options['query']['Addr.' . ($depth1 + 1) . '.Remark'] = $depth1Value['Remark'];
-			}
-			if(isset($depth1Value['Addr'])){
-				$this->options['query']['Addr.' . ($depth1 + 1) . '.Addr'] = $depth1Value['Addr'];
-			}
-			if(isset($depth1Value['LbaWeight'])){
-				$this->options['query']['Addr.' . ($depth1 + 1) . '.LbaWeight'] = $depth1Value['LbaWeight'];
-			}
-		}
+    public function withAddr(array $addr)
+    {
+        $this->data['Addr'] = $addr;
+        foreach ($addr as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Mode'])) {
+                $this->options['query']['Addr.' . ($depth1 + 1) . '.Mode'] = $depth1Value['Mode'];
+            }
+            if (isset($depth1Value['AttributeInfo'])) {
+                $this->options['query']['Addr.' . ($depth1 + 1) . '.AttributeInfo'] = $depth1Value['AttributeInfo'];
+            }
+            if (isset($depth1Value['Remark'])) {
+                $this->options['query']['Addr.' . ($depth1 + 1) . '.Remark'] = $depth1Value['Remark'];
+            }
+            if (isset($depth1Value['Addr'])) {
+                $this->options['query']['Addr.' . ($depth1 + 1) . '.Addr'] = $depth1Value['Addr'];
+            }
+            if (isset($depth1Value['LbaWeight'])) {
+                $this->options['query']['Addr.' . ($depth1 + 1) . '.LbaWeight'] = $depth1Value['LbaWeight'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $ispCityNode
-     *
      * @return $this
      */
-	public function withIspCityNode(array $ispCityNode)
-	{
-	    $this->data['IspCityNode'] = $ispCityNode;
-		foreach ($ispCityNode as $depth1 => $depth1Value) {
-			if(isset($depth1Value['CityCode'])){
-				$this->options['query']['IspCityNode.' . ($depth1 + 1) . '.CityCode'] = $depth1Value['CityCode'];
-			}
-			if(isset($depth1Value['IspCode'])){
-				$this->options['query']['IspCityNode.' . ($depth1 + 1) . '.IspCode'] = $depth1Value['IspCode'];
-			}
-		}
+    public function withIspCityNode(array $ispCityNode)
+    {
+        $this->data['IspCityNode'] = $ispCityNode;
+        foreach ($ispCityNode as $depth1 => $depth1Value) {
+            if (isset($depth1Value['CityCode'])) {
+                $this->options['query']['IspCityNode.' . ($depth1 + 1) . '.CityCode'] = $depth1Value['CityCode'];
+            }
+            if (isset($depth1Value['IspCode'])) {
+                $this->options['query']['IspCityNode.' . ($depth1 + 1) . '.IspCode'] = $depth1Value['IspCode'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -418,25 +402,22 @@ class AddDnsGtmAddressPool extends Rpc
  */
 class AddDnsGtmMonitor extends Rpc
 {
-
     /**
-     * @param array $ispCityNode
-     *
      * @return $this
      */
-	public function withIspCityNode(array $ispCityNode)
-	{
-	    $this->data['IspCityNode'] = $ispCityNode;
-		foreach ($ispCityNode as $depth1 => $depth1Value) {
-			if(isset($depth1Value['CityCode'])){
-				$this->options['query']['IspCityNode.' . ($depth1 + 1) . '.CityCode'] = $depth1Value['CityCode'];
-			}
-			if(isset($depth1Value['IspCode'])){
-				$this->options['query']['IspCityNode.' . ($depth1 + 1) . '.IspCode'] = $depth1Value['IspCode'];
-			}
-		}
+    public function withIspCityNode(array $ispCityNode)
+    {
+        $this->data['IspCityNode'] = $ispCityNode;
+        foreach ($ispCityNode as $depth1 => $depth1Value) {
+            if (isset($depth1Value['CityCode'])) {
+                $this->options['query']['IspCityNode.' . ($depth1 + 1) . '.CityCode'] = $depth1Value['CityCode'];
+            }
+            if (isset($depth1Value['IspCode'])) {
+                $this->options['query']['IspCityNode.' . ($depth1 + 1) . '.IspCode'] = $depth1Value['IspCode'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -556,48 +537,43 @@ class AddGtmAccessStrategy extends Rpc
  */
 class AddGtmAddressPool extends Rpc
 {
-
     /**
-     * @param array $addr
-     *
      * @return $this
      */
-	public function withAddr(array $addr)
-	{
-	    $this->data['Addr'] = $addr;
-		foreach ($addr as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Mode'])){
-				$this->options['query']['Addr.' . ($depth1 + 1) . '.Mode'] = $depth1Value['Mode'];
-			}
-			if(isset($depth1Value['LbaWeight'])){
-				$this->options['query']['Addr.' . ($depth1 + 1) . '.LbaWeight'] = $depth1Value['LbaWeight'];
-			}
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Addr.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-		}
+    public function withAddr(array $addr)
+    {
+        $this->data['Addr'] = $addr;
+        foreach ($addr as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Mode'])) {
+                $this->options['query']['Addr.' . ($depth1 + 1) . '.Mode'] = $depth1Value['Mode'];
+            }
+            if (isset($depth1Value['LbaWeight'])) {
+                $this->options['query']['Addr.' . ($depth1 + 1) . '.LbaWeight'] = $depth1Value['LbaWeight'];
+            }
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Addr.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $ispCityNode
-     *
      * @return $this
      */
-	public function withIspCityNode(array $ispCityNode)
-	{
-	    $this->data['IspCityNode'] = $ispCityNode;
-		foreach ($ispCityNode as $depth1 => $depth1Value) {
-			if(isset($depth1Value['CityCode'])){
-				$this->options['query']['IspCityNode.' . ($depth1 + 1) . '.CityCode'] = $depth1Value['CityCode'];
-			}
-			if(isset($depth1Value['IspCode'])){
-				$this->options['query']['IspCityNode.' . ($depth1 + 1) . '.IspCode'] = $depth1Value['IspCode'];
-			}
-		}
+    public function withIspCityNode(array $ispCityNode)
+    {
+        $this->data['IspCityNode'] = $ispCityNode;
+        foreach ($ispCityNode as $depth1 => $depth1Value) {
+            if (isset($depth1Value['CityCode'])) {
+                $this->options['query']['IspCityNode.' . ($depth1 + 1) . '.CityCode'] = $depth1Value['CityCode'];
+            }
+            if (isset($depth1Value['IspCode'])) {
+                $this->options['query']['IspCityNode.' . ($depth1 + 1) . '.IspCode'] = $depth1Value['IspCode'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -622,25 +598,22 @@ class AddGtmAddressPool extends Rpc
  */
 class AddGtmMonitor extends Rpc
 {
-
     /**
-     * @param array $ispCityNode
-     *
      * @return $this
      */
-	public function withIspCityNode(array $ispCityNode)
-	{
-	    $this->data['IspCityNode'] = $ispCityNode;
-		foreach ($ispCityNode as $depth1 => $depth1Value) {
-			if(isset($depth1Value['CityCode'])){
-				$this->options['query']['IspCityNode.' . ($depth1 + 1) . '.CityCode'] = $depth1Value['CityCode'];
-			}
-			if(isset($depth1Value['IspCode'])){
-				$this->options['query']['IspCityNode.' . ($depth1 + 1) . '.IspCode'] = $depth1Value['IspCode'];
-			}
-		}
+    public function withIspCityNode(array $ispCityNode)
+    {
+        $this->data['IspCityNode'] = $ispCityNode;
+        foreach ($ispCityNode as $depth1 => $depth1Value) {
+            if (isset($depth1Value['CityCode'])) {
+                $this->options['query']['IspCityNode.' . ($depth1 + 1) . '.CityCode'] = $depth1Value['CityCode'];
+            }
+            if (isset($depth1Value['IspCode'])) {
+                $this->options['query']['IspCityNode.' . ($depth1 + 1) . '.IspCode'] = $depth1Value['IspCode'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1349,7 +1322,6 @@ class DescribeDomainInfo extends Rpc
  */
 class DescribeDomainLogs extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1459,25 +1431,22 @@ class DescribeDomainRecords extends Rpc
  */
 class DescribeDomains extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1780,7 +1749,6 @@ class DescribeInstanceDomains extends Rpc
  */
 class DescribeRecordLogs extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1973,40 +1941,35 @@ class GetTxtRecordForVerify extends Rpc
  */
 class ListTagResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2061,49 +2024,46 @@ class MoveGtmResourceGroup extends Rpc
  */
 class OperateBatchDomain extends Rpc
 {
-
     /**
-     * @param array $domainRecordInfo
-     *
      * @return $this
      */
-	public function withDomainRecordInfo(array $domainRecordInfo)
-	{
-	    $this->data['DomainRecordInfo'] = $domainRecordInfo;
-		foreach ($domainRecordInfo as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Rr'])){
-				$this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.Rr'] = $depth1Value['Rr'];
-			}
-			if(isset($depth1Value['NewType'])){
-				$this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.NewType'] = $depth1Value['NewType'];
-			}
-			if(isset($depth1Value['NewValue'])){
-				$this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.NewValue'] = $depth1Value['NewValue'];
-			}
-			if(isset($depth1Value['Line'])){
-				$this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.Line'] = $depth1Value['Line'];
-			}
-			if(isset($depth1Value['Domain'])){
-				$this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.Domain'] = $depth1Value['Domain'];
-			}
-			if(isset($depth1Value['Type'])){
-				$this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.Type'] = $depth1Value['Type'];
-			}
-			if(isset($depth1Value['Priority'])){
-				$this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.Priority'] = $depth1Value['Priority'];
-			}
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Ttl'])){
-				$this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.Ttl'] = $depth1Value['Ttl'];
-			}
-			if(isset($depth1Value['NewRr'])){
-				$this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.NewRr'] = $depth1Value['NewRr'];
-			}
-		}
+    public function withDomainRecordInfo(array $domainRecordInfo)
+    {
+        $this->data['DomainRecordInfo'] = $domainRecordInfo;
+        foreach ($domainRecordInfo as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Rr'])) {
+                $this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.Rr'] = $depth1Value['Rr'];
+            }
+            if (isset($depth1Value['NewType'])) {
+                $this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.NewType'] = $depth1Value['NewType'];
+            }
+            if (isset($depth1Value['NewValue'])) {
+                $this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.NewValue'] = $depth1Value['NewValue'];
+            }
+            if (isset($depth1Value['Line'])) {
+                $this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.Line'] = $depth1Value['Line'];
+            }
+            if (isset($depth1Value['Domain'])) {
+                $this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.Domain'] = $depth1Value['Domain'];
+            }
+            if (isset($depth1Value['Type'])) {
+                $this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.Type'] = $depth1Value['Type'];
+            }
+            if (isset($depth1Value['Priority'])) {
+                $this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.Priority'] = $depth1Value['Priority'];
+            }
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Ttl'])) {
+                $this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.Ttl'] = $depth1Value['Ttl'];
+            }
+            if (isset($depth1Value['NewRr'])) {
+                $this->options['query']['DomainRecordInfo.' . ($depth1 + 1) . '.NewRr'] = $depth1Value['NewRr'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2279,40 +2239,35 @@ class SwitchDnsGtmInstanceStrategyMode extends Rpc
  */
 class TagResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2360,35 +2315,30 @@ class UnbindInstanceDomains extends Rpc
  */
 class UntagResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tagKey
-     *
      * @return $this
      */
-	public function withTagKey(array $tagKey)
-	{
-	    $this->data['TagKey'] = $tagKey;
-		foreach ($tagKey as $i => $iValue) {
-			$this->options['query']['TagKey.' . ($i + 1)] = $iValue;
-		}
+    public function withTagKey(array $tagKey)
+    {
+        $this->data['TagKey'] = $tagKey;
+        foreach ($tagKey as $i => $iValue) {
+            $this->options['query']['TagKey.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2405,25 +2355,22 @@ class UntagResources extends Rpc
  */
 class UpdateCustomLine extends Rpc
 {
-
     /**
-     * @param array $ipSegment
-     *
      * @return $this
      */
-	public function withIpSegment(array $ipSegment)
-	{
-	    $this->data['IpSegment'] = $ipSegment;
-		foreach ($ipSegment as $depth1 => $depth1Value) {
-			if(isset($depth1Value['EndIp'])){
-				$this->options['query']['IpSegment.' . ($depth1 + 1) . '.EndIp'] = $depth1Value['EndIp'];
-			}
-			if(isset($depth1Value['StartIp'])){
-				$this->options['query']['IpSegment.' . ($depth1 + 1) . '.StartIp'] = $depth1Value['StartIp'];
-			}
-		}
+    public function withIpSegment(array $ipSegment)
+    {
+        $this->data['IpSegment'] = $ipSegment;
+        foreach ($ipSegment as $depth1 => $depth1Value) {
+            if (isset($depth1Value['EndIp'])) {
+                $this->options['query']['IpSegment.' . ($depth1 + 1) . '.EndIp'] = $depth1Value['EndIp'];
+            }
+            if (isset($depth1Value['StartIp'])) {
+                $this->options['query']['IpSegment.' . ($depth1 + 1) . '.StartIp'] = $depth1Value['StartIp'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2448,25 +2395,22 @@ class UpdateCustomLine extends Rpc
  */
 class UpdateDnsCacheDomain extends Rpc
 {
-
     /**
-     * @param array $sourceDnsServer
-     *
      * @return $this
      */
-	public function withSourceDnsServer(array $sourceDnsServer)
-	{
-	    $this->data['SourceDnsServer'] = $sourceDnsServer;
-		foreach ($sourceDnsServer as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Port'])){
-				$this->options['query']['SourceDnsServer.' . ($depth1 + 1) . '.Port'] = $depth1Value['Port'];
-			}
-			if(isset($depth1Value['Host'])){
-				$this->options['query']['SourceDnsServer.' . ($depth1 + 1) . '.Host'] = $depth1Value['Host'];
-			}
-		}
+    public function withSourceDnsServer(array $sourceDnsServer)
+    {
+        $this->data['SourceDnsServer'] = $sourceDnsServer;
+        foreach ($sourceDnsServer as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Port'])) {
+                $this->options['query']['SourceDnsServer.' . ($depth1 + 1) . '.Port'] = $depth1Value['Port'];
+            }
+            if (isset($depth1Value['Host'])) {
+                $this->options['query']['SourceDnsServer.' . ($depth1 + 1) . '.Host'] = $depth1Value['Host'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2520,45 +2464,40 @@ class UpdateDnsCacheDomainRemark extends Rpc
  */
 class UpdateDnsGtmAccessStrategy extends Rpc
 {
-
     /**
-     * @param array $defaultAddrPool
-     *
      * @return $this
      */
-	public function withDefaultAddrPool(array $defaultAddrPool)
-	{
-	    $this->data['DefaultAddrPool'] = $defaultAddrPool;
-		foreach ($defaultAddrPool as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Id'])){
-				$this->options['query']['DefaultAddrPool.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
-			}
-			if(isset($depth1Value['LbaWeight'])){
-				$this->options['query']['DefaultAddrPool.' . ($depth1 + 1) . '.LbaWeight'] = $depth1Value['LbaWeight'];
-			}
-		}
+    public function withDefaultAddrPool(array $defaultAddrPool)
+    {
+        $this->data['DefaultAddrPool'] = $defaultAddrPool;
+        foreach ($defaultAddrPool as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Id'])) {
+                $this->options['query']['DefaultAddrPool.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+            }
+            if (isset($depth1Value['LbaWeight'])) {
+                $this->options['query']['DefaultAddrPool.' . ($depth1 + 1) . '.LbaWeight'] = $depth1Value['LbaWeight'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $failoverAddrPool
-     *
      * @return $this
      */
-	public function withFailoverAddrPool(array $failoverAddrPool)
-	{
-	    $this->data['FailoverAddrPool'] = $failoverAddrPool;
-		foreach ($failoverAddrPool as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Id'])){
-				$this->options['query']['FailoverAddrPool.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
-			}
-			if(isset($depth1Value['LbaWeight'])){
-				$this->options['query']['FailoverAddrPool.' . ($depth1 + 1) . '.LbaWeight'] = $depth1Value['LbaWeight'];
-			}
-		}
+    public function withFailoverAddrPool(array $failoverAddrPool)
+    {
+        $this->data['FailoverAddrPool'] = $failoverAddrPool;
+        foreach ($failoverAddrPool as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Id'])) {
+                $this->options['query']['FailoverAddrPool.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+            }
+            if (isset($depth1Value['LbaWeight'])) {
+                $this->options['query']['FailoverAddrPool.' . ($depth1 + 1) . '.LbaWeight'] = $depth1Value['LbaWeight'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2577,34 +2516,31 @@ class UpdateDnsGtmAccessStrategy extends Rpc
  */
 class UpdateDnsGtmAddressPool extends Rpc
 {
-
     /**
-     * @param array $addr
-     *
      * @return $this
      */
-	public function withAddr(array $addr)
-	{
-	    $this->data['Addr'] = $addr;
-		foreach ($addr as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Mode'])){
-				$this->options['query']['Addr.' . ($depth1 + 1) . '.Mode'] = $depth1Value['Mode'];
-			}
-			if(isset($depth1Value['AttributeInfo'])){
-				$this->options['query']['Addr.' . ($depth1 + 1) . '.AttributeInfo'] = $depth1Value['AttributeInfo'];
-			}
-			if(isset($depth1Value['Remark'])){
-				$this->options['query']['Addr.' . ($depth1 + 1) . '.Remark'] = $depth1Value['Remark'];
-			}
-			if(isset($depth1Value['Addr'])){
-				$this->options['query']['Addr.' . ($depth1 + 1) . '.Addr'] = $depth1Value['Addr'];
-			}
-			if(isset($depth1Value['LbaWeight'])){
-				$this->options['query']['Addr.' . ($depth1 + 1) . '.LbaWeight'] = $depth1Value['LbaWeight'];
-			}
-		}
+    public function withAddr(array $addr)
+    {
+        $this->data['Addr'] = $addr;
+        foreach ($addr as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Mode'])) {
+                $this->options['query']['Addr.' . ($depth1 + 1) . '.Mode'] = $depth1Value['Mode'];
+            }
+            if (isset($depth1Value['AttributeInfo'])) {
+                $this->options['query']['Addr.' . ($depth1 + 1) . '.AttributeInfo'] = $depth1Value['AttributeInfo'];
+            }
+            if (isset($depth1Value['Remark'])) {
+                $this->options['query']['Addr.' . ($depth1 + 1) . '.Remark'] = $depth1Value['Remark'];
+            }
+            if (isset($depth1Value['Addr'])) {
+                $this->options['query']['Addr.' . ($depth1 + 1) . '.Addr'] = $depth1Value['Addr'];
+            }
+            if (isset($depth1Value['LbaWeight'])) {
+                $this->options['query']['Addr.' . ($depth1 + 1) . '.LbaWeight'] = $depth1Value['LbaWeight'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2633,28 +2569,25 @@ class UpdateDnsGtmAddressPool extends Rpc
  */
 class UpdateDnsGtmInstanceGlobalConfig extends Rpc
 {
-
     /**
-     * @param array $alertConfig
-     *
      * @return $this
      */
-	public function withAlertConfig(array $alertConfig)
-	{
-	    $this->data['AlertConfig'] = $alertConfig;
-		foreach ($alertConfig as $depth1 => $depth1Value) {
-			if(isset($depth1Value['SmsNotice'])){
-				$this->options['query']['AlertConfig.' . ($depth1 + 1) . '.SmsNotice'] = $depth1Value['SmsNotice'];
-			}
-			if(isset($depth1Value['NoticeType'])){
-				$this->options['query']['AlertConfig.' . ($depth1 + 1) . '.NoticeType'] = $depth1Value['NoticeType'];
-			}
-			if(isset($depth1Value['EmailNotice'])){
-				$this->options['query']['AlertConfig.' . ($depth1 + 1) . '.EmailNotice'] = $depth1Value['EmailNotice'];
-			}
-		}
+    public function withAlertConfig(array $alertConfig)
+    {
+        $this->data['AlertConfig'] = $alertConfig;
+        foreach ($alertConfig as $depth1 => $depth1Value) {
+            if (isset($depth1Value['SmsNotice'])) {
+                $this->options['query']['AlertConfig.' . ($depth1 + 1) . '.SmsNotice'] = $depth1Value['SmsNotice'];
+            }
+            if (isset($depth1Value['NoticeType'])) {
+                $this->options['query']['AlertConfig.' . ($depth1 + 1) . '.NoticeType'] = $depth1Value['NoticeType'];
+            }
+            if (isset($depth1Value['EmailNotice'])) {
+                $this->options['query']['AlertConfig.' . ($depth1 + 1) . '.EmailNotice'] = $depth1Value['EmailNotice'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2679,25 +2612,22 @@ class UpdateDnsGtmInstanceGlobalConfig extends Rpc
  */
 class UpdateDnsGtmMonitor extends Rpc
 {
-
     /**
-     * @param array $ispCityNode
-     *
      * @return $this
      */
-	public function withIspCityNode(array $ispCityNode)
-	{
-	    $this->data['IspCityNode'] = $ispCityNode;
-		foreach ($ispCityNode as $depth1 => $depth1Value) {
-			if(isset($depth1Value['CityCode'])){
-				$this->options['query']['IspCityNode.' . ($depth1 + 1) . '.CityCode'] = $depth1Value['CityCode'];
-			}
-			if(isset($depth1Value['IspCode'])){
-				$this->options['query']['IspCityNode.' . ($depth1 + 1) . '.IspCode'] = $depth1Value['IspCode'];
-			}
-		}
+    public function withIspCityNode(array $ispCityNode)
+    {
+        $this->data['IspCityNode'] = $ispCityNode;
+        foreach ($ispCityNode as $depth1 => $depth1Value) {
+            if (isset($depth1Value['CityCode'])) {
+                $this->options['query']['IspCityNode.' . ($depth1 + 1) . '.CityCode'] = $depth1Value['CityCode'];
+            }
+            if (isset($depth1Value['IspCode'])) {
+                $this->options['query']['IspCityNode.' . ($depth1 + 1) . '.IspCode'] = $depth1Value['IspCode'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2818,28 +2748,25 @@ class UpdateGtmAccessStrategy extends Rpc
  */
 class UpdateGtmAddressPool extends Rpc
 {
-
     /**
-     * @param array $addr
-     *
      * @return $this
      */
-	public function withAddr(array $addr)
-	{
-	    $this->data['Addr'] = $addr;
-		foreach ($addr as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Mode'])){
-				$this->options['query']['Addr.' . ($depth1 + 1) . '.Mode'] = $depth1Value['Mode'];
-			}
-			if(isset($depth1Value['LbaWeight'])){
-				$this->options['query']['Addr.' . ($depth1 + 1) . '.LbaWeight'] = $depth1Value['LbaWeight'];
-			}
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Addr.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-		}
+    public function withAddr(array $addr)
+    {
+        $this->data['Addr'] = $addr;
+        foreach ($addr as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Mode'])) {
+                $this->options['query']['Addr.' . ($depth1 + 1) . '.Mode'] = $depth1Value['Mode'];
+            }
+            if (isset($depth1Value['LbaWeight'])) {
+                $this->options['query']['Addr.' . ($depth1 + 1) . '.LbaWeight'] = $depth1Value['LbaWeight'];
+            }
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Addr.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2890,25 +2817,22 @@ class UpdateGtmInstanceGlobalConfig extends Rpc
  */
 class UpdateGtmMonitor extends Rpc
 {
-
     /**
-     * @param array $ispCityNode
-     *
      * @return $this
      */
-	public function withIspCityNode(array $ispCityNode)
-	{
-	    $this->data['IspCityNode'] = $ispCityNode;
-		foreach ($ispCityNode as $depth1 => $depth1Value) {
-			if(isset($depth1Value['CityCode'])){
-				$this->options['query']['IspCityNode.' . ($depth1 + 1) . '.CityCode'] = $depth1Value['CityCode'];
-			}
-			if(isset($depth1Value['IspCode'])){
-				$this->options['query']['IspCityNode.' . ($depth1 + 1) . '.IspCode'] = $depth1Value['IspCode'];
-			}
-		}
+    public function withIspCityNode(array $ispCityNode)
+    {
+        $this->data['IspCityNode'] = $ispCityNode;
+        foreach ($ispCityNode as $depth1 => $depth1Value) {
+            if (isset($depth1Value['CityCode'])) {
+                $this->options['query']['IspCityNode.' . ($depth1 + 1) . '.CityCode'] = $depth1Value['CityCode'];
+            }
+            if (isset($depth1Value['IspCode'])) {
+                $this->options['query']['IspCityNode.' . ($depth1 + 1) . '.IspCode'] = $depth1Value['IspCode'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 

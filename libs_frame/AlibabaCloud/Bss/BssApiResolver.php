@@ -37,7 +37,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class OpenCallback extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -57,7 +56,6 @@ class OpenCallback extends Rpc
  */
 class QueryForCssOrder extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -77,7 +75,6 @@ class QueryForCssOrder extends Rpc
  */
 class CreateOrder extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -97,7 +94,6 @@ class CreateOrder extends Rpc
  */
 class VnoPayCallBackNotify extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -117,7 +113,6 @@ class VnoPayCallBackNotify extends Rpc
  */
 class VnoBatchRefundOrder extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -138,7 +133,6 @@ class VnoBatchRefundOrder extends Rpc
  */
 class SubscriptionCreateOrderApi extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -200,7 +194,6 @@ class SetResourceBusinessStatus extends Rpc
  */
 class DescribeCouponList extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }
@@ -211,7 +204,6 @@ class DescribeCouponList extends Rpc
  */
 class DescribeCouponDetail extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 
@@ -221,7 +213,6 @@ class DescribeCouponDetail extends Rpc
 
 class DescribeCashDetail extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }

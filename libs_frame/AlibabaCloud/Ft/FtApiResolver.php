@@ -45,7 +45,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class BatchAuditTest01 extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -137,25 +136,22 @@ class FtIpFlowControl extends Rpc
  */
 class FtParamList extends Rpc
 {
-
     /**
-     * @param array $disk
-     *
      * @return $this
      */
-	public function withDisk(array $disk)
-	{
-	    $this->data['Disk'] = $disk;
-		foreach ($disk as $depth1 => $depth1Value) {
-			foreach ($depth1Value['Size'] as $i => $iValue) {
-				$this->options['query']['Disk.' . ($depth1 + 1) . '.Size.' . ($i + 1)] = $iValue;
-			}
-			foreach ($depth1Value['Type'] as $i => $iValue) {
-				$this->options['query']['Disk.' . ($depth1 + 1) . '.Type.' . ($i + 1)] = $iValue;
-			}
-		}
+    public function withDisk(array $disk)
+    {
+        $this->data['Disk'] = $disk;
+        foreach ($disk as $depth1 => $depth1Value) {
+            foreach ($depth1Value['Size'] as $i => $iValue) {
+                $this->options['query']['Disk.' . ($depth1 + 1) . '.Size.' . ($i + 1)] = $iValue;
+            }
+            foreach ($depth1Value['Type'] as $i => $iValue) {
+                $this->options['query']['Disk.' . ($depth1 + 1) . '.Type.' . ($i + 1)] = $iValue;
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -164,7 +160,6 @@ class FtParamList extends Rpc
  */
 class TestFlowStrategy01 extends Rpc
 {
-
     /** @var string */
     public $method = 'PUT';
 

@@ -54,23 +54,20 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class BatchDeleteJobs extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
     /**
-     * @param array $jobIdList
-     *
      * @return $this
      */
-	public function withJobIdList(array $jobIdList)
-	{
-	    $this->data['JobIdList'] = $jobIdList;
-		foreach ($jobIdList as $i => $iValue) {
-			$this->options['form_params']['JobIdList.' . ($i + 1)] = $iValue;
-		}
+    public function withJobIdList(array $jobIdList)
+    {
+        $this->data['JobIdList'] = $jobIdList;
+        foreach ($jobIdList as $i => $iValue) {
+            $this->options['form_params']['JobIdList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -85,23 +82,20 @@ class BatchDeleteJobs extends Rpc
  */
 class BatchDisableJobs extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
     /**
-     * @param array $jobIdList
-     *
      * @return $this
      */
-	public function withJobIdList(array $jobIdList)
-	{
-	    $this->data['JobIdList'] = $jobIdList;
-		foreach ($jobIdList as $i => $iValue) {
-			$this->options['form_params']['JobIdList.' . ($i + 1)] = $iValue;
-		}
+    public function withJobIdList(array $jobIdList)
+    {
+        $this->data['JobIdList'] = $jobIdList;
+        foreach ($jobIdList as $i => $iValue) {
+            $this->options['form_params']['JobIdList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -116,23 +110,20 @@ class BatchDisableJobs extends Rpc
  */
 class BatchEnableJobs extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
     /**
-     * @param array $jobIdList
-     *
      * @return $this
      */
-	public function withJobIdList(array $jobIdList)
-	{
-	    $this->data['JobIdList'] = $jobIdList;
-		foreach ($jobIdList as $i => $iValue) {
-			$this->options['form_params']['JobIdList.' . ($i + 1)] = $iValue;
-		}
+    public function withJobIdList(array $jobIdList)
+    {
+        $this->data['JobIdList'] = $jobIdList;
+        foreach ($jobIdList as $i => $iValue) {
+            $this->options['form_params']['JobIdList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -158,7 +149,6 @@ class BatchEnableJobs extends Rpc
  */
 class CreateAppGroup extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }
@@ -197,7 +187,6 @@ class CreateAppGroup extends Rpc
  */
 class CreateJob extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -514,23 +503,21 @@ class CreateJob extends Rpc
     }
 
     /**
-     * @param array $contactInfo
-     *
      * @return $this
      */
-	public function withContactInfo(array $contactInfo)
-	{
-	    $this->data['ContactInfo'] = $contactInfo;
-		foreach ($contactInfo as $depth1 => $depth1Value) {
-			if(isset($depth1Value['UserPhone'])){
-				$this->options['form_params']['ContactInfo.' . ($depth1 + 1) . '.UserPhone'] = $depth1Value['UserPhone'];
-			}
-			if(isset($depth1Value['UserName'])){
-				$this->options['form_params']['ContactInfo.' . ($depth1 + 1) . '.UserName'] = $depth1Value['UserName'];
-			}
-		}
+    public function withContactInfo(array $contactInfo)
+    {
+        $this->data['ContactInfo'] = $contactInfo;
+        foreach ($contactInfo as $depth1 => $depth1Value) {
+            if (isset($depth1Value['UserPhone'])) {
+                $this->options['form_params']['ContactInfo.' . ($depth1 + 1) . '.UserPhone'] = $depth1Value['UserPhone'];
+            }
+            if (isset($depth1Value['UserName'])) {
+                $this->options['form_params']['ContactInfo.' . ($depth1 + 1) . '.UserName'] = $depth1Value['UserName'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -625,14 +612,12 @@ class DeleteJob extends Rpc
  */
 class DeleteWorkflow extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }
 
 class DescribeRegions extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 }
@@ -663,7 +648,6 @@ class DisableJob extends Rpc
  */
 class DisableWorkflow extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }
@@ -694,7 +678,6 @@ class EnableJob extends Rpc
  */
 class EnableWorkflow extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }
@@ -729,7 +712,6 @@ class ExecuteJob extends Rpc
  */
 class ExecuteWorkflow extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }
@@ -762,7 +744,6 @@ class GetJobInfo extends Rpc
  */
 class GetJobInstance extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }
@@ -797,7 +778,6 @@ class GetJobInstanceList extends Rpc
  */
 class GrantPermission extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 }
@@ -844,7 +824,6 @@ class ListNamespaces extends Rpc
  */
 class RevokePermission extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 }
@@ -863,7 +842,6 @@ class RevokePermission extends Rpc
  */
 class StopInstance extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }
@@ -902,7 +880,6 @@ class StopInstance extends Rpc
  */
 class UpdateJob extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -1219,23 +1196,21 @@ class UpdateJob extends Rpc
     }
 
     /**
-     * @param array $contactInfo
-     *
      * @return $this
      */
-	public function withContactInfo(array $contactInfo)
-	{
-	    $this->data['ContactInfo'] = $contactInfo;
-		foreach ($contactInfo as $depth1 => $depth1Value) {
-			if(isset($depth1Value['UserPhone'])){
-				$this->options['form_params']['ContactInfo.' . ($depth1 + 1) . '.UserPhone'] = $depth1Value['UserPhone'];
-			}
-			if(isset($depth1Value['UserName'])){
-				$this->options['form_params']['ContactInfo.' . ($depth1 + 1) . '.UserName'] = $depth1Value['UserName'];
-			}
-		}
+    public function withContactInfo(array $contactInfo)
+    {
+        $this->data['ContactInfo'] = $contactInfo;
+        foreach ($contactInfo as $depth1 => $depth1Value) {
+            if (isset($depth1Value['UserPhone'])) {
+                $this->options['form_params']['ContactInfo.' . ($depth1 + 1) . '.UserPhone'] = $depth1Value['UserPhone'];
+            }
+            if (isset($depth1Value['UserName'])) {
+                $this->options['form_params']['ContactInfo.' . ($depth1 + 1) . '.UserName'] = $depth1Value['UserName'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

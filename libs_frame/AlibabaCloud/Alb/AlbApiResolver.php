@@ -423,20 +423,17 @@ class DeleteRule extends Rpc
  */
 class DeleteRules extends Rpc
 {
-
     /**
-     * @param array $ruleIds
-     *
      * @return $this
      */
-	public function withRuleIds(array $ruleIds)
-	{
-	    $this->data['RuleIds'] = $ruleIds;
-		foreach ($ruleIds as $i => $iValue) {
-			$this->options['query']['RuleIds.' . ($i + 1)] = $iValue;
-		}
+    public function withRuleIds(array $ruleIds)
+    {
+        $this->data['RuleIds'] = $ruleIds;
+        foreach ($ruleIds as $i => $iValue) {
+            $this->options['query']['RuleIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 

@@ -65,7 +65,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AddAxnTrackNo extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -427,7 +426,6 @@ class QueryCallStatus extends Rpc
  */
 class QueryPhoneNoAByTrackNo extends Rpc
 {
-
     /**
      * @param string $value
      *

@@ -51,7 +51,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AnalyzeChestVessel extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -92,20 +91,18 @@ class AnalyzeChestVessel extends Rpc
     }
 
     /**
-     * @param array $uRLList
-     *
      * @return $this
      */
-	public function withURLList(array $uRLList)
-	{
-	    $this->data['URLList'] = $uRLList;
-		foreach ($uRLList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['URL'])){
-				$this->options['form_params']['URLList.' . ($depth1 + 1) . '.URL'] = $depth1Value['URL'];
-			}
-		}
+    public function withURLList(array $uRLList)
+    {
+        $this->data['URLList'] = $uRLList;
+        foreach ($uRLList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['URL'])) {
+                $this->options['form_params']['URLList.' . ($depth1 + 1) . '.URL'] = $depth1Value['URL'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -145,7 +142,6 @@ class AnalyzeChestVessel extends Rpc
  */
 class CalcCACS extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -173,20 +169,18 @@ class CalcCACS extends Rpc
     }
 
     /**
-     * @param array $uRLList
-     *
      * @return $this
      */
-	public function withURLList(array $uRLList)
-	{
-	    $this->data['URLList'] = $uRLList;
-		foreach ($uRLList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['URL'])){
-				$this->options['form_params']['URLList.' . ($depth1 + 1) . '.URL'] = $depth1Value['URL'];
-			}
-		}
+    public function withURLList(array $uRLList)
+    {
+        $this->data['URLList'] = $uRLList;
+        foreach ($uRLList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['URL'])) {
+                $this->options['form_params']['URLList.' . ($depth1 + 1) . '.URL'] = $depth1Value['URL'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -238,7 +232,6 @@ class CalcCACS extends Rpc
  */
 class ClassifyFNF extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -314,7 +307,6 @@ class ClassifyFNF extends Rpc
  */
 class DetectCovid19Cad extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -329,20 +321,18 @@ class DetectCovid19Cad extends Rpc
     }
 
     /**
-     * @param array $uRLList
-     *
      * @return $this
      */
-	public function withURLList(array $uRLList)
-	{
-	    $this->data['URLList'] = $uRLList;
-		foreach ($uRLList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['URL'])){
-				$this->options['form_params']['URLList.' . ($depth1 + 1) . '.URL'] = $depth1Value['URL'];
-			}
-		}
+    public function withURLList(array $uRLList)
+    {
+        $this->data['URLList'] = $uRLList;
+        foreach ($uRLList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['URL'])) {
+                $this->options['form_params']['URLList.' . ($depth1 + 1) . '.URL'] = $depth1Value['URL'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -394,7 +384,6 @@ class DetectCovid19Cad extends Rpc
  */
 class DetectHipKeypointXRay extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -470,7 +459,6 @@ class DetectHipKeypointXRay extends Rpc
  */
 class DetectKneeKeypointXRay extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -545,7 +533,6 @@ class DetectKneeKeypointXRay extends Rpc
  */
 class DetectKneeXRay extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -609,7 +596,6 @@ class DetectKneeXRay extends Rpc
  */
 class DetectLungNodule extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -650,20 +636,18 @@ class DetectLungNodule extends Rpc
     }
 
     /**
-     * @param array $uRLList
-     *
      * @return $this
      */
-	public function withURLList(array $uRLList)
-	{
-	    $this->data['URLList'] = $uRLList;
-		foreach ($uRLList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['URL'])){
-				$this->options['form_params']['URLList.' . ($depth1 + 1) . '.URL'] = $depth1Value['URL'];
-			}
-		}
+    public function withURLList(array $uRLList)
+    {
+        $this->data['URLList'] = $uRLList;
+        foreach ($uRLList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['URL'])) {
+                $this->options['form_params']['URLList.' . ($depth1 + 1) . '.URL'] = $depth1Value['URL'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -703,7 +687,6 @@ class DetectLungNodule extends Rpc
  */
 class DetectRibFracture extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -744,20 +727,18 @@ class DetectRibFracture extends Rpc
     }
 
     /**
-     * @param array $uRLList
-     *
      * @return $this
      */
-	public function withURLList(array $uRLList)
-	{
-	    $this->data['URLList'] = $uRLList;
-		foreach ($uRLList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['URL'])){
-				$this->options['form_params']['URLList.' . ($depth1 + 1) . '.URL'] = $depth1Value['URL'];
-			}
-		}
+    public function withURLList(array $uRLList)
+    {
+        $this->data['URLList'] = $uRLList;
+        foreach ($uRLList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['URL'])) {
+                $this->options['form_params']['URLList.' . ($depth1 + 1) . '.URL'] = $depth1Value['URL'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -794,7 +775,6 @@ class DetectRibFracture extends Rpc
  */
 class DetectSkinDisease extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -843,7 +823,6 @@ class DetectSkinDisease extends Rpc
  */
 class DetectSpineMRI extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -858,20 +837,18 @@ class DetectSpineMRI extends Rpc
     }
 
     /**
-     * @param array $uRLList
-     *
      * @return $this
      */
-	public function withURLList(array $uRLList)
-	{
-	    $this->data['URLList'] = $uRLList;
-		foreach ($uRLList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['URL'])){
-				$this->options['form_params']['URLList.' . ($depth1 + 1) . '.URL'] = $depth1Value['URL'];
-			}
-		}
+    public function withURLList(array $uRLList)
+    {
+        $this->data['URLList'] = $uRLList;
+        foreach ($uRLList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['URL'])) {
+                $this->options['form_params']['URLList.' . ($depth1 + 1) . '.URL'] = $depth1Value['URL'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -907,7 +884,6 @@ class DetectSpineMRI extends Rpc
  */
 class GetAsyncJobResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -946,7 +922,6 @@ class GetAsyncJobResult extends Rpc
  */
 class RunCTRegistration extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -974,20 +949,18 @@ class RunCTRegistration extends Rpc
     }
 
     /**
-     * @param array $referenceList
-     *
      * @return $this
      */
-	public function withReferenceList(array $referenceList)
-	{
-	    $this->data['ReferenceList'] = $referenceList;
-		foreach ($referenceList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ReferenceURL'])){
-				$this->options['form_params']['ReferenceList.' . ($depth1 + 1) . '.ReferenceURL'] = $depth1Value['ReferenceURL'];
-			}
-		}
+    public function withReferenceList(array $referenceList)
+    {
+        $this->data['ReferenceList'] = $referenceList;
+        foreach ($referenceList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ReferenceURL'])) {
+                $this->options['form_params']['ReferenceList.' . ($depth1 + 1) . '.ReferenceURL'] = $depth1Value['ReferenceURL'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1030,20 +1003,18 @@ class RunCTRegistration extends Rpc
     }
 
     /**
-     * @param array $floatingList
-     *
      * @return $this
      */
-	public function withFloatingList(array $floatingList)
-	{
-	    $this->data['FloatingList'] = $floatingList;
-		foreach ($floatingList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['FloatingURL'])){
-				$this->options['form_params']['FloatingList.' . ($depth1 + 1) . '.FloatingURL'] = $depth1Value['FloatingURL'];
-			}
-		}
+    public function withFloatingList(array $floatingList)
+    {
+        $this->data['FloatingList'] = $floatingList;
+        foreach ($floatingList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['FloatingURL'])) {
+                $this->options['form_params']['FloatingList.' . ($depth1 + 1) . '.FloatingURL'] = $depth1Value['FloatingURL'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1059,7 +1030,6 @@ class RunCTRegistration extends Rpc
  */
 class RunMedQA extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1087,37 +1057,33 @@ class RunMedQA extends Rpc
     }
 
     /**
-     * @param array $answerImageDataList
-     *
      * @return $this
      */
-	public function withAnswerImageDataList(array $answerImageDataList)
-	{
-	    $this->data['AnswerImageDataList'] = $answerImageDataList;
-		foreach ($answerImageDataList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['AnswerImageData'])){
-				$this->options['form_params']['AnswerImageDataList.' . ($depth1 + 1) . '.AnswerImageData'] = $depth1Value['AnswerImageData'];
-			}
-		}
+    public function withAnswerImageDataList(array $answerImageDataList)
+    {
+        $this->data['AnswerImageDataList'] = $answerImageDataList;
+        foreach ($answerImageDataList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['AnswerImageData'])) {
+                $this->options['form_params']['AnswerImageDataList.' . ($depth1 + 1) . '.AnswerImageData'] = $depth1Value['AnswerImageData'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $answerTextList
-     *
      * @return $this
      */
-	public function withAnswerTextList(array $answerTextList)
-	{
-	    $this->data['AnswerTextList'] = $answerTextList;
-		foreach ($answerTextList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['AnswerText'])){
-				$this->options['form_params']['AnswerTextList.' . ($depth1 + 1) . '.AnswerText'] = $depth1Value['AnswerText'];
-			}
-		}
+    public function withAnswerTextList(array $answerTextList)
+    {
+        $this->data['AnswerTextList'] = $answerTextList;
+        foreach ($answerTextList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['AnswerText'])) {
+                $this->options['form_params']['AnswerTextList.' . ($depth1 + 1) . '.AnswerText'] = $depth1Value['AnswerText'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1134,20 +1100,18 @@ class RunMedQA extends Rpc
     }
 
     /**
-     * @param array $answerImageURLList
-     *
      * @return $this
      */
-	public function withAnswerImageURLList(array $answerImageURLList)
-	{
-	    $this->data['AnswerImageURLList'] = $answerImageURLList;
-		foreach ($answerImageURLList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['AnswerImageURL'])){
-				$this->options['form_params']['AnswerImageURLList.' . ($depth1 + 1) . '.AnswerImageURL'] = $depth1Value['AnswerImageURL'];
-			}
-		}
+    public function withAnswerImageURLList(array $answerImageURLList)
+    {
+        $this->data['AnswerImageURLList'] = $answerImageURLList;
+        foreach ($answerImageURLList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['AnswerImageURL'])) {
+                $this->options['form_params']['AnswerImageURLList.' . ($depth1 + 1) . '.AnswerImageURL'] = $depth1Value['AnswerImageURL'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1187,7 +1151,6 @@ class RunMedQA extends Rpc
  */
 class ScreenChestCT extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1228,20 +1191,18 @@ class ScreenChestCT extends Rpc
     }
 
     /**
-     * @param array $uRLList
-     *
      * @return $this
      */
-	public function withURLList(array $uRLList)
-	{
-	    $this->data['URLList'] = $uRLList;
-		foreach ($uRLList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['URL'])){
-				$this->options['form_params']['URLList.' . ($depth1 + 1) . '.URL'] = $depth1Value['URL'];
-			}
-		}
+    public function withURLList(array $uRLList)
+    {
+        $this->data['URLList'] = $uRLList;
+        foreach ($uRLList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['URL'])) {
+                $this->options['form_params']['URLList.' . ($depth1 + 1) . '.URL'] = $depth1Value['URL'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1278,7 +1239,6 @@ class ScreenChestCT extends Rpc
  */
 class TranslateMed extends Rpc
 {
-
     /**
      * @param string $value
      *

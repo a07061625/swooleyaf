@@ -69,20 +69,17 @@ class ListTagKeys extends Rpc
  */
 class ListTagResources extends Rpc
 {
-
     /**
-     * @param array $resourceARN
-     *
      * @return $this
      */
-	public function withResourceARN(array $resourceARN)
-	{
-	    $this->data['ResourceARN'] = $resourceARN;
-		foreach ($resourceARN as $i => $iValue) {
-			$this->options['query']['ResourceARN.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceARN(array $resourceARN)
+    {
+        $this->data['ResourceARN'] = $resourceARN;
+        foreach ($resourceARN as $i => $iValue) {
+            $this->options['query']['ResourceARN.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -119,20 +116,17 @@ class ListTagValues extends Rpc
  */
 class TagResources extends Rpc
 {
-
     /**
-     * @param array $resourceARN
-     *
      * @return $this
      */
-	public function withResourceARN(array $resourceARN)
-	{
-	    $this->data['ResourceARN'] = $resourceARN;
-		foreach ($resourceARN as $i => $iValue) {
-			$this->options['query']['ResourceARN.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceARN(array $resourceARN)
+    {
+        $this->data['ResourceARN'] = $resourceARN;
+        foreach ($resourceARN as $i => $iValue) {
+            $this->options['query']['ResourceARN.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -148,34 +142,29 @@ class TagResources extends Rpc
  */
 class UntagResources extends Rpc
 {
-
     /**
-     * @param array $resourceARN
-     *
      * @return $this
      */
-	public function withResourceARN(array $resourceARN)
-	{
-	    $this->data['ResourceARN'] = $resourceARN;
-		foreach ($resourceARN as $i => $iValue) {
-			$this->options['query']['ResourceARN.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceARN(array $resourceARN)
+    {
+        $this->data['ResourceARN'] = $resourceARN;
+        foreach ($resourceARN as $i => $iValue) {
+            $this->options['query']['ResourceARN.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tagKey
-     *
      * @return $this
      */
-	public function withTagKey(array $tagKey)
-	{
-	    $this->data['TagKey'] = $tagKey;
-		foreach ($tagKey as $i => $iValue) {
-			$this->options['query']['TagKey.' . ($i + 1)] = $iValue;
-		}
+    public function withTagKey(array $tagKey)
+    {
+        $this->data['TagKey'] = $tagKey;
+        foreach ($tagKey as $i => $iValue) {
+            $this->options['query']['TagKey.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }

@@ -410,7 +410,6 @@ class DeleteDispatchRule extends Rpc
  */
 class DeleteGrafanaResource extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -547,7 +546,6 @@ class ExportPrometheusRules extends Rpc
 
 class GetAgentDownloadUrl extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -572,7 +570,6 @@ class GetAppApiByPage extends Rpc
 
 class GetArmsConsoleUrl extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -618,20 +615,17 @@ class GetIntegrationToken extends Rpc
  */
 class GetMultipleTrace extends Rpc
 {
-
     /**
-     * @param array $traceIDs
-     *
      * @return $this
      */
-	public function withTraceIDs(array $traceIDs)
-	{
-	    $this->data['TraceIDs'] = $traceIDs;
-		foreach ($traceIDs as $i => $iValue) {
-			$this->options['query']['TraceIDs.' . ($i + 1)] = $iValue;
-		}
+    public function withTraceIDs(array $traceIDs)
+    {
+        $this->data['TraceIDs'] = $traceIDs;
+        foreach ($traceIDs as $i => $iValue) {
+            $this->options['query']['TraceIDs.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -939,89 +933,80 @@ class OpenXtraceDefaultSLR extends Rpc
  */
 class QueryDataset extends Rpc
 {
-
     /**
-     * @param array $optionalDims
-     *
      * @return $this
      */
-	public function withOptionalDims(array $optionalDims)
-	{
-	    $this->data['OptionalDims'] = $optionalDims;
-		foreach ($optionalDims as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Type'])){
-				$this->options['query']['OptionalDims.' . ($depth1 + 1) . '.Type'] = $depth1Value['Type'];
-			}
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['OptionalDims.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['OptionalDims.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withOptionalDims(array $optionalDims)
+    {
+        $this->data['OptionalDims'] = $optionalDims;
+        foreach ($optionalDims as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Type'])) {
+                $this->options['query']['OptionalDims.' . ($depth1 + 1) . '.Type'] = $depth1Value['Type'];
+            }
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['OptionalDims.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['OptionalDims.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $measures
-     *
      * @return $this
      */
-	public function withMeasures(array $measures)
-	{
-	    $this->data['Measures'] = $measures;
-		foreach ($measures as $i => $iValue) {
-			$this->options['query']['Measures.' . ($i + 1)] = $iValue;
-		}
+    public function withMeasures(array $measures)
+    {
+        $this->data['Measures'] = $measures;
+        foreach ($measures as $i => $iValue) {
+            $this->options['query']['Measures.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $requiredDims
-     *
      * @return $this
      */
-	public function withRequiredDims(array $requiredDims)
-	{
-	    $this->data['RequiredDims'] = $requiredDims;
-		foreach ($requiredDims as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Type'])){
-				$this->options['query']['RequiredDims.' . ($depth1 + 1) . '.Type'] = $depth1Value['Type'];
-			}
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['RequiredDims.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['RequiredDims.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withRequiredDims(array $requiredDims)
+    {
+        $this->data['RequiredDims'] = $requiredDims;
+        foreach ($requiredDims as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Type'])) {
+                $this->options['query']['RequiredDims.' . ($depth1 + 1) . '.Type'] = $depth1Value['Type'];
+            }
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['RequiredDims.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['RequiredDims.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $dimensions
-     *
      * @return $this
      */
-	public function withDimensions(array $dimensions)
-	{
-	    $this->data['Dimensions'] = $dimensions;
-		foreach ($dimensions as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Type'])){
-				$this->options['query']['Dimensions.' . ($depth1 + 1) . '.Type'] = $depth1Value['Type'];
-			}
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Dimensions.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Dimensions.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withDimensions(array $dimensions)
+    {
+        $this->data['Dimensions'] = $dimensions;
+        foreach ($dimensions as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Type'])) {
+                $this->options['query']['Dimensions.' . ($depth1 + 1) . '.Type'] = $depth1Value['Type'];
+            }
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Dimensions.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Dimensions.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1052,55 +1037,48 @@ class QueryDataset extends Rpc
  */
 class QueryMetric extends Rpc
 {
-
     /**
-     * @param array $filters
-     *
      * @return $this
      */
-	public function withFilters(array $filters)
-	{
-	    $this->data['Filters'] = $filters;
-		foreach ($filters as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Filters.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Filters.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withFilters(array $filters)
+    {
+        $this->data['Filters'] = $filters;
+        foreach ($filters as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Filters.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Filters.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $measures
-     *
      * @return $this
      */
-	public function withMeasures(array $measures)
-	{
-	    $this->data['Measures'] = $measures;
-		foreach ($measures as $i => $iValue) {
-			$this->options['query']['Measures.' . ($i + 1)] = $iValue;
-		}
+    public function withMeasures(array $measures)
+    {
+        $this->data['Measures'] = $measures;
+        foreach ($measures as $i => $iValue) {
+            $this->options['query']['Measures.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $dimensions
-     *
      * @return $this
      */
-	public function withDimensions(array $dimensions)
-	{
-	    $this->data['Dimensions'] = $dimensions;
-		foreach ($dimensions as $i => $iValue) {
-			$this->options['query']['Dimensions.' . ($i + 1)] = $iValue;
-		}
+    public function withDimensions(array $dimensions)
+    {
+        $this->data['Dimensions'] = $dimensions;
+        foreach ($dimensions as $i => $iValue) {
+            $this->options['query']['Dimensions.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1134,70 +1112,61 @@ class QueryMetric extends Rpc
  */
 class QueryMetricByPage extends Rpc
 {
-
     /**
-     * @param array $filters
-     *
      * @return $this
      */
-	public function withFilters(array $filters)
-	{
-	    $this->data['Filters'] = $filters;
-		foreach ($filters as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Filters.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Filters.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withFilters(array $filters)
+    {
+        $this->data['Filters'] = $filters;
+        foreach ($filters as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Filters.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Filters.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $measures
-     *
      * @return $this
      */
-	public function withMeasures(array $measures)
-	{
-	    $this->data['Measures'] = $measures;
-		foreach ($measures as $i => $iValue) {
-			$this->options['query']['Measures.' . ($i + 1)] = $iValue;
-		}
+    public function withMeasures(array $measures)
+    {
+        $this->data['Measures'] = $measures;
+        foreach ($measures as $i => $iValue) {
+            $this->options['query']['Measures.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $customFilters
-     *
      * @return $this
      */
-	public function withCustomFilters(array $customFilters)
-	{
-	    $this->data['CustomFilters'] = $customFilters;
-		foreach ($customFilters as $i => $iValue) {
-			$this->options['query']['CustomFilters.' . ($i + 1)] = $iValue;
-		}
+    public function withCustomFilters(array $customFilters)
+    {
+        $this->data['CustomFilters'] = $customFilters;
+        foreach ($customFilters as $i => $iValue) {
+            $this->options['query']['CustomFilters.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $dimensions
-     *
      * @return $this
      */
-	public function withDimensions(array $dimensions)
-	{
-	    $this->data['Dimensions'] = $dimensions;
-		foreach ($dimensions as $i => $iValue) {
-			$this->options['query']['Dimensions.' . ($i + 1)] = $iValue;
-		}
+    public function withDimensions(array $dimensions)
+    {
+        $this->data['Dimensions'] = $dimensions;
+        foreach ($dimensions as $i => $iValue) {
+            $this->options['query']['Dimensions.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1208,25 +1177,22 @@ class QueryMetricByPage extends Rpc
  */
 class SaveTraceAppConfig extends Rpc
 {
-
     /**
-     * @param array $settings
-     *
      * @return $this
      */
-	public function withSettings(array $settings)
-	{
-	    $this->data['Settings'] = $settings;
-		foreach ($settings as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Settings.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Settings.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withSettings(array $settings)
+    {
+        $this->data['Settings'] = $settings;
+        foreach ($settings as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Settings.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Settings.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1386,45 +1352,40 @@ class SearchTraceAppByPage extends Rpc
  */
 class SearchTraces extends Rpc
 {
-
     /**
-     * @param array $exclusionFilters
-     *
      * @return $this
      */
-	public function withExclusionFilters(array $exclusionFilters)
-	{
-	    $this->data['ExclusionFilters'] = $exclusionFilters;
-		foreach ($exclusionFilters as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['ExclusionFilters.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['ExclusionFilters.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withExclusionFilters(array $exclusionFilters)
+    {
+        $this->data['ExclusionFilters'] = $exclusionFilters;
+        foreach ($exclusionFilters as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['ExclusionFilters.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['ExclusionFilters.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1451,25 +1412,22 @@ class SearchTraces extends Rpc
  */
 class SearchTracesByPage extends Rpc
 {
-
     /**
-     * @param array $exclusionFilters
-     *
      * @return $this
      */
-	public function withExclusionFilters(array $exclusionFilters)
-	{
-	    $this->data['ExclusionFilters'] = $exclusionFilters;
-		foreach ($exclusionFilters as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['ExclusionFilters.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['ExclusionFilters.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withExclusionFilters(array $exclusionFilters)
+    {
+        $this->data['ExclusionFilters'] = $exclusionFilters;
+        foreach ($exclusionFilters as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['ExclusionFilters.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['ExclusionFilters.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 

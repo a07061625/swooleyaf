@@ -58,7 +58,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AddClusterIntoServiceMesh extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -149,7 +148,6 @@ class AddVmAppToMesh extends Rpc
  */
 class CreateServiceMesh extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -586,7 +584,6 @@ class CreateServiceMesh extends Rpc
  */
 class DeleteServiceMesh extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -657,7 +654,6 @@ class DescribeClustersInServiceMesh extends Rpc
  */
 class DescribeGuestClusterAccessLogDashboards extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -678,7 +674,6 @@ class DescribeGuestClusterAccessLogDashboards extends Rpc
  */
 class DescribeIngressGateways extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -688,7 +683,6 @@ class DescribeIngressGateways extends Rpc
  */
 class DescribeServiceMeshDetail extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -705,7 +699,6 @@ class DescribeServiceMeshDetail extends Rpc
 
 class DescribeServiceMeshes extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -753,7 +746,6 @@ class GetRegisteredServiceEndpoints extends Rpc
  */
 class GetRegisteredServiceNamespaces extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -792,7 +784,6 @@ class GetServiceMeshSlb extends Rpc
  */
 class GetVmAppMeshInfo extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -809,7 +800,6 @@ class GetVmAppMeshInfo extends Rpc
  */
 class GetVmMeta extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -820,7 +810,6 @@ class GetVmMeta extends Rpc
  */
 class RemoveClusterFromServiceMesh extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -865,7 +854,6 @@ class RemoveVmAppFromMesh extends Rpc
  */
 class RunDiagnosis extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -887,7 +875,6 @@ class RunDiagnosis extends Rpc
  */
 class UpdateIstioInjectionConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -968,7 +955,6 @@ class UpdateIstioInjectionConfig extends Rpc
  */
 class UpdateMeshFeature extends Rpc
 {
-
     /**
      * @param string $value
      *

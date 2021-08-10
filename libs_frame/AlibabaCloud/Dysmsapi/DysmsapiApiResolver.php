@@ -53,21 +53,18 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AddSmsSign extends Rpc
 {
-
     /**
-     * @param array $signFileList
-     *
      * @return $this
      */
-	public function withSignFileList(array $signFileList)
-	{
-	    $this->data['SignFileList'] = $signFileList;
-		foreach ($signFileList as $depth1 => $depth1Value) {
-			$this->options['query']['SignFileList.' . ($depth1 + 1) . '.FileContents'] = $depth1Value['FileContents'];
-			$this->options['query']['SignFileList.' . ($depth1 + 1) . '.FileSuffix'] = $depth1Value['FileSuffix'];
-		}
+    public function withSignFileList(array $signFileList)
+    {
+        $this->data['SignFileList'] = $signFileList;
+        foreach ($signFileList as $depth1 => $depth1Value) {
+            $this->options['query']['SignFileList.' . ($depth1 + 1) . '.FileContents'] = $depth1Value['FileContents'];
+            $this->options['query']['SignFileList.' . ($depth1 + 1) . '.FileSuffix'] = $depth1Value['FileSuffix'];
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -136,21 +133,18 @@ class DeleteSmsTemplate extends Rpc
  */
 class ModifySmsSign extends Rpc
 {
-
     /**
-     * @param array $signFileList
-     *
      * @return $this
      */
-	public function withSignFileList(array $signFileList)
-	{
-	    $this->data['SignFileList'] = $signFileList;
-		foreach ($signFileList as $depth1 => $depth1Value) {
-			$this->options['query']['SignFileList.' . ($depth1 + 1) . '.FileContents'] = $depth1Value['FileContents'];
-			$this->options['query']['SignFileList.' . ($depth1 + 1) . '.FileSuffix'] = $depth1Value['FileSuffix'];
-		}
+    public function withSignFileList(array $signFileList)
+    {
+        $this->data['SignFileList'] = $signFileList;
+        foreach ($signFileList as $depth1 => $depth1Value) {
+            $this->options['query']['SignFileList.' . ($depth1 + 1) . '.FileContents'] = $depth1Value['FileContents'];
+            $this->options['query']['SignFileList.' . ($depth1 + 1) . '.FileSuffix'] = $depth1Value['FileSuffix'];
+        }
 
-		return $this;
+        return $this;
     }
 }
 

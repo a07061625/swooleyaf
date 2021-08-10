@@ -51,7 +51,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class ActiveConfigRules extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 }
@@ -62,7 +61,6 @@ class ActiveConfigRules extends Rpc
  */
 class DeleteConfigRules extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 }
@@ -299,7 +297,6 @@ class ListDiscoveredResources extends Rpc
  */
 class PutConfigRule extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -465,7 +462,6 @@ class PutConfigRule extends Rpc
  */
 class PutConfigurationRecorder extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -496,7 +492,6 @@ class PutConfigurationRecorder extends Rpc
  */
 class PutDeliveryChannel extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -624,7 +619,6 @@ class PutDeliveryChannel extends Rpc
  */
 class PutEvaluations extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -665,7 +659,6 @@ class PutEvaluations extends Rpc
  */
 class StartConfigRuleEvaluation extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 }
@@ -675,7 +668,6 @@ class StartConfigRuleEvaluation extends Rpc
  */
 class StartConfigurationRecorder extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 
@@ -699,7 +691,6 @@ class StartConfigurationRecorder extends Rpc
  */
 class StopConfigRules extends Rpc
 {
-
     /** @var string */
     public $method = 'POST';
 }

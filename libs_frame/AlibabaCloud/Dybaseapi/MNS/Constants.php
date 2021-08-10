@@ -11,7 +11,7 @@ namespace AlibabaCloud\Dybaseapi\MNS;
  */
 class Constants
 {
-    const GMT_DATE_FORMAT = "D, d M Y H:i:s \\G\\M\\T";
+    const GMT_DATE_FORMAT = 'D, d M Y H:i:s \\G\\M\\T';
 
     const MNS_VERSION_HEADER = 'x-mns-version';
 

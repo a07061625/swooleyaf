@@ -34,7 +34,7 @@ class BatchReceiveMessage extends BaseRequest
     {
         parent::__construct('get', null);
         $this->numOfMessages = $numOfMessages;
-        $this->waitSeconds   = $waitSeconds;
+        $this->waitSeconds = $waitSeconds;
     }
 
     /**
@@ -42,7 +42,7 @@ class BatchReceiveMessage extends BaseRequest
      */
     public function setQueueName($queueName)
     {
-        $this->queueName    = $queueName;
+        $this->queueName = $queueName;
         $this->resourcePath = 'queues/' . $queueName . '/messages';
     }
 
@@ -70,12 +70,8 @@ class BatchReceiveMessage extends BaseRequest
         return $this->numOfMessages;
     }
 
-    /**
-     * @return null
-     */
     public function generateBody()
     {
-        return null;
     }
 
     /**
@@ -84,7 +80,7 @@ class BatchReceiveMessage extends BaseRequest
     public function generateQueryString()
     {
         $params = ['numOfMessages' => $this->numOfMessages];
-        if ($this->waitSeconds !== null) {
+        if (null !== $this->waitSeconds) {
             $params['waitseconds'] = $this->waitSeconds;
         }
 

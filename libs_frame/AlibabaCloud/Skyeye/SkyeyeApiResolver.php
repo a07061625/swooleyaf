@@ -40,7 +40,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class GetCdnSkyeyeStatusData extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }

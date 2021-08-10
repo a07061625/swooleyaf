@@ -35,7 +35,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class CloseTicket extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -57,7 +56,6 @@ class CloseTicket extends Rpc
  */
 class CreateTicket extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -108,7 +106,6 @@ class GetMqConsumerTag extends Rpc
  */
 class ListCategories extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -165,20 +162,17 @@ class ListTicketNotes extends Rpc
  */
 class ListTickets extends Rpc
 {
-
     /**
-     * @param array $statusList
-     *
      * @return $this
      */
-	public function withStatusList(array $statusList)
-	{
-	    $this->data['StatusList'] = $statusList;
-		foreach ($statusList as $i => $iValue) {
-			$this->options['form_params']['StatusList.' . ($i + 1)] = $iValue;
-		}
+    public function withStatusList(array $statusList)
+    {
+        $this->data['StatusList'] = $statusList;
+        foreach ($statusList as $i => $iValue) {
+            $this->options['form_params']['StatusList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -241,7 +235,6 @@ class ListTickets extends Rpc
  */
 class ReplyTicket extends Rpc
 {
-
     /**
      * @param string $value
      *

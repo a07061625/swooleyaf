@@ -148,10 +148,10 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
     public $method = 'POST';
 
     /** @var string */
-    protected $scheme = 'https';
+    public $serviceCode = 'linkwan';
 
     /** @var string */
-    public $serviceCode = 'linkwan';
+    protected $scheme = 'https';
 }
 
 /**
@@ -160,7 +160,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class UpdateEmbeddedNsAutoSyncEnablingState extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -194,7 +193,6 @@ class UpdateEmbeddedNsAutoSyncEnablingState extends Rpc
  */
 class SubmitExternalNodesAddingTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -209,8 +207,6 @@ class SubmitExternalNodesAddingTask extends Rpc
     }
 
     /**
-     * @param array $nodes
-     *
      * @return $this
      */
     public function withNodes(array $nodes)
@@ -229,10 +225,7 @@ class SubmitExternalNodesAddingTask extends Rpc
  */
 class DeleteExternalNodeTuples extends Rpc
 {
-
     /**
-     * @param array $devEuiList
-     *
      * @return $this
      */
     public function withDevEuiList(array $devEuiList)
@@ -254,7 +247,6 @@ class DeleteExternalNodeTuples extends Rpc
  */
 class CreateCustomLocalJoinPermission extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -316,10 +308,7 @@ class CreateCustomLocalJoinPermission extends Rpc
  */
 class SubmitExternalNodeTuplesImportingTask extends Rpc
 {
-
     /**
-     * @param array $nodeTuples
-     *
      * @return $this
      */
     public function withNodeTuples(array $nodeTuples)
@@ -345,7 +334,6 @@ class SubmitExternalNodeTuplesImportingTask extends Rpc
  */
 class ListNodeTransferPacketPaths extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -418,7 +406,6 @@ class ListNodeTransferPacketPaths extends Rpc
  */
 class UpdateRoamingJoinPermission extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -454,7 +441,6 @@ class UpdateRoamingJoinPermission extends Rpc
  */
 class UpdateOwnedLocalJoinPermission extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -514,7 +500,6 @@ class UpdateOwnedLocalJoinPermission extends Rpc
  */
 class UpdateOwnedLocalJoinPermissionEnablingState extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -548,7 +533,6 @@ class UpdateOwnedLocalJoinPermissionEnablingState extends Rpc
  */
 class UpdateRoamingJoinPermissionEnablingState extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -582,7 +566,6 @@ class UpdateRoamingJoinPermissionEnablingState extends Rpc
  */
 class CountNodesByOwnedJoinPermissionId extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -620,7 +603,6 @@ class CountNodesByOwnedJoinPermissionId extends Rpc
  */
 class ListNodesByNodeGroupId extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -710,7 +692,6 @@ class ListNodesByNodeGroupId extends Rpc
  */
 class ListNodesByOwnedJoinPermissionId extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -796,7 +777,6 @@ class ListNodesByOwnedJoinPermissionId extends Rpc
  */
 class CountNodesByNodeGroupId extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -826,7 +806,6 @@ class CountNodesByNodeGroupId extends Rpc
 
 class GetUserLicense extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 }
@@ -848,7 +827,6 @@ class GetUserLicense extends Rpc
  */
 class CreateGateway extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1032,7 +1010,6 @@ class CreateGateway extends Rpc
  */
 class ListGatewayTransferPackets extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1156,7 +1133,6 @@ class ListGatewayTransferPackets extends Rpc
  */
 class DeleteGateway extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1176,7 +1152,6 @@ class DeleteGateway extends Rpc
  */
 class GetGateway extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1202,7 +1177,6 @@ class GetGateway extends Rpc
  */
 class GetGatewayTransferPacketsDownloadUrl extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1303,7 +1277,6 @@ class GetGatewayTransferPacketsDownloadUrl extends Rpc
  */
 class ListGatewayTransferFlowStats extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1365,7 +1338,6 @@ class ListGatewayTransferFlowStats extends Rpc
  */
 class ListNodeGroupTransferFlowStats extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1428,7 +1400,6 @@ class ListNodeGroupTransferFlowStats extends Rpc
  */
 class ListGatewayOnlineRecords extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1504,7 +1475,6 @@ class ListActiveGateways extends Rpc
  */
 class GetGatewayStatusStat extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1524,7 +1494,6 @@ class GetGatewayStatusStat extends Rpc
  */
 class GetFreqBandPlanGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1547,7 +1516,6 @@ class GetFreqBandPlanGroup extends Rpc
  */
 class CountNotifications extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1575,8 +1543,6 @@ class CountNotifications extends Rpc
     }
 
     /**
-     * @param array $category
-     *
      * @return $this
      */
     public function withCategory(array $category)
@@ -1605,7 +1571,6 @@ class CountNotifications extends Rpc
 
 class ListFreqBandPlanGroups extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 }
@@ -1615,7 +1580,6 @@ class ListFreqBandPlanGroups extends Rpc
  */
 class GetNotification extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1642,7 +1606,6 @@ class GetNotification extends Rpc
  */
 class ListNotifications extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1696,8 +1659,6 @@ class ListNotifications extends Rpc
     }
 
     /**
-     * @param array $category
-     *
      * @return $this
      */
     public function withCategory(array $category)
@@ -1755,10 +1716,7 @@ class ListNotifications extends Rpc
  */
 class CountGatewayTupleOrders extends Rpc
 {
-
     /**
-     * @param array $states
-     *
      * @return $this
      */
     public function withStates(array $states)
@@ -1778,7 +1736,6 @@ class CountGatewayTupleOrders extends Rpc
  */
 class SubmitNodeTupleOrder extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -1815,7 +1772,6 @@ class SubmitNodeTupleOrder extends Rpc
  */
 class CountNodeTupleOrders extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1830,8 +1786,6 @@ class CountNodeTupleOrders extends Rpc
     }
 
     /**
-     * @param array $states
-     *
      * @return $this
      */
     public function withStates(array $states)
@@ -1851,13 +1805,10 @@ class CountNodeTupleOrders extends Rpc
  */
 class UpdateNotificationsHandleState extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
     /**
-     * @param array $notificationId
-     *
      * @return $this
      */
     public function withNotificationId(array $notificationId)
@@ -1889,7 +1840,6 @@ class UpdateNotificationsHandleState extends Rpc
  */
 class SubmitGatewayTupleOrder extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -1912,7 +1862,6 @@ class SubmitGatewayTupleOrder extends Rpc
  */
 class GetGatewayTupleOrder extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1936,7 +1885,6 @@ class GetGatewayTupleOrder extends Rpc
  */
 class ListGatewayTupleOrders extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -1964,8 +1912,6 @@ class ListGatewayTupleOrders extends Rpc
     }
 
     /**
-     * @param array $state
-     *
      * @return $this
      */
     public function withState(array $state)
@@ -2010,7 +1956,6 @@ class ListGatewayTupleOrders extends Rpc
  */
 class GetGatewayTuplesDownloadUrl extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2030,7 +1975,6 @@ class GetGatewayTuplesDownloadUrl extends Rpc
  */
 class GetNodeTupleOrder extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2055,7 +1999,6 @@ class GetNodeTupleOrder extends Rpc
  */
 class ListNodeTupleOrders extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -2099,8 +2042,6 @@ class ListNodeTupleOrders extends Rpc
     }
 
     /**
-     * @param array $state
-     *
      * @return $this
      */
     public function withState(array $state)
@@ -2156,7 +2097,6 @@ class ListNodeTupleOrders extends Rpc
  */
 class UpdateGateway extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2319,7 +2259,6 @@ class UpdateGateway extends Rpc
  */
 class GetLabGateway extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2339,7 +2278,6 @@ class GetLabGateway extends Rpc
  */
 class GetNodeTuplesDownloadUrl extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2368,7 +2306,6 @@ class GetNodeTuplesDownloadUrl extends Rpc
  */
 class ListGateways extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2510,7 +2447,6 @@ class ListGateways extends Rpc
  */
 class CountGateways extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2600,7 +2536,6 @@ class ListGatewaysGisInfo extends Rpc
  */
 class CreateLabGateway extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2633,7 +2568,6 @@ class CreateLabGateway extends Rpc
  */
 class DeleteLabGateway extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2656,7 +2590,6 @@ class DeleteLabGateway extends Rpc
  */
 class CountLabGateways extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2722,7 +2655,6 @@ class CountLabGateways extends Rpc
  */
 class ListLabGateways extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2834,7 +2766,6 @@ class ListLabGateways extends Rpc
  */
 class UpdateGatewayEnablingState extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2870,7 +2801,6 @@ class UpdateGatewayEnablingState extends Rpc
  */
 class CreateLabNode extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2929,7 +2859,6 @@ class CreateLabNode extends Rpc
  */
 class DeleteLabNode extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2950,7 +2879,6 @@ class DeleteLabNode extends Rpc
  */
 class BindLabNodeToLabGateway extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2988,7 +2916,6 @@ class BindLabNodeToLabGateway extends Rpc
  */
 class ListLabGatewayLogs extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3074,7 +3001,6 @@ class ListLabGatewayLogs extends Rpc
  */
 class UnbindLabNodeFromLabGateway extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3107,7 +3033,6 @@ class UnbindLabNodeFromLabGateway extends Rpc
  */
 class GetLabNode extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3130,7 +3055,6 @@ class GetLabNode extends Rpc
  */
 class CountLabNodes extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3195,7 +3119,6 @@ class CountLabNodes extends Rpc
  */
 class ListLabNodes extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3293,7 +3216,6 @@ class ListLabNodes extends Rpc
  */
 class ListBoundLabGateways extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3317,7 +3239,6 @@ class ListBoundLabGateways extends Rpc
  */
 class ListLabNodeLogs extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3389,7 +3310,6 @@ class ListLabNodeLogs extends Rpc
  */
 class GetLabGatewayGwmpConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3410,7 +3330,6 @@ class GetLabGatewayGwmpConfig extends Rpc
  */
 class UpdateLabGatewayGwmpConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3443,7 +3362,6 @@ class UpdateLabGatewayGwmpConfig extends Rpc
  */
 class TriggerLabGatewayConfigReport extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3463,7 +3381,6 @@ class TriggerLabGatewayConfigReport extends Rpc
  */
 class TriggerLabGatewayDeviceInfoReport extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3483,7 +3400,6 @@ class TriggerLabGatewayDeviceInfoReport extends Rpc
  */
 class TriggerLabGatewayLogReport extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3503,7 +3419,6 @@ class TriggerLabGatewayLogReport extends Rpc
  */
 class RebootLabGateway extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -3527,7 +3442,6 @@ class RebootLabGateway extends Rpc
  */
 class UpdateLabGatewaySshCtrl extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3561,7 +3475,6 @@ class UpdateLabGatewaySshCtrl extends Rpc
  */
 class UpdateLabGatewayUartCtrl extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3594,7 +3507,6 @@ class UpdateLabGatewayUartCtrl extends Rpc
  */
 class GetLabNodeDebugConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3615,7 +3527,6 @@ class GetLabNodeDebugConfig extends Rpc
  */
 class UpdateLabNodeDebugConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3648,7 +3559,6 @@ class UpdateLabNodeDebugConfig extends Rpc
  */
 class GetLabNodeDownlinkConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3668,7 +3578,6 @@ class GetLabNodeDownlinkConfig extends Rpc
  */
 class GetLabNodeJoinAcceptConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3690,7 +3599,6 @@ class GetLabNodeJoinAcceptConfig extends Rpc
  */
 class SendMacCommandToLabNode extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -3741,7 +3649,6 @@ class SendMacCommandToLabNode extends Rpc
  */
 class SendBusinessCommandToLabNode extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3798,7 +3705,6 @@ class DeleteLocalJoinPermission extends Rpc
  */
 class CreateLocalJoinPermission extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -3861,7 +3767,6 @@ class CreateLocalJoinPermission extends Rpc
  */
 class UpdateLabGateway extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -3897,7 +3802,6 @@ class UpdateLabGateway extends Rpc
  */
 class ListBoundLabNodes extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3920,7 +3824,6 @@ class ListBoundLabNodes extends Rpc
  */
 class UpdateLabNode extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3979,7 +3882,6 @@ class UpdateLabNode extends Rpc
  */
 class GetOwnedJoinPermission extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3999,7 +3901,6 @@ class GetOwnedJoinPermission extends Rpc
  */
 class CheckCloudProductOpenStatus extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4019,7 +3920,6 @@ class CheckCloudProductOpenStatus extends Rpc
  */
 class GetRentedJoinPermission extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4046,7 +3946,6 @@ class GetRentedJoinPermission extends Rpc
  */
 class ListOwnedJoinPermissions extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4166,7 +4065,6 @@ class ListOwnedJoinPermissions extends Rpc
  */
 class ListRentedJoinPermissions extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4306,7 +4204,6 @@ class ListRentedJoinPermissions extends Rpc
  */
 class CountOwnedJoinPermissions extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4370,7 +4267,6 @@ class CountOwnedJoinPermissions extends Rpc
  */
 class CountRentedJoinPermissions extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4457,7 +4353,6 @@ class CountRentedJoinPermissions extends Rpc
  */
 class ApplyRoamingJoinPermission extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4504,7 +4399,6 @@ class ApplyRoamingJoinPermission extends Rpc
  */
 class ReturnJoinPermission extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4538,7 +4432,6 @@ class ReturnJoinPermission extends Rpc
  */
 class SubmitJoinPermissionAuthOrder extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4571,7 +4464,6 @@ class SubmitJoinPermissionAuthOrder extends Rpc
  */
 class AcceptJoinPermissionAuthOrder extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -4594,7 +4486,6 @@ class AcceptJoinPermissionAuthOrder extends Rpc
  */
 class CancelJoinPermissionAuthOrder extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4614,7 +4505,6 @@ class CancelJoinPermissionAuthOrder extends Rpc
  */
 class RejectJoinPermissionAuthOrder extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4634,7 +4524,6 @@ class RejectJoinPermissionAuthOrder extends Rpc
  */
 class GetJoinPermissionAuthOrder extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4655,7 +4544,6 @@ class GetJoinPermissionAuthOrder extends Rpc
  */
 class CreateNodeGroup extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -4691,7 +4579,6 @@ class CreateNodeGroup extends Rpc
  */
 class RegisterKpmPublicKey extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4719,7 +4606,6 @@ class GetKpmPublicKey extends Rpc
  */
 class DeleteNodeGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4740,7 +4626,6 @@ class DeleteNodeGroup extends Rpc
  */
 class UpdateNodeGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4773,7 +4658,6 @@ class UpdateNodeGroup extends Rpc
  */
 class GetNodeGroup extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -4802,7 +4686,6 @@ class GetNodeGroup extends Rpc
  */
 class ListNodeGroups extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4902,7 +4785,6 @@ class ListNodeGroups extends Rpc
  */
 class CountNodeGroups extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4949,7 +4831,6 @@ class CountNodeGroups extends Rpc
  */
 class BindJoinPermissionToNodeGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4988,7 +4869,6 @@ class BindJoinPermissionToNodeGroup extends Rpc
  */
 class UpdateDataDispatchConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5087,7 +4967,6 @@ class UpdateDataDispatchConfig extends Rpc
  */
 class UpdateDataDispatchEnablingState extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5122,7 +5001,6 @@ class UpdateDataDispatchEnablingState extends Rpc
  */
 class AddNodeToGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5169,7 +5047,6 @@ class AddNodeToGroup extends Rpc
  */
 class RemoveNodeFromGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5202,7 +5079,6 @@ class RemoveNodeFromGroup extends Rpc
  */
 class GetNode extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5232,7 +5108,6 @@ class DescribeRegions extends Rpc
  */
 class UpdateLabNodeDownlinkConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5280,7 +5155,6 @@ class UpdateLabNodeDownlinkConfig extends Rpc
  */
 class UpdateLabNodeJoinAcceptConfig extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5328,7 +5202,6 @@ class UpdateLabNodeJoinAcceptConfig extends Rpc
  */
 class GetGatewayPacketStat extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5379,7 +5252,6 @@ class GetGatewayPacketStat extends Rpc
  */
 class SendUnicastCommand extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -5475,7 +5347,6 @@ class SendUnicastCommand extends Rpc
  */
 class ListNodeGroupTransferPackets extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5605,7 +5476,6 @@ class ListNodeGroupTransferPackets extends Rpc
  */
 class GetNodeGroupTransferPacketsDownloadUrl extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5704,7 +5574,6 @@ class GetNodeGroupTransferPacketsDownloadUrl extends Rpc
  */
 class UnbindJoinPermissionFromNodeGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5741,7 +5610,6 @@ class UnbindJoinPermissionFromNodeGroup extends Rpc
  */
 class CreateMulticastGroup extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -5816,7 +5684,6 @@ class CreateMulticastGroup extends Rpc
  */
 class DeleteMulticastGroup extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -5840,7 +5707,6 @@ class DeleteMulticastGroup extends Rpc
  */
 class BindNodesToMulticastGroup extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -5858,8 +5724,6 @@ class BindNodesToMulticastGroup extends Rpc
     }
 
     /**
-     * @param array $devEuiList
-     *
      * @return $this
      */
     public function withDevEuiList(array $devEuiList)
@@ -5879,7 +5743,6 @@ class BindNodesToMulticastGroup extends Rpc
  */
 class UnbindNodesFromMulticastGroup extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -5897,8 +5760,6 @@ class UnbindNodesFromMulticastGroup extends Rpc
     }
 
     /**
-     * @param array $devEuiList
-     *
      * @return $this
      */
     public function withDevEuiList(array $devEuiList)
@@ -5917,7 +5778,6 @@ class UnbindNodesFromMulticastGroup extends Rpc
  */
 class GetMulticastGroup extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -5940,7 +5800,6 @@ class GetMulticastGroup extends Rpc
  */
 class GetNodeMulticastConfig extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -5965,7 +5824,6 @@ class GetNodeMulticastConfig extends Rpc
  */
 class ListBoundNodesByMcAddress extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 
@@ -6016,7 +5874,6 @@ class ListBoundNodesByMcAddress extends Rpc
  */
 class SendMulticastCommand extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 

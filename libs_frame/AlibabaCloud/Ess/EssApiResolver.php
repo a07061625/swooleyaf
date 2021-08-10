@@ -107,20 +107,17 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AttachDBInstances extends Rpc
 {
-
     /**
-     * @param array $dBInstance
-     *
      * @return $this
      */
-	public function withDBInstance(array $dBInstance)
-	{
-	    $this->data['DBInstance'] = $dBInstance;
-		foreach ($dBInstance as $i => $iValue) {
-			$this->options['query']['DBInstance.' . ($i + 1)] = $iValue;
-		}
+    public function withDBInstance(array $dBInstance)
+    {
+        $this->data['DBInstance'] = $dBInstance;
+        foreach ($dBInstance as $i => $iValue) {
+            $this->options['query']['DBInstance.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -180,7 +177,6 @@ class AttachDBInstances extends Rpc
  */
 class AttachInstances extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -717,20 +713,17 @@ class AttachInstances extends Rpc
  */
 class AttachLoadBalancers extends Rpc
 {
-
     /**
-     * @param array $loadBalancer
-     *
      * @return $this
      */
-	public function withLoadBalancer(array $loadBalancer)
-	{
-	    $this->data['LoadBalancer'] = $loadBalancer;
-		foreach ($loadBalancer as $i => $iValue) {
-			$this->options['query']['LoadBalancer.' . ($i + 1)] = $iValue;
-		}
+    public function withLoadBalancer(array $loadBalancer)
+    {
+        $this->data['LoadBalancer'] = $loadBalancer;
+        foreach ($loadBalancer as $i => $iValue) {
+            $this->options['query']['LoadBalancer.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -749,33 +742,30 @@ class AttachLoadBalancers extends Rpc
  */
 class AttachVServerGroups extends Rpc
 {
-
     /**
-     * @param array $vServerGroup
-     *
      * @return $this
      */
-	public function withVServerGroup(array $vServerGroup)
-	{
-	    $this->data['VServerGroup'] = $vServerGroup;
-		foreach ($vServerGroup as $depth1 => $depth1Value) {
-			if(isset($depth1Value['LoadBalancerId'])){
-				$this->options['query']['VServerGroup.' . ($depth1 + 1) . '.LoadBalancerId'] = $depth1Value['LoadBalancerId'];
-			}
-			foreach ($depth1Value['VServerGroupAttribute'] as $depth2 => $depth2Value) {
-				if(isset($depth2Value['VServerGroupId'])){
-					$this->options['query']['VServerGroup.' . ($depth1 + 1) . '.VServerGroupAttribute.' . ($depth2 + 1) . '.VServerGroupId'] = $depth2Value['VServerGroupId'];
-				}
-				if(isset($depth2Value['Port'])){
-					$this->options['query']['VServerGroup.' . ($depth1 + 1) . '.VServerGroupAttribute.' . ($depth2 + 1) . '.Port'] = $depth2Value['Port'];
-				}
-				if(isset($depth2Value['Weight'])){
-					$this->options['query']['VServerGroup.' . ($depth1 + 1) . '.VServerGroupAttribute.' . ($depth2 + 1) . '.Weight'] = $depth2Value['Weight'];
-				}
-			}
-		}
+    public function withVServerGroup(array $vServerGroup)
+    {
+        $this->data['VServerGroup'] = $vServerGroup;
+        foreach ($vServerGroup as $depth1 => $depth1Value) {
+            if (isset($depth1Value['LoadBalancerId'])) {
+                $this->options['query']['VServerGroup.' . ($depth1 + 1) . '.LoadBalancerId'] = $depth1Value['LoadBalancerId'];
+            }
+            foreach ($depth1Value['VServerGroupAttribute'] as $depth2 => $depth2Value) {
+                if (isset($depth2Value['VServerGroupId'])) {
+                    $this->options['query']['VServerGroup.' . ($depth1 + 1) . '.VServerGroupAttribute.' . ($depth2 + 1) . '.VServerGroupId'] = $depth2Value['VServerGroupId'];
+                }
+                if (isset($depth2Value['Port'])) {
+                    $this->options['query']['VServerGroup.' . ($depth1 + 1) . '.VServerGroupAttribute.' . ($depth2 + 1) . '.Port'] = $depth2Value['Port'];
+                }
+                if (isset($depth2Value['Weight'])) {
+                    $this->options['query']['VServerGroup.' . ($depth1 + 1) . '.VServerGroupAttribute.' . ($depth2 + 1) . '.Weight'] = $depth2Value['Weight'];
+                }
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -833,40 +823,35 @@ class CompleteLifecycleAction extends Rpc
  */
 class CreateAlarm extends Rpc
 {
-
     /**
-     * @param array $alarmAction
-     *
      * @return $this
      */
-	public function withAlarmAction(array $alarmAction)
-	{
-	    $this->data['AlarmAction'] = $alarmAction;
-		foreach ($alarmAction as $i => $iValue) {
-			$this->options['query']['AlarmAction.' . ($i + 1)] = $iValue;
-		}
+    public function withAlarmAction(array $alarmAction)
+    {
+        $this->data['AlarmAction'] = $alarmAction;
+        foreach ($alarmAction as $i => $iValue) {
+            $this->options['query']['AlarmAction.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $dimension
-     *
      * @return $this
      */
-	public function withDimension(array $dimension)
-	{
-	    $this->data['Dimension'] = $dimension;
-		foreach ($dimension as $depth1 => $depth1Value) {
-			if(isset($depth1Value['DimensionValue'])){
-				$this->options['query']['Dimension.' . ($depth1 + 1) . '.DimensionValue'] = $depth1Value['DimensionValue'];
-			}
-			if(isset($depth1Value['DimensionKey'])){
-				$this->options['query']['Dimension.' . ($depth1 + 1) . '.DimensionKey'] = $depth1Value['DimensionKey'];
-			}
-		}
+    public function withDimension(array $dimension)
+    {
+        $this->data['Dimension'] = $dimension;
+        foreach ($dimension as $depth1 => $depth1Value) {
+            if (isset($depth1Value['DimensionValue'])) {
+                $this->options['query']['Dimension.' . ($depth1 + 1) . '.DimensionValue'] = $depth1Value['DimensionValue'];
+            }
+            if (isset($depth1Value['DimensionKey'])) {
+                $this->options['query']['Dimension.' . ($depth1 + 1) . '.DimensionKey'] = $depth1Value['DimensionKey'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -909,20 +894,17 @@ class CreateLifecycleHook extends Rpc
  */
 class CreateNotificationConfiguration extends Rpc
 {
-
     /**
-     * @param array $notificationType
-     *
      * @return $this
      */
-	public function withNotificationType(array $notificationType)
-	{
-	    $this->data['NotificationType'] = $notificationType;
-		foreach ($notificationType as $i => $iValue) {
-			$this->options['query']['NotificationType.' . ($i + 1)] = $iValue;
-		}
+    public function withNotificationType(array $notificationType)
+    {
+        $this->data['NotificationType'] = $notificationType;
+        foreach ($notificationType as $i => $iValue) {
+            $this->options['query']['NotificationType.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1019,25 +1001,22 @@ class CreateNotificationConfiguration extends Rpc
  */
 class CreateScalingConfiguration extends Rpc
 {
-
     /**
-     * @param array $spotPriceLimit
-     *
      * @return $this
      */
-	public function withSpotPriceLimit(array $spotPriceLimit)
-	{
-	    $this->data['SpotPriceLimit'] = $spotPriceLimit;
-		foreach ($spotPriceLimit as $depth1 => $depth1Value) {
-			if(isset($depth1Value['InstanceType'])){
-				$this->options['query']['SpotPriceLimit.' . ($depth1 + 1) . '.InstanceType'] = $depth1Value['InstanceType'];
-			}
-			if(isset($depth1Value['PriceLimit'])){
-				$this->options['query']['SpotPriceLimit.' . ($depth1 + 1) . '.PriceLimit'] = $depth1Value['PriceLimit'];
-			}
-		}
+    public function withSpotPriceLimit(array $spotPriceLimit)
+    {
+        $this->data['SpotPriceLimit'] = $spotPriceLimit;
+        foreach ($spotPriceLimit as $depth1 => $depth1Value) {
+            if (isset($depth1Value['InstanceType'])) {
+                $this->options['query']['SpotPriceLimit.' . ($depth1 + 1) . '.InstanceType'] = $depth1Value['InstanceType'];
+            }
+            if (isset($depth1Value['PriceLimit'])) {
+                $this->options['query']['SpotPriceLimit.' . ($depth1 + 1) . '.PriceLimit'] = $depth1Value['PriceLimit'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1080,18 +1059,16 @@ class CreateScalingConfiguration extends Rpc
     }
 
     /**
-     * @param array $instanceTypes
-     *
      * @return $this
      */
-	public function withInstanceTypes(array $instanceTypes)
-	{
-	    $this->data['InstanceTypes'] = $instanceTypes;
-		foreach ($instanceTypes as $i => $iValue) {
-			$this->options['query']['InstanceTypes.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceTypes(array $instanceTypes)
+    {
+        $this->data['InstanceTypes'] = $instanceTypes;
+        foreach ($instanceTypes as $i => $iValue) {
+            $this->options['query']['InstanceTypes.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1121,62 +1098,58 @@ class CreateScalingConfiguration extends Rpc
     }
 
     /**
-     * @param array $securityGroupIds
-     *
      * @return $this
      */
-	public function withSecurityGroupIds(array $securityGroupIds)
-	{
-	    $this->data['SecurityGroupIds'] = $securityGroupIds;
-		foreach ($securityGroupIds as $i => $iValue) {
-			$this->options['query']['SecurityGroupIds.' . ($i + 1)] = $iValue;
-		}
+    public function withSecurityGroupIds(array $securityGroupIds)
+    {
+        $this->data['SecurityGroupIds'] = $securityGroupIds;
+        foreach ($securityGroupIds as $i => $iValue) {
+            $this->options['query']['SecurityGroupIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $dataDisk
-     *
      * @return $this
      */
-	public function withDataDisk(array $dataDisk)
-	{
-	    $this->data['DataDisk'] = $dataDisk;
-		foreach ($dataDisk as $depth1 => $depth1Value) {
-			if(isset($depth1Value['DiskName'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.DiskName'] = $depth1Value['DiskName'];
-			}
-			if(isset($depth1Value['SnapshotId'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.SnapshotId'] = $depth1Value['SnapshotId'];
-			}
-			if(isset($depth1Value['Size'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Size'] = $depth1Value['Size'];
-			}
-			if(isset($depth1Value['Encrypted'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Encrypted'] = $depth1Value['Encrypted'];
-			}
-			if(isset($depth1Value['AutoSnapshotPolicyId'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.AutoSnapshotPolicyId'] = $depth1Value['AutoSnapshotPolicyId'];
-			}
-			if(isset($depth1Value['Description'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Description'] = $depth1Value['Description'];
-			}
-			if(isset($depth1Value['Category'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Category'] = $depth1Value['Category'];
-			}
-			if(isset($depth1Value['KMSKeyId'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.KMSKeyId'] = $depth1Value['KMSKeyId'];
-			}
-			if(isset($depth1Value['Device'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Device'] = $depth1Value['Device'];
-			}
-			if(isset($depth1Value['DeleteWithInstance'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.DeleteWithInstance'] = $depth1Value['DeleteWithInstance'];
-			}
-		}
+    public function withDataDisk(array $dataDisk)
+    {
+        $this->data['DataDisk'] = $dataDisk;
+        foreach ($dataDisk as $depth1 => $depth1Value) {
+            if (isset($depth1Value['DiskName'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.DiskName'] = $depth1Value['DiskName'];
+            }
+            if (isset($depth1Value['SnapshotId'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.SnapshotId'] = $depth1Value['SnapshotId'];
+            }
+            if (isset($depth1Value['Size'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Size'] = $depth1Value['Size'];
+            }
+            if (isset($depth1Value['Encrypted'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Encrypted'] = $depth1Value['Encrypted'];
+            }
+            if (isset($depth1Value['AutoSnapshotPolicyId'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.AutoSnapshotPolicyId'] = $depth1Value['AutoSnapshotPolicyId'];
+            }
+            if (isset($depth1Value['Description'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Description'] = $depth1Value['Description'];
+            }
+            if (isset($depth1Value['Category'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Category'] = $depth1Value['Category'];
+            }
+            if (isset($depth1Value['KMSKeyId'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.KMSKeyId'] = $depth1Value['KMSKeyId'];
+            }
+            if (isset($depth1Value['Device'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Device'] = $depth1Value['Device'];
+            }
+            if (isset($depth1Value['DeleteWithInstance'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.DeleteWithInstance'] = $depth1Value['DeleteWithInstance'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1266,72 +1239,65 @@ class CreateScalingConfiguration extends Rpc
  */
 class CreateScalingGroup extends Rpc
 {
-
     /**
-     * @param array $vSwitchIds
-     *
      * @return $this
      */
-	public function withVSwitchIds(array $vSwitchIds)
-	{
-	    $this->data['VSwitchIds'] = $vSwitchIds;
-		foreach ($vSwitchIds as $i => $iValue) {
-			$this->options['query']['VSwitchIds.' . ($i + 1)] = $iValue;
-		}
+    public function withVSwitchIds(array $vSwitchIds)
+    {
+        $this->data['VSwitchIds'] = $vSwitchIds;
+        foreach ($vSwitchIds as $i => $iValue) {
+            $this->options['query']['VSwitchIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $lifecycleHook
-     *
      * @return $this
      */
-	public function withLifecycleHook(array $lifecycleHook)
-	{
-	    $this->data['LifecycleHook'] = $lifecycleHook;
-		foreach ($lifecycleHook as $depth1 => $depth1Value) {
-			if(isset($depth1Value['DefaultResult'])){
-				$this->options['query']['LifecycleHook.' . ($depth1 + 1) . '.DefaultResult'] = $depth1Value['DefaultResult'];
-			}
-			if(isset($depth1Value['LifecycleHookName'])){
-				$this->options['query']['LifecycleHook.' . ($depth1 + 1) . '.LifecycleHookName'] = $depth1Value['LifecycleHookName'];
-			}
-			if(isset($depth1Value['HeartbeatTimeout'])){
-				$this->options['query']['LifecycleHook.' . ($depth1 + 1) . '.HeartbeatTimeout'] = $depth1Value['HeartbeatTimeout'];
-			}
-			if(isset($depth1Value['NotificationArn'])){
-				$this->options['query']['LifecycleHook.' . ($depth1 + 1) . '.NotificationArn'] = $depth1Value['NotificationArn'];
-			}
-			if(isset($depth1Value['NotificationMetadata'])){
-				$this->options['query']['LifecycleHook.' . ($depth1 + 1) . '.NotificationMetadata'] = $depth1Value['NotificationMetadata'];
-			}
-			if(isset($depth1Value['LifecycleTransition'])){
-				$this->options['query']['LifecycleHook.' . ($depth1 + 1) . '.LifecycleTransition'] = $depth1Value['LifecycleTransition'];
-			}
-		}
+    public function withLifecycleHook(array $lifecycleHook)
+    {
+        $this->data['LifecycleHook'] = $lifecycleHook;
+        foreach ($lifecycleHook as $depth1 => $depth1Value) {
+            if (isset($depth1Value['DefaultResult'])) {
+                $this->options['query']['LifecycleHook.' . ($depth1 + 1) . '.DefaultResult'] = $depth1Value['DefaultResult'];
+            }
+            if (isset($depth1Value['LifecycleHookName'])) {
+                $this->options['query']['LifecycleHook.' . ($depth1 + 1) . '.LifecycleHookName'] = $depth1Value['LifecycleHookName'];
+            }
+            if (isset($depth1Value['HeartbeatTimeout'])) {
+                $this->options['query']['LifecycleHook.' . ($depth1 + 1) . '.HeartbeatTimeout'] = $depth1Value['HeartbeatTimeout'];
+            }
+            if (isset($depth1Value['NotificationArn'])) {
+                $this->options['query']['LifecycleHook.' . ($depth1 + 1) . '.NotificationArn'] = $depth1Value['NotificationArn'];
+            }
+            if (isset($depth1Value['NotificationMetadata'])) {
+                $this->options['query']['LifecycleHook.' . ($depth1 + 1) . '.NotificationMetadata'] = $depth1Value['NotificationMetadata'];
+            }
+            if (isset($depth1Value['LifecycleTransition'])) {
+                $this->options['query']['LifecycleHook.' . ($depth1 + 1) . '.LifecycleTransition'] = $depth1Value['LifecycleTransition'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -1361,31 +1327,29 @@ class CreateScalingGroup extends Rpc
     }
 
     /**
-     * @param array $vServerGroup
-     *
      * @return $this
      */
-	public function withVServerGroup(array $vServerGroup)
-	{
-	    $this->data['VServerGroup'] = $vServerGroup;
-		foreach ($vServerGroup as $depth1 => $depth1Value) {
-			if(isset($depth1Value['LoadBalancerId'])){
-				$this->options['query']['VServerGroup.' . ($depth1 + 1) . '.LoadBalancerId'] = $depth1Value['LoadBalancerId'];
-			}
-			foreach ($depth1Value['VServerGroupAttribute'] as $depth2 => $depth2Value) {
-				if(isset($depth2Value['VServerGroupId'])){
-					$this->options['query']['VServerGroup.' . ($depth1 + 1) . '.VServerGroupAttribute.' . ($depth2 + 1) . '.VServerGroupId'] = $depth2Value['VServerGroupId'];
-				}
-				if(isset($depth2Value['Port'])){
-					$this->options['query']['VServerGroup.' . ($depth1 + 1) . '.VServerGroupAttribute.' . ($depth2 + 1) . '.Port'] = $depth2Value['Port'];
-				}
-				if(isset($depth2Value['Weight'])){
-					$this->options['query']['VServerGroup.' . ($depth1 + 1) . '.VServerGroupAttribute.' . ($depth2 + 1) . '.Weight'] = $depth2Value['Weight'];
-				}
-			}
-		}
+    public function withVServerGroup(array $vServerGroup)
+    {
+        $this->data['VServerGroup'] = $vServerGroup;
+        foreach ($vServerGroup as $depth1 => $depth1Value) {
+            if (isset($depth1Value['LoadBalancerId'])) {
+                $this->options['query']['VServerGroup.' . ($depth1 + 1) . '.LoadBalancerId'] = $depth1Value['LoadBalancerId'];
+            }
+            foreach ($depth1Value['VServerGroupAttribute'] as $depth2 => $depth2Value) {
+                if (isset($depth2Value['VServerGroupId'])) {
+                    $this->options['query']['VServerGroup.' . ($depth1 + 1) . '.VServerGroupAttribute.' . ($depth2 + 1) . '.VServerGroupId'] = $depth2Value['VServerGroupId'];
+                }
+                if (isset($depth2Value['Port'])) {
+                    $this->options['query']['VServerGroup.' . ($depth1 + 1) . '.VServerGroupAttribute.' . ($depth2 + 1) . '.Port'] = $depth2Value['Port'];
+                }
+                if (isset($depth2Value['Weight'])) {
+                    $this->options['query']['VServerGroup.' . ($depth1 + 1) . '.VServerGroupAttribute.' . ($depth2 + 1) . '.Weight'] = $depth2Value['Weight'];
+                }
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1436,28 +1400,25 @@ class CreateScalingGroup extends Rpc
  */
 class CreateScalingRule extends Rpc
 {
-
     /**
-     * @param array $stepAdjustment
-     *
      * @return $this
      */
-	public function withStepAdjustment(array $stepAdjustment)
-	{
-	    $this->data['StepAdjustment'] = $stepAdjustment;
-		foreach ($stepAdjustment as $depth1 => $depth1Value) {
-			if(isset($depth1Value['MetricIntervalLowerBound'])){
-				$this->options['query']['StepAdjustment.' . ($depth1 + 1) . '.MetricIntervalLowerBound'] = $depth1Value['MetricIntervalLowerBound'];
-			}
-			if(isset($depth1Value['MetricIntervalUpperBound'])){
-				$this->options['query']['StepAdjustment.' . ($depth1 + 1) . '.MetricIntervalUpperBound'] = $depth1Value['MetricIntervalUpperBound'];
-			}
-			if(isset($depth1Value['ScalingAdjustment'])){
-				$this->options['query']['StepAdjustment.' . ($depth1 + 1) . '.ScalingAdjustment'] = $depth1Value['ScalingAdjustment'];
-			}
-		}
+    public function withStepAdjustment(array $stepAdjustment)
+    {
+        $this->data['StepAdjustment'] = $stepAdjustment;
+        foreach ($stepAdjustment as $depth1 => $depth1Value) {
+            if (isset($depth1Value['MetricIntervalLowerBound'])) {
+                $this->options['query']['StepAdjustment.' . ($depth1 + 1) . '.MetricIntervalLowerBound'] = $depth1Value['MetricIntervalLowerBound'];
+            }
+            if (isset($depth1Value['MetricIntervalUpperBound'])) {
+                $this->options['query']['StepAdjustment.' . ($depth1 + 1) . '.MetricIntervalUpperBound'] = $depth1Value['MetricIntervalUpperBound'];
+            }
+            if (isset($depth1Value['ScalingAdjustment'])) {
+                $this->options['query']['StepAdjustment.' . ($depth1 + 1) . '.ScalingAdjustment'] = $depth1Value['ScalingAdjustment'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1676,20 +1637,17 @@ class DescribeLifecycleActions extends Rpc
  */
 class DescribeLifecycleHooks extends Rpc
 {
-
     /**
-     * @param array $lifecycleHookId
-     *
      * @return $this
      */
-	public function withLifecycleHookId(array $lifecycleHookId)
-	{
-	    $this->data['LifecycleHookId'] = $lifecycleHookId;
-		foreach ($lifecycleHookId as $i => $iValue) {
-			$this->options['query']['LifecycleHookId.' . ($i + 1)] = $iValue;
-		}
+    public function withLifecycleHookId(array $lifecycleHookId)
+    {
+        $this->data['LifecycleHookId'] = $lifecycleHookId;
+        foreach ($lifecycleHookId as $i => $iValue) {
+            $this->options['query']['LifecycleHookId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1779,7 +1737,6 @@ class DescribeRegions extends Rpc
  */
 class DescribeScalingActivities extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2093,7 +2050,6 @@ class DescribeScalingActivityDetail extends Rpc
  */
 class DescribeScalingConfigurations extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2412,7 +2368,6 @@ class DescribeScalingConfigurations extends Rpc
  */
 class DescribeScalingGroups extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -2967,7 +2922,6 @@ class DescribeScalingGroups extends Rpc
  */
 class DescribeScalingInstances extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3281,7 +3235,6 @@ class DescribeScalingInstances extends Rpc
  */
 class DescribeScalingRules extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3751,7 +3704,6 @@ class DescribeScalingRules extends Rpc
  */
 class DescribeScheduledTasks extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -4548,20 +4500,17 @@ class DescribeScheduledTasks extends Rpc
  */
 class DetachDBInstances extends Rpc
 {
-
     /**
-     * @param array $dBInstance
-     *
      * @return $this
      */
-	public function withDBInstance(array $dBInstance)
-	{
-	    $this->data['DBInstance'] = $dBInstance;
-		foreach ($dBInstance as $i => $iValue) {
-			$this->options['query']['DBInstance.' . ($i + 1)] = $iValue;
-		}
+    public function withDBInstance(array $dBInstance)
+    {
+        $this->data['DBInstance'] = $dBInstance;
+        foreach ($dBInstance as $i => $iValue) {
+            $this->options['query']['DBInstance.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4584,20 +4533,17 @@ class DetachDBInstances extends Rpc
  */
 class DetachInstances extends Rpc
 {
-
     /**
-     * @param array $instanceId
-     *
      * @return $this
      */
-	public function withInstanceId(array $instanceId)
-	{
-	    $this->data['InstanceId'] = $instanceId;
-		foreach ($instanceId as $i => $iValue) {
-			$this->options['query']['InstanceId.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceId(array $instanceId)
+    {
+        $this->data['InstanceId'] = $instanceId;
+        foreach ($instanceId as $i => $iValue) {
+            $this->options['query']['InstanceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4616,20 +4562,17 @@ class DetachInstances extends Rpc
  */
 class DetachLoadBalancers extends Rpc
 {
-
     /**
-     * @param array $loadBalancer
-     *
      * @return $this
      */
-	public function withLoadBalancer(array $loadBalancer)
-	{
-	    $this->data['LoadBalancer'] = $loadBalancer;
-		foreach ($loadBalancer as $i => $iValue) {
-			$this->options['query']['LoadBalancer.' . ($i + 1)] = $iValue;
-		}
+    public function withLoadBalancer(array $loadBalancer)
+    {
+        $this->data['LoadBalancer'] = $loadBalancer;
+        foreach ($loadBalancer as $i => $iValue) {
+            $this->options['query']['LoadBalancer.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4648,30 +4591,27 @@ class DetachLoadBalancers extends Rpc
  */
 class DetachVServerGroups extends Rpc
 {
-
     /**
-     * @param array $vServerGroup
-     *
      * @return $this
      */
-	public function withVServerGroup(array $vServerGroup)
-	{
-	    $this->data['VServerGroup'] = $vServerGroup;
-		foreach ($vServerGroup as $depth1 => $depth1Value) {
-			if(isset($depth1Value['LoadBalancerId'])){
-				$this->options['query']['VServerGroup.' . ($depth1 + 1) . '.LoadBalancerId'] = $depth1Value['LoadBalancerId'];
-			}
-			foreach ($depth1Value['VServerGroupAttribute'] as $depth2 => $depth2Value) {
-				if(isset($depth2Value['VServerGroupId'])){
-					$this->options['query']['VServerGroup.' . ($depth1 + 1) . '.VServerGroupAttribute.' . ($depth2 + 1) . '.VServerGroupId'] = $depth2Value['VServerGroupId'];
-				}
-				if(isset($depth2Value['Port'])){
-					$this->options['query']['VServerGroup.' . ($depth1 + 1) . '.VServerGroupAttribute.' . ($depth2 + 1) . '.Port'] = $depth2Value['Port'];
-				}
-			}
-		}
+    public function withVServerGroup(array $vServerGroup)
+    {
+        $this->data['VServerGroup'] = $vServerGroup;
+        foreach ($vServerGroup as $depth1 => $depth1Value) {
+            if (isset($depth1Value['LoadBalancerId'])) {
+                $this->options['query']['VServerGroup.' . ($depth1 + 1) . '.LoadBalancerId'] = $depth1Value['LoadBalancerId'];
+            }
+            foreach ($depth1Value['VServerGroupAttribute'] as $depth2 => $depth2Value) {
+                if (isset($depth2Value['VServerGroupId'])) {
+                    $this->options['query']['VServerGroup.' . ($depth1 + 1) . '.VServerGroupAttribute.' . ($depth2 + 1) . '.VServerGroupId'] = $depth2Value['VServerGroupId'];
+                }
+                if (isset($depth2Value['Port'])) {
+                    $this->options['query']['VServerGroup.' . ($depth1 + 1) . '.VServerGroupAttribute.' . ($depth2 + 1) . '.Port'] = $depth2Value['Port'];
+                }
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -4775,7 +4715,6 @@ class EnableAlarm extends Rpc
  */
 class EnableScalingGroup extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -5310,20 +5249,17 @@ class EnableScalingGroup extends Rpc
  */
 class EnterStandby extends Rpc
 {
-
     /**
-     * @param array $instanceId
-     *
      * @return $this
      */
-	public function withInstanceId(array $instanceId)
-	{
-	    $this->data['InstanceId'] = $instanceId;
-		foreach ($instanceId as $i => $iValue) {
-			$this->options['query']['InstanceId.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceId(array $instanceId)
+    {
+        $this->data['InstanceId'] = $instanceId;
+        foreach ($instanceId as $i => $iValue) {
+            $this->options['query']['InstanceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -5362,20 +5298,17 @@ class ExecuteScalingRule extends Rpc
  */
 class ExitStandby extends Rpc
 {
-
     /**
-     * @param array $instanceId
-     *
      * @return $this
      */
-	public function withInstanceId(array $instanceId)
-	{
-	    $this->data['InstanceId'] = $instanceId;
-		foreach ($instanceId as $i => $iValue) {
-			$this->options['query']['InstanceId.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceId(array $instanceId)
+    {
+        $this->data['InstanceId'] = $instanceId;
+        foreach ($instanceId as $i => $iValue) {
+            $this->options['query']['InstanceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -5409,40 +5342,35 @@ class ListTagKeys extends Rpc
  */
 class ListTagResources extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -5498,40 +5426,35 @@ class ListTagValues extends Rpc
  */
 class ModifyAlarm extends Rpc
 {
-
     /**
-     * @param array $alarmAction
-     *
      * @return $this
      */
-	public function withAlarmAction(array $alarmAction)
-	{
-	    $this->data['AlarmAction'] = $alarmAction;
-		foreach ($alarmAction as $i => $iValue) {
-			$this->options['query']['AlarmAction.' . ($i + 1)] = $iValue;
-		}
+    public function withAlarmAction(array $alarmAction)
+    {
+        $this->data['AlarmAction'] = $alarmAction;
+        foreach ($alarmAction as $i => $iValue) {
+            $this->options['query']['AlarmAction.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $dimension
-     *
      * @return $this
      */
-	public function withDimension(array $dimension)
-	{
-	    $this->data['Dimension'] = $dimension;
-		foreach ($dimension as $depth1 => $depth1Value) {
-			if(isset($depth1Value['DimensionValue'])){
-				$this->options['query']['Dimension.' . ($depth1 + 1) . '.DimensionValue'] = $depth1Value['DimensionValue'];
-			}
-			if(isset($depth1Value['DimensionKey'])){
-				$this->options['query']['Dimension.' . ($depth1 + 1) . '.DimensionKey'] = $depth1Value['DimensionKey'];
-			}
-		}
+    public function withDimension(array $dimension)
+    {
+        $this->data['Dimension'] = $dimension;
+        foreach ($dimension as $depth1 => $depth1Value) {
+            if (isset($depth1Value['DimensionValue'])) {
+                $this->options['query']['Dimension.' . ($depth1 + 1) . '.DimensionValue'] = $depth1Value['DimensionValue'];
+            }
+            if (isset($depth1Value['DimensionKey'])) {
+                $this->options['query']['Dimension.' . ($depth1 + 1) . '.DimensionKey'] = $depth1Value['DimensionKey'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -5576,20 +5499,17 @@ class ModifyLifecycleHook extends Rpc
  */
 class ModifyNotificationConfiguration extends Rpc
 {
-
     /**
-     * @param array $notificationType
-     *
      * @return $this
      */
-	public function withNotificationType(array $notificationType)
-	{
-	    $this->data['NotificationType'] = $notificationType;
-		foreach ($notificationType as $i => $iValue) {
-			$this->options['query']['NotificationType.' . ($i + 1)] = $iValue;
-		}
+    public function withNotificationType(array $notificationType)
+    {
+        $this->data['NotificationType'] = $notificationType;
+        foreach ($notificationType as $i => $iValue) {
+            $this->options['query']['NotificationType.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -5678,25 +5598,22 @@ class ModifyNotificationConfiguration extends Rpc
  */
 class ModifyScalingConfiguration extends Rpc
 {
-
     /**
-     * @param array $spotPriceLimit
-     *
      * @return $this
      */
-	public function withSpotPriceLimit(array $spotPriceLimit)
-	{
-	    $this->data['SpotPriceLimit'] = $spotPriceLimit;
-		foreach ($spotPriceLimit as $depth1 => $depth1Value) {
-			if(isset($depth1Value['InstanceType'])){
-				$this->options['query']['SpotPriceLimit.' . ($depth1 + 1) . '.InstanceType'] = $depth1Value['InstanceType'];
-			}
-			if(isset($depth1Value['PriceLimit'])){
-				$this->options['query']['SpotPriceLimit.' . ($depth1 + 1) . '.PriceLimit'] = $depth1Value['PriceLimit'];
-			}
-		}
+    public function withSpotPriceLimit(array $spotPriceLimit)
+    {
+        $this->data['SpotPriceLimit'] = $spotPriceLimit;
+        foreach ($spotPriceLimit as $depth1 => $depth1Value) {
+            if (isset($depth1Value['InstanceType'])) {
+                $this->options['query']['SpotPriceLimit.' . ($depth1 + 1) . '.InstanceType'] = $depth1Value['InstanceType'];
+            }
+            if (isset($depth1Value['PriceLimit'])) {
+                $this->options['query']['SpotPriceLimit.' . ($depth1 + 1) . '.PriceLimit'] = $depth1Value['PriceLimit'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -5739,18 +5656,16 @@ class ModifyScalingConfiguration extends Rpc
     }
 
     /**
-     * @param array $instanceTypes
-     *
      * @return $this
      */
-	public function withInstanceTypes(array $instanceTypes)
-	{
-	    $this->data['InstanceTypes'] = $instanceTypes;
-		foreach ($instanceTypes as $i => $iValue) {
-			$this->options['query']['InstanceTypes.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceTypes(array $instanceTypes)
+    {
+        $this->data['InstanceTypes'] = $instanceTypes;
+        foreach ($instanceTypes as $i => $iValue) {
+            $this->options['query']['InstanceTypes.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -5780,62 +5695,58 @@ class ModifyScalingConfiguration extends Rpc
     }
 
     /**
-     * @param array $securityGroupIds
-     *
      * @return $this
      */
-	public function withSecurityGroupIds(array $securityGroupIds)
-	{
-	    $this->data['SecurityGroupIds'] = $securityGroupIds;
-		foreach ($securityGroupIds as $i => $iValue) {
-			$this->options['query']['SecurityGroupIds.' . ($i + 1)] = $iValue;
-		}
+    public function withSecurityGroupIds(array $securityGroupIds)
+    {
+        $this->data['SecurityGroupIds'] = $securityGroupIds;
+        foreach ($securityGroupIds as $i => $iValue) {
+            $this->options['query']['SecurityGroupIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $dataDisk
-     *
      * @return $this
      */
-	public function withDataDisk(array $dataDisk)
-	{
-	    $this->data['DataDisk'] = $dataDisk;
-		foreach ($dataDisk as $depth1 => $depth1Value) {
-			if(isset($depth1Value['DiskName'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.DiskName'] = $depth1Value['DiskName'];
-			}
-			if(isset($depth1Value['SnapshotId'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.SnapshotId'] = $depth1Value['SnapshotId'];
-			}
-			if(isset($depth1Value['Size'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Size'] = $depth1Value['Size'];
-			}
-			if(isset($depth1Value['Encrypted'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Encrypted'] = $depth1Value['Encrypted'];
-			}
-			if(isset($depth1Value['AutoSnapshotPolicyId'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.AutoSnapshotPolicyId'] = $depth1Value['AutoSnapshotPolicyId'];
-			}
-			if(isset($depth1Value['Description'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Description'] = $depth1Value['Description'];
-			}
-			if(isset($depth1Value['Category'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Category'] = $depth1Value['Category'];
-			}
-			if(isset($depth1Value['KMSKeyId'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.KMSKeyId'] = $depth1Value['KMSKeyId'];
-			}
-			if(isset($depth1Value['Device'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.Device'] = $depth1Value['Device'];
-			}
-			if(isset($depth1Value['DeleteWithInstance'])){
-				$this->options['query']['DataDisk.' . ($depth1 + 1) . '.DeleteWithInstance'] = $depth1Value['DeleteWithInstance'];
-			}
-		}
+    public function withDataDisk(array $dataDisk)
+    {
+        $this->data['DataDisk'] = $dataDisk;
+        foreach ($dataDisk as $depth1 => $depth1Value) {
+            if (isset($depth1Value['DiskName'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.DiskName'] = $depth1Value['DiskName'];
+            }
+            if (isset($depth1Value['SnapshotId'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.SnapshotId'] = $depth1Value['SnapshotId'];
+            }
+            if (isset($depth1Value['Size'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Size'] = $depth1Value['Size'];
+            }
+            if (isset($depth1Value['Encrypted'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Encrypted'] = $depth1Value['Encrypted'];
+            }
+            if (isset($depth1Value['AutoSnapshotPolicyId'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.AutoSnapshotPolicyId'] = $depth1Value['AutoSnapshotPolicyId'];
+            }
+            if (isset($depth1Value['Description'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Description'] = $depth1Value['Description'];
+            }
+            if (isset($depth1Value['Category'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Category'] = $depth1Value['Category'];
+            }
+            if (isset($depth1Value['KMSKeyId'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.KMSKeyId'] = $depth1Value['KMSKeyId'];
+            }
+            if (isset($depth1Value['Device'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.Device'] = $depth1Value['Device'];
+            }
+            if (isset($depth1Value['DeleteWithInstance'])) {
+                $this->options['query']['DataDisk.' . ($depth1 + 1) . '.DeleteWithInstance'] = $depth1Value['DeleteWithInstance'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -5914,20 +5825,17 @@ class ModifyScalingConfiguration extends Rpc
  */
 class ModifyScalingGroup extends Rpc
 {
-
     /**
-     * @param array $vSwitchIds
-     *
      * @return $this
      */
-	public function withVSwitchIds(array $vSwitchIds)
-	{
-	    $this->data['VSwitchIds'] = $vSwitchIds;
-		foreach ($vSwitchIds as $i => $iValue) {
-			$this->options['query']['VSwitchIds.' . ($i + 1)] = $iValue;
-		}
+    public function withVSwitchIds(array $vSwitchIds)
+    {
+        $this->data['VSwitchIds'] = $vSwitchIds;
+        foreach ($vSwitchIds as $i => $iValue) {
+            $this->options['query']['VSwitchIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -6004,28 +5912,25 @@ class ModifyScalingGroup extends Rpc
  */
 class ModifyScalingRule extends Rpc
 {
-
     /**
-     * @param array $stepAdjustment
-     *
      * @return $this
      */
-	public function withStepAdjustment(array $stepAdjustment)
-	{
-	    $this->data['StepAdjustment'] = $stepAdjustment;
-		foreach ($stepAdjustment as $depth1 => $depth1Value) {
-			if(isset($depth1Value['MetricIntervalLowerBound'])){
-				$this->options['query']['StepAdjustment.' . ($depth1 + 1) . '.MetricIntervalLowerBound'] = $depth1Value['MetricIntervalLowerBound'];
-			}
-			if(isset($depth1Value['MetricIntervalUpperBound'])){
-				$this->options['query']['StepAdjustment.' . ($depth1 + 1) . '.MetricIntervalUpperBound'] = $depth1Value['MetricIntervalUpperBound'];
-			}
-			if(isset($depth1Value['ScalingAdjustment'])){
-				$this->options['query']['StepAdjustment.' . ($depth1 + 1) . '.ScalingAdjustment'] = $depth1Value['ScalingAdjustment'];
-			}
-		}
+    public function withStepAdjustment(array $stepAdjustment)
+    {
+        $this->data['StepAdjustment'] = $stepAdjustment;
+        foreach ($stepAdjustment as $depth1 => $depth1Value) {
+            if (isset($depth1Value['MetricIntervalLowerBound'])) {
+                $this->options['query']['StepAdjustment.' . ($depth1 + 1) . '.MetricIntervalLowerBound'] = $depth1Value['MetricIntervalLowerBound'];
+            }
+            if (isset($depth1Value['MetricIntervalUpperBound'])) {
+                $this->options['query']['StepAdjustment.' . ($depth1 + 1) . '.MetricIntervalUpperBound'] = $depth1Value['MetricIntervalUpperBound'];
+            }
+            if (isset($depth1Value['ScalingAdjustment'])) {
+                $this->options['query']['StepAdjustment.' . ($depth1 + 1) . '.ScalingAdjustment'] = $depth1Value['ScalingAdjustment'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -6100,7 +6005,6 @@ class RebalanceInstances extends Rpc
  */
 class RecordLifecycleActionHeartbeat extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -6160,20 +6064,17 @@ class RecordLifecycleActionHeartbeat extends Rpc
  */
 class RemoveInstances extends Rpc
 {
-
     /**
-     * @param array $instanceId
-     *
      * @return $this
      */
-	public function withInstanceId(array $instanceId)
-	{
-	    $this->data['InstanceId'] = $instanceId;
-		foreach ($instanceId as $i => $iValue) {
-			$this->options['query']['InstanceId.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceId(array $instanceId)
+    {
+        $this->data['InstanceId'] = $instanceId;
+        foreach ($instanceId as $i => $iValue) {
+            $this->options['query']['InstanceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -6190,20 +6091,17 @@ class RemoveInstances extends Rpc
  */
 class ResumeProcesses extends Rpc
 {
-
     /**
-     * @param array $process
-     *
      * @return $this
      */
-	public function withProcess(array $process)
-	{
-	    $this->data['Process'] = $process;
-		foreach ($process as $i => $iValue) {
-			$this->options['query']['Process.' . ($i + 1)] = $iValue;
-		}
+    public function withProcess(array $process)
+    {
+        $this->data['Process'] = $process;
+        foreach ($process as $i => $iValue) {
+            $this->options['query']['Process.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -6248,20 +6146,17 @@ class SetInstanceHealth extends Rpc
  */
 class SetInstancesProtection extends Rpc
 {
-
     /**
-     * @param array $instanceId
-     *
      * @return $this
      */
-	public function withInstanceId(array $instanceId)
-	{
-	    $this->data['InstanceId'] = $instanceId;
-		foreach ($instanceId as $i => $iValue) {
-			$this->options['query']['InstanceId.' . ($i + 1)] = $iValue;
-		}
+    public function withInstanceId(array $instanceId)
+    {
+        $this->data['InstanceId'] = $instanceId;
+        foreach ($instanceId as $i => $iValue) {
+            $this->options['query']['InstanceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -6278,20 +6173,17 @@ class SetInstancesProtection extends Rpc
  */
 class SuspendProcesses extends Rpc
 {
-
     /**
-     * @param array $process
-     *
      * @return $this
      */
-	public function withProcess(array $process)
-	{
-	    $this->data['Process'] = $process;
-		foreach ($process as $i => $iValue) {
-			$this->options['query']['Process.' . ($i + 1)] = $iValue;
-		}
+    public function withProcess(array $process)
+    {
+        $this->data['Process'] = $process;
+        foreach ($process as $i => $iValue) {
+            $this->options['query']['Process.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -6307,40 +6199,35 @@ class SuspendProcesses extends Rpc
  */
 class TagResources extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -6358,35 +6245,30 @@ class TagResources extends Rpc
  */
 class UntagResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tagKey
-     *
      * @return $this
      */
-	public function withTagKey(array $tagKey)
-	{
-	    $this->data['TagKey'] = $tagKey;
-		foreach ($tagKey as $i => $iValue) {
-			$this->options['query']['TagKey.' . ($i + 1)] = $iValue;
-		}
+    public function withTagKey(array $tagKey)
+    {
+        $this->data['TagKey'] = $tagKey;
+        foreach ($tagKey as $i => $iValue) {
+            $this->options['query']['TagKey.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 

@@ -119,7 +119,6 @@ class GetAuthToken extends Rpc
  */
 class GetMobile extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }
@@ -156,7 +155,6 @@ class TwiceTelVerify extends Rpc
  */
 class VerifyMobile extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }

@@ -35,7 +35,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class DetectVideoShot extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -70,7 +69,6 @@ class DetectVideoShot extends Rpc
  */
 class GenerateVideoCover extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -117,7 +115,6 @@ class GenerateVideoCover extends Rpc
  */
 class GetAsyncJobResult extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -151,7 +148,6 @@ class GetAsyncJobResult extends Rpc
  */
 class UnderstandVideoContent extends Rpc
 {
-
     /**
      * @param string $value
      *

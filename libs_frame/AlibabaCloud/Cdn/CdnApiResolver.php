@@ -226,7 +226,6 @@ class AddCdnDomain extends Rpc
  */
 class AddFCTrigger extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -452,7 +451,6 @@ class CreateCdnCertificateSigningRequest extends Rpc
  */
 class CreateCdnDeliverTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -543,7 +541,6 @@ class CreateCdnDeliverTask extends Rpc
  */
 class CreateCdnSubTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -636,7 +633,6 @@ class CreateIllegalUrlExportTask extends Rpc
  */
 class CreateRealTimeLogDelivery extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -735,7 +731,6 @@ class DeleteFCTrigger extends Rpc
  */
 class DeleteRealtimeLogDelivery extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1086,7 +1081,6 @@ class DescribeCdnWafDomain extends Rpc
  */
 class DescribeCertificateInfoByID extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1117,7 +1111,6 @@ class DescribeConfigOfVersion extends Rpc
  */
 class DescribeCustomLogConfig extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1246,7 +1239,6 @@ class DescribeDomainCertificateInfo extends Rpc
  */
 class DescribeDomainCustomLogConfig extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1271,7 +1263,6 @@ class DescribeDomainCustomLogConfig extends Rpc
  */
 class DescribeDomainDetailDataByLayer extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1410,7 +1401,6 @@ class DescribeDomainNamesOfVersion extends Rpc
  */
 class DescribeDomainPathData extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1487,7 +1477,6 @@ class DescribeDomainQpsDataByLayer extends Rpc
  */
 class DescribeDomainRealTimeBpsData extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1504,7 +1493,6 @@ class DescribeDomainRealTimeBpsData extends Rpc
  */
 class DescribeDomainRealTimeByteHitRateData extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1531,7 +1519,6 @@ class DescribeDomainRealTimeByteHitRateData extends Rpc
  */
 class DescribeDomainRealTimeDetailData extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1562,7 +1549,6 @@ class DescribeDomainRealTimeHttpCodeData extends Rpc
  */
 class DescribeDomainRealtimeLogDelivery extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1583,7 +1569,6 @@ class DescribeDomainRealtimeLogDelivery extends Rpc
  */
 class DescribeDomainRealTimeQpsData extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1600,7 +1585,6 @@ class DescribeDomainRealTimeQpsData extends Rpc
  */
 class DescribeDomainRealTimeReqHitRateData extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1947,7 +1931,6 @@ class DescribeEsExecuteData extends Rpc
  */
 class DescribeFCTrigger extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2092,40 +2075,35 @@ class DescribeStagingIp extends Rpc
  */
 class DescribeTagResources extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2198,25 +2176,22 @@ class DescribeUserConfigs extends Rpc
  */
 class DescribeUserDomains extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2262,7 +2237,6 @@ class DescribeUserUsageDetailDataExportTask extends Rpc
  */
 class DescribeUserVipsByDomain extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2285,7 +2259,6 @@ class DescribeVerifyContent extends Rpc
  */
 class DisableRealtimeLogDelivery extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2298,7 +2271,6 @@ class DisableRealtimeLogDelivery extends Rpc
  */
 class EnableRealtimeLogDelivery extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2311,7 +2283,6 @@ class EnableRealtimeLogDelivery extends Rpc
  */
 class ListDomainsByLogConfigId extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2326,7 +2297,6 @@ class ListDomainsByLogConfigId extends Rpc
  */
 class ListFCTrigger extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2343,7 +2313,6 @@ class ListFCTrigger extends Rpc
  */
 class ListRealtimeLogDeliveryDomains extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2354,7 +2323,6 @@ class ListRealtimeLogDeliveryDomains extends Rpc
  */
 class ListRealtimeLogDeliveryInfos extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2365,7 +2333,6 @@ class ListRealtimeLogDeliveryInfos extends Rpc
  */
 class ListUserCustomLogConfig extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2410,7 +2377,6 @@ class ModifyCdnDomainSchdmByProperty extends Rpc
  */
 class ModifyDomainCustomLogConfig extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2429,7 +2395,6 @@ class ModifyDomainCustomLogConfig extends Rpc
  */
 class ModifyRealtimeLogDelivery extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -2914,40 +2879,35 @@ class StopCdnDomain extends Rpc
  */
 class TagResources extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -2963,35 +2923,30 @@ class TagResources extends Rpc
  */
 class UntagResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tagKey
-     *
      * @return $this
      */
-	public function withTagKey(array $tagKey)
-	{
-	    $this->data['TagKey'] = $tagKey;
-		foreach ($tagKey as $i => $iValue) {
-			$this->options['query']['TagKey.' . ($i + 1)] = $iValue;
-		}
+    public function withTagKey(array $tagKey)
+    {
+        $this->data['TagKey'] = $tagKey;
+        foreach ($tagKey as $i => $iValue) {
+            $this->options['query']['TagKey.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -3008,7 +2963,6 @@ class UntagResources extends Rpc
  */
 class UpdateCdnDeliverTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3112,7 +3066,6 @@ class UpdateCdnDeliverTask extends Rpc
  */
 class UpdateCdnSubTask extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3191,7 +3144,6 @@ class UpdateCdnSubTask extends Rpc
  */
 class UpdateFCTrigger extends Rpc
 {
-
     /**
      * @param string $value
      *

@@ -331,7 +331,6 @@ class AddCoverPipeline extends Rpc
  */
 class AddMCTemplate extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -3535,7 +3534,6 @@ class UpdateCoverPipeline extends Rpc
  */
 class UpdateMCTemplate extends Rpc
 {
-
     /**
      * @param string $value
      *

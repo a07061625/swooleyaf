@@ -53,10 +53,10 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
     public $method = 'POST';
 
     /** @var string */
-    protected $scheme = 'https';
+    public $serviceCode = 'privatelink';
 
     /** @var string */
-    public $serviceCode = 'privatelink';
+    protected $scheme = 'https';
 }
 
 /**
@@ -88,7 +88,6 @@ class AddUserToVpcEndpointService extends Rpc
  */
 class AddZoneToVpcEndpoint extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -131,14 +130,12 @@ class AttachResourceToVpcEndpointService extends Rpc
  */
 class AttachSecurityGroupToVpcEndpoint extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 }
 
 class CheckProductOpen extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 }
@@ -163,43 +160,38 @@ class CheckProductOpen extends Rpc
  */
 class CreateVpcEndpoint extends Rpc
 {
-
     /**
-     * @param array $securityGroupId
-     *
      * @return $this
      */
-	public function withSecurityGroupId(array $securityGroupId)
-	{
-	    $this->data['SecurityGroupId'] = $securityGroupId;
-		foreach ($securityGroupId as $i => $iValue) {
-			$this->options['query']['SecurityGroupId.' . ($i + 1)] = $iValue;
-		}
+    public function withSecurityGroupId(array $securityGroupId)
+    {
+        $this->data['SecurityGroupId'] = $securityGroupId;
+        foreach ($securityGroupId as $i => $iValue) {
+            $this->options['query']['SecurityGroupId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $zone
-     *
      * @return $this
      */
-	public function withZone(array $zone)
-	{
-	    $this->data['Zone'] = $zone;
-		foreach ($zone as $depth1 => $depth1Value) {
-			if(isset($depth1Value['VSwitchId'])){
-				$this->options['query']['Zone.' . ($depth1 + 1) . '.VSwitchId'] = $depth1Value['VSwitchId'];
-			}
-			if(isset($depth1Value['ZoneId'])){
-				$this->options['query']['Zone.' . ($depth1 + 1) . '.ZoneId'] = $depth1Value['ZoneId'];
-			}
-			if(isset($depth1Value['Ip'])){
-				$this->options['query']['Zone.' . ($depth1 + 1) . '.ip'] = $depth1Value['Ip'];
-			}
-		}
+    public function withZone(array $zone)
+    {
+        $this->data['Zone'] = $zone;
+        foreach ($zone as $depth1 => $depth1Value) {
+            if (isset($depth1Value['VSwitchId'])) {
+                $this->options['query']['Zone.' . ($depth1 + 1) . '.VSwitchId'] = $depth1Value['VSwitchId'];
+            }
+            if (isset($depth1Value['ZoneId'])) {
+                $this->options['query']['Zone.' . ($depth1 + 1) . '.ZoneId'] = $depth1Value['ZoneId'];
+            }
+            if (isset($depth1Value['Ip'])) {
+                $this->options['query']['Zone.' . ($depth1 + 1) . '.ip'] = $depth1Value['Ip'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -220,25 +212,22 @@ class CreateVpcEndpoint extends Rpc
  */
 class CreateVpcEndpointService extends Rpc
 {
-
     /**
-     * @param array $resource
-     *
      * @return $this
      */
-	public function withResource(array $resource)
-	{
-	    $this->data['Resource'] = $resource;
-		foreach ($resource as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ResourceType'])){
-				$this->options['query']['Resource.' . ($depth1 + 1) . '.ResourceType'] = $depth1Value['ResourceType'];
-			}
-			if(isset($depth1Value['ResourceId'])){
-				$this->options['query']['Resource.' . ($depth1 + 1) . '.ResourceId'] = $depth1Value['ResourceId'];
-			}
-		}
+    public function withResource(array $resource)
+    {
+        $this->data['Resource'] = $resource;
+        foreach ($resource as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ResourceType'])) {
+                $this->options['query']['Resource.' . ($depth1 + 1) . '.ResourceType'] = $depth1Value['ResourceType'];
+            }
+            if (isset($depth1Value['ResourceId'])) {
+                $this->options['query']['Resource.' . ($depth1 + 1) . '.ResourceId'] = $depth1Value['ResourceId'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -482,7 +471,6 @@ class ListVpcEndpointZones extends Rpc
  */
 class OpenPrivateLinkService extends Rpc
 {
-
     /** @var string */
     public $scheme = 'http';
 }

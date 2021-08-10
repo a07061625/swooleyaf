@@ -120,35 +120,30 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
  */
 class AddAccountRelation extends Rpc
 {
-
     /**
-     * @param array $permissionCodes
-     *
      * @return $this
      */
-	public function withPermissionCodes(array $permissionCodes)
-	{
-	    $this->data['PermissionCodes'] = $permissionCodes;
-		foreach ($permissionCodes as $i => $iValue) {
-			$this->options['query']['PermissionCodes.' . ($i + 1)] = $iValue;
-		}
+    public function withPermissionCodes(array $permissionCodes)
+    {
+        $this->data['PermissionCodes'] = $permissionCodes;
+        foreach ($permissionCodes as $i => $iValue) {
+            $this->options['query']['PermissionCodes.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $roleCodes
-     *
      * @return $this
      */
-	public function withRoleCodes(array $roleCodes)
-	{
-	    $this->data['RoleCodes'] = $roleCodes;
-		foreach ($roleCodes as $i => $iValue) {
-			$this->options['query']['RoleCodes.' . ($i + 1)] = $iValue;
-		}
+    public function withRoleCodes(array $roleCodes)
+    {
+        $this->data['RoleCodes'] = $roleCodes;
+        foreach ($roleCodes as $i => $iValue) {
+            $this->options['query']['RoleCodes.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -165,31 +160,28 @@ class AddAccountRelation extends Rpc
  */
 class AllocateCostUnitResource extends Rpc
 {
-
     /**
-     * @param array $resourceInstanceList
-     *
      * @return $this
      */
-	public function withResourceInstanceList(array $resourceInstanceList)
-	{
-	    $this->data['ResourceInstanceList'] = $resourceInstanceList;
-		foreach ($resourceInstanceList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ResourceId'])){
-				$this->options['query']['ResourceInstanceList.' . ($depth1 + 1) . '.ResourceId'] = $depth1Value['ResourceId'];
-			}
-			if(isset($depth1Value['CommodityCode'])){
-				$this->options['query']['ResourceInstanceList.' . ($depth1 + 1) . '.CommodityCode'] = $depth1Value['CommodityCode'];
-			}
-			if(isset($depth1Value['ApportionCode'])){
-				$this->options['query']['ResourceInstanceList.' . ($depth1 + 1) . '.ApportionCode'] = $depth1Value['ApportionCode'];
-			}
-			if(isset($depth1Value['ResourceUserId'])){
-				$this->options['query']['ResourceInstanceList.' . ($depth1 + 1) . '.ResourceUserId'] = $depth1Value['ResourceUserId'];
-			}
-		}
+    public function withResourceInstanceList(array $resourceInstanceList)
+    {
+        $this->data['ResourceInstanceList'] = $resourceInstanceList;
+        foreach ($resourceInstanceList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ResourceId'])) {
+                $this->options['query']['ResourceInstanceList.' . ($depth1 + 1) . '.ResourceId'] = $depth1Value['ResourceId'];
+            }
+            if (isset($depth1Value['CommodityCode'])) {
+                $this->options['query']['ResourceInstanceList.' . ($depth1 + 1) . '.CommodityCode'] = $depth1Value['CommodityCode'];
+            }
+            if (isset($depth1Value['ApportionCode'])) {
+                $this->options['query']['ResourceInstanceList.' . ($depth1 + 1) . '.ApportionCode'] = $depth1Value['ApportionCode'];
+            }
+            if (isset($depth1Value['ResourceUserId'])) {
+                $this->options['query']['ResourceInstanceList.' . ($depth1 + 1) . '.ResourceUserId'] = $depth1Value['ResourceUserId'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -216,20 +208,17 @@ class AllocateCostUnitResource extends Rpc
  */
 class ApplyInvoice extends Rpc
 {
-
     /**
-     * @param array $selectedIds
-     *
      * @return $this
      */
-	public function withSelectedIds(array $selectedIds)
-	{
-	    $this->data['SelectedIds'] = $selectedIds;
-		foreach ($selectedIds as $i => $iValue) {
-			$this->options['query']['SelectedIds.' . ($i + 1)] = $iValue;
-		}
+    public function withSelectedIds(array $selectedIds)
+    {
+        $this->data['SelectedIds'] = $selectedIds;
+        foreach ($selectedIds as $i => $iValue) {
+            $this->options['query']['SelectedIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -280,20 +269,17 @@ class ChangeResellerConsumeAmount extends Rpc
  */
 class ConfirmRelation extends Rpc
 {
-
     /**
-     * @param array $permissionCodes
-     *
      * @return $this
      */
-	public function withPermissionCodes(array $permissionCodes)
-	{
-	    $this->data['PermissionCodes'] = $permissionCodes;
-		foreach ($permissionCodes as $i => $iValue) {
-			$this->options['query']['PermissionCodes.' . ($i + 1)] = $iValue;
-		}
+    public function withPermissionCodes(array $permissionCodes)
+    {
+        $this->data['PermissionCodes'] = $permissionCodes;
+        foreach ($permissionCodes as $i => $iValue) {
+            $this->options['query']['PermissionCodes.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -337,7 +323,6 @@ class ConvertChargeType extends Rpc
  */
 class CreateAgAccount extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }
@@ -347,28 +332,25 @@ class CreateAgAccount extends Rpc
  */
 class CreateCostUnit extends Rpc
 {
-
     /**
-     * @param array $unitEntityList
-     *
      * @return $this
      */
-	public function withUnitEntityList(array $unitEntityList)
-	{
-	    $this->data['UnitEntityList'] = $unitEntityList;
-		foreach ($unitEntityList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['UnitName'])){
-				$this->options['query']['UnitEntityList.' . ($depth1 + 1) . '.UnitName'] = $depth1Value['UnitName'];
-			}
-			if(isset($depth1Value['ParentUnitId'])){
-				$this->options['query']['UnitEntityList.' . ($depth1 + 1) . '.ParentUnitId'] = $depth1Value['ParentUnitId'];
-			}
-			if(isset($depth1Value['OwnerUid'])){
-				$this->options['query']['UnitEntityList.' . ($depth1 + 1) . '.OwnerUid'] = $depth1Value['OwnerUid'];
-			}
-		}
+    public function withUnitEntityList(array $unitEntityList)
+    {
+        $this->data['UnitEntityList'] = $unitEntityList;
+        foreach ($unitEntityList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['UnitName'])) {
+                $this->options['query']['UnitEntityList.' . ($depth1 + 1) . '.UnitName'] = $depth1Value['UnitName'];
+            }
+            if (isset($depth1Value['ParentUnitId'])) {
+                $this->options['query']['UnitEntityList.' . ($depth1 + 1) . '.ParentUnitId'] = $depth1Value['ParentUnitId'];
+            }
+            if (isset($depth1Value['OwnerUid'])) {
+                $this->options['query']['UnitEntityList.' . ($depth1 + 1) . '.OwnerUid'] = $depth1Value['OwnerUid'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -395,25 +377,22 @@ class CreateCostUnit extends Rpc
  */
 class CreateInstance extends Rpc
 {
-
     /**
-     * @param array $parameter
-     *
      * @return $this
      */
-	public function withParameter(array $parameter)
-	{
-	    $this->data['Parameter'] = $parameter;
-		foreach ($parameter as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Code'])){
-				$this->options['query']['Parameter.' . ($depth1 + 1) . '.Code'] = $depth1Value['Code'];
-			}
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Parameter.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-		}
+    public function withParameter(array $parameter)
+    {
+        $this->data['Parameter'] = $parameter;
+        foreach ($parameter as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Code'])) {
+                $this->options['query']['Parameter.' . ($depth1 + 1) . '.Code'] = $depth1Value['Code'];
+            }
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Parameter.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -616,25 +595,22 @@ class DescribeResourceUsageTotal extends Rpc
  */
 class DescribeSplitItemBill extends Rpc
 {
-
     /**
-     * @param array $tagFilter
-     *
      * @return $this
      */
-	public function withTagFilter(array $tagFilter)
-	{
-	    $this->data['TagFilter'] = $tagFilter;
-		foreach ($tagFilter as $depth1 => $depth1Value) {
-			foreach ($depth1Value['TagValues'] as $i => $iValue) {
-				$this->options['query']['TagFilter.' . ($depth1 + 1) . '.TagValues.' . ($i + 1)] = $iValue;
-			}
-			if(isset($depth1Value['TagKey'])){
-				$this->options['query']['TagFilter.' . ($depth1 + 1) . '.TagKey'] = $depth1Value['TagKey'];
-			}
-		}
+    public function withTagFilter(array $tagFilter)
+    {
+        $this->data['TagFilter'] = $tagFilter;
+        foreach ($tagFilter as $depth1 => $depth1Value) {
+            foreach ($depth1Value['TagValues'] as $i => $iValue) {
+                $this->options['query']['TagFilter.' . ($depth1 + 1) . '.TagValues.' . ($i + 1)] = $iValue;
+            }
+            if (isset($depth1Value['TagKey'])) {
+                $this->options['query']['TagFilter.' . ($depth1 + 1) . '.TagKey'] = $depth1Value['TagKey'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -685,28 +661,25 @@ class GetOrderDetail extends Rpc
  */
 class GetPayAsYouGoPrice extends Rpc
 {
-
     /**
-     * @param array $moduleList
-     *
      * @return $this
      */
-	public function withModuleList(array $moduleList)
-	{
-	    $this->data['ModuleList'] = $moduleList;
-		foreach ($moduleList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ModuleCode'])){
-				$this->options['query']['ModuleList.' . ($depth1 + 1) . '.ModuleCode'] = $depth1Value['ModuleCode'];
-			}
-			if(isset($depth1Value['PriceType'])){
-				$this->options['query']['ModuleList.' . ($depth1 + 1) . '.PriceType'] = $depth1Value['PriceType'];
-			}
-			if(isset($depth1Value['Config'])){
-				$this->options['query']['ModuleList.' . ($depth1 + 1) . '.Config'] = $depth1Value['Config'];
-			}
-		}
+    public function withModuleList(array $moduleList)
+    {
+        $this->data['ModuleList'] = $moduleList;
+        foreach ($moduleList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ModuleCode'])) {
+                $this->options['query']['ModuleList.' . ($depth1 + 1) . '.ModuleCode'] = $depth1Value['ModuleCode'];
+            }
+            if (isset($depth1Value['PriceType'])) {
+                $this->options['query']['ModuleList.' . ($depth1 + 1) . '.PriceType'] = $depth1Value['PriceType'];
+            }
+            if (isset($depth1Value['Config'])) {
+                $this->options['query']['ModuleList.' . ($depth1 + 1) . '.Config'] = $depth1Value['Config'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -759,31 +732,28 @@ class GetResourcePackagePrice extends Rpc
  */
 class GetSubscriptionPrice extends Rpc
 {
-
     /**
-     * @param array $moduleList
-     *
      * @return $this
      */
-	public function withModuleList(array $moduleList)
-	{
-	    $this->data['ModuleList'] = $moduleList;
-		foreach ($moduleList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['ModuleCode'])){
-				$this->options['query']['ModuleList.' . ($depth1 + 1) . '.ModuleCode'] = $depth1Value['ModuleCode'];
-			}
-			if(isset($depth1Value['ModuleStatus'])){
-				$this->options['query']['ModuleList.' . ($depth1 + 1) . '.ModuleStatus'] = $depth1Value['ModuleStatus'];
-			}
-			if(isset($depth1Value['Tag'])){
-				$this->options['query']['ModuleList.' . ($depth1 + 1) . '.Tag'] = $depth1Value['Tag'];
-			}
-			if(isset($depth1Value['Config'])){
-				$this->options['query']['ModuleList.' . ($depth1 + 1) . '.Config'] = $depth1Value['Config'];
-			}
-		}
+    public function withModuleList(array $moduleList)
+    {
+        $this->data['ModuleList'] = $moduleList;
+        foreach ($moduleList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['ModuleCode'])) {
+                $this->options['query']['ModuleList.' . ($depth1 + 1) . '.ModuleCode'] = $depth1Value['ModuleCode'];
+            }
+            if (isset($depth1Value['ModuleStatus'])) {
+                $this->options['query']['ModuleList.' . ($depth1 + 1) . '.ModuleStatus'] = $depth1Value['ModuleStatus'];
+            }
+            if (isset($depth1Value['Tag'])) {
+                $this->options['query']['ModuleList.' . ($depth1 + 1) . '.Tag'] = $depth1Value['Tag'];
+            }
+            if (isset($depth1Value['Config'])) {
+                $this->options['query']['ModuleList.' . ($depth1 + 1) . '.Config'] = $depth1Value['Config'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -805,35 +775,30 @@ class GetSubscriptionPrice extends Rpc
  */
 class ModifyAccountRelation extends Rpc
 {
-
     /**
-     * @param array $permissionCodes
-     *
      * @return $this
      */
-	public function withPermissionCodes(array $permissionCodes)
-	{
-	    $this->data['PermissionCodes'] = $permissionCodes;
-		foreach ($permissionCodes as $i => $iValue) {
-			$this->options['query']['PermissionCodes.' . ($i + 1)] = $iValue;
-		}
+    public function withPermissionCodes(array $permissionCodes)
+    {
+        $this->data['PermissionCodes'] = $permissionCodes;
+        foreach ($permissionCodes as $i => $iValue) {
+            $this->options['query']['PermissionCodes.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $roleCodes
-     *
      * @return $this
      */
-	public function withRoleCodes(array $roleCodes)
-	{
-	    $this->data['RoleCodes'] = $roleCodes;
-		foreach ($roleCodes as $i => $iValue) {
-			$this->options['query']['RoleCodes.' . ($i + 1)] = $iValue;
-		}
+    public function withRoleCodes(array $roleCodes)
+    {
+        $this->data['RoleCodes'] = $roleCodes;
+        foreach ($roleCodes as $i => $iValue) {
+            $this->options['query']['RoleCodes.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -842,28 +807,25 @@ class ModifyAccountRelation extends Rpc
  */
 class ModifyCostUnit extends Rpc
 {
-
     /**
-     * @param array $unitEntityList
-     *
      * @return $this
      */
-	public function withUnitEntityList(array $unitEntityList)
-	{
-	    $this->data['UnitEntityList'] = $unitEntityList;
-		foreach ($unitEntityList as $depth1 => $depth1Value) {
-			if(isset($depth1Value['NewUnitName'])){
-				$this->options['query']['UnitEntityList.' . ($depth1 + 1) . '.NewUnitName'] = $depth1Value['NewUnitName'];
-			}
-			if(isset($depth1Value['UnitId'])){
-				$this->options['query']['UnitEntityList.' . ($depth1 + 1) . '.UnitId'] = $depth1Value['UnitId'];
-			}
-			if(isset($depth1Value['OwnerUid'])){
-				$this->options['query']['UnitEntityList.' . ($depth1 + 1) . '.OwnerUid'] = $depth1Value['OwnerUid'];
-			}
-		}
+    public function withUnitEntityList(array $unitEntityList)
+    {
+        $this->data['UnitEntityList'] = $unitEntityList;
+        foreach ($unitEntityList as $depth1 => $depth1Value) {
+            if (isset($depth1Value['NewUnitName'])) {
+                $this->options['query']['UnitEntityList.' . ($depth1 + 1) . '.NewUnitName'] = $depth1Value['NewUnitName'];
+            }
+            if (isset($depth1Value['UnitId'])) {
+                $this->options['query']['UnitEntityList.' . ($depth1 + 1) . '.UnitId'] = $depth1Value['UnitId'];
+            }
+            if (isset($depth1Value['OwnerUid'])) {
+                $this->options['query']['UnitEntityList.' . ($depth1 + 1) . '.OwnerUid'] = $depth1Value['OwnerUid'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -886,25 +848,22 @@ class ModifyCostUnit extends Rpc
  */
 class ModifyInstance extends Rpc
 {
-
     /**
-     * @param array $parameter
-     *
      * @return $this
      */
-	public function withParameter(array $parameter)
-	{
-	    $this->data['Parameter'] = $parameter;
-		foreach ($parameter as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Code'])){
-				$this->options['query']['Parameter.' . ($depth1 + 1) . '.Code'] = $depth1Value['Code'];
-			}
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Parameter.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-		}
+    public function withParameter(array $parameter)
+    {
+        $this->data['Parameter'] = $parameter;
+        foreach ($parameter as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Code'])) {
+                $this->options['query']['Parameter.' . ($depth1 + 1) . '.Code'] = $depth1Value['Code'];
+            }
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Parameter.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1163,20 +1122,17 @@ class QueryDPUtilizationDetail extends Rpc
  */
 class QueryEvaluateList extends Rpc
 {
-
     /**
-     * @param array $bizTypeList
-     *
      * @return $this
      */
-	public function withBizTypeList(array $bizTypeList)
-	{
-	    $this->data['BizTypeList'] = $bizTypeList;
-		foreach ($bizTypeList as $i => $iValue) {
-			$this->options['query']['BizTypeList.' . ($i + 1)] = $iValue;
-		}
+    public function withBizTypeList(array $bizTypeList)
+    {
+        $this->data['BizTypeList'] = $bizTypeList;
+        foreach ($bizTypeList as $i => $iValue) {
+            $this->options['query']['BizTypeList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1226,40 +1182,35 @@ class QueryInstanceBill extends Rpc
  */
 class QueryInstanceByTag extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1389,7 +1340,6 @@ class QueryProductList extends Rpc
  */
 class QueryRedeem extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -1405,20 +1355,17 @@ class QueryRedeem extends Rpc
  */
 class QueryRelationList extends Rpc
 {
-
     /**
-     * @param array $statusList
-     *
      * @return $this
      */
-	public function withStatusList(array $statusList)
-	{
-	    $this->data['StatusList'] = $statusList;
-		foreach ($statusList as $i => $iValue) {
-			$this->options['query']['StatusList.' . ($i + 1)] = $iValue;
-		}
+    public function withStatusList(array $statusList)
+    {
+        $this->data['StatusList'] = $statusList;
+        foreach ($statusList as $i => $iValue) {
+            $this->options['query']['StatusList.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1509,25 +1456,22 @@ class QuerySavingsPlansDeductLog extends Rpc
  */
 class QuerySavingsPlansInstance extends Rpc
 {
-
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1699,7 +1643,6 @@ class RenewResourcePackage extends Rpc
  */
 class SaveUserCredit extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }
@@ -1752,7 +1695,6 @@ class SetAllExpirationDay extends Rpc
  */
 class SetCreditLabelAction extends Rpc
 {
-
     /** @var string */
     public $scheme = 'https';
 }
@@ -1841,40 +1783,35 @@ class SubscribeBillToOSS extends Rpc
  */
 class TagResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tag
-     *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-		}
+    public function withTag(array $tag)
+    {
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            if (isset($depth1Value['Value'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            }
+            if (isset($depth1Value['Key'])) {
+                $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+            }
+        }
 
-		return $this;
+        return $this;
     }
 }
 
@@ -1898,35 +1835,30 @@ class UnsubscribeBillToOSS extends Rpc
  */
 class UntagResources extends Rpc
 {
-
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function withResourceId(array $resourceId)
-	{
-	    $this->data['ResourceId'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function withResourceId(array $resourceId)
+    {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
-     * @param array $tagKey
-     *
      * @return $this
      */
-	public function withTagKey(array $tagKey)
-	{
-	    $this->data['TagKey'] = $tagKey;
-		foreach ($tagKey as $i => $iValue) {
-			$this->options['query']['TagKey.' . ($i + 1)] = $iValue;
-		}
+    public function withTagKey(array $tagKey)
+    {
+        $this->data['TagKey'] = $tagKey;
+        foreach ($tagKey as $i => $iValue) {
+            $this->options['query']['TagKey.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 

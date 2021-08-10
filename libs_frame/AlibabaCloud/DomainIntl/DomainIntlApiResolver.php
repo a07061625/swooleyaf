@@ -259,7 +259,6 @@ class QueryRegistrantProfileRealNameVerificationInfo extends Rpc
  */
 class RegistrantProfileRealNameVerification extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -288,7 +287,6 @@ class RegistrantProfileRealNameVerification extends Rpc
  */
 class SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredential extends Rpc
 {
-
     /**
      * @param string $value
      *
@@ -303,8 +301,6 @@ class SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredential extend
     }
 
     /**
-     * @param array $domainName
-     *
      * @return $this
      */
     public function withDomainName(array $domainName)
@@ -374,10 +370,7 @@ class SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileID exten
  */
 class SaveTaskForUpdatingRegistrantInfoByIdentityCredential extends Rpc
 {
-
     /**
-     * @param array $domainName
-     *
      * @return $this
      */
     public function withDomainName(array $domainName)
@@ -417,10 +410,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredential extends Rpc
  */
 class SaveTaskForUpdatingRegistrantInfoByRegistrantProfileID extends Rpc
 {
-
     /**
-     * @param array $domainName
-     *
      * @return $this
      */
     public function withDomainName(array $domainName)
@@ -623,10 +613,7 @@ class QueryLocalEnsAssociation extends Rpc
  */
 class SaveSingleTaskForDeletingDnsHost extends Rpc
 {
-
     /**
-     * @param array $ip
-     *
      * @return $this
      */
     public function withIp(array $ip)
@@ -683,10 +670,7 @@ class SaveSingleTaskForCreatingOrderTransfer extends Rpc
  */
 class SaveBatchTaskForCreatingOrderTransfer extends Rpc
 {
-
     /**
-     * @param array $orderTransferParam
-     *
      * @return $this
      */
     public function withOrderTransferParam(array $orderTransferParam)
@@ -824,10 +808,7 @@ class TransferInRefetchWhoisEmail extends Rpc
  */
 class ConfirmTransferInEmail extends Rpc
 {
-
     /**
-     * @param array $domainName
-     *
      * @return $this
      */
     public function withDomainName(array $domainName)
@@ -924,10 +905,7 @@ class SaveSingleTaskForQueryingTransferAuthorizationCode extends Rpc
  */
 class SaveBatchTaskForUpdatingContactInfoByNewContact extends Rpc
 {
-
     /**
-     * @param array $domainName
-     *
      * @return $this
      */
     public function withDomainName(array $domainName)
@@ -962,10 +940,7 @@ class SaveTaskForSubmittingDomainDelete extends Rpc
  */
 class AcknowledgeTaskResult extends Rpc
 {
-
     /**
-     * @param array $taskDetailNo
-     *
      * @return $this
      */
     public function withTaskDetailNo(array $taskDetailNo)
@@ -1096,10 +1071,7 @@ class QueryTaskDetailHistory extends Rpc
  */
 class SaveBatchTaskForCreatingOrderRenew extends Rpc
 {
-
     /**
-     * @param array $orderRenewParam
-     *
      * @return $this
      */
     public function withOrderRenewParam(array $orderRenewParam)
@@ -1297,10 +1269,7 @@ class QueryTaskDetailList extends Rpc
  */
 class SaveBatchTaskForModifyingDomainDns extends Rpc
 {
-
     /**
-     * @param array $domainName
-     *
      * @return $this
      */
     public function withDomainName(array $domainName)
@@ -1314,8 +1283,6 @@ class SaveBatchTaskForModifyingDomainDns extends Rpc
     }
 
     /**
-     * @param array $domainNameServer
-     *
      * @return $this
      */
     public function withDomainNameServer(array $domainNameServer)
@@ -1426,10 +1393,7 @@ class EmailVerified extends Rpc
  */
 class SaveSingleTaskForCreatingDnsHost extends Rpc
 {
-
     /**
-     * @param array $ip
-     *
      * @return $this
      */
     public function withIp(array $ip)
@@ -1456,10 +1420,7 @@ class SaveSingleTaskForCreatingDnsHost extends Rpc
  */
 class SaveSingleTaskForModifyingDnsHost extends Rpc
 {
-
     /**
-     * @param array $ip
-     *
      * @return $this
      */
     public function withIp(array $ip)
@@ -1514,10 +1475,7 @@ class SaveSingleTaskForSynchronizingDnsHost extends Rpc
  */
 class SaveBatchTaskForCreatingOrderRedeem extends Rpc
 {
-
     /**
-     * @param array $orderRedeemParam
-     *
      * @return $this
      */
     public function withOrderRedeemParam(array $orderRedeemParam)
@@ -1564,10 +1522,7 @@ class SaveSingleTaskForCreatingOrderRedeem extends Rpc
  */
 class SaveBatchTaskForDomainNameProxyService extends Rpc
 {
-
     /**
-     * @param array $domainName
-     *
      * @return $this
      */
     public function withDomainName(array $domainName)
@@ -1623,10 +1578,7 @@ class CheckDomain extends Rpc
  */
 class SaveBatchTaskForTransferProhibitionLock extends Rpc
 {
-
     /**
-     * @param array $domainName
-     *
      * @return $this
      */
     public function withDomainName(array $domainName)
@@ -1671,10 +1623,7 @@ class QueryChangeLogList extends Rpc
  */
 class SaveBatchTaskForUpdateProhibitionLock extends Rpc
 {
-
     /**
-     * @param array $domainName
-     *
      * @return $this
      */
     public function withDomainName(array $domainName)
@@ -1765,10 +1714,7 @@ class QueryDomainList extends Rpc
  */
 class SaveBatchTaskForCreatingOrderActivate extends Rpc
 {
-
     /**
-     * @param array $orderActivateParam
-     *
      * @return $this
      */
     public function withOrderActivateParam(array $orderActivateParam)
@@ -1851,10 +1797,7 @@ class SaveSingleTaskForUpdatingContactInfo extends Rpc
  */
 class SaveBatchTaskForUpdatingContactInfo extends Rpc
 {
-
     /**
-     * @param array $domainName
-     *
      * @return $this
      */
     public function withDomainName(array $domainName)

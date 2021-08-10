@@ -202,7 +202,6 @@ class DeleteScdnSpecificConfig extends Rpc
  */
 class DescribeScdnCcQpsInfo extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -223,7 +222,6 @@ class DescribeScdnCcQpsInfo extends Rpc
  */
 class DescribeScdnCcTopIp extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -244,7 +242,6 @@ class DescribeScdnCcTopIp extends Rpc
  */
 class DescribeScdnCcTopUrl extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -279,7 +276,6 @@ class DescribeScdnCertificateList extends Rpc
  */
 class DescribeScdnDDoSInfo extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -296,7 +292,6 @@ class DescribeScdnDDoSInfo extends Rpc
  */
 class DescribeScdnDDoSTrafficInfo extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -339,7 +334,6 @@ class DescribeScdnDomainCertificateInfo extends Rpc
  */
 class DescribeScdnDomainCname extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -520,7 +514,6 @@ class DescribeScdnDomainQpsData extends Rpc
  */
 class DescribeScdnDomainRealTimeBpsData extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -537,7 +530,6 @@ class DescribeScdnDomainRealTimeBpsData extends Rpc
  */
 class DescribeScdnDomainRealTimeByteHitRateData extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -576,7 +568,6 @@ class DescribeScdnDomainRealTimeHttpCodeData extends Rpc
  */
 class DescribeScdnDomainRealTimeQpsData extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -593,7 +584,6 @@ class DescribeScdnDomainRealTimeQpsData extends Rpc
  */
 class DescribeScdnDomainRealTimeReqHitRateData extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -820,7 +810,6 @@ class DescribeScdnUserDomains extends Rpc
  */
 class DescribeScdnUserProtectInfo extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -901,7 +890,6 @@ class RefreshScdnObjectCaches extends Rpc
  */
 class SetScdnBotInfo extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -914,7 +902,6 @@ class SetScdnBotInfo extends Rpc
  */
 class SetScdnCcInfo extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -927,7 +914,6 @@ class SetScdnCcInfo extends Rpc
  */
 class SetScdnDDoSInfo extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -942,7 +928,6 @@ class SetScdnDDoSInfo extends Rpc
  */
 class SetScdnDomainBizInfo extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }

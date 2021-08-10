@@ -124,20 +124,17 @@ class DescribeAnycastServerRegions extends Rpc
  */
 class ListAnycastEipAddresses extends Rpc
 {
-
     /**
-     * @param array $bindInstanceIds
-     *
      * @return $this
      */
-	public function withBindInstanceIds(array $bindInstanceIds)
-	{
-	    $this->data['BindInstanceIds'] = $bindInstanceIds;
-		foreach ($bindInstanceIds as $i => $iValue) {
-			$this->options['query']['BindInstanceIds.' . ($i + 1)] = $iValue;
-		}
+    public function withBindInstanceIds(array $bindInstanceIds)
+    {
+        $this->data['BindInstanceIds'] = $bindInstanceIds;
+        foreach ($bindInstanceIds as $i => $iValue) {
+            $this->options['query']['BindInstanceIds.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }
 

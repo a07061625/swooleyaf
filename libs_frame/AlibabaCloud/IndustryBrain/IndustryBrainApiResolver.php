@@ -57,7 +57,6 @@ class AsyncResponsePost extends Rpc
  */
 class GetAlgorithmHistoryResult extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
@@ -90,7 +89,6 @@ class GetPointSampleValue extends Rpc
  */
 class GetServiceResultAsync extends Rpc
 {
-
     /** @var string */
     public $method = 'GET';
 }
