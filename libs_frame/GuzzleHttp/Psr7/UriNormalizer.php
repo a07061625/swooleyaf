@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace GuzzleHttp\Psr7;
 
@@ -11,7 +11,7 @@ use Psr\Http\Message\UriInterface;
  *
  * @author Tobias Schultze
  *
- * @link https://tools.ietf.org/html/rfc3986#section-6
+ * @see https://tools.ietf.org/html/rfc3986#section-6
  */
 final class UriNormalizer
 {
@@ -105,6 +105,11 @@ final class UriNormalizer
      */
     public const SORT_QUERY_PARAMETERS = 128;
 
+    private function __construct()
+    {
+        // cannot be instantiated
+    }
+
     /**
      * Returns a normalized URI.
      *
@@ -119,7 +124,7 @@ final class UriNormalizer
      * @param UriInterface $uri   The URI to normalize
      * @param int          $flags A bitmask of normalizations to apply, see constants
      *
-     * @link https://tools.ietf.org/html/rfc3986#section-6.2
+     * @see https://tools.ietf.org/html/rfc3986#section-6.2
      */
     public static function normalize(UriInterface $uri, int $flags = self::PRESERVING_NORMALIZATIONS): UriInterface
     {
@@ -131,17 +136,17 @@ final class UriNormalizer
             $uri = self::decodeUnreservedCharacters($uri);
         }
 
-        if ($flags & self::CONVERT_EMPTY_PATH && $uri->getPath() === '' &&
-            ($uri->getScheme() === 'http' || $uri->getScheme() === 'https')
+        if ($flags & self::CONVERT_EMPTY_PATH && '' === $uri->getPath() &&
+            ('http' === $uri->getScheme() || 'https' === $uri->getScheme())
         ) {
             $uri = $uri->withPath('/');
         }
 
-        if ($flags & self::REMOVE_DEFAULT_HOST && $uri->getScheme() === 'file' && $uri->getHost() === 'localhost') {
+        if ($flags & self::REMOVE_DEFAULT_HOST && 'file' === $uri->getScheme() && 'localhost' === $uri->getHost()) {
             $uri = $uri->withHost('');
         }
 
-        if ($flags & self::REMOVE_DEFAULT_PORT && $uri->getPort() !== null && Uri::isDefaultPort($uri)) {
+        if ($flags & self::REMOVE_DEFAULT_PORT && null !== $uri->getPort() && Uri::isDefaultPort($uri)) {
             $uri = $uri->withPort(null);
         }
 
@@ -153,7 +158,7 @@ final class UriNormalizer
             $uri = $uri->withPath(preg_replace('#//++#', '/', $uri->getPath()));
         }
 
-        if ($flags & self::SORT_QUERY_PARAMETERS && $uri->getQuery() !== '') {
+        if ($flags & self::SORT_QUERY_PARAMETERS && '' !== $uri->getQuery()) {
             $queryKeyValues = explode('&', $uri->getQuery());
             sort($queryKeyValues);
             $uri = $uri->withQuery(implode('&', $queryKeyValues));
@@ -174,11 +179,11 @@ final class UriNormalizer
      * @param UriInterface $uri2           An URI to compare
      * @param int          $normalizations A bitmask of normalizations to apply, see constants
      *
-     * @link https://tools.ietf.org/html/rfc3986#section-6.1
+     * @see https://tools.ietf.org/html/rfc3986#section-6.1
      */
     public static function isEquivalent(UriInterface $uri1, UriInterface $uri2, int $normalizations = self::PRESERVING_NORMALIZATIONS): bool
     {
-        return (string) self::normalize($uri1, $normalizations) === (string) self::normalize($uri2, $normalizations);
+        return (string)self::normalize($uri1, $normalizations) === (string)self::normalize($uri2, $normalizations);
     }
 
     private static function capitalizePercentEncoding(UriInterface $uri): UriInterface
@@ -211,10 +216,5 @@ final class UriNormalizer
             )->withQuery(
                 preg_replace_callback($regex, $callback, $uri->getQuery())
             );
-    }
-
-    private function __construct()
-    {
-        // cannot be instantiated
     }
 }

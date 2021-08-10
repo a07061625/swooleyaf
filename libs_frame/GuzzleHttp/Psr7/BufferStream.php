@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace GuzzleHttp\Psr7;
 
@@ -55,13 +55,11 @@ final class BufferStream implements StreamInterface
     public function detach()
     {
         $this->close();
-
-        return null;
     }
 
     public function getSize(): ?int
     {
-        return strlen($this->buffer);
+        return \strlen($this->buffer);
     }
 
     public function isReadable(): bool
@@ -91,7 +89,7 @@ final class BufferStream implements StreamInterface
 
     public function eof(): bool
     {
-        return strlen($this->buffer) === 0;
+        return 0 === \strlen($this->buffer);
     }
 
     public function tell(): int
@@ -101,10 +99,12 @@ final class BufferStream implements StreamInterface
 
     /**
      * Reads data from the buffer.
+     *
+     * @param mixed $length
      */
     public function read($length): string
     {
-        $currentLength = strlen($this->buffer);
+        $currentLength = \strlen($this->buffer);
 
         if ($length >= $currentLength) {
             // No need to slice the buffer because we don't have enough data.
@@ -121,21 +121,23 @@ final class BufferStream implements StreamInterface
 
     /**
      * Writes data to the buffer.
+     *
+     * @param mixed $string
      */
     public function write($string): int
     {
         $this->buffer .= $string;
 
-        if (strlen($this->buffer) >= $this->hwm) {
+        if (\strlen($this->buffer) >= $this->hwm) {
             return 0;
         }
 
-        return strlen($string);
+        return \strlen($string);
     }
 
     public function getMetadata($key = null)
     {
-        if ($key === 'hwm') {
+        if ('hwm' === $key) {
             return $this->hwm;
         }
 
