@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace GuzzleHttp\Psr7;
 
@@ -22,12 +22,13 @@ final class CachingStream implements StreamInterface
 
     /**
      * We will treat the buffer object as the body of the stream
-     * @param StreamInterface $stream Stream to cache. The cursor is assumed to be at the beginning of the stream.
-     * @param \Psr\Http\Message\StreamInterface|null $target Optionally specify where data is cached
+     *
+     * @param StreamInterface                        $stream Stream to cache. The cursor is assumed to be at the beginning of the stream.
+     * @param null|\Psr\Http\Message\StreamInterface $target Optionally specify where data is cached
      */
     public function __construct(
         StreamInterface $stream,
-        StreamInterface $target = null
+        ?StreamInterface $target = null
     ) {
         $this->remoteStream = $stream;
         $this->stream = $target ?: new Stream(Utils::tryFopen('php://temp', 'r+'));
@@ -45,13 +46,13 @@ final class CachingStream implements StreamInterface
 
     public function seek($offset, $whence = SEEK_SET): void
     {
-        if ($whence === SEEK_SET) {
+        if (SEEK_SET === $whence) {
             $byte = $offset;
-        } elseif ($whence === SEEK_CUR) {
+        } elseif (SEEK_CUR === $whence) {
             $byte = $offset + $this->tell();
-        } elseif ($whence === SEEK_END) {
+        } elseif (SEEK_END === $whence) {
             $size = $this->remoteStream->getSize();
-            if ($size === null) {
+            if (null === $size) {
                 $size = $this->cacheEntireStream();
             }
             $byte = $size + $offset;
@@ -78,7 +79,7 @@ final class CachingStream implements StreamInterface
     {
         // Perform a regular read on any previously read data from the buffer
         $data = $this->stream->read($length);
-        $remaining = $length - strlen($data);
+        $remaining = $length - \strlen($data);
 
         // More data was requested so read from the remote stream
         if ($remaining) {
@@ -91,7 +92,7 @@ final class CachingStream implements StreamInterface
             );
 
             if ($this->skipReadBytes) {
-                $len = strlen($remoteData);
+                $len = \strlen($remoteData);
                 $remoteData = substr($remoteData, $this->skipReadBytes);
                 $this->skipReadBytes = max(0, $this->skipReadBytes - $len);
             }
@@ -109,7 +110,7 @@ final class CachingStream implements StreamInterface
         // to skip bytes from being read from the remote stream to emulate
         // other stream wrappers. Basically replacing bytes of data of a fixed
         // length.
-        $overflow = (strlen($string) + $this->tell()) - $this->remoteStream->tell();
+        $overflow = (\strlen($string) + $this->tell()) - $this->remoteStream->tell();
         if ($overflow > 0) {
             $this->skipReadBytes += $overflow;
         }

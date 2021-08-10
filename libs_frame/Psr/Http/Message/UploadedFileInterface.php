@@ -24,9 +24,10 @@ interface UploadedFileInterface
      * If the moveTo() method has been called previously, this method MUST raise
      * an exception.
      *
-     * @return StreamInterface Stream representation of the uploaded file.
+     * @return StreamInterface stream representation of the uploaded file
+     *
      * @throws \RuntimeException in cases when no stream is available or can be
-     *     created.
+     *                           created
      */
     public function getStream();
 
@@ -57,13 +58,15 @@ interface UploadedFileInterface
      *
      * @see http://php.net/is_uploaded_file
      * @see http://php.net/move_uploaded_file
-     * @param string $targetPath Path to which to move the uploaded file.
-     * @throws \InvalidArgumentException if the $targetPath specified is invalid.
-     * @throws \RuntimeException on any error during the move operation, or on
-     *     the second or subsequent call to the method.
+     *
+     * @param string $targetPath path to which to move the uploaded file
+     *
+     * @throws \InvalidArgumentException if the $targetPath specified is invalid
+     * @throws \RuntimeException         on any error during the move operation, or on
+     *                                   the second or subsequent call to the method
      */
     public function moveTo($targetPath);
-    
+
     /**
      * Retrieve the file size.
      *
@@ -71,10 +74,10 @@ interface UploadedFileInterface
      * the file in the $_FILES array if available, as PHP calculates this based
      * on the actual size transmitted.
      *
-     * @return int|null The file size in bytes or null if unknown.
+     * @return null|int the file size in bytes or null if unknown
      */
     public function getSize();
-    
+
     /**
      * Retrieve the error associated with the uploaded file.
      *
@@ -87,10 +90,11 @@ interface UploadedFileInterface
      * the file in the $_FILES array.
      *
      * @see http://php.net/manual/en/features.file-upload.errors.php
-     * @return int One of PHP's UPLOAD_ERR_XXX constants.
+     *
+     * @return int one of PHP's UPLOAD_ERR_XXX constants
      */
     public function getError();
-    
+
     /**
      * Retrieve the filename sent by the client.
      *
@@ -101,11 +105,11 @@ interface UploadedFileInterface
      * Implementations SHOULD return the value stored in the "name" key of
      * the file in the $_FILES array.
      *
-     * @return string|null The filename sent by the client or null if none
-     *     was provided.
+     * @return null|string the filename sent by the client or null if none
+     *                     was provided
      */
     public function getClientFilename();
-    
+
     /**
      * Retrieve the media type sent by the client.
      *
@@ -116,8 +120,8 @@ interface UploadedFileInterface
      * Implementations SHOULD return the value stored in the "type" key of
      * the file in the $_FILES array.
      *
-     * @return string|null The media type sent by the client or null if none
-     *     was provided.
+     * @return null|string the media type sent by the client or null if none
+     *                     was provided
      */
     public function getClientMediaType();
 }

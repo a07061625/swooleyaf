@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace GuzzleHttp\Psr7;
 
@@ -40,12 +40,14 @@ final class AppendStream implements StreamInterface
     {
         try {
             $this->rewind();
+
             return $this->getContents();
         } catch (\Throwable $e) {
             if (\PHP_VERSION_ID >= 70400) {
                 throw $e;
             }
-            trigger_error(sprintf('%s::__toString exception: %s', self::class, (string) $e), E_USER_ERROR);
+            trigger_error(sprintf('%s::__toString exception: %s', self::class, (string)$e), E_USER_ERROR);
+
             return '';
         }
     }
@@ -106,8 +108,6 @@ final class AppendStream implements StreamInterface
         }
 
         $this->streams = [];
-
-        return null;
     }
 
     public function tell(): int
@@ -127,7 +127,7 @@ final class AppendStream implements StreamInterface
 
         foreach ($this->streams as $stream) {
             $s = $stream->getSize();
-            if ($s === null) {
+            if (null === $s) {
                 return null;
             }
             $size += $s;
@@ -139,7 +139,7 @@ final class AppendStream implements StreamInterface
     public function eof(): bool
     {
         return !$this->streams ||
-            ($this->current >= count($this->streams) - 1 &&
+            ($this->current >= \count($this->streams) - 1 &&
              $this->streams[$this->current]->eof());
     }
 
@@ -150,12 +150,16 @@ final class AppendStream implements StreamInterface
 
     /**
      * Attempts to seek to the given position. Only supports SEEK_SET.
+     *
+     * @param mixed $offset
+     * @param mixed $whence
      */
     public function seek($offset, $whence = SEEK_SET): void
     {
         if (!$this->seekable) {
             throw new \RuntimeException('This AppendStream is not seekable');
-        } elseif ($whence !== SEEK_SET) {
+        }
+        if (SEEK_SET !== $whence) {
             throw new \RuntimeException('The AppendStream can only seek with SEEK_SET');
         }
 
@@ -174,7 +178,7 @@ final class AppendStream implements StreamInterface
         // Seek to the actual position by reading from each stream
         while ($this->pos < $offset && !$this->eof()) {
             $result = $this->read(min(8096, $offset - $this->pos));
-            if ($result === '') {
+            if ('' === $result) {
                 break;
             }
         }
@@ -182,37 +186,39 @@ final class AppendStream implements StreamInterface
 
     /**
      * Reads from all of the appended streams until the length is met or EOF.
+     *
+     * @param mixed $length
      */
     public function read($length): string
     {
         $buffer = '';
-        $total = count($this->streams) - 1;
+        $total = \count($this->streams) - 1;
         $remaining = $length;
         $progressToNext = false;
 
         while ($remaining > 0) {
-
             // Progress to the next stream if needed.
             if ($progressToNext || $this->streams[$this->current]->eof()) {
                 $progressToNext = false;
                 if ($this->current === $total) {
                     break;
                 }
-                $this->current++;
+                ++$this->current;
             }
 
             $result = $this->streams[$this->current]->read($remaining);
 
-            if ($result === '') {
+            if ('' === $result) {
                 $progressToNext = true;
+
                 continue;
             }
 
             $buffer .= $result;
-            $remaining = $length - strlen($buffer);
+            $remaining = $length - \strlen($buffer);
         }
 
-        $this->pos += strlen($buffer);
+        $this->pos += \strlen($buffer);
 
         return $buffer;
     }

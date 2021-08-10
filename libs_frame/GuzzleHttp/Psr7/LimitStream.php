@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace GuzzleHttp\Psr7;
 
@@ -23,8 +23,8 @@ final class LimitStream implements StreamInterface
      * @param StreamInterface $stream Stream to wrap
      * @param int             $limit  Total number of bytes to allow to be read
      *                                from the stream. Pass -1 for no limit.
-     * @param int             $offset Position to seek to before reading (only
-     *                                works on seekable streams).
+     * @param int             $offset position to seek to before reading (only
+     *                                works on seekable streams)
      */
     public function __construct(
         StreamInterface $stream,
@@ -44,7 +44,7 @@ final class LimitStream implements StreamInterface
         }
 
         // No limit and the underlying stream is not at EOF
-        if ($this->limit === -1) {
+        if (-1 === $this->limit) {
             return false;
         }
 
@@ -58,19 +58,23 @@ final class LimitStream implements StreamInterface
     {
         if (null === ($length = $this->stream->getSize())) {
             return null;
-        } elseif ($this->limit === -1) {
-            return $length - $this->offset;
-        } else {
-            return min($this->limit, $length - $this->offset);
         }
+        if (-1 === $this->limit) {
+            return $length - $this->offset;
+        }
+
+        return min($this->limit, $length - $this->offset);
     }
 
     /**
      * Allow for a bounded seek on the read limited stream
+     *
+     * @param mixed $offset
+     * @param mixed $whence
      */
     public function seek($offset, $whence = SEEK_SET): void
     {
-        if ($whence !== SEEK_SET || $offset < 0) {
+        if (SEEK_SET !== $whence || $offset < 0) {
             throw new \RuntimeException(sprintf(
                 'Cannot seek to offset %s with whence %s',
                 $offset,
@@ -80,7 +84,7 @@ final class LimitStream implements StreamInterface
 
         $offset += $this->offset;
 
-        if ($this->limit !== -1) {
+        if (-1 !== $this->limit) {
             if ($offset > $this->offset + $this->limit) {
                 $offset = $this->offset + $this->limit;
             }
@@ -102,7 +106,7 @@ final class LimitStream implements StreamInterface
      *
      * @param int $offset Offset to seek to and begin byte limiting from
      *
-     * @throws \RuntimeException if the stream cannot be seeked.
+     * @throws \RuntimeException if the stream cannot be seeked
      */
     public function setOffset(int $offset): void
     {
@@ -113,7 +117,7 @@ final class LimitStream implements StreamInterface
             if ($this->stream->isSeekable()) {
                 $this->stream->seek($offset);
             } elseif ($current > $offset) {
-                throw new \RuntimeException("Could not seek to stream offset $offset");
+                throw new \RuntimeException("Could not seek to stream offset {$offset}");
             } else {
                 $this->stream->read($offset - $current);
             }
@@ -136,7 +140,7 @@ final class LimitStream implements StreamInterface
 
     public function read($length): string
     {
-        if ($this->limit === -1) {
+        if (-1 === $this->limit) {
             return $this->stream->read($length);
         }
 

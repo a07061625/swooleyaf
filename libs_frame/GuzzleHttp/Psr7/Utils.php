@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace GuzzleHttp\Psr7;
 
@@ -25,7 +25,7 @@ final class Utils
         }
 
         foreach ($data as $k => $v) {
-            if (!in_array(strtolower($k), $keys)) {
+            if (!\in_array(strtolower($k), $keys)) {
                 $result[$k] = $v;
             }
         }
@@ -42,13 +42,13 @@ final class Utils
      * @param int             $maxLen Maximum number of bytes to read. Pass -1
      *                                to read the entire stream.
      *
-     * @throws \RuntimeException on error.
+     * @throws \RuntimeException on error
      */
     public static function copyToStream(StreamInterface $source, StreamInterface $dest, int $maxLen = -1): void
     {
         $bufferSize = 8192;
 
-        if ($maxLen === -1) {
+        if (-1 === $maxLen) {
             while (!$source->eof()) {
                 if (!$dest->write($source->read($bufferSize))) {
                     break;
@@ -58,7 +58,7 @@ final class Utils
             $remaining = $maxLen;
             while ($remaining > 0 && !$source->eof()) {
                 $buf = $source->read(min($bufferSize, $remaining));
-                $len = strlen($buf);
+                $len = \strlen($buf);
                 if (!$len) {
                     break;
                 }
@@ -76,31 +76,32 @@ final class Utils
      * @param int             $maxLen Maximum number of bytes to read. Pass -1
      *                                to read the entire stream.
      *
-     * @throws \RuntimeException on error.
+     * @throws \RuntimeException on error
      */
     public static function copyToString(StreamInterface $stream, int $maxLen = -1): string
     {
         $buffer = '';
 
-        if ($maxLen === -1) {
+        if (-1 === $maxLen) {
             while (!$stream->eof()) {
                 $buf = $stream->read(1048576);
-                if ($buf === '') {
+                if ('' === $buf) {
                     break;
                 }
                 $buffer .= $buf;
             }
+
             return $buffer;
         }
 
         $len = 0;
         while (!$stream->eof() && $len < $maxLen) {
             $buf = $stream->read($maxLen - $len);
-            if ($buf === '') {
+            if ('' === $buf) {
                 break;
             }
             $buffer .= $buf;
-            $len = strlen($buffer);
+            $len = \strlen($buffer);
         }
 
         return $buffer;
@@ -116,7 +117,7 @@ final class Utils
      * @param string          $algo      Hash algorithm (e.g. md5, crc32, etc)
      * @param bool            $rawOutput Whether or not to use raw output
      *
-     * @throws \RuntimeException on error.
+     * @throws \RuntimeException on error
      */
     public static function hash(StreamInterface $stream, string $algo, bool $rawOutput = false): string
     {
@@ -131,7 +132,7 @@ final class Utils
             hash_update($ctx, $stream->read(1048576));
         }
 
-        $out = hash_final($ctx, (bool) $rawOutput);
+        $out = hash_final($ctx, (bool)$rawOutput);
         $stream->seek($pos);
 
         return $out;
@@ -152,8 +153,8 @@ final class Utils
      * - query: (string) Set the query string value of the URI.
      * - version: (string) Set the protocol version.
      *
-     * @param RequestInterface $request Request to clone and modify.
-     * @param array            $changes Changes to apply.
+     * @param RequestInterface $request request to clone and modify
+     * @param array            $changes changes to apply
      */
     public static function modifyRequest(RequestInterface $request, array $changes): RequestInterface
     {
@@ -203,10 +204,10 @@ final class Utils
                 $changes['version'] ?? $request->getProtocolVersion(),
                 $request->getServerParams()
             ))
-            ->withParsedBody($request->getParsedBody())
-            ->withQueryParams($request->getQueryParams())
-            ->withCookieParams($request->getCookieParams())
-            ->withUploadedFiles($request->getUploadedFiles());
+                ->withParsedBody($request->getParsedBody())
+                ->withQueryParams($request->getQueryParams())
+                ->withCookieParams($request->getCookieParams())
+                ->withUploadedFiles($request->getUploadedFiles());
 
             foreach ($request->getAttributes() as $key => $value) {
                 $new = $new->withAttribute($key, $value);
@@ -228,7 +229,7 @@ final class Utils
      * Read a line from the stream up to the maximum allowed buffer length.
      *
      * @param StreamInterface $stream    Stream to read from
-     * @param int|null        $maxLength Maximum buffer length
+     * @param null|int        $maxLength Maximum buffer length
      */
     public static function readLine(StreamInterface $stream, ?int $maxLength = null): string
     {
@@ -241,7 +242,7 @@ final class Utils
             }
             $buffer .= $byte;
             // Break when a new line is found or the max length - 1 is reached
-            if ($byte === "\n" || ++$size === $maxLength - 1) {
+            if ("\n" === $byte || ++$size === $maxLength - 1) {
                 break;
             }
         }
@@ -278,23 +279,24 @@ final class Utils
      *   number of requested bytes are available. Any additional bytes will be
      *   buffered and used in subsequent reads.
      *
-     * @param resource|string|int|float|bool|StreamInterface|callable|\Iterator|null $resource Entity body data
+     * @param null|bool|callable|float|int|\Iterator|resource|StreamInterface|string $resource Entity body data
      * @param array{size?: int, metadata?: array}                                    $options  Additional options
      *
-     * @throws \InvalidArgumentException if the $resource arg is not valid.
+     * @throws \InvalidArgumentException if the $resource arg is not valid
      */
     public static function streamFor($resource = '', array $options = []): StreamInterface
     {
         if (is_scalar($resource)) {
             $stream = self::tryFopen('php://temp', 'r+');
-            if ($resource !== '') {
-                fwrite($stream, (string) $resource);
+            if ('' !== $resource) {
+                fwrite($stream, (string)$resource);
                 fseek($stream, 0);
             }
+
             return new Stream($stream, $options);
         }
 
-        switch (gettype($resource)) {
+        switch (\gettype($resource)) {
             case 'resource':
                 /*
                  * The 'php://input' is a special stream with quirks and inconsistencies.
@@ -302,39 +304,43 @@ final class Utils
                  */
 
                 /** @var resource $resource */
-                if ((\stream_get_meta_data($resource)['uri'] ?? '') === 'php://input') {
+                if ((stream_get_meta_data($resource)['uri'] ?? '') === 'php://input') {
                     $stream = self::tryFopen('php://temp', 'w+');
                     fwrite($stream, stream_get_contents($resource));
                     fseek($stream, 0);
                     $resource = $stream;
                 }
+
                 return new Stream($resource, $options);
             case 'object':
                 /** @var object $resource */
                 if ($resource instanceof StreamInterface) {
                     return $resource;
-                } elseif ($resource instanceof \Iterator) {
+                }
+                if ($resource instanceof \Iterator) {
                     return new PumpStream(function () use ($resource) {
                         if (!$resource->valid()) {
                             return false;
                         }
                         $result = $resource->current();
                         $resource->next();
+
                         return $result;
                     }, $options);
                 } elseif (method_exists($resource, '__toString')) {
-                    return self::streamFor((string) $resource, $options);
+                    return self::streamFor((string)$resource, $options);
                 }
+
                 break;
             case 'NULL':
                 return new Stream(self::tryFopen('php://temp', 'r+'), $options);
         }
 
-        if (is_callable($resource)) {
+        if (\is_callable($resource)) {
             return new PumpStream($resource, $options);
         }
 
-        throw new \InvalidArgumentException('Invalid resource type: ' . gettype($resource));
+        throw new \InvalidArgumentException('Invalid resource type: ' . \gettype($resource));
     }
 
     /**
@@ -379,7 +385,7 @@ final class Utils
         restore_error_handler();
 
         if ($ex) {
-            /** @var $ex \RuntimeException */
+            // @var $ex \RuntimeException
             throw $ex;
         }
 
@@ -403,7 +409,7 @@ final class Utils
             return $uri;
         }
 
-        if (is_string($uri)) {
+        if (\is_string($uri)) {
             return new Uri($uri);
         }
 

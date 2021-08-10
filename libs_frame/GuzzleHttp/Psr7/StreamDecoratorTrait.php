@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace GuzzleHttp\Psr7;
 
@@ -29,12 +29,13 @@ trait StreamDecoratorTrait
      */
     public function __get(string $name)
     {
-        if ($name === 'stream') {
+        if ('stream' === $name) {
             $this->stream = $this->createStream();
+
             return $this->stream;
         }
 
-        throw new \UnexpectedValueException("$name not found on class");
+        throw new \UnexpectedValueException("{$name} not found on class");
     }
 
     public function __toString(): string
@@ -43,19 +44,16 @@ trait StreamDecoratorTrait
             if ($this->isSeekable()) {
                 $this->seek(0);
             }
+
             return $this->getContents();
         } catch (\Throwable $e) {
             if (\PHP_VERSION_ID >= 70400) {
                 throw $e;
             }
-            trigger_error(sprintf('%s::__toString exception: %s', self::class, (string) $e), E_USER_ERROR);
+            trigger_error(sprintf('%s::__toString exception: %s', self::class, (string)$e), E_USER_ERROR);
+
             return '';
         }
-    }
-
-    public function getContents(): string
-    {
-        return Utils::copyToString($this);
     }
 
     /**
@@ -67,10 +65,15 @@ trait StreamDecoratorTrait
     {
         /** @var callable $callable */
         $callable = [$this->stream, $method];
-        $result = call_user_func_array($callable, $args);
+        $result = \call_user_func_array($callable, $args);
 
         // Always return the wrapped object if the result is a return $this
         return $result === $this->stream ? $this : $result;
+    }
+
+    public function getContents(): string
+    {
+        return Utils::copyToString($this);
     }
 
     public function close(): void
