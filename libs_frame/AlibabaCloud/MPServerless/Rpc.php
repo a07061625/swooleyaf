@@ -1,0 +1,18 @@
+<?php
+
+namespace AlibabaCloud\MPServerless;
+
+class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
+{
+    /** @var string */
+    public $product = 'MPServerless';
+
+    /** @var string */
+    public $version = '2019-09-30';
+
+    /** @var string */
+    public $method = 'POST';
+
+    /** @var string */
+    public $serviceCode = 'MPServerless';
+}
