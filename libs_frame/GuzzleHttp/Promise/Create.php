@@ -7,7 +7,7 @@ final class Create
     /**
      * Creates a promise for a value if the value is not a promise.
      *
-     * @param mixed $value Promise or value.
+     * @param mixed $value promise or value
      *
      * @return PromiseInterface
      */
@@ -18,11 +18,12 @@ final class Create
         }
 
         // Return a Guzzle promise that shadows the given promise.
-        if (is_object($value) && method_exists($value, 'then')) {
+        if (\is_object($value) && method_exists($value, 'then')) {
             $wfn = method_exists($value, 'wait') ? [$value, 'wait'] : null;
             $cfn = method_exists($value, 'cancel') ? [$value, 'cancel'] : null;
             $promise = new Promise($wfn, $cfn);
             $value->then([$promise, 'resolve'], [$promise, 'reject']);
+
             return $promise;
         }
 
@@ -33,7 +34,7 @@ final class Create
      * Creates a rejected promise for a reason if the reason is not a promise.
      * If the provided reason is a promise, then it is returned as-is.
      *
-     * @param mixed $reason Promise or reason.
+     * @param mixed $reason promise or reason
      *
      * @return PromiseInterface
      */
@@ -75,7 +76,7 @@ final class Create
             return $value;
         }
 
-        if (is_array($value)) {
+        if (\is_array($value)) {
             return new \ArrayIterator($value);
         }
 

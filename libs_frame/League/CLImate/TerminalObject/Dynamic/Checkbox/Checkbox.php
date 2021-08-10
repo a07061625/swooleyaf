@@ -8,54 +8,69 @@ use League\CLImate\Util\UtilImporter;
 
 class Checkbox
 {
-    use StringLength, ParserImporter, UtilImporter;
+    use StringLength;
+    use ParserImporter;
+    use UtilImporter;
 
     /**
      * The value of the checkbox
      *
-     * @var string|int|bool $value
+     * @var bool|int|string
      */
     protected $value;
 
     /**
      * The label for the checkbox
      *
-     * @var string|int $label
+     * @var int|string
      */
     protected $label;
 
     /**
      * Whether the checkbox is checked
      *
-     * @var bool $checked
+     * @var bool
      */
     protected $checked = false;
 
     /**
      * Whether pointer is currently pointing at the checkbox
      *
-     * @var bool $current
+     * @var bool
      */
     protected $current = false;
 
     /**
      * Whether the checkbox is the first in the group
      *
-     * @var bool $first
+     * @var bool
      */
     protected $first = false;
 
     /**
      * Whether the checkbox is the last in the group
      *
-     * @var bool $last
+     * @var bool
      */
     protected $last = false;
 
     public function __construct($label, $value)
     {
-        $this->value = (!is_int($value)) ? $value : $label;
+        $this->value = (!\is_int($value)) ? $value : $label;
         $this->label = $label;
+    }
+
+    public function __toString()
+    {
+        if ($this->isFirst()) {
+            return $this->buildCheckboxString();
+        }
+
+        if ($this->isLast()) {
+            return $this->buildCheckboxString() . $this->util->cursor->left(10) . '<hidden>';
+        }
+
+        return $this->buildCheckboxString();
     }
 
     /**
@@ -139,7 +154,7 @@ class Checkbox
     }
 
     /**
-     * @return string|int|bool
+     * @return bool|int|string
      */
     public function getValue()
     {
@@ -191,10 +206,10 @@ class Checkbox
     protected function checkbox($checked)
     {
         if ($checked) {
-            return html_entity_decode("&#x25CF;");
+            return html_entity_decode('&#x25CF;');
         }
 
-        return html_entity_decode("&#x25CB;");
+        return html_entity_decode('&#x25CB;');
     }
 
     /**
@@ -204,19 +219,6 @@ class Checkbox
      */
     protected function pointer()
     {
-        return html_entity_decode("&#x276F;");
-    }
-
-    public function __toString()
-    {
-        if ($this->isFirst()) {
-            return $this->buildCheckboxString();
-        }
-
-        if ($this->isLast()) {
-            return $this->buildCheckboxString() . $this->util->cursor->left(10) . '<hidden>';
-        }
-
-        return $this->buildCheckboxString();
+        return html_entity_decode('&#x276F;');
     }
 }

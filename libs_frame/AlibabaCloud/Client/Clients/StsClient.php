@@ -12,9 +12,10 @@ use AlibabaCloud\Client\Signature\ShaHmac1Signature;
 class StsClient extends Client
 {
     /**
-     * @param string $accessKeyId Access key ID
+     * @param string $accessKeyId     Access key ID
      * @param string $accessKeySecret Access Key Secret
-     * @param string $securityToken Security Token
+     * @param string $securityToken   Security Token
+     *
      * @throws ClientException
      */
     public function __construct($accessKeyId, $accessKeySecret, $securityToken = '')

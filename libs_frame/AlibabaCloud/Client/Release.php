@@ -6,18 +6,17 @@ use Composer\Script\Event;
 
 /**
  * Class Release
+ *
  * @codeCoverageIgnore
+ *
  * @package AlibabaCloud\Client
  */
 class Release
 {
-    /**
-     * @param Event $event
-     */
     public static function release(Event $event)
     {
         $arguments = $event->getArguments();
-        if (count($arguments) <= 1) {
+        if (\count($arguments) <= 1) {
             echo 'Missing ChangeLog';
 
             return;
@@ -32,14 +31,18 @@ class Release
      */
     private static function updateChangelogFile($version, $changeLog)
     {
-        $content = preg_replace('/# CHANGELOG/', '# CHANGELOG' . "\n" . "\n" . "## $version - " . date('Y-m-d') . self::log($changeLog),
-            self::getChangeLogContent());
+        $content = preg_replace(
+            '/# CHANGELOG/',
+            '# CHANGELOG' . "\n" . "\n" . "## {$version} - " . date('Y-m-d') . self::log($changeLog),
+            self::getChangeLogContent()
+        );
 
         file_put_contents(self::getChangeLogFile(), $content);
     }
 
     /**
      * @param $changeLog
+     *
      * @return string
      */
     private static function log($changeLog)
@@ -48,7 +51,7 @@ class Release
         $string = "\n";
         foreach ($logs as $log) {
             if ($log) {
-                $string .= "- $log." . "\n";
+                $string .= "- {$log}." . "\n";
             }
         }
 
@@ -76,7 +79,7 @@ class Release
      */
     private static function changeVersionInCode($version)
     {
-        $content = preg_replace("/const VERSION = \'(.*)\';/", "const VERSION = '" . $version . "';", self::getCodeContent());
+        $content = preg_replace("/const VERSION = \\'(.*)\\';/", "const VERSION = '" . $version . "';", self::getCodeContent());
 
         file_put_contents(self::getCodeFile(), $content);
     }

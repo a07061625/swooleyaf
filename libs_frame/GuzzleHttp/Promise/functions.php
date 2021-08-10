@@ -12,11 +12,14 @@ namespace GuzzleHttp\Promise;
  *     GuzzleHttp\Promise\queue()->run();
  * }
  * </code>
- * @param \GuzzleHttp\Promise\TaskQueueInterface|null $assign Optionally specify a new queue instance.
+ *
+ * @param null|\GuzzleHttp\Promise\TaskQueueInterface $assign optionally specify a new queue instance
+ *
  * @return TaskQueueInterface
+ *
  * @deprecated queue will be removed in guzzlehttp/promises:2.0. Use Utils::queue instead.
  */
-function queue(TaskQueueInterface $assign = null)
+function queue(?TaskQueueInterface $assign = null)
 {
     return Utils::queue($assign);
 }
@@ -25,7 +28,7 @@ function queue(TaskQueueInterface $assign = null)
  * Adds a function to run in the task queue when it is next `run()` and returns
  * a promise that is fulfilled or rejected with the result.
  *
- * @param callable $task Task function to run.
+ * @param callable $task task function to run
  *
  * @return PromiseInterface
  *
@@ -39,7 +42,7 @@ function task(callable $task)
 /**
  * Creates a promise for a value if the value is not a promise.
  *
- * @param mixed $value Promise or value.
+ * @param mixed $value promise or value
  *
  * @return PromiseInterface
  *
@@ -54,7 +57,7 @@ function promise_for($value)
  * Creates a rejected promise for a reason if the reason is not a promise. If
  * the provided reason is a promise, then it is returned as-is.
  *
- * @param mixed $reason Promise or reason.
+ * @param mixed $reason promise or reason
  *
  * @return PromiseInterface
  *
@@ -103,7 +106,7 @@ function iter_for($value)
  * the promise is rejected, the array will contain a "reason" key mapping to
  * the rejection reason of the promise.
  *
- * @param PromiseInterface $promise Promise or value.
+ * @param PromiseInterface $promise promise or value
  *
  * @return array
  *
@@ -122,7 +125,7 @@ function inspect(PromiseInterface $promise)
  *
  * @see inspect for the inspection state array format.
  *
- * @param PromiseInterface[] $promises Traversable of promises to wait upon.
+ * @param PromiseInterface[] $promises traversable of promises to wait upon
  *
  * @return array
  *
@@ -140,7 +143,7 @@ function inspect_all($promises)
  * the promises were provided). An exception is thrown if any of the promises
  * are rejected.
  *
- * @param iterable<PromiseInterface> $promises Iterable of PromiseInterface objects to wait on.
+ * @param iterable<PromiseInterface> $promises iterable of PromiseInterface objects to wait on
  *
  * @return array
  *
@@ -162,8 +165,8 @@ function unwrap($promises)
  * respective positions to the original array. If any promise in the array
  * rejects, the returned promise is rejected with the rejection reason.
  *
- * @param mixed $promises  Promises or values.
- * @param bool  $recursive If true, resolves new promises that might have been added to the stack during its own resolution.
+ * @param mixed $promises  promises or values
+ * @param bool  $recursive if true, resolves new promises that might have been added to the stack during its own resolution
  *
  * @return PromiseInterface
  *
@@ -185,8 +188,8 @@ function all($promises, $recursive = false)
  * This promise is rejected with a {@see AggregateException} if the number of
  * fulfilled promises is less than the desired $count.
  *
- * @param int   $count    Total number of promises.
- * @param mixed $promises Promises or values.
+ * @param int   $count    total number of promises
+ * @param mixed $promises promises or values
  *
  * @return PromiseInterface
  *
@@ -201,7 +204,7 @@ function some($count, $promises)
  * Like some(), with 1 as count. However, if the promise fulfills, the
  * fulfillment value is not an array of 1 but the value directly.
  *
- * @param mixed $promises Promises or values.
+ * @param mixed $promises promises or values
  *
  * @return PromiseInterface
  *
@@ -220,7 +223,7 @@ function any($promises)
  *
  * @see inspect for the inspection state array format.
  *
- * @param mixed $promises Promises or values.
+ * @param mixed $promises promises or values
  *
  * @return PromiseInterface
  *
@@ -241,13 +244,14 @@ function settle($promises)
  * $onRejected is a function that accepts the rejection reason, iterator index,
  * and the aggregate promise. The callback can invoke any necessary side
  * effects and choose to resolve or reject the aggregate if needed.
- * @param mixed $iterable Iterator or array to iterate over.
- * @param callable|null $onFulfilled
- * @param callable|null $onRejected
+ *
+ * @param mixed $iterable iterator or array to iterate over
+ *
  * @return PromiseInterface
+ *
  * @deprecated each will be removed in guzzlehttp/promises:2.0. Use Each::of instead.
  */
-function each($iterable, callable $onFulfilled = null, callable $onRejected = null)
+function each($iterable, ?callable $onFulfilled = null, ?callable $onRejected = null)
 {
     return Each::of($iterable, $onFulfilled, $onRejected);
 }
@@ -258,14 +262,15 @@ function each($iterable, callable $onFulfilled = null, callable $onRejected = nu
  * $concurrency may be an integer or a function that accepts the number of
  * pending promises and returns a numeric concurrency limit value to allow for
  * dynamic a concurrency size.
- * @param mixed $iterable
- * @param int|callable $concurrency
- * @param callable|null $onFulfilled
- * @param callable|null $onRejected
+ *
+ * @param mixed        $iterable
+ * @param callable|int $concurrency
+ *
  * @return PromiseInterface
+ *
  * @deprecated each_limit will be removed in guzzlehttp/promises:2.0. Use Each::ofLimit instead.
  */
-function each_limit($iterable, $concurrency, callable $onFulfilled = null, callable $onRejected = null)
+function each_limit($iterable, $concurrency, ?callable $onFulfilled = null, ?callable $onRejected = null)
 {
     return Each::ofLimit($iterable, $concurrency, $onFulfilled, $onRejected);
 }
@@ -274,13 +279,15 @@ function each_limit($iterable, $concurrency, callable $onFulfilled = null, calla
  * Like each_limit, but ensures that no promise in the given $iterable argument
  * is rejected. If any promise is rejected, then the aggregate promise is
  * rejected with the encountered rejection.
- * @param mixed $iterable
- * @param int|callable $concurrency
- * @param callable|null $onFulfilled
+ *
+ * @param mixed        $iterable
+ * @param callable|int $concurrency
+ *
  * @return PromiseInterface
+ *
  * @deprecated each_limit_all will be removed in guzzlehttp/promises:2.0. Use Each::ofLimitAll instead.
  */
-function each_limit_all($iterable, $concurrency, callable $onFulfilled = null)
+function each_limit_all($iterable, $concurrency, ?callable $onFulfilled = null)
 {
     return Each::ofLimitAll($iterable, $concurrency, $onFulfilled);
 }

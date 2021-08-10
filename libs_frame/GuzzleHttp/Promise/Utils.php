@@ -17,11 +17,11 @@ final class Utils
      * }
      * </code>
      *
-     * @param TaskQueueInterface $assign Optionally specify a new queue instance.
+     * @param TaskQueueInterface $assign optionally specify a new queue instance
      *
      * @return TaskQueueInterface
      */
-    public static function queue(TaskQueueInterface $assign = null)
+    public static function queue(?TaskQueueInterface $assign = null)
     {
         static $queue;
 
@@ -38,7 +38,7 @@ final class Utils
      * Adds a function to run in the task queue when it is next `run()` and
      * returns a promise that is fulfilled or rejected with the result.
      *
-     * @param callable $task Task function to run.
+     * @param callable $task task function to run
      *
      * @return PromiseInterface
      */
@@ -69,7 +69,7 @@ final class Utils
      * promise. If the promise is rejected, the array will contain a "reason"
      * key mapping to the rejection reason of the promise.
      *
-     * @param PromiseInterface $promise Promise or value.
+     * @param PromiseInterface $promise promise or value
      *
      * @return array
      */
@@ -78,7 +78,7 @@ final class Utils
         try {
             return [
                 'state' => PromiseInterface::FULFILLED,
-                'value' => $promise->wait()
+                'value' => $promise->wait(),
             ];
         } catch (RejectionException $e) {
             return ['state' => PromiseInterface::REJECTED, 'reason' => $e->getReason()];
@@ -97,7 +97,7 @@ final class Utils
      *
      * @see inspect for the inspection state array format.
      *
-     * @param PromiseInterface[] $promises Traversable of promises to wait upon.
+     * @param PromiseInterface[] $promises traversable of promises to wait upon
      *
      * @return array
      */
@@ -118,7 +118,7 @@ final class Utils
      * order the promises were provided). An exception is thrown if any of the
      * promises are rejected.
      *
-     * @param iterable<PromiseInterface> $promises Iterable of PromiseInterface objects to wait on.
+     * @param iterable<PromiseInterface> $promises iterable of PromiseInterface objects to wait on
      *
      * @return array
      *
@@ -143,8 +143,8 @@ final class Utils
      * respective positions to the original array. If any promise in the array
      * rejects, the returned promise is rejected with the rejection reason.
      *
-     * @param mixed $promises  Promises or values.
-     * @param bool  $recursive If true, resolves new promises that might have been added to the stack during its own resolution.
+     * @param mixed $promises  promises or values
+     * @param bool  $recursive if true, resolves new promises that might have been added to the stack during its own resolution
      *
      * @return PromiseInterface
      */
@@ -161,6 +161,7 @@ final class Utils
             }
         )->then(function () use (&$results) {
             ksort($results);
+
             return $results;
         });
 
@@ -171,6 +172,7 @@ final class Utils
                         return self::all($promises, $recursive);
                     }
                 }
+
                 return $results;
             });
         }
@@ -189,8 +191,8 @@ final class Utils
      * This promise is rejected with a {@see AggregateException} if the number
      * of fulfilled promises is less than the desired $count.
      *
-     * @param int   $count    Total number of promises.
-     * @param mixed $promises Promises or values.
+     * @param int   $count    total number of promises
+     * @param mixed $promises promises or values
      *
      * @return PromiseInterface
      */
@@ -206,7 +208,7 @@ final class Utils
                     return;
                 }
                 $results[$idx] = $value;
-                if (count($results) >= $count) {
+                if (\count($results) >= $count) {
                     $p->resolve(null);
                 }
             },
@@ -215,13 +217,14 @@ final class Utils
             }
         )->then(
             function () use (&$results, &$rejections, $count) {
-                if (count($results) !== $count) {
+                if (\count($results) !== $count) {
                     throw new AggregateException(
                         'Not enough promises to fulfill count',
                         $rejections
                     );
                 }
                 ksort($results);
+
                 return array_values($results);
             }
         );
@@ -231,7 +234,7 @@ final class Utils
      * Like some(), with 1 as count. However, if the promise fulfills, the
      * fulfillment value is not an array of 1 but the value directly.
      *
-     * @param mixed $promises Promises or values.
+     * @param mixed $promises promises or values
      *
      * @return PromiseInterface
      */
@@ -250,7 +253,7 @@ final class Utils
      *
      * @see inspect for the inspection state array format.
      *
-     * @param mixed $promises Promises or values.
+     * @param mixed $promises promises or values
      *
      * @return PromiseInterface
      */
@@ -268,6 +271,7 @@ final class Utils
             }
         )->then(function () use (&$results) {
             ksort($results);
+
             return $results;
         });
     }

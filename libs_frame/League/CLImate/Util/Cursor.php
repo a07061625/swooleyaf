@@ -31,7 +31,8 @@ class Cursor
     /**
      * Move the cursor right in the terminal x number of columns.
      *
-     * @param int $cols
+     * @param int   $cols
+     * @param mixed $columns
      *
      * @return string
      */

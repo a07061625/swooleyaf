@@ -8,7 +8,9 @@ use League\CLImate\Util\UtilImporter;
 
 class CheckboxGroup
 {
-    use OutputImporter, ParserImporter, UtilImporter;
+    use OutputImporter;
+    use ParserImporter;
+    use UtilImporter;
 
     protected $checkboxes = [];
 
@@ -20,7 +22,7 @@ class CheckboxGroup
             $this->checkboxes[] = new Checkbox($option, $key);
         }
 
-        $this->count = count($this->checkboxes);
+        $this->count = \count($this->checkboxes);
 
         $this->checkboxes[0]->setFirst()->setCurrent();
         $this->checkboxes[$this->count - 1]->setLast();
@@ -128,29 +130,29 @@ class CheckboxGroup
     /**
      * Retrieve the correct current key
      *
-     * @param string $direction 'previous' or 'next'
+     * @param string   $direction 'previous' or 'next'
      * @param Checkbox $option
-     * @param int $key
+     * @param int      $key
      *
      * @return int
      */
     protected function getCurrentKey($direction, $option, $key)
     {
-        $method = 'get' . ucwords($direction). 'Key';
+        $method = 'get' . ucwords($direction) . 'Key';
 
         return $this->{$method}($option, $key);
     }
 
     /**
      * @param Checkbox $option
-     * @param int $key
+     * @param int      $key
      *
      * @return int
      */
     protected function getPreviousKey($option, $key)
     {
         if ($option->isFirst()) {
-            return count($this->checkboxes) - 1;
+            return \count($this->checkboxes) - 1;
         }
 
         return --$key;
@@ -158,7 +160,7 @@ class CheckboxGroup
 
     /**
      * @param Checkbox $option
-     * @param int $key
+     * @param int      $key
      *
      * @return int
      */
@@ -179,10 +181,11 @@ class CheckboxGroup
         $checkbox->util($this->util);
         $checkbox->parser($this->parser);
 
-        $parsed = $this->parser->apply((string) $checkbox);
+        $parsed = $this->parser->apply((string)$checkbox);
 
         if ($checkbox->isLast()) {
             $this->output->sameLine()->write($parsed);
+
             return;
         }
 

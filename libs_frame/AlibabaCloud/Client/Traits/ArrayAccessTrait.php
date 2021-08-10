@@ -4,6 +4,7 @@ namespace AlibabaCloud\Client\Traits;
 
 /**
  * Trait ArrayAccessTrait
+ *
  * @package   AlibabaCloud\Client\Traits
  */
 trait ArrayAccessTrait
@@ -11,23 +12,23 @@ trait ArrayAccessTrait
     /**
      * This method returns a reference to the variable to allow for indirect
      * array modification (e.g., $foo['bar']['baz'] = 'qux').
+     *
      * @param string $offset
-     * @return mixed|null
+     *
+     * @return null|mixed
      */
-    public function & offsetGet($offset)
+    public function &offsetGet($offset)
     {
         if (isset($this->data[$offset])) {
             return $this->data[$offset];
         }
 
-        $value = null;
-
-        return $value;
+        return null;
     }
 
     /**
-     * @param string $offset
-     * @param string|mixed $value
+     * @param string       $offset
+     * @param mixed|string $value
      */
     public function offsetSet($offset, $value)
     {
@@ -36,6 +37,7 @@ trait ArrayAccessTrait
 
     /**
      * @param string $offset
+     *
      * @return bool
      */
     public function offsetExists($offset)

@@ -11,17 +11,10 @@ interface DynamicTerminalObjectInterface
 
     /**
      * @param $setting
-     * @return void
      */
     public function importSetting($setting);
 
-    /**
-     * @param \League\CLImate\Decorator\Parser\Parser $parser
-     */
     public function parser(Parser $parser);
 
-    /**
-     * @param UtilFactory $util
-     */
     public function util(UtilFactory $util);
 }

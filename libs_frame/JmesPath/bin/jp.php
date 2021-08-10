@@ -11,10 +11,10 @@ if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
     throw new RuntimeException('Unable to locate autoload.php file.');
 }
 
-use JmesPath\Env;
 use JmesPath\DebugRuntime;
+use JmesPath\Env;
 
-$description = <<<EOT
+$description = <<<'EOT'
 Runs a JMESPath expression on the provided input or a test case.
 
 Provide the JSON input and expression:
@@ -27,9 +27,9 @@ EOT;
 
 $args = [];
 $currentKey = null;
-for ($i = 1, $total = count($argv); $i < $total; $i++) {
+for ($i = 1, $total = count($argv); $i < $total; ++$i) {
     if ($i % 2) {
-        if (substr($argv[$i], 0, 2) == '--') {
+        if ('--' == substr($argv[$i], 0, 2)) {
             $currentKey = str_replace('--', '', $argv[$i]);
         } else {
             $currentKey = trim($argv[$i]);
@@ -48,7 +48,7 @@ if (isset($args['file']) || isset($args['suite']) || isset($args['case'])) {
     }
     // Manually run a compliance test
     $path = realpath($args['file']);
-    file_exists($path) or die('File not found at ' . $path);
+    file_exists($path) || die('File not found at ' . $path);
     $json = json_decode(file_get_contents($path), true);
     $set = $json[$args['suite']];
     $data = $set['given'];

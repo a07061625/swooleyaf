@@ -2,13 +2,14 @@
 
 namespace AlibabaCloud\Client\Credentials\Providers;
 
-use Closure;
-use AlibabaCloud\Client\SDK;
 use AlibabaCloud\Client\AlibabaCloud;
 use AlibabaCloud\Client\Exception\ClientException;
+use AlibabaCloud\Client\SDK;
+use Closure;
 
 /**
  * Class CredentialsProvider
+ *
  * @package AlibabaCloud\Client\Credentials\Providers
  */
 class CredentialsProvider
@@ -23,7 +24,7 @@ class CredentialsProvider
      */
     public static function chain()
     {
-        $providers = func_get_args();
+        $providers = \func_get_args();
 
         if (empty($providers)) {
             throw new ClientException('No providers in chain', SDK::INVALID_ARGUMENT);
@@ -56,6 +57,7 @@ class CredentialsProvider
 
     /**
      * @param string $clientName
+     *
      * @throws ClientException
      */
     public static function customProvider($clientName)
@@ -70,6 +72,7 @@ class CredentialsProvider
 
     /**
      * @param string $clientName
+     *
      * @throws ClientException
      */
     public static function defaultProvider($clientName)
@@ -93,7 +96,7 @@ class CredentialsProvider
      */
     public static function env()
     {
-        return static function(){
+        return static function () {
             $accessKeyId = \AlibabaCloud\Client\envNotEmpty('ALIBABA_CLOUD_ACCESS_KEY_ID');
             $accessKeySecret = \AlibabaCloud\Client\envNotEmpty('ALIBABA_CLOUD_ACCESS_KEY_SECRET');
 
@@ -108,7 +111,7 @@ class CredentialsProvider
      */
     public static function ini()
     {
-        return static function(){
+        return static function () {
             $ini = \AlibabaCloud\Client\envNotEmpty('ALIBABA_CLOUD_CREDENTIALS_FILE');
 
             if ($ini) {
@@ -124,19 +127,8 @@ class CredentialsProvider
     }
 
     /**
-     * @codeCoverageIgnore
-     * Compatible with global
-     * @throws ClientException
-     */
-    private static function compatibleWithGlobal()
-    {
-        if (AlibabaCloud::has('global') && !AlibabaCloud::has(self::getDefaultName())) {
-            AlibabaCloud::get('global')->name(self::getDefaultName());
-        }
-    }
-
-    /**
      * @return array|false|string
+     *
      * @throws ClientException
      */
     public static function getDefaultName()
@@ -155,11 +147,24 @@ class CredentialsProvider
      */
     public static function instance()
     {
-        return static function(){
+        return static function () {
             $instance = \AlibabaCloud\Client\envNotEmpty('ALIBABA_CLOUD_ECS_METADATA');
             if ($instance) {
                 AlibabaCloud::ecsRamRoleClient($instance)->asDefaultClient();
             }
         };
+    }
+
+    /**
+     * @codeCoverageIgnore
+     * Compatible with global
+     *
+     * @throws ClientException
+     */
+    private static function compatibleWithGlobal()
+    {
+        if (AlibabaCloud::has('global') && !AlibabaCloud::has(self::getDefaultName())) {
+            AlibabaCloud::get('global')->name(self::getDefaultName());
+        }
     }
 }

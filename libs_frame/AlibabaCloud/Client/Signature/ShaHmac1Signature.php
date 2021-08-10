@@ -4,6 +4,7 @@ namespace AlibabaCloud\Client\Signature;
 
 /**
  * Class ShaHmac1Signature
+ *
  * @package   AlibabaCloud\Signature
  */
 class ShaHmac1Signature extends Signature implements SignatureInterface
@@ -35,6 +36,7 @@ class ShaHmac1Signature extends Signature implements SignatureInterface
     /**
      * @param string $string
      * @param string $accessKeySecret
+     *
      * @return string
      */
     public function sign($string, $accessKeySecret)

@@ -20,7 +20,7 @@ class RequestException extends TransferException implements RequestExceptionInte
     private $request;
 
     /**
-     * @var ResponseInterface|null
+     * @var null|ResponseInterface
      */
     private $response;
 
@@ -32,8 +32,8 @@ class RequestException extends TransferException implements RequestExceptionInte
     public function __construct(
         string $message,
         RequestInterface $request,
-        ResponseInterface $response = null,
-        \Throwable $previous = null,
+        ?ResponseInterface $response = null,
+        ?\Throwable $previous = null,
         array $handlerContext = []
     ) {
         // Set the code of the exception if the response is set and not future.
@@ -47,9 +47,9 @@ class RequestException extends TransferException implements RequestExceptionInte
     /**
      * Wrap non-RequestExceptions with a RequestException
      */
-    public static function wrapException(RequestInterface $request, \Throwable $e): RequestException
+    public static function wrapException(RequestInterface $request, \Throwable $e): self
     {
-        return $e instanceof RequestException ? $e : new RequestException($e->getMessage(), $request, null, $e);
+        return $e instanceof self ? $e : new self($e->getMessage(), $request, null, $e);
     }
 
     /**
@@ -57,16 +57,16 @@ class RequestException extends TransferException implements RequestExceptionInte
      *
      * @param RequestInterface             $request        Request sent
      * @param ResponseInterface            $response       Response received
-     * @param \Throwable|null              $previous       Previous exception
+     * @param null|\Throwable              $previous       Previous exception
      * @param array                        $handlerContext Optional handler context
-     * @param BodySummarizerInterface|null $bodySummarizer Optional body summarizer
+     * @param null|BodySummarizerInterface $bodySummarizer Optional body summarizer
      */
     public static function create(
         RequestInterface $request,
-        ResponseInterface $response = null,
-        \Throwable $previous = null,
+        ?ResponseInterface $response = null,
+        ?\Throwable $previous = null,
         array $handlerContext = [],
-        BodySummarizerInterface $bodySummarizer = null
+        ?BodySummarizerInterface $bodySummarizer = null
     ): self {
         if (!$response) {
             return new self(
@@ -78,11 +78,11 @@ class RequestException extends TransferException implements RequestExceptionInte
             );
         }
 
-        $level = (int) \floor($response->getStatusCode() / 100);
-        if ($level === 4) {
+        $level = (int)floor($response->getStatusCode() / 100);
+        if (4 === $level) {
             $label = 'Client error';
             $className = ClientException::class;
-        } elseif ($level === 5) {
+        } elseif (5 === $level) {
             $label = 'Server error';
             $className = ServerException::class;
         } else {
@@ -95,7 +95,7 @@ class RequestException extends TransferException implements RequestExceptionInte
 
         // Client Error: `GET /` resulted in a `404 Not Found` response:
         // <html> ... (truncated)
-        $message = \sprintf(
+        $message = sprintf(
             '%s: `%s %s` resulted in a `%s %s` response',
             $label,
             $request->getMethod(),
@@ -106,25 +106,11 @@ class RequestException extends TransferException implements RequestExceptionInte
 
         $summary = ($bodySummarizer ?? new BodySummarizer())->summarize($response);
 
-        if ($summary !== null) {
+        if (null !== $summary) {
             $message .= ":\n{$summary}\n";
         }
 
         return new $className($message, $request, $response, $previous, $handlerContext);
-    }
-
-    /**
-     * Obfuscates URI if there is a username and a password present
-     */
-    private static function obfuscateUri(UriInterface $uri): UriInterface
-    {
-        $userInfo = $uri->getUserInfo();
-
-        if (false !== ($pos = \strpos($userInfo, ':'))) {
-            return $uri->withUserInfo(\substr($userInfo, 0, $pos), '***');
-        }
-
-        return $uri;
     }
 
     /**
@@ -148,7 +134,7 @@ class RequestException extends TransferException implements RequestExceptionInte
      */
     public function hasResponse(): bool
     {
-        return $this->response !== null;
+        return null !== $this->response;
     }
 
     /**
@@ -162,5 +148,19 @@ class RequestException extends TransferException implements RequestExceptionInte
     public function getHandlerContext(): array
     {
         return $this->handlerContext;
+    }
+
+    /**
+     * Obfuscates URI if there is a username and a password present
+     */
+    private static function obfuscateUri(UriInterface $uri): UriInterface
+    {
+        $userInfo = $uri->getUserInfo();
+
+        if (false !== ($pos = strpos($userInfo, ':'))) {
+            return $uri->withUserInfo(substr($userInfo, 0, $pos), '***');
+        }
+
+        return $uri;
     }
 }

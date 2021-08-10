@@ -5,12 +5,13 @@ namespace AlibabaCloud\Client\Resolver;
 use AlibabaCloud\Client\AlibabaCloud;
 use AlibabaCloud\Client\Exception\ClientException;
 use AlibabaCloud\Client\Request\RoaRequest;
-use ReflectionClass;
 use ReflectionException;
 
 /**
  * Class Roa
+ *
  * @codeCoverageIgnore
+ *
  * @package AlibabaCloud\Client\Resolver
  */
 abstract class Roa extends RoaRequest
@@ -19,7 +20,6 @@ abstract class Roa extends RoaRequest
     use CallTrait;
 
     /**
-     * @param array $options
      * @throws ReflectionException
      * @throws ClientException
      */

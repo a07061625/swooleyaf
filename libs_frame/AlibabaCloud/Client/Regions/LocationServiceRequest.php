@@ -2,20 +2,22 @@
 
 namespace AlibabaCloud\Client\Regions;
 
+use AlibabaCloud\Client\Exception\ClientException;
 use AlibabaCloud\Client\Request\Request;
 use AlibabaCloud\Client\Request\RpcRequest;
-use AlibabaCloud\Client\Exception\ClientException;
 
 /**
  * Class LocationServiceRequest
+ *
  * @package   AlibabaCloud\Client\Regions
  */
 class LocationServiceRequest extends RpcRequest
 {
     /**
      * LocationServiceRequest constructor.
-     * @param Request $request
+     *
      * @param string $domain
+     *
      * @throws ClientException
      */
     public function __construct(Request $request, $domain)

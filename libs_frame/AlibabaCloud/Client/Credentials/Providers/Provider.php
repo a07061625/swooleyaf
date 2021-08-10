@@ -6,6 +6,7 @@ use AlibabaCloud\Client\Clients\Client;
 
 /**
  * Class Provider
+ *
  * @package   AlibabaCloud\Client\Credentials\Providers
  */
 class Provider
@@ -20,6 +21,7 @@ class Provider
     protected static $credentialsCache = [];
     /**
      * Expiration time slot for temporary security credentials.
+     *
      * @var int
      */
     protected $expirationSlot = 180;
@@ -34,7 +36,6 @@ class Provider
 
     /**
      * CredentialTrait constructor.
-     * @param Client $client
      */
     public function __construct(Client $client)
     {
@@ -43,23 +44,23 @@ class Provider
 
     /**
      * Get the credentials from the cache in the validity period.
-     * @return array|null
+     *
+     * @return null|array
      */
     public function getCredentialsInCache()
     {
         if (isset(self::$credentialsCache[$this->key()])) {
             $result = self::$credentialsCache[$this->key()];
-            if (\strtotime($result['Expiration']) - \time() >= $this->expirationSlot) {
+            if (strtotime($result['Expiration']) - time() >= $this->expirationSlot) {
                 return $result;
             }
             unset(self::$credentialsCache[$this->key()]);
         }
-
-        return null;
     }
 
     /**
      * Get the toString of the credentials as the key.
+     *
      * @return string
      */
     protected function key()
@@ -69,7 +70,6 @@ class Provider
 
     /**
      * Cache credentials.
-     * @param array $credential
      */
     protected function cache(array $credential)
     {

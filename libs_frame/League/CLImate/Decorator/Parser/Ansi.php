@@ -9,11 +9,10 @@ class Ansi extends Parser
     /**
      * Wrap the string in the current style
      *
-     * @param  string $str
+     * @param string $str
      *
      * @return string
      */
-
     public function apply($str)
     {
         return $this->start() . $this->parse($str) . $this->end();
@@ -23,6 +22,7 @@ class Ansi extends Parser
      * Get the string that begins the style
      *
      * @param string $codes
+     *
      * @return string
      */
     protected function start($codes = null)
@@ -36,7 +36,8 @@ class Ansi extends Parser
     /**
      * Get the string that ends the style
      *
-     * @param string|array $codes
+     * @param array|string $codes
+     *
      * @return string
      */
     protected function end($codes = null)
@@ -56,11 +57,10 @@ class Ansi extends Parser
     /**
      * Wrap the code string in the full escaped sequence
      *
-     * @param  string $codes
+     * @param string $codes
      *
      * @return string
      */
-
     protected function wrapCodes($codes)
     {
         return "\e[{$codes}m";
@@ -69,17 +69,16 @@ class Ansi extends Parser
     /**
      * Parse the string for tags and replace them with their codes
      *
-     * @param  string $str
+     * @param string $str
      *
      * @return string
      */
-
     protected function parse($str)
     {
         $count = preg_match_all($this->tags->regex(), $str, $matches);
 
         // If we didn't find anything, return the string right back
-        if (!$count || !is_array($matches)) {
+        if (!$count || !\is_array($matches)) {
             return $str;
         }
 
@@ -93,11 +92,10 @@ class Ansi extends Parser
      * Parse the given string for the tags and replace them with the appropriate codes
      *
      * @param string $str
-     * @param array $tags
+     * @param array  $tags
      *
      * @return string
      */
-
     protected function parseTags($str, $tags)
     {
         // Let's keep a history of styles applied
@@ -115,11 +113,10 @@ class Ansi extends Parser
      *
      * @param string $str
      * @param string $tag
-     * @param array $history
+     * @param array  $history
      *
      * @return string
      */
-
     protected function replaceTag($str, $tag, &$history)
     {
         // We will be replacing tags one at a time, can't pass this by reference
@@ -141,15 +138,14 @@ class Ansi extends Parser
     /**
      * Stringify the codes
      *
-     * @param  mixed  $codes
+     * @param mixed $codes
      *
      * @return string
      */
-
     protected function codeStr($codes)
     {
         // If we get something that is already a code string, just pass it back
-        if (!is_array($codes) && strpos($codes, ';')) {
+        if (!\is_array($codes) && strpos($codes, ';')) {
             return $codes;
         }
 
@@ -166,7 +162,6 @@ class Ansi extends Parser
      *
      * @return string
      */
-
     protected function currentCode()
     {
         return $this->codeStr($this->current);

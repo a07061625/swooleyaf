@@ -16,7 +16,7 @@ class Style
     /**
      * An array of Decorator objects
      *
-     * @var Component\DecoratorInterface[] $style
+     * @var Component\DecoratorInterface[]
      */
     protected $style = [];
 
@@ -24,13 +24,13 @@ class Style
      * An array of the available Decorators
      * and their corresponding class names
      *
-     * @var array $available
+     * @var array
      */
     protected $available = [
-        'format'     =>  'Format',
-        'color'      =>  'Color',
-        'background' =>  'BackgroundColor',
-        'command'    =>  'Command',
+        'format' => 'Format',
+        'color' => 'Color',
+        'background' => 'BackgroundColor',
+        'command' => 'Command',
     ];
 
     protected $parser;
@@ -38,7 +38,7 @@ class Style
     /**
      * An array of the current styles applied
      *
-     * @var array $current
+     * @var array
      */
     protected $current = [];
 
@@ -47,6 +47,29 @@ class Style
         foreach ($this->available as $key => $class) {
             $class = 'League\CLImate\Decorator\Component\\' . $class;
             $this->style[$key] = new $class();
+        }
+    }
+
+    /**
+     * Magic Methods
+     *
+     * List of possible magic methods are at the top of this class
+     *
+     * @param string $requested_method
+     * @param array  $arguments
+     */
+    public function __call($requested_method, $arguments)
+    {
+        // The only methods we are concerned about are 'add' methods
+        if ('add' != substr($requested_method, 0, 3)) {
+            return false;
+        }
+
+        $style = $this->parseAddMethod($requested_method);
+
+        if (\array_key_exists($style, $this->style)) {
+            list($key, $value) = $arguments;
+            $this->add($style, $key, $value);
         }
     }
 
@@ -69,7 +92,7 @@ class Style
     /**
      * Attempt to get the corresponding code for the style
      *
-     * @param  mixed $key
+     * @param mixed $key
      *
      * @return mixed
      */
@@ -88,9 +111,9 @@ class Style
      * Attempt to set some aspect of the styling,
      * return true if attempt was successful
      *
-     * @param  string   $key
+     * @param string $key
      *
-     * @return boolean
+     * @return bool
      */
     public function set($key)
     {
@@ -105,7 +128,6 @@ class Style
 
     /**
      * Reset the current styles applied
-     *
      */
     public function reset()
     {
@@ -116,8 +138,6 @@ class Style
 
     /**
      * Get a new instance of the Parser class based on the current settings
-     *
-     * @param \League\CLImate\Util\System\System $system
      *
      * @return \League\CLImate\Decorator\Parser\Parser
      */
@@ -149,20 +169,20 @@ class Style
      *
      * @param mixed $code
      *
-     * @return boolean
+     * @return bool
      */
     protected function validateCode($code)
     {
-        if (is_integer($code)) {
+        if (\is_int($code)) {
             return true;
         }
 
         // Plug it back in and see what we get
-        if (is_string($code)) {
+        if (\is_string($code)) {
             return $this->set($code);
         }
 
-        if (is_array($code)) {
+        if (\is_array($code)) {
             return $this->validateCodeArray($code);
         }
 
@@ -172,9 +192,7 @@ class Style
     /**
      * Validate an array of codes
      *
-     * @param array $codes
-     *
-     * @return boolean
+     * @return bool
      */
     protected function validateCodeArray(array $codes)
     {
@@ -186,19 +204,18 @@ class Style
         }
 
         // If any of them came back true, we're good to go
-        return in_array(true, $adds);
+        return \in_array(true, $adds);
     }
 
     /**
      * Convert the array of codes to integers
      *
-     * @param array $codes
      * @return array
      */
     protected function convertToCodes(array $codes)
     {
         foreach ($codes as $key => $code) {
-            if (is_int($code)) {
+            if (\is_int($code)) {
                 continue;
             }
 
@@ -211,13 +228,13 @@ class Style
     /**
      * Retrieve the integers from the mixed code input
      *
-     * @param string|array $code
+     * @param array|string $code
      *
-     * @return integer|array
+     * @return array|int
      */
     protected function getCode($code)
     {
-        if (is_array($code)) {
+        if (\is_array($code)) {
             return $this->getCodeArray($code);
         }
 
@@ -226,8 +243,6 @@ class Style
 
     /**
      * Retrieve an array of integers from the array of codes
-     *
-     * @param array $codes
      *
      * @return array
      */
@@ -249,7 +264,7 @@ class Style
      */
     protected function parseAddMethod($method)
     {
-        return strtolower(substr($method, 3, strlen($method)));
+        return strtolower(substr($method, 3, \strlen($method)));
     }
 
     /**
@@ -265,31 +280,8 @@ class Style
 
         // If we are adding a color, make sure it gets added
         // as a background color too
-        if ($style == 'color') {
+        if ('color' == $style) {
             $this->style['background']->add($key, $value);
-        }
-    }
-
-    /**
-     * Magic Methods
-     *
-     * List of possible magic methods are at the top of this class
-     *
-     * @param string $requested_method
-     * @param array  $arguments
-     */
-    public function __call($requested_method, $arguments)
-    {
-        // The only methods we are concerned about are 'add' methods
-        if (substr($requested_method, 0, 3) != 'add') {
-            return false;
-        }
-
-        $style = $this->parseAddMethod($requested_method);
-
-        if (array_key_exists($style, $this->style)) {
-            list($key, $value) = $arguments;
-            $this->add($style, $key, $value);
         }
     }
 }

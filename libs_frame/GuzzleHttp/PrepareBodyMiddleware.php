@@ -19,7 +19,7 @@ class PrepareBodyMiddleware
     private $nextHandler;
 
     /**
-     * @param callable(RequestInterface, array): PromiseInterface $nextHandler Next handler to invoke.
+     * @param callable(RequestInterface, array): PromiseInterface $nextHandler Next handler to invoke
      */
     public function __construct(callable $nextHandler)
     {
@@ -31,7 +31,7 @@ class PrepareBodyMiddleware
         $fn = $this->nextHandler;
 
         // Don't do anything if the request has no body.
-        if ($request->getBody()->getSize() === 0) {
+        if (0 === $request->getBody()->getSize()) {
             return $fn($request, $options);
         }
 
@@ -40,7 +40,7 @@ class PrepareBodyMiddleware
         // Add a default content-type if possible.
         if (!$request->hasHeader('Content-Type')) {
             if ($uri = $request->getBody()->getMetadata('uri')) {
-                if (is_string($uri) && $type = Psr7\MimeType::fromFilename($uri)) {
+                if (\is_string($uri) && $type = Psr7\MimeType::fromFilename($uri)) {
                     $modify['set_headers']['Content-Type'] = $type;
                 }
             }
@@ -51,7 +51,7 @@ class PrepareBodyMiddleware
             && !$request->hasHeader('Transfer-Encoding')
         ) {
             $size = $request->getBody()->getSize();
-            if ($size !== null) {
+            if (null !== $size) {
                 $modify['set_headers']['Content-Length'] = $size;
             } else {
                 $modify['set_headers']['Transfer-Encoding'] = 'chunked';
@@ -77,18 +77,19 @@ class PrepareBodyMiddleware
         $expect = $options['expect'] ?? null;
 
         // Return if disabled or if you're not using HTTP/1.1 or HTTP/2.0
-        if ($expect === false || $request->getProtocolVersion() < 1.1) {
+        if (false === $expect || $request->getProtocolVersion() < 1.1) {
             return;
         }
 
         // The expect header is unconditionally enabled
-        if ($expect === true) {
+        if (true === $expect) {
             $modify['set_headers']['Expect'] = '100-Continue';
+
             return;
         }
 
         // By default, send the expect header when the payload is > 1mb
-        if ($expect === null) {
+        if (null === $expect) {
             $expect = 1048576;
         }
 
@@ -97,7 +98,7 @@ class PrepareBodyMiddleware
         $body = $request->getBody();
         $size = $body->getSize();
 
-        if ($size === null || $size >= (int) $expect || !$body->isSeekable()) {
+        if (null === $size || $size >= (int)$expect || !$body->isSeekable()) {
             $modify['set_headers']['Expect'] = '100-Continue';
         }
     }

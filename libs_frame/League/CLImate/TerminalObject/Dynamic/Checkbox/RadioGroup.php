@@ -25,14 +25,12 @@ class RadioGroup extends CheckboxGroup
     /**
      * Get the checked option
      *
-     * @return string|bool|int
+     * @return bool|int|string
      */
     public function getCheckedValues()
     {
         if ($checked = $this->getChecked()) {
             return reset($checked)->getValue();
         }
-
-        return null;
     }
 }

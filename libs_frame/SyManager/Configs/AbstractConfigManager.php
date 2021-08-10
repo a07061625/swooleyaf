@@ -7,14 +7,15 @@ use RuntimeException;
 
 /**
  * Class AbstractConfigManager
+ *
  * @package SyManager\Configs
  */
 abstract class AbstractConfigManager implements IConfigurable
 {
-    /** @var array $configData */
-    protected $configData = null;
-    /** @var string $configFilePath */
-    protected $configFilePath = null;
+    /** @var array */
+    protected $configData;
+    /** @var string */
+    protected $configFilePath;
 
     /**
      * Create config object, optionally automatic load config
@@ -27,41 +28,15 @@ abstract class AbstractConfigManager implements IConfigurable
         try {
             $this->loadConfig($configFilePath);
         } catch (Exception $exception) {
-            /**
-             * Allow not existent file name at construct
-             */
+            // Allow not existent file name at construct
         }
-    }
-
-    /**
-     * Get value pointer from config for get/set value
-     *
-     * @param string $configPath
-     *
-     * @return mixed
-     */
-    protected function & getValuePointer($configPath)
-    {
-        $configData =& $this->configData;
-        $parts = explode('.', $configPath);
-        $length = count($parts);
-
-        for ($i = 0; $i < $length; $i++) {
-            if (!isset($configData[ $parts[ $i ] ])) {
-                $configData[ $parts[ $i ] ] = ($i === $length) ? [] : null;
-            }
-
-            $configData = &$configData[ $parts[ $i ] ];
-        }
-
-        return $configData;
     }
 
     /**
      * Get value from config data throught keyValue path
      *
      * @param string $configPath
-     * @param mixed $defaultValue
+     * @param mixed  $defaultValue
      *
      * @return mixed
      */
@@ -69,9 +44,9 @@ abstract class AbstractConfigManager implements IConfigurable
     {
         $stored = $this->getValuePointer($configPath);
 
-        return (is_null($stored)
+        return null === $stored
             ? $defaultValue
-            : $stored);
+            : $stored;
     }
 
     /**
@@ -83,14 +58,14 @@ abstract class AbstractConfigManager implements IConfigurable
      */
     public function existValue($keyValue)
     {
-        return !is_null($this->getValue($keyValue));
+        return null !== $this->getValue($keyValue);
     }
 
     /**
      * Set value in config path
      *
      * @param string $configPath
-     * @param mixed $newValue
+     * @param mixed  $newValue
      *
      * @return IConfigurable
      */
@@ -103,7 +78,7 @@ abstract class AbstractConfigManager implements IConfigurable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getConfig()
     {
@@ -111,7 +86,7 @@ abstract class AbstractConfigManager implements IConfigurable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function setConfig($config)
     {
@@ -121,7 +96,7 @@ abstract class AbstractConfigManager implements IConfigurable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function convert(IConfigurable $target)
     {
@@ -131,29 +106,49 @@ abstract class AbstractConfigManager implements IConfigurable
     }
 
     /**
+     * Get value pointer from config for get/set value
+     *
+     * @param string $configPath
+     *
+     * @return mixed
+     */
+    protected function &getValuePointer($configPath)
+    {
+        $configData = &$this->configData;
+        $parts = explode('.', $configPath);
+        $length = \count($parts);
+
+        for ($i = 0; $i < $length; ++$i) {
+            if (!isset($configData[$parts[$i]])) {
+                $configData[$parts[$i]] = ($i === $length) ? [] : null;
+            }
+
+            $configData = &$configData[$parts[$i]];
+        }
+
+        return $configData;
+    }
+
+    /**
      * Check if configFilePath exists and is readable
+     *
      * @return bool
+     *
      * @throws RuntimeException
      */
     protected function checkLoadable()
     {
-        if ($this->configFilePath !== null) {
+        if (null !== $this->configFilePath) {
             if (file_exists($this->configFilePath) && is_readable($this->configFilePath)) {
-                /**
-                 * Readable
-                 */
+                // Readable
                 return true;
             }
 
-            /**
-             * $configFilePath is not null, but not existent or not readable
-             */
+            // $configFilePath is not null, but not existent or not readable
             throw new RuntimeException("Failed to read config file from path '{$this->configFilePath}'");
         }
 
-        /**
-         * $configFilePath is null
-         */
+        // $configFilePath is null
         return false;
     }
 }

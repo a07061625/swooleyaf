@@ -3,24 +3,27 @@
 namespace AlibabaCloud\Client\Traits;
 
 use AlibabaCloud\Client\AlibabaCloud;
-use AlibabaCloud\Client\Filter\ClientFilter;
 use AlibabaCloud\Client\Exception\ClientException;
+use AlibabaCloud\Client\Filter\ClientFilter;
 
 /**
  * Trait DefaultRegionTrait
+ *
  * @package   AlibabaCloud\Client\Traits
  * @mixin     AlibabaCloud
  */
 trait DefaultRegionTrait
 {
     /**
-     * @var string|null Default RegionId
+     * @var null|string Default RegionId
      */
     protected static $defaultRegionId;
 
     /**
      * @param $regionId
+     *
      * @throws ClientException
+     *
      * @deprecated
      * @codeCoverageIgnore
      */
@@ -30,7 +33,8 @@ trait DefaultRegionTrait
     }
 
     /**
-     * @return string|null
+     * @return null|string
+     *
      * @deprecated
      * @codeCoverageIgnore
      */
@@ -41,7 +45,8 @@ trait DefaultRegionTrait
 
     /**
      * Get the default RegionId.
-     * @return string|null
+     *
+     * @return null|string
      */
     public static function getDefaultRegionId()
     {
@@ -50,7 +55,9 @@ trait DefaultRegionTrait
 
     /**
      * Set the default RegionId.
+     *
      * @param string $regionId
+     *
      * @throws ClientException
      */
     public static function setDefaultRegionId($regionId)

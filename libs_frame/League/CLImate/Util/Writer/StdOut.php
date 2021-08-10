@@ -7,7 +7,7 @@ class StdOut implements WriterInterface
     /**
      * Write the content to the stream
      *
-     * @param  string $content
+     * @param string $content
      */
     public function write($content)
     {

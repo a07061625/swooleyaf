@@ -14,12 +14,12 @@ class ExtensionCollection
     protected $collection = ['basic' => [], 'dynamic' => []];
 
     /**
-     * @var string $basic_interface
+     * @var string
      */
     protected $basic_interface = 'League\CLImate\TerminalObject\Basic\BasicTerminalObjectInterface';
 
     /**
-     * @var string $dynamic_interface
+     * @var string
      */
     protected $dynamic_interface = 'League\CLImate\TerminalObject\Dynamic\DynamicTerminalObjectInterface';
 
@@ -36,10 +36,8 @@ class ExtensionCollection
     /**
      * Create the collection from the key/class
      *
-     * @param string $original_key
-     * @param string|object|array $original_class
-     *
-     * @return void
+     * @param string              $original_key
+     * @param array|object|string $original_class
      */
     protected function createCollection($original_key, $original_class)
     {
@@ -54,14 +52,14 @@ class ExtensionCollection
     /**
      * Convert the given class and key to an array of classes
      *
-     * @param string|object|array $class
-     * @param string $key Optional custom key instead of class name
+     * @param array|object|string $class
+     * @param string              $key   Optional custom key instead of class name
      *
      * @return array
      */
     protected function convertToArray($key, $class)
     {
-        if (is_array($class)) {
+        if (\is_array($class)) {
             return $class;
         }
 
@@ -71,7 +69,7 @@ class ExtensionCollection
     /**
      * Ensure that the extension is valid
      *
-     * @param string|object|array $class
+     * @param array|object|string $class
      */
     protected function validateExtension($class)
     {
@@ -80,25 +78,25 @@ class ExtensionCollection
     }
 
     /**
-     * @param string|object $class
+     * @param object|string $class
      *
      * @throws UnexpectedValueException if extension class does not exist
      */
     protected function validateClassExists($class)
     {
-        if (is_string($class) && !class_exists($class)) {
+        if (\is_string($class) && !class_exists($class)) {
             throw new UnexpectedValueException('Class does not exist: ' . $class);
         }
     }
 
     /**
-     * @param string|object $class
+     * @param object|string $class
      *
      * @throws InvalidArgumentException if extension class does not implement either Dynamic or Basic interface
      */
     protected function validateClassImplementation($class)
     {
-        $str_class = is_string($class);
+        $str_class = \is_string($class);
 
         $valid_implementation = (is_a($class, $this->basic_interface, $str_class)
                                     || is_a($class, $this->dynamic_interface, $str_class));
@@ -112,15 +110,15 @@ class ExtensionCollection
     /**
      * Determine the extension key based on the class
      *
-     * @param string|null $key
-     * @param string|object $class
+     * @param null|string   $key
+     * @param object|string $class
      *
      * @return string
      */
     protected function getKey($key, $class)
     {
-        if ($key === null || !is_string($key)) {
-            $class_path = (is_string($class)) ? $class : get_class($class);
+        if (null === $key || !\is_string($key)) {
+            $class_path = (\is_string($class)) ? $class : \get_class($class);
 
             $key = explode('\\', $class_path);
             $key = end($key);
@@ -132,13 +130,13 @@ class ExtensionCollection
     /**
      * Get the type of class the extension implements
      *
-     * @param string|object $class
+     * @param object|string $class
      *
      * @return string 'basic' or 'dynamic'
      */
     protected function getType($class)
     {
-        if (is_a($class, $this->basic_interface, is_string($class))) {
+        if (is_a($class, $this->basic_interface, \is_string($class))) {
             return 'basic';
         }
 

@@ -4,6 +4,7 @@ namespace AlibabaCloud\Client;
 
 /**
  * Class Accept
+ *
  * @package AlibabaCloud\Client
  */
 class Accept
@@ -15,6 +16,7 @@ class Accept
 
     /**
      * Accept constructor.
+     *
      * @param string $format
      */
     private function __construct($format)
@@ -24,6 +26,7 @@ class Accept
 
     /**
      * @param $format
+     *
      * @return Accept
      */
     public static function create($format)
@@ -36,7 +39,7 @@ class Accept
      */
     public function toString()
     {
-        $key = \strtoupper($this->format);
+        $key = strtoupper($this->format);
 
         $list = [
             'JSON' => 'application/json',

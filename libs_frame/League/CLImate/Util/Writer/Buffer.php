@@ -5,22 +5,19 @@ namespace League\CLImate\Util\Writer;
 class Buffer implements WriterInterface
 {
     /**
-     * @var string $contents The buffered data.
+     * @var string the buffered data
      */
-    protected $contents = "";
+    protected $contents = '';
 
     /**
      * Write the content to the buffer.
      *
      * @param string $content
-     *
-     * @return void
      */
     public function write($content)
     {
         $this->contents .= $content;
     }
-
 
     /**
      * Get the buffered data.
@@ -34,11 +31,9 @@ class Buffer implements WriterInterface
 
     /**
      * Clean the buffer and throw away any data.
-     *
-     * @return void
      */
     public function clean()
     {
-        $this->contents = "";
+        $this->contents = '';
     }
 }

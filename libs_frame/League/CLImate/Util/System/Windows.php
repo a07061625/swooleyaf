@@ -7,7 +7,7 @@ class Windows extends System
     /**
      * Get the width of the terminal
      *
-     * @return integer|null
+     * @return null|int
      */
     public function width()
     {
@@ -17,7 +17,7 @@ class Windows extends System
     /**
      * Get the height of the terminal
      *
-     * @return integer|null
+     * @return null|int
      */
     public function height()
     {
@@ -29,12 +29,11 @@ class Windows extends System
      *
      * @param string $key
      *
-     * @return integer|null
+     * @return null|int
      */
-
     protected function getDimension($key)
     {
-        $index      = array_search($key, ['height', 'width']);
+        $index = array_search($key, ['height', 'width']);
         $dimensions = $this->getDimensions();
 
         return (!empty($dimensions[$index])) ? $dimensions[$index] : null;
@@ -49,7 +48,7 @@ class Windows extends System
     {
         $output = $this->exec('mode CON', true);
 
-        if (!is_array($output)) {
+        if (!\is_array($output)) {
             return [];
         }
 
@@ -69,10 +68,10 @@ class Windows extends System
      */
     protected function systemHasAnsiSupport()
     {
-        return (function_exists('sapi_windows_vt100_support') && @sapi_windows_vt100_support(STDOUT))
+        return (\function_exists('sapi_windows_vt100_support') && @sapi_windows_vt100_support(STDOUT))
             || false !== getenv('ANSICON')
             || 'ON' === getenv('ConEmuANSI')
-            || 'Hyper' === getenv('TERM_PROGRAM') 
+            || 'Hyper' === getenv('TERM_PROGRAM')
             || 'xterm' === getenv('TERM');
     }
 }

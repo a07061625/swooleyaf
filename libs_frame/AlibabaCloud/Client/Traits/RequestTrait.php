@@ -3,14 +3,15 @@
 namespace AlibabaCloud\Client\Traits;
 
 use AlibabaCloud\Client\AlibabaCloud;
-use AlibabaCloud\Client\Filter\Filter;
-use AlibabaCloud\Client\Request\UserAgent;
-use AlibabaCloud\Client\Request\RpcRequest;
-use AlibabaCloud\Client\Request\RoaRequest;
 use AlibabaCloud\Client\Exception\ClientException;
+use AlibabaCloud\Client\Filter\Filter;
+use AlibabaCloud\Client\Request\RoaRequest;
+use AlibabaCloud\Client\Request\RpcRequest;
+use AlibabaCloud\Client\Request\UserAgent;
 
 /**
  * Trait RequestTrait
+ *
  * @package   AlibabaCloud\Client\Traits
  * @mixin     AlibabaCloud
  */
@@ -19,6 +20,7 @@ trait RequestTrait
     /**
      * @param string $name
      * @param string $value
+     *
      * @throws ClientException
      */
     public static function appendUserAgent($name, $value)
@@ -29,18 +31,16 @@ trait RequestTrait
         UserAgent::append($name, $value);
     }
 
-    /**
-     * @param array $userAgent
-     */
     public static function withUserAgent(array $userAgent)
     {
         UserAgent::with($userAgent);
     }
 
     /**
-     * @param array $options
      * @return RpcRequest
+     *
      * @throws ClientException
+     *
      * @deprecated
      * @codeCoverageIgnore
      */
@@ -50,8 +50,8 @@ trait RequestTrait
     }
 
     /**
-     * @param array $options
      * @return RpcRequest
+     *
      * @throws ClientException
      */
     public static function rpc(array $options = [])
@@ -60,9 +60,10 @@ trait RequestTrait
     }
 
     /**
-     * @param array $options
      * @return RoaRequest
+     *
      * @throws ClientException
+     *
      * @deprecated
      * @codeCoverageIgnore
      */
@@ -72,8 +73,8 @@ trait RequestTrait
     }
 
     /**
-     * @param array $options
      * @return RoaRequest
+     *
      * @throws ClientException
      */
     public static function roa(array $options = [])

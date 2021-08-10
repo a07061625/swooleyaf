@@ -3,21 +3,20 @@
 namespace League\CLImate\TerminalObject\Dynamic;
 
 use League\CLImate\Util\Reader\ReaderInterface;
-use League\CLImate\Util\Reader\Stdin;
 
 abstract class InputAbstract extends DynamicTerminalObject
 {
     /**
      * The prompt text
      *
-     * @var string $prompt
+     * @var string
      */
     protected $prompt;
 
     /**
      * An instance of ReaderInterface
      *
-     * @var \League\CLImate\Util\Reader\ReaderInterface $reader
+     * @var \League\CLImate\Util\Reader\ReaderInterface
      */
     protected $reader;
 

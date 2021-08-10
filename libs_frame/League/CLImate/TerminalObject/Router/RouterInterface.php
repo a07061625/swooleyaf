@@ -6,18 +6,21 @@ interface RouterInterface
 {
     /**
      * @param $class
+     *
      * @return string
      */
     public function path($class);
 
     /**
      * @param $class
-     * @return boolean
+     *
+     * @return bool
      */
     public function exists($class);
 
     /**
      * @param $obj
+     *
      * @return null|\League\CLImate\TerminalObject\Dynamic\DynamicTerminalObject
      */
     public function execute($obj);

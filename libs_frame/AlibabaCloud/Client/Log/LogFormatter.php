@@ -3,8 +3,8 @@
 namespace AlibabaCloud\Client\Log;
 
 use DateTime;
-use Exception;
 use DateTimeZone;
+use Exception;
 use GuzzleHttp\MessageFormatter;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -12,10 +12,13 @@ use Psr\Http\Message\ResponseInterface;
 /**
  * @deprecated Use GuzzleHttp\MessageFormatter.
  * Class LogFormatter
+ *
  * @package AlibabaCloud\Client\Log
  */
 class LogFormatter
 {
+    /** @var string Template used to format log messages */
+    public $template;
     /**
      * @var float
      */
@@ -24,11 +27,10 @@ class LogFormatter
      * @var DateTime
      */
     private static $ts;
-    /** @var string Template used to format log messages */
-    public $template;
 
     /**
      * @param string $template Log message template
+     *
      * @throws Exception
      */
     public function __construct($template)
@@ -36,8 +38,8 @@ class LogFormatter
         parent::__construct($template);
         self::$logStartTime = microtime(true);
         $this->template = $template;
-        $timezone = new DateTimeZone(date_default_timezone_get() ? : 'UTC');
-        if (PHP_VERSION_ID < 70100) {
+        $timezone = new DateTimeZone(date_default_timezone_get() ?: 'UTC');
+        if (\PHP_VERSION_ID < 70100) {
             self::$ts = DateTime::createFromFormat('U.u', sprintf('%.6F', microtime(true)), $timezone);
         } else {
             self::$ts = new DateTime(null, $timezone);
@@ -46,14 +48,18 @@ class LogFormatter
 
     /**
      * Returns a formatted message string.
-     * @param RequestInterface $request Request that was sent
+     *
+     * @param RequestInterface  $request  Request that was sent
      * @param ResponseInterface $response Response that was received
-     * @param Exception $error Exception that was received
+     * @param Exception         $error    Exception that was received
+     *
      * @return string
      */
-    public function format(RequestInterface $request,
-        ResponseInterface $response = null,
-        Exception $error = null)
+    public function format(
+        RequestInterface $request,
+        ?ResponseInterface $response = null,
+        ?Exception $error = null
+    )
     {
         $this->template = str_replace('{pid}', getmypid(), $this->template);
         $this->template = str_replace('{cost}', self::getCost(), $this->template);

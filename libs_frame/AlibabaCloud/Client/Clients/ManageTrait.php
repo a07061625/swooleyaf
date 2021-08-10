@@ -3,22 +3,23 @@
 namespace AlibabaCloud\Client\Clients;
 
 use AlibabaCloud\Client\AlibabaCloud;
-use AlibabaCloud\Client\Filter\Filter;
-use AlibabaCloud\Client\Request\Request;
-use AlibabaCloud\Client\Credentials\StsCredential;
-use AlibabaCloud\Client\Exception\ClientException;
-use AlibabaCloud\Client\Exception\ServerException;
 use AlibabaCloud\Client\Credentials\CredentialsInterface;
 use AlibabaCloud\Client\Credentials\EcsRamRoleCredential;
-use AlibabaCloud\Client\Credentials\RamRoleArnCredential;
-use AlibabaCloud\Client\Credentials\RsaKeyPairCredential;
+use AlibabaCloud\Client\Credentials\Providers\CredentialsProvider;
 use AlibabaCloud\Client\Credentials\Providers\EcsRamRoleProvider;
 use AlibabaCloud\Client\Credentials\Providers\RamRoleArnProvider;
 use AlibabaCloud\Client\Credentials\Providers\RsaKeyPairProvider;
-use AlibabaCloud\Client\Credentials\Providers\CredentialsProvider;
+use AlibabaCloud\Client\Credentials\RamRoleArnCredential;
+use AlibabaCloud\Client\Credentials\RsaKeyPairCredential;
+use AlibabaCloud\Client\Credentials\StsCredential;
+use AlibabaCloud\Client\Exception\ClientException;
+use AlibabaCloud\Client\Exception\ServerException;
+use AlibabaCloud\Client\Filter\Filter;
+use AlibabaCloud\Client\Request\Request;
 
 /**
  * Trait ManageTrait.
+ *
  * @mixin     Client
  */
 trait ManageTrait
@@ -26,7 +27,9 @@ trait ManageTrait
     /**
      * @param int $timeout
      * @param int $connectTimeout
+     *
      * @return CredentialsInterface|StsCredential
+     *
      * @throws ClientException
      * @throws ServerException
      */
@@ -46,7 +49,9 @@ trait ManageTrait
 
     /**
      * @return static
+     *
      * @throws ClientException
+     *
      * @deprecated
      * @codeCoverageIgnore
      */
@@ -57,7 +62,9 @@ trait ManageTrait
 
     /**
      * Set the current client as the default client.
+     *
      * @return static
+     *
      * @throws ClientException
      */
     public function asDefaultClient()
@@ -67,8 +74,11 @@ trait ManageTrait
 
     /**
      * Naming clients.
+     *
      * @param string $name
+     *
      * @return static
+     *
      * @throws ClientException
      */
     public function name($name)
@@ -84,7 +94,7 @@ trait ManageTrait
     public function isDebug()
     {
         if (isset($this->options['debug'])) {
-            return $this->options['debug'] === true && PHP_SAPI === 'cli';
+            return true === $this->options['debug'] && \PHP_SAPI === 'cli';
         }
 
         return false;

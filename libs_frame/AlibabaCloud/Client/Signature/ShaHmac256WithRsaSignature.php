@@ -2,12 +2,13 @@
 
 namespace AlibabaCloud\Client\Signature;
 
-use Exception;
-use AlibabaCloud\Client\SDK;
 use AlibabaCloud\Client\Exception\ClientException;
+use AlibabaCloud\Client\SDK;
+use Exception;
 
 /**
  * Class ShaHmac256WithRsaSignature
+ *
  * @package   AlibabaCloud\Signature
  */
 class ShaHmac256WithRsaSignature extends Signature implements SignatureInterface
@@ -39,12 +40,15 @@ class ShaHmac256WithRsaSignature extends Signature implements SignatureInterface
     /**
      * @param string $string
      * @param string $privateKey
+     *
      * @return string
+     *
      * @throws ClientException
      */
     public function sign($string, $privateKey)
     {
         $binarySignature = '';
+
         try {
             openssl_sign($string, $binarySignature, $privateKey, \OPENSSL_ALGO_SHA256);
         } catch (Exception $exception) {

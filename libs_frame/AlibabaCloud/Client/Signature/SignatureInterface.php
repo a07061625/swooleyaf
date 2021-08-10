@@ -4,6 +4,7 @@ namespace AlibabaCloud\Client\Signature;
 
 /**
  * Interface used to provide interchangeable strategies for requests
+ *
  * @package   AlibabaCloud\Signature
  */
 interface SignatureInterface
@@ -21,6 +22,7 @@ interface SignatureInterface
     /**
      * @param string $string
      * @param string $accessKeySecret
+     *
      * @return string
      */
     public function sign($string, $accessKeySecret);

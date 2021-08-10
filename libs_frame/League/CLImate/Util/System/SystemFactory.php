@@ -5,9 +5,8 @@ namespace League\CLImate\Util\System;
 class SystemFactory
 {
     /**
-     * @var \League\CLImate\Util\System\System $instance
+     * @var \League\CLImate\Util\System\System
      */
-
     protected static $instance;
 
     /**
@@ -15,7 +14,6 @@ class SystemFactory
      *
      * @return \League\CLImate\Util\System\System
      */
-
     public static function getInstance()
     {
         if (static::$instance) {
@@ -32,10 +30,9 @@ class SystemFactory
      *
      * @return \League\CLImate\Util\System\System
      */
-
     protected static function getSystem()
     {
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        if ('WIN' === strtoupper(substr(PHP_OS, 0, 3))) {
             return new Windows();
         }
 

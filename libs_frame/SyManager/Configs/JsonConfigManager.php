@@ -7,6 +7,7 @@ use RuntimeException;
 
 /**
  * Class JsonConfigManager
+ *
  * @package SyManager\Configs
  */
 class JsonConfigManager extends AbstractConfigManager
@@ -22,7 +23,7 @@ class JsonConfigManager extends AbstractConfigManager
     {
         $this->configFilePath = $configFilePath;
         if ($this->checkLoadable()) {
-            if (!is_callable('json_decode')) {
+            if (!\is_callable('json_decode')) {
                 throw new RuntimeException('Missing php-json extension');
             }
 
@@ -36,19 +37,20 @@ class JsonConfigManager extends AbstractConfigManager
      * Prepare and write config file on disk
      *
      * @param null|string $configFilePath
-     * @param bool $autoReloadConfig
+     * @param bool        $autoReloadConfig
      *
      * @return IConfigurable
+     *
      * @throws RuntimeException
      */
     public function saveConfigFile($configFilePath = null, $autoReloadConfig = false)
     {
-        if (is_null($configFilePath)) {
+        if (null === $configFilePath) {
             $configFilePath = $this->configFilePath;
         }
 
         try {
-            if (!is_callable('json_encode')) {
+            if (!\is_callable('json_encode')) {
                 throw new RuntimeException('Missing php-json extension');
             }
 

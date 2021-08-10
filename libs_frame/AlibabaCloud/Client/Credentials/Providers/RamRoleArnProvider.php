@@ -2,26 +2,30 @@
 
 namespace AlibabaCloud\Client\Credentials\Providers;
 
-use AlibabaCloud\Client\SDK;
 use AlibabaCloud\Client\AlibabaCloud;
-use AlibabaCloud\Client\Result\Result;
-use AlibabaCloud\Client\Request\Request;
+use AlibabaCloud\Client\Credentials\Requests\AssumeRole;
 use AlibabaCloud\Client\Credentials\StsCredential;
 use AlibabaCloud\Client\Exception\ClientException;
 use AlibabaCloud\Client\Exception\ServerException;
-use AlibabaCloud\Client\Credentials\Requests\AssumeRole;
+use AlibabaCloud\Client\Request\Request;
+use AlibabaCloud\Client\Result\Result;
+use AlibabaCloud\Client\SDK;
 
 /**
  * Class RamRoleArnProvider
+ *
  * @package   AlibabaCloud\Client\Credentials\Providers
  */
 class RamRoleArnProvider extends Provider
 {
     /**
      * Get credential.
+     *
      * @param int $timeout
      * @param int $connectTimeout
+     *
      * @return StsCredential
+     *
      * @throws ClientException
      * @throws ServerException
      */
@@ -45,20 +49,23 @@ class RamRoleArnProvider extends Provider
 
     /**
      * Get credentials by request.
+     *
      * @param $timeout
      * @param $connectTimeout
+     *
      * @return Result
+     *
      * @throws ClientException
      * @throws ServerException
      */
     private function request($timeout, $connectTimeout)
     {
-        $clientName = __CLASS__ . \uniqid('ak', true);
+        $clientName = __CLASS__ . uniqid('ak', true);
         $credential = $this->client->getCredential();
 
         AlibabaCloud::accessKeyClient($credential->getAccessKeyId(), $credential->getAccessKeySecret())->name($clientName);
 
         return (new AssumeRole($credential))->client($clientName)->timeout($timeout)->connectTimeout($connectTimeout)
-                                            ->debug($this->client->isDebug())->request();
+            ->debug($this->client->isDebug())->request();
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace JmesPath;
 
 /**
@@ -19,18 +20,19 @@ class CompilerRuntime
     private $interpreter;
 
     /**
-     * @param string|null $dir Directory used to store compiled PHP files.
-     * @param Parser|null $parser JMESPath parser to utilize
+     * @param null|string $dir    directory used to store compiled PHP files
+     * @param null|Parser $parser JMESPath parser to utilize
+     *
      * @throws \RuntimeException if the cache directory cannot be created
      */
-    public function __construct($dir = null, Parser $parser = null)
+    public function __construct($dir = null, ?Parser $parser = null)
     {
         $this->parser = $parser ?: new Parser();
         $this->compiler = new TreeCompiler();
         $dir = $dir ?: sys_get_temp_dir();
 
         if (!is_dir($dir) && !mkdir($dir, 0755, true)) {
-            throw new \RuntimeException("Unable to create cache directory: $dir");
+            throw new \RuntimeException("Unable to create cache directory: {$dir}");
         }
 
         $this->cacheDir = realpath($dir);
@@ -47,13 +49,14 @@ class CompilerRuntime
      *                           using associative arrays rather than objects.
      *
      * @return mixed Returns the matching data or null
+     *
      * @throws \RuntimeException
      */
     public function __invoke($expression, $data)
     {
         $functionName = 'jmespath_' . md5($expression);
 
-        if (!function_exists($functionName)) {
+        if (!\function_exists($functionName)) {
             $filename = "{$this->cacheDir}/{$functionName}.php";
             if (!file_exists($filename)) {
                 $this->compile($filename, $expression, $functionName);

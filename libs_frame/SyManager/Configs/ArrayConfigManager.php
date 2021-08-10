@@ -7,6 +7,7 @@ use RuntimeException;
 
 /**
  * Class ArrayConfigManager, class for easily read and access to php config array file.
+ *
  * @package SyManager\Configs
  */
 class ArrayConfigManager extends AbstractConfigManager
@@ -32,29 +33,28 @@ class ArrayConfigManager extends AbstractConfigManager
      * Prepare and write config file on disk
      *
      * @param null|string $configFilePath
-     * @param bool $autoReloadConfig
+     * @param bool        $autoReloadConfig
      *
      * @return IConfigurable
+     *
      * @throws RuntimeException
      */
     public function saveConfigFile($configFilePath = null, $autoReloadConfig = false)
     {
-        if (is_null($configFilePath)) {
+        if (null === $configFilePath) {
             $configFilePath = $this->configFilePath;
         }
 
         $configFileContent = "<?php\n\n";
-        $configFileContent .= "return ";
+        $configFileContent .= 'return ';
         $configFileContent .= var_export($this->configData, true);
         $configFileContent .= ";\n\n";
 
         try {
             file_put_contents($configFilePath, $configFileContent);
 
-            if (is_callable('opcache_invalidate')) {
-                /**
-                 * Invalidate opcache for writed file if opcache is available
-                 */
+            if (\is_callable('opcache_invalidate')) {
+                // Invalidate opcache for writed file if opcache is available
                 opcache_invalidate($configFilePath, true);
             }
         } catch (Exception $exception) {

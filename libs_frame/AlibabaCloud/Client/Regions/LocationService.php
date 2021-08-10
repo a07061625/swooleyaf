@@ -2,19 +2,19 @@
 
 namespace AlibabaCloud\Client\Regions;
 
-use Exception;
-use RuntimeException;
-use AlibabaCloud\Client\SDK;
 use AlibabaCloud\Client\Config\Config;
-use AlibabaCloud\Client\Request\Request;
-use AlibabaCloud\Client\Filter\ApiFilter;
-use AlibabaCloud\Client\Filter\HttpFilter;
-use AlibabaCloud\Client\Filter\ClientFilter;
 use AlibabaCloud\Client\Exception\ClientException;
 use AlibabaCloud\Client\Exception\ServerException;
+use AlibabaCloud\Client\Filter\ApiFilter;
+use AlibabaCloud\Client\Filter\ClientFilter;
+use AlibabaCloud\Client\Filter\HttpFilter;
+use AlibabaCloud\Client\Request\Request;
+use AlibabaCloud\Client\SDK;
+use Exception;
 
 /**
  * Class LocationService
+ *
  * @package   AlibabaCloud\Client\Regions
  */
 class LocationService
@@ -34,7 +34,6 @@ class LocationService
 
     /**
      * LocationService constructor.
-     * @param Request $request
      */
     private function __construct(Request $request)
     {
@@ -42,11 +41,13 @@ class LocationService
     }
 
     /**
-     * @param Request $request
      * @param string $domain
+     *
      * @return string
+     *
      * @throws ClientException
      * @throws ServerException
+     *
      * @deprecated
      * @codeCoverageIgnore
      */
@@ -59,7 +60,9 @@ class LocationService
      * @param $regionId
      * @param $product
      * @param $domain
+     *
      * @throws ClientException
+     *
      * @deprecated
      * @codeCoverageIgnore
      */
@@ -69,9 +72,10 @@ class LocationService
     }
 
     /**
-     * @param Request $request
      * @param string $domain
+     *
      * @return string
+     *
      * @throws ClientException
      * @throws ServerException
      */
@@ -89,29 +93,10 @@ class LocationService
     }
 
     /**
-     * @param static $locationService
-     * @param string $domain
-     * @return string
-     * @throws ClientException
-     * @throws ServerException
-     */
-    private static function getResult($locationService, $domain)
-    {
-        $locationRequest = new LocationServiceRequest($locationService->request, $domain);
-
-        $result = $locationRequest->request();
-
-        if (!isset($result['Endpoints']['Endpoint'][0]['Endpoint'])) {
-            throw new ClientException('Not found Region ID in ' . $domain, SDK::INVALID_REGION_ID);
-        }
-
-        return $result['Endpoints']['Endpoint'][0]['Endpoint'];
-    }
-
-    /**
      * @param string $product
      * @param string $host
      * @param string $regionId
+     *
      * @throws ClientException
      */
     public static function addHost($product, $host, $regionId = self::GLOBAL_REGION)
@@ -127,17 +112,41 @@ class LocationService
 
     /**
      * Update endpoints from OSS.
+     *
      * @codeCoverageIgnore
+     *
      * @throws Exception
      */
     public static function updateEndpoints()
     {
         $ossUrl = 'https://openapi-endpoints.oss-cn-hangzhou.aliyuncs.com/endpoints.json';
-        $json = \file_get_contents($ossUrl);
-        $list = \json_decode($json, true);
+        $json = file_get_contents($ossUrl);
+        $list = json_decode($json, true);
 
         foreach ($list['endpoints'] as $endpoint) {
-            Config::set("endpoints.{$endpoint['service']}.{$endpoint['regionid']}", \strtolower($endpoint['endpoint']));
+            Config::set("endpoints.{$endpoint['service']}.{$endpoint['regionid']}", strtolower($endpoint['endpoint']));
         }
+    }
+
+    /**
+     * @param static $locationService
+     * @param string $domain
+     *
+     * @return string
+     *
+     * @throws ClientException
+     * @throws ServerException
+     */
+    private static function getResult($locationService, $domain)
+    {
+        $locationRequest = new LocationServiceRequest($locationService->request, $domain);
+
+        $result = $locationRequest->request();
+
+        if (!isset($result['Endpoints']['Endpoint'][0]['Endpoint'])) {
+            throw new ClientException('Not found Region ID in ' . $domain, SDK::INVALID_REGION_ID);
+        }
+
+        return $result['Endpoints']['Endpoint'][0]['Endpoint'];
     }
 }

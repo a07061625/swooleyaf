@@ -7,14 +7,14 @@ class Sleeper implements SleeperInterface
     /**
      * The default length of the sleep
      *
-     * @var int|float $speed
+     * @var float|int
      */
     protected $speed = 50000;
 
     /**
      * Set the speed based on a percentage (50% slower, 200% faster, etc)
      *
-     * @param int|float $percentage
+     * @param float|int $percentage
      *
      * @return float
      */

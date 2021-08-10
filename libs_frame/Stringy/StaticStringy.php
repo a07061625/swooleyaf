@@ -133,29 +133,29 @@ class StaticStringy
             throw new BadMethodCallException($name . ' is not a valid method');
         }
 
-        $numArgs = count($arguments);
+        $numArgs = \count($arguments);
         $str = ($numArgs) ? $arguments[0] : '';
 
         if ($numArgs === static::$methodArgs[$name]) {
-            $args = array_slice($arguments, 1, -1);
+            $args = \array_slice($arguments, 1, -1);
             $encoding = $arguments[$numArgs - 1];
         } else {
-            $args = array_slice($arguments, 1);
+            $args = \array_slice($arguments, 1);
             $encoding = null;
         }
 
         $stringy = Stringy::create($str, $encoding);
 
-        $result = call_user_func_array([$stringy, $name], $args);
+        $result = \call_user_func_array([$stringy, $name], $args);
 
-        $cast = function($val) {
-            if (is_object($val) && $val instanceof Stringy) {
-                return (string) $val;
-            } else {
-                return $val;
+        $cast = function ($val) {
+            if (\is_object($val) && $val instanceof Stringy) {
+                return (string)$val;
             }
+
+            return $val;
         };
 
-        return is_array($result) ? array_map($cast, $result) : $cast($result);
+        return \is_array($result) ? array_map($cast, $result) : $cast($result);
     }
 }

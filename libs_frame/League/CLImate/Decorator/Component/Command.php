@@ -14,15 +14,15 @@ class Command extends BaseDecorator
     /**
      * The default commands available
      *
-     * @var array $defaults
+     * @var array
      */
     protected $defaults = [
-            'info'    => 'green',
-            'comment' => 'yellow',
-            'whisper' => 'light_gray',
-            'shout'   => 'red',
-            'error'   => 'light_red',
-        ];
+        'info' => 'green',
+        'comment' => 'yellow',
+        'whisper' => 'light_gray',
+        'shout' => 'red',
+        'error' => 'light_red',
+    ];
 
     /**
      * Add a command into the mix
@@ -48,25 +48,23 @@ class Command extends BaseDecorator
     /**
      * Get the style that corresponds to the command
      *
-     * @param  string  $val
+     * @param string $val
      *
      * @return string
      */
     public function get($val)
     {
-        if (array_key_exists($val, $this->commands)) {
+        if (\array_key_exists($val, $this->commands)) {
             return $this->commands[$val];
         }
-
-        return null;
     }
 
     /**
      * Set the currently used command
      *
-     * @param  string       $val
+     * @param string $val
      *
-     * @return string|false
+     * @return false|string
      */
     public function set($val)
     {

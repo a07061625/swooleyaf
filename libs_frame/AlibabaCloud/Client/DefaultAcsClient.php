@@ -2,15 +2,17 @@
 
 namespace AlibabaCloud\Client;
 
-use AlibabaCloud\Client\Result\Result;
 use AlibabaCloud\Client\Clients\Client;
-use AlibabaCloud\Client\Request\Request;
 use AlibabaCloud\Client\Exception\ClientException;
 use AlibabaCloud\Client\Exception\ServerException;
+use AlibabaCloud\Client\Request\Request;
+use AlibabaCloud\Client\Result\Result;
 
 /**
  * Class DefaultAcsClient
+ *
  * @package    AlibabaCloud
+ *
  * @deprecated deprecated since version 2.0, Use AlibabaCloud instead.
  * @codeCoverageIgnore
  */
@@ -23,18 +25,20 @@ class DefaultAcsClient
 
     /**
      * DefaultAcsClient constructor.
-     * @param Client $client
+     *
      * @throws ClientException
      */
     public function __construct(Client $client)
     {
-        $this->randClientName = \uniqid('', true);
+        $this->randClientName = uniqid('', true);
         $client->name($this->randClientName);
     }
 
     /**
      * @param Request|Result $request
+     *
      * @return Result|string
+     *
      * @throws ClientException
      * @throws ServerException
      */

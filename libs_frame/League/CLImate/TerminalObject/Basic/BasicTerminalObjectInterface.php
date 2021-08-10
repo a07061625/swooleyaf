@@ -13,22 +13,15 @@ interface BasicTerminalObjectInterface
 
     /**
      * @param $setting
-     * @return void
      */
     public function importSetting($setting);
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function sameLine();
 
-    /**
-     * @param \League\CLImate\Decorator\Parser\Parser $parser
-     */
     public function parser(Parser $parser);
 
-    /**
-     * @param UtilFactory $util
-     */
     public function util(UtilFactory $util);
 }

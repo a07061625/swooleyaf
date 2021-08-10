@@ -5,13 +5,13 @@ namespace League\CLImate\Util;
 class Helper
 {
     /**
-     * @param string|array $var
+     * @param array|string $var
      *
      * @return array
      */
     public static function toArray($var)
     {
-        if (!is_array($var)) {
+        if (!\is_array($var)) {
             return [$var];
         }
 
@@ -20,8 +20,6 @@ class Helper
 
     /**
      * Flatten a multi-dimensional array
-     *
-     * @param array $arr
      *
      * @return array
      */

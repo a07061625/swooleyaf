@@ -7,11 +7,11 @@ use Psr\Http\Message\MessageInterface;
 final class BodySummarizer implements BodySummarizerInterface
 {
     /**
-     * @var int|null
+     * @var null|int
      */
     private $truncateAt;
 
-    public function __construct(int $truncateAt = null)
+    public function __construct(?int $truncateAt = null)
     {
         $this->truncateAt = $truncateAt;
     }
@@ -21,7 +21,7 @@ final class BodySummarizer implements BodySummarizerInterface
      */
     public function summarize(MessageInterface $message): ?string
     {
-        return $this->truncateAt === null
+        return null === $this->truncateAt
             ? \GuzzleHttp\Psr7\Message::bodySummary($message)
             : \GuzzleHttp\Psr7\Message::bodySummary($message, $this->truncateAt);
     }
