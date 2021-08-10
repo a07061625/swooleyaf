@@ -1,0 +1,51 @@
+<?php
+
+namespace AlibabaCloud\Smartag;
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getISP()
+ * @method $this withISP($value)
+ * @method string getPassword()
+ * @method $this withPassword($value)
+ * @method string getVlan()
+ * @method $this withVlan($value)
+ * @method string getMask()
+ * @method $this withMask($value)
+ * @method string getStartIp()
+ * @method $this withStartIp($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getBandwidth()
+ * @method $this withBandwidth($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getIP()
+ * @method $this withIP($value)
+ * @method string getWeight()
+ * @method $this withWeight($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getIPType()
+ * @method $this withIPType($value)
+ * @method string getPriority()
+ * @method $this withPriority($value)
+ * @method string getSourceIps()
+ * @method $this withSourceIps($value)
+ * @method string getSmartAGId()
+ * @method $this withSmartAGId($value)
+ * @method string getSmartAGSn()
+ * @method $this withSmartAGSn($value)
+ * @method string getPortName()
+ * @method $this withPortName($value)
+ * @method string getStopIp()
+ * @method $this withStopIp($value)
+ * @method string getGateway()
+ * @method $this withGateway($value)
+ * @method string getUsername()
+ * @method $this withUsername($value)
+ */
+class ModifySagWan extends Rpc
+{
+}

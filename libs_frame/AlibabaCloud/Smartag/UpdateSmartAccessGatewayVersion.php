@@ -1,0 +1,25 @@
+<?php
+
+namespace AlibabaCloud\Smartag;
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getVersionCode()
+ * @method $this withVersionCode($value)
+ * @method string getSerialNumber()
+ * @method $this withSerialNumber($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getVersionType()
+ * @method $this withVersionType($value)
+ * @method string getSmartAGId()
+ * @method $this withSmartAGId($value)
+ */
+class UpdateSmartAccessGatewayVersion extends Rpc
+{
+}
