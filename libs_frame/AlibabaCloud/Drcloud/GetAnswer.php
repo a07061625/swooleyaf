@@ -1,24 +1,6 @@
 <?php
 
-namespace AlibabaCloud\Drcloud\V20190213;
-
-use AlibabaCloud\Client\Resolver\ApiResolver;
-
-/**
- * @method GetAnswer getAnswer(array $options = [])
- */
-class DrcloudApiResolver extends ApiResolver
-{
-}
-
-class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
-{
-    /** @var string */
-    public $product = 'drcloud';
-
-    /** @var string */
-    public $version = '2019-02-13';
-}
+namespace AlibabaCloud\Drcloud;
 
 /**
  * @method string getNodeType()
