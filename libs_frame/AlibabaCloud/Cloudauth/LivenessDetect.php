@@ -1,30 +1,6 @@
 <?php
 
-namespace AlibabaCloud\Cloudauth\V20201112;
-
-use AlibabaCloud\Client\Resolver\ApiResolver;
-
-/**
- * @method LivenessDetect livenessDetect(array $options = [])
- */
-class CloudauthApiResolver extends ApiResolver
-{
-}
-
-class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
-{
-    /** @var string */
-    public $product = 'Cloudauth';
-
-    /** @var string */
-    public $version = '2020-11-12';
-
-    /** @var string */
-    public $method = 'POST';
-
-    /** @var string */
-    public $serviceCode = 'cloudauth';
-}
+namespace AlibabaCloud\Cloudauth;
 
 /**
  * @method string getMediaCategory()
