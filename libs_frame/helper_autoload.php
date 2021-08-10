@@ -334,3 +334,84 @@ spl_autoload_register('syFrameAutoload');
 spl_autoload_register('syProjectAutoload');
 
 require_once __DIR__ . '/helper_defines.php';
+
+if (!function_exists('trigger_deprecation')) {
+    /**
+     * Triggers a silenced deprecation notice.
+     *
+     * @param string $package The name of the Composer package that is triggering the deprecation
+     * @param string $version The version of the package that introduced the deprecation
+     * @param string $message The message of the deprecation
+     * @param mixed  ...$args Values to insert in the message using printf() formatting
+     *
+     * @author Nicolas Grekas <p@tchwork.com>
+     */
+    function trigger_deprecation(string $package, string $version, string $message, ...$args) : void
+    {
+        $msg = '';
+        if ($package || $version) {
+            $msg = 'Since ' . $package . ' ' . $version . ': ';
+        }
+        if ($args) {
+            $msg .= vsprintf($message, $args);
+        } else {
+            $msg .= $message;
+        }
+        @trigger_error($msg, E_USER_DEPRECATED);
+    }
+}
+
+if (!function_exists('getallheaders')) {
+    /**
+     * Get all HTTP header key/values as an associative array for the current request.
+     * @return array[string] The HTTP header key/value pairs.
+     */
+    function getallheaders() : array
+    {
+        $headers = [];
+
+        $copy_server = [
+            'CONTENT_TYPE' => 'Content-Type',
+            'CONTENT_LENGTH' => 'Content-Length',
+            'CONTENT_MD5' => 'Content-Md5',
+        ];
+
+        foreach ($_SERVER as $key => $value) {
+            if (substr($key, 0, 5) === 'HTTP_') {
+                $key = substr($key, 5);
+                if (!isset($copy_server[$key]) || !isset($_SERVER[$key])) {
+                    $key = str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', $key))));
+                    $headers[$key] = $value;
+                }
+            } elseif (isset($copy_server[$key])) {
+                $headers[$copy_server[$key]] = $value;
+            }
+        }
+
+        if (!isset($headers['Authorization'])) {
+            if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+                $headers['Authorization'] = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
+            } elseif (isset($_SERVER['PHP_AUTH_USER'])) {
+                $basic_pass = $_SERVER['PHP_AUTH_PW'] ?? '';
+                $headers['Authorization'] = 'Basic ' . base64_encode($_SERVER['PHP_AUTH_USER'] . ':' . $basic_pass);
+            } elseif (isset($_SERVER['PHP_AUTH_DIGEST'])) {
+                $headers['Authorization'] = $_SERVER['PHP_AUTH_DIGEST'];
+            }
+        }
+
+        return $headers;
+    }
+}
+
+if (! function_exists('dot')) {
+    /**
+     * Create a new Dot object with the given items
+     *
+     * @param  mixed $items
+     * @return \Adbar\Dot
+     */
+    function dot($items)
+    {
+        return new \Adbar\Dot($items);
+    }
+}
