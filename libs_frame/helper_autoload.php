@@ -49,6 +49,18 @@ final class SyFrameLoader
      * @var bool
      */
     private $pinYinStatus = true;
+    /**
+     * GuzzleHttp未初始化标识 true：未初始化 false：已初始化
+     *
+     * @var bool
+     */
+    private $guzzleHttpStatus = true;
+    /**
+     * AlibabaCloud未初始化标识 true：未初始化 false：已初始化
+     *
+     * @var bool
+     */
+    private $alibabaCloudStatus = true;
 
     private function __construct()
     {
@@ -63,6 +75,8 @@ final class SyFrameLoader
             'AliOpen' => 'preHandleAliOpen',
             'PinYin' => 'preHandlePinYin',
             'ClickHouseDB' => 'preHandleClickHouse',
+            'GuzzleHttp' => 'preHandleGuzzleHttp',
+            'AlibabaCloud' => 'preHandleAlibabaCloud',
         ];
 
         $this->smartyRootClasses = [
@@ -247,6 +261,27 @@ final class SyFrameLoader
     {
         return SY_FRAME_LIBS_ROOT . 'SyDriver/' . $className . '.php';
     }
+
+    private function preHandleGuzzleHttp(string $className): string
+    {
+        if ($this->guzzleHttpStatus) {
+            require_once SY_FRAME_LIBS_ROOT . 'GuzzleHttp/functions.php';
+            require_once SY_FRAME_LIBS_ROOT . 'GuzzleHttp/Promise/functions.php';
+            $this->guzzleHttpStatus = false;
+        }
+
+        return SY_FRAME_LIBS_ROOT . $className . '.php';
+    }
+
+    private function preHandleAlibabaCloud(string $className): string
+    {
+        if ($this->alibabaCloudStatus) {
+            require_once SY_FRAME_LIBS_ROOT . 'AlibabaCloud/Client/Functions.php';
+            $this->alibabaCloudStatus = false;
+        }
+
+        return SY_FRAME_LIBS_ROOT . $className . '.php';
+    }
 }
 
 final class SyProjectLoader
@@ -401,19 +436,5 @@ if (!function_exists('getallheaders')) {
         }
 
         return $headers;
-    }
-}
-
-if (!function_exists('dot')) {
-    /**
-     * Create a new Dot object with the given items
-     *
-     * @param mixed $items
-     *
-     * @return \Adbar\Dot
-     */
-    function dot($items)
-    {
-        return new \Adbar\Dot($items);
     }
 }
