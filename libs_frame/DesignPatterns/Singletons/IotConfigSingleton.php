@@ -40,7 +40,7 @@ class IotConfigSingleton
     /**
      * @return \DesignPatterns\Singletons\IotConfigSingleton
      */
-    public static function getInstance() : IotConfigSingleton
+    public static function getInstance(): self
     {
         if (null === self::$instance) {
             self::$instance = new self();
@@ -51,10 +51,11 @@ class IotConfigSingleton
 
     /**
      * @return string 配置key
+     *
      * @throws \SyException\Cloud\AliException
      * @throws \AlibabaCloud\Client\Exception\ClientException
      */
-    public function getAliYunKey() : string
+    public function getAliYunKey(): string
     {
         if ('' == $this->aliYunKey) {
             $configs = Tool::getConfig('iot.' . SY_ENV . SY_PROJECT);
@@ -71,17 +72,16 @@ class IotConfigSingleton
 
     public function removeAliYunKey()
     {
-        if (strlen($this->aliYunKey) > 0) {
+        if (\strlen($this->aliYunKey) > 0) {
             $this->removeAliClient($this->aliYunKey);
             $this->aliYunKey = '';
         }
     }
 
     /**
-     * @return \SyIot\ConfigBaiDu
      * @throws \SyException\Iot\BaiDuIotException
      */
-    public function getBaiDuConfig() : ConfigBaiDu
+    public function getBaiDuConfig(): ConfigBaiDu
     {
         if (null === $this->baiDuConfig) {
             $configs = Tool::getConfig('iot.' . SY_ENV . SY_PROJECT);
@@ -95,10 +95,9 @@ class IotConfigSingleton
     }
 
     /**
-     * @return \SyIot\ConfigTencent
      * @throws \SyException\Cloud\TencentException
      */
-    public function getTencentConfig() : ConfigTencent
+    public function getTencentConfig(): ConfigTencent
     {
         if (null === $this->tencentConfig) {
             $configs = Tool::getConfig('iot.' . SY_ENV . SY_PROJECT);

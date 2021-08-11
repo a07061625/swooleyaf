@@ -5,6 +5,7 @@
  * Date: 2020/9/2 0002
  * Time: 9:28
  */
+
 namespace SyLive;
 
 use SyCloud\Ali\ConfigTrait;

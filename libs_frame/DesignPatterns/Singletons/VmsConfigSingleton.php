@@ -53,7 +53,7 @@ class VmsConfigSingleton
     /**
      * @return \DesignPatterns\Singletons\VmsConfigSingleton
      */
-    public static function getInstance() : VmsConfigSingleton
+    public static function getInstance(): self
     {
         if (null === self::$instance) {
             self::$instance = new self();
@@ -64,10 +64,11 @@ class VmsConfigSingleton
 
     /**
      * @return string 配置key
+     *
      * @throws \SyException\Cloud\AliException
      * @throws \AlibabaCloud\Client\Exception\ClientException
      */
-    public function getAliYunKey() : string
+    public function getAliYunKey(): string
     {
         if ('' == $this->aliYunKey) {
             $configs = Tool::getConfig('vms.' . SY_ENV . SY_PROJECT);
@@ -84,18 +85,16 @@ class VmsConfigSingleton
 
     public function removeAliYunKey()
     {
-        if (strlen($this->aliYunKey) > 0) {
+        if (\strlen($this->aliYunKey) > 0) {
             $this->removeAliClient($this->aliYunKey);
             $this->aliYunKey = '';
         }
     }
 
     /**
-     * @return \SyVms\ConfigQCloud
-     *
      * @throws \SyException\Vms\QCloudException
      */
-    public function getQCloudConfig() : ConfigQCloud
+    public function getQCloudConfig(): ConfigQCloud
     {
         if (null === $this->qCloudConfig) {
             $configs = Tool::getConfig('vms.' . SY_ENV . SY_PROJECT);
@@ -109,11 +108,9 @@ class VmsConfigSingleton
     }
 
     /**
-     * @return \SyVms\ConfigXunFei
-     *
      * @throws \SyException\Vms\XunFeiException
      */
-    public function getXunFeiConfig() : ConfigXunFei
+    public function getXunFeiConfig(): ConfigXunFei
     {
         if (null === $this->xunFeiConfig) {
             $configs = Tool::getConfig('vms.' . SY_ENV . SY_PROJECT);
@@ -128,11 +125,9 @@ class VmsConfigSingleton
     }
 
     /**
-     * @return \SyVms\ConfigChiVox
-     *
      * @throws \SyException\Vms\ChiVoxException
      */
-    public function getChiVoxConfig() : ConfigChiVox
+    public function getChiVoxConfig(): ConfigChiVox
     {
         if (null === $this->xunFeiConfig) {
             $configs = Tool::getConfig('vms.' . SY_ENV . SY_PROJECT);
