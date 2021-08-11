@@ -18,6 +18,7 @@ for name in `ls -F | grep "/$" | awk -F/ '{print $1}'` ; do
     if [ "${name}" == "Client" ]; then
         continue
     fi
+    echo "${name}"
 
     ${BIN_PHP} ${PATH_ROOT}/helper.php ${name} | awk '{print $0}'
     # shellcheck disable=SC2004
