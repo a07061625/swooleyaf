@@ -15,7 +15,7 @@ DIRS_INPUT="Imm,RetailadvqaPublic,Dcdn,IndustryBrain,Retailcloud,Ddoscoo,Iot,RKv
 DIRS_LOOP=(`echo ${DIRS_INPUT} | tr ',' ' '`)
 # shellcheck disable=SC2068
 for name in ${DIRS_LOOP[@]} ; do
-    ${DIRS_INPUT} ${PATH_ROOT}/helper.php ${name}
+    ${DIRS_INPUT} ${PATH_ROOT}/helper.php ${name} | awk '{print $0}'
     # shellcheck disable=SC2004
     TRANSFORM_NUM=$(( ${TRANSFORM_NUM} + 1 ))
     if [ ${TRANSFORM_NUM} -gt 5 ]; then
