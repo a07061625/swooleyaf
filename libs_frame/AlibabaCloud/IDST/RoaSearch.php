@@ -1,27 +1,6 @@
 <?php
 
-namespace AlibabaCloud\IDST\V20170922;
-
-use AlibabaCloud\Client\Resolver\ApiResolver;
-
-/**
- * @method RoaSearch roaSearch(array $options = [])
- */
-class IDSTApiResolver extends ApiResolver
-{
-}
-
-class Roa extends \AlibabaCloud\Client\Resolver\Roa
-{
-    /** @var string */
-    public $product = 'IDST';
-
-    /** @var string */
-    public $version = '2017-09-22';
-
-    /** @var string */
-    public $method = 'POST';
-}
+namespace AlibabaCloud\IDST;
 
 /**
  * @method string getVid()
