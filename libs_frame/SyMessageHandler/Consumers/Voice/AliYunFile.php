@@ -39,7 +39,7 @@ class AliYunFile extends Base implements IConsumer
 
         $callVoice = new SingleCallByVoice();
         $callVoice->client(VmsConfigSingleton::getInstance()->getAliYunKey())
-                  ->withCalledNumber($msgData['receivers'][0])
+            ->withCalledNumber($msgData['receivers'][0])
             ->withCalledShowNumber($msgData['ext_data']['show_number'])
             ->withVoiceCode($msgData['ext_data']['voice_id'])
             ->withPlayTimes($msgData['ext_data']['play_times'])

@@ -40,7 +40,7 @@ class AliYunBatch extends Base implements IConsumer
 
         $smsBatch = new SendBatchSms();
         $smsBatch->client(SmsConfigSingleton::getInstance()->getAliYunKey())
-                 ->withPhoneNumberJson(Tool::jsonEncode($msgData['receivers'], JSON_UNESCAPED_UNICODE))
+            ->withPhoneNumberJson(Tool::jsonEncode($msgData['receivers'], JSON_UNESCAPED_UNICODE))
             ->withTemplateCode($msgData['template_id'])
             ->withSignNameJson(Tool::jsonEncode($msgData['template_sign'], JSON_UNESCAPED_UNICODE));
         if (!empty($msgData['template_params'])) {
