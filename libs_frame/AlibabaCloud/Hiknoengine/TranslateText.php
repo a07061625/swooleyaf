@@ -1,30 +1,6 @@
 <?php
 
-namespace AlibabaCloud\Hiknoengine\V20190625;
-
-use AlibabaCloud\Client\Resolver\ApiResolver;
-
-/**
- * @method TranslateText translateText(array $options = [])
- */
-class HiknoengineApiResolver extends ApiResolver
-{
-}
-
-class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
-{
-    /** @var string */
-    public $product = 'hiknoengine';
-
-    /** @var string */
-    public $version = '2019-06-25';
-
-    /** @var string */
-    public $method = 'POST';
-
-    /** @var string */
-    public $serviceCode = 'hiknoengine';
-}
+namespace AlibabaCloud\Hiknoengine;
 
 /**
  * @method string getFromLang()
