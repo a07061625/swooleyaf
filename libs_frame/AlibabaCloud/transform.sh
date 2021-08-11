@@ -8,7 +8,7 @@ FILE_ROOT_NAME=`readlink -f "$0"`
 # shellcheck disable=SC2006
 PATH_ROOT=`dirname ${FILE_ROOT_NAME}`
 BIN_PHP=/d/Php72/php.exe
-TRANSFORM_NUM=1
+TRANSFORM_NUM=0
 GIT_RESOURCES_REPOSITORY="gitee"
 GIT_RESOURCES_BRANCH="master"
 
