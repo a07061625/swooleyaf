@@ -8,7 +8,6 @@
 
 namespace SyMessageHandler\Consumers\Sms;
 
-use AlibabaCloud\Client\AlibabaCloud;
 use AlibabaCloud\Dysmsapi\SendBatchSms;
 use DesignPatterns\Singletons\SmsConfigSingleton;
 use SyConstant\ErrorCode;
@@ -39,13 +38,9 @@ class AliYunBatch extends Base implements IConsumer
             'code' => 0,
         ];
 
-        $config = SmsConfigSingleton::getInstance()->getAliYunConfig();
-        AlibabaCloud::accessKeyClient($config->getAppKey(), $config->getAppSecret())
-            ->regionId($config->getRegionId())
-            ->asDefaultClient();
-
         $smsBatch = new SendBatchSms();
-        $smsBatch->withPhoneNumberJson(Tool::jsonEncode($msgData['receivers'], JSON_UNESCAPED_UNICODE))
+        $smsBatch->client(SmsConfigSingleton::getInstance()->getAliYunKey())
+                 ->withPhoneNumberJson(Tool::jsonEncode($msgData['receivers'], JSON_UNESCAPED_UNICODE))
             ->withTemplateCode($msgData['template_id'])
             ->withSignNameJson(Tool::jsonEncode($msgData['template_sign'], JSON_UNESCAPED_UNICODE));
         if (!empty($msgData['template_params'])) {
