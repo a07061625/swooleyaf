@@ -41,7 +41,8 @@ class AliYunTts extends Base implements IConsumer
 
         $config = VmsConfigSingleton::getInstance()->getAliYunConfig();
         AlibabaCloud::accessKeyClient($config->getAccessKey(), $config->getAccessSecret())
-            ->regionId($config->getRegionId());
+            ->regionId($config->getRegionId())
+            ->asDefaultClient();
 
         $callTts = new SingleCallByTts();
         $callTts->withCalledNumber($msgData['receivers'][0])

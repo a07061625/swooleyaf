@@ -23,3 +23,19 @@ vim Client/Resolver/ApiResolver.php
     $product_dir = \dirname($reflect->getFileName());
     ...
 ```
+
+# 用法
+```
+    \AlibabaCloud\Client\AlibabaCloud::accessKeyClient($config->getAppKey(), $config->getAppSecret())
+        ->regionId($config->getRegionId())
+        ->asDefaultClient();
+
+    $smsBatch = new \AlibabaCloud\Dysmsapi\SendBatchSms();
+    $smsBatch->withPhoneNumberJson(Tool::jsonEncode($msgData['receivers'], JSON_UNESCAPED_UNICODE))
+        ->withTemplateCode($msgData['template_id'])
+        ->withSignNameJson(Tool::jsonEncode($msgData['template_sign'], JSON_UNESCAPED_UNICODE));
+    if (!empty($msgData['template_params'])) {
+        $smsBatch->withTemplateParamJson(Tool::jsonEncode($msgData['template_params'], JSON_UNESCAPED_UNICODE));
+    }
+    $sendRes = $smsBatch->request()->toArray();
+```

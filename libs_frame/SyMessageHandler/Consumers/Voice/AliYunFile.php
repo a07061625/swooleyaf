@@ -40,7 +40,8 @@ class AliYunFile extends Base implements IConsumer
 
         $config = VmsConfigSingleton::getInstance()->getAliYunConfig();
         AlibabaCloud::accessKeyClient($config->getAccessKey(), $config->getAccessSecret())
-            ->regionId($config->getRegionId());
+            ->regionId($config->getRegionId())
+            ->asDefaultClient();
 
         $callVoice = new SingleCallByVoice();
         $callVoice->withCalledNumber($msgData['receivers'][0])
