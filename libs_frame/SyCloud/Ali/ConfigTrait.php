@@ -5,6 +5,7 @@
  * Date: 2020/9/2 0002
  * Time: 10:38
  */
+
 namespace SyCloud\Ali;
 
 use SyConstant\ErrorCode;
@@ -37,77 +38,74 @@ trait ConfigTrait
     private $accessSecret = '';
     /**
      * 附加配置
+     *
      * @var array
      */
     private $options = [];
     /**
      * 超时时间,单位为毫秒
+     *
      * @var int
      */
     private $timeout = 0;
     /**
      * 连接超时时间,单位为毫秒
+     *
      * @var int
      */
     private $connectTimeout = 0;
     /**
      * 调试模式标识 true:开启 false:关闭
+     *
      * @var bool
      */
     private $debugTag = false;
     /**
      * 证书信息
+     *
      * @var array
      */
     private $certInfo = [];
     /**
      * 代理信息
-     * @var string|array
+     *
+     * @var array|string
      */
     private $proxyInfo = '';
     /**
      * 校验信息
+     *
      * @var mixed
      */
-    private $verifyInfo = null;
+    private $verifyInfo;
 
     private function __clone()
     {
     }
 
-    /**
-     * @return string
-     */
-    public function getRegionId() : string
+    public function getRegionId(): string
     {
         return $this->regionId;
     }
 
     /**
-     * @param string $regionId
-     *
      * @throws \SyException\Cloud\AliException
      */
     public function setRegionId(string $regionId)
     {
-        if (strlen($regionId) > 0) {
+        if (\strlen($regionId) > 0) {
             $this->regionId = $regionId;
         } else {
             throw new AliException('区域ID不合法', ErrorCode::CLOUD_ALI_ERROR);
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getAccessKey() : string
+    public function getAccessKey(): string
     {
         return $this->accessKey;
     }
 
     /**
-     * @param string $accessKey
-     *
      * @throws \SyException\Cloud\AliException
      */
     public function setAccessKey(string $accessKey)
@@ -119,17 +117,12 @@ trait ConfigTrait
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getAccessSecret() : string
+    public function getAccessSecret(): string
     {
         return $this->accessSecret;
     }
 
     /**
-     * @param string $accessSecret
-     *
      * @throws \SyException\Cloud\AliException
      */
     public function setAccessSecret(string $accessSecret)
@@ -141,32 +134,24 @@ trait ConfigTrait
         }
     }
 
-    /**
-     * @return array
-     */
-    public function getOptions() : array
+    public function getOptions(): array
     {
         return $this->options;
     }
 
-    /**
-     * @param array $options
-     */
     public function setOptions(array $options)
     {
         $this->options = $options;
     }
 
-    /**
-     * @return int
-     */
-    public function getTimeout() : int
+    public function getTimeout(): int
     {
         return $this->timeout;
     }
 
     /**
      * @param int $timeout 超时时间
+     *
      * @throws \SyException\Cloud\AliException
      */
     public function setTimeout(int $timeout)
@@ -178,16 +163,14 @@ trait ConfigTrait
         }
     }
 
-    /**
-     * @return int
-     */
-    public function getConnectTimeout() : int
+    public function getConnectTimeout(): int
     {
         return $this->connectTimeout;
     }
 
     /**
      * @param int $connectTimeout 连接超时时间
+     *
      * @throws \SyException\Cloud\AliException
      */
     public function setConnectTimeout(int $connectTimeout)
@@ -199,37 +182,29 @@ trait ConfigTrait
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function isDebugTag() : bool
+    public function isDebugTag(): bool
     {
         return $this->debugTag;
     }
 
-    /**
-     * @param bool $debugTag
-     */
     public function setDebugTag(bool $debugTag)
     {
         $this->debugTag = $debugTag;
     }
 
-    /**
-     * @return array
-     */
-    public function getCertInfo() : array
+    public function getCertInfo(): array
     {
         return $this->certInfo;
     }
 
     /**
      * @param array $certInfo 证书信息
+     *
      * @throws \SyException\Cloud\AliException
      */
     public function setCertInfo(array $certInfo)
     {
-        if (is_array($certInfo) && !empty($certInfo)) {
+        if (\is_array($certInfo) && !empty($certInfo)) {
             $this->certInfo = $certInfo;
         } else {
             throw new AliException('证书信息不合法', ErrorCode::CLOUD_ALI_ERROR);
@@ -246,13 +221,14 @@ trait ConfigTrait
 
     /**
      * @param array|string $proxyInfo 代理信息
+     *
      * @throws \SyException\Cloud\AliException
      */
     public function setProxyInfo($proxyInfo)
     {
-        if (is_string($proxyInfo) && (strlen($proxyInfo) > 0)) {
+        if (\is_string($proxyInfo) && (\strlen($proxyInfo) > 0)) {
             $this->proxyInfo = $proxyInfo;
-        } elseif (is_array($proxyInfo) && !empty($proxyInfo)) {
+        } elseif (\is_array($proxyInfo) && !empty($proxyInfo)) {
             $this->proxyInfo = $proxyInfo;
         } else {
             throw new AliException('代理信息不合法', ErrorCode::CLOUD_ALI_ERROR);

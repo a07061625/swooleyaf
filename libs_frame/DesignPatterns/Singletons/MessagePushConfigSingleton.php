@@ -88,7 +88,7 @@ class MessagePushConfigSingleton
     /**
      * @return \DesignPatterns\Singletons\MessagePushConfigSingleton
      */
-    public static function getInstance() : MessagePushConfigSingleton
+    public static function getInstance(): self
     {
         if (null === self::$instance) {
             self::$instance = new self();
@@ -99,10 +99,11 @@ class MessagePushConfigSingleton
 
     /**
      * @return string 配置key
+     *
      * @throws \SyException\Cloud\AliException
      * @throws \AlibabaCloud\Client\Exception\ClientException
      */
-    public function getAliKey() : string
+    public function getAliKey(): string
     {
         if ('' == $this->aliKey) {
             $configs = Tool::getConfig('messagepush.' . SY_ENV . SY_PROJECT);
@@ -119,17 +120,16 @@ class MessagePushConfigSingleton
 
     public function removeAliKey()
     {
-        if (strlen($this->aliKey) > 0) {
+        if (\strlen($this->aliKey) > 0) {
             $this->removeAliClient($this->aliKey);
             $this->aliKey = '';
         }
     }
 
     /**
-     * @return \SyMessagePush\ConfigXinGe
      * @throws \SyException\MessagePush\XinGePushException
      */
-    public function getXinGeAndroidConfig() : ConfigXinGe
+    public function getXinGeAndroidConfig(): ConfigXinGe
     {
         if (null === $this->xinGeAndroidConfig) {
             $configs = Tool::getConfig('messagepush.' . SY_ENV . SY_PROJECT);
@@ -144,10 +144,9 @@ class MessagePushConfigSingleton
     }
 
     /**
-     * @return \SyMessagePush\ConfigXinGe
      * @throws \SyException\MessagePush\XinGePushException
      */
-    public function getXinGeIosConfig() : ConfigXinGe
+    public function getXinGeIosConfig(): ConfigXinGe
     {
         if (null === $this->xinGeIosConfig) {
             $configs = Tool::getConfig('messagepush.' . SY_ENV . SY_PROJECT);
@@ -162,10 +161,9 @@ class MessagePushConfigSingleton
     }
 
     /**
-     * @return \SyMessagePush\ConfigJPushDev
      * @throws \SyException\MessagePush\JPushException
      */
-    public function getJPushDevConfig() : ConfigJPushDev
+    public function getJPushDevConfig(): ConfigJPushDev
     {
         if (null === $this->jPushDevConfig) {
             $configs = Tool::getConfig('messagepush.' . SY_ENV . SY_PROJECT);
@@ -179,10 +177,7 @@ class MessagePushConfigSingleton
         return $this->jPushDevConfig;
     }
 
-    /**
-     * @return array
-     */
-    public function getJPushAppConfigs() : array
+    public function getJPushAppConfigs(): array
     {
         return $this->jPushAppConfigs;
     }
@@ -192,7 +187,7 @@ class MessagePushConfigSingleton
      *
      * @throws \SyException\MessagePush\JPushException
      */
-    public function getJPushAppConfig(string $key) : ?\SyMessagePush\ConfigJPushApp
+    public function getJPushAppConfig(string $key): ?\SyMessagePush\ConfigJPushApp
     {
         $nowTime = Tool::getNowTime();
         $appConfig = $this->getLocalJPushAppConfig($key);
@@ -214,10 +209,7 @@ class MessagePushConfigSingleton
         unset($this->jPushAppConfigs[$key]);
     }
 
-    /**
-     * @return array
-     */
-    public function getJPushGroupConfigs() : array
+    public function getJPushGroupConfigs(): array
     {
         return $this->jPushGroupConfigs;
     }
@@ -227,7 +219,7 @@ class MessagePushConfigSingleton
      *
      * @throws \SyException\MessagePush\JPushException
      */
-    public function getJPushGroupConfig(string $key) : ?\SyMessagePush\ConfigJPushGroup
+    public function getJPushGroupConfig(string $key): ?\SyMessagePush\ConfigJPushGroup
     {
         $nowTime = Tool::getNowTime();
         $groupConfig = $this->getLocalJPushGroupConfig($key);
@@ -250,10 +242,9 @@ class MessagePushConfigSingleton
     }
 
     /**
-     * @return \SyMessagePush\ConfigBaiDu
      * @throws \SyException\MessagePush\BaiDuPushException
      */
-    public function getBaiDuConfig() : ConfigBaiDu
+    public function getBaiDuConfig(): ConfigBaiDu
     {
         if (null === $this->baiDuConfig) {
             $configs = Tool::getConfig('messagepush.' . SY_ENV . SY_PROJECT);
@@ -267,10 +258,7 @@ class MessagePushConfigSingleton
         return $this->baiDuConfig;
     }
 
-    /**
-     * @return null|\SyMessagePush\ConfigJPushApp
-     */
-    private function getLocalJPushAppConfig(string $key) : ?\SyMessagePush\ConfigJPushApp
+    private function getLocalJPushAppConfig(string $key): ?\SyMessagePush\ConfigJPushApp
     {
         $nowTime = Tool::getNowTime();
         if ($this->jPushAppClearTime < $nowTime) {
@@ -290,10 +278,7 @@ class MessagePushConfigSingleton
         return Tool::getArrayVal($this->jPushAppConfigs, $key, null);
     }
 
-    /**
-     * @return null|\SyMessagePush\ConfigJPushGroup
-     */
-    private function getLocalJPushGroupConfig(string $key) : ?\SyMessagePush\ConfigJPushGroup
+    private function getLocalJPushGroupConfig(string $key): ?\SyMessagePush\ConfigJPushGroup
     {
         $nowTime = Tool::getNowTime();
         if ($this->jPushGroupClearTime < $nowTime) {

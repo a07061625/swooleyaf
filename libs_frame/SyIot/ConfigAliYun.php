@@ -5,6 +5,7 @@
  * Date: 2019/7/15 0015
  * Time: 11:30
  */
+
 namespace SyIot;
 
 use SyCloud\Ali\ConfigTrait;

@@ -46,7 +46,7 @@ class SmsConfigSingleton
     /**
      * @return \DesignPatterns\Singletons\SmsConfigSingleton
      */
-    public static function getInstance() : SmsConfigSingleton
+    public static function getInstance(): self
     {
         if (null === self::$instance) {
             self::$instance = new self();
@@ -57,10 +57,11 @@ class SmsConfigSingleton
 
     /**
      * @return string 配置key
+     *
      * @throws \SyException\Cloud\AliException
      * @throws \AlibabaCloud\Client\Exception\ClientException
      */
-    public function getAliYunKey() : string
+    public function getAliYunKey(): string
     {
         if ('' == $this->aliYunKey) {
             $configs = Tool::getConfig('sms.' . SY_ENV . SY_PROJECT);
@@ -77,17 +78,16 @@ class SmsConfigSingleton
 
     public function removeAliYunKey()
     {
-        if (strlen($this->aliYunKey) > 0) {
+        if (\strlen($this->aliYunKey) > 0) {
             $this->removeAliClient($this->aliYunKey);
             $this->aliYunKey = '';
         }
     }
 
     /**
-     * @return \SySms\ConfigDaYu
      * @throws \SyException\Sms\DaYuException
      */
-    public function getDaYuConfig() : ConfigDaYu
+    public function getDaYuConfig(): ConfigDaYu
     {
         if (null === $this->daYuConfig) {
             $configs = Tool::getConfig('sms.' . SY_ENV . SY_PROJECT);
@@ -101,10 +101,9 @@ class SmsConfigSingleton
     }
 
     /**
-     * @return \SySms\ConfigYun253
      * @throws \SyException\Sms\Yun253Exception
      */
-    public function getYun253Config() : ConfigYun253
+    public function getYun253Config(): ConfigYun253
     {
         if (null === $this->yun253Config) {
             $configs = Tool::getConfig('sms.' . SY_ENV . SY_PROJECT);

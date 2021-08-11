@@ -5,6 +5,7 @@
  * Date: 2021/8/11 0011
  * Time: 22:16
  */
+
 namespace SyTrait\Configs;
 
 use AlibabaCloud\Client\AlibabaCloud;
@@ -12,26 +13,33 @@ use SyCloud\Ali\ConfigTrait;
 
 /**
  * Trait AliCloudConfigTrait
+ *
  * @package SyTrait\Configs
  */
 trait AliCloudConfigTrait
 {
+    public static function clearAliClients()
+    {
+        AlibabaCloud::flush();
+    }
+
     /**
      * @param \SyCloud\Ali\ConfigTrait $config 客户端配置
+     *
      * @throws \AlibabaCloud\Client\Exception\ClientException
      */
     private function setAliClient(ConfigTrait $config)
     {
         $client = AlibabaCloud::accessKeyClient($config->getAccessKey(), $config->getAccessSecret())
-                              ->regionId($config->getRegionId())
-                              ->debug($config->isDebugTag());
-        if (!is_null($config->getVerifyInfo())) {
+            ->regionId($config->getRegionId())
+            ->debug($config->isDebugTag());
+        if (null !== $config->getVerifyInfo()) {
             $client->verify($config->getVerifyInfo());
         }
         $proxyInfo = $config->getProxyInfo();
-        if (is_string($proxyInfo) && (strlen($proxyInfo) > 0)) {
+        if (\is_string($proxyInfo) && (\strlen($proxyInfo) > 0)) {
             $client->proxy($proxyInfo);
-        } elseif (is_array($proxyInfo) && !empty($proxyInfo)) {
+        } elseif (\is_array($proxyInfo) && !empty($proxyInfo)) {
             $client->proxy($proxyInfo);
         }
         if (!empty($config->getCertInfo())) {
@@ -49,10 +57,5 @@ trait AliCloudConfigTrait
     private function removeAliClient(string $clientName)
     {
         AlibabaCloud::del($clientName);
-    }
-
-    public static function clearAliClients()
-    {
-        AlibabaCloud::flush();
     }
 }
