@@ -13,7 +13,7 @@ if (!ctype_alnum($productName)) {
 
 $fileName = __DIR__ . '/' . $productName . '/' . $productName . 'ApiResolver.php';
 if (!file_exists($fileName)) {
-    exit('产品API文件不存在');
+    exit($productName . '产品API文件不存在');
 }
 
 $classDoc = '';
