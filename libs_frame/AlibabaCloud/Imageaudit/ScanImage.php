@@ -1,31 +1,6 @@
 <?php
 
-namespace AlibabaCloud\Imageaudit\V20191230;
-
-use AlibabaCloud\Client\Resolver\ApiResolver;
-
-/**
- * @method ScanImage scanImage(array $options = [])
- * @method ScanText scanText(array $options = [])
- */
-class ImageauditApiResolver extends ApiResolver
-{
-}
-
-class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
-{
-    /** @var string */
-    public $product = 'imageaudit';
-
-    /** @var string */
-    public $version = '2019-12-30';
-
-    /** @var string */
-    public $method = 'POST';
-
-    /** @var string */
-    public $serviceCode = 'imageaudit';
-}
+namespace AlibabaCloud\Imageaudit;
 
 /**
  * @method array getScene()
@@ -67,43 +42,6 @@ class ScanImage extends Rpc
             }
             if (isset($depth1Value['ImageTimeMillisecond'])) {
                 $this->options['form_params']['Task.' . ($depth1 + 1) . '.ImageTimeMillisecond'] = $depth1Value['ImageTimeMillisecond'];
-            }
-        }
-
-        return $this;
-    }
-}
-
-/**
- * @method array getLabels()
- * @method array getTasks()
- */
-class ScanText extends Rpc
-{
-    /**
-     * @return $this
-     */
-    public function withLabels(array $labels)
-    {
-        $this->data['Labels'] = $labels;
-        foreach ($labels as $depth1 => $depth1Value) {
-            if (isset($depth1Value['Label'])) {
-                $this->options['form_params']['Labels.' . ($depth1 + 1) . '.Label'] = $depth1Value['Label'];
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function withTasks(array $tasks)
-    {
-        $this->data['Tasks'] = $tasks;
-        foreach ($tasks as $depth1 => $depth1Value) {
-            if (isset($depth1Value['Content'])) {
-                $this->options['form_params']['Tasks.' . ($depth1 + 1) . '.Content'] = $depth1Value['Content'];
             }
         }
 
