@@ -19,7 +19,7 @@ for name in `ls -F | grep "/$" | awk -F/ '{print $1}'` ; do
         continue
     fi
     FILE_RESOLVER=${PATH_ROOT}/${name}/${name}ApiResolver.php
-    if [ ! -e ${FILE_RESOLVER} ]; then
+    if [ ! -e "${FILE_RESOLVER}" ]; then
         continue
     fi
 
