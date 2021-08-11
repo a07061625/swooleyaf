@@ -5,6 +5,7 @@
  * Date: 2018/6/29 0029
  * Time: 17:16
  */
+
 namespace DesignPatterns\Singletons;
 
 use AlibabaCloud\Client\AlibabaCloud;
@@ -53,7 +54,7 @@ class VmsConfigSingleton
      */
     public static function getInstance()
     {
-        if (is_null(self::$instance)) {
+        if (null === self::$instance) {
             self::$instance = new self();
         }
 
@@ -62,18 +63,19 @@ class VmsConfigSingleton
 
     /**
      * @return string 配置key
-     * @throws \SyException\Cloud\AliException|\AlibabaCloud\Client\Exception\ClientException
+     *
+     * @throws \AlibabaCloud\Client\Exception\ClientException|\SyException\Cloud\AliException
      */
     public function getAliYunKey()
     {
-        if ($this->aliYunKey == '') {
+        if ('' == $this->aliYunKey) {
             $configs = Tool::getConfig('vms.' . SY_ENV . SY_PROJECT);
             $config = new ConfigAliYun();
             $config->setRegionId((string)Tool::getArrayVal($configs, 'aliyun.region.id', '', true));
             $config->setAccessKey((string)Tool::getArrayVal($configs, 'aliyun.access.key', '', true));
             $config->setAccessSecret((string)Tool::getArrayVal($configs, 'aliyun.access.secret', '', true));
             $client = AlibabaCloud::accessKeyClient($config->getAccessKey(), $config->getAccessSecret())
-                                  ->regionId($config->getRegionId());
+                ->regionId($config->getRegionId());
             AlibabaCloud::set($config->getAccessKey(), $client);
             $this->aliYunKey = $config->getAccessKey();
         }
@@ -88,7 +90,7 @@ class VmsConfigSingleton
      */
     public function getQCloudConfig()
     {
-        if (is_null($this->qCloudConfig)) {
+        if (null === $this->qCloudConfig) {
             $configs = Tool::getConfig('vms.' . SY_ENV . SY_PROJECT);
             $qCloudConfig = new ConfigQCloud();
             $qCloudConfig->setAppId((string)Tool::getArrayVal($configs, 'qcloud.app.id', '', true));
@@ -106,7 +108,7 @@ class VmsConfigSingleton
      */
     public function getXunFeiConfig()
     {
-        if (is_null($this->xunFeiConfig)) {
+        if (null === $this->xunFeiConfig) {
             $configs = Tool::getConfig('vms.' . SY_ENV . SY_PROJECT);
             $xunFeiConfig = new ConfigXunFei();
             $xunFeiConfig->setAppId((string)Tool::getArrayVal($configs, 'xunfei.app.id', '', true));
@@ -125,7 +127,7 @@ class VmsConfigSingleton
      */
     public function getChiVoxConfig()
     {
-        if (is_null($this->xunFeiConfig)) {
+        if (null === $this->xunFeiConfig) {
             $configs = Tool::getConfig('vms.' . SY_ENV . SY_PROJECT);
             $chiVoxConfig = new ConfigChiVox();
             $chiVoxConfig->setAppKey((string)Tool::getArrayVal($configs, 'chivox.app.key', '', true));

@@ -5,6 +5,7 @@
  * Date: 2019/6/18 0018
  * Time: 16:42
  */
+
 namespace DesignPatterns\Singletons;
 
 use AlibabaCloud\Client\AlibabaCloud;
@@ -24,11 +25,11 @@ class IotConfigSingleton
     /**
      * @var \SyIot\ConfigBaiDu
      */
-    private $baiDuConfig = null;
+    private $baiDuConfig;
     /**
      * @var \SyIot\ConfigTencent
      */
-    private $tencentConfig = null;
+    private $tencentConfig;
 
     private function __construct()
     {
@@ -39,7 +40,7 @@ class IotConfigSingleton
      */
     public static function getInstance()
     {
-        if (is_null(self::$instance)) {
+        if (null === self::$instance) {
             self::$instance = new self();
         }
 
@@ -48,18 +49,19 @@ class IotConfigSingleton
 
     /**
      * @return string 配置key
-     * @throws \SyException\Cloud\AliException|\AlibabaCloud\Client\Exception\ClientException
+     *
+     * @throws \AlibabaCloud\Client\Exception\ClientException|\SyException\Cloud\AliException
      */
     public function getAliYunKey()
     {
-        if ($this->aliYunKey == '') {
+        if ('' == $this->aliYunKey) {
             $configs = Tool::getConfig('iot.' . SY_ENV . SY_PROJECT);
             $config = new ConfigAliYun();
             $config->setRegionId((string)Tool::getArrayVal($configs, 'aliyun.region.id', '', true));
             $config->setAccessKey((string)Tool::getArrayVal($configs, 'aliyun.access.key', '', true));
             $config->setAccessSecret((string)Tool::getArrayVal($configs, 'aliyun.access.secret', '', true));
             $client = AlibabaCloud::accessKeyClient($config->getAccessKey(), $config->getAccessSecret())
-                                  ->regionId($config->getRegionId());
+                ->regionId($config->getRegionId());
             AlibabaCloud::set($config->getAccessKey(), $client);
             $this->aliYunKey = $config->getAccessKey();
         }
@@ -72,7 +74,7 @@ class IotConfigSingleton
      */
     public function getBaiDuConfig()
     {
-        if (is_null($this->baiDuConfig)) {
+        if (null === $this->baiDuConfig) {
             $configs = Tool::getConfig('iot.' . SY_ENV . SY_PROJECT);
             $baiDuConfig = new ConfigBaiDu();
             $baiDuConfig->setAccessKey((string)Tool::getArrayVal($configs, 'baidu.access.key', '', true));
@@ -88,7 +90,7 @@ class IotConfigSingleton
      */
     public function getTencentConfig()
     {
-        if (is_null($this->tencentConfig)) {
+        if (null === $this->tencentConfig) {
             $configs = Tool::getConfig('iot.' . SY_ENV . SY_PROJECT);
             $tencentConfig = new ConfigTencent();
             $tencentConfig->setRegionId((string)Tool::getArrayVal($configs, 'tencent.region.id', '', true));
