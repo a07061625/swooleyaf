@@ -18,7 +18,7 @@ for name in ${DIRS_LOOP[@]} ; do
     ${DIRS_INPUT} ${PATH_ROOT}/helper.php ${name}
     # shellcheck disable=SC2004
     TRANSFORM_NUM=$(( ${TRANSFORM_NUM} + 1 ))
-    if [ ${TRANSFORM_NUM} > 5 ]; then
+    if [ ${TRANSFORM_NUM} -gt 5 ]; then
         git gcc | awk '{print $0}'
         TRANSFORM_NUM=0
     fi
