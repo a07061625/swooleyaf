@@ -7,6 +7,7 @@
  */
 namespace DesignPatterns\Singletons;
 
+use AlibabaCloud\Client\AlibabaCloud;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\MessagePush\JPushException;
@@ -25,9 +26,9 @@ class MessagePushConfigSingleton
 
     /**
      * 阿里配置
-     * @var \SyMessagePush\ConfigAli
+     * @var string
      */
-    private $aliConfig = null;
+    private $aliKey = '';
     /**
      * 信鸽安卓配置
      * @var \SyMessagePush\ConfigXinGe
@@ -86,20 +87,24 @@ class MessagePushConfigSingleton
     }
 
     /**
-     * @return \SyMessagePush\ConfigAli
+     * @return string 配置key
+     * @throws \SyException\Cloud\AliException|\AlibabaCloud\Client\Exception\ClientException
      */
-    public function getAliConfig()
+    public function getAliKey()
     {
-        if (is_null($this->aliConfig)) {
+        if ($this->aliKey == '') {
             $configs = Tool::getConfig('messagepush.' . SY_ENV . SY_PROJECT);
-            $aliConfig = new ConfigAli();
-            $aliConfig->setAccessKey((string)Tool::getArrayVal($configs, 'ali.access.key', '', true));
-            $aliConfig->setAccessSecret((string)Tool::getArrayVal($configs, 'ali.access.secret', '', true));
-            $aliConfig->setRegionId((string)Tool::getArrayVal($configs, 'ali.region.id', '', true));
-            $this->aliConfig = $aliConfig;
+            $config = new ConfigAli();
+            $config->setAccessKey((string)Tool::getArrayVal($configs, 'ali.access.key', '', true));
+            $config->setAccessSecret((string)Tool::getArrayVal($configs, 'ali.access.secret', '', true));
+            $config->setRegionId((string)Tool::getArrayVal($configs, 'ali.region.id', '', true));
+            $client = AlibabaCloud::accessKeyClient($config->getAccessKey(), $config->getAccessSecret())
+                                  ->regionId($config->getRegionId());
+            AlibabaCloud::set($config->getAccessKey(), $client);
+            $this->aliKey = $config->getAccessKey();
         }
 
-        return $this->aliConfig;
+        return $this->aliKey;
     }
 
     /**

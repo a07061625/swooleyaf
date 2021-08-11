@@ -8,7 +8,6 @@
 
 namespace SyMessageHandler\Consumers\Voice;
 
-use AlibabaCloud\Client\AlibabaCloud;
 use AlibabaCloud\Dyvmsapi\SingleCallByVoice;
 use DesignPatterns\Singletons\VmsConfigSingleton;
 use SyConstant\ErrorCode;
@@ -38,13 +37,9 @@ class AliYunFile extends Base implements IConsumer
             'code' => 0,
         ];
 
-        $config = VmsConfigSingleton::getInstance()->getAliYunConfig();
-        AlibabaCloud::accessKeyClient($config->getAccessKey(), $config->getAccessSecret())
-            ->regionId($config->getRegionId())
-            ->asDefaultClient();
-
         $callVoice = new SingleCallByVoice();
-        $callVoice->withCalledNumber($msgData['receivers'][0])
+        $callVoice->client(VmsConfigSingleton::getInstance()->getAliYunKey())
+                  ->withCalledNumber($msgData['receivers'][0])
             ->withCalledShowNumber($msgData['ext_data']['show_number'])
             ->withVoiceCode($msgData['ext_data']['voice_id'])
             ->withPlayTimes($msgData['ext_data']['play_times'])

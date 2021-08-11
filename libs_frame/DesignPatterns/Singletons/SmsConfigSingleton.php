@@ -7,6 +7,7 @@
  */
 namespace DesignPatterns\Singletons;
 
+use AlibabaCloud\Client\AlibabaCloud;
 use SySms\ConfigAliYun;
 use SySms\ConfigDaYu;
 use SySms\ConfigYun253;
@@ -18,10 +19,10 @@ class SmsConfigSingleton
     use SingletonTrait;
 
     /**
-     * 阿里云配置
-     * @var \SySms\ConfigAliYun
+     * 阿里云配置Key
+     * @var string
      */
-    private $aliYunConfig = null;
+    private $aliYunKey = '';
     /**
      * 大鱼配置
      * @var \SySms\ConfigDaYu
@@ -50,20 +51,24 @@ class SmsConfigSingleton
     }
 
     /**
-     * @return \SySms\ConfigAliYun
+     * @return string 配置key
+     * @throws \SyException\Sms\AliYunException|\AlibabaCloud\Client\Exception\ClientException
      */
-    public function getAliYunConfig()
+    public function getAliYunKey()
     {
-        if (is_null($this->aliYunConfig)) {
+        if ($this->aliYunKey == '') {
             $configs = Tool::getConfig('sms.' . SY_ENV . SY_PROJECT);
-            $aliYunConfig = new ConfigAliYun();
-            $aliYunConfig->setRegionId((string)Tool::getArrayVal($configs, 'aliyun.region.id', '', true));
-            $aliYunConfig->setAppKey((string)Tool::getArrayVal($configs, 'aliyun.app.key', '', true));
-            $aliYunConfig->setAppSecret((string)Tool::getArrayVal($configs, 'aliyun.app.secret', '', true));
-            $this->aliYunConfig = $aliYunConfig;
+            $config = new ConfigAliYun();
+            $config->setRegionId((string)Tool::getArrayVal($configs, 'aliyun.region.id', '', true));
+            $config->setAppKey((string)Tool::getArrayVal($configs, 'aliyun.app.key', '', true));
+            $config->setAppSecret((string)Tool::getArrayVal($configs, 'aliyun.app.secret', '', true));
+            $client = AlibabaCloud::accessKeyClient($config->getAppKey(), $config->getAppSecret())
+                                  ->regionId($config->getRegionId());
+            AlibabaCloud::set($config->getAppKey(), $client);
+            $this->aliYunKey = $config->getAppKey();
         }
 
-        return $this->aliYunConfig;
+        return $this->aliYunKey;
     }
 
     /**

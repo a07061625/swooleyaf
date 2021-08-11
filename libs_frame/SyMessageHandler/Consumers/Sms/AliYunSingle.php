@@ -8,7 +8,6 @@
 
 namespace SyMessageHandler\Consumers\Sms;
 
-use AlibabaCloud\Client\AlibabaCloud;
 use AlibabaCloud\Dysmsapi\SendSms;
 use DesignPatterns\Singletons\SmsConfigSingleton;
 use SyConstant\ErrorCode;
@@ -39,13 +38,9 @@ class AliYunSingle extends Base implements IConsumer
             'code' => 0,
         ];
 
-        $config = SmsConfigSingleton::getInstance()->getAliYunConfig();
-        AlibabaCloud::accessKeyClient($config->getAppKey(), $config->getAppSecret())
-            ->regionId($config->getRegionId())
-            ->asDefaultClient();
-
         $smsSend = new SendSms();
-        $smsSend->withTemplateCode($msgData['template_id'])
+        $smsSend->client(SmsConfigSingleton::getInstance()->getAliYunKey())
+                ->withTemplateCode($msgData['template_id'])
             ->withPhoneNumbers(implode(',', $msgData['receivers']))
             ->withSignName($msgData['template_sign']);
         if (!empty($msgData['template_params'])) {
