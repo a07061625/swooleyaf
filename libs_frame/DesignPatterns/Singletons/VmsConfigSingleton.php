@@ -8,8 +8,8 @@
 
 namespace DesignPatterns\Singletons;
 
-use AlibabaCloud\Client\AlibabaCloud;
 use SyTool\Tool;
+use SyTrait\Configs\AliCloudConfigTrait;
 use SyTrait\SingletonTrait;
 use SyVms\ConfigAliYun;
 use SyVms\ConfigChiVox;
@@ -19,6 +19,7 @@ use SyVms\ConfigXunFei;
 class VmsConfigSingleton
 {
     use SingletonTrait;
+    use AliCloudConfigTrait;
 
     /**
      * 阿里云配置Key
@@ -52,7 +53,7 @@ class VmsConfigSingleton
     /**
      * @return \DesignPatterns\Singletons\VmsConfigSingleton
      */
-    public static function getInstance()
+    public static function getInstance() : VmsConfigSingleton
     {
         if (null === self::$instance) {
             self::$instance = new self();
@@ -63,10 +64,10 @@ class VmsConfigSingleton
 
     /**
      * @return string 配置key
-     *
-     * @throws \AlibabaCloud\Client\Exception\ClientException|\SyException\Cloud\AliException
+     * @throws \SyException\Cloud\AliException
+     * @throws \AlibabaCloud\Client\Exception\ClientException
      */
-    public function getAliYunKey()
+    public function getAliYunKey() : string
     {
         if ('' == $this->aliYunKey) {
             $configs = Tool::getConfig('vms.' . SY_ENV . SY_PROJECT);
@@ -74,13 +75,19 @@ class VmsConfigSingleton
             $config->setRegionId((string)Tool::getArrayVal($configs, 'aliyun.region.id', '', true));
             $config->setAccessKey((string)Tool::getArrayVal($configs, 'aliyun.access.key', '', true));
             $config->setAccessSecret((string)Tool::getArrayVal($configs, 'aliyun.access.secret', '', true));
-            $client = AlibabaCloud::accessKeyClient($config->getAccessKey(), $config->getAccessSecret())
-                ->regionId($config->getRegionId());
-            AlibabaCloud::set($config->getAccessKey(), $client);
+            $this->setAliClient($config);
             $this->aliYunKey = $config->getAccessKey();
         }
 
         return $this->aliYunKey;
+    }
+
+    public function removeAliYunKey()
+    {
+        if (strlen($this->aliYunKey) > 0) {
+            $this->removeAliClient($this->aliYunKey);
+            $this->aliYunKey = '';
+        }
     }
 
     /**
@@ -88,7 +95,7 @@ class VmsConfigSingleton
      *
      * @throws \SyException\Vms\QCloudException
      */
-    public function getQCloudConfig()
+    public function getQCloudConfig() : ConfigQCloud
     {
         if (null === $this->qCloudConfig) {
             $configs = Tool::getConfig('vms.' . SY_ENV . SY_PROJECT);
@@ -106,7 +113,7 @@ class VmsConfigSingleton
      *
      * @throws \SyException\Vms\XunFeiException
      */
-    public function getXunFeiConfig()
+    public function getXunFeiConfig() : ConfigXunFei
     {
         if (null === $this->xunFeiConfig) {
             $configs = Tool::getConfig('vms.' . SY_ENV . SY_PROJECT);
@@ -125,7 +132,7 @@ class VmsConfigSingleton
      *
      * @throws \SyException\Vms\ChiVoxException
      */
-    public function getChiVoxConfig()
+    public function getChiVoxConfig() : ConfigChiVox
     {
         if (null === $this->xunFeiConfig) {
             $configs = Tool::getConfig('vms.' . SY_ENV . SY_PROJECT);

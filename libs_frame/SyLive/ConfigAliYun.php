@@ -21,8 +21,4 @@ class ConfigAliYun
     public function __construct()
     {
     }
-
-    private function __clone()
-    {
-    }
 }
