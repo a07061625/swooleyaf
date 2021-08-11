@@ -41,7 +41,8 @@ class AliYunSingle extends Base implements IConsumer
 
         $config = SmsConfigSingleton::getInstance()->getAliYunConfig();
         AlibabaCloud::accessKeyClient($config->getAppKey(), $config->getAppSecret())
-            ->regionId($config->getRegionId());
+            ->regionId($config->getRegionId())
+            ->asDefaultClient();
 
         $smsSend = new SendSms();
         $smsSend->withTemplateCode($msgData['template_id'])

@@ -41,7 +41,8 @@ class AliYunBatch extends Base implements IConsumer
 
         $config = SmsConfigSingleton::getInstance()->getAliYunConfig();
         AlibabaCloud::accessKeyClient($config->getAppKey(), $config->getAppSecret())
-            ->regionId($config->getRegionId());
+            ->regionId($config->getRegionId())
+            ->asDefaultClient();
 
         $smsBatch = new SendBatchSms();
         $smsBatch->withPhoneNumberJson(Tool::jsonEncode($msgData['receivers'], JSON_UNESCAPED_UNICODE))
