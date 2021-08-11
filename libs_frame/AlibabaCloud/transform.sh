@@ -18,6 +18,10 @@ for name in `ls -F | grep "/$" | awk -F/ '{print $1}'` ; do
     if [ "${name}" == "Client" ]; then
         continue
     fi
+    FILE_RESOLVER=${PATH_ROOT}/${name}/${name}ApiResolver.php
+    if [ ! -e ${FILE_RESOLVER} ]; then
+        continue
+    fi
 
     ${BIN_PHP} ${PATH_ROOT}/helper.php ${name} | awk '{print $0}'
     # shellcheck disable=SC2004
