@@ -11,10 +11,14 @@ if (!ctype_alnum($productName)) {
     exit('产品名称不合法');
 }
 
+$fileName = __DIR__ . '/' . $productName . '/' . $productName . 'ApiResolver.php';
+if (!file_exists($fileName)) {
+    exit($productName . '产品API文件不存在');
+}
+
 $classDoc = '';
 $classContent = '';
 $className = '';
-$fileName = __DIR__ . '/' . $productName . '/' . $productName . 'ApiResolver.php';
 $file = fopen($fileName, 'r');
 while (!feof($file)) {
     $fileContent = fgets($file);
