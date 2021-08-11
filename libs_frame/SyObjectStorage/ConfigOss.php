@@ -59,10 +59,6 @@ class ConfigOss
     {
     }
 
-    private function __clone()
-    {
-    }
-
     public function getEndpoint(): string
     {
         return $this->endpoint;

@@ -8,13 +8,13 @@
 
 namespace DesignPatterns\Singletons;
 
-use AlibabaCloud\Client\AlibabaCloud;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\Live\BaiJiaException;
 use SyLive\ConfigAliYun;
 use SyLive\ConfigTencent;
 use SyTool\Tool;
+use SyTrait\Configs\AliCloudConfigTrait;
 use SyTrait\LiveConfigTrait;
 use SyTrait\SingletonTrait;
 
@@ -27,6 +27,7 @@ class LiveConfigSingleton
 {
     use SingletonTrait;
     use LiveConfigTrait;
+    use AliCloudConfigTrait;
 
     /**
      * 阿里云配置
@@ -60,7 +61,7 @@ class LiveConfigSingleton
     /**
      * @return \DesignPatterns\Singletons\LiveConfigSingleton
      */
-    public static function getInstance()
+    public static function getInstance() : LiveConfigSingleton
     {
         if (null === self::$instance) {
             self::$instance = new self();
@@ -71,12 +72,11 @@ class LiveConfigSingleton
 
     /**
      * 获取阿里云配置
-     *
      * @return string 配置key
-     *
-     * @throws \AlibabaCloud\Client\Exception\ClientException|\SyException\Cloud\AliException
+     * @throws \SyException\Cloud\AliException
+     * @throws \AlibabaCloud\Client\Exception\ClientException
      */
-    public function getAliYunKey()
+    public function getAliYunKey() : string
     {
         if ('' == $this->aliYunKey) {
             $configs = Tool::getConfig('live.' . SY_ENV . SY_PROJECT . '.aliyun');
@@ -84,13 +84,19 @@ class LiveConfigSingleton
             $config->setRegionId((string)Tool::getArrayVal($configs, 'region.id', '', true));
             $config->setAccessKey((string)Tool::getArrayVal($configs, 'access.key', '', true));
             $config->setAccessSecret((string)Tool::getArrayVal($configs, 'access.secret', '', true));
-            $client = AlibabaCloud::accessKeyClient($config->getAccessKey(), $config->getAccessSecret())
-                ->regionId($config->getRegionId());
-            AlibabaCloud::set($config->getAccessKey(), $client);
+            $this->setAliClient($config);
             $this->aliYunKey = $config->getAccessKey();
         }
 
         return $this->aliYunKey;
+    }
+
+    public function removeAliYunKey()
+    {
+        if (strlen($this->aliYunKey) > 0) {
+            $this->removeAliClient($this->aliYunKey);
+            $this->aliYunKey = '';
+        }
     }
 
     /**
@@ -98,7 +104,7 @@ class LiveConfigSingleton
      *
      * @return array
      */
-    public function getBaiJiaConfigs()
+    public function getBaiJiaConfigs() : array
     {
         return $this->baiJiaConfigs;
     }
@@ -110,7 +116,7 @@ class LiveConfigSingleton
      *
      * @throws \SyException\Live\BaiJiaException
      */
-    public function getBaiJiaConfig(string $partnerId)
+    public function getBaiJiaConfig(string $partnerId) : ?\SyLive\ConfigBaiJia
     {
         $nowTime = Tool::getNowTime();
         $baiJiaConfig = $this->getLocalBaiJiaConfig($partnerId);
@@ -142,7 +148,7 @@ class LiveConfigSingleton
      *
      * @throws \SyException\Cloud\TencentException
      */
-    public function getTencentConfig()
+    public function getTencentConfig() : ConfigTencent
     {
         if (null === $this->tencentConfig) {
             $configs = Tool::getConfig('live.' . SY_ENV . SY_PROJECT . '.tencent');
@@ -161,7 +167,7 @@ class LiveConfigSingleton
      *
      * @return null|\SyLive\ConfigBaiJia
      */
-    private function getLocalBaiJiaConfig(string $partnerId)
+    private function getLocalBaiJiaConfig(string $partnerId) : ?\SyLive\ConfigBaiJia
     {
         $nowTime = Tool::getNowTime();
         if ($this->baiJiaClearTime < $nowTime) {

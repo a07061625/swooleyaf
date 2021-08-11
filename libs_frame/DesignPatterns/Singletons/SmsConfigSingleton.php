@@ -8,16 +8,17 @@
 
 namespace DesignPatterns\Singletons;
 
-use AlibabaCloud\Client\AlibabaCloud;
 use SySms\ConfigAliYun;
 use SySms\ConfigDaYu;
 use SySms\ConfigYun253;
 use SyTool\Tool;
+use SyTrait\Configs\AliCloudConfigTrait;
 use SyTrait\SingletonTrait;
 
 class SmsConfigSingleton
 {
     use SingletonTrait;
+    use AliCloudConfigTrait;
 
     /**
      * 阿里云配置Key
@@ -45,7 +46,7 @@ class SmsConfigSingleton
     /**
      * @return \DesignPatterns\Singletons\SmsConfigSingleton
      */
-    public static function getInstance()
+    public static function getInstance() : SmsConfigSingleton
     {
         if (null === self::$instance) {
             self::$instance = new self();
@@ -56,30 +57,37 @@ class SmsConfigSingleton
 
     /**
      * @return string 配置key
-     *
-     * @throws \AlibabaCloud\Client\Exception\ClientException|\SyException\Sms\AliYunException
+     * @throws \SyException\Cloud\AliException
+     * @throws \AlibabaCloud\Client\Exception\ClientException
      */
-    public function getAliYunKey()
+    public function getAliYunKey() : string
     {
         if ('' == $this->aliYunKey) {
             $configs = Tool::getConfig('sms.' . SY_ENV . SY_PROJECT);
             $config = new ConfigAliYun();
             $config->setRegionId((string)Tool::getArrayVal($configs, 'aliyun.region.id', '', true));
-            $config->setAppKey((string)Tool::getArrayVal($configs, 'aliyun.app.key', '', true));
-            $config->setAppSecret((string)Tool::getArrayVal($configs, 'aliyun.app.secret', '', true));
-            $client = AlibabaCloud::accessKeyClient($config->getAppKey(), $config->getAppSecret())
-                ->regionId($config->getRegionId());
-            AlibabaCloud::set($config->getAppKey(), $client);
-            $this->aliYunKey = $config->getAppKey();
+            $config->setAccessKey((string)Tool::getArrayVal($configs, 'aliyun.app.key', '', true));
+            $config->setAccessSecret((string)Tool::getArrayVal($configs, 'aliyun.app.secret', '', true));
+            $this->setAliClient($config);
+            $this->aliYunKey = $config->getAccessKey();
         }
 
         return $this->aliYunKey;
     }
 
+    public function removeAliYunKey()
+    {
+        if (strlen($this->aliYunKey) > 0) {
+            $this->removeAliClient($this->aliYunKey);
+            $this->aliYunKey = '';
+        }
+    }
+
     /**
      * @return \SySms\ConfigDaYu
+     * @throws \SyException\Sms\DaYuException
      */
-    public function getDaYuConfig()
+    public function getDaYuConfig() : ConfigDaYu
     {
         if (null === $this->daYuConfig) {
             $configs = Tool::getConfig('sms.' . SY_ENV . SY_PROJECT);
@@ -94,8 +102,9 @@ class SmsConfigSingleton
 
     /**
      * @return \SySms\ConfigYun253
+     * @throws \SyException\Sms\Yun253Exception
      */
-    public function getYun253Config()
+    public function getYun253Config() : ConfigYun253
     {
         if (null === $this->yun253Config) {
             $configs = Tool::getConfig('sms.' . SY_ENV . SY_PROJECT);
