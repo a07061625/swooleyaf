@@ -40,7 +40,7 @@ class AliYunSingle extends Base implements IConsumer
 
         $smsSend = new SendSms();
         $smsSend->client(SmsConfigSingleton::getInstance()->getAliYunKey())
-                ->withTemplateCode($msgData['template_id'])
+            ->withTemplateCode($msgData['template_id'])
             ->withPhoneNumbers(implode(',', $msgData['receivers']))
             ->withSignName($msgData['template_sign']);
         if (!empty($msgData['template_params'])) {

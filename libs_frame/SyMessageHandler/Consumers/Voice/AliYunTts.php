@@ -40,7 +40,7 @@ class AliYunTts extends Base implements IConsumer
 
         $callTts = new SingleCallByTts();
         $callTts->client(VmsConfigSingleton::getInstance()->getAliYunKey())
-                ->withCalledNumber($msgData['receivers'][0])
+            ->withCalledNumber($msgData['receivers'][0])
             ->withTtsCode($msgData['template_id'])
             ->withTtsParam(Tool::jsonEncode($msgData['template_params'], JSON_UNESCAPED_UNICODE))
             ->withCalledShowNumber($msgData['ext_data']['show_number'])

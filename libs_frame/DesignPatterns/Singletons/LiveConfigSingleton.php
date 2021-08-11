@@ -5,6 +5,7 @@
  * Date: 2020/3/28 0028
  * Time: 10:29
  */
+
 namespace DesignPatterns\Singletons;
 
 use AlibabaCloud\Client\AlibabaCloud;
@@ -61,7 +62,7 @@ class LiveConfigSingleton
      */
     public static function getInstance()
     {
-        if (is_null(self::$instance)) {
+        if (null === self::$instance) {
             self::$instance = new self();
         }
 
@@ -70,19 +71,21 @@ class LiveConfigSingleton
 
     /**
      * 获取阿里云配置
+     *
      * @return string 配置key
-     * @throws \SyException\Cloud\AliException|\AlibabaCloud\Client\Exception\ClientException
+     *
+     * @throws \AlibabaCloud\Client\Exception\ClientException|\SyException\Cloud\AliException
      */
     public function getAliYunKey()
     {
-        if ($this->aliYunKey == '') {
+        if ('' == $this->aliYunKey) {
             $configs = Tool::getConfig('live.' . SY_ENV . SY_PROJECT . '.aliyun');
             $config = new ConfigAliYun();
             $config->setRegionId((string)Tool::getArrayVal($configs, 'region.id', '', true));
             $config->setAccessKey((string)Tool::getArrayVal($configs, 'access.key', '', true));
             $config->setAccessSecret((string)Tool::getArrayVal($configs, 'access.secret', '', true));
             $client = AlibabaCloud::accessKeyClient($config->getAccessKey(), $config->getAccessSecret())
-                                  ->regionId($config->getRegionId());
+                ->regionId($config->getRegionId());
             AlibabaCloud::set($config->getAccessKey(), $client);
             $this->aliYunKey = $config->getAccessKey();
         }
@@ -103,9 +106,7 @@ class LiveConfigSingleton
     /**
      * 获取百家云配置
      *
-     * @param string $partnerId
-     *
-     * @return \SyLive\ConfigBaiJia|null
+     * @return null|\SyLive\ConfigBaiJia
      *
      * @throws \SyException\Live\BaiJiaException
      */
@@ -113,7 +114,7 @@ class LiveConfigSingleton
     {
         $nowTime = Tool::getNowTime();
         $baiJiaConfig = $this->getLocalBaiJiaConfig($partnerId);
-        if (is_null($baiJiaConfig)) {
+        if (null === $baiJiaConfig) {
             $baiJiaConfig = $this->refreshBaiJiaConfig($partnerId);
         } elseif ($baiJiaConfig->getExpireTime() < $nowTime) {
             $baiJiaConfig = $this->refreshBaiJiaConfig($partnerId);
@@ -128,8 +129,6 @@ class LiveConfigSingleton
 
     /**
      * 移除百家云配置
-     *
-     * @param string $partnerId
      */
     public function removeBaiJiaConfig(string $partnerId)
     {
@@ -145,7 +144,7 @@ class LiveConfigSingleton
      */
     public function getTencentConfig()
     {
-        if (is_null($this->tencentConfig)) {
+        if (null === $this->tencentConfig) {
             $configs = Tool::getConfig('live.' . SY_ENV . SY_PROJECT . '.tencent');
             $tencentConfig = new ConfigTencent();
             $tencentConfig->setRegionId((string)Tool::getArrayVal($configs, 'region.id', '', true));
@@ -160,9 +159,7 @@ class LiveConfigSingleton
     /**
      * 获取本地百家云配置
      *
-     * @param string $partnerId
-     *
-     * @return \SyLive\ConfigBaiJia|null
+     * @return null|\SyLive\ConfigBaiJia
      */
     private function getLocalBaiJiaConfig(string $partnerId)
     {
