@@ -5,6 +5,7 @@
  * Date: 2020/6/23 0023
  * Time: 15:07
  */
+
 namespace SyMessageHandler\Consumers\Voice;
 
 use AlibabaCloud\Client\AlibabaCloud;
@@ -31,7 +32,7 @@ class AliYunFile extends Base implements IConsumer
     {
     }
 
-    public function handleMsgData(array $msgData) : array
+    public function handleMsgData(array $msgData): array
     {
         $handleRes = [
             'code' => 0,
@@ -39,18 +40,18 @@ class AliYunFile extends Base implements IConsumer
 
         $config = VmsConfigSingleton::getInstance()->getAliYunConfig();
         AlibabaCloud::accessKeyClient($config->getAccessKey(), $config->getAccessSecret())
-                    ->regionId($config->getRegionId());
+            ->regionId($config->getRegionId());
 
         $callVoice = new SingleCallByVoice();
         $callVoice->withCalledNumber($msgData['receivers'][0])
-                  ->withCalledShowNumber($msgData['ext_data']['show_number'])
-                  ->withVoiceCode($msgData['ext_data']['voice_id'])
-                  ->withPlayTimes($msgData['ext_data']['play_times'])
-                  ->withVolume($msgData['ext_data']['volume'])
-                  ->withSpeed($msgData['ext_data']['speed'])
-                  ->withOutId($msgData['ext_data']['out_id']);
+            ->withCalledShowNumber($msgData['ext_data']['show_number'])
+            ->withVoiceCode($msgData['ext_data']['voice_id'])
+            ->withPlayTimes($msgData['ext_data']['play_times'])
+            ->withVolume($msgData['ext_data']['volume'])
+            ->withSpeed($msgData['ext_data']['speed'])
+            ->withOutId($msgData['ext_data']['out_id']);
         $sendRes = $callVoice->request()->toArray();
-        if ($sendRes['Code'] == 'OK') {
+        if ('OK' == $sendRes['Code']) {
             $handleRes['data'] = $sendRes;
         } else {
             $handleRes['code'] = ErrorCode::VMS_REQ_ALIYUN_ERROR;

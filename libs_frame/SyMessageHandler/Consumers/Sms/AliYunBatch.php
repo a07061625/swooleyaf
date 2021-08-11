@@ -5,6 +5,7 @@
  * Date: 2020/6/23 0023
  * Time: 15:07
  */
+
 namespace SyMessageHandler\Consumers\Sms;
 
 use AlibabaCloud\Client\AlibabaCloud;
@@ -18,6 +19,7 @@ use SyTool\Tool;
 
 /**
  * Class AliYunBatch
+ *
  * @package SyMessageHandler\Consumers\Sms
  */
 class AliYunBatch extends Base implements IConsumer
@@ -31,7 +33,7 @@ class AliYunBatch extends Base implements IConsumer
     {
     }
 
-    public function handleMsgData(array $msgData) : array
+    public function handleMsgData(array $msgData): array
     {
         $handleRes = [
             'code' => 0,
@@ -39,17 +41,17 @@ class AliYunBatch extends Base implements IConsumer
 
         $config = SmsConfigSingleton::getInstance()->getAliYunConfig();
         AlibabaCloud::accessKeyClient($config->getAppKey(), $config->getAppSecret())
-                    ->regionId($config->getRegionId());
+            ->regionId($config->getRegionId());
 
         $smsBatch = new SendBatchSms();
         $smsBatch->withPhoneNumberJson(Tool::jsonEncode($msgData['receivers'], JSON_UNESCAPED_UNICODE))
-                 ->withTemplateCode($msgData['template_id'])
-                 ->withSignNameJson(Tool::jsonEncode($msgData['template_sign'], JSON_UNESCAPED_UNICODE));
+            ->withTemplateCode($msgData['template_id'])
+            ->withSignNameJson(Tool::jsonEncode($msgData['template_sign'], JSON_UNESCAPED_UNICODE));
         if (!empty($msgData['template_params'])) {
             $smsBatch->withTemplateParamJson(Tool::jsonEncode($msgData['template_params'], JSON_UNESCAPED_UNICODE));
         }
         $sendRes = $smsBatch->request()->toArray();
-        if ($sendRes['Code'] == 'OK') {
+        if ('OK' == $sendRes['Code']) {
             $handleRes['data'] = $sendRes;
         } else {
             $handleRes['code'] = ErrorCode::SMS_REQ_ALIYUN_ERROR;

@@ -5,6 +5,7 @@
  * Date: 2020/6/23 0023
  * Time: 15:07
  */
+
 namespace SyMessageHandler\Consumers\Voice;
 
 use AlibabaCloud\Client\AlibabaCloud;
@@ -32,7 +33,7 @@ class AliYunTts extends Base implements IConsumer
     {
     }
 
-    public function handleMsgData(array $msgData) : array
+    public function handleMsgData(array $msgData): array
     {
         $handleRes = [
             'code' => 0,
@@ -40,19 +41,19 @@ class AliYunTts extends Base implements IConsumer
 
         $config = VmsConfigSingleton::getInstance()->getAliYunConfig();
         AlibabaCloud::accessKeyClient($config->getAccessKey(), $config->getAccessSecret())
-                    ->regionId($config->getRegionId());
+            ->regionId($config->getRegionId());
 
         $callTts = new SingleCallByTts();
         $callTts->withCalledNumber($msgData['receivers'][0])
-                ->withTtsCode($msgData['template_id'])
-                ->withTtsParam(Tool::jsonEncode($msgData['template_params'], JSON_UNESCAPED_UNICODE))
-                ->withCalledShowNumber($msgData['ext_data']['show_number'])
-                ->withPlayTimes($msgData['ext_data']['play_times'])
-                ->withVolume($msgData['ext_data']['volume'])
-                ->withSpeed($msgData['ext_data']['speed'])
-                ->withOutId($msgData['ext_data']['out_id']);
+            ->withTtsCode($msgData['template_id'])
+            ->withTtsParam(Tool::jsonEncode($msgData['template_params'], JSON_UNESCAPED_UNICODE))
+            ->withCalledShowNumber($msgData['ext_data']['show_number'])
+            ->withPlayTimes($msgData['ext_data']['play_times'])
+            ->withVolume($msgData['ext_data']['volume'])
+            ->withSpeed($msgData['ext_data']['speed'])
+            ->withOutId($msgData['ext_data']['out_id']);
         $sendRes = $callTts->request()->toArray();
-        if ($sendRes['Code'] == 'OK') {
+        if ('OK' == $sendRes['Code']) {
             $handleRes['data'] = $sendRes;
         } else {
             $handleRes['code'] = ErrorCode::VMS_REQ_ALIYUN_ERROR;
