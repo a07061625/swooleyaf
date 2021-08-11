@@ -11,6 +11,7 @@ BIN_PHP=/d/Php72/php.exe
 TRANSFORM_NUM=0
 GIT_RESOURCES_REPOSITORY="gitee"
 GIT_RESOURCES_BRANCH="master"
+GIT_COMMIT_CONTENT="feat(libs): update alibabacloud libs"
 
 # shellcheck disable=SC2010
 # shellcheck disable=SC2006
@@ -31,8 +32,8 @@ for name in `ls -F | grep "/$" | awk -F/ '{print $1}'` ; do
         TRANSFORM_NUM=0
     fi
     git add .
-    git commit -m "feat(libs): update alibabacloud libs" | awk '{print $0}'
+    git commit -m "${GIT_COMMIT_CONTENT}" | awk '{print $0}'
     git add .
-    git commit -m "feat(libs): update alibabacloud libs" | awk '{print $0}'
+    git commit -m "${GIT_COMMIT_CONTENT}" | awk '{print $0}'
     git push ${GIT_RESOURCES_REPOSITORY} ${GIT_RESOURCES_BRANCH}
 done
