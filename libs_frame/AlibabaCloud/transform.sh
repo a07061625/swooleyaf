@@ -19,7 +19,7 @@ for name in `ls -F | grep "/$" | awk -F/ '{print $1}'` ; do
         continue
     fi
 
-    ${DIRS_INPUT} ${PATH_ROOT}/helper.php ${name} | awk '{print $0}'
+    ${BIN_PHP} ${PATH_ROOT}/helper.php ${name} | awk '{print $0}'
     # shellcheck disable=SC2004
     TRANSFORM_NUM=$(( ${TRANSFORM_NUM} + 1 ))
     if [ ${TRANSFORM_NUM} -gt 5 ]; then
