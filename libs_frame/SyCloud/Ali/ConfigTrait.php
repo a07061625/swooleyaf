@@ -35,6 +35,45 @@ trait ConfigTrait
      * @var string
      */
     private $accessSecret = '';
+    /**
+     * 附加配置
+     * @var array
+     */
+    private $options = [];
+    /**
+     * 超时时间,单位为毫秒
+     * @var int
+     */
+    private $timeout = 0;
+    /**
+     * 连接超时时间,单位为毫秒
+     * @var int
+     */
+    private $connectTimeout = 0;
+    /**
+     * 调试模式标识 true:开启 false:关闭
+     * @var bool
+     */
+    private $debugTag = false;
+    /**
+     * 证书信息
+     * @var array
+     */
+    private $certInfo = [];
+    /**
+     * 代理信息
+     * @var string|array
+     */
+    private $proxyInfo = '';
+    /**
+     * 校验信息
+     * @var mixed
+     */
+    private $verifyInfo = null;
+
+    private function __clone()
+    {
+    }
 
     /**
      * @return string
@@ -100,5 +139,139 @@ trait ConfigTrait
         } else {
             throw new AliException('访问密钥不合法', ErrorCode::CLOUD_ALI_ERROR);
         }
+    }
+
+    /**
+     * @return array
+     */
+    public function getOptions() : array
+    {
+        return $this->options;
+    }
+
+    /**
+     * @param array $options
+     */
+    public function setOptions(array $options)
+    {
+        $this->options = $options;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTimeout() : int
+    {
+        return $this->timeout;
+    }
+
+    /**
+     * @param int $timeout 超时时间
+     * @throws \SyException\Cloud\AliException
+     */
+    public function setTimeout(int $timeout)
+    {
+        if ($timeout >= 0) {
+            $this->timeout = $timeout;
+        } else {
+            throw new AliException('超时时间不合法', ErrorCode::CLOUD_ALI_ERROR);
+        }
+    }
+
+    /**
+     * @return int
+     */
+    public function getConnectTimeout() : int
+    {
+        return $this->connectTimeout;
+    }
+
+    /**
+     * @param int $connectTimeout 连接超时时间
+     * @throws \SyException\Cloud\AliException
+     */
+    public function setConnectTimeout(int $connectTimeout)
+    {
+        if ($connectTimeout >= 0) {
+            $this->connectTimeout = $connectTimeout;
+        } else {
+            throw new AliException('连接超时时间不合法', ErrorCode::CLOUD_ALI_ERROR);
+        }
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDebugTag() : bool
+    {
+        return $this->debugTag;
+    }
+
+    /**
+     * @param bool $debugTag
+     */
+    public function setDebugTag(bool $debugTag)
+    {
+        $this->debugTag = $debugTag;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCertInfo() : array
+    {
+        return $this->certInfo;
+    }
+
+    /**
+     * @param array $certInfo 证书信息
+     * @throws \SyException\Cloud\AliException
+     */
+    public function setCertInfo(array $certInfo)
+    {
+        if (is_array($certInfo) && !empty($certInfo)) {
+            $this->certInfo = $certInfo;
+        } else {
+            throw new AliException('证书信息不合法', ErrorCode::CLOUD_ALI_ERROR);
+        }
+    }
+
+    /**
+     * @return array|string
+     */
+    public function getProxyInfo()
+    {
+        return $this->proxyInfo;
+    }
+
+    /**
+     * @param array|string $proxyInfo 代理信息
+     * @throws \SyException\Cloud\AliException
+     */
+    public function setProxyInfo($proxyInfo)
+    {
+        if (is_string($proxyInfo) && (strlen($proxyInfo) > 0)) {
+            $this->proxyInfo = $proxyInfo;
+        } elseif (is_array($proxyInfo) && !empty($proxyInfo)) {
+            $this->proxyInfo = $proxyInfo;
+        } else {
+            throw new AliException('代理信息不合法', ErrorCode::CLOUD_ALI_ERROR);
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVerifyInfo()
+    {
+        return $this->verifyInfo;
+    }
+
+    /**
+     * @param mixed $verifyInfo
+     */
+    public function setVerifyInfo($verifyInfo)
+    {
+        $this->verifyInfo = $verifyInfo;
     }
 }
