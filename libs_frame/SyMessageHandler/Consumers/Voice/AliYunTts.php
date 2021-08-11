@@ -8,7 +8,6 @@
 
 namespace SyMessageHandler\Consumers\Voice;
 
-use AlibabaCloud\Client\AlibabaCloud;
 use AlibabaCloud\Dyvmsapi\SingleCallByTts;
 use DesignPatterns\Singletons\VmsConfigSingleton;
 use SyConstant\ErrorCode;
@@ -39,13 +38,9 @@ class AliYunTts extends Base implements IConsumer
             'code' => 0,
         ];
 
-        $config = VmsConfigSingleton::getInstance()->getAliYunConfig();
-        AlibabaCloud::accessKeyClient($config->getAccessKey(), $config->getAccessSecret())
-            ->regionId($config->getRegionId())
-            ->asDefaultClient();
-
         $callTts = new SingleCallByTts();
-        $callTts->withCalledNumber($msgData['receivers'][0])
+        $callTts->client(VmsConfigSingleton::getInstance()->getAliYunKey())
+                ->withCalledNumber($msgData['receivers'][0])
             ->withTtsCode($msgData['template_id'])
             ->withTtsParam(Tool::jsonEncode($msgData['template_params'], JSON_UNESCAPED_UNICODE))
             ->withCalledShowNumber($msgData['ext_data']['show_number'])
