@@ -1,0 +1,25 @@
+<?php
+
+namespace AlibabaCloud\Elasticsearch;
+
+/**
+ * @method string getClientToken()
+ */
+class CreateLogstash extends Roa
+{
+    /** @var string */
+    public $pathPattern = '/openapi/logstashes';
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withClientToken($value)
+    {
+        $this->data['ClientToken'] = $value;
+        $this->options['query']['clientToken'] = $value;
+
+        return $this;
+    }
+}

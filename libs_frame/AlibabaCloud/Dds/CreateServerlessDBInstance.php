@@ -1,0 +1,53 @@
+<?php
+
+namespace AlibabaCloud\Dds;
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getDBInstanceStorage()
+ * @method $this withDBInstanceStorage($value)
+ * @method string getClientToken()
+ * @method $this withClientToken($value)
+ * @method string getPeriodPriceType()
+ * @method $this withPeriodPriceType($value)
+ * @method string getEngineVersion()
+ * @method $this withEngineVersion($value)
+ * @method string getNetworkType()
+ * @method $this withNetworkType($value)
+ * @method string getStorageEngine()
+ * @method $this withStorageEngine($value)
+ * @method string getResourceGroupId()
+ * @method $this withResourceGroupId($value)
+ * @method string getSecurityToken()
+ * @method $this withSecurityToken($value)
+ * @method string getEngine()
+ * @method $this withEngine($value)
+ * @method string getDBInstanceDescription()
+ * @method $this withDBInstanceDescription($value)
+ * @method string getPeriod()
+ * @method $this withPeriod($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getSecurityIPList()
+ * @method $this withSecurityIPList($value)
+ * @method string getVSwitchId()
+ * @method $this withVSwitchId($value)
+ * @method string getAccountPassword()
+ * @method $this withAccountPassword($value)
+ * @method string getAutoRenew()
+ * @method $this withAutoRenew($value)
+ * @method string getVpcId()
+ * @method $this withVpcId($value)
+ * @method string getZoneId()
+ * @method $this withZoneId($value)
+ * @method string getChargeType()
+ * @method $this withChargeType($value)
+ */
+class CreateServerlessDBInstance extends Rpc
+{
+}

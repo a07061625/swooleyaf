@@ -1,0 +1,25 @@
+<?php
+
+namespace AlibabaCloud\Rtc;
+
+/**
+ * @method string getStartTime()
+ * @method $this withStartTime($value)
+ * @method string getShowLog()
+ * @method $this withShowLog($value)
+ * @method string getSubUser()
+ * @method $this withSubUser($value)
+ * @method string getEndTime()
+ * @method $this withEndTime($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getPubUser()
+ * @method $this withPubUser($value)
+ * @method string getAppId()
+ * @method $this withAppId($value)
+ * @method string getChannelId()
+ * @method $this withChannelId($value)
+ */
+class DescribeRtcUserList extends Rpc
+{
+}

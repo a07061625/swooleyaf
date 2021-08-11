@@ -1,0 +1,31 @@
+<?php
+
+namespace AlibabaCloud\BssOpenApi;
+
+/**
+ * @method string getProductCode()
+ * @method $this withProductCode($value)
+ * @method string getIsHideZeroCharge()
+ * @method $this withIsHideZeroCharge($value)
+ * @method string getSubscriptionType()
+ * @method $this withSubscriptionType($value)
+ * @method string getEndTime()
+ * @method $this withEndTime($value)
+ * @method string getBillingCycle()
+ * @method $this withBillingCycle($value)
+ * @method string getStartTime()
+ * @method $this withStartTime($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getPageNum()
+ * @method $this withPageNum($value)
+ * @method string getType()
+ * @method $this withType($value)
+ * @method string getProductType()
+ * @method $this withProductType($value)
+ * @method string getPageSize()
+ * @method $this withPageSize($value)
+ */
+class QuerySettlementBill extends Rpc
+{
+}

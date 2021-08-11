@@ -1,0 +1,16 @@
+<?php
+
+namespace AlibabaCloud\Elasticsearch;
+
+/**
+ * @method string getProjectId()
+ * @method $this withProjectId($value)
+ */
+class GetEmonGrafanaAlerts extends Roa
+{
+    /** @var string */
+    public $pathPattern = '/openapi/emon/projects/[ProjectId]/grafana/proxy/api/alerts';
+
+    /** @var string */
+    public $method = 'GET';
+}
