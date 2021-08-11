@@ -38,12 +38,6 @@ final class SyFrameLoader
      */
     private $excelStatus = true;
     /**
-     * aliOpenCore未初始化标识 true：未初始化 false：已初始化
-     *
-     * @var bool
-     */
-    private $aliOpenCoreStatus = true;
-    /**
      * pinyin未初始化标识 true：未初始化 false：已初始化
      *
      * @var bool
@@ -72,7 +66,6 @@ final class SyFrameLoader
             'Smarty' => 'preHandleSmarty',
             'SmartyBC' => 'preHandleSmarty',
             'PHPExcel' => 'preHandlePhpExcel',
-            'AliOpen' => 'preHandleAliOpen',
             'PinYin' => 'preHandlePinYin',
             'ClickHouseDB' => 'preHandleClickHouse',
             'GuzzleHttp' => 'preHandleGuzzleHttp',
@@ -209,34 +202,6 @@ final class SyFrameLoader
         }
 
         return SY_FRAME_LIBS_ROOT . 'PhpOffice/' . str_replace('_', '/', $className) . '.php';
-    }
-
-    private function preHandleAliOpen(string $className): string
-    {
-        if ($this->aliOpenCoreStatus) {
-            define('ALIOPEN_STS_PRODUCT_NAME', 'Sts');
-            define('ALIOPEN_STS_DOMAIN', 'sts.aliyuncs.com');
-            define('ALIOPEN_STS_VERSION', '2015-04-01');
-            define('ALIOPEN_STS_ACTION', 'AssumeRole');
-            define('ALIOPEN_STS_REGION', 'cn-hangzhou');
-            define('ALIOPEN_ROLE_ARN_EXPIRE_TIME', 3600);
-            define('ALIOPEN_ECS_ROLE_EXPIRE_TIME', 3600);
-            define('ALIOPEN_AUTH_TYPE_RAM_AK', 'RAM_AK');
-            define('ALIOPEN_AUTH_TYPE_RAM_ROLE_ARN', 'RAM_ROLE_ARN');
-            define('ALIOPEN_AUTH_TYPE_ECS_RAM_ROLE', 'ECS_RAM_ROLE');
-            define('ALIOPEN_AUTH_TYPE_BEARER_TOKEN', 'BEARER_TOKEN');
-            define('ALIOPEN_LOCATION_SERVICE_PRODUCT_NAME', 'Location');
-            define('ALIOPEN_LOCATION_SERVICE_DOMAIN', 'location.aliyuncs.com');
-            define('ALIOPEN_LOCATION_SERVICE_VERSION', '2015-06-12');
-            define('ALIOPEN_LOCATION_SERVICE_DESCRIBE_ENDPOINT_ACTION', 'DescribeEndpoints');
-            define('ALIOPEN_LOCATION_SERVICE_REGION', 'cn-hangzhou');
-            define('ALIOPEN_CACHE_EXPIRE_TIME', 3600);
-            $this->aliOpenCoreStatus = false;
-
-            require_once SY_FRAME_LIBS_ROOT . 'AliOpen/Core/Regions/init_endpoint.php';
-        }
-
-        return SY_FRAME_LIBS_ROOT . $className . '.php';
     }
 
     private function preHandlePinYin(string $className): string

@@ -7,15 +7,14 @@
  */
 namespace SyMessageHandler\Consumers\Voice;
 
-use AliOpen\Core\DefaultAcsClient;
-use AliOpen\Core\Profile\DefaultProfile;
+use AlibabaCloud\Client\AlibabaCloud;
+use AlibabaCloud\Dyvmsapi\SingleCallByTts;
 use DesignPatterns\Singletons\VmsConfigSingleton;
 use SyConstant\ErrorCode;
 use SyConstant\ProjectBase;
 use SyMessageHandler\Consumers\Base;
 use SyMessageHandler\IConsumer;
 use SyTool\Tool;
-use SyVms\AliYun\CallByTtsSingleRequest;
 
 /**
  * Class AliYunTts
@@ -40,18 +39,19 @@ class AliYunTts extends Base implements IConsumer
         ];
 
         $config = VmsConfigSingleton::getInstance()->getAliYunConfig();
-        $iClientProfile = DefaultProfile::getProfile($config->getRegionId(), $config->getAccessKey(), $config->getAccessSecret());
-        $client = new DefaultAcsClient($iClientProfile);
-        $callTts = new CallByTtsSingleRequest();
-        $callTts->setCalledNumber($msgData['receivers'][0]);
-        $callTts->setTtsCode($msgData['template_id']);
-        $callTts->setTtsParam(Tool::jsonEncode($msgData['template_params'], JSON_UNESCAPED_UNICODE));
-        $callTts->setCalledShowNumber($msgData['ext_data']['show_number']);
-        $callTts->setPlayTimes($msgData['ext_data']['play_times']);
-        $callTts->setVolume($msgData['ext_data']['volume']);
-        $callTts->setSpeed($msgData['ext_data']['speed']);
-        $callTts->setOutId($msgData['ext_data']['out_id']);
-        $sendRes = $client->getAcsResponse($callTts);
+        AlibabaCloud::accessKeyClient($config->getAccessKey(), $config->getAccessSecret())
+                    ->regionId($config->getRegionId());
+
+        $callTts = new SingleCallByTts();
+        $callTts->withCalledNumber($msgData['receivers'][0])
+                ->withTtsCode($msgData['template_id'])
+                ->withTtsParam(Tool::jsonEncode($msgData['template_params'], JSON_UNESCAPED_UNICODE))
+                ->withCalledShowNumber($msgData['ext_data']['show_number'])
+                ->withPlayTimes($msgData['ext_data']['play_times'])
+                ->withVolume($msgData['ext_data']['volume'])
+                ->withSpeed($msgData['ext_data']['speed'])
+                ->withOutId($msgData['ext_data']['out_id']);
+        $sendRes = $callTts->request()->toArray();
         if ($sendRes['Code'] == 'OK') {
             $handleRes['data'] = $sendRes;
         } else {
