@@ -61,7 +61,7 @@ class LiveConfigSingleton
     /**
      * @return \DesignPatterns\Singletons\LiveConfigSingleton
      */
-    public static function getInstance() : LiveConfigSingleton
+    public static function getInstance(): self
     {
         if (null === self::$instance) {
             self::$instance = new self();
@@ -72,11 +72,13 @@ class LiveConfigSingleton
 
     /**
      * 获取阿里云配置
+     *
      * @return string 配置key
+     *
      * @throws \SyException\Cloud\AliException
      * @throws \AlibabaCloud\Client\Exception\ClientException
      */
-    public function getAliYunKey() : string
+    public function getAliYunKey(): string
     {
         if ('' == $this->aliYunKey) {
             $configs = Tool::getConfig('live.' . SY_ENV . SY_PROJECT . '.aliyun');
@@ -93,7 +95,7 @@ class LiveConfigSingleton
 
     public function removeAliYunKey()
     {
-        if (strlen($this->aliYunKey) > 0) {
+        if (\strlen($this->aliYunKey) > 0) {
             $this->removeAliClient($this->aliYunKey);
             $this->aliYunKey = '';
         }
@@ -101,10 +103,8 @@ class LiveConfigSingleton
 
     /**
      * 获取所有的百家云配置
-     *
-     * @return array
      */
-    public function getBaiJiaConfigs() : array
+    public function getBaiJiaConfigs(): array
     {
         return $this->baiJiaConfigs;
     }
@@ -112,11 +112,9 @@ class LiveConfigSingleton
     /**
      * 获取百家云配置
      *
-     * @return null|\SyLive\ConfigBaiJia
-     *
      * @throws \SyException\Live\BaiJiaException
      */
-    public function getBaiJiaConfig(string $partnerId) : ?\SyLive\ConfigBaiJia
+    public function getBaiJiaConfig(string $partnerId): ?\SyLive\ConfigBaiJia
     {
         $nowTime = Tool::getNowTime();
         $baiJiaConfig = $this->getLocalBaiJiaConfig($partnerId);
@@ -144,11 +142,9 @@ class LiveConfigSingleton
     /**
      * 获取腾讯云配置
      *
-     * @return \SyLive\ConfigTencent
-     *
      * @throws \SyException\Cloud\TencentException
      */
-    public function getTencentConfig() : ConfigTencent
+    public function getTencentConfig(): ConfigTencent
     {
         if (null === $this->tencentConfig) {
             $configs = Tool::getConfig('live.' . SY_ENV . SY_PROJECT . '.tencent');
@@ -164,10 +160,8 @@ class LiveConfigSingleton
 
     /**
      * 获取本地百家云配置
-     *
-     * @return null|\SyLive\ConfigBaiJia
      */
-    private function getLocalBaiJiaConfig(string $partnerId) : ?\SyLive\ConfigBaiJia
+    private function getLocalBaiJiaConfig(string $partnerId): ?\SyLive\ConfigBaiJia
     {
         $nowTime = Tool::getNowTime();
         if ($this->baiJiaClearTime < $nowTime) {
