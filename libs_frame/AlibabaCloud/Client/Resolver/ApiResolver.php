@@ -56,7 +56,7 @@ abstract class ApiResolver
     public function warpEndpoint(Request $request)
     {
         $reflect = new ReflectionObject($request);
-        $product_dir = \dirname(\dirname($reflect->getFileName()));
+        $product_dir = \dirname($reflect->getFileName());
         $endpoints_json = "{$product_dir}/endpoints.json";
         if (file_exists($endpoints_json)) {
             $endpoints = json_decode(file_get_contents($endpoints_json), true);
