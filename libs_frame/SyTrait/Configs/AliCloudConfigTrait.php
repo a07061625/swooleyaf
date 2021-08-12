@@ -54,6 +54,9 @@ trait AliCloudConfigTrait
         AlibabaCloud::set($config->getAccessKey(), $client);
     }
 
+    /**
+     * @throws \AlibabaCloud\Client\Exception\ClientException
+     */
     private function removeAliClient(string $clientName)
     {
         AlibabaCloud::del($clientName);
