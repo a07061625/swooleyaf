@@ -11,7 +11,7 @@ const SY_TOKEN = '245dcbf2';
 const SY_TOKEN_SECRET = 'eyJpdiI6ImY2OGE2MDBmNmMxYjExNmMiLCJ2YWx1ZSI6IkdESm5vcFBHSlltU0FCc3R3bm1zZDBCb0poVWtkQ0R2bU1lOFVUdGdBekE9In0=';
 
 $frameLibsDir = \Yaconf::get('project.' . SY_ENV . SY_PROJECT . '.dir.libs.frame');
-if (substr($frameLibsDir, -1) == '/') {
+if ('/' == substr($frameLibsDir, -1)) {
     define('SY_FRAME_LIBS_ROOT', $frameLibsDir);
 } else {
     define('SY_FRAME_LIBS_ROOT', $frameLibsDir . '/');
