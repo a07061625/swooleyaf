@@ -5,6 +5,7 @@
  * Date: 2017/5/23 0023
  * Time: 16:50
  */
+
 namespace Request;
 
 use SyConstant\ErrorCode;
@@ -21,16 +22,17 @@ final class RequestSign
 
     /**
      * 校验签名是否合法
-     * @return string
+     *
      * @throws \SyException\Validator\SignException
      * @throws \Exception
      */
-    public static function checkSign() : string
+    public static function checkSign(): string
     {
         $sign = Tool::getArrayVal($_POST, Project::DATA_KEY_SIGN_PARAMS);
-        if (!is_string($sign)) {
+        if (!\is_string($sign)) {
             throw new SignException('签名值出错', ErrorCode::SIGN_ERROR);
-        } elseif (strlen($sign) <= 16) {
+        }
+        if (\strlen($sign) <= 16) {
             throw new SignException('签名值出错', ErrorCode::SIGN_ERROR);
         }
 
@@ -47,7 +49,9 @@ final class RequestSign
 
     /**
      * 生成带签名的URL
+     *
      * @param $url
+     *
      * @throws \Exception
      */
     public static function makeSignUrl(&$url)
@@ -65,11 +69,10 @@ final class RequestSign
 
     /**
      * 生成签名
-     * @param array $data
-     * @return string
+     *
      * @throws \Exception
      */
-    public static function createSign(array $data = []) : string
+    public static function createSign(array $data = []): string
     {
         if (empty($data)) {
             $signTime = Tool::getNowTime();
@@ -80,6 +83,7 @@ final class RequestSign
         }
 
         $signFactor = self::getSignFactor();
+
         return $signNonce . $signTime . hash($signFactor['method'], $signNonce . $signFactor['secret'] . $signTime);
     }
 }
