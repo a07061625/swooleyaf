@@ -19,7 +19,7 @@ trait FrameHttpTrait
      */
     public static function addApiSign(string $sign) : bool
     {
-        $signKey = Project::YAC_PREFIX_API_SIGN . substr($sign, 0, 16);
+        $signKey = Project::YAC_PREFIX_API_SIGN . md5($sign);
         $cacheData = CacheSimpleFactory::getYacInstance()->get($signKey);
         if (is_string($cacheData)) {
             return false;
