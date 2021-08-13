@@ -3,5 +3,13 @@
   "version": "1.0.0",
   "description": "API文档",
   "title": "API文档",
-  "url" : "http://localhost:8080"
+  "url" : "http://localhost:8080",
+  "header": {
+    "title": "文档说明",
+    "filename": "apidoc_header.md"
+  },
+  "footer": {
+    "title": "文档结尾",
+    "filename": "apidoc_footer.md"
+  }
 }
