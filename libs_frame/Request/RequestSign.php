@@ -12,15 +12,18 @@ use SyConstant\Project;
 use SyException\Validator\SignException;
 use SyTool\Tool;
 use SyTrait\SimpleTrait;
+use SyTrait\Validators\RequestSignTrait;
 
 final class RequestSign
 {
     use SimpleTrait;
+    use RequestSignTrait;
 
     /**
      * 校验签名是否合法
      * @return string
      * @throws \SyException\Validator\SignException
+     * @throws \Exception
      */
     public static function checkSign() : string
     {
@@ -45,6 +48,7 @@ final class RequestSign
     /**
      * 生成带签名的URL
      * @param $url
+     * @throws \Exception
      */
     public static function makeSignUrl(&$url)
     {
@@ -63,8 +67,9 @@ final class RequestSign
      * 生成签名
      * @param array $data
      * @return string
+     * @throws \Exception
      */
-    public static function createSign(array $data = [])
+    public static function createSign(array $data = []) : string
     {
         if (empty($data)) {
             $signTime = Tool::getNowTime();
@@ -74,7 +79,7 @@ final class RequestSign
             $signNonce = $data['sign_nonce'];
         }
 
-        $configs = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.request.sign');
-        return $signNonce . $signTime . hash($configs['method'], $signNonce . $configs['secret'] . $signTime);
+        $signFactor = self::getSignFactor();
+        return $signNonce . $signTime . hash($signFactor['method'], $signNonce . $signFactor['secret'] . $signTime);
     }
 }
