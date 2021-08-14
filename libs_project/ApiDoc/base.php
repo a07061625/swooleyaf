@@ -21,6 +21,15 @@
  */
 
 /**
+ * @apiDefine ResponseSuccessEdit
+ * @apiSuccess {Number} code 状态码,0
+ * @apiSuccess {Number} now_time 请求时间戳
+ * @apiSuccess {String} req_id 请求ID
+ * @apiSuccess {Object} data 响应数据
+ * @apiSuccess {String} data.msg 修改结果
+ */
+
+/**
  * @apiDefine ResponseFail
  * @apiError (200) {Number} code 状态码,大于0
  * @apiError (200) {Number} now_time 请求时间戳
