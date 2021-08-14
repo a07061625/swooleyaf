@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * @apiDefine ResponseSuccess
  * @apiSuccess {Number} code 状态码,0
  * @apiSuccess {Number} now_time 请求时间戳
@@ -7,7 +7,7 @@
  * @apiSuccess {Object} data 响应数据
  */
 
-/*
+/**
  * @apiDefine ResponseSuccessList
  * @apiSuccess {Number} code 状态码,0
  * @apiSuccess {Number} now_time 请求时间戳
@@ -20,7 +20,7 @@
  * @apiSuccess {Object[]} data.data 响应数据列表
  */
 
-/*
+/**
  * @apiDefine ResponseFail
  * @apiError (200) {Number} code 状态码,大于0
  * @apiError (200) {Number} now_time 请求时间戳
@@ -35,7 +35,7 @@
  *   }
  */
 
-/*
+/**
  * @apiDefine RequestSession
  * @apiHeader {String} [Sy-Auth] 会话标识,数字和小写字母组成的16位长度字符串,会话标识和会话ID至少要选择一个
  * @apiParam {string} [session_id] 会话ID,数字和小写字母组成的16位长度字符串,会话标识和会话ID至少要选择一个
