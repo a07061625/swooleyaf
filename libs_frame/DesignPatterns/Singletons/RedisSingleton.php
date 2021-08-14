@@ -205,4 +205,40 @@ class RedisSingleton
             throw new RedisException('Redis初始化出错', ErrorCode::REDIS_CONNECTION_ERROR);
         }
     }
+
+    /**
+     * 大批量删除key
+     * @param string $pattern 键名表达式
+     * @param int $count 每次删除的数量,默认位100
+     * @return int 删除key的总数
+     */
+    public function delByScan(string $pattern, int $count = 100) : int
+    {
+        if ($count <= 0) {
+            return 0;
+        }
+
+        $truePattern = trim($pattern);
+        if (strlen($truePattern) == 0) {
+            return 0;
+        }
+
+        $it = null;
+        $delNum = 0;
+        do {
+            $keyList = $this->conn->scan($it, $truePattern, $count);
+            if (!is_array($keyList)) {
+                continue;
+            }
+            if (count($keyList) == 0) {
+                continue;
+            }
+            foreach ($keyList as $eKey) {
+                $this->conn->del($eKey);
+                $delNum++;
+            }
+        } while ($it > 0);
+
+        return $delNum;
+    }
 }
