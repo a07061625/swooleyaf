@@ -12,11 +12,12 @@
  * @apiSuccess {Number} code 状态码,0
  * @apiSuccess {Number} now_time 请求时间戳
  * @apiSuccess {String} req_id 请求ID
- * @apiSuccess {Number} current 当前页
- * @apiSuccess {Number} pages 总页数
- * @apiSuccess {Number} limit 每页记录条数
- * @apiSuccess {Number} total 总记录条数
- * @apiSuccess {Object[]} data 响应数据列表
+ * @apiSuccess {Object} data 响应数据
+ * @apiSuccess {Number} data.current 当前页
+ * @apiSuccess {Number} data.pages 总页数
+ * @apiSuccess {Number} data.limit 每页记录条数
+ * @apiSuccess {Number} data.total 总记录条数
+ * @apiSuccess {Object[]} data.data 响应数据列表
  */
 
 /**
