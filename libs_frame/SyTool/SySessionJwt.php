@@ -72,27 +72,33 @@ class SySessionJwt
      * 设置session值
      *
      * @param array $data 数据
+     * @param string $sessionId 会话ID
      *
      * @return bool
      */
-    public static function set(array $data)
+    public static function set(array $data, string $sessionId = '')
     {
         if (empty($data)) {
             return false;
         }
 
-        $token = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_JWT_SESSION);
-        $sessionId = '1' . substr($token, 1);
+        if (strlen($sessionId) == 0) {
+            $token = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_JWT_SESSION);
+            $sid = '1' . substr($token, 1);
+        } else {
+            $sid = $sessionId;
+        }
+
         $jwtData = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_JWT_DATA);
         $mergeRes = array_merge($jwtData, $data);
-        $mergeRes['sid'] = $sessionId;
+        $mergeRes['sid'] = $sid;
         SessionTool::createSessionJwt($mergeRes);
-        $redisKey = Project::REDIS_PREFIX_SESSION . $sessionId;
+        $redisKey = Project::REDIS_PREFIX_SESSION . $sid;
         $setRes = CacheSimpleFactory::getRedisInstance()->hMset($redisKey, $mergeRes);
         if ($setRes) {
             CacheSimpleFactory::getRedisInstance()->expire($redisKey, Project::TIME_EXPIRE_SESSION);
             Registry::set(SyInner::REGISTRY_NAME_RESPONSE_JWT_DATA, $mergeRes);
-            Registry::set(SyInner::REGISTRY_NAME_RESPONSE_JWT_SESSION, $sessionId);
+            Registry::set(SyInner::REGISTRY_NAME_RESPONSE_JWT_SESSION, $sid);
         } else {
             Log::error('set session data error,key=' . $redisKey . ' data=' . print_r($mergeRes, true));
         }
