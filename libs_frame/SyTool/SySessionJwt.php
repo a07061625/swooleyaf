@@ -5,6 +5,7 @@
  * Date: 18-9-2
  * Time: 上午11:07
  */
+
 namespace SyTool;
 
 use DesignPatterns\Factories\CacheSimpleFactory;
@@ -34,7 +35,7 @@ class SySessionJwt
         } else {
             $token = (string)SyRequest::getParams('session_id', '');
         }
-        if ((strlen($token) == 16) && in_array($token[0], ['0', '1']) && ctype_alnum($token)) {
+        if ((16 == \strlen($token)) && \in_array($token[0], ['0', '1']) && ctype_alnum($token)) {
             $sessionId = $token;
         } else {
             $sessionId = '0' . Tool::createNonceStr(5, 'numlower') . Tool::getNowTime();
@@ -45,10 +46,8 @@ class SySessionJwt
 
     /**
      * 获取session id
-     *
-     * @return string
      */
-    public static function getSessionId() : string
+    public static function getSessionId(): string
     {
         return Registry::get(SyInner::REGISTRY_NAME_RESPONSE_JWT_SESSION);
     }
@@ -61,7 +60,7 @@ class SySessionJwt
     public static function refreshLocalCache()
     {
         $jwtData = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_JWT_DATA);
-        if (strlen($jwtData['uid']) > 0) {
+        if (\strlen($jwtData['uid']) > 0) {
             return $jwtData;
         }
 
@@ -71,7 +70,7 @@ class SySessionJwt
     /**
      * 设置session值
      *
-     * @param array $data 数据
+     * @param array  $data      数据
      * @param string $sessionId 会话ID
      *
      * @return bool
@@ -82,7 +81,7 @@ class SySessionJwt
             return false;
         }
 
-        if (strlen($sessionId) == 0) {
+        if (0 == \strlen($sessionId)) {
             $token = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_JWT_SESSION);
             $sid = '1' . substr($token, 1);
         } else {
@@ -109,15 +108,15 @@ class SySessionJwt
     /**
      * 获取session值
      *
-     * @param string|null $key     键名
-     * @param mixed|null  $default 默认值
+     * @param null|string $key     键名
+     * @param null|mixed  $default 默认值
      *
      * @return mixed
      */
-    public static function get(string $key = null, $default = null)
+    public static function get(?string $key = null, $default = null)
     {
         $jwtData = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_JWT_DATA);
-        if (is_null($key)) {
+        if (null === $key) {
             return $jwtData;
         }
 
@@ -127,19 +126,17 @@ class SySessionJwt
     /**
      * 删除session值
      *
-     * @param string $key
-     *
      * @return bool|int
      */
     public static function del(string $key)
     {
-        if (in_array($key, ['uid', 'rid'], true)) {
+        if (\in_array($key, ['uid', 'rid'], true)) {
             return false;
         }
 
         $token = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_JWT_SESSION);
         $redisKey = Project::REDIS_PREFIX_SESSION . $token;
-        if ($key === '') {
+        if ('' === $key) {
             $delRes = CacheSimpleFactory::getRedisInstance()->del($redisKey);
             $jwtData = SessionTool::createDefaultJwt();
         } else {
