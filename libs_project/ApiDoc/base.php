@@ -57,3 +57,17 @@
  *     "session_id": "0eihbc1587865998"
  *   }
  */
+
+/**
+ * @apiDefine RequestSign
+ * @apiHeader {String} [Sy-Sign] 接口签名,数字和小写字母组成的48位长度字符串
+ * @apiParam {string} [_sign] 接口签名,数字和小写字母组成的48位长度字符串
+ * @apiHeaderExample {json} Sign-Request-Header
+ *   {
+ *     "Sy-Sign": "0eihbc1587865998fdsafsadfdsafsadfdsafsad"
+ *   }
+ * @apiParamExample {json} Sign-Request-Param
+ *   {
+ *     "_sign": "0eihbc1587865998fdsafsadfdsafsadfdsafsad"
+ *   }
+ */
