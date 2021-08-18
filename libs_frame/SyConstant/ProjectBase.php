@@ -41,11 +41,11 @@ class ProjectBase
     /**
      * 数据-键名-请求头cookie域名字段
      */
-    const DATA_KEY_DOMAIN_COOKIE_HEADER = 'sydomain-cookie';
+    const DATA_KEY_DOMAIN_COOKIE_HEADER = 'sy-domain-cookie';
     /**
      * 数据-键名-$_SERVER中cookie域名字段
      */
-    const DATA_KEY_DOMAIN_COOKIE_SERVER = 'SyDomain-Cookie';
+    const DATA_KEY_DOMAIN_COOKIE_SERVER = 'SY-DOMAIN-COOKIE';
     /**
      * 数据-键名-响应内容响应头字段
      */
