@@ -206,14 +206,13 @@ abstract class BaseServer
 
     public static function getReqId(): string
     {
-        if (ctype_alnum($_SERVER[Project::DATA_KEY_REQUEST_ID_SERVER])) {
-            return $_SERVER[Project::DATA_KEY_REQUEST_ID_SERVER];
+        $reqId = Tool::getArrayVal($_SERVER, Project::DATA_KEY_REQUEST_ID_SERVER, '');
+        if (ctype_alnum($reqId)) {
+            return $reqId;
         }
 
-        $headerKey = 'HTTP_' . Project::DATA_KEY_REQUEST_ID_HEADER;
-        if (ctype_alnum($_SERVER[$headerKey])) {
-            $reqId = $_SERVER[$headerKey];
-        } else {
+        $reqId = Tool::getArrayVal($_SERVER, 'HTTP_' . Project::DATA_KEY_REQUEST_ID_HEADER, '');
+        if (!ctype_alnum($reqId)) {
             $reqId = hash('md4', Tool::getNowTime() . Tool::createNonceStr(8));
         }
         $_SERVER[Project::DATA_KEY_REQUEST_ID_SERVER] = $reqId;
