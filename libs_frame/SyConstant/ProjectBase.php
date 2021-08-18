@@ -41,11 +41,11 @@ class ProjectBase
     /**
      * 数据-键名-请求头cookie域名字段
      */
-    const DATA_KEY_DOMAIN_COOKIE_HEADER = 'sydomain-cookie';
+    const DATA_KEY_DOMAIN_COOKIE_HEADER = 'sy-domain-cookie';
     /**
      * 数据-键名-$_SERVER中cookie域名字段
      */
-    const DATA_KEY_DOMAIN_COOKIE_SERVER = 'SyDomain-Cookie';
+    const DATA_KEY_DOMAIN_COOKIE_SERVER = 'SY-DOMAIN-COOKIE';
     /**
      * 数据-键名-SERVER中函数调用链图生成字段
      */
@@ -69,7 +69,7 @@ class ProjectBase
     /**
      * 数据-键名-$_SERVER中请求ID字段
      */
-    const DATA_KEY_REQUEST_ID_SERVER = 'SyReq-Id';
+    const DATA_KEY_REQUEST_ID_SERVER = 'SY-REQ-ID';
 
     /**
      * 公共-默认页数
