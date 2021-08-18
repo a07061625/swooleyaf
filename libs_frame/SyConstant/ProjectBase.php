@@ -65,7 +65,7 @@ class ProjectBase
     /**
      * 数据-键名-$_SERVER中请求ID字段
      */
-    const DATA_KEY_REQUEST_ID_SERVER = 'SyReq-Id';
+    const DATA_KEY_REQUEST_ID_SERVER = 'SY-REQ-ID';
 
     /**
      * 公共-默认页数
