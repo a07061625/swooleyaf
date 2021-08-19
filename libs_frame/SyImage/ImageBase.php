@@ -207,10 +207,11 @@ abstract class ImageBase
     /**
      * 写图片文件
      * @param string $path 文件目录
+     * @param string $namePrefix 文件名前缀
      * @return string
      * @throws \SyException\Image\ImageException
      */
-    abstract public function writeImage(string $path);
+    abstract public function writeImage(string $path, string $namePrefix = '');
 
     /**
      * 检测图片
