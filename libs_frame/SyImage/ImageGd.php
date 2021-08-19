@@ -5,6 +5,7 @@
  * Date: 17-8-30
  * Time: 下午10:36
  */
+
 namespace SyImage;
 
 use SyConstant\ErrorCode;
@@ -17,10 +18,10 @@ class ImageGd extends ImageBase
     /**
      * @var resource
      */
-    private $image = null;
+    private $image;
 
     /**
-     * @param string $data 图片数据
+     * @param string $data     图片数据
      * @param string $dataType 数据类型 binary:二进制 base64:base64编码
      */
     public function __construct(string $data, string $dataType)
@@ -29,7 +30,7 @@ class ImageGd extends ImageBase
         parent::__construct($byteData);
 
         $this->image = imagecreatefromstring($byteData);
-        if ($this->mimeType == SyInner::IMAGE_MIME_TYPE_PNG) {
+        if (SyInner::IMAGE_MIME_TYPE_PNG == $this->mimeType) {
             $this->quality = 6;
         } else {
             $this->quality = 80;
@@ -41,7 +42,7 @@ class ImageGd extends ImageBase
      */
     public function __destruct()
     {
-        if (!is_null($this->image)) {
+        if (null !== $this->image) {
             imagedestroy($this->image);
             $this->image = null;
         }
@@ -90,7 +91,7 @@ class ImageGd extends ImageBase
             throw new ImageException('图片质量取值范围为1-100', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
 
-        if ($this->mimeType == SyInner::IMAGE_MIME_TYPE_PNG) {
+        if (SyInner::IMAGE_MIME_TYPE_PNG == $this->mimeType) {
             if ($quality < 10) {
                 $this->quality = 1;
             } elseif ($quality < 100) {
@@ -108,7 +109,7 @@ class ImageGd extends ImageBase
     public function addWaterTxt(string $txt, int $startX, int $startY, Font $font)
     {
         $fontTxt = trim($txt);
-        if (strlen($fontTxt) == 0) {
+        if (0 == \strlen($fontTxt)) {
             throw new ImageException('文本内容不能为空', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
 
@@ -150,10 +151,10 @@ class ImageGd extends ImageBase
 
         $fileName = $namePrefix . Tool::createNonceStr(6) . Tool::getNowTime()
                     . '_' . $this->width . '_' . $this->height . '.' . $this->ext;
-        $fullFileName = substr($path, -1) == '/' ? $path . $fileName : $path . '/' . $fileName;
-        if ($this->mimeType == SyInner::IMAGE_MIME_TYPE_GIF) {
+        $fullFileName = '/' == substr($path, -1) ? $path . $fileName : $path . '/' . $fileName;
+        if (SyInner::IMAGE_MIME_TYPE_GIF == $this->mimeType) {
             $writeRes = imagegif($this->image, $fullFileName);
-        } elseif ($this->mimeType == SyInner::IMAGE_MIME_TYPE_PNG) {
+        } elseif (SyInner::IMAGE_MIME_TYPE_PNG == $this->mimeType) {
             $writeRes = imagepng($this->image, $fullFileName, $this->quality);
         } else {
             $writeRes = imagejpeg($this->image, $fullFileName, $this->quality);
