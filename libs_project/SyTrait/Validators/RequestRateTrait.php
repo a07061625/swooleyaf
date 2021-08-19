@@ -8,19 +8,22 @@
 
 namespace SyTrait\Validators;
 
+use SyConstant\Project;
+use SyTool\Tool;
+
 /**
  * Trait RequestRateTrait
- *
  * @package SyTrait\Validators
  */
 trait RequestRateTrait
 {
-    public function getClientId(): string
+    public function getRateNum(): int
     {
-        if (isset($_SERVER['HTTP_sy-client'])) {
-            return trim($_SERVER['HTTP_sy-client']);
+        $rateNum = trim(Tool::getArrayVal($_SERVER, 'HTTP_' . Project::DATA_KEY_REQUEST_RATE_HEADER, '0'));
+        if (ctype_digit($rateNum)) {
+            return (int)$rateNum;
         }
 
-        return '';
+        return 0;
     }
 }

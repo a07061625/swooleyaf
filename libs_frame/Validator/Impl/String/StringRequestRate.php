@@ -8,11 +8,9 @@
 
 namespace Validator\Impl\String;
 
-use DesignPatterns\Factories\CacheSimpleFactory;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\Validator\ValidatorException;
-use SyTool\Tool;
 use SyTrait\Validators\RequestRateTrait;
 use Validator\BaseValidator;
 use Validator\ValidatorService;
@@ -44,16 +42,9 @@ class StringRequestRate extends BaseValidator implements ValidatorService
      */
     public function validator($data, $compareData): string
     {
-        $clientId = $this->getClientId();
-        if (\strlen($clientId) > 0) {
-            $nowTime = Tool::getNowTime();
-            $tag = ($nowTime - $nowTime % 3) . $clientId . $_SERVER['SYKEY-MC'] . $_SERVER['SYKEY-CA'];
-            $cacheKey = Project::REDIS_PREFIX_REQUEST_RATE . md5($tag);
-            $cacheData = CacheSimpleFactory::getRedisInstance()->incr($cacheKey);
-            CacheSimpleFactory::getRedisInstance()->expire($cacheKey, 6);
-            if ($cacheData > $compareData) {
-                throw new ValidatorException('请求频率超过接口限制', ErrorCode::COMMON_SERVER_ERROR);
-            }
+        $rateNum = $this->getRateNum();
+        if (($rateNum > 0) && ($rateNum > $compareData)) {
+            throw new ValidatorException('请求频率超过接口限制', ErrorCode::COMMON_SERVER_ERROR);
         }
 
         return '';
