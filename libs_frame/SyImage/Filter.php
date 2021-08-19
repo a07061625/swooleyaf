@@ -121,10 +121,7 @@ class Filter
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getMimeType() : string
+    public function getMimeType(): string
     {
         return $this->mimeType;
     }
