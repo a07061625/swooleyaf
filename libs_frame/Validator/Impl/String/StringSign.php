@@ -5,6 +5,7 @@
  * Date: 2017-3-26
  * Time: 1:09
  */
+
 namespace Validator\Impl\String;
 
 use Request\RequestSign;
@@ -28,13 +29,12 @@ class StringSign extends BaseValidator implements ValidatorService
      * @param string $data
      * @param int    $compareData
      *
-     * @return string
-     *
      * @throws \SyException\Validator\SignException
      */
-    public function validator($data, $compareData) : string
+    public function validator($data, $compareData): string
     {
         RequestSign::checkSign();
+
         return '';
     }
 }

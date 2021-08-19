@@ -13,6 +13,7 @@ use SyTool\Tool;
 
 /**
  * Trait RequestRateTrait
+ *
  * @package SyTrait\Validators
  */
 trait RequestRateTrait
