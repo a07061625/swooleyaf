@@ -5,6 +5,7 @@
  * Date: 17-8-30
  * Time: 下午10:36
  */
+
 namespace SyImage;
 
 use SyConstant\ErrorCode;
@@ -18,7 +19,7 @@ class ImageImagick extends ImageBase
     /**
      * @var \Imagick
      */
-    private $image = null;
+    private $image;
 
     private $resizeMap = [
         SyInner::IMAGE_MIME_TYPE_GIF => 'resizeImageGif',
@@ -27,8 +28,9 @@ class ImageImagick extends ImageBase
     ];
 
     /**
-     * @param string $data 图片数据
+     * @param string $data     图片数据
      * @param string $dataType 数据类型 binary:二进制 base64:base64编码
+     *
      * @throws \SyException\Image\ImageException
      */
     public function __construct(string $data, string $dataType)
@@ -43,6 +45,7 @@ class ImageImagick extends ImageBase
             $this->image->stripImage();
         } catch (\Exception $e) {
             Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
+
             throw new ImageException('读取图片失败', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
     }
@@ -52,7 +55,7 @@ class ImageImagick extends ImageBase
      */
     public function __destruct()
     {
-        if (!is_null($this->image)) {
+        if (null !== $this->image) {
             $this->image->destroy();
         }
     }
@@ -64,8 +67,8 @@ class ImageImagick extends ImageBase
     public function resizeImage(int $width, int $height)
     {
         $funcName = Tool::getArrayVal($this->resizeMap, $this->mimeType, null);
-        if (!is_null($funcName)) {
-            $this->$funcName($width, $height);
+        if (null !== $funcName) {
+            $this->{$funcName}($width, $height);
         }
 
         return $this;
@@ -78,7 +81,7 @@ class ImageImagick extends ImageBase
         }
 
         $nowQuality = (int)($this->image->getImageCompressionQuality() * $quality / 100);
-        $this->quality = ($nowQuality == 0) ? 75 : $nowQuality;
+        $this->quality = (0 == $nowQuality) ? 75 : $nowQuality;
         $this->image->setImageCompressionQuality($this->quality);
 
         return $this;
@@ -87,7 +90,7 @@ class ImageImagick extends ImageBase
     public function addWaterTxt(string $txt, int $startX, int $startY, Font $font)
     {
         $fontTxt = trim($txt);
-        if (strlen($fontTxt) == 0) {
+        if (0 == \strlen($fontTxt)) {
             throw new ImageException('文本内容不能为空', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
 
@@ -103,7 +106,7 @@ class ImageImagick extends ImageBase
         $draw->setTextKerning(1);
         $draw->setTextEncoding('UTF-8');
         $draw->setGravity(\Imagick::GRAVITY_CENTER);
-        if ($this->mimeType == SyInner::IMAGE_MIME_TYPE_GIF) {
+        if (SyInner::IMAGE_MIME_TYPE_GIF == $this->mimeType) {
             foreach ($this->image as $frame) {
                 $frame->annotateImage($draw, $startX, $startY, 0, $fontTxt);
             }
@@ -127,8 +130,8 @@ class ImageImagick extends ImageBase
         $draw = new \ImagickDraw();
         $draw->composite($water->getImageCompose(), $startX, $startY, $imageInfo[0], $imageInfo[1], $water);
         $water->destroy();
-        
-        if ($this->mimeType == SyInner::IMAGE_MIME_TYPE_GIF) {
+
+        if (SyInner::IMAGE_MIME_TYPE_GIF == $this->mimeType) {
             $canvas = new \Imagick();
             $images = $this->image->coalesceImages();
             foreach ($images as $frame) {
@@ -164,18 +167,18 @@ class ImageImagick extends ImageBase
             throw new ImageException('目录不存在', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
 
-        if ($this->mimeType == SyInner::IMAGE_MIME_TYPE_JPEG) {
+        if (SyInner::IMAGE_MIME_TYPE_JPEG == $this->mimeType) {
             $this->image->setImageFormat('jpeg');
             $this->image->setImageCompression(\Imagick::COMPRESSION_JPEG);
-        } elseif ($this->mimeType == SyInner::IMAGE_MIME_TYPE_PNG) {
+        } elseif (SyInner::IMAGE_MIME_TYPE_PNG == $this->mimeType) {
             $this->image->setImageFormat('png');
             $this->image->setImageCompression(\Imagick::COMPRESSION_LZW);
         }
 
         $fileName = $namePrefix . Tool::createNonceStr(6) . Tool::getNowTime()
                     . '_' . $this->width . '_' . $this->height . '.' . $this->ext;
-        $fullFileName = substr($path, -1) == '/' ? $path . $fileName : $path . '/' . $fileName;
-        if ($this->mimeType == SyInner::IMAGE_MIME_TYPE_GIF) {
+        $fullFileName = '/' == substr($path, -1) ? $path . $fileName : $path . '/' . $fileName;
+        if (SyInner::IMAGE_MIME_TYPE_GIF == $this->mimeType) {
             $writeRes = $this->image->writeImages($fullFileName, true);
         } else {
             $writeRes = $this->image->writeImage($fullFileName);
