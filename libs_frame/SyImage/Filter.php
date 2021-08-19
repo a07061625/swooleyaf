@@ -122,6 +122,14 @@ class Filter
     }
 
     /**
+     * @return string
+     */
+    public function getMimeType() : string
+    {
+        return $this->mimeType;
+    }
+
+    /**
      * 图片模糊
      *
      * @param int $blur 模糊度,0到100,数值越大越模糊
