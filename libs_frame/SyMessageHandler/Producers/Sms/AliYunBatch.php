@@ -5,6 +5,7 @@
  * Date: 2020/6/23 0023
  * Time: 15:07
  */
+
 namespace SyMessageHandler\Producers\Sms;
 
 use DesignPatterns\Singletons\SmsConfigSingleton;
@@ -14,6 +15,7 @@ use SyMessageHandler\Producers\BaseSms;
 
 /**
  * Class AliYunBatch
+ *
  * @package SyMessageHandler\Producers\Sms
  */
 class AliYunBatch extends BaseSms implements IProducer
@@ -35,16 +37,18 @@ class AliYunBatch extends BaseSms implements IProducer
     {
     }
 
-    private function checkTemplateSign(array $data) : string
+    private function checkTemplateSign(array $data): string
     {
         $templateSign = $data['template_sign'] ?? [];
-        if (!is_array($templateSign)) {
+        if (!\is_array($templateSign)) {
             return '模板签名不合法';
-        } elseif (empty($templateSign)) {
+        }
+        if (empty($templateSign)) {
             return '模板签名不能为空';
         }
 
         $this->msgData['template_sign'] = $templateSign;
+
         return '';
     }
 }
