@@ -5,6 +5,7 @@
  * Date: 2020/6/23 0023
  * Time: 15:07
  */
+
 namespace SyMessageHandler\Producers\Voice;
 
 use DesignPatterns\Singletons\VmsConfigSingleton;
