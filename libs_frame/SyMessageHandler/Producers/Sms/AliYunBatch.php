@@ -21,7 +21,7 @@ class AliYunBatch extends BaseSms implements IProducer
     public function __construct()
     {
         parent::__construct(ProjectBase::MESSAGE_HANDLER_TYPE_SMS_ALIYUN_BATCH);
-        $this->msgData['app_id'] = SmsConfigSingleton::getInstance()->getAliYunConfig()->getAppKey();
+        $this->msgData['app_id'] = SmsConfigSingleton::getInstance()->getAliYunKey();
         $this->checkMap = [
             1 => 'checkSendTime',
             2 => 'checkReceivers',
