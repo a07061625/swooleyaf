@@ -1,22 +1,25 @@
 <?php
+
 namespace SyAliPay\Account\Instfund;
 
 /**
  * ALIPAY API: alipay.account.instfund.account.sync request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020-07-06 11:21:20
  */
 class AccountSyncRequest
 {
     /**
      * 机构资金管理账户同步
-     **/
+     */
     private $bizContent;
     private $apiParas = [];
     private $terminalType;
     private $terminalInfo;
     private $prodCode;
-    private $apiVersion = "1.0";
+    private $apiVersion = '1.0';
     private $notifyUrl;
     private $returnUrl;
     private $needEncrypt = false;
@@ -24,7 +27,7 @@ class AccountSyncRequest
     public function setBizContent($bizContent)
     {
         $this->bizContent = $bizContent;
-        $this->apiParas["biz_content"] = $bizContent;
+        $this->apiParas['biz_content'] = $bizContent;
     }
 
     public function getBizContent()
@@ -34,7 +37,7 @@ class AccountSyncRequest
 
     public function getApiMethodName()
     {
-        return "alipay.account.instfund.account.sync";
+        return 'alipay.account.instfund.account.sync';
     }
 
     public function setNotifyUrl($notifyUrl)
@@ -104,7 +107,6 @@ class AccountSyncRequest
 
     public function setNeedEncrypt($needEncrypt)
     {
-
         $this->needEncrypt = $needEncrypt;
     }
 

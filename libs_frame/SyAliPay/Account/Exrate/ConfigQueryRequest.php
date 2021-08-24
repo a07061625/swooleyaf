@@ -1,22 +1,25 @@
 <?php
+
 namespace SyAliPay\Account\Exrate;
 
 /**
  * ALIPAY API: alipay.account.exrate.config.query request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021-03-12 19:52:33
  */
 class ConfigQueryRequest
 {
     /**
      * 主站配置查询接口
-     **/
+     */
     private $bizContent;
     private $apiParas = [];
     private $terminalType;
     private $terminalInfo;
     private $prodCode;
-    private $apiVersion = "1.0";
+    private $apiVersion = '1.0';
     private $notifyUrl;
     private $returnUrl;
     private $needEncrypt = false;
@@ -24,7 +27,7 @@ class ConfigQueryRequest
     public function setBizContent($bizContent)
     {
         $this->bizContent = $bizContent;
-        $this->apiParas["biz_content"] = $bizContent;
+        $this->apiParas['biz_content'] = $bizContent;
     }
 
     public function getBizContent()
@@ -34,7 +37,7 @@ class ConfigQueryRequest
 
     public function getApiMethodName()
     {
-        return "alipay.account.exrate.config.query";
+        return 'alipay.account.exrate.config.query';
     }
 
     public function setNotifyUrl($notifyUrl)
@@ -104,7 +107,6 @@ class ConfigQueryRequest
 
     public function setNeedEncrypt($needEncrypt)
     {
-
         $this->needEncrypt = $needEncrypt;
     }
 

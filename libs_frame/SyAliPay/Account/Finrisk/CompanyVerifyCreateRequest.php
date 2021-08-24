@@ -1,22 +1,25 @@
 <?php
+
 namespace SyAliPay\Account\Finrisk;
 
 /**
  * ALIPAY API: alipay.account.finrisk.company.verify.create request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021-04-12 12:04:04
  */
 class CompanyVerifyCreateRequest
 {
     /**
      * 商户验证受理接口
-     **/
+     */
     private $bizContent;
     private $apiParas = [];
     private $terminalType;
     private $terminalInfo;
     private $prodCode;
-    private $apiVersion = "1.0";
+    private $apiVersion = '1.0';
     private $notifyUrl;
     private $returnUrl;
     private $needEncrypt = false;
@@ -24,7 +27,7 @@ class CompanyVerifyCreateRequest
     public function setBizContent($bizContent)
     {
         $this->bizContent = $bizContent;
-        $this->apiParas["biz_content"] = $bizContent;
+        $this->apiParas['biz_content'] = $bizContent;
     }
 
     public function getBizContent()
@@ -34,7 +37,7 @@ class CompanyVerifyCreateRequest
 
     public function getApiMethodName()
     {
-        return "alipay.account.finrisk.company.verify.create";
+        return 'alipay.account.finrisk.company.verify.create';
     }
 
     public function setNotifyUrl($notifyUrl)
@@ -104,7 +107,6 @@ class CompanyVerifyCreateRequest
 
     public function setNeedEncrypt($needEncrypt)
     {
-
         $this->needEncrypt = $needEncrypt;
     }
 

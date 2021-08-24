@@ -1,22 +1,25 @@
 <?php
+
 namespace SyAliPay\Account\Exrate;
 
 /**
  * ALIPAY API: alipay.account.exrate.ratequery request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019-01-07 20:51:15
  */
 class RatequeryRequest
 {
     /**
      * 对于部分签约境内当面付的商家，为了能够在境外进行推广，因此需要汇率进行币种之间的转换，本接口提供此业务场景下的汇率查询服务
-     **/
+     */
     private $bizContent;
     private $apiParas = [];
     private $terminalType;
     private $terminalInfo;
     private $prodCode;
-    private $apiVersion = "1.0";
+    private $apiVersion = '1.0';
     private $notifyUrl;
     private $returnUrl;
     private $needEncrypt = false;
@@ -24,7 +27,7 @@ class RatequeryRequest
     public function setBizContent($bizContent)
     {
         $this->bizContent = $bizContent;
-        $this->apiParas["biz_content"] = $bizContent;
+        $this->apiParas['biz_content'] = $bizContent;
     }
 
     public function getBizContent()
@@ -34,7 +37,7 @@ class RatequeryRequest
 
     public function getApiMethodName()
     {
-        return "alipay.account.exrate.ratequery";
+        return 'alipay.account.exrate.ratequery';
     }
 
     public function setNotifyUrl($notifyUrl)
@@ -104,7 +107,6 @@ class RatequeryRequest
 
     public function setNeedEncrypt($needEncrypt)
     {
-
         $this->needEncrypt = $needEncrypt;
     }
 

@@ -1,22 +1,25 @@
 <?php
+
 namespace SyAliPay\Account\Exrate;
 
 /**
  * ALIPAY API: alipay.account.exrate.traderequest.create request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019-01-07 20:51:15
  */
 class TraderequestCreateRequest
 {
     /**
      * 受理外汇交易请求
-     **/
+     */
     private $bizContent;
     private $apiParas = [];
     private $terminalType;
     private $terminalInfo;
     private $prodCode;
-    private $apiVersion = "1.0";
+    private $apiVersion = '1.0';
     private $notifyUrl;
     private $returnUrl;
     private $needEncrypt = false;
@@ -24,7 +27,7 @@ class TraderequestCreateRequest
     public function setBizContent($bizContent)
     {
         $this->bizContent = $bizContent;
-        $this->apiParas["biz_content"] = $bizContent;
+        $this->apiParas['biz_content'] = $bizContent;
     }
 
     public function getBizContent()
@@ -34,7 +37,7 @@ class TraderequestCreateRequest
 
     public function getApiMethodName()
     {
-        return "alipay.account.exrate.traderequest.create";
+        return 'alipay.account.exrate.traderequest.create';
     }
 
     public function setNotifyUrl($notifyUrl)
@@ -104,7 +107,6 @@ class TraderequestCreateRequest
 
     public function setNeedEncrypt($needEncrypt)
     {
-
         $this->needEncrypt = $needEncrypt;
     }
 
