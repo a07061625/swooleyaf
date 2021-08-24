@@ -1,12 +1,9 @@
 <?php
-
 namespace SyAliPay;
 
 /**
  * 多媒体文件客户端
- *
  * @author yuanwai.wang
- *
  * @version $Id: SyAliPay\AlipayMobilePublicMultiMediaExecute.php, v 0.1 Aug 15, 2014 10:19:01 AM yuanwai.wang Exp $
  */
 class MobilePublicMultiMediaExecute
@@ -16,11 +13,13 @@ class MobilePublicMultiMediaExecute
     private $body = '';
     private $params = '';
     private $fileSuffix = [
-        'image/jpeg' => 'jpg',
-        'text/plain' => 'text',
+        "image/jpeg" => 'jpg',
+        "text/plain" => 'text',
     ];
 
-    // @$header : 头部
+    /*
+     * @$header : 头部
+     * */
     public function __construct($header, $body, $httpCode)
     {
         $this->code = $httpCode;
@@ -95,7 +94,6 @@ class MobilePublicMultiMediaExecute
 
     /**
      * 获取参数
-     *
      * @return string
      */
     public function getParams()

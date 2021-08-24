@@ -1,5 +1,4 @@
 <?php
-
 namespace SyAliPay;
 
 /**
@@ -10,6 +9,6 @@ namespace SyAliPay;
  */
 class SignData
 {
-    public $signSourceData;
-    public $sign;
+    public $signSourceData = null;
+    public $sign = null;
 }

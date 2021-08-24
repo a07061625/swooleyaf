@@ -5,14 +5,12 @@
  * Date: 2021/8/23 0023
  * Time: 16:25
  */
-
 namespace SyAliPay;
 
 use SyTrait\SimpleTrait;
 
 /**
  * Class AopEncrypt
- *
  * @package SyAliPay
  */
 class AopEncrypt
@@ -21,9 +19,8 @@ class AopEncrypt
 
     /**
      * 加密方法
-     *
+     * @param string $str
      * @param $secretKey
-     *
      * @return string
      */
     public static function encrypt(string $str, $secretKey)
@@ -43,9 +40,8 @@ class AopEncrypt
 
     /**
      * 解密方法
-     *
+     * @param string $str
      * @param $secretKey
-     *
      * @return string
      */
     public static function decrypt(string $str, $secretKey)
@@ -63,7 +59,7 @@ class AopEncrypt
 
     /**
      * 填充算法
-     *
+     * @param string $source
      * @return string
      */
     private static function addPKCS7Padding(string $source)
@@ -71,9 +67,9 @@ class AopEncrypt
         $source = trim($source);
         $block = 16;
 
-        $pad = $block - (\strlen($source) % $block);
+        $pad = $block - (strlen($source) % $block);
         if ($pad <= $block) {
-            $char = \chr($pad);
+            $char = chr($pad);
             $source .= str_repeat($char, $pad);
         }
 
@@ -82,17 +78,17 @@ class AopEncrypt
 
     /**
      * 移去填充算法
-     *
+     * @param string $source
      * @return string
      */
     private static function stripPKSC7Padding(string $source)
     {
-        $char = substr($source, -1);
-        $num = \ord($char);
-        if (62 == $num) {
+        $char = substr($source, - 1);
+        $num = ord($char);
+        if ($num == 62) {
             return $source;
         }
 
-        return substr($source, 0, -$num);
+        return substr($source, 0, - $num);
     }
 }
