@@ -1,22 +1,25 @@
 <?php
+
 namespace SyAliPay\Account\Cashpool;
 
 /**
  * ALIPAY API: alipay.account.cashpool.allocaterule.pay request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020-07-06 11:21:20
  */
 class AllocaterulePayRequest
 {
     /**
      * 资金池调拨规则强制执行
-     **/
+     */
     private $bizContent;
     private $apiParas = [];
     private $terminalType;
     private $terminalInfo;
     private $prodCode;
-    private $apiVersion = "1.0";
+    private $apiVersion = '1.0';
     private $notifyUrl;
     private $returnUrl;
     private $needEncrypt = false;
@@ -24,7 +27,7 @@ class AllocaterulePayRequest
     public function setBizContent($bizContent)
     {
         $this->bizContent = $bizContent;
-        $this->apiParas["biz_content"] = $bizContent;
+        $this->apiParas['biz_content'] = $bizContent;
     }
 
     public function getBizContent()
@@ -34,7 +37,7 @@ class AllocaterulePayRequest
 
     public function getApiMethodName()
     {
-        return "alipay.account.cashpool.allocaterule.pay";
+        return 'alipay.account.cashpool.allocaterule.pay';
     }
 
     public function setNotifyUrl($notifyUrl)
@@ -104,7 +107,6 @@ class AllocaterulePayRequest
 
     public function setNeedEncrypt($needEncrypt)
     {
-
         $this->needEncrypt = $needEncrypt;
     }
 

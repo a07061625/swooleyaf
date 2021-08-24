@@ -1,22 +1,25 @@
 <?php
+
 namespace SyAliPay\Account\Exrate;
 
 /**
  * ALIPAY API: alipay.account.exrate.rate.sync request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021-06-10 11:36:34
  */
 class RateSyncRequest
 {
     /**
      * 汇率openapi通用操作接口
-     **/
+     */
     private $bizContent;
     private $apiParas = [];
     private $terminalType;
     private $terminalInfo;
     private $prodCode;
-    private $apiVersion = "1.0";
+    private $apiVersion = '1.0';
     private $notifyUrl;
     private $returnUrl;
     private $needEncrypt = false;
@@ -24,7 +27,7 @@ class RateSyncRequest
     public function setBizContent($bizContent)
     {
         $this->bizContent = $bizContent;
-        $this->apiParas["biz_content"] = $bizContent;
+        $this->apiParas['biz_content'] = $bizContent;
     }
 
     public function getBizContent()
@@ -34,7 +37,7 @@ class RateSyncRequest
 
     public function getApiMethodName()
     {
-        return "alipay.account.exrate.rate.sync";
+        return 'alipay.account.exrate.rate.sync';
     }
 
     public function setNotifyUrl($notifyUrl)
@@ -104,7 +107,6 @@ class RateSyncRequest
 
     public function setNeedEncrypt($needEncrypt)
     {
-
         $this->needEncrypt = $needEncrypt;
     }
 

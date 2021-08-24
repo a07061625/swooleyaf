@@ -1,22 +1,25 @@
 <?php
+
 namespace SyAliPay\Account\Clearingcenter;
 
 /**
  * ALIPAY API: alipay.account.clearingcenter.payoff.modify request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020-06-28 09:59:12
  */
 class PayoffModifyRequest
 {
     /**
      * 修改待解付登记薄
-     **/
+     */
     private $bizContent;
     private $apiParas = [];
     private $terminalType;
     private $terminalInfo;
     private $prodCode;
-    private $apiVersion = "1.0";
+    private $apiVersion = '1.0';
     private $notifyUrl;
     private $returnUrl;
     private $needEncrypt = false;
@@ -24,7 +27,7 @@ class PayoffModifyRequest
     public function setBizContent($bizContent)
     {
         $this->bizContent = $bizContent;
-        $this->apiParas["biz_content"] = $bizContent;
+        $this->apiParas['biz_content'] = $bizContent;
     }
 
     public function getBizContent()
@@ -34,7 +37,7 @@ class PayoffModifyRequest
 
     public function getApiMethodName()
     {
-        return "alipay.account.clearingcenter.payoff.modify";
+        return 'alipay.account.clearingcenter.payoff.modify';
     }
 
     public function setNotifyUrl($notifyUrl)
@@ -104,7 +107,6 @@ class PayoffModifyRequest
 
     public function setNeedEncrypt($needEncrypt)
     {
-
         $this->needEncrypt = $needEncrypt;
     }
 

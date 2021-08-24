@@ -1,22 +1,25 @@
 <?php
+
 namespace SyAliPay\Account\Finrisk;
 
 /**
  * ALIPAY API: alipay.account.finrisk.markrisk.datafactor.query request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019-07-25 11:38:03
  */
 class MarkriskDatafactorQueryRequest
 {
     /**
      * 市场风险平台风险因子计算
-     **/
+     */
     private $bizContent;
     private $apiParas = [];
     private $terminalType;
     private $terminalInfo;
     private $prodCode;
-    private $apiVersion = "1.0";
+    private $apiVersion = '1.0';
     private $notifyUrl;
     private $returnUrl;
     private $needEncrypt = false;
@@ -24,7 +27,7 @@ class MarkriskDatafactorQueryRequest
     public function setBizContent($bizContent)
     {
         $this->bizContent = $bizContent;
-        $this->apiParas["biz_content"] = $bizContent;
+        $this->apiParas['biz_content'] = $bizContent;
     }
 
     public function getBizContent()
@@ -34,7 +37,7 @@ class MarkriskDatafactorQueryRequest
 
     public function getApiMethodName()
     {
-        return "alipay.account.finrisk.markrisk.datafactor.query";
+        return 'alipay.account.finrisk.markrisk.datafactor.query';
     }
 
     public function setNotifyUrl($notifyUrl)
@@ -104,7 +107,6 @@ class MarkriskDatafactorQueryRequest
 
     public function setNeedEncrypt($needEncrypt)
     {
-
         $this->needEncrypt = $needEncrypt;
     }
 

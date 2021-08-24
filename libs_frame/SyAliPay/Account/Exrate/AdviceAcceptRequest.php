@@ -1,22 +1,25 @@
 <?php
+
 namespace SyAliPay\Account\Exrate;
 
 /**
  * ALIPAY API: alipay.account.exrate.advice.accept request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019-01-07 20:51:15
  */
 class AdviceAcceptRequest
 {
     /**
      * 标准的兑换交易受理接口
-     **/
+     */
     private $bizContent;
     private $apiParas = [];
     private $terminalType;
     private $terminalInfo;
     private $prodCode;
-    private $apiVersion = "1.0";
+    private $apiVersion = '1.0';
     private $notifyUrl;
     private $returnUrl;
     private $needEncrypt = false;
@@ -24,7 +27,7 @@ class AdviceAcceptRequest
     public function setBizContent($bizContent)
     {
         $this->bizContent = $bizContent;
-        $this->apiParas["biz_content"] = $bizContent;
+        $this->apiParas['biz_content'] = $bizContent;
     }
 
     public function getBizContent()
@@ -34,7 +37,7 @@ class AdviceAcceptRequest
 
     public function getApiMethodName()
     {
-        return "alipay.account.exrate.advice.accept";
+        return 'alipay.account.exrate.advice.accept';
     }
 
     public function setNotifyUrl($notifyUrl)
@@ -104,7 +107,6 @@ class AdviceAcceptRequest
 
     public function setNeedEncrypt($needEncrypt)
     {
-
         $this->needEncrypt = $needEncrypt;
     }
 
