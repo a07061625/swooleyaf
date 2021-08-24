@@ -1,22 +1,25 @@
 <?php
+
 namespace SyAliPay\Account\Exrate;
 
 /**
  * ALIPAY API: alipay.account.exrate.allclientrate.query request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019-09-27 17:03:52
  */
 class AllclientrateQueryRequest
 {
     /**
      * 查询客户的所有币种对最新有效汇率
-     **/
+     */
     private $bizContent;
     private $apiParas = [];
     private $terminalType;
     private $terminalInfo;
     private $prodCode;
-    private $apiVersion = "1.0";
+    private $apiVersion = '1.0';
     private $notifyUrl;
     private $returnUrl;
     private $needEncrypt = false;
@@ -24,7 +27,7 @@ class AllclientrateQueryRequest
     public function setBizContent($bizContent)
     {
         $this->bizContent = $bizContent;
-        $this->apiParas["biz_content"] = $bizContent;
+        $this->apiParas['biz_content'] = $bizContent;
     }
 
     public function getBizContent()
@@ -34,7 +37,7 @@ class AllclientrateQueryRequest
 
     public function getApiMethodName()
     {
-        return "alipay.account.exrate.allclientrate.query";
+        return 'alipay.account.exrate.allclientrate.query';
     }
 
     public function setNotifyUrl($notifyUrl)
@@ -104,7 +107,6 @@ class AllclientrateQueryRequest
 
     public function setNeedEncrypt($needEncrypt)
     {
-
         $this->needEncrypt = $needEncrypt;
     }
 

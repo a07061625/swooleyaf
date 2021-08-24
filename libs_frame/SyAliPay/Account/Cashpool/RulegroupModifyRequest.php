@@ -1,22 +1,25 @@
 <?php
+
 namespace SyAliPay\Account\Cashpool;
 
 /**
  * ALIPAY API: alipay.account.cashpool.rulegroup.modify request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020-07-06 11:21:20
  */
 class RulegroupModifyRequest
 {
     /**
      * 资金池规则组修改
-     **/
+     */
     private $bizContent;
     private $apiParas = [];
     private $terminalType;
     private $terminalInfo;
     private $prodCode;
-    private $apiVersion = "1.0";
+    private $apiVersion = '1.0';
     private $notifyUrl;
     private $returnUrl;
     private $needEncrypt = false;
@@ -24,7 +27,7 @@ class RulegroupModifyRequest
     public function setBizContent($bizContent)
     {
         $this->bizContent = $bizContent;
-        $this->apiParas["biz_content"] = $bizContent;
+        $this->apiParas['biz_content'] = $bizContent;
     }
 
     public function getBizContent()
@@ -34,7 +37,7 @@ class RulegroupModifyRequest
 
     public function getApiMethodName()
     {
-        return "alipay.account.cashpool.rulegroup.modify";
+        return 'alipay.account.cashpool.rulegroup.modify';
     }
 
     public function setNotifyUrl($notifyUrl)
@@ -104,7 +107,6 @@ class RulegroupModifyRequest
 
     public function setNeedEncrypt($needEncrypt)
     {
-
         $this->needEncrypt = $needEncrypt;
     }
 

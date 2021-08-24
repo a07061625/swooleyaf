@@ -1,22 +1,25 @@
 <?php
+
 namespace SyAliPay\Account\Instfund;
 
 /**
  * ALIPAY API: alipay.account.instfund.withdraw.apply request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021-07-13 10:41:55
  */
 class WithdrawApplyRequest
 {
     /**
      * 资金指令门面
-     **/
+     */
     private $bizContent;
     private $apiParas = [];
     private $terminalType;
     private $terminalInfo;
     private $prodCode;
-    private $apiVersion = "1.0";
+    private $apiVersion = '1.0';
     private $notifyUrl;
     private $returnUrl;
     private $needEncrypt = false;
@@ -24,7 +27,7 @@ class WithdrawApplyRequest
     public function setBizContent($bizContent)
     {
         $this->bizContent = $bizContent;
-        $this->apiParas["biz_content"] = $bizContent;
+        $this->apiParas['biz_content'] = $bizContent;
     }
 
     public function getBizContent()
@@ -34,7 +37,7 @@ class WithdrawApplyRequest
 
     public function getApiMethodName()
     {
-        return "alipay.account.instfund.withdraw.apply";
+        return 'alipay.account.instfund.withdraw.apply';
     }
 
     public function setNotifyUrl($notifyUrl)
@@ -104,7 +107,6 @@ class WithdrawApplyRequest
 
     public function setNeedEncrypt($needEncrypt)
     {
-
         $this->needEncrypt = $needEncrypt;
     }
 

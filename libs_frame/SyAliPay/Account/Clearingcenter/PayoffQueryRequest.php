@@ -1,22 +1,25 @@
 <?php
+
 namespace SyAliPay\Account\Clearingcenter;
 
 /**
  * ALIPAY API: alipay.account.clearingcenter.payoff.query request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020-06-28 09:59:20
  */
 class PayoffQueryRequest
 {
     /**
      * 查询解付登记薄信息
-     **/
+     */
     private $bizContent;
     private $apiParas = [];
     private $terminalType;
     private $terminalInfo;
     private $prodCode;
-    private $apiVersion = "1.0";
+    private $apiVersion = '1.0';
     private $notifyUrl;
     private $returnUrl;
     private $needEncrypt = false;
@@ -24,7 +27,7 @@ class PayoffQueryRequest
     public function setBizContent($bizContent)
     {
         $this->bizContent = $bizContent;
-        $this->apiParas["biz_content"] = $bizContent;
+        $this->apiParas['biz_content'] = $bizContent;
     }
 
     public function getBizContent()
@@ -34,7 +37,7 @@ class PayoffQueryRequest
 
     public function getApiMethodName()
     {
-        return "alipay.account.clearingcenter.payoff.query";
+        return 'alipay.account.clearingcenter.payoff.query';
     }
 
     public function setNotifyUrl($notifyUrl)
@@ -104,7 +107,6 @@ class PayoffQueryRequest
 
     public function setNeedEncrypt($needEncrypt)
     {
-
         $this->needEncrypt = $needEncrypt;
     }
 

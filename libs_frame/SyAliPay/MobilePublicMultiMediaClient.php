@@ -1,18 +1,21 @@
 <?php
 /**
  * 多媒体文件客户端
+ *
  * @author yikai.hu
+ *
  * @version $Id: SyAliPay\AlipayMobilePublicMultiMediaClient.php, v 0.1 Aug 15, 2014 10:19:01 AM yikai.hu Exp $
  */
+
 namespace SyAliPay;
 
 class MobilePublicMultiMediaClient
 {
     private $DEFAULT_CHARSET = 'UTF-8';
-    private $METHOD_POST = "POST";
-    private $METHOD_GET = "GET";
+    private $METHOD_POST = 'POST';
+    private $METHOD_GET = 'GET';
     private $SIGN = 'sign'; //get name
-    private $timeout = 10;// 超时时间
+    private $timeout = 10; // 超时时间
     private $serverUrl;
     private $appId;
     private $privateKey;
@@ -20,9 +23,9 @@ class MobilePublicMultiMediaClient
     private $format = 'json';
     private $sign_type = 'RSA';
     private $charset;
-    private $apiVersion = "1.0";
-    private $apiMethodName = "alipay.mobile.public.multimedia.download";
-    private $media_id = "L21pZnMvVDFQV3hYWGJKWFhYYUNucHJYP3Q9YW13ZiZ4c2lnPTU0MzRhYjg1ZTZjNWJmZTMxZGJiNjIzNDdjMzFkNzkw575";
+    private $apiVersion = '1.0';
+    private $apiMethodName = 'alipay.mobile.public.multimedia.download';
+    private $media_id = 'L21pZnMvVDFQV3hYWGJKWFhYYUNucHJYP3Q9YW13ZiZ4c2lnPTU0MzRhYjg1ZTZjNWJmZTMxZGJiNjIzNDdjMzFkNzkw575';
     //此处写死的，实际开发中，请传入
 
     private $connectTimeout = 3000;
@@ -39,18 +42,19 @@ class MobilePublicMultiMediaClient
 
     /**
      * getContents 获取网址内容
+     *
      * @return \SyAliPay\MobilePublicMultiMediaExecute
      */
     public function getContents()
     {
         $datas = [
-            "app_id" => $this->appId,
-            "method" => $this->METHOD_POST,
-            "sign_type" => $this->sign_type,
-            "version" => $this->apiVersion,
-            "timestamp" => date('Y-m-d H:i:s'),//yyyy-MM-dd HH:mm:ss
-            "biz_content" => '{"mediaId":"' . $this->media_id . '"}',
-            "charset" => $this->charset,
+            'app_id' => $this->appId,
+            'method' => $this->METHOD_POST,
+            'sign_type' => $this->sign_type,
+            'version' => $this->apiVersion,
+            'timestamp' => date('Y-m-d H:i:s'), //yyyy-MM-dd HH:mm:ss
+            'biz_content' => '{"mediaId":"' . $this->media_id . '"}',
+            'charset' => $this->charset,
         ];
 
         //要提交的数据
@@ -66,7 +70,7 @@ class MobilePublicMultiMediaClient
         //超时时间
         curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
 
-        if ($this->METHOD_POST == 'POST') {
+        if ('POST' == $this->METHOD_POST) {
             // post数据
             curl_setopt($ch, CURLOPT_POST, 1);
             // post的变量
@@ -80,7 +84,7 @@ class MobilePublicMultiMediaClient
         $datas = explode("\r\n\r\n", $output, 2);
         $header = $datas[0];
 
-        if ($httpCode == '200') {
+        if ('200' == $httpCode) {
             $body = $datas[1];
         } else {
             $body = '';
@@ -91,6 +95,10 @@ class MobilePublicMultiMediaClient
 
     /**
      * @return \SyAliPay\MobilePublicMultiMediaExecute
+     *
+     * @param mixed $header
+     * @param mixed $body
+     * @param mixed $httpCode
      */
     public function execute($header = '', $body = '', $httpCode = '')
     {
@@ -99,7 +107,7 @@ class MobilePublicMultiMediaClient
 
     public function buildGetUrl($query = [])
     {
-        if (!is_array($query)) {
+        if (!\is_array($query)) {
             //exit;
         }
         //排序参数，
@@ -117,11 +125,11 @@ class MobilePublicMultiMediaClient
             $i = 0;
             while ($key_str = substr($privateKey, $i * $key_width, $key_width)) {
                 $p_key[] = $key_str;
-                $i ++;
+                ++$i;
             }
-        } else {
-            //echo '一行？';
         }
+        //echo '一行？';
+
         $privateKey = "-----BEGIN RSA PRIVATE KEY-----\n" . implode("\n", $p_key);
         $privateKey = $privateKey . "\n-----END RSA PRIVATE KEY-----";
 
@@ -131,7 +139,7 @@ class MobilePublicMultiMediaClient
         // 签名
         $signature = '';
 
-        if ("RSA2" == $this->sign_type) {
+        if ('RSA2' == $this->sign_type) {
             openssl_sign($data, $signature, $private_id, OPENSSL_ALGO_SHA256);
         } else {
             openssl_sign($data, $signature, $private_id, OPENSSL_ALGO_SHA1);
@@ -149,13 +157,11 @@ class MobilePublicMultiMediaClient
         return $data . '&' . $this->SIGN . '=' . $signature;
     }
 
-    /*
-     * 查询参数排序 a-z
-     * */
+    // 查询参数排序 a-z
     public function buildQuery($query)
     {
         if (!$query) {
-            return null;
+            return;
         }
         //将要 参数 排序
         ksort($query);
