@@ -895,6 +895,11 @@ class ProjectBase
      */
     const REGEX_WX_OPEN_ID = '/^[0-9a-zA-Z\-\_]{28}$/';
 
+    /**
+     * 支付包-分隔符-证书结尾
+     */
+    const ALIPAY_SEPARATOR_CERT_END = '-----END CERTIFICATE-----';
+
     public static $totalLangType = [
         self::LANG_TYPE_ZH => '中文',
         self::LANG_TYPE_EN => '英文',
