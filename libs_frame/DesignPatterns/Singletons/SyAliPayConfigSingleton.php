@@ -5,6 +5,7 @@
  * Date: 2017/6/17 0017
  * Time: 19:15
  */
+
 namespace DesignPatterns\Singletons;
 
 use SyAliPay\AopClient;
@@ -22,11 +23,13 @@ class SyAliPayConfigSingleton
 
     /**
      * 客户端列表
+     *
      * @var array
      */
     private $clients = [];
     /**
      * 客户端清理时间戳
+     *
      * @var int
      */
     private $clientClearTime = 0;
@@ -40,7 +43,7 @@ class SyAliPayConfigSingleton
      */
     public static function getInstance()
     {
-        if (is_null(self::$instance)) {
+        if (null === self::$instance) {
             self::$instance = new self();
         }
 
@@ -49,24 +52,22 @@ class SyAliPayConfigSingleton
 
     /**
      * 获取所有的客户端列表
-     * @return array
      */
-    public function getClients() : array
+    public function getClients(): array
     {
         return $this->clients;
     }
 
     /**
      * 获取客户端
-     * @param string $appId
-     * @return \SyAliPay\AopClient|null
+     *
      * @throws \SyException\AliPay\AliPayPayException
      */
-    public function getClient(string $appId) : ?AopClient
+    public function getClient(string $appId): ?AopClient
     {
         $nowTime = Tool::getNowTime();
         $payConfig = $this->getLocalClient($appId);
-        if (is_null($payConfig)) {
+        if (null === $payConfig) {
             $payConfig = $this->refreshClient($appId);
         } elseif ($payConfig->getSyExpireTime() < $nowTime) {
             $payConfig = $this->refreshClient($appId);
@@ -74,14 +75,13 @@ class SyAliPayConfigSingleton
 
         if ($payConfig->isSyValid()) {
             return $payConfig;
-        } else {
-            throw new AliPayPayException('客户端不存在', ErrorCode::ALIPAY_PARAM_ERROR);
         }
+
+        throw new AliPayPayException('客户端不存在', ErrorCode::ALIPAY_PARAM_ERROR);
     }
 
     /**
      * 移除客户端
-     * @param string $appId
      */
     public function removeClient(string $appId)
     {
@@ -90,10 +90,8 @@ class SyAliPayConfigSingleton
 
     /**
      * 获取本地支付配置
-     * @param string $appId
-     * @return \SyAliPay\AopClient|null
      */
-    private function getLocalClient(string $appId) : ?AopClient
+    private function getLocalClient(string $appId): ?AopClient
     {
         $nowTime = Tool::getNowTime();
         if ($this->clientClearTime < $nowTime) {

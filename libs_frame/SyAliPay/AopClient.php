@@ -2,11 +2,11 @@
 
 namespace SyAliPay;
 
+use function mb_convert_encoding;
+use function mb_detect_encoding;
 use SyConstant\ErrorCode;
 use SyException\Common\CheckException;
 use SyLog\Log;
-use function mb_convert_encoding;
-use function mb_detect_encoding;
 
 class AopClient
 {
@@ -47,39 +47,27 @@ class AopClient
     private $syExpireTime = 0;
     private $syValid = false;
 
-    /**
-     * @return int
-     */
-    public function getSyExpireTime() : int
+    public function getSyExpireTime(): int
     {
         return $this->syExpireTime;
     }
 
-    /**
-     * @param int $syExpireTime
-     */
     public function setSyExpireTime(int $syExpireTime)
     {
         $this->syExpireTime = $syExpireTime;
     }
 
-    /**
-     * @return bool
-     */
-    public function isSyValid() : bool
+    public function isSyValid(): bool
     {
         return $this->syValid;
     }
 
-    /**
-     * @param bool $syValid
-     */
     public function setSyValid(bool $syValid)
     {
         $this->syValid = $syValid;
     }
 
-    public function generateSign($params, $signType = 'RSA') : string
+    public function generateSign($params, $signType = 'RSA'): string
     {
         $params = array_filter($params);
         $params['sign_type'] = $signType;
@@ -87,12 +75,12 @@ class AopClient
         return $this->sign($this->getSignContent($params), $signType);
     }
 
-    public function rsaSign($params, $signType = 'RSA') : string
+    public function rsaSign($params, $signType = 'RSA'): string
     {
         return $this->sign($this->getSignContent($params), $signType);
     }
 
-    public function getSignContent($params) : string
+    public function getSignContent($params): string
     {
         ksort($params);
         unset($params['sign']);
@@ -119,7 +107,7 @@ class AopClient
     }
 
     //此方法对value做urlencode
-    public function getSignContentUrlencode($params) : string
+    public function getSignContentUrlencode($params): string
     {
         ksort($params);
 
@@ -146,18 +134,18 @@ class AopClient
 
     /**
      * RSA单独签名方法，未做字符串处理,字符串处理见getSignContent()
-     * @param string $data 待签名字符串
-     * @param string $privatekey 商户私钥，根据keyfromfile来判断是读取字符串还是读取文件，false:填写私钥字符串去回车和空格 true:填写私钥文件路径
-     * @param string $signType 签名方式，RSA:SHA1     RSA2:SHA256
-     * @param bool $keyfromfile 私钥获取方式，读取字符串还是读文件
-     * @return string
+     *
+     * @param string $data        待签名字符串
+     * @param string $privatekey  商户私钥，根据keyfromfile来判断是读取字符串还是读取文件，false:填写私钥字符串去回车和空格 true:填写私钥文件路径
+     * @param string $signType    签名方式，RSA:SHA1     RSA2:SHA256
+     * @param bool   $keyfromfile 私钥获取方式，读取字符串还是读文件
      */
     public function alonersaSign(
         string $data,
         string $privatekey,
         string $signType = 'RSA',
         bool $keyfromfile = false
-    ) : string {
+    ): string {
         if (!$keyfromfile) {
             $priKey = $privatekey;
             $res = "-----BEGIN RSA PRIVATE KEY-----\n"
@@ -185,8 +173,10 @@ class AopClient
 
     /**
      * 生成用于调用收银台SDK的字符串
-     * @param object $request SDK接口的请求参数对象
-     * @param string|null $appAuthToken 三方应用授权token
+     *
+     * @param object      $request      SDK接口的请求参数对象
+     * @param null|string $appAuthToken 三方应用授权token
+     *
      * @return string
      */
     public function sdkExecute(object $request, ?string $appAuthToken = null)
@@ -226,10 +216,13 @@ class AopClient
 
     /**
      * 页面提交执行方法
-     * @param object $request 跳转类接口的request
-     * @param string $httpmethod 提交方式,两个值可选：post、get;
-     * @param string|null $appAuthToken 三方应用授权token
+     *
+     * @param object      $request      跳转类接口的request
+     * @param string      $httpmethod   提交方式,两个值可选：post、get;
+     * @param null|string $appAuthToken 三方应用授权token
+     *
      * @return string 构建好的、签名后的最终跳转URL（GET）或String形式的form（POST）
+     *
      * @throws \Exception
      */
     public function pageExecute(object $request, string $httpmethod = 'POST', ?string $appAuthToken = null)
@@ -321,6 +314,11 @@ class AopClient
 
     /**
      * @throws \Exception
+     *
+     * @param mixed      $request
+     * @param null|mixed $authToken
+     * @param null|mixed $appInfoAuthtoken
+     * @param null|mixed $targetAppId
      */
     public function execute($request, $authToken = null, $appInfoAuthtoken = null, $targetAppId = null)
     {
@@ -331,6 +329,7 @@ class AopClient
             $errMsg = '文件编码：[' . $this->fileCharset
                       . '] 与表单提交编码：[' . $this->postCharset
                       . ']两者不一致!';
+
             throw new \Exception($errMsg);
         }
 
@@ -486,10 +485,8 @@ class AopClient
      *
      * @param $data
      * @param $targetCharset
-     *
-     * @return string
      */
-    public function characet($data, $targetCharset) : string
+    public function characet($data, $targetCharset): string
     {
         if (!empty($data)) {
             $fileType = $this->fileCharset;
@@ -538,7 +535,7 @@ class AopClient
      * @param mixed $rsaPublicKeyFilePath
      * @param mixed $signType
      */
-    public function rsaCheckV1($params, $rsaPublicKeyFilePath, $signType = 'RSA') : bool
+    public function rsaCheckV1($params, $rsaPublicKeyFilePath, $signType = 'RSA'): bool
     {
         $sign = $params['sign'];
         unset($params['sign'], $params['sign_type']);
@@ -546,7 +543,7 @@ class AopClient
         return $this->verify($this->getSignContent($params), $sign, $rsaPublicKeyFilePath, $signType);
     }
 
-    public function rsaCheckV2($params, $rsaPublicKeyFilePath, $signType = 'RSA') : bool
+    public function rsaCheckV2($params, $rsaPublicKeyFilePath, $signType = 'RSA'): bool
     {
         $sign = $params['sign'];
         unset($params['sign']);
@@ -554,7 +551,7 @@ class AopClient
         return $this->verify($this->getSignContent($params), $sign, $rsaPublicKeyFilePath, $signType);
     }
 
-    public function verify($data, $sign, $rsaPublicKeyFilePath, $signType = 'RSA') : bool
+    public function verify($data, $sign, $rsaPublicKeyFilePath, $signType = 'RSA'): bool
     {
         if ($this->checkEmpty($this->alipayPublicKey)) {
             $pubKey = $this->alipayrsaPublicKey;
@@ -590,12 +587,14 @@ class AopClient
     /**
      *  在使用本方法前，必须初始化AopClient且传入公私钥参数。
      *  公钥是否是读取字符串还是读取文件，是根据初始化传入的值判断的。
+     *
      * @param mixed $params
      * @param mixed $rsaPublicKeyPem
      * @param mixed $rsaPrivateKeyPem
      * @param mixed $isCheckSign
      * @param mixed $isDecrypt
      * @param mixed $signType
+     *
      * @throws \SyException\Common\CheckException
      */
     public function checkSignAndDecrypt(
@@ -640,7 +639,7 @@ class AopClient
         $isEncrypt,
         $isSign,
         $signType = 'RSA'
-    ) : string {
+    ): string {
         $resStr = '<?xml version="1.0" encoding="' . $charset . '"?>';
         if ($isEncrypt && $isSign) { //加密并签名
             $encrypted = $this->rsaEncrypt($bizContent, $rsaPublicKeyPem, $charset);
@@ -670,12 +669,14 @@ class AopClient
     /**
      *  在使用本方法前，必须初始化AopClient且传入公私钥参数。
      *  公钥是否是读取字符串还是读取文件，是根据初始化传入的值判断的。
+     *
      * @param mixed $data
      * @param mixed $rsaPublicKeyFilePath
      * @param mixed $charset
+     *
      * @throws \SyException\Common\CheckException
      */
-    public function rsaEncrypt($data, $rsaPublicKeyFilePath, $charset) : string
+    public function rsaEncrypt($data, $rsaPublicKeyFilePath, $charset): string
     {
         if ($this->checkEmpty($this->alipayPublicKey)) {
             //读取字符串
@@ -709,12 +710,14 @@ class AopClient
     /**
      *  在使用本方法前，必须初始化AopClient且传入公私钥参数。
      *  公钥是否是读取字符串还是读取文件，是根据初始化传入的值判断的。
+     *
      * @param mixed $data
      * @param mixed $rsaPrivateKeyPem
      * @param mixed $charset
+     *
      * @throws \SyException\Common\CheckException
      */
-    public function rsaDecrypt($data, $rsaPrivateKeyPem, $charset) : string
+    public function rsaDecrypt($data, $rsaPrivateKeyPem, $charset): string
     {
         if ($this->checkEmpty($this->rsaPrivateKeyFilePath)) {
             //读字符串
@@ -743,7 +746,7 @@ class AopClient
         return $strnull;
     }
 
-    public function splitCN($cont, $n, $subnum, $charset) : array
+    public function splitCN($cont, $n, $subnum, $charset): array
     {
         $arrr = [];
         for ($i = $n; $i < \strlen($cont); $i += $subnum) {
@@ -795,13 +798,14 @@ class AopClient
             }
 
             return;
-        } elseif ('xml' == $format) {
+        }
+        if ('xml' == $format) {
             // xml格式sub_code在同一层级
             return $respObject->sub_code;
         }
     }
 
-    public function parserJSONSignData($request, $responseContent, $responseJSON) : SignData
+    public function parserJSONSignData($request, $responseContent, $responseJSON): SignData
     {
         $signData = new SignData();
         $signData->sign = $this->parserJSONSign($responseJSON);
@@ -845,7 +849,7 @@ class AopClient
         return $responseJSon->sign;
     }
 
-    public function parserXMLSignData($request, $responseContent) : SignData
+    public function parserXMLSignData($request, $responseContent): SignData
     {
         $signData = new SignData();
         $signData->sign = $this->parserXMLSign($responseContent);
@@ -922,7 +926,7 @@ class AopClient
     public function checkResponseSign($request, $signData, $resp, $respObject)
     {
         if (!$this->checkEmpty($this->alipayPublicKey) || !$this->checkEmpty($this->alipayrsaPublicKey)) {
-            if (is_null($signData)
+            if (null === $signData
                 || $this->checkEmpty($signData->sign) || $this->checkEmpty($signData->signSourceData)) {
                 throw new \Exception(' check sign Fail! The reason : signData is Empty');
             }
@@ -949,12 +953,14 @@ class AopClient
                             $errMsg = 'check sign Fail! [sign=' . $signData->sign
                                       . ', signSourceData=' . $signData->signSourceData
                                       . ']';
+
                             throw new \Exception($errMsg);
                         }
                     } else {
                         $errMsg = 'check sign Fail! [sign=' . $signData->sign
                                   . ', signSourceData=' . $signData->signSourceData
                                   . ']';
+
                         throw new \Exception($errMsg);
                     }
                 }
@@ -998,6 +1004,9 @@ class AopClient
 
     /**
      * @throws \Exception
+     *
+     * @param mixed      $url
+     * @param null|mixed $postFields
      */
     protected function curl($url, $postFields = null)
     {
@@ -1050,9 +1059,9 @@ class AopClient
         return $reponse;
     }
 
-    protected function getMillisecond() : float
+    protected function getMillisecond(): float
     {
-        [$s1, $s2] = explode(' ', microtime());
+        list($s1, $s2) = explode(' ', microtime());
 
         return (float)sprintf('%.0f', ((float)$s1 + (float)$s2) * 1000);
     }
@@ -1073,7 +1082,9 @@ class AopClient
 
     /**
      * 建立请求，以表单HTML形式构造（默认）
+     *
      * @param array $para_temp 请求参数数组
+     *
      * @return string 提交表单HTML文本
      */
     protected function buildRequestForm(array $para_temp)
@@ -1083,7 +1094,7 @@ class AopClient
                  . '" method="POST">';
         while (list($key, $val) = $this->fun_adm_each($para_temp)) {
             if (false === $this->checkEmpty($val)) {
-                $val = str_replace('"', "&quot;", $val);
+                $val = str_replace('"', '&quot;', $val);
                 $sHtml .= '<input type="hidden" name="' . $key . '" value="' . $val . '"/>';
             }
         }
@@ -1118,7 +1129,7 @@ class AopClient
      */
     protected function checkEmpty($value)
     {
-        if (is_null($value)) {
+        if (null === $value) {
             return true;
         }
         if ('' === trim($value)) {
@@ -1139,7 +1150,7 @@ class AopClient
 
     // 获取加密内容
 
-    private function encryptJSONSignSource($request, $responseContent) : string
+    private function encryptJSONSignSource($request, $responseContent): string
     {
         $parseItem = $this->parserEncryptJSONSignSource($request, $responseContent);
         $needLength = \strlen($responseContent) + 1 - $parseItem->endIndex;
@@ -1151,7 +1162,7 @@ class AopClient
         return $bodyIndexContent . $bizContent . $bodyEndContent;
     }
 
-    private function parserEncryptJSONSignSource($request, $responseContent) : EncryptParseItem
+    private function parserEncryptJSONSignSource($request, $responseContent): EncryptParseItem
     {
         $apiName = $request->getApiMethodName();
         $rootNodeName = str_replace('.', '_', $apiName) . $this->RESPONSE_SUFFIX;
@@ -1166,7 +1177,7 @@ class AopClient
         }
     }
 
-    private function parserEncryptJSONItem($responseContent, $nodeName, $nodeIndex) : EncryptParseItem
+    private function parserEncryptJSONItem($responseContent, $nodeName, $nodeIndex): EncryptParseItem
     {
         $signDataStartIndex = $nodeIndex + \strlen($nodeName) + 2;
         $signIndex = strpos($responseContent, '"' . $this->SIGN_NODE_NAME . '"');
@@ -1190,7 +1201,7 @@ class AopClient
     }
 
     // 获取加密内容
-    private function encryptXMLSignSource($request, $responseContent) : string
+    private function encryptXMLSignSource($request, $responseContent): string
     {
         $parseItem = $this->parserEncryptXMLSignSource($request, $responseContent);
         $needLength = \strlen($responseContent) + 1 - $parseItem->endIndex;
@@ -1201,7 +1212,7 @@ class AopClient
         return $bodyIndexContent . $bizContent . $bodyEndContent;
     }
 
-    private function parserEncryptXMLSignSource($request, $responseContent) : EncryptParseItem
+    private function parserEncryptXMLSignSource($request, $responseContent): EncryptParseItem
     {
         $apiName = $request->getApiMethodName();
         $rootNodeName = str_replace('.', '_', $apiName) . $this->RESPONSE_SUFFIX;
@@ -1217,7 +1228,7 @@ class AopClient
         }
     }
 
-    private function parserEncryptXMLItem($responseContent, $nodeName, $nodeIndex) : EncryptParseItem
+    private function parserEncryptXMLItem($responseContent, $nodeName, $nodeIndex): EncryptParseItem
     {
         $signDataStartIndex = $nodeIndex + \strlen($nodeName) + 1;
 
