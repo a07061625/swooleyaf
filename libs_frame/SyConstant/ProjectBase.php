@@ -545,6 +545,14 @@ class ProjectBase
      */
     const TIME_EXPIRE_LOCAL_ALIPAY_CLEAR = 3600;
     /**
+     * 时间-超时时间-本地SY支付宝支付更新,单位为秒
+     */
+    const TIME_EXPIRE_LOCAL_SY_ALIPAY_REFRESH = 600;
+    /**
+     * 时间-超时时间-本地SY支付宝支付清理,单位为秒
+     */
+    const TIME_EXPIRE_LOCAL_SY_ALIPAY_CLEAR = 3600;
+    /**
      * 时间-超时时间-本地企业钉钉更新,单位为秒
      */
     const TIME_EXPIRE_LOCAL_DINGTALK_CORP_REFRESH = 600;
