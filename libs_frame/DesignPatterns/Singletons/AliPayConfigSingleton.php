@@ -14,6 +14,11 @@ use SyTool\Tool;
 use SyTrait\AliPayConfigTrait;
 use SyTrait\SingletonTrait;
 
+/**
+ * Class AliPayConfigSingleton
+ * @package DesignPatterns\Singletons
+ * @deprecated 建议使用\DesignPatterns\Singletons\SyAliPayConfigSingleton
+ */
 class AliPayConfigSingleton
 {
     use SingletonTrait;

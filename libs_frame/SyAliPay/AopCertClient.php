@@ -2,6 +2,9 @@
 
 namespace SyAliPay;
 
+use SyConstant\ErrorCode;
+use SyException\Common\CheckException;
+use SyLog\Log;
 use function mb_convert_encoding;
 use function mb_detect_encoding;
 
@@ -41,6 +44,7 @@ class AopCertClient
     //加密密钥和类型
     public $encryptKey;
     public $encryptType = 'AES';
+
     protected $alipaySdkVersion = 'alipay-sdk-php-2020-04-15';
     private $fileCharset = 'UTF-8';
     private $RESPONSE_SUFFIX = '_response';
@@ -59,7 +63,7 @@ class AopCertClient
      *
      * @return string
      */
-    public function getCertSN($certPath)
+    public function getCertSN($certPath) : string
     {
         $cert = file_get_contents($certPath);
         $ssl = openssl_x509_parse($cert);
@@ -74,13 +78,14 @@ class AopCertClient
      *
      * @return null|string
      */
-    public function getRootCertSN($certPath)
+    public function getRootCertSN($certPath) : ?string
     {
         $cert = file_get_contents($certPath);
         $this->alipayRootCertContent = $cert;
         $array = explode('-----END CERTIFICATE-----', $cert);
+        $needLength = \count($array) - 1;
         $SN = null;
-        for ($i = 0; $i < \count($array) - 1; ++$i ) {
+        for ($i = 0; $i < $needLength; ++ $i) {
             $ssl[$i] = openssl_x509_parse($array[$i] . '-----END CERTIFICATE-----');
             if (0 === strpos($ssl[$i]['serialNumber'], '0x')) {
                 $ssl[$i]['serialNumber'] = $this->hex2dec($ssl[$i]['serialNumberHex']);
@@ -110,7 +115,7 @@ class AopCertClient
     {
         $dec = 0;
         $len = \strlen($hex);
-        for ($i = 1; $i <= $len; ++$i ) {
+        for ($i = 1; $i <= $len; ++ $i) {
             $dec = bcadd($dec, bcmul((string)(hexdec($hex[$i - 1])), bcpow('16', (string)($len - $i))));
         }
 
@@ -119,12 +124,10 @@ class AopCertClient
 
     /**
      * 从证书中提取公钥
-     *
      * @param $certPath
-     *
-     * @return mixed
+     * @return string
      */
-    public function getPublicKey($certPath)
+    public function getPublicKey($certPath) : string
     {
         $cert = file_get_contents($certPath);
         $pkey = openssl_pkey_get_public($cert);
@@ -145,7 +148,7 @@ class AopCertClient
      *
      * @return bool
      */
-    public function rsaCheckV1($params, $rsaPublicKeyFilePath, $signType = 'RSA')
+    public function rsaCheckV1($params, $rsaPublicKeyFilePath, $signType = 'RSA') : bool
     {
         $sign = $params['sign'];
         unset($params['sign'], $params['sign_type']);
@@ -164,7 +167,7 @@ class AopCertClient
      *
      * @return bool
      */
-    public function rsaCheckV2($params, $rsaPublicKeyFilePath, $signType = 'RSA')
+    public function rsaCheckV2($params, $rsaPublicKeyFilePath, $signType = 'RSA') : bool
     {
         $sign = $params['sign'];
         unset($params['sign']);
@@ -172,7 +175,7 @@ class AopCertClient
         return $this->verify($this->getCheckSignContent($params), $sign, $rsaPublicKeyFilePath, $signType);
     }
 
-    public function getCheckSignContent($params)
+    public function getCheckSignContent($params) : string
     {
         ksort($params);
 
@@ -206,8 +209,14 @@ class AopCertClient
      * @param mixed $isDecrypt
      * @param mixed $signType
      */
-    public function checkSignAndDecrypt($params, $rsaPublicKeyPem, $rsaPrivateKeyPem, $isCheckSign, $isDecrypt, $signType = 'RSA')
-    {
+    public function checkSignAndDecrypt(
+        $params,
+        $rsaPublicKeyPem,
+        $rsaPrivateKeyPem,
+        $isCheckSign,
+        $isDecrypt,
+        $signType = 'RSA'
+    ) {
         $charset = $params['charset'];
         $bizContent = $params['biz_content'];
         if ($isCheckSign) {
@@ -235,45 +244,56 @@ class AopCertClient
      * @param mixed $isSign
      * @param mixed $signType
      */
-    public function encryptAndSign($bizContent, $rsaPublicKeyPem, $rsaPrivateKeyPem, $charset, $isEncrypt, $isSign, $signType = 'RSA')
-    {
-        // 加密，并签名
-        if ($isEncrypt && $isSign) {
+    public function encryptAndSign(
+        $bizContent,
+        $rsaPublicKeyPem,
+        $rsaPrivateKeyPem,
+        $charset,
+        $isEncrypt,
+        $isSign,
+        $signType = 'RSA'
+    ) : string {
+        $resStr = '<?xml version="1.0" encoding="' . $charset . '"?>';
+        if ($isEncrypt && $isSign) { //加密并签名
             $encrypted = $this->rsaEncrypt($bizContent, $rsaPublicKeyPem, $charset);
             $sign = $this->sign($encrypted, $signType);
-
-            return "<?xml version=\"1.0\" encoding=\"{$charset}\"?><alipay><response>{$encrypted}</response><encryption_type>RSA</encryption_type><sign>{$sign}</sign><sign_type>{$signType}</sign_type></alipay>";
-        }
-        // 加密，不签名
-        if ($isEncrypt && (!$isSign)) {
+            $resStr .= '<alipay><response>' . $encrypted
+                       . '</response><encryption_type>RSA</encryption_type><sign>' . $sign
+                       . '</sign><sign_type>' . $signType
+                       . '</sign_type></alipay>';
+        } elseif ($isEncrypt) { //加密不签名
             $encrypted = $this->rsaEncrypt($bizContent, $rsaPublicKeyPem, $charset);
-
-            return "<?xml version=\"1.0\" encoding=\"{$charset}\"?><alipay><response>{$encrypted}</response><encryption_type>{$signType}</encryption_type></alipay>";
-        }
-        // 不加密，但签名
-        if ((!$isEncrypt) && $isSign) {
+            $resStr .= '<alipay><response>' . $encrypted
+                       . '</response><encryption_type>' . $signType
+                       . '</encryption_type></alipay>';
+        } elseif ($isSign) { //签名不加密
             $sign = $this->sign($bizContent, $signType);
-
-            return "<?xml version=\"1.0\" encoding=\"{$charset}\"?><alipay><response>{$bizContent}</response><sign>{$sign}</sign><sign_type>{$signType}</sign_type></alipay>";
+            $resStr .= '<alipay><response>' . $bizContent
+                       . '</response><sign>' . $sign
+                       . '</sign><sign_type>' . $signType
+                       . '</sign_type></alipay>';
+        } else { //不加密不签名
+            $resStr .= $bizContent;
         }
 
-        // 不加密，不签名
-        return "<?xml version=\"1.0\" encoding=\"{$charset}\"?>{$bizContent}";
+        return $resStr;
     }
 
     /**
      *  在使用本方法前，必须初始化AopCertClient且传入公私钥参数。
-     *
      * @param mixed $data
      * @param mixed $rsaPublicKeyFilePath
      * @param mixed $charset
+     * @throws \SyException\Common\CheckException
      */
-    public function rsaEncrypt($data, $rsaPublicKeyFilePath, $charset)
+    public function rsaEncrypt($data, $rsaPublicKeyFilePath, $charset) : string
     {
         if ($this->checkEmpty($this->alipayPublicKey)) {
             //读取字符串
             $pubKey = $this->alipayrsaPublicKey;
-            $res = "-----BEGIN PUBLIC KEY-----\n" . wordwrap($pubKey, 64, "\n", true) . "\n-----END PUBLIC KEY-----";
+            $res = "-----BEGIN PUBLIC KEY-----\n"
+                   . wordwrap($pubKey, 64, "\n", true)
+                   . "\n-----END PUBLIC KEY-----";
         } else {
             //读取公钥文件
             $pubKey = file_get_contents($rsaPublicKeyFilePath);
@@ -281,47 +301,53 @@ class AopCertClient
             $res = openssl_get_publickey($pubKey);
         }
 
-        ($res) || die('支付宝RSA公钥错误。请检查公钥文件格式是否正确');
+        if (!$res) {
+            throw new CheckException('支付宝RSA公钥错误,请检查公钥文件格式是否正确', ErrorCode::COMMON_PARAM_ERROR);
+        }
+
         $blocks = $this->splitCN($data, 0, 30, $charset);
         $chrtext = null;
         $encodes = [];
         foreach ($blocks as $n => $block) {
             if (!openssl_public_encrypt($block, $chrtext, $res)) {
-                echo '<br/>' . openssl_error_string() . '<br/>';
+                throw new CheckException(openssl_error_string(), ErrorCode::COMMON_PARAM_ERROR);
             }
             $encodes[] = $chrtext;
         }
-        $chrtext = implode(',', $encodes);
 
-        return base64_encode($chrtext);
+        return base64_encode(implode(',', $encodes));
     }
 
     /**
      *  在使用本方法前，必须初始化AopCertClient且传入公私钥参数。
      *  公钥是否是读取字符串还是读取文件，是根据初始化传入的值判断的。
-     *
      * @param mixed $data
      * @param mixed $rsaPrivateKeyPem
      * @param mixed $charset
+     * @throws \SyException\Common\CheckException
      */
-    public function rsaDecrypt($data, $rsaPrivateKeyPem, $charset)
+    public function rsaDecrypt($data, $rsaPrivateKeyPem, $charset) : string
     {
         if ($this->checkEmpty($this->rsaPrivateKeyFilePath)) {
             //读字符串
             $priKey = $this->rsaPrivateKey;
-            $res = "-----BEGIN RSA PRIVATE KEY-----\n" . wordwrap($priKey, 64, "\n", true) . "\n-----END RSA PRIVATE KEY-----";
+            $res = "-----BEGIN RSA PRIVATE KEY-----\n"
+                   . wordwrap($priKey, 64, "\n", true)
+                   . "\n-----END RSA PRIVATE KEY-----";
         } else {
             $priKey = file_get_contents($this->rsaPrivateKeyFilePath);
             $res = openssl_get_privatekey($priKey);
         }
-        ($res) || die('您使用的私钥格式错误，请检查RSA私钥配置');
+        if (!$res) {
+            throw new CheckException('您使用的私钥格式错误,请检查RSA私钥配置', ErrorCode::COMMON_PARAM_ERROR);
+        }
         //转换为openssl格式密钥
         $decodes = explode(',', $data);
         $strnull = '';
         $dcyCont = '';
         foreach ($decodes as $n => $decode) {
             if (!openssl_private_decrypt($decode, $dcyCont, $res)) {
-                echo '<br/>' . openssl_error_string() . '<br/>';
+                throw new CheckException(openssl_error_string(), ErrorCode::COMMON_PARAM_ERROR);
             }
             $strnull .= $dcyCont;
         }
@@ -329,9 +355,8 @@ class AopCertClient
         return $strnull;
     }
 
-    public function splitCN($cont, $n, $subnum, $charset)
+    public function splitCN($cont, $n, $subnum, $charset) : array
     {
-        //$len = strlen($cont) / 3;
         $arrr = [];
         for ($i = $n; $i < \strlen($cont); $i += $subnum) {
             $res = $this->subCNchar($cont, $i, $subnum, $charset);
@@ -359,13 +384,11 @@ class AopCertClient
 
     /**
      * 生成用于调用收银台SDK的字符串
-     *
-     * @param $request SDK接口的请求参数对象
-     * @param $appAuthToken 三方应用授权token
-     *
+     * @param object $request SDK接口的请求参数对象
+     * @param string|null $appAuthToken 三方应用授权token
      * @return string
      */
-    public function sdkExecute($request, $appAuthToken = null)
+    public function sdkExecute(object $request, ?string $appAuthToken = null) : string
     {
         $this->setupCharsets($request);
         $params['app_id'] = $this->appId;
@@ -396,20 +419,20 @@ class AopCertClient
 
     /**
      * 页面提交执行方法
-     *
-     * @param $request 跳转类接口的request
-     * @param string $httpmethod   提交方式,两个值可选：post、get;
-     * @param null   $appAuthToken 三方应用授权token
-     *
-     * @return 构建好的、签名后的最终跳转URL（GET）或String形式的form（POST）
-     *
-     * @throws Exception
+     * @param object $request 跳转类接口的request
+     * @param string $httpmethod 提交方式,两个值可选：post、get;
+     * @param null $appAuthToken 三方应用授权token
+     * @return string 构建好的、签名后的最终跳转URL（GET）或String形式的form（POST）
+     * @throws \Exception
      */
-    public function pageExecute($request, $httpmethod = 'POST', $appAuthToken = null)
+    public function pageExecute(object $request, $httpmethod = 'POST', $appAuthToken = null) : string
     {
         $this->setupCharsets($request);
         if (strcasecmp($this->fileCharset, $this->postCharset)) {
-            throw new Exception('文件编码：[' . $this->fileCharset . '] 与表单提交编码：[' . $this->postCharset . ']两者不一致!');
+            $errMsg = '文件编码：[' . $this->fileCharset
+                      . '] 与表单提交编码：[' . $this->postCharset
+                      . ']两者不一致!';
+            throw new \Exception($errMsg);
         }
         $iv = null;
         if (!$this->checkEmpty($request->getApiVersion())) {
@@ -441,13 +464,13 @@ class AopCertClient
         if (method_exists($request, 'getNeedEncrypt') && $request->getNeedEncrypt()) {
             $sysParams['encrypt_type'] = $this->encryptType;
             if ($this->checkEmpty($apiParams['biz_content'])) {
-                throw new Exception(' api request Fail! The reason : encrypt request is not supperted!');
+                throw new \Exception(' api request Fail! The reason : encrypt request is not supperted!');
             }
             if ($this->checkEmpty($this->encryptKey) || $this->checkEmpty($this->encryptType)) {
-                throw new Exception(' encryptType and encryptKey must not null! ');
+                throw new \Exception(' encryptType and encryptKey must not null! ');
             }
             if ('AES' != $this->encryptType) {
-                throw new Exception('加密类型只支持AES');
+                throw new \Exception('加密类型只支持AES');
             }
             // 执行加密
             $enCryptContent = AopEncrypt::encrypt($apiParams['biz_content'], $this->encryptKey);
@@ -471,7 +494,7 @@ class AopCertClient
     }
 
     //此方法对value做urlencode
-    public function getSignContentUrlencode($params)
+    public function getSignContentUrlencode($params) : string
     {
         ksort($params);
         $stringToBeSigned = '';
@@ -494,12 +517,15 @@ class AopCertClient
         return $stringToBeSigned;
     }
 
+    /**
+     * @throws \Exception
+     */
     public function execute($request, $authToken = null, $appInfoAuthtoken = null, $targetAppId = null)
     {
         $this->setupCharsets($request);
         //如果两者编码不一致，会出现签名验签或者乱码
         if (strcasecmp($this->fileCharset, $this->postCharset)) {
-            throw new Exception('文件编码：[' . $this->fileCharset . '] 与表单提交编码：[' . $this->postCharset . ']两者不一致!');
+            throw new \Exception('文件编码：[' . $this->fileCharset . '] 与表单提交编码：[' . $this->postCharset . ']两者不一致!');
         }
         $iv = null;
         if (!$this->checkEmpty($request->getApiVersion())) {
@@ -535,13 +561,13 @@ class AopCertClient
         if (method_exists($request, 'getNeedEncrypt') && $request->getNeedEncrypt()) {
             $sysParams['encrypt_type'] = $this->encryptType;
             if ($this->checkEmpty($apiParams['biz_content'])) {
-                throw new Exception(' api request Fail! The reason : encrypt request is not supperted!');
+                throw new \Exception(' api request Fail! The reason : encrypt request is not supperted!');
             }
             if ($this->checkEmpty($this->encryptKey) || $this->checkEmpty($this->encryptType)) {
-                throw new Exception(' encryptType and encryptKey must not null! ');
+                throw new \Exception(' encryptType and encryptKey must not null! ');
             }
             if ('AES' != $this->encryptType) {
-                throw new Exception('加密类型只支持AES');
+                throw new \Exception('加密类型只支持AES');
             }
             // 执行加密
             $enCryptContent = AopEncrypt::encrypt($apiParams['biz_content'], $this->encryptKey);
@@ -561,8 +587,13 @@ class AopCertClient
         //发起HTTP请求
         try {
             $resp = $this->curl($requestUrl, $apiParams);
-        } catch (Exception $e) {
-            $this->logCommunicationError($sysParams['method'], $requestUrl, 'HTTP_ERROR_' . $e->getCode(), $e->getMessage());
+        } catch (\Exception $e) {
+            $this->logCommunicationError(
+                $sysParams['method'],
+                $requestUrl,
+                'HTTP_ERROR_' . $e->getCode(),
+                $e->getMessage()
+            );
 
             return false;
         }
@@ -621,23 +652,21 @@ class AopCertClient
 
     /**
      * 加签
-     *
      * @param $params
      * @param string $signType
-     *
-     * @return mixed
+     * @return string
      */
-    public function generateSign($params, $signType = 'RSA')
+    public function generateSign($params, $signType = 'RSA') : string
     {
         return $this->sign($this->getSignContent($params), $signType);
     }
 
-    public function rsaSign($params, $signType = 'RSA')
+    public function rsaSign($params, $signType = 'RSA') : string
     {
         return $this->sign($this->getSignContent($params), $signType);
     }
 
-    public function getSignContent($params)
+    public function getSignContent($params) : string
     {
         ksort($params);
 
@@ -663,19 +692,23 @@ class AopCertClient
 
     /**
      * RSA单独签名方法，未做字符串处理,字符串处理见getSignContent()
-     *
-     * @param $data 待签名字符串
-     * @param $privatekey 商户私钥，根据keyfromfile来判断是读取字符串还是读取文件，false:填写私钥字符串去回车和空格 true:填写私钥文件路径
-     * @param $signType 签名方式，RSA:SHA1     RSA2:SHA256
-     * @param $keyfromfile 私钥获取方式，读取字符串还是读文件
-     *
+     * @param string $data 待签名字符串
+     * @param string $privatekey 商户私钥，根据keyfromfile来判断是读取字符串还是读取文件，false:填写私钥字符串去回车和空格 true:填写私钥文件路径
+     * @param string $signType 签名方式，RSA:SHA1 RSA2:SHA256
+     * @param bool $keyfromfile 私钥获取方式，读取字符串还是读文件
      * @return string
      */
-    public function alonersaSign($data, $privatekey, $signType = 'RSA', $keyfromfile = false)
-    {
+    public function alonersaSign(
+        string $data,
+        string $privatekey,
+        string $signType = 'RSA',
+        bool $keyfromfile = false
+    ) : string {
         if (!$keyfromfile) {
             $priKey = $privatekey;
-            $res = "-----BEGIN RSA PRIVATE KEY-----\n" . wordwrap($priKey, 64, "\n", true) . "\n-----END RSA PRIVATE KEY-----";
+            $res = "-----BEGIN RSA PRIVATE KEY-----\n"
+                   . wordwrap($priKey, 64, "\n", true)
+                   . "\n-----END RSA PRIVATE KEY-----";
         } else {
             $priKey = file_get_contents($privatekey);
             $res = openssl_get_privatekey($priKey);
@@ -701,7 +734,7 @@ class AopCertClient
      *
      * @return string
      */
-    public function characet($data, $targetCharset)
+    public function characet($data, $targetCharset) : string
     {
         if (!empty($data)) {
             $fileType = $this->fileCharset;
@@ -722,7 +755,7 @@ class AopCertClient
      *
      * @return SignData
      */
-    public function parserJSONSignData($request, $responseContent, $responseJSON)
+    public function parserJSONSignData($request, $responseContent, $responseJSON) : SignData
     {
         $signData = new SignData();
         $signData->sign = $this->parserJSONSign($responseJSON);
@@ -776,7 +809,7 @@ class AopCertClient
      *
      * @return SignData
      */
-    public function parserXMLSignData($request, $responseContent)
+    public function parserXMLSignData($request, $responseContent) : SignData
     {
         $signData = new SignData();
         $signData->sign = $this->parserXMLSign($responseContent);
@@ -846,28 +879,35 @@ class AopCertClient
 
     /**
      * 验签
-     *
      * @param $request
      * @param $signData
      * @param $resp
      * @param $respObject
-     *
-     * @throws Exception
+     * @return false
+     * @throws \Exception
      */
     public function checkResponseSign($request, $signData, $resp, $respObject)
     {
         if (!$this->checkEmpty($this->alipayPublicKey) || !$this->checkEmpty($this->alipayrsaPublicKey)) {
-            if (null == $signData || $this->checkEmpty($signData->sign) || $this->checkEmpty($signData->signSourceData)) {
-                throw new Exception(' check sign Fail! The reason : signData is Empty');
+            if (is_null($signData) || $this->checkEmpty($signData->sign)
+                || $this->checkEmpty($signData->signSourceData)) {
+                throw new \Exception(' check sign Fail! The reason : signData is Empty');
             }
             // 获取结果sub_code
             $responseSubCode = $this->parserResponseSubCode($request, $resp, $respObject, $this->format);
-            if (!$this->checkEmpty($responseSubCode) || ($this->checkEmpty($responseSubCode) && !$this->checkEmpty($signData->sign))) {
-                $checkResult = $this->verify($signData->signSourceData, $signData->sign, $this->alipayPublicKey, $this->signType);
+            if (!$this->checkEmpty($responseSubCode)
+                || ($this->checkEmpty($responseSubCode) && !$this->checkEmpty($signData->sign))) {
+                $checkResult = $this->verify(
+                    $signData->signSourceData,
+                    $signData->sign,
+                    $this->alipayPublicKey,
+                    $this->signType
+                );
                 if (!$checkResult) {
                     //请求网关下载新的支付宝公钥证书
-                    if (!$respObject->alipay_cert_sn && ('alipay.open.app.alipaycert.download' == $request->getApiMethodName())) {
-                        throw new Exception(' check sign Fail! The reason : alipay_cert_sn is Empty');
+                    if (!$respObject->alipay_cert_sn
+                        && ('alipay.open.app.alipaycert.download' == $request->getApiMethodName())) {
+                        throw new \Exception(' check sign Fail! The reason : alipay_cert_sn is Empty');
                     }
                     //组装系统参数
                     $sysParams['app_id'] = $this->appId;
@@ -894,14 +934,20 @@ class AopCertClient
                     //系统参数放入GET请求串
                     $requestUrl = $this->gatewayUrl . '?';
                     foreach ($sysParams as $sysParamKey => $sysParamValue) {
-                        $requestUrl .= "{$sysParamKey}=" . urlencode($this->characet($sysParamValue, $this->postCharset)) . '&';
+                        $requestUrl .= $sysParamKey . '='
+                                       . urlencode($this->characet($sysParamValue, $this->postCharset)) . '&';
                     }
                     $requestUrl = substr($requestUrl, 0, -1);
                     //发起HTTP请求
                     try {
                         $resp = $this->curl($requestUrl, $apiParams);
-                    } catch (Exception $e) {
-                        $this->logCommunicationError($sysParams['method'], $requestUrl, 'HTTP_ERROR_' . $e->getCode(), $e->getMessage());
+                    } catch (\Exception $e) {
+                        $this->logCommunicationError(
+                            $sysParams['method'],
+                            $requestUrl,
+                            'HTTP_ERROR_' . $e->getCode(),
+                            $e->getMessage()
+                        );
 
                         return false;
                     }
@@ -925,27 +971,41 @@ class AopCertClient
                             $public_key = str_replace('-----BEGIN PUBLIC KEY-----', '', $keyData['key']);
                             $public_key = trim(str_replace('-----END PUBLIC KEY-----', '', $public_key));
                             $this->alipayrsaPublicKey = $public_key;
-                            $checkResult =
-                                $this->verify($signData->signSourceData, $signData->sign, $this->alipayrsaPublicKey, $this->signType);
+                            $checkResult = $this->verify(
+                                $signData->signSourceData,
+                                $signData->sign,
+                                $this->alipayrsaPublicKey,
+                                $this->signType
+                            );
                         } else {
                             //如果下载下来的支付宝公钥证书使用根证书检查失败直接抛异常
-                            throw new Exception('check sign Fail! [sign=' . $signData->sign . ', signSourceData='
-                                                . $signData->signSourceData . ']');
+                            $errMsg = 'check sign Fail! [sign=' . $signData->sign
+                                      . ', signSourceData=' . $signData->signSourceData
+                                      . ']';
+                            throw new \Exception($errMsg);
                         }
                     }
 
                     if (!$checkResult) {
                         if (strpos($signData->signSourceData, '\\/') > 0) {
                             $signData->signSourceData = str_replace('\\/', '/', $signData->signSourceData);
-                            $checkResult =
-                                $this->verify($signData->signSourceData, $signData->sign, $this->alipayPublicKey, $this->signType);
+                            $checkResult = $this->verify(
+                                $signData->signSourceData,
+                                $signData->sign,
+                                $this->alipayPublicKey,
+                                $this->signType
+                            );
                             if (!$checkResult) {
-                                throw new Exception('check sign Fail! [sign=' . $signData->sign . ', signSourceData='
-                                                    . $signData->signSourceData . ']');
+                                $errMsg = 'check sign Fail! [sign=' . $signData->sign
+                                          . ', signSourceData=' . $signData->signSourceData
+                                          . ']';
+                                throw new \Exception($errMsg);
                             }
                         } else {
-                            throw new Exception('check sign Fail! [sign=' . $signData->sign . ', signSourceData='
-                                                . $signData->signSourceData . ']');
+                            $errMsg = 'check sign Fail! [sign=' . $signData->sign
+                                      . ', signSourceData=' . $signData->signSourceData
+                                      . ']';
+                            throw new \Exception($errMsg);
                         }
                     }
                 }
@@ -981,11 +1041,13 @@ class AopCertClient
         }
     }
 
-    public function verify($data, $sign, $rsaPublicKeyFilePath, $signType = 'RSA')
+    public function verify($data, $sign, $rsaPublicKeyFilePath, $signType = 'RSA') : bool
     {
         if ($this->checkEmpty($this->alipayPublicKey)) {
             $pubKey = $this->alipayrsaPublicKey;
-            $res = "-----BEGIN PUBLIC KEY-----\n" . wordwrap($pubKey, 64, "\n", true) . "\n-----END PUBLIC KEY-----";
+            $res = "-----BEGIN PUBLIC KEY-----\n"
+                   . wordwrap($pubKey, 64, "\n", true)
+                   . "\n-----END PUBLIC KEY-----";
         } else {
             //读取公钥文件
             $pubKey = file_get_contents($rsaPublicKeyFilePath);
@@ -1017,27 +1079,25 @@ class AopCertClient
 
     /**
      * 建立请求，以表单HTML形式构造（默认）
-     *
-     * @param $para_temp 请求参数数组
-     *
-     * @return 提交表单HTML文本
+     * @param array $para_temp 请求参数数组
+     * @return string 提交表单HTML文本
      */
-    protected function buildRequestForm($para_temp)
+    protected function buildRequestForm(array $para_temp) : string
     {
-        $sHtml = "<form id='alipaysubmit' name='alipaysubmit' action='" . $this->gatewayUrl . '?charset=' . trim($this->postCharset)
-                 . "' method='POST'>";
+        $sHtml = '<form id="alipaysubmit" name="alipaysubmit" action="' . $this->gatewayUrl
+                 . '?charset=' . trim($this->postCharset)
+                 . '" method="POST">';
         while (list($key, $val) = $this->fun_adm_each($para_temp)) {
             if (false === $this->checkEmpty($val)) {
-                //$val = $this->characet($val, $this->postCharset);
-                $val = str_replace("'", '&apos;', $val);
-                //$val = str_replace("\"","&quot;",$val);
-                $sHtml .= "<input type='hidden' name='" . $key . "' value='" . $val . "'/>";
+                $val = str_replace('"', "&quot;", $val);
+                $sHtml .= '<input type="hidden" name="' . $key . '" value="' . $val . '"/>';
             }
         }
         //submit按钮控件请不要含有name属性
-        $sHtml = $sHtml . "<input type='submit' value='ok' style='display:none;''></form>";
+        $sHtml .= '<input type="submit" value="ok" style="display:none;"></form>'
+                  . '<script>document.forms["alipaysubmit"].submit();</script>';
 
-        return $sHtml . "<script>document.forms['alipaysubmit'].submit();</script>";
+        return $sHtml;
     }
 
     protected function fun_adm_each(&$array)
@@ -1062,12 +1122,9 @@ class AopCertClient
      *
      * @param mixed $value
      */
-    protected function checkEmpty($value)
+    protected function checkEmpty($value) : bool
     {
-        if (!isset($value)) {
-            return true;
-        }
-        if (null === $value) {
+        if (is_null($value)) {
             return true;
         }
         if ('' === trim($value)) {
@@ -1077,11 +1134,13 @@ class AopCertClient
         return false;
     }
 
-    protected function sign($data, $signType = 'RSA')
+    protected function sign($data, $signType = 'RSA') : string
     {
         if ($this->checkEmpty($this->rsaPrivateKeyFilePath)) {
             $priKey = $this->rsaPrivateKey;
-            $res = "-----BEGIN RSA PRIVATE KEY-----\n" . wordwrap($priKey, 64, "\n", true) . "\n-----END RSA PRIVATE KEY-----";
+            $res = "-----BEGIN RSA PRIVATE KEY-----\n"
+                   . wordwrap($priKey, 64, "\n", true)
+                   . "\n-----END RSA PRIVATE KEY-----";
         } else {
             $priKey = file_get_contents($this->rsaPrivateKeyFilePath);
             $res = openssl_get_privatekey($priKey);
@@ -1110,7 +1169,7 @@ class AopCertClient
      *
      * @return bool|string
      *
-     * @throws Exception
+     * @throws \Exception
      */
     protected function curl($url, $postFields = null)
     {
@@ -1149,11 +1208,11 @@ class AopCertClient
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         $reponse = curl_exec($ch);
         if (curl_errno($ch)) {
-            throw new Exception(curl_error($ch), 0);
+            throw new \Exception(curl_error($ch), 0);
         }
         $httpStatusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         if (200 !== $httpStatusCode) {
-            throw new Exception($reponse, $httpStatusCode);
+            throw new \Exception($reponse, $httpStatusCode);
         }
 
         curl_close($ch);
@@ -1161,9 +1220,9 @@ class AopCertClient
         return $reponse;
     }
 
-    protected function getMillisecond()
+    protected function getMillisecond() : float
     {
-        list($s1, $s2) = explode(' ', microtime());
+        [$s1, $s2] = explode(' ', microtime());
 
         return (float)sprintf('%.0f', ((float)$s1 + (float)$s2) * 1000);
     }
@@ -1178,7 +1237,7 @@ class AopCertClient
      */
     protected function logCommunicationError($apiName, $requestUrl, $errorCode, $responseTxt)
     {
-        $logData = [
+        Log::info([
             date('Y-m-d H:i:s'),
             $apiName,
             $this->appId,
@@ -1187,8 +1246,7 @@ class AopCertClient
             $requestUrl,
             $errorCode,
             str_replace("\n", '', $responseTxt),
-        ];
-        echo json_encode($logData);
+        ]);
     }
 
     /**
@@ -1206,17 +1264,18 @@ class AopCertClient
     }
 
     // 获取加密内容
-    private function encryptJSONSignSource($request, $responseContent)
+    private function encryptJSONSignSource($request, $responseContent) : string
     {
         $parsetItem = $this->parserEncryptJSONSignSource($request, $responseContent);
+        $needLength = \strlen($responseContent) + 1 - $parsetItem->endIndex;
         $bodyIndexContent = substr($responseContent, 0, $parsetItem->startIndex);
-        $bodyEndContent = substr($responseContent, $parsetItem->endIndex, \strlen($responseContent) + 1 - $parsetItem->endIndex);
+        $bodyEndContent = substr($responseContent, $parsetItem->endIndex, $needLength);
         $bizContent = AopEncrypt::decrypt($parsetItem->encryptContent, $this->encryptKey);
 
         return $bodyIndexContent . $bizContent . $bodyEndContent;
     }
 
-    private function parserEncryptJSONSignSource($request, $responseContent)
+    private function parserEncryptJSONSignSource($request, $responseContent) : EncryptParseItem
     {
         $apiName = $request->getApiMethodName();
         $rootNodeName = str_replace('.', '_', $apiName) . $this->RESPONSE_SUFFIX;
@@ -1230,7 +1289,7 @@ class AopCertClient
         }
     }
 
-    private function parserEncryptJSONItem($responseContent, $nodeName, $nodeIndex)
+    private function parserEncryptJSONItem($responseContent, $nodeName, $nodeIndex) : EncryptParseItem
     {
         $signDataStartIndex = $nodeIndex + \strlen($nodeName) + 2;
         if (strrpos($responseContent, $this->ALIPAY_CERT_SN)) {
@@ -1255,17 +1314,18 @@ class AopCertClient
     }
 
     // 获取加密内容
-    private function encryptXMLSignSource($request, $responseContent)
+    private function encryptXMLSignSource($request, $responseContent) : string
     {
         $parseItem = $this->parserEncryptXMLSignSource($request, $responseContent);
+        $needLength = \strlen($responseContent) + 1 - $parseItem->endIndex;
         $bodyIndexContent = substr($responseContent, 0, $parseItem->startIndex);
-        $bodyEndContent = substr($responseContent, $parseItem->endIndex, \strlen($responseContent) + 1 - $parseItem->endIndex);
+        $bodyEndContent = substr($responseContent, $parseItem->endIndex, $needLength);
         $bizContent = AopEncrypt::decrypt($parseItem->encryptContent, $this->encryptKey);
 
         return $bodyIndexContent . $bizContent . $bodyEndContent;
     }
 
-    private function parserEncryptXMLSignSource($request, $responseContent)
+    private function parserEncryptXMLSignSource($request, $responseContent) : EncryptParseItem
     {
         $apiName = $request->getApiMethodName();
         $rootNodeName = str_replace('.', '_', $apiName) . $this->RESPONSE_SUFFIX;
@@ -1279,7 +1339,7 @@ class AopCertClient
         }
     }
 
-    private function parserEncryptXMLItem($responseContent, $nodeName, $nodeIndex)
+    private function parserEncryptXMLItem($responseContent, $nodeName, $nodeIndex) : EncryptParseItem
     {
         $signDataStartIndex = $nodeIndex + \strlen($nodeName) + 1;
         $xmlStartNode = '<' . $this->ENCRYPT_XML_NODE_NAME . '>';
