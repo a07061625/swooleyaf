@@ -22,7 +22,7 @@ use Validator\ValidatorService;
 class StringApiLimit extends BaseValidator implements ValidatorService
 {
     use ApiLimitTrait;
-    
+
     public function __construct()
     {
         parent::__construct();
@@ -39,7 +39,7 @@ class StringApiLimit extends BaseValidator implements ValidatorService
         if ($expireTime < 0) {
             return '接口未授权';
         }
-        
+
         $nowTime = Tool::getNowTime();
         if ($expireTime <= $nowTime) {
             return '接口已到期';
