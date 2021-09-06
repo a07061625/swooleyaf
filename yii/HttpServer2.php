@@ -5,6 +5,7 @@
  * Date: 2017-3-5
  * Time: 16:42
  */
+
 namespace SyServer;
 
 use Swoole\Http\Request;
@@ -38,35 +39,41 @@ class HttpServer2 extends BaseServer2
 
     /**
      * swoole请求cookie域名数组
+     *
      * @var array
      */
     private $_reqCookieDomains = [];
     /**
      * @var \SyTool\SyPack
      */
-    private $_messagePack = null;
+    private $_messagePack;
     /**
      * HTTP响应
+     *
      * @var \Swoole\Http\Response
      */
     private static $_response = null;
     /**
      * 响应消息
+     *
      * @var string
      */
     private static $_rspMsg = '';
     /**
      * swoole请求头信息数组
+     *
      * @var array
      */
     private static $_reqHeaders = [];
     /**
      * swoole服务器信息数组
+     *
      * @var array
      */
     private static $_reqServers = [];
     /**
      * swoole task请求数据
+     *
      * @var string
      */
     private static $_reqTask = null;
@@ -116,16 +123,20 @@ class HttpServer2 extends BaseServer2
 
     /**
      * 生成web socket服务端签名
+     *
      * @param string $socketKey 客户端密钥
+     *
      * @return bool|string
      */
     public static function createSocketAccept(string $socketKey)
     {
-        if (is_null($socketKey)) {
+        if (null === $socketKey) {
             return false;
-        } elseif (preg_match('/^[0-9a-zA-Z\+\/]{21}[AQgw]\={2}$/', $socketKey) == 0) {
+        }
+        if (0 == preg_match('/^[0-9a-zA-Z\+\/]{21}[AQgw]\={2}$/', $socketKey)) {
             return false;
-        } elseif (strlen(base64_decode($socketKey, true)) != 16) {
+        }
+        if (16 != \strlen(base64_decode($socketKey, true))) {
             return false;
         }
 
@@ -134,23 +145,24 @@ class HttpServer2 extends BaseServer2
 
     /**
      * 校验服务端签名是否正确
-     * @param string $socketKey 客户端密钥
+     *
+     * @param string $socketKey    客户端密钥
      * @param string $socketAccept 服务端签名
-     * @return bool
+     *
      * @throws \SyException\Swoole\HttpServerException
      */
-    public static function checkSocketAccept(string $socketKey, string $socketAccept) : bool
+    public static function checkSocketAccept(string $socketKey, string $socketAccept): bool
     {
-        if (is_null($socketAccept)) {
+        if (null === $socketAccept) {
             throw new HttpServerException('服务端签名不能为空', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
 
         $nowAccept = self::createSocketAccept($socketKey);
-        if ($nowAccept === false) {
+        if (false === $nowAccept) {
             return false;
-        } else {
-            return $nowAccept === $socketAccept;
         }
+
+        return $nowAccept === $socketAccept;
     }
 
     public function onStart(\Swoole\Server $server)
@@ -193,15 +205,15 @@ class HttpServer2 extends BaseServer2
 
     /**
      * web socket握手
-     * @param \Swoole\Http\Request  $request
-     * @param \Swoole\Http\Response $response
+     *
      * @return bool
      */
     public function onHandshake(Request $request, Response $response)
     {
         $socketAccept = self::createSocketAccept(Tool::getArrayVal($request->header, 'sec-websocket-key', null));
-        if ($socketAccept === false) {
+        if (false === $socketAccept) {
             $response->end();
+
             return false;
         }
 
@@ -233,13 +245,11 @@ class HttpServer2 extends BaseServer2
      *     d:保留字段，值固定为0000
      *     e:消息内容，json格式
      * </pre>
-     * @param \Swoole\WebSocket\Server $server
-     * @param \Swoole\WebSocket\Frame $frame
      */
     public function onMessage(Server $server, Frame $frame)
     {
         $result = new Result();
-        if ($frame->opcode != WEBSOCKET_OPCODE_BINARY) {
+        if (WEBSOCKET_OPCODE_BINARY != $frame->opcode) {
             $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '只接受二进制数据');
             $server->push($frame->fd, $result->getJson(), WEBSOCKET_OPCODE_TEXT, true);
         } elseif ($frame->finish) {
@@ -250,7 +260,7 @@ class HttpServer2 extends BaseServer2
     public function onTask(\Swoole\Server $server, int $taskId, int $fromId, string $data)
     {
         $baseRes = $this->handleTaskBase($server, $taskId, $fromId, $data);
-        if (is_array($baseRes)) {
+        if (\is_array($baseRes)) {
             $taskCommand = Tool::getArrayVal($baseRes['params'], 'task_command', '');
             switch ($taskCommand) {
                 default:
@@ -261,20 +271,18 @@ class HttpServer2 extends BaseServer2
 
     /**
      * 处理请求
-     * @param \Swoole\Http\Request $request
-     * @param \Swoole\Http\Response $response
      */
     public function onRequest(Request $request, Response $response)
     {
         self::$_response = $response;
         $initRes = $this->initReceive($request);
-        if (strlen($initRes) > 0) {
+        if (\strlen($initRes) > 0) {
             self::$_rspMsg = $initRes;
             $response->end(self::$_rspMsg);
-        } elseif (is_null(self::$_reqTask)) {
+        } elseif (null === self::$_reqTask) {
             $rspHeaders = [];
             $handleHeaderRes = $this->handleReqHeader($rspHeaders);
-            if ($handleHeaderRes == self::RESPONSE_RESULT_TYPE_ACCEPT) {
+            if (self::RESPONSE_RESULT_TYPE_ACCEPT == $handleHeaderRes) {
                 self::$_rspMsg = $this->handleReqService($request, $response);
 //                $this->setRspCookies($response, Registry::get(SyInner::REGISTRY_NAME_RESPONSE_COOKIE));
 //                $this->setRspHeaders($response, Registry::get(SyInner::REGISTRY_NAME_RESPONSE_HEADER));
@@ -303,12 +311,12 @@ class HttpServer2 extends BaseServer2
 
     /**
      * 设置响应头信息
-     * @param \Swoole\Http\Response $response
+     *
      * @param array|bool $headers
      */
     private function setRspHeaders(Response $response, $headers)
     {
-        if (is_array($headers)) {
+        if (\is_array($headers)) {
             if (!isset($headers['Content-Type'])) {
                 $response->header('Content-Type', 'application/json; charset=utf-8');
             }
@@ -330,12 +338,12 @@ class HttpServer2 extends BaseServer2
 
     /**
      * 设置响应cookie信息
-     * @param \Swoole\Http\Response $response
+     *
      * @param array|bool $cookies
      */
     private function setRspCookies(Response $response, $cookies)
     {
-        if (is_array($cookies)) {
+        if (\is_array($cookies)) {
             foreach ($cookies as $cookie) {
                 $value = Tool::getArrayVal($cookie, 'value', null);
                 $expires = Tool::getArrayVal($cookie, 'expires', 0);
@@ -350,7 +358,7 @@ class HttpServer2 extends BaseServer2
 
     /**
      * 初始化公共数据
-     * @param \Swoole\Http\Request $request
+     *
      * @return string
      */
     private function initReceive(Request $request)
@@ -361,11 +369,12 @@ class HttpServer2 extends BaseServer2
         self::$_reqServers = $request->server ?? [];
         self::$_rspMsg = '';
 
-        if (isset($request->header['content-type']) && ($request->header['content-type'] == 'application/json')) {
+        if (isset($request->header['content-type']) && ('application/json' == $request->header['content-type'])) {
             $_POST = Tool::jsonDecode($request->rawContent());
-            if (!is_array($_POST)) {
+            if (!\is_array($_POST)) {
                 $res = new Result();
                 $res->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, 'JSON格式不正确');
+
                 return $res->getJson();
             }
         }
@@ -373,11 +382,12 @@ class HttpServer2 extends BaseServer2
         if ($tokenExpireTime <= time()) {
             $res = new Result();
             $res->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '令牌已过期');
+
             return $res->getJson();
         }
 
         $taskData = $_POST[SyInner::SERVER_DATA_KEY_TASK] ?? '';
-        self::$_reqTask = is_string($taskData) && (strlen($taskData) > 0) ? $taskData : null;
+        self::$_reqTask = \is_string($taskData) && (\strlen($taskData) > 0) ? $taskData : null;
 
         $_SERVER = [];
         foreach (self::$_reqServers as $key => $val) {
@@ -396,6 +406,7 @@ class HttpServer2 extends BaseServer2
         $nowTime = time();
         $_SERVER[SyInner::SERVER_DATA_KEY_TIMESTAMP] = $nowTime;
         $_SERVER['SYREQ_ID'] = hash('md4', $nowTime . Tool::createNonceStr(8));
+
         return '';
     }
 
@@ -451,36 +462,38 @@ class HttpServer2 extends BaseServer2
 
     /**
      * 处理请求头
+     *
      * @param array $headers 响应头配置
-     * @return int
      */
-    private function handleReqHeader(array &$headers) : int
+    private function handleReqHeader(array &$headers): int
     {
         $domainTag = $_SERVER['SY-DOMAIN'] ?? 'base';
         $cookieDomain = $this->_reqCookieDomains[$domainTag] ?? null;
-        if (is_null($cookieDomain)) {
+        if (null === $cookieDomain) {
             return self::RESPONSE_RESULT_TYPE_FORBIDDEN;
         }
         $_SERVER['SY-DOMAIN'] = $cookieDomain;
+
         return self::RESPONSE_RESULT_TYPE_ACCEPT;
     }
 
     /**
      * 处理请求业务
-     * @param \Swoole\Http\Request $request
+     *
      * @param \Swoole\Http\Response $response 初始化响应头
-     * @return string
      */
-    private function handleReqService(Request $request, Response $response) : string
+    private function handleReqService(Request $request, Response $response): string
     {
         $uri = self::$_reqServers['request_uri'];
         $funcName = $this->getPreProcessFunction($uri, $this->preProcessMapFrame, $this->preProcessMapProject);
-        if (is_bool($funcName)) {
+        if (\is_bool($funcName)) {
             $error = new Result();
             $error->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '预处理函数命名不合法');
+
             return $error->getJson();
-        } elseif (strlen($funcName) > 0) {
-            return $this->$funcName($request);
+        }
+        if (\strlen($funcName) > 0) {
+            return $this->{$funcName}($request);
         }
 
         $this->initRequest($request);
@@ -494,7 +507,7 @@ class HttpServer2 extends BaseServer2
                 Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
             }
             $res = new Result();
-            if (is_string($e->getCode()) || is_numeric($e->getCode())) {
+            if (\is_string($e->getCode()) || is_numeric($e->getCode())) {
                 $errorCode = $e->getCode();
             } else {
                 $errorCode = ErrorCode::COMMON_SERVER_ERROR;

@@ -33,9 +33,7 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
     /**
      * Creates a new EsmtpTransport using the given I/O buffer.
      *
-     * @param Swift_Transport_IoBuffer     $buf
-     * @param Swift_Events_EventDispatcher $dispatcher
-     * @param string                       $localDomain
+     * @param string $localDomain
      */
     public function __construct(Swift_Transport_IoBuffer $buf, Swift_Events_EventDispatcher $dispatcher, $localDomain = '127.0.0.1')
     {
@@ -71,7 +69,7 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
      */
     public function setLocalDomain($domain)
     {
-        if (substr($domain, 0, 1) !== '[') {
+        if ('[' !== substr($domain, 0, 1)) {
             if (filter_var($domain, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
                 $domain = '[' . $domain . ']';
             } elseif (filter_var($domain, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
@@ -162,15 +160,14 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
      * Recipient/sender data will be retrieved from the Message API.
      * The return value is the number of recipients who were accepted for delivery.
      *
-     * @param Swift_Mime_SimpleMessage $message
-     * @param string[]           $failedRecipients An array of failures by-reference
+     * @param string[] $failedRecipients An array of failures by-reference
      *
      * @return int
      */
     public function send(Swift_Mime_SimpleMessage $message, &$failedRecipients = null)
     {
         $sent = 0;
-        $failedRecipients = (array) $failedRecipients;
+        $failedRecipients = (array)$failedRecipients;
 
         if ($evt = $this->eventDispatcher->createSendEvent($this, $message)) {
             $this->eventDispatcher->dispatchEvent($evt, 'beforeSendPerformed');
@@ -187,10 +184,10 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
             );
         }
 
-        $to = (array) $message->getTo();
-        $cc = (array) $message->getCc();
+        $to = (array)$message->getTo();
+        $cc = (array)$message->getCc();
         $tos = array_merge($to, $cc);
-        $bcc = (array) $message->getBcc();
+        $bcc = (array)$message->getBcc();
 
         $message->setBcc([]);
 
@@ -199,6 +196,7 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
             $sent += $this->sendBcc($message, $reversePath, $bcc, $failedRecipients);
         } catch (Exception $e) {
             $message->setBcc($bcc);
+
             throw $e;
         }
 
@@ -277,8 +275,6 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
 
     /**
      * Register a plugin.
-     *
-     * @param Swift_Events_EventListener $plugin
      */
     public function registerPlugin(Swift_Events_EventListener $plugin)
     {
@@ -317,7 +313,7 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
      */
     public function executeCommand($command, $codes = [], &$failures = null)
     {
-        $failures = (array) $failures;
+        $failures = (array)$failures;
         $seq = $this->buffer->write($command);
         $response = $this->getFullResponse($seq);
         if ($evt = $this->eventDispatcher->createCommandEvent($this, $command, $codes)) {
@@ -374,6 +370,7 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
     protected function streamMessage(Swift_Mime_SimpleMessage $message)
     {
         $this->buffer->setWriteTranslations(["\r\n." => "\r\n.."]);
+
         try {
             $message->toByteStream($this->buffer);
             $this->buffer->flushBuffers();
@@ -447,6 +444,7 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
     protected function getFullResponse($seq)
     {
         $response = '';
+
         try {
             do {
                 $line = $this->buffer->readLine($seq);
@@ -479,7 +477,7 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
             }
         }
 
-        if ($sent != 0) {
+        if (0 != $sent) {
             $this->doDataCommand();
             $this->streamMessage($message);
         } else {
