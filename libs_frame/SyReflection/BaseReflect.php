@@ -5,6 +5,7 @@
  * Date: 2017/3/23 0023
  * Time: 15:44
  */
+
 namespace SyReflection;
 
 use SyConstant\ErrorCode;
@@ -30,11 +31,9 @@ class BaseReflect
      * @param string $className  类全名
      * @param string $methodName 方法名称
      *
-     * @return array
-     *
      * @throws \SyException\Validator\ValidatorException
      */
-    public static function getControllerFilters(string $className, string $methodName) : array
+    public static function getControllerFilters(string $className, string $methodName): array
     {
         $annotations = [];
         //控制器签名标识
@@ -50,7 +49,7 @@ class BaseReflect
                 foreach ($docs as $eDoc) {
                     preg_match('/\@([a-zA-Z0-9]+)\-(\{\S+\})/', $eDoc, $saveDoc);
                     $filterName = $saveDoc[1] ?? '';
-                    if ($filterName != SyInner::ANNOTATION_NAME_FILTER) {
+                    if (SyInner::ANNOTATION_NAME_FILTER != $filterName) {
                         continue;
                     }
 
@@ -76,7 +75,7 @@ class BaseReflect
 
             //请求频率
             $requestRate = $existRules[ProjectBase::VALIDATOR_TAG_REQUEST_RATE] ?? 0;
-            if (is_int($requestRate) && ($requestRate > 0)) {
+            if (\is_int($requestRate) && ($requestRate > 0)) {
                 $managerRules[ProjectBase::VALIDATOR_TAG_REQUEST_RATE] = $requestRate;
             }
 
@@ -97,7 +96,7 @@ class BaseReflect
             //接口限制
             $managerRules[ProjectBase::VALIDATOR_TAG_API_LIMIT] = 1;
         }
-        if (count($managerRules) > 0) {
+        if (\count($managerRules) > 0) {
             $annotations[SyInner::ANNOTATION_TAG_SY_MANAGER] = [
                 'field' => SyInner::ANNOTATION_TAG_SY_MANAGER,
                 'explain' => '接口过滤器管理',
@@ -130,11 +129,9 @@ class BaseReflect
      * @param string $className  类全名
      * @param string $methodName 方法名称
      *
-     * @return array
-     *
      * @throws \SyException\Validator\ValidatorException
      */
-    public static function getControllerAspects(string $className, string $methodName) : array
+    public static function getControllerAspects(string $className, string $methodName): array
     {
         $annotations = [
             'before' => [],
@@ -152,12 +149,12 @@ class BaseReflect
                     if (!isset($saveDoc[1])) {
                         continue;
                     }
-                    if ($saveDoc[1] == SyInner::ANNOTATION_NAME_ASPECT) {
+                    if (SyInner::ANNOTATION_NAME_ASPECT == $saveDoc[1]) {
                         $annotations['before'][] = $saveDoc[2];
                         $annotations['after'][] = $saveDoc[2];
-                    } elseif ($saveDoc[1] == SyInner::ANNOTATION_NAME_ASPECT_BEFORE) {
+                    } elseif (SyInner::ANNOTATION_NAME_ASPECT_BEFORE == $saveDoc[1]) {
                         $annotations['before'][] = $saveDoc[2];
-                    } elseif ($saveDoc[1] == SyInner::ANNOTATION_NAME_ASPECT_AFTER) {
+                    } elseif (SyInner::ANNOTATION_NAME_ASPECT_AFTER == $saveDoc[1]) {
                         $annotations['after'][] = $saveDoc[2];
                     }
                 }
@@ -176,41 +173,35 @@ class BaseReflect
      *
      * @param string $filterDoc 过滤器注解
      *
-     * @return array
-     *
      * @throws \SyException\Validator\ValidatorException
      */
-    private static function parseFilterDoc(string $filterDoc) : array
+    private static function parseFilterDoc(string $filterDoc): array
     {
         $filterData = Tool::jsonDecode($filterDoc);
-        if (is_bool($filterData)) {
+        if (\is_bool($filterData)) {
             throw new ValidatorException('数据校验格式不正确', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
         }
 
-        $filterDataField = is_string($filterData['field']) ? $filterData['field'] : '';
-        if (strlen($filterDataField) == 0) {
+        $filterDataField = \is_string($filterData['field']) ? $filterData['field'] : '';
+        if (0 == \strlen($filterDataField)) {
             throw new ValidatorException('字段名称不合法', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
         }
 
-        $filterDataExplain = is_string($filterData['explain']) ? $filterData['explain'] : '';
-        if (strlen($filterDataExplain) == 0) {
+        $filterDataExplain = \is_string($filterData['explain']) ? $filterData['explain'] : '';
+        if (0 == \strlen($filterDataExplain)) {
             throw new ValidatorException('字段解释不合法', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
         }
 
-        $filterDataType = is_string($filterData['type']) ? $filterData['type'] : '';
+        $filterDataType = \is_string($filterData['type']) ? $filterData['type'] : '';
         if (!isset(ProjectBase::$totalValidatorDataTypes[$filterDataType])) {
             throw new ValidatorException('校验器类型不合法', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
         }
 
-        $filterDataRules = is_array($filterData['rules']) ? $filterData['rules'] : [];
-        if ($filterDataField != SyInner::ANNOTATION_TAG_SY_MANAGER) {
-            unset($filterDataRules[ProjectBase::VALIDATOR_TAG_JWT]);
-            unset($filterDataRules[ProjectBase::VALIDATOR_TAG_SIGN]);
-            unset($filterDataRules[ProjectBase::VALIDATOR_TAG_FRAME_TOKEN]);
-            unset($filterDataRules[ProjectBase::VALIDATOR_TAG_REQUEST_RATE]);
-            unset($filterDataRules[ProjectBase::VALIDATOR_TAG_API_LIMIT]);
+        $filterDataRules = \is_array($filterData['rules']) ? $filterData['rules'] : [];
+        if (SyInner::ANNOTATION_TAG_SY_MANAGER != $filterDataField) {
+            unset($filterDataRules[ProjectBase::VALIDATOR_TAG_JWT], $filterDataRules[ProjectBase::VALIDATOR_TAG_SIGN], $filterDataRules[ProjectBase::VALIDATOR_TAG_FRAME_TOKEN], $filterDataRules[ProjectBase::VALIDATOR_TAG_REQUEST_RATE], $filterDataRules[ProjectBase::VALIDATOR_TAG_API_LIMIT]);
         }
-        if (count($filterDataRules) == 0) {
+        if (0 == \count($filterDataRules)) {
             throw new ValidatorException('校验规则不合法', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
         }
 
