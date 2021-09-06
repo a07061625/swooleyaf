@@ -182,7 +182,7 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
         if (!$reversePath = $this->getReversePath($message)) {
             $this->throwException(
                 new Swift_TransportException(
-                'Cannot send message without a sender address'
+                    'Cannot send message without a sender address'
                 )
             );
         }
@@ -343,7 +343,7 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
         $this->executeCommand(
             sprintf("HELO %s\r\n", $this->domain),
             [250]
-            );
+        );
     }
 
     /** Send the MAIL FROM command */
@@ -352,7 +352,7 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
         $this->executeCommand(
             sprintf("MAIL FROM:<%s>\r\n", $address),
             [250]
-            );
+        );
     }
 
     /** Send the RCPT TO command */
@@ -361,7 +361,7 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
         $this->executeCommand(
             sprintf("RCPT TO:<%s>\r\n", $address),
             [250, 251, 252]
-            );
+        );
     }
 
     /** Send the DATA command */
@@ -439,7 +439,7 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
                     '"' . $code . '", with message "' . $response . '"',
                     $code
                 )
-                );
+            );
         }
     }
 
@@ -459,7 +459,7 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
                 new Swift_TransportException(
                     $e->getMessage()
                 )
-                );
+            );
         }
 
         return $response;
@@ -515,7 +515,7 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
                 $reversePath,
                 [$forwardPath],
                 $failedRecipients
-                );
+            );
         }
 
         return $sent;

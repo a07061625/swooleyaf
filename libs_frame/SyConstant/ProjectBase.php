@@ -345,6 +345,10 @@ class ProjectBase
      */
     const VALIDATOR_TAG_REQUEST_RATE = 'requestrate';
     /**
+     * 校验器-标识-接口限制
+     */
+    const VALIDATOR_TAG_API_LIMIT = 'apilimit';
+    /**
      * 校验器-标识-取值枚举
      */
     const VALIDATOR_TAG_IN = 'in';
@@ -385,6 +389,7 @@ class ProjectBase
     const VALIDATOR_TYPE_STRING_FRAME_TOKEN = self::VALIDATOR_DATA_TYPE_STRING . self::VALIDATOR_TAG_FRAME_TOKEN;
     const VALIDATOR_TYPE_STRING_JWT = self::VALIDATOR_DATA_TYPE_STRING . self::VALIDATOR_TAG_JWT;
     const VALIDATOR_TYPE_STRING_REQUEST_RATE = self::VALIDATOR_DATA_TYPE_STRING . self::VALIDATOR_TAG_REQUEST_RATE;
+    const VALIDATOR_TYPE_STRING_API_LIMIT = self::VALIDATOR_DATA_TYPE_STRING . self::VALIDATOR_TAG_API_LIMIT;
     const VALIDATOR_TYPE_INT_REQUIRED = self::VALIDATOR_DATA_TYPE_INT . self::VALIDATOR_TAG_REQUIRED;
     /**
      * 校验器-类型-最小值

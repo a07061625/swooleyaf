@@ -847,10 +847,10 @@ class AbstractConnection extends AbstractChannel
         $host = $args->read_shortstr();
         $this->known_hosts = $args->read_shortstr();
         $this->debug->debug_msg(sprintf(
-                'Redirected to [%s], known_hosts [%s]',
-                $host,
-                $this->known_hosts
-            ));
+            'Redirected to [%s], known_hosts [%s]',
+            $host,
+            $this->known_hosts
+        ));
 
         return $host;
     }
