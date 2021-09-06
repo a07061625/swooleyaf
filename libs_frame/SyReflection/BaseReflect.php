@@ -94,6 +94,8 @@ class BaseReflect
 
             //令牌验证
             $managerRules[ProjectBase::VALIDATOR_TAG_FRAME_TOKEN] = 1;
+            //接口限制
+            $managerRules[ProjectBase::VALIDATOR_TAG_API_LIMIT] = 1;
         }
         if (count($managerRules) > 0) {
             $annotations[SyInner::ANNOTATION_TAG_SY_MANAGER] = [
@@ -202,7 +204,11 @@ class BaseReflect
 
         $filterDataRules = is_array($filterData['rules']) ? $filterData['rules'] : [];
         if ($filterDataField != SyInner::ANNOTATION_TAG_SY_MANAGER) {
-            unset($filterDataRules[ProjectBase::VALIDATOR_TAG_JWT], $filterDataRules[ProjectBase::VALIDATOR_TAG_SIGN], $filterDataRules[ProjectBase::VALIDATOR_TAG_FRAME_TOKEN], $filterDataRules[ProjectBase::VALIDATOR_TAG_REQUEST_RATE]);
+            unset($filterDataRules[ProjectBase::VALIDATOR_TAG_JWT]);
+            unset($filterDataRules[ProjectBase::VALIDATOR_TAG_SIGN]);
+            unset($filterDataRules[ProjectBase::VALIDATOR_TAG_FRAME_TOKEN]);
+            unset($filterDataRules[ProjectBase::VALIDATOR_TAG_REQUEST_RATE]);
+            unset($filterDataRules[ProjectBase::VALIDATOR_TAG_API_LIMIT]);
         }
         if (count($filterDataRules) == 0) {
             throw new ValidatorException('校验规则不合法', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
