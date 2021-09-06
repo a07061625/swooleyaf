@@ -494,7 +494,7 @@ class HttpServer2 extends BaseServer2
                 Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
             }
             $res = new Result();
-            if(is_string($e->getCode()) || is_numeric($e->getCode())){
+            if (is_string($e->getCode()) || is_numeric($e->getCode())) {
                 $errorCode = $e->getCode();
             } else {
                 $errorCode = ErrorCode::COMMON_SERVER_ERROR;

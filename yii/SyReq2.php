@@ -16,10 +16,12 @@ class SyReq2 extends Request
      */
     private $_swRequest;
 
-    public function setSwRequest($request) {
+    public function setSwRequest($request)
+    {
         $this->_swRequest = $request;
     }
-    public function getSwRequest() {
+    public function getSwRequest()
+    {
         return $this->_swRequest;
     }
 }
