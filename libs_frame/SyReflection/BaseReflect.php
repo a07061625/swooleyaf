@@ -94,7 +94,10 @@ class BaseReflect
             //令牌验证
             $managerRules[ProjectBase::VALIDATOR_TAG_FRAME_TOKEN] = 1;
             //接口限制
-            $managerRules[ProjectBase::VALIDATOR_TAG_API_LIMIT] = 1;
+            $apiLimit = $existRules[ProjectBase::VALIDATOR_TAG_API_LIMIT] ?? 1;
+            if ($apiLimit) {
+                $managerRules[ProjectBase::VALIDATOR_TAG_API_LIMIT] = 1;
+            }
         }
         if (\count($managerRules) > 0) {
             $annotations[SyInner::ANNOTATION_TAG_SY_MANAGER] = [
