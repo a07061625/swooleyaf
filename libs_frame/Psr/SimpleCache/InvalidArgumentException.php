@@ -5,6 +5,7 @@
  * Date: 2021/9/9
  * Time: 0:17
  */
+
 namespace Psr\SimpleCache;
 
 /**
