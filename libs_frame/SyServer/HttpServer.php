@@ -229,6 +229,7 @@ class HttpServer extends BaseServer
      */
     public function onOpen(Server $server, Request $request)
     {
+        //do nothing
     }
 
     /**
