@@ -57,6 +57,7 @@ class RpcServer extends BaseServer
 
     private function __clone()
     {
+        //do nothing
     }
 
     public function start()

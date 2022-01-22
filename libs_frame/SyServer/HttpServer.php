@@ -103,6 +103,7 @@ class HttpServer extends BaseServer
 
     private function __clone()
     {
+        //do nothing
     }
 
     public function start()
@@ -138,9 +139,11 @@ class HttpServer extends BaseServer
     {
         if (is_null($socketKey)) {
             return false;
-        } elseif (preg_match('/^[0-9a-zA-Z\+\/]{21}[AQgw]\={2}$/', $socketKey) == 0) {
+        }
+        if (preg_match('/^[0-9a-zA-Z\+\/]{21}[AQgw]\={2}$/', $socketKey) == 0) {
             return false;
-        } elseif (strlen(base64_decode($socketKey, true)) != 16) {
+        }
+        if (strlen(base64_decode($socketKey, true)) != 16) {
             return false;
         }
 

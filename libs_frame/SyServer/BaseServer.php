@@ -393,12 +393,12 @@ abstract class BaseServer
             }
 
             $supportModules = $task->getSupportModules();
-            if ((\count($supportModules) > 0) && (!isset($supportModules[SY_MODULE]))) {
+            if ((!empty($supportModules)) && (!isset($supportModules[SY_MODULE]))) {
                 continue;
             }
 
             $supportServerTypes = $task->getSupportServerTypes();
-            if ((\count($supportServerTypes) > 0) && (!isset($supportServerTypes[SY_SERVER_TYPE]))) {
+            if ((!empty($supportServerTypes)) && (!isset($supportServerTypes[SY_SERVER_TYPE]))) {
                 continue;
             }
 

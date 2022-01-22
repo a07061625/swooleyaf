@@ -101,6 +101,7 @@ class ProcessPoolServer
 
     private function __clone()
     {
+        //do nothing
     }
 
     public function help()

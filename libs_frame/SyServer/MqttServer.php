@@ -32,6 +32,7 @@ class MqttServer
 
     public function __clone()
     {
+        //do nothing
     }
 
     public function start()
@@ -46,14 +47,17 @@ class MqttServer
 
     public function onStart(Server $server)
     {
+        //do nothing
     }
 
     public function onWorkerStart(Server $server, $workerId)
     {
+        //do nothing
     }
 
     public function onConnect(Server $server, int $fd, int $reactorId)
     {
+        //do nothing
     }
 
     public function onReceive(Server $server, int $fd, int $reactor_id, string $data)
@@ -100,5 +104,6 @@ class MqttServer
 
     public function onClose(Server $server, int $fd, int $reactorId)
     {
+        //do nothing
     }
 }
