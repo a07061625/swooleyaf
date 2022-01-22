@@ -5,20 +5,21 @@
  * Date: 19-3-22
  * Time: 下午11:04
  */
+
 namespace SyServer;
 
+use DesignPatterns\Singletons\MysqlSingleton;
+use DesignPatterns\Singletons\RedisSingleton;
+use PoolService\ProcessService\ProcessServiceManager;
+use Response\Result;
 use Swoole\Process;
 use SyConstant\ErrorCode;
 use SyConstant\SyInner;
-use DesignPatterns\Singletons\MysqlSingleton;
-use DesignPatterns\Singletons\RedisSingleton;
 use SyLog\Log;
-use PoolService\ProcessService\ProcessServiceManager;
-use Response\Result;
-use SyTrait\Server\FrameProcessPoolTrait;
-use SyTrait\Server\ProjectProcessPoolTrait;
 use SyTool\Dir;
 use SyTool\Tool;
+use SyTrait\Server\FrameProcessPoolTrait;
+use SyTrait\Server\ProjectProcessPoolTrait;
 
 class ProcessPoolServer
 {
@@ -27,40 +28,47 @@ class ProcessPoolServer
 
     /**
      * 提示文件
+     *
      * @var string
      */
     protected $_tipFile = '';
 
     /**
      * 连接池对象
+     *
      * @var \Swoole\Process\Pool
      */
-    private $pool = null;
+    private $pool;
     /**
      * 请求域名
+     *
      * @var string
      */
     private $_host = '';
     /**
      * 请求端口
+     *
      * @var int
      */
     private $_port = 0;
     /**
      * pid文件
+     *
      * @var string
      */
     private $_pidFile = '';
     /**
      * 配置数组
+     *
      * @var array
      */
     private $_configs = [];
     /**
      * 连接池对象
+     *
      * @var \PoolService\ProcessService\ProcessServiceManager
      */
-    private $serviceManager = null;
+    private $serviceManager;
 
     public function __construct(int $port)
     {
@@ -73,7 +81,7 @@ class ProcessPoolServer
         $this->checkPoolFrame();
         $this->checkPoolProject();
 
-        define('SY_SERVER_IP', $this->_configs['process']['host']);
+        \define('SY_SERVER_IP', $this->_configs['process']['host']);
 
         $this->_configs['process']['port'] = $port;
 
@@ -85,9 +93,10 @@ class ProcessPoolServer
         $this->_tipFile = SY_ROOT . '/tipfile/' . SY_MODULE . $this->_port . '.txt';
         if (is_dir($this->_tipFile)) {
             exit('提示文件不能是文件夹' . PHP_EOL);
-        } elseif (!file_exists($this->_tipFile)) {
-            $tipFileObj = fopen($this->_tipFile, 'wb');
-            if (is_bool($tipFileObj)) {
+        }
+        if (!file_exists($this->_tipFile)) {
+            $tipFileObj = fopen($this->_tipFile, 'w');
+            if (\is_bool($tipFileObj)) {
                 exit('创建或打开提示文件失败' . PHP_EOL);
             }
             fwrite($tipFileObj, '');
@@ -117,7 +126,8 @@ class ProcessPoolServer
         $execRes = Tool::execSystemCommand('lsof -i:' . $this->_port);
         if ($execRes['code'] > 0) {
             exit($execRes['msg'] . PHP_EOL);
-        } elseif (!empty($execRes['data'])) {
+        }
+        if (!empty($execRes['data'])) {
             exit('端口被占用' . PHP_EOL);
         }
 
@@ -174,8 +184,8 @@ class ProcessPoolServer
     {
         $fileContent = file_get_contents($this->_tipFile);
         $command = 'echo -e "\e[1;31m ' . SY_MODULE . ' start status fail \e[0m"';
-        if (is_string($fileContent)) {
-            if (strlen($fileContent) > 0) {
+        if (\is_string($fileContent)) {
+            if (\strlen($fileContent) > 0) {
                 $command = 'echo -e "' . $fileContent . '"';
             }
             file_put_contents($this->_tipFile, '');
@@ -183,7 +193,7 @@ class ProcessPoolServer
         system($command);
         exit();
     }
-    
+
     public function onWorkerStart(Process\Pool $pool, int $workerId)
     {
         @cli_set_process_title(SyInner::PROCESS_TYPE_WORKER . SY_MODULE . $this->_port);
@@ -199,7 +209,7 @@ class ProcessPoolServer
         $bcConfigs = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.bcmath');
         bcscale($bcConfigs['scale']);
 
-        if ($workerId == 0) {
+        if (0 == $workerId) {
             file_put_contents($this->_tipFile, '\e[1;36m start ' . SY_MODULE . ': \e[0m \e[1;32m \t[success] \e[0m');
         }
 
@@ -215,7 +225,7 @@ class ProcessPoolServer
     {
         $result = new Result();
         $dataArr = Tool::jsonDecode($data);
-        if (!is_array($dataArr)) {
+        if (!\is_array($dataArr)) {
             $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '数据格式错误');
         } elseif (!isset($dataArr['service_tag'])) {
             $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '数据格式错误');
@@ -241,15 +251,15 @@ class ProcessPoolServer
         if (version_compare(PHP_VERSION, SyInner::VERSION_MIN_PHP, '<')) {
             exit('PHP版本必须大于等于' . SyInner::VERSION_MIN_PHP . PHP_EOL);
         }
-        if (!defined('SY_MODULE')) {
+        if (!\defined('SY_MODULE')) {
             exit('模块名称未定义' . PHP_EOL);
         }
-        if (!in_array(SY_ENV, SyInner::$totalEnvProject, true)) {
+        if (!\in_array(SY_ENV, SyInner::$totalEnvProject, true)) {
             exit('环境类型不合法' . PHP_EOL);
         }
 
         $os = php_uname('s');
-        if (!in_array($os, SyInner::$totalEnvSystem, true)) {
+        if (!\in_array($os, SyInner::$totalEnvSystem, true)) {
             exit('操作系统不支持' . PHP_EOL);
         }
 
@@ -267,7 +277,7 @@ class ProcessPoolServer
             'msgpack',
         ];
         foreach ($extensionList as $extName) {
-            if (!extension_loaded($extName)) {
+            if (!\extension_loaded($extName)) {
                 exit('扩展' . $extName . '未加载' . PHP_EOL);
             }
         }
@@ -289,7 +299,7 @@ class ProcessPoolServer
     private function handleData(array $data)
     {
         $serviceClass = $this->serviceManager->getServiceName($data['service_tag']);
-        if (strlen($serviceClass) > 0) {
+        if (\strlen($serviceClass) > 0) {
             $serviceParams = Tool::getArrayVal($data, 'service_params', []);
 
             try {
@@ -297,7 +307,7 @@ class ProcessPoolServer
             } catch (\Exception $e) {
                 Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
                 $result = new Result();
-                if (is_int($e->getCode())) {
+                if (\is_int($e->getCode())) {
                     $result->setCodeMsg($e->getCode(), $e->getMessage());
                 } else {
                     $result->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, $e->getMessage());

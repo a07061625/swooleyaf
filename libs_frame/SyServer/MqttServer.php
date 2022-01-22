@@ -5,6 +5,7 @@
  * Date: 2019/7/20 0020
  * Time: 16:40
  */
+
 namespace SyServer;
 
 use Swoole\Server;
@@ -15,7 +16,7 @@ class MqttServer
     /**
      * @var \Swoole\Server
      */
-    protected $_server = null;
+    protected $_server;
 
     public function __construct()
     {
@@ -62,7 +63,7 @@ class MqttServer
 
     public function onReceive(Server $server, int $fd, int $reactor_id, string $data)
     {
-        $byte = ord($data[0]);
+        $byte = \ord($data[0]);
         $_POST = [];
         $_SERVER = [
             'SY_MSG_TYPE' => ($byte & 0xF0) >> 4,
@@ -71,8 +72,9 @@ class MqttServer
 
         switch ($_SERVER['SY_MSG_TYPE']) {
             case 1: //CONNECT
-                $rspContent = chr(32) . chr(2) . chr(0) . chr(0);
+                $rspContent = \chr(32) . \chr(2) . \chr(0) . \chr(0);
                 $server->send($fd, $rspContent);
+
                 break;
             case 3: //PUBLISH
                 $_SERVER['SY_DUP'] = ($byte & 0x08) >> 3;
@@ -80,22 +82,25 @@ class MqttServer
                 $_SERVER['SY_RETAIN'] = $byte & 0x01;
                 $offset = 2;
                 $_POST['msg_topic'] = MqttTool::decodeStr(substr($data, $offset));
-                $offset += strlen($_POST['msg_topic']) + 2;
+                $offset += \strlen($_POST['msg_topic']) + 2;
                 $_POST['msg_content'] = substr($data, $offset);
+
                 break;
             case 8: //SUBSCRIBE
                 $_SERVER['SY_SIGN'] = ($byte & 0x02) >> 1;
-                $_POST['msg_id'] = ord($data[3]);
-                $_POST['msg_topic'] = $_SERVER['SY_SIGN'] == 1 ? substr($data, 6, ($_SERVER['SY_MSG_LENGTH'] - 1)) : '';
+                $_POST['msg_id'] = \ord($data[3]);
+                $_POST['msg_topic'] = 1 == $_SERVER['SY_SIGN'] ? substr($data, 6, ($_SERVER['SY_MSG_LENGTH'] - 1)) : '';
                 //订阅后返回
-                $rspContent = chr(0x90) . chr(3) . chr(0) . chr($_POST['msg_id']) . chr(0);
+                $rspContent = \chr(0x90) . \chr(3) . \chr(0) . \chr($_POST['msg_id']) . \chr(0);
                 $server->send($fd, $rspContent);
+
                 break;
             case 10: //UNSUBSCRIBE
                 break;
             case 12: //PINGREQ
-                $rspContent = chr(208) . chr(0);
+                $rspContent = \chr(208) . \chr(0);
                 $server->send($fd, $rspContent);
+
                 break;
             case 14: //DISCONNECT
                 break;

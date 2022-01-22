@@ -5,6 +5,7 @@
  * Date: 2017-3-5
  * Time: 16:42
  */
+
 namespace SyServer;
 
 use Response\Result;
@@ -137,13 +138,13 @@ class HttpServer extends BaseServer
      */
     public static function createSocketAccept(string $socketKey)
     {
-        if (is_null($socketKey)) {
+        if (null === $socketKey) {
             return false;
         }
-        if (preg_match('/^[0-9a-zA-Z\+\/]{21}[AQgw]\={2}$/', $socketKey) == 0) {
+        if (0 == preg_match('/^[0-9a-zA-Z\+\/]{21}[AQgw]\={2}$/', $socketKey)) {
             return false;
         }
-        if (strlen(base64_decode($socketKey, true)) != 16) {
+        if (16 != \strlen(base64_decode($socketKey, true))) {
             return false;
         }
 
@@ -156,18 +157,16 @@ class HttpServer extends BaseServer
      * @param string $socketKey    客户端密钥
      * @param string $socketAccept 服务端签名
      *
-     * @return bool
-     *
      * @throws \SyException\Swoole\HttpServerException
      */
     public static function checkSocketAccept(string $socketKey, string $socketAccept): bool
     {
-        if (is_null($socketAccept)) {
+        if (null === $socketAccept) {
             throw new HttpServerException('服务端签名不能为空', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
 
         $nowAccept = self::createSocketAccept($socketKey);
-        if ($nowAccept === false) {
+        if (false === $nowAccept) {
             return false;
         }
 
@@ -197,15 +196,12 @@ class HttpServer extends BaseServer
     /**
      * web socket握手
      *
-     * @param \Swoole\Http\Request  $request
-     * @param \Swoole\Http\Response $response
-     *
      * @return bool
      */
     public function onHandshake(Request $request, Response $response)
     {
         $socketAccept = self::createSocketAccept(Tool::getArrayVal($request->header, 'sec-websocket-key', null));
-        if ($socketAccept === false) {
+        if (false === $socketAccept) {
             $response->end();
 
             return false;
@@ -230,9 +226,6 @@ class HttpServer extends BaseServer
 
     /**
      * 客户端与服务器建立连接并完成握手后回调
-     *
-     * @param \Swoole\WebSocket\Server $server
-     * @param \Swoole\Http\Request     $request
      */
     public function onOpen(Server $server, Request $request)
     {
@@ -249,9 +242,6 @@ class HttpServer extends BaseServer
      *     d:保留字段，值固定为0000
      *     e:消息内容，json格式
      * </pre>
-     *
-     * @param \Swoole\WebSocket\Server $server
-     * @param \Swoole\WebSocket\Frame  $frame
      */
     public function onMessage(Server $server, Frame $frame)
     {
@@ -259,25 +249,25 @@ class HttpServer extends BaseServer
             return;
         }
 
-        if ($frame->opcode == SWOOLE_WEBSOCKET_OPCODE_CLOSE) {
+        if (SWOOLE_WEBSOCKET_OPCODE_CLOSE == $frame->opcode) {
             Log::info('Close frame received,Code: ' . $frame->code . ';Reason: ' . $frame->reason);
-        } elseif ($frame->opcode == SWOOLE_WEBSOCKET_OPCODE_PING) {
+        } elseif (SWOOLE_WEBSOCKET_OPCODE_PING == $frame->opcode) {
             $pongFrame = new Frame();
             $pongFrame->opcode = SWOOLE_WEBSOCKET_OPCODE_PONG;
             $server->push($frame->fd, $pongFrame);
-        } elseif ($frame->opcode == SWOOLE_WEBSOCKET_OPCODE_PONG) {
+        } elseif (SWOOLE_WEBSOCKET_OPCODE_PONG == $frame->opcode) {
             Log::info('Pong frame received');
         } else {
             $frameData = $frame->data ?? '';
             $handleRes = $this->handleFrameData($frame->opcode, $frameData);
-            if ($handleRes['type'] == 0) {
+            if (0 == $handleRes['type']) {
                 $server->push(
                     $frame->fd,
                     $handleRes['data'],
                     SWOOLE_WEBSOCKET_OPCODE_TEXT,
                     SWOOLE_WEBSOCKET_FLAG_FIN | SWOOLE_WEBSOCKET_FLAG_COMPRESS
                 );
-            } elseif ($handleRes['type'] == 1) {
+            } elseif (1 == $handleRes['type']) {
                 $server->close($frame->fd);
             } else {
                 $result = new Result();
@@ -305,21 +295,18 @@ class HttpServer extends BaseServer
     /**
      * 处理请求
      *
-     * @param \Swoole\Http\Request  $request
-     * @param \Swoole\Http\Response $response
-     *
      * @throws \Exception
      */
     public function onRequest(Request $request, Response $response)
     {
         self::$_response = $response;
         $initRes = $this->initReceive($request);
-        if (strlen($initRes) > 0) {
+        if (\strlen($initRes) > 0) {
             self::$_rspMsg = $initRes;
-        } elseif (is_null(self::$_reqTask)) {
+        } elseif (null === self::$_reqTask) {
             $rspHeaders = [];
             $handleHeaderRes = $this->handleReqHeader($rspHeaders);
-            if ($handleHeaderRes == self::RESPONSE_RESULT_TYPE_ACCEPT) {
+            if (self::RESPONSE_RESULT_TYPE_ACCEPT == $handleHeaderRes) {
                 self::$_rspMsg = $this->handleReqService($request, $rspHeaders);
             } else {
                 $rspHeaders['Content-Type'] = 'text/plain; charset=utf-8';
@@ -356,16 +343,14 @@ class HttpServer extends BaseServer
      *
      * @param int    $dataType 数据类型
      * @param string $data     数据
-     *
-     * @return array
      */
-    private function handleFrameData($dataType, string $data) : array
+    private function handleFrameData($dataType, string $data): array
     {
         $result = new Result();
         $handleRes = [
             'type' => 0,
         ];
-        if ($dataType != WEBSOCKET_OPCODE_BINARY) {
+        if (WEBSOCKET_OPCODE_BINARY != $dataType) {
             $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '只接受二进制数据');
             $handleRes['data'] = $result->getJson();
 
@@ -377,7 +362,7 @@ class HttpServer extends BaseServer
         $commandData = $this->_messagePack->getData();
         $this->_messagePack->init();
 
-        if ($message === false) {
+        if (false === $message) {
             $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '消息格式不正确');
             $handleRes['data'] = $result->getJson();
 
@@ -407,16 +392,16 @@ class HttpServer extends BaseServer
                 $module = $this->_moduleContainer->getObj($commandData['api_module']);
 
                 try {
-                    if (is_null($module)) {
+                    if (null === $module) {
                         $handleRes = false;
-                    } elseif (($commandData['api_module'] == Project::MODULE_NAME_API) && ($commandData['api_method'] == 'GET')) {
+                    } elseif ((Project::MODULE_NAME_API == $commandData['api_module']) && ('GET' == $commandData['api_method'])) {
                         $handleRes = $module->sendGetReq($commandData['api_uri'], $commandData['api_params']);
-                    } elseif ($commandData['api_module'] == Project::MODULE_NAME_API) {
+                    } elseif (Project::MODULE_NAME_API == $commandData['api_module']) {
                         $handleRes = $module->sendPostReq($commandData['api_uri'], $commandData['api_params']);
                     } else {
                         $handleRes = $module->sendApiReq($commandData['api_uri'], $commandData['api_params']);
                     }
-                    if ($handleRes === false) {
+                    if (false === $handleRes) {
                         $result->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务处理失败');
                     } else {
                         $result = $handleRes;
@@ -433,12 +418,12 @@ class HttpServer extends BaseServer
                 $module = $this->_moduleContainer->getObj($commandData['task_module']);
 
                 try {
-                    if (is_null($module)) {
+                    if (null === $module) {
                         $handleRes = false;
                     } else {
                         $handleRes = $module->sendTaskReq($commandData['task_command'], $commandData['task_params']);
                     }
-                    if ($handleRes === false) {
+                    if (false === $handleRes) {
                         $result->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务处理失败');
                     } else {
                         $result->setData([
@@ -466,12 +451,11 @@ class HttpServer extends BaseServer
     /**
      * 设置响应头信息
      *
-     * @param \Swoole\Http\Response $response
-     * @param array|bool            $headers
+     * @param array|bool $headers
      */
     private function setRspHeaders(Response $response, $headers)
     {
-        if (is_array($headers)) {
+        if (\is_array($headers)) {
             if (!isset($headers['Content-Type'])) {
                 $response->header('Content-Type', 'application/json; charset=utf-8');
             }
@@ -494,12 +478,11 @@ class HttpServer extends BaseServer
     /**
      * 设置响应cookie信息
      *
-     * @param \Swoole\Http\Response $response
-     * @param array|bool            $cookies
+     * @param array|bool $cookies
      */
     private function setRspCookies(Response $response, $cookies)
     {
-        if (is_array($cookies)) {
+        if (\is_array($cookies)) {
             foreach ($cookies as $cookie) {
                 $value = Tool::getArrayVal($cookie, 'value', null);
                 $expires = Tool::getArrayVal($cookie, 'expires', 0);
@@ -514,8 +497,6 @@ class HttpServer extends BaseServer
 
     /**
      * 初始化公共数据
-     *
-     * @param \Swoole\Http\Request $request
      *
      * @return string
      */
@@ -533,9 +514,9 @@ class HttpServer extends BaseServer
         self::$_rspMsg = '';
 
         $dataFormat = $request->header[Project::DATA_KEY_FORMAT_HEADER] ?? '';
-        if ($dataFormat == 'json') {
+        if ('json' == $dataFormat) {
             $_POST = Tool::jsonDecode($request->rawContent());
-            if (!is_array($_POST)) {
+            if (!\is_array($_POST)) {
                 $res = new Result();
                 $res->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, 'JSON格式不正确');
 
@@ -551,7 +532,7 @@ class HttpServer extends BaseServer
         }
 
         $taskData = $_POST[SyInner::SERVER_DATA_KEY_TASK] ?? '';
-        self::$_reqTask = is_string($taskData) && (strlen($taskData) > 0) ? $taskData : null;
+        self::$_reqTask = \is_string($taskData) && (\strlen($taskData) > 0) ? $taskData : null;
 
         $_SERVER = [];
         foreach (self::$_reqServers as $key => $val) {
@@ -559,7 +540,7 @@ class HttpServer extends BaseServer
         }
         foreach (self::$_reqHeaders as $key => $val) {
             $trueKey = trim($key);
-            if ((strlen($trueKey) > 0) && ($key != 'set-cookie')) {
+            if ((\strlen($trueKey) > 0) && ('set-cookie' != $key)) {
                 $_SERVER['HTTP_' . $trueKey] = trim($val);
             }
         }
@@ -631,14 +612,12 @@ class HttpServer extends BaseServer
      * 处理请求头
      *
      * @param array $headers 响应头配置
-     *
-     * @return int
      */
     private function handleReqHeader(array &$headers): int
     {
         $domainTag = self::$_reqHeaders[Project::DATA_KEY_DOMAIN_COOKIE_HEADER] ?? 'base';
         $cookieDomain = $this->_reqCookieDomains[$domainTag] ?? null;
-        if (is_null($cookieDomain)) {
+        if (null === $cookieDomain) {
             return self::RESPONSE_RESULT_TYPE_FORBIDDEN;
         }
         $_SERVER[Project::DATA_KEY_DOMAIN_COOKIE_SERVER] = $cookieDomain;
@@ -649,31 +628,29 @@ class HttpServer extends BaseServer
     /**
      * 处理请求业务
      *
-     * @param \Swoole\Http\Request $request
-     * @param array                $initRspHeaders 初始化响应头
-     *
-     * @return string
+     * @param array $initRspHeaders 初始化响应头
      */
     private function handleReqService(Request $request, array $initRspHeaders): string
     {
         $uri = Tool::getArrayVal(self::$_reqServers, 'request_uri', '/');
         $uriCheckRes = $this->checkRequestUri($uri);
-        if (strlen($uriCheckRes['error']) > 0) {
+        if (\strlen($uriCheckRes['error']) > 0) {
             return $uriCheckRes['error'];
         }
         $uri = $uriCheckRes['uri'];
         self::$_reqServers['request_uri'] = $uriCheckRes['uri'];
 
         $funcName = $this->getPreProcessFunction($uri, $this->preProcessMapFrame, $this->preProcessMapProject);
-        if (is_bool($funcName)) {
+        if (\is_bool($funcName)) {
             $error = new Result();
             $error->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '预处理函数命名不合法');
             $result = $error->getJson();
             unset($error);
 
             return $result;
-        } elseif (strlen($funcName) > 0) {
-            return $this->$funcName($request);
+        }
+        if (\strlen($funcName) > 0) {
+            return $this->{$funcName}($request);
         }
 
         $this->initRequest($request, $initRspHeaders);
@@ -686,7 +663,7 @@ class HttpServer extends BaseServer
             $result = $this->handleAppReqHttp([
                 'api_uri' => $uri,
             ], $request);
-            if (strlen($result) == 0) {
+            if (0 == \strlen($result)) {
                 $error = new Result();
                 $error->setCodeMsg(ErrorCode::SWOOLE_SERVER_NO_RESPONSE_ERROR, '未设置响应数据');
             }
@@ -700,7 +677,7 @@ class HttpServer extends BaseServer
         } finally {
             self::$_syServer->decr(self::$_serverToken, 'request_handling', 1);
             $this->reportLongTimeReq($uri, array_merge($_GET, $_POST), Project::TIME_EXPIRE_SWOOLE_CLIENT_HTTP);
-            if (is_object($error)) {
+            if (\is_object($error)) {
                 $result = $error->getJson();
                 unset($error);
             }
