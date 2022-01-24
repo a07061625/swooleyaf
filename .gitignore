@@ -1,4 +1,5 @@
 .idea/
+.scannerwork/
 .vscode/
 test/
 **/application/views/cache_compile/
