@@ -1,4 +1,5 @@
 .idea/
+.scannerwork/
 **/application/views/cache_compile/
 **/application/views/cache/
 tipfile/*.txt
