@@ -36,6 +36,7 @@ class CategorySub extends WxBaseMerchant
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

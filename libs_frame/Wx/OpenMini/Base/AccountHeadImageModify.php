@@ -56,6 +56,7 @@ class AccountHeadImageModify extends WxBaseOpenMini
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

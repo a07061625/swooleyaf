@@ -136,6 +136,7 @@ class Statistics extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     public function setDate(int $beginTime, int $endTime)

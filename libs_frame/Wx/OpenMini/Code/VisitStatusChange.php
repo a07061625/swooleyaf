@@ -36,6 +36,7 @@ class VisitStatusChange extends WxBaseOpenMini
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

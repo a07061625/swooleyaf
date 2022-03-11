@@ -65,10 +65,12 @@ class WxConfigCorpProvider
 
     public function __construct()
     {
+        //do nothing
     }
 
     private function __clone()
     {
+        //do nothing
     }
 
     public function getCorpId(): string

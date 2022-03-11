@@ -41,6 +41,7 @@ class AccountAdd extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

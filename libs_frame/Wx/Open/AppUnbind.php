@@ -41,6 +41,7 @@ class AppUnbind extends WxBaseOpen
 
     public function __clone()
     {
+        //do nothing
     }
 
     public function getDetail() : array

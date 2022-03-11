@@ -34,6 +34,7 @@ class AdminListGet extends WxBaseCorpProvider
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

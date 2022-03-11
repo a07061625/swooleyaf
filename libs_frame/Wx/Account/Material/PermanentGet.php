@@ -42,6 +42,7 @@ class PermanentGet extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

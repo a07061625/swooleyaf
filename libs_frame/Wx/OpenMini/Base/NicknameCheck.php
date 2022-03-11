@@ -36,6 +36,7 @@ class NicknameCheck extends WxBaseOpenMini
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

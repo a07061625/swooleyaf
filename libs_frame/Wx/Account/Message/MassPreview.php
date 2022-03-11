@@ -52,6 +52,7 @@ class MassPreview extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

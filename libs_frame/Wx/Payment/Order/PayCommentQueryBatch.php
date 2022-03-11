@@ -78,6 +78,7 @@ class PayCommentQueryBatch extends WxBasePayment
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

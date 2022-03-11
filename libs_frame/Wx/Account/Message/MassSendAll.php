@@ -46,6 +46,7 @@ class MassSendAll extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

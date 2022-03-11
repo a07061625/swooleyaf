@@ -36,6 +36,7 @@ class NicknameAuditQuery extends WxBaseOpenMini
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

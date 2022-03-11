@@ -51,6 +51,7 @@ class SuiteAuthUrl extends WxBaseCorpProvider
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

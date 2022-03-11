@@ -85,6 +85,7 @@ class DownloadFundFlow extends WxBasePayment
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

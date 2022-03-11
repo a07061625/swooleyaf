@@ -39,6 +39,7 @@ class CertList extends WxBasePayment
 
     private function __clone()
     {
+        //do nothing
     }
 
     public function getDetail() : array

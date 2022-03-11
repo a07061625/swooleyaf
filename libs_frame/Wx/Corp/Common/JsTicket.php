@@ -29,6 +29,7 @@ class JsTicket extends WxBaseCorp
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

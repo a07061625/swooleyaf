@@ -34,6 +34,7 @@ class RegisterInfoGet extends WxBaseCorpProvider
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

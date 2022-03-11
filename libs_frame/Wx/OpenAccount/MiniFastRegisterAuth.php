@@ -25,6 +25,7 @@ class MiniFastRegisterAuth extends WxBaseOpenAccount
 
     public function __clone()
     {
+        //do nothing
     }
 
     public function getDetail() : array

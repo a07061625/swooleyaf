@@ -38,6 +38,7 @@ class WebUserInfo extends WxBaseAccount
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

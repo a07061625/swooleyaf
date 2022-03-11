@@ -80,6 +80,7 @@ class CardConfig extends WxBaseAlone
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

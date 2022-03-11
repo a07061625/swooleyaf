@@ -49,6 +49,7 @@ class AppChatSend extends WxBaseCorp
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

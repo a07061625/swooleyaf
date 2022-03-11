@@ -30,6 +30,7 @@ class CodeGrayReleaseRevert extends WxBaseOpenMini
 
     public function __clone()
     {
+        //do nothing
     }
 
     public function getDetail() : array

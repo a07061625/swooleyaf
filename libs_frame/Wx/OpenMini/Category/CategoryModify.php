@@ -51,6 +51,7 @@ class CategoryModify extends WxBaseOpenMini
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

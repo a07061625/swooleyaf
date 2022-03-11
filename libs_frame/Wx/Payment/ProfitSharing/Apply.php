@@ -66,6 +66,7 @@ class Apply extends WxBasePayment
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

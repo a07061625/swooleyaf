@@ -76,6 +76,7 @@ class SubscribeMsgSend extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

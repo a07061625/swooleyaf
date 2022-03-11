@@ -42,6 +42,7 @@ class ApprovalDataGet extends WxBaseCorp
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

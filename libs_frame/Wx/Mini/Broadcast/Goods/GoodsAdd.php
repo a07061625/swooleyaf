@@ -68,6 +68,7 @@ class GoodsAdd extends WxBaseMini
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**
@@ -138,7 +139,7 @@ class GoodsAdd extends WxBaseMini
     public function setName(string $name)
     {
         $nameLength = strlen($name);
-        if($nameLength <= 0){
+        if ($nameLength <= 0) {
             throw new WxException('商品名称不能为空', ErrorCode::WX_PARAM_ERROR);
         } elseif ($nameLength > 28) {
             throw new WxException('商品名称不合法', ErrorCode::WX_PARAM_ERROR);

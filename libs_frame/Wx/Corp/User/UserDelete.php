@@ -38,6 +38,7 @@ class UserDelete extends WxBaseCorp
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

@@ -148,6 +148,7 @@ class PayMicro extends WxBasePayment
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

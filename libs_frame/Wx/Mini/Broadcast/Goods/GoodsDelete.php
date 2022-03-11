@@ -41,6 +41,7 @@ class GoodsDelete extends WxBaseMini
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

@@ -30,6 +30,7 @@ class SessionListWait extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     public function getDetail() : array

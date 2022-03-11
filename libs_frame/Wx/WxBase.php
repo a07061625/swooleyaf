@@ -27,6 +27,7 @@ abstract class WxBase
 
     public function __construct()
     {
+        //do nothing
     }
 
     /**

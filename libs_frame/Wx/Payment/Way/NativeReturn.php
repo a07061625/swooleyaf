@@ -75,6 +75,7 @@ class NativeReturn extends WxBasePayment
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

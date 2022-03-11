@@ -46,6 +46,7 @@ class GoodsAdd extends WxBaseMini
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

@@ -93,6 +93,7 @@ class Pay extends WxBasePayment
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

@@ -36,6 +36,7 @@ class OrderClose extends WxBaseMerchant
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**
