@@ -5,6 +5,7 @@
  * Date: 2018/12/14 0014
  * Time: 16:01
  */
+
 namespace Wx\Merchant\Order;
 
 use SyConstant\ErrorCode;
@@ -21,31 +22,37 @@ class OrderSetDelivery extends WxBaseMerchant
 
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 订单ID
+     *
      * @var string
      */
     private $order_id = '';
     /**
      * 物流公司
+     *
      * @var string
      */
     private $delivery_company = '';
     /**
      * 运单ID
+     *
      * @var string
      */
     private $delivery_track_no = '';
     /**
      * 物流状态(0-不需要 1-需要)
+     *
      * @var int
      */
     private $need_delivery = 0;
     /**
      * 其它物流公司状态(0-否 1-是)
+     *
      * @var int
      */
     private $is_others = 0;
@@ -65,12 +72,11 @@ class OrderSetDelivery extends WxBaseMerchant
     }
 
     /**
-     * @param string $orderId
      * @throws \SyException\Wx\WxException
      */
     public function setOrderId(string $orderId)
     {
-        if (ctype_digit($orderId) && (strlen($orderId) <= 32)) {
+        if (ctype_digit($orderId) && (\strlen($orderId) <= 32)) {
             $this->reqData['order_id'] = $orderId;
         } else {
             throw new WxException('订单ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -78,12 +84,11 @@ class OrderSetDelivery extends WxBaseMerchant
     }
 
     /**
-     * @param string $deliveryCompany
      * @throws \SyException\Wx\WxException
      */
     public function setDeliveryCompany(string $deliveryCompany)
     {
-        if (strlen($deliveryCompany) > 0) {
+        if (\strlen($deliveryCompany) > 0) {
             $this->reqData['delivery_company'] = $deliveryCompany;
         } else {
             throw new WxException('物流公司不合法', ErrorCode::WX_PARAM_ERROR);
@@ -91,12 +96,11 @@ class OrderSetDelivery extends WxBaseMerchant
     }
 
     /**
-     * @param string $deliveryTrackNo
      * @throws \SyException\Wx\WxException
      */
     public function setDeliveryTrackNo(string $deliveryTrackNo)
     {
-        if (strlen($deliveryTrackNo) > 0) {
+        if (\strlen($deliveryTrackNo) > 0) {
             $this->reqData['delivery_track_no'] = $deliveryTrackNo;
         } else {
             throw new WxException('运单ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -104,12 +108,11 @@ class OrderSetDelivery extends WxBaseMerchant
     }
 
     /**
-     * @param int $needDelivery
      * @throws \SyException\Wx\WxException
      */
     public function setNeedDelivery(int $needDelivery)
     {
-        if (in_array($needDelivery, [self::DELIVERY_STATUS_NO, self::DELIVERY_STATUS_YES], true)) {
+        if (\in_array($needDelivery, [self::DELIVERY_STATUS_NO, self::DELIVERY_STATUS_YES], true)) {
             $this->reqData['need_delivery'] = $needDelivery;
         } else {
             throw new WxException('物流状态不合法', ErrorCode::WX_PARAM_ERROR);
@@ -117,24 +120,23 @@ class OrderSetDelivery extends WxBaseMerchant
     }
 
     /**
-     * @param int $isOthers
      * @throws \SyException\Wx\WxException
      */
     public function setIsOthers(int $isOthers)
     {
-        if (in_array($isOthers, [0, 1], true)) {
+        if (\in_array($isOthers, [0, 1], true)) {
             $this->reqData['is_others'] = $isOthers;
         } else {
             throw new WxException('其它物流公司状态不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['order_id'])) {
             throw new WxException('订单ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if ($this->reqData['need_delivery'] == self::DELIVERY_STATUS_YES) {
+        if (self::DELIVERY_STATUS_YES == $this->reqData['need_delivery']) {
             if (!isset($this->reqData['delivery_company'])) {
                 throw new WxException('物流公司不能为空', ErrorCode::WX_PARAM_ERROR);
             }
@@ -151,7 +153,7 @@ class OrderSetDelivery extends WxBaseMerchant
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

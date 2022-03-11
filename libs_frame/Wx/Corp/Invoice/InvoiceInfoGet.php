@@ -1,4 +1,5 @@
 <?php
+
 namespace Wx\Corp\Invoice;
 
 use SyConstant\ErrorCode;
@@ -10,6 +11,7 @@ use Wx\WxUtilBase;
 
 /**
  * 查询电子发票
+ *
  * @package Wx\Corp\Invoice
  */
 class InvoiceInfoGet extends WxBaseCorp
@@ -18,11 +20,13 @@ class InvoiceInfoGet extends WxBaseCorp
 
     /**
      * 发票id
+     *
      * @var string
      */
     private $card_id = '';
     /**
      * 加密密码
+     *
      * @var string
      */
     private $encrypt_code = '';
@@ -41,12 +45,11 @@ class InvoiceInfoGet extends WxBaseCorp
     }
 
     /**
-     * @param string $cardId
      * @throws \SyException\Wx\WxException
      */
     public function setCardId(string $cardId)
     {
-        if (strlen($cardId) > 0) {
+        if (\strlen($cardId) > 0) {
             $this->reqData['card_id'] = $cardId;
         } else {
             throw new WxException('发票id不合法', ErrorCode::WX_PARAM_ERROR);
@@ -54,12 +57,11 @@ class InvoiceInfoGet extends WxBaseCorp
     }
 
     /**
-     * @param string $encryptCode
      * @throws \SyException\Wx\WxException
      */
     public function setEncryptCode(string $encryptCode)
     {
-        if (strlen($encryptCode) > 0) {
+        if (\strlen($encryptCode) > 0) {
             $this->reqData['encrypt_code'] = $encryptCode;
         } else {
             throw new WxException('加密密码不合法', ErrorCode::WX_PARAM_ERROR);
@@ -83,7 +85,7 @@ class InvoiceInfoGet extends WxBaseCorp
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

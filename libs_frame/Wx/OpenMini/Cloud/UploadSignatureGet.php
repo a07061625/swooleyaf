@@ -5,6 +5,7 @@
  * Date: 18-9-13
  * Time: 上午12:17
  */
+
 namespace Wx\OpenMini\Cloud;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class UploadSignatureGet extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 上传签名
+     *
      * @var string
      */
     private $hashed_payload = '';
@@ -40,19 +43,18 @@ class UploadSignatureGet extends WxBaseOpenMini
     }
 
     /**
-     * @param string $hashedPayload
      * @throws \SyException\Wx\WxOpenException
      */
     public function setHashedPayload(string $hashedPayload)
     {
-        if (ctype_alnum($hashedPayload) && (strlen($hashedPayload) == 64)) {
+        if (ctype_alnum($hashedPayload) && (64 == \strlen($hashedPayload))) {
             $this->reqData['hashed_payload'] = $hashedPayload;
         } else {
             throw new WxOpenException('上传签名不合法', ErrorCode::COMMON_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['hashed_payload'])) {
             throw new WxOpenException('上传签名不能为空', ErrorCode::COMMON_PARAM_ERROR);
@@ -68,7 +70,7 @@ class UploadSignatureGet extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

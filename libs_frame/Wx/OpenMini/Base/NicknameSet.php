@@ -5,6 +5,7 @@
  * Date: 2018/9/13 0013
  * Time: 7:34
  */
+
 namespace Wx\OpenMini\Base;
 
 use SyConstant\ErrorCode;
@@ -18,26 +19,31 @@ class NicknameSet extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 昵称
+     *
      * @var string
      */
     private $nick_name = '';
     /**
      * 身份证照片
+     *
      * @var string
      */
     private $id_card = '';
     /**
      * 营业执照
+     *
      * @var string
      */
     private $license = '';
     /**
      * 其他证明材料列表
+     *
      * @var array
      */
     private $naming_other_stuff_list = [];
@@ -55,12 +61,11 @@ class NicknameSet extends WxBaseOpenMini
     }
 
     /**
-     * @param string $nickName
      * @throws \SyException\Wx\WxOpenException
      */
     public function setNickName(string $nickName)
     {
-        if (strlen($nickName) > 0) {
+        if (\strlen($nickName) > 0) {
             $this->reqData['nick_name'] = $nickName;
         } else {
             throw new WxOpenException('昵称不合法', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -68,12 +73,11 @@ class NicknameSet extends WxBaseOpenMini
     }
 
     /**
-     * @param string $idCard
      * @throws \SyException\Wx\WxOpenException
      */
     public function setIdCard(string $idCard)
     {
-        if (strlen($idCard) > 0) {
+        if (\strlen($idCard) > 0) {
             $this->reqData['id_card'] = $idCard;
         } else {
             throw new WxOpenException('身份证照片不合法', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -81,21 +85,17 @@ class NicknameSet extends WxBaseOpenMini
     }
 
     /**
-     * @param string $license
      * @throws \SyException\Wx\WxOpenException
      */
     public function setLicense(string $license)
     {
-        if (strlen($license) > 0) {
+        if (\strlen($license) > 0) {
             $this->reqData['license'] = $license;
         } else {
             throw new WxOpenException('营业执照不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    /**
-     * @param array $namingOtherStuffList
-     */
     public function setNamingOtherStuffList(array $namingOtherStuffList)
     {
         $this->naming_other_stuff_list = [];
@@ -104,15 +104,15 @@ class NicknameSet extends WxBaseOpenMini
             if ($num > 5) {
                 break;
             }
-            if (is_string($eNamingOtherStuff) && (strlen($eNamingOtherStuff) > 0)) {
+            if (\is_string($eNamingOtherStuff) && (\strlen($eNamingOtherStuff) > 0)) {
                 $key = 'naming_other_stuff_' . $num;
                 $this->naming_other_stuff_list[$key] = $eNamingOtherStuff;
-                $num++;
+                ++$num;
             }
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['nick_name'])) {
             throw new WxOpenException('昵称不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -134,7 +134,7 @@ class NicknameSet extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

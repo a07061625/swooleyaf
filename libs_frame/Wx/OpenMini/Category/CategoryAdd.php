@@ -5,6 +5,7 @@
  * Date: 2018/9/13 0013
  * Time: 7:21
  */
+
 namespace Wx\OpenMini\Category;
 
 use SyConstant\ErrorCode;
@@ -16,17 +17,20 @@ use Wx\WxUtilOpenBase;
 
 /**
  * 添加类目
+ *
  * @package Wx\OpenMini
  */
 class CategoryAdd extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 类目信息列表
+     *
      * @var array
      */
     private $categories = [];
@@ -45,7 +49,6 @@ class CategoryAdd extends WxBaseOpenMini
     }
 
     /**
-     * @param array $categoryInfo
      * @throws \SyException\Wx\WxOpenException
      */
     public function addCategory(array $categoryInfo)
@@ -56,7 +59,7 @@ class CategoryAdd extends WxBaseOpenMini
         $this->reqData['categories'][] = $categoryInfo;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (empty($this->reqData['categories'])) {
             throw new WxOpenException('类目信息不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -70,7 +73,7 @@ class CategoryAdd extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

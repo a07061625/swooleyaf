@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Corp\Crm;
 
 use SyConstant\ErrorCode;
@@ -16,6 +17,7 @@ use Wx\WxUtilBase;
 
 /**
  * 离职成员的外部联系人再分配
+ *
  * @package Wx\Corp\Crm
  */
 class ExternalContactTransfer extends WxBaseCorp
@@ -24,16 +26,19 @@ class ExternalContactTransfer extends WxBaseCorp
 
     /**
      * 外部联系人用户ID
+     *
      * @var string
      */
     private $external_userid = '';
     /**
      * 离职成员用户ID
+     *
      * @var string
      */
     private $handover_userid = '';
     /**
      * 接替成员用户ID
+     *
      * @var string
      */
     private $takeover_userid = '';
@@ -52,7 +57,6 @@ class ExternalContactTransfer extends WxBaseCorp
     }
 
     /**
-     * @param string $externalUserId
      * @throws \SyException\Wx\WxException
      */
     public function setExternalUserId(string $externalUserId)
@@ -65,7 +69,6 @@ class ExternalContactTransfer extends WxBaseCorp
     }
 
     /**
-     * @param string $handoverUserId
      * @throws \SyException\Wx\WxException
      */
     public function setHandoverUserId(string $handoverUserId)
@@ -78,7 +81,6 @@ class ExternalContactTransfer extends WxBaseCorp
     }
 
     /**
-     * @param string $takeoverUserId
      * @throws \SyException\Wx\WxException
      */
     public function setTakeoverUserId(string $takeoverUserId)
@@ -90,7 +92,7 @@ class ExternalContactTransfer extends WxBaseCorp
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['external_userid'])) {
             throw new WxException('外部联系人用户ID不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -110,7 +112,7 @@ class ExternalContactTransfer extends WxBaseCorp
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

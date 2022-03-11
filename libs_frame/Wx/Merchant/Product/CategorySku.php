@@ -5,6 +5,7 @@
  * Date: 2018/12/14 0014
  * Time: 16:01
  */
+
 namespace Wx\Merchant\Product;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class CategorySku extends WxBaseMerchant
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 分类ID
+     *
      * @var int
      */
     private $cate_id = 0;
@@ -40,7 +43,6 @@ class CategorySku extends WxBaseMerchant
     }
 
     /**
-     * @param int $cateId
      * @throws \SyException\Wx\WxException
      */
     public function setCateId(int $cateId)
@@ -52,7 +54,7 @@ class CategorySku extends WxBaseMerchant
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['cate_id'])) {
             throw new WxException('分类ID不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -66,7 +68,7 @@ class CategorySku extends WxBaseMerchant
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

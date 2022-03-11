@@ -5,6 +5,7 @@
  * Date: 2018/12/14 0014
  * Time: 16:01
  */
+
 namespace Wx\Merchant\Product;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class ProductInfo extends WxBaseMerchant
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 商品ID
+     *
      * @var string
      */
     private $product_id = '';
@@ -40,19 +43,18 @@ class ProductInfo extends WxBaseMerchant
     }
 
     /**
-     * @param string $productId
      * @throws \SyException\Wx\WxException
      */
     public function setProductId(string $productId)
     {
-        if (strlen($productId) > 0) {
+        if (\strlen($productId) > 0) {
             $this->reqData['product_id'] = $productId;
         } else {
             throw new WxException('商品ID不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['product_id'])) {
             throw new WxException('商品ID不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -66,7 +68,7 @@ class ProductInfo extends WxBaseMerchant
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

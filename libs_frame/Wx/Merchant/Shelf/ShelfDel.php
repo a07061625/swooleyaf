@@ -5,6 +5,7 @@
  * Date: 2018/12/14 0014
  * Time: 16:01
  */
+
 namespace Wx\Merchant\Shelf;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class ShelfDel extends WxBaseMerchant
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 货架ID
+     *
      * @var int
      */
     private $shelf_id = 0;
@@ -40,7 +43,6 @@ class ShelfDel extends WxBaseMerchant
     }
 
     /**
-     * @param int $shelfId
      * @throws \SyException\Wx\WxException
      */
     public function setShelfId(int $shelfId)
@@ -52,7 +54,7 @@ class ShelfDel extends WxBaseMerchant
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['shelf_id'])) {
             throw new WxException('货架ID不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -66,7 +68,7 @@ class ShelfDel extends WxBaseMerchant
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

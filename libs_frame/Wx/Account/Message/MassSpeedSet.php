@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class MassSpeedSet extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 群发速度级别
+     *
      * @var int
      */
     private $speed = 0;
@@ -40,7 +43,6 @@ class MassSpeedSet extends WxBaseAccount
     }
 
     /**
-     * @param int $speed
      * @throws \SyException\Wx\WxException
      */
     public function setSpeed(int $speed)
@@ -52,7 +54,7 @@ class MassSpeedSet extends WxBaseAccount
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['speed'])) {
             throw new WxException('群发速度级别不能为空', ErrorCode::WX_PARAM_ERROR);

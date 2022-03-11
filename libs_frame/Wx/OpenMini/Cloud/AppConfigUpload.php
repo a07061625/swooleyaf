@@ -5,6 +5,7 @@
  * Date: 18-9-13
  * Time: 上午12:17
  */
+
 namespace Wx\OpenMini\Cloud;
 
 use SyConstant\ErrorCode;
@@ -18,16 +19,19 @@ class AppConfigUpload extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 配置类型
+     *
      * @var int
      */
     private $type = 0;
     /**
      * 配置json
+     *
      * @var string
      */
     private $config = '';
@@ -45,13 +49,11 @@ class AppConfigUpload extends WxBaseOpenMini
     }
 
     /**
-     * @param int $type
-     * @param array $config
      * @throws \SyException\Wx\WxOpenException
      */
     public function setTypeAndConfig(int $type, array $config)
     {
-        if (!in_array($type, [1])) {
+        if (!\in_array($type, [1])) {
             throw new WxOpenException('配置类型不合法', ErrorCode::COMMON_PARAM_ERROR);
         }
         if (empty($config)) {
@@ -61,7 +63,7 @@ class AppConfigUpload extends WxBaseOpenMini
         $this->reqData['config'] = Tool::jsonEncode($config, JSON_UNESCAPED_UNICODE);
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['type'])) {
             throw new WxOpenException('配置类型不能为空', ErrorCode::COMMON_PARAM_ERROR);
@@ -77,7 +79,7 @@ class AppConfigUpload extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

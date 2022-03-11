@@ -1,4 +1,5 @@
 <?php
+
 namespace Wx\CorpProvider\Common;
 
 use SyConstant\ErrorCode;
@@ -10,17 +11,20 @@ use Wx\WxUtilCorpProvider;
 
 /**
  * 获取企业授权信息
+ *
  * @package Wx\CorpProvider\Common
  */
 class AuthInfoGet extends WxBaseCorpProvider
 {
     /**
      * 授权企业ID
+     *
      * @var string
      */
     private $auth_corpid = '';
     /**
      * 永久授权码
+     *
      * @var string
      */
     private $permanent_code = '';
@@ -37,7 +41,6 @@ class AuthInfoGet extends WxBaseCorpProvider
     }
 
     /**
-     * @param string $authCorpId
      * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setAuthCorpId(string $authCorpId)
@@ -50,12 +53,11 @@ class AuthInfoGet extends WxBaseCorpProvider
     }
 
     /**
-     * @param string $permanentCode
      * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setPermanentCode(string $permanentCode)
     {
-        if (strlen($permanentCode) > 0) {
+        if (\strlen($permanentCode) > 0) {
             $this->reqData['permanent_code'] = $permanentCode;
         } else {
             throw new WxCorpProviderException('永久授权码不合法', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
@@ -79,7 +81,7 @@ class AuthInfoGet extends WxBaseCorpProvider
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXPROVIDER_CORP_POST_ERROR;

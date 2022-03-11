@@ -5,10 +5,11 @@
  * Date: 2019/1/24 0024
  * Time: 16:29
  */
+
 namespace Wx\Corp\Agent;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyTool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -16,6 +17,7 @@ use Wx\WxUtilBase;
 
 /**
  * 删除菜单
+ *
  * @package Wx\Corp\Agent
  */
 class MenuDelete extends WxBaseCorp
@@ -24,6 +26,7 @@ class MenuDelete extends WxBaseCorp
 
     /**
      * 应用ID
+     *
      * @var string
      */
     private $agentid = '';
@@ -43,7 +46,7 @@ class MenuDelete extends WxBaseCorp
         //do nothing
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $resArr = [
             'code' => 0,
@@ -53,7 +56,7 @@ class MenuDelete extends WxBaseCorp
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

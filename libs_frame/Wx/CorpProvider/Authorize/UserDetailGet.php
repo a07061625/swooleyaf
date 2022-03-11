@@ -1,4 +1,5 @@
 <?php
+
 namespace Wx\CorpProvider\Authorize;
 
 use SyConstant\ErrorCode;
@@ -10,12 +11,14 @@ use Wx\WxUtilCorpProvider;
 
 /**
  * 获取访问用户敏感信息
+ *
  * @package Wx\CorpProvider\Authorize
  */
 class UserDetailGet extends WxBaseCorpProvider
 {
     /**
      * 成员票据
+     *
      * @var string
      */
     private $user_ticket = '';
@@ -32,12 +35,11 @@ class UserDetailGet extends WxBaseCorpProvider
     }
 
     /**
-     * @param string $userTicket
      * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setUserTicket(string $userTicket)
     {
-        if (strlen($userTicket) > 0) {
+        if (\strlen($userTicket) > 0) {
             $this->reqData['user_ticket'] = $userTicket;
         } else {
             throw new WxCorpProviderException('成员票据不合法', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
@@ -58,7 +60,7 @@ class UserDetailGet extends WxBaseCorpProvider
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXPROVIDER_CORP_POST_ERROR;

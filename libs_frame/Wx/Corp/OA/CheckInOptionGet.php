@@ -1,4 +1,5 @@
 <?php
+
 namespace Wx\Corp\OA;
 
 use SyConstant\ErrorCode;
@@ -10,6 +11,7 @@ use Wx\WxUtilBase;
 
 /**
  * 获取打卡规则
+ *
  * @package Wx\Corp\OA
  */
 class CheckInOptionGet extends WxBaseCorp
@@ -18,11 +20,13 @@ class CheckInOptionGet extends WxBaseCorp
 
     /**
      * 日期
+     *
      * @var int
      */
     private $datetime = 0;
     /**
      * 用户列表
+     *
      * @var array
      */
     private $useridlist = [];
@@ -42,7 +46,6 @@ class CheckInOptionGet extends WxBaseCorp
     }
 
     /**
-     * @param int $datetime
      * @throws \SyException\Wx\WxException
      */
     public function setDatetime(int $datetime)
@@ -55,7 +58,6 @@ class CheckInOptionGet extends WxBaseCorp
     }
 
     /**
-     * @param array $userIdList
      * @throws \SyException\Wx\WxException
      */
     public function setUserIdList(array $userIdList)
@@ -67,10 +69,11 @@ class CheckInOptionGet extends WxBaseCorp
             }
         }
 
-        $userNum = count($idList);
-        if ($userNum == 0) {
+        $userNum = \count($idList);
+        if (0 == $userNum) {
             throw new WxException('用户列表不能为空', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($userNum > 100) {
+        }
+        if ($userNum > 100) {
             throw new WxException('用户列表不能超过100个', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -94,7 +97,7 @@ class CheckInOptionGet extends WxBaseCorp
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

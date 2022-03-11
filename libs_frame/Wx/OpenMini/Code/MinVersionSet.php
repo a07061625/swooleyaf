@@ -5,6 +5,7 @@
  * Date: 2018/9/13 0013
  * Time: 8:16
  */
+
 namespace Wx\OpenMini\Code;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class MinVersionSet extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 最低版本号
+     *
      * @var string
      */
     private $version = '';
@@ -40,19 +43,18 @@ class MinVersionSet extends WxBaseOpenMini
     }
 
     /**
-     * @param string $version
      * @throws \SyException\Wx\WxOpenException
      */
     public function setVersion(string $version)
     {
-        if (strlen($version) > 0) {
+        if (\strlen($version) > 0) {
             $this->reqData['version'] = $version;
         } else {
             throw new WxOpenException('最低版本号不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['version'])) {
             throw new WxOpenException('最低版本号不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -68,7 +70,7 @@ class MinVersionSet extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

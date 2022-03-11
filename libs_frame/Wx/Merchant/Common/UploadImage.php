@@ -5,6 +5,7 @@
  * Date: 2018/12/14 0014
  * Time: 16:01
  */
+
 namespace Wx\Merchant\Common;
 
 use SyConstant\ErrorCode;
@@ -18,16 +19,19 @@ class UploadImage extends WxBaseMerchant
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 图片名
+     *
      * @var string
      */
     private $image_name = '';
     /**
      * 图片内容
+     *
      * @var string
      */
     private $image_content = '';
@@ -45,12 +49,11 @@ class UploadImage extends WxBaseMerchant
     }
 
     /**
-     * @param string $imageName
      * @throws \SyException\Wx\WxException
      */
     public function setImageName(string $imageName)
     {
-        if (strlen($imageName) > 0) {
+        if (\strlen($imageName) > 0) {
             $this->image_name = $imageName;
         } else {
             throw new WxException('图片名不合法', ErrorCode::WX_PARAM_ERROR);
@@ -58,24 +61,23 @@ class UploadImage extends WxBaseMerchant
     }
 
     /**
-     * @param string $imageContent
      * @throws \SyException\Wx\WxException
      */
     public function setImageContent(string $imageContent)
     {
-        if (strlen($imageContent) > 0) {
+        if (\strlen($imageContent) > 0) {
             $this->image_content = $imageContent;
         } else {
             throw new WxException('图片内容不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
-        if (strlen($this->image_name) == 0) {
+        if (0 == \strlen($this->image_name)) {
             throw new WxException('图片名不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if (strlen($this->image_content) == 0) {
+        if (0 == \strlen($this->image_content)) {
             throw new WxException('图片内容不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -88,7 +90,7 @@ class UploadImage extends WxBaseMerchant
         $this->curlConfigs[CURLOPT_POSTFIELDS] = $this->image_content;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

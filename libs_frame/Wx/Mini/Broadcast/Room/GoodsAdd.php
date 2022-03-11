@@ -5,6 +5,7 @@
  * Date: 2020/6/21 0021
  * Time: 10:44
  */
+
 namespace Wx\Mini\Broadcast\Room;
 
 use SyConstant\ErrorCode;
@@ -16,22 +17,26 @@ use Wx\WxUtilBase;
 
 /**
  * Class GoodsAdd
+ *
  * @package Wx\Mini\Broadcast\Room
  */
 class GoodsAdd extends WxBaseMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 房间ID
+     *
      * @var int
      */
     private $roomId = 0;
     /**
      * 商品ID列表
+     *
      * @var array
      */
     private $ids = [];
@@ -50,7 +55,6 @@ class GoodsAdd extends WxBaseMini
     }
 
     /**
-     * @param int $roomId
      * @throws \SyException\Wx\WxException
      */
     public function setRoomId(int $roomId)
@@ -62,24 +66,20 @@ class GoodsAdd extends WxBaseMini
         }
     }
 
-    /**
-     * @param array $idList
-     */
     public function setIds(array $idList)
     {
         $this->ids = [];
         foreach ($idList as $eId) {
-            if (is_int($eId) && ($eId > 0)) {
+            if (\is_int($eId) && ($eId > 0)) {
                 $this->ids[$eId] = 1;
             }
         }
     }
 
     /**
-     * @return array
      * @throws \SyException\Wx\WxException
      */
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['roomId'])) {
             throw new WxException('房间ID不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -90,7 +90,7 @@ class GoodsAdd extends WxBaseMini
         $this->reqData['ids'] = array_keys($this->ids);
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->appId);
@@ -99,7 +99,7 @@ class GoodsAdd extends WxBaseMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

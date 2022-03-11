@@ -5,10 +5,11 @@
  * Date: 2018/9/13 0013
  * Time: 7:47
  */
+
 namespace Wx\OpenMini;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxOpenException;
 use SyTool\Tool;
 use Wx\WxBaseOpenMini;
@@ -19,11 +20,13 @@ class JsCode2Session extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 登录凭证
+     *
      * @var string
      */
     private $jsCode = '';
@@ -43,19 +46,18 @@ class JsCode2Session extends WxBaseOpenMini
     }
 
     /**
-     * @param string $jsCode
      * @throws \SyException\Wx\WxOpenException
      */
     public function setJsCode(string $jsCode)
     {
-        if (strlen($jsCode) > 0) {
+        if (\strlen($jsCode) > 0) {
             $this->reqData['js_code'] = $jsCode;
         } else {
             throw new WxOpenException('登录凭证不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['js_code'])) {
             throw new WxOpenException('登录凭证不能为空', ErrorCode::WXOPEN_PARAM_ERROR);

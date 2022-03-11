@@ -5,6 +5,7 @@
  * Date: 2018/12/13 0013
  * Time: 9:37
  */
+
 namespace Wx\Account\Material;
 
 use SyConstant\ErrorCode;
@@ -18,21 +19,25 @@ class NewsUpdate extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 图文消息id
+     *
      * @var string
      */
     private $media_id = '';
     /**
      * 文章位置
+     *
      * @var int
      */
     private $index = 0;
     /**
      * 文章内容
+     *
      * @var array
      */
     private $articles = [];
@@ -50,12 +55,11 @@ class NewsUpdate extends WxBaseAccount
     }
 
     /**
-     * @param string $mediaId
      * @throws \SyException\Wx\WxException
      */
     public function setMediaId(string $mediaId)
     {
-        if (strlen($mediaId) > 0) {
+        if (\strlen($mediaId) > 0) {
             $this->reqData['media_id'] = $mediaId;
         } else {
             throw new WxException('图文消息id不合法', ErrorCode::WX_PARAM_ERROR);
@@ -63,7 +67,6 @@ class NewsUpdate extends WxBaseAccount
     }
 
     /**
-     * @param int $index
      * @throws \SyException\Wx\WxException
      */
     public function setIndex(int $index)
@@ -76,7 +79,6 @@ class NewsUpdate extends WxBaseAccount
     }
 
     /**
-     * @param array $articles
      * @throws \SyException\Wx\WxException
      */
     public function setArticles(array $articles)
@@ -88,7 +90,7 @@ class NewsUpdate extends WxBaseAccount
         $this->reqData['articles'] = $articles;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['media_id'])) {
             throw new WxException('图文消息id不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -108,7 +110,7 @@ class NewsUpdate extends WxBaseAccount
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

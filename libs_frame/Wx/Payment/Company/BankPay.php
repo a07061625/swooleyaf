@@ -5,10 +5,11 @@
  * Date: 2018/12/12 0012
  * Time: 17:08
  */
+
 namespace Wx\Payment\Company;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBasePayment;
@@ -58,46 +59,55 @@ class BankPay extends WxBasePayment
 
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 商户号
+     *
      * @var string
      */
     private $mch_id = '';
     /**
      * 付款单号
+     *
      * @var string
      */
     private $partner_trade_no = '';
     /**
      * 随机字符串
+     *
      * @var string
      */
     private $nonce_str = '';
     /**
      * 收款方银行卡号
+     *
      * @var string
      */
     private $enc_bank_no = '';
     /**
      * 收款方用户名
+     *
      * @var string
      */
     private $enc_true_name = '';
     /**
      * 收款方开户行
+     *
      * @var string
      */
     private $bank_code = '';
     /**
      * 付款金额
+     *
      * @var int
      */
     private $amount = 0;
     /**
      * 付款说明
+     *
      * @var string
      */
     private $desc = '';
@@ -118,12 +128,11 @@ class BankPay extends WxBasePayment
     }
 
     /**
-     * @param string $partnerTradeNo
      * @throws \SyException\Wx\WxException
      */
     public function setPartnerTradeNo(string $partnerTradeNo)
     {
-        if (ctype_digit($partnerTradeNo) && (strlen($partnerTradeNo) <= 32)) {
+        if (ctype_digit($partnerTradeNo) && (\strlen($partnerTradeNo) <= 32)) {
             $this->reqData['partner_trade_no'] = $partnerTradeNo;
         } else {
             throw new WxException('付款单号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -131,9 +140,6 @@ class BankPay extends WxBasePayment
     }
 
     /**
-     * @param string $bankCode
-     * @param string $accountNo
-     * @param string $accountName
      * @throws \SyException\Wx\WxException
      */
     public function setBankInfo(string $bankCode, string $accountNo, string $accountName)
@@ -141,14 +147,16 @@ class BankPay extends WxBasePayment
         if (!isset(self::$totalBank[$bankCode])) {
             throw new WxException('收款方开户行不支持', ErrorCode::WX_PARAM_ERROR);
         }
-        if (strlen($accountNo) > 32) {
-            throw new WxException('收款方银行卡号不合法', ErrorCode::WX_PARAM_ERROR);
-        } elseif (!ctype_alnum($accountNo)) {
+        if (\strlen($accountNo) > 32) {
             throw new WxException('收款方银行卡号不合法', ErrorCode::WX_PARAM_ERROR);
         }
-        if (strlen($accountName) == 0) {
+        if (!ctype_alnum($accountNo)) {
+            throw new WxException('收款方银行卡号不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+        if (0 == \strlen($accountName)) {
             throw new WxException('收款方用户名不合法', ErrorCode::WX_PARAM_ERROR);
-        } elseif (mb_strlen($accountName) > 50) {
+        }
+        if (mb_strlen($accountName) > 50) {
             throw new WxException('收款方用户名不合法', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -162,7 +170,6 @@ class BankPay extends WxBasePayment
     }
 
     /**
-     * @param int $amount
      * @throws \SyException\Wx\WxException
      */
     public function setAmount(int $amount)
@@ -174,17 +181,14 @@ class BankPay extends WxBasePayment
         }
     }
 
-    /**
-     * @param string $desc
-     */
     public function setDesc(string $desc)
     {
-        if (strlen($desc) > 0) {
+        if (\strlen($desc) > 0) {
             $this->reqData['desc'] = mb_substr($desc, 0, 50);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['partner_trade_no'])) {
             throw new WxException('付款单号不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -218,10 +222,10 @@ class BankPay extends WxBasePayment
         fclose($tmpKey);
         fclose($tmpCert);
         $sendData = Tool::xmlToArray($sendRes);
-        if ($sendData['return_code'] == 'FAIL') {
+        if ('FAIL' == $sendData['return_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } elseif ($sendData['result_code'] == 'FAIL') {
+        } elseif ('FAIL' == $sendData['result_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['wx_code'] = $sendData['err_code'];
             $resArr['message'] = $sendData['err_code_des'];

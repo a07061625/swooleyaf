@@ -5,6 +5,7 @@
  * Date: 2018/9/13 0013
  * Time: 7:21
  */
+
 namespace Wx\OpenMini\Category;
 
 use SyConstant\ErrorCode;
@@ -16,27 +17,32 @@ use Wx\WxUtilOpenBase;
 
 /**
  * 修改类目
+ *
  * @package Wx\OpenMini
  */
 class CategoryModify extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 一级类目ID
+     *
      * @var int
      */
     private $first = 0;
     /**
      * 二级类目ID
+     *
      * @var int
      */
     private $second = 0;
     /**
      * 类目信息列表
+     *
      * @var array
      */
     private $categories = [];
@@ -55,7 +61,6 @@ class CategoryModify extends WxBaseOpenMini
     }
 
     /**
-     * @param int $first
      * @throws \SyException\Wx\WxOpenException
      */
     public function setFirst(int $first)
@@ -68,7 +73,6 @@ class CategoryModify extends WxBaseOpenMini
     }
 
     /**
-     * @param int $second
      * @throws \SyException\Wx\WxOpenException
      */
     public function setSecond(int $second)
@@ -81,7 +85,6 @@ class CategoryModify extends WxBaseOpenMini
     }
 
     /**
-     * @param array $categoryInfo
      * @throws \SyException\Wx\WxOpenException
      */
     public function addCategory(array $categoryInfo)
@@ -92,7 +95,7 @@ class CategoryModify extends WxBaseOpenMini
         $this->reqData['categories'][] = $categoryInfo;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (isset($this->reqData['first'])) {
             throw new WxOpenException('一级类目ID不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -112,7 +115,7 @@ class CategoryModify extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

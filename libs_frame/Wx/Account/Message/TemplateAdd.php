@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class TemplateAdd extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 模板编号
+     *
      * @var string
      */
     private $template_id_short = '';
@@ -40,19 +43,18 @@ class TemplateAdd extends WxBaseAccount
     }
 
     /**
-     * @param string $templateIdShort
      * @throws \SyException\Wx\WxException
      */
     public function setTemplateIdShort(string $templateIdShort)
     {
-        if (strlen($templateIdShort) > 0) {
+        if (\strlen($templateIdShort) > 0) {
             $this->reqData['template_id_short'] = $templateIdShort;
         } else {
             throw new WxException('模板编号不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['template_id_short'])) {
             throw new WxException('模板编号不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -66,7 +68,7 @@ class TemplateAdd extends WxBaseAccount
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

@@ -5,6 +5,7 @@
  * Date: 2018/9/13 0013
  * Time: 7:55
  */
+
 namespace Wx\OpenMini\Code;
 
 use SyConstant\ErrorCode;
@@ -17,6 +18,7 @@ class CodeRelease extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
@@ -33,7 +35,7 @@ class CodeRelease extends WxBaseOpenMini
         //do nothing
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $resArr = [
             'code' => 0,
@@ -45,7 +47,7 @@ class CodeRelease extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

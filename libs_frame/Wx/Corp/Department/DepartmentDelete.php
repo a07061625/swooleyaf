@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Corp\Department;
 
 use SyConstant\ErrorCode;
@@ -16,6 +17,7 @@ use Wx\WxUtilBase;
 
 /**
  * 删除部门
+ *
  * @package Wx\Corp\Department
  */
 class DepartmentDelete extends WxBaseCorp
@@ -24,6 +26,7 @@ class DepartmentDelete extends WxBaseCorp
 
     /**
      * 部门id
+     *
      * @var int
      */
     private $id = 0;
@@ -42,7 +45,6 @@ class DepartmentDelete extends WxBaseCorp
     }
 
     /**
-     * @param int $id
      * @throws \SyException\Wx\WxException
      */
     public function setId(int $id)
@@ -54,7 +56,7 @@ class DepartmentDelete extends WxBaseCorp
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['id'])) {
             throw new WxException('部门id不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -68,7 +70,7 @@ class DepartmentDelete extends WxBaseCorp
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

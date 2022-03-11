@@ -5,6 +5,7 @@
  * Date: 2018/12/14 0014
  * Time: 16:01
  */
+
 namespace Wx\Merchant\Order;
 
 use SyConstant\ErrorCode;
@@ -18,21 +19,25 @@ class OrderList extends WxBaseMerchant
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 订单状态
+     *
      * @var int
      */
     private $status = 0;
     /**
      * 创建起始时间
+     *
      * @var int
      */
     private $begintime = 0;
     /**
      * 创建终止时间
+     *
      * @var int
      */
     private $endtime = 0;
@@ -50,12 +55,11 @@ class OrderList extends WxBaseMerchant
     }
 
     /**
-     * @param int $status
      * @throws \SyException\Wx\WxException
      */
     public function setStatus(int $status)
     {
-        if (in_array($status, [2, 3, 5, 8], true)) {
+        if (\in_array($status, [2, 3, 5, 8], true)) {
             $this->reqData['status'] = $status;
         } else {
             throw new WxException('订单状态不合法', ErrorCode::WX_PARAM_ERROR);
@@ -63,17 +67,17 @@ class OrderList extends WxBaseMerchant
     }
 
     /**
-     * @param int $beginTime
-     * @param int $endTime
      * @throws \SyException\Wx\WxException
      */
     public function setCreateTime(int $beginTime, int $endTime)
     {
         if ($beginTime < 0) {
             throw new WxException('创建起始时间不合法', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($endTime < 0) {
+        }
+        if ($endTime < 0) {
             throw new WxException('创建终止时间不合法', ErrorCode::WX_PARAM_ERROR);
-        } elseif (($beginTime > 0) && ($endTime > 0) && ($beginTime > $endTime)) {
+        }
+        if (($beginTime > 0) && ($endTime > 0) && ($beginTime > $endTime)) {
             throw new WxException('创建起始时间不能大于终止时间', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -85,7 +89,7 @@ class OrderList extends WxBaseMerchant
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $resArr = [
             'code' => 0,
@@ -95,7 +99,7 @@ class OrderList extends WxBaseMerchant
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

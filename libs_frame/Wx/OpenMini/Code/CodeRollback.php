@@ -5,6 +5,7 @@
  * Date: 2018/9/13 0013
  * Time: 8:11
  */
+
 namespace Wx\OpenMini\Code;
 
 use SyConstant\ErrorCode;
@@ -17,6 +18,7 @@ class CodeRollback extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
@@ -33,7 +35,7 @@ class CodeRollback extends WxBaseOpenMini
         //do nothing
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $resArr = [
             'code' => 0,
@@ -42,7 +44,7 @@ class CodeRollback extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getAuthorizerAccessToken($this->appId);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_GET_ERROR;

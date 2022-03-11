@@ -1,4 +1,5 @@
 <?php
+
 namespace Wx\Corp\Invoice;
 
 use SyConstant\ErrorCode;
@@ -10,6 +11,7 @@ use Wx\WxUtilBase;
 
 /**
  * 更新发票状态
+ *
  * @package Wx\Corp\Invoice
  */
 class InvoiceStatusUpdate extends WxBaseCorp
@@ -18,16 +20,19 @@ class InvoiceStatusUpdate extends WxBaseCorp
 
     /**
      * 发票id
+     *
      * @var string
      */
     private $card_id = '';
     /**
      * 加密密码
+     *
      * @var string
      */
     private $encrypt_code = '';
     /**
      * 报销状态
+     *
      * @var string
      */
     private $reimburse_status = '';
@@ -46,12 +51,11 @@ class InvoiceStatusUpdate extends WxBaseCorp
     }
 
     /**
-     * @param string $cardId
      * @throws \SyException\Wx\WxException
      */
     public function setCardId(string $cardId)
     {
-        if (strlen($cardId) > 0) {
+        if (\strlen($cardId) > 0) {
             $this->reqData['card_id'] = $cardId;
         } else {
             throw new WxException('发票id不合法', ErrorCode::WX_PARAM_ERROR);
@@ -59,12 +63,11 @@ class InvoiceStatusUpdate extends WxBaseCorp
     }
 
     /**
-     * @param string $encryptCode
      * @throws \SyException\Wx\WxException
      */
     public function setEncryptCode(string $encryptCode)
     {
-        if (strlen($encryptCode) > 0) {
+        if (\strlen($encryptCode) > 0) {
             $this->reqData['encrypt_code'] = $encryptCode;
         } else {
             throw new WxException('加密密码不合法', ErrorCode::WX_PARAM_ERROR);
@@ -72,7 +75,6 @@ class InvoiceStatusUpdate extends WxBaseCorp
     }
 
     /**
-     * @param string $reimburseStatus
      * @throws \SyException\Wx\WxException
      */
     public function setReimburseStatus(string $reimburseStatus)
@@ -104,7 +106,7 @@ class InvoiceStatusUpdate extends WxBaseCorp
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

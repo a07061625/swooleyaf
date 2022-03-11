@@ -5,10 +5,11 @@
  * Date: 2019/5/17 0017
  * Time: 15:55
  */
+
 namespace Wx\Payment\ProfitSharing;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBasePayment;
@@ -19,26 +20,31 @@ class ReceiverRemove extends WxBasePayment
 {
     /**
      * 商户号
+     *
      * @var string
      */
     private $mch_id = '';
     /**
      * 子商户号
+     *
      * @var string
      */
     private $sub_mch_id = '';
     /**
      * 公众账号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 子商户公众账号ID
+     *
      * @var string
      */
     private $sub_appid = '';
     /**
      * 分账接收方
+     *
      * @var array
      */
     private $receiver = [];
@@ -60,7 +66,6 @@ class ReceiverRemove extends WxBasePayment
     }
 
     /**
-     * @param array $receiver
      * @throws \SyException\Wx\WxException
      */
     public function setReceiver(array $receiver)
@@ -71,7 +76,7 @@ class ReceiverRemove extends WxBasePayment
         $this->receiver = $receiver;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (empty($this->receiver)) {
             throw new WxException('分账接收方不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -80,17 +85,17 @@ class ReceiverRemove extends WxBasePayment
         $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid'], 'sha256');
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::arrayToXml($this->reqData);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::xmlToArray($sendRes);
-        if ($sendData['return_code'] == 'FAIL') {
+        if ('FAIL' == $sendData['return_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } elseif ($sendData['result_code'] == 'FAIL') {
+        } elseif ('FAIL' == $sendData['result_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         }

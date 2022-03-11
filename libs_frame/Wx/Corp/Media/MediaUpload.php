@@ -5,6 +5,7 @@
  * Date: 2018/12/13 0013
  * Time: 9:37
  */
+
 namespace Wx\Corp\Media;
 
 use SyConstant\ErrorCode;
@@ -16,6 +17,7 @@ use Wx\WxUtilBase;
 
 /**
  * 上传临时素材
+ *
  * @package Wx\Corp\Media
  */
 class MediaUpload extends WxBaseCorp
@@ -24,11 +26,13 @@ class MediaUpload extends WxBaseCorp
 
     /**
      * 媒体文件类型
+     *
      * @var string
      */
     private $type = '';
     /**
      * 文件全路径,包括文件名
+     *
      * @var string
      */
     private $file_path = '';
@@ -47,12 +51,11 @@ class MediaUpload extends WxBaseCorp
     }
 
     /**
-     * @param string $type
      * @throws \SyException\Wx\WxException
      */
     public function setType(string $type)
     {
-        if (in_array($type, ['image', 'voice', 'video', 'file'], true)) {
+        if (\in_array($type, ['image', 'voice', 'video', 'file'], true)) {
             $this->type = $type;
         } else {
             throw new WxException('媒体文件类型不合法', ErrorCode::WX_PARAM_ERROR);
@@ -60,7 +63,6 @@ class MediaUpload extends WxBaseCorp
     }
 
     /**
-     * @param string $filePath
      * @throws \SyException\Wx\WxException
      */
     public function setFilePath(string $filePath)
@@ -72,9 +74,9 @@ class MediaUpload extends WxBaseCorp
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
-        if (strlen($this->type) == 0) {
+        if (0 == \strlen($this->type)) {
             throw new WxException('媒体文件类型不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         if (!isset($this->reqData['media'])) {

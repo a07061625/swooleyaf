@@ -5,10 +5,11 @@
  * Date: 2018/9/11 0011
  * Time: 11:44
  */
+
 namespace Wx\Account\Tools;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyLog\Log;
 use SyTool\Tool;
@@ -20,21 +21,25 @@ class ShortUrl extends WxBaseAccount
 {
     /**
      * 商户号
+     *
      * @var string
      */
     private $mch_id = '';
     /**
      * URL链接
+     *
      * @var string
      */
     private $long_url = '';
     /**
      * 随机字符串
+     *
      * @var string
      */
     private $nonce_str = '';
     /**
      * 签名类型
+     *
      * @var string
      */
     private $sign_type = '';
@@ -56,7 +61,6 @@ class ShortUrl extends WxBaseAccount
     }
 
     /**
-     * @param string $longUrl
      * @throws \SyException\Wx\WxException
      */
     public function setLongUrl(string $longUrl)
@@ -68,7 +72,7 @@ class ShortUrl extends WxBaseAccount
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['long_url'])) {
             throw  new WxException('长链接不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -79,10 +83,10 @@ class ShortUrl extends WxBaseAccount
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::arrayToXml($this->reqData);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::xmlToArray($sendRes);
-        if ($sendData['return_code'] == 'FAIL') {
+        if ('FAIL' == $sendData['return_code']) {
             Log::error($sendData['return_msg'], ErrorCode::WX_PARAM_ERROR);
             $url = $this->reqData['long_url'];
-        } elseif ($sendData['result_code'] == 'FAIL') {
+        } elseif ('FAIL' == $sendData['result_code']) {
             $error = Tool::getArrayVal(WxUtilBase::$errorsShortUrl, $sendData['err_code'], $sendData['err_code_des']);
             Log::error($error, ErrorCode::WX_PARAM_ERROR);
             $url = $this->reqData['long_url'];

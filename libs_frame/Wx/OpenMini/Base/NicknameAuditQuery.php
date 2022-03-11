@@ -5,6 +5,7 @@
  * Date: 2018/9/13 0013
  * Time: 7:34
  */
+
 namespace Wx\OpenMini\Base;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class NicknameAuditQuery extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 审核id
+     *
      * @var string
      */
     private $audit_id = '';
@@ -40,7 +43,6 @@ class NicknameAuditQuery extends WxBaseOpenMini
     }
 
     /**
-     * @param string $auditId
      * @throws \SyException\Wx\WxOpenException
      */
     public function setAuditId(string $auditId)
@@ -52,7 +54,7 @@ class NicknameAuditQuery extends WxBaseOpenMini
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['audit_id'])) {
             throw new WxOpenException('审核id不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -68,7 +70,7 @@ class NicknameAuditQuery extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

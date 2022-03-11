@@ -5,13 +5,14 @@
  * Date: 18-9-12
  * Time: 上午1:44
  */
+
 namespace Wx\Account\Tools;
 
 use SyConstant\ErrorCode;
 use SyTool\Tool;
 use Wx\WxBaseAccount;
-use Wx\WxUtilBase;
 use Wx\WxUtilAlone;
+use Wx\WxUtilBase;
 
 class IpList extends WxBaseAccount
 {
@@ -27,10 +28,10 @@ class IpList extends WxBaseAccount
         //do nothing
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->reqData['appid']);

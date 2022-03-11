@@ -1,4 +1,5 @@
 <?php
+
 namespace Wx\CorpProvider\Common;
 
 use SyConstant\ErrorCode;
@@ -9,6 +10,7 @@ use Wx\WxUtilCorpProvider;
 
 /**
  * 获取预授权码
+ *
  * @package Wx\CorpProvider\Common
  */
 class PreAuthCode extends WxBaseCorpProvider

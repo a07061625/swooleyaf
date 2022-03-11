@@ -5,10 +5,11 @@
  * Date: 18-9-12
  * Time: 下午10:47
  */
+
 namespace Wx\OpenCommon;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxOpenException;
 use SyTool\Tool;
 use Wx\WxBaseOpenCommon;
@@ -19,6 +20,7 @@ class AuthorizerAccessToken extends WxBaseOpenCommon
 {
     /**
      * 刷新令牌
+     *
      * @var string
      */
     private $refreshToken = '';
@@ -37,19 +39,18 @@ class AuthorizerAccessToken extends WxBaseOpenCommon
     }
 
     /**
-     * @param string $refreshToken
      * @throws \SyException\Wx\WxOpenException
      */
     public function setRefreshToken(string $refreshToken)
     {
-        if (strlen($refreshToken) > 0) {
+        if (\strlen($refreshToken) > 0) {
             $this->reqData['authorizer_refresh_token'] = $refreshToken;
         } else {
             throw new WxOpenException('刷新令牌不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['authorizer_refresh_token'])) {
             throw new WxOpenException('刷新令牌不能为空', ErrorCode::WXOPEN_PARAM_ERROR);

@@ -5,6 +5,7 @@
  * Date: 18-9-13
  * Time: 上午12:17
  */
+
 namespace Wx\OpenMini;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class DomainModify extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 修改数据
+     *
      * @var array
      */
     private $modifyData = [];
@@ -40,15 +43,14 @@ class DomainModify extends WxBaseOpenMini
     }
 
     /**
-     * @param string $action
-     * @param array $domains
      * @throws \SyException\Wx\WxOpenException
      */
     public function setModifyData(string $action, array $domains = [])
     {
-        if (!in_array($action, ['add', 'delete', 'set', 'get'], true)) {
+        if (!\in_array($action, ['add', 'delete', 'set', 'get'], true)) {
             throw new WxOpenException('操作类型不支持', ErrorCode::WXOPEN_PARAM_ERROR);
-        } elseif ($action != 'get') {
+        }
+        if ('get' != $action) {
             if (empty($domains)) {
                 throw new WxOpenException('域名不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
             }
@@ -62,7 +64,7 @@ class DomainModify extends WxBaseOpenMini
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (empty($this->modifyData)) {
             throw new WxOpenException('修改数据不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -78,7 +80,7 @@ class DomainModify extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

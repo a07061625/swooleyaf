@@ -1,8 +1,9 @@
 <?php
+
 namespace Wx\CorpProvider\Common;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxCorpProviderException;
 use SyTool\Tool;
 use Wx\WxBaseCorpProvider;
@@ -11,22 +12,26 @@ use Wx\WxUtilCorpProvider;
 
 /**
  * 获取第三方应用凭证
+ *
  * @package Wx\CorpProvider\Common
  */
 class SuiteAccessToken extends WxBaseCorpProvider
 {
     /**
      * 套件id
+     *
      * @var string
      */
     private $suite_id = '';
     /**
      * 套件secret
+     *
      * @var string
      */
     private $suite_secret = '';
     /**
      * 套件票据
+     *
      * @var string
      */
     private $suite_ticket = '';
@@ -52,9 +57,10 @@ class SuiteAccessToken extends WxBaseCorpProvider
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if (!is_array($sendData)) {
+        if (!\is_array($sendData)) {
             throw new WxCorpProviderException('获取第三方应用凭证出错', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
-        } elseif (!isset($sendData['suite_access_token'])) {
+        }
+        if (!isset($sendData['suite_access_token'])) {
             throw new WxCorpProviderException($sendData['errmsg'], ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
 

@@ -5,30 +5,34 @@
  * Date: 2018/9/12 0012
  * Time: 18:00
  */
+
 namespace Wx\Mini;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseMini;
-use Wx\WxUtilBase;
 use Wx\WxUtilAlone;
+use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
 class MsgTemplateTitleKeywords extends WxBaseMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 模板标题id
+     *
      * @var string
      */
     private $titleId = '';
     /**
      * 平台类型
+     *
      * @var string
      */
     private $platType = '';
@@ -46,12 +50,11 @@ class MsgTemplateTitleKeywords extends WxBaseMini
     }
 
     /**
-     * @param string $titleId
      * @throws \SyException\Wx\WxException
      */
     public function setTitleId(string $titleId)
     {
-        if (strlen($titleId) > 0) {
+        if (\strlen($titleId) > 0) {
             $this->reqData['id'] = $titleId;
         } else {
             throw new WxException('模板标题id不合法', ErrorCode::WX_PARAM_ERROR);
@@ -59,29 +62,28 @@ class MsgTemplateTitleKeywords extends WxBaseMini
     }
 
     /**
-     * @param string $platType
      * @throws \SyException\Wx\WxException
      */
     public function setPlatType(string $platType)
     {
-        if (in_array($platType, [WxUtilBase::PLAT_TYPE_MINI, WxUtilBase::PLAT_TYPE_OPEN_MINI], true)) {
+        if (\in_array($platType, [WxUtilBase::PLAT_TYPE_MINI, WxUtilBase::PLAT_TYPE_OPEN_MINI], true)) {
             $this->platType = $platType;
         } else {
             throw new WxException('平台类型不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['id'])) {
             throw new WxException('模板标题id不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
-        if ($this->platType == WxUtilBase::PLAT_TYPE_MINI) {
+        if (WxUtilBase::PLAT_TYPE_MINI == $this->platType) {
             $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->appId);
         } else {
             $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getAuthorizerAccessToken($this->appId);

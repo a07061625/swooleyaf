@@ -5,10 +5,11 @@
  * Date: 2018/9/12 0012
  * Time: 16:31
  */
+
 namespace Wx\Payment\Way;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use Wx\WxBasePayment;
 use Wx\WxUtilAccount;
@@ -17,48 +18,56 @@ class NativeReturn extends WxBasePayment
 {
     /**
      * 返回状态码
+     *
      * @var string
      */
     private $return_code = '';
 
     /**
      * 返回信息
+     *
      * @var string
      */
     private $return_msg = '';
 
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
 
     /**
      * 商户号
+     *
      * @var string
      */
     private $mch_id = '';
 
     /**
      * 微信返回的随机字符串
+     *
      * @var string
      */
     private $nonce_str = '';
 
     /**
      * 预支付ID
+     *
      * @var string
      */
     private $prepay_id = '';
 
     /**
      * 业务结果
+     *
      * @var string
      */
     private $result_code = '';
 
     /**
      * 错误描述
+     *
      * @var string
      */
     private $err_code_des = '';
@@ -79,7 +88,6 @@ class NativeReturn extends WxBasePayment
     }
 
     /**
-     * @param string $nonceStr
      * @throws \SyException\Wx\WxException
      */
     public function setNonceStr(string $nonceStr)
@@ -92,7 +100,6 @@ class NativeReturn extends WxBasePayment
     }
 
     /**
-     * @param string $prepayId
      * @throws \SyException\Wx\WxException
      */
     public function setPrepayId(string $prepayId)
@@ -105,15 +112,17 @@ class NativeReturn extends WxBasePayment
     }
 
     /**
-     * @param string $errDes 返回给用户的错误描述
+     * @param string $errDes    返回给用户的错误描述
      * @param string $returnMsg 返回微信的信息
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setErrorMsg(string $errDes, string $returnMsg)
     {
-        if (strlen($errDes) == 0) {
+        if (0 == \strlen($errDes)) {
             throw new WxException('错误描述不能为空', ErrorCode::WX_PARAM_ERROR);
-        } elseif (strlen($returnMsg) == 0) {
+        }
+        if (0 == \strlen($returnMsg)) {
             throw new WxException('返回信息不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -123,16 +132,18 @@ class NativeReturn extends WxBasePayment
         $this->reqData['err_code_des'] = mb_substr($errDes, 0, 40);
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
-        if ($this->reqData['return_code'] == 'SUCCESS') {
+        if ('SUCCESS' == $this->reqData['return_code']) {
             if (!isset($this->reqData['nonce_str'])) {
                 throw new WxException('随机字符串不能为空', ErrorCode::WX_PARAM_ERROR);
-            } elseif (!isset($this->reqData['prepay_id'])) {
+            }
+            if (!isset($this->reqData['prepay_id'])) {
                 throw new WxException('预支付ID不能为空', ErrorCode::WX_PARAM_ERROR);
             }
         }
         $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid']);
+
         return $this->reqData;
     }
 }

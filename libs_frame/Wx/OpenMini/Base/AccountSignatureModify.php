@@ -5,6 +5,7 @@
  * Date: 2018/9/13 0013
  * Time: 7:34
  */
+
 namespace Wx\OpenMini\Base;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class AccountSignatureModify extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 功能介绍
+     *
      * @var string
      */
     private $signature = '';
@@ -40,19 +43,18 @@ class AccountSignatureModify extends WxBaseOpenMini
     }
 
     /**
-     * @param string $signature
      * @throws \SyException\Wx\WxOpenException
      */
     public function setSignature(string $signature)
     {
-        if (strlen($signature) > 0) {
+        if (\strlen($signature) > 0) {
             $this->reqData['signature'] = $signature;
         } else {
             throw new WxOpenException('功能介绍不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['signature'])) {
             throw new WxOpenException('功能介绍不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -68,7 +70,7 @@ class AccountSignatureModify extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;
