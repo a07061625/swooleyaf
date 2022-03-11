@@ -5,10 +5,11 @@
  * Date: 2018/12/12 0012
  * Time: 9:43
  */
+
 namespace Wx\Payment\Way;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBasePayment;
@@ -19,36 +20,43 @@ class PayReport extends WxBasePayment
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 商户号
+     *
      * @var string
      */
     private $mch_id = '';
     /**
      * 设备号
+     *
      * @var string
      */
     private $device_info = '';
     /**
      * 随机字符串
+     *
      * @var string
      */
     private $nonce_str = '';
     /**
      * 接口URL
+     *
      * @var string
      */
     private $interface_url = '';
     /**
      * 访问接口IP
+     *
      * @var string
      */
     private $user_ip = '';
     /**
      * 上报数据包
+     *
      * @var string
      */
     private $trades = '';
@@ -74,18 +82,14 @@ class PayReport extends WxBasePayment
         //do nothing
     }
 
-    /**
-     * @param string $deviceInfo
-     */
     public function setDeviceInfo(string $deviceInfo)
     {
-        if (strlen($deviceInfo) > 0) {
+        if (\strlen($deviceInfo) > 0) {
             $this->reqData['device_info'] = $deviceInfo;
         }
     }
 
     /**
-     * @param array $trades
      * @throws \SyException\Wx\WxException
      */
     public function setTrades(array $trades)
@@ -97,7 +101,7 @@ class PayReport extends WxBasePayment
         $this->reqData['trades'] = Tool::jsonEncode($trades, JSON_UNESCAPED_UNICODE);
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['trades'])) {
             throw new WxException('上报数据包不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -105,17 +109,17 @@ class PayReport extends WxBasePayment
         $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid']);
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::arrayToXml($this->reqData);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::xmlToArray($sendRes);
-        if ($sendData['return_code'] == 'FAIL') {
+        if ('FAIL' == $sendData['return_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } elseif ($sendData['result_code'] == 'FAIL') {
+        } elseif ('FAIL' == $sendData['result_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = '上报失败';
         } else {

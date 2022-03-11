@@ -5,6 +5,7 @@
  * Date: 2018/12/13 0013
  * Time: 9:37
  */
+
 namespace Wx\Account\Material;
 
 use SyConstant\ErrorCode;
@@ -17,6 +18,7 @@ class CountGet extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
@@ -34,7 +36,7 @@ class CountGet extends WxBaseAccount
         //do nothing
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $resArr = [
             'code' => 0,

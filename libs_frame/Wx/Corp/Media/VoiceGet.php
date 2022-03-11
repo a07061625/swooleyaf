@@ -5,6 +5,7 @@
  * Date: 2018/12/13 0013
  * Time: 9:37
  */
+
 namespace Wx\Corp\Media;
 
 use SyConstant\ErrorCode;
@@ -16,6 +17,7 @@ use Wx\WxUtilBase;
 
 /**
  * 获取高清语音素材
+ *
  * @package Wx\Corp\Media
  */
 class VoiceGet extends WxBaseCorp
@@ -24,11 +26,13 @@ class VoiceGet extends WxBaseCorp
 
     /**
      * 输出目录
+     *
      * @var string
      */
     private $output_dir = '';
     /**
      * 媒体文件ID
+     *
      * @var string
      */
     private $media_id = '';
@@ -47,34 +51,32 @@ class VoiceGet extends WxBaseCorp
     }
 
     /**
-     * @param string $outputDir
      * @throws \SyException\Wx\WxException
      */
     public function setOutputDir(string $outputDir)
     {
-        if (is_dir($outputDir) && is_writeable($outputDir)) {
-            $this->output_dir = substr($outputDir, -1) == '/' ? $outputDir : $outputDir . '/';
+        if (is_dir($outputDir) && is_writable($outputDir)) {
+            $this->output_dir = '/' == substr($outputDir, -1) ? $outputDir : $outputDir . '/';
         } else {
             throw new WxException('输出目录不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
     /**
-     * @param string $mediaId
      * @throws \SyException\Wx\WxException
      */
     public function setMediaId(string $mediaId)
     {
-        if (strlen($mediaId) > 0) {
+        if (\strlen($mediaId) > 0) {
             $this->reqData['media_id'] = $mediaId;
         } else {
             throw new WxException('媒体文件ID不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
-        if (strlen($this->output_dir) == 0) {
+        if (0 == \strlen($this->output_dir)) {
             throw new WxException('输出目录不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         if (!isset($this->reqData['media_id'])) {
@@ -90,7 +92,7 @@ class VoiceGet extends WxBaseCorp
         $this->curlConfigs[CURLOPT_TIMEOUT_MS] = 3000;
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if (!is_array($sendData)) {
+        if (!\is_array($sendData)) {
             $fileName = $this->output_dir . $this->reqData['media_id'];
             file_put_contents($fileName, $sendRes);
             $resArr['data'] = [

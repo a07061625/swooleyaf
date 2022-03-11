@@ -5,6 +5,7 @@
  * Date: 2018/12/13 0013
  * Time: 15:12
  */
+
 namespace Wx\Account\User;
 
 use SyConstant\ErrorCode;
@@ -18,16 +19,19 @@ class UntaggingUsers extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 标签ID
+     *
      * @var int
      */
     private $tagid = 0;
     /**
      * 用户openid列表
+     *
      * @var array
      */
     private $openid_list = [];
@@ -45,7 +49,6 @@ class UntaggingUsers extends WxBaseAccount
     }
 
     /**
-     * @param int $tagId
      * @throws \SyException\Wx\WxException
      */
     public function setTagId(int $tagId)
@@ -57,37 +60,34 @@ class UntaggingUsers extends WxBaseAccount
         }
     }
 
-    /**
-     * @param array $openidList
-     */
     public function setOpenidList(array $openidList)
     {
         foreach ($openidList as $eOpenid) {
-            if (is_string($eOpenid) && (strlen($eOpenid) == 28)) {
+            if (\is_string($eOpenid) && (28 == \strlen($eOpenid))) {
                 $this->openid_list[$eOpenid] = 1;
             }
         }
     }
 
     /**
-     * @param string $openid
      * @throws \SyException\Wx\WxException
      */
     public function addOpenid(string $openid)
     {
-        if (strlen($openid) == 28) {
+        if (28 == \strlen($openid)) {
             $this->openid_list[$openid] = 1;
         } else {
             throw new WxException('用户openid不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
-        $num = count($this->openid_list);
-        if ($num == 0) {
+        $num = \count($this->openid_list);
+        if (0 == $num) {
             throw new WxException('用户openid列表不能为空', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($num > 100) {
+        }
+        if ($num > 100) {
             throw new WxException('用户openid列表超过100个', ErrorCode::WX_PARAM_ERROR);
         }
         if (!isset($this->reqData['tagid'])) {
@@ -103,7 +103,7 @@ class UntaggingUsers extends WxBaseAccount
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

@@ -5,6 +5,7 @@
  * Date: 2018/12/13 0013
  * Time: 9:37
  */
+
 namespace Wx\Account\Media;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class UploadNews extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 图文消息列表
+     *
      * @var array
      */
     private $articles = [];
@@ -42,22 +45,22 @@ class UploadNews extends WxBaseAccount
     }
 
     /**
-     * @param array $articles
      * @throws \SyException\Wx\WxException
      */
     public function setArticles(array $articles)
     {
         $trueArticles = [];
         foreach ($articles as $eArticle) {
-            if (is_array($eArticle) && (!empty($eArticle))) {
+            if (\is_array($eArticle) && (!empty($eArticle))) {
                 $trueArticles[] = $eArticle;
             }
         }
 
-        $articleNum = count($trueArticles);
-        if ($articleNum == 0) {
+        $articleNum = \count($trueArticles);
+        if (0 == $articleNum) {
             throw new WxException('图文消息不能为空', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($articleNum > 8) {
+        }
+        if ($articleNum > 8) {
             throw new WxException('图文消息不能超过8个', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -65,21 +68,21 @@ class UploadNews extends WxBaseAccount
     }
 
     /**
-     * @param array $article
      * @throws \SyException\Wx\WxException
      */
     public function addArticle(array $article)
     {
         if (empty($article)) {
             throw new WxException('图文消息不能为空', ErrorCode::WX_PARAM_ERROR);
-        } elseif (count($this->reqData['articles']) >= 8) {
+        }
+        if (\count($this->reqData['articles']) >= 8) {
             throw new WxException('图文消息不能超过8个', ErrorCode::WX_PARAM_ERROR);
         }
 
         $this->reqData['articles'][] = $article;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (empty($this->reqData['articles'])) {
             throw new WxException('图文消息不能为空', ErrorCode::WX_PARAM_ERROR);

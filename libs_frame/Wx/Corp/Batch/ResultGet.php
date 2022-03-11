@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Corp\Batch;
 
 use SyConstant\ErrorCode;
@@ -16,6 +17,7 @@ use Wx\WxUtilBase;
 
 /**
  * 获取异步任务结果
+ *
  * @package Wx\Corp\Batch
  */
 class ResultGet extends WxBaseCorp
@@ -24,6 +26,7 @@ class ResultGet extends WxBaseCorp
 
     /**
      * 任务id
+     *
      * @var string
      */
     private $jobid = '';
@@ -42,19 +45,18 @@ class ResultGet extends WxBaseCorp
     }
 
     /**
-     * @param string $jobId
      * @throws \SyException\Wx\WxException
      */
     public function setJobId(string $jobId)
     {
-        if (strlen($jobId) > 0) {
+        if (\strlen($jobId) > 0) {
             $this->reqData['jobid'] = $jobId;
         } else {
             throw new WxException('任务id不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['jobid'])) {
             throw new WxException('任务id不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -68,7 +70,7 @@ class ResultGet extends WxBaseCorp
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

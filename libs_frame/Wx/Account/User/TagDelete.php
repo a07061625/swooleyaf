@@ -5,6 +5,7 @@
  * Date: 2018/12/13 0013
  * Time: 15:12
  */
+
 namespace Wx\Account\User;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class TagDelete extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 标签ID
+     *
      * @var int
      */
     private $id = 0;
@@ -40,7 +43,6 @@ class TagDelete extends WxBaseAccount
     }
 
     /**
-     * @param int $id
      * @throws \SyException\Wx\WxException
      */
     public function setId(int $id)
@@ -52,7 +54,7 @@ class TagDelete extends WxBaseAccount
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['id'])) {
             throw new WxException('标签ID不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -68,7 +70,7 @@ class TagDelete extends WxBaseAccount
         ], JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

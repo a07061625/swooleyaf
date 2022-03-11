@@ -5,10 +5,11 @@
  * Date: 2019/7/30 0030
  * Time: 19:13
  */
+
 namespace Wx\Alone;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseAlone;
@@ -20,46 +21,55 @@ class CardConfig extends WxBaseAlone
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 时间戳
+     *
      * @var int
      */
     private $timestamp = 0;
     /**
      * 随机字符串
+     *
      * @var string
      */
     private $nonceStr = '';
     /**
      * 签名方式
+     *
      * @var string
      */
     private $signType = '';
     /**
      * 门店ID
+     *
      * @var string
      */
     private $shopId = '';
     /**
      * 卡券ID
+     *
      * @var string
      */
     private $cardId = '';
     /**
      * 卡券类型
+     *
      * @var string
      */
     private $cardType = '';
     /**
      * 平台类型 shop：公众号 openshop：第三方平台代理公众号
+     *
      * @var string
      */
     private $platType = '';
     /**
      * JS签名标识,true:需要JS签名 false:不需要JS签名
+     *
      * @var bool
      */
     private $needJs = false;
@@ -84,12 +94,11 @@ class CardConfig extends WxBaseAlone
     }
 
     /**
-     * @param string $shopId
      * @throws \SyException\Wx\WxException
      */
     public function setShopId(string $shopId)
     {
-        if (strlen($shopId) <= 24) {
+        if (\strlen($shopId) <= 24) {
             $this->reqData['shopId'] = $shopId;
         } else {
             throw new WxException('门店ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -97,12 +106,11 @@ class CardConfig extends WxBaseAlone
     }
 
     /**
-     * @param string $cardId
      * @throws \SyException\Wx\WxException
      */
     public function setCardId(string $cardId)
     {
-        if (strlen($cardId) <= 32) {
+        if (\strlen($cardId) <= 32) {
             $this->reqData['cardId'] = $cardId;
         } else {
             throw new WxException('卡券ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -110,12 +118,11 @@ class CardConfig extends WxBaseAlone
     }
 
     /**
-     * @param string $cardType
      * @throws \SyException\Wx\WxException
      */
     public function setCardType(string $cardType)
     {
-        if (strlen($cardType) <= 24) {
+        if (\strlen($cardType) <= 24) {
             $this->reqData['cardType'] = $cardType;
         } else {
             throw new WxException('卡券类型不合法', ErrorCode::WX_PARAM_ERROR);
@@ -124,28 +131,26 @@ class CardConfig extends WxBaseAlone
 
     /**
      * @param string $platType 平台类型 shop：公众号 openshop：第三方平台代理公众号
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setPlatType(string $platType)
     {
-        if (in_array($platType, [WxUtilBase::PLAT_TYPE_SHOP, WxUtilBase::PLAT_TYPE_OPEN_SHOP], true)) {
+        if (\in_array($platType, [WxUtilBase::PLAT_TYPE_SHOP, WxUtilBase::PLAT_TYPE_OPEN_SHOP], true)) {
             $this->platType = $platType;
         } else {
             throw new WxException('平台类型不支持', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    /**
-     * @param bool $needJs
-     */
     public function setNeedJs(bool $needJs)
     {
         $this->needJs = $needJs;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
-        if ($this->platType == WxUtilBase::PLAT_TYPE_SHOP) { //公众号获取card_ticket
+        if (WxUtilBase::PLAT_TYPE_SHOP == $this->platType) { //公众号获取card_ticket
             $ticket = WxUtilAlone::getCardTicket($this->appid);
         } else { //第三方平台获取card_ticket
             $ticket = WxUtilOpenBase::getAuthorizerCardTicket($this->appid);

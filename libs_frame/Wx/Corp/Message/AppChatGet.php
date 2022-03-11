@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Corp\Message;
 
 use SyConstant\ErrorCode;
@@ -16,6 +17,7 @@ use Wx\WxUtilBase;
 
 /**
  * 获取群聊会话
+ *
  * @package Wx\Corp\Message
  */
 class AppChatGet extends WxBaseCorp
@@ -24,6 +26,7 @@ class AppChatGet extends WxBaseCorp
 
     /**
      * 群id
+     *
      * @var string
      */
     private $chatid = '';
@@ -42,19 +45,18 @@ class AppChatGet extends WxBaseCorp
     }
 
     /**
-     * @param string $chatId
      * @throws \SyException\Wx\WxException
      */
     public function setChatId(string $chatId)
     {
-        if (ctype_alnum($chatId) && (strlen($chatId) <= 32)) {
+        if (ctype_alnum($chatId) && (\strlen($chatId) <= 32)) {
             $this->reqData['chatid'] = $chatId;
         } else {
             throw new WxException('群id不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['chatid'])) {
             throw new WxException('群id不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -68,7 +70,7 @@ class AppChatGet extends WxBaseCorp
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

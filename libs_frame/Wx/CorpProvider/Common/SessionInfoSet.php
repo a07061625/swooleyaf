@@ -1,4 +1,5 @@
 <?php
+
 namespace Wx\CorpProvider\Common;
 
 use SyConstant\ErrorCode;
@@ -10,17 +11,20 @@ use Wx\WxUtilCorpProvider;
 
 /**
  * 设置授权配置
+ *
  * @package Wx\CorpProvider\Common
  */
 class SessionInfoSet extends WxBaseCorpProvider
 {
     /**
      * 预授权码
+     *
      * @var string
      */
     private $pre_auth_code = '';
     /**
      * 授权类型,默认值为0 0:正式授权 1:测试授权
+     *
      * @var int
      */
     private $auth_type = 0;
@@ -40,12 +44,11 @@ class SessionInfoSet extends WxBaseCorpProvider
     }
 
     /**
-     * @param string $preAuthCode
      * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setPreAuthCode(string $preAuthCode)
     {
-        if (strlen($preAuthCode) > 0) {
+        if (\strlen($preAuthCode) > 0) {
             $this->reqData['pre_auth_code'] = $preAuthCode;
         } else {
             throw new WxCorpProviderException('预授权码不合法', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
@@ -53,12 +56,11 @@ class SessionInfoSet extends WxBaseCorpProvider
     }
 
     /**
-     * @param int $authType
      * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setAuthType(int $authType)
     {
-        if (in_array($authType, [0, 1], true)) {
+        if (\in_array($authType, [0, 1], true)) {
             $this->reqData['session_info']['auth_type'] = $authType;
         } else {
             throw new WxCorpProviderException('授权类型不合法', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
@@ -79,7 +81,7 @@ class SessionInfoSet extends WxBaseCorpProvider
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXPROVIDER_CORP_POST_ERROR;

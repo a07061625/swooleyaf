@@ -5,24 +5,27 @@
  * Date: 2018/9/12 0012
  * Time: 15:43
  */
+
 namespace Wx\Account\Menu;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseAccount;
-use Wx\WxUtilBase;
 use Wx\WxUtilAlone;
+use Wx\WxUtilBase;
 
 class ConditionalDel extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 菜单ID
+     *
      * @var string
      */
     private $menuid = '';
@@ -40,33 +43,32 @@ class ConditionalDel extends WxBaseAccount
     }
 
     /**
-     * @param string $menuId
      * @throws \SyException\Wx\WxException
      */
     public function setMenuId(string $menuId)
     {
-        if (strlen($menuId) > 0) {
+        if (\strlen($menuId) > 0) {
             $this->reqData['menuid'] = $menuId;
         } else {
             throw new WxException('菜单ID不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['menuid'])) {
             throw new WxException('菜单ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->appid);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

@@ -5,10 +5,11 @@
  * Date: 18-9-11
  * Time: 下午11:22
  */
+
 namespace Wx\Payment\Order;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBasePayment;
@@ -19,46 +20,55 @@ class DownloadBill extends WxBasePayment
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 商户号
+     *
      * @var string
      */
     private $mch_id = '';
     /**
      * 设备号
+     *
      * @var string
      */
     private $device_info = '';
     /**
      * 随机字符串
+     *
      * @var string
      */
     private $nonce_str = '';
     /**
      * 签名类型
+     *
      * @var string
      */
     private $sign_type = '';
     /**
      * 对账单日期
+     *
      * @var string
      */
     private $bill_date = '';
     /**
      * 账单类型
+     *
      * @var string
      */
     private $bill_type = '';
     /**
      * 压缩账单
+     *
      * @var string
      */
     private $tar_type = '';
     /**
      * 输出文件全名
+     *
      * @var string
      */
     private $output_file = '';
@@ -85,23 +95,19 @@ class DownloadBill extends WxBasePayment
         //do nothing
     }
 
-    /**
-     * @param string $deviceInfo
-     */
     public function setDeviceInfo(string $deviceInfo)
     {
-        if (strlen($deviceInfo) > 0) {
+        if (\strlen($deviceInfo) > 0) {
             $this->reqData['device_info'] = $deviceInfo;
         }
     }
 
     /**
-     * @param string $billDate
      * @throws \SyException\Wx\WxException
      */
     public function setBillDate(string $billDate)
     {
-        if (ctype_digit($billDate) && (strlen($billDate) == 8)) {
+        if (ctype_digit($billDate) && (8 == \strlen($billDate))) {
             $this->reqData['bill_date'] = $billDate;
         } else {
             throw new WxException('对账单日期不合法', ErrorCode::WX_PARAM_ERROR);
@@ -109,46 +115,42 @@ class DownloadBill extends WxBasePayment
     }
 
     /**
-     * @param string $billType
      * @throws \SyException\Wx\WxException
      */
     public function setBillType(string $billType)
     {
-        if (in_array($billType, ['ALL', 'SUCCESS', 'REFUND', 'RECHARGE_REFUND'], true)) {
+        if (\in_array($billType, ['ALL', 'SUCCESS', 'REFUND', 'RECHARGE_REFUND'], true)) {
             $this->reqData['bill_type'] = $billType;
         } else {
             throw new WxException('账单类型不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    /**
-     * @param string $outputFile
-     */
     public function setOutputFile(string $outputFile)
     {
-        if (strlen($outputFile) > 0) {
+        if (\strlen($outputFile) > 0) {
             $this->output_file = $outputFile;
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['bill_date'])) {
             throw new WxException('对账单日期不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if (strlen($this->output_file) == 0) {
+        if (0 == \strlen($this->output_file)) {
             throw new WxException('输出文件不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid']);
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::arrayToXml($this->reqData);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
-        if (substr($sendRes, 0, 5) == '<xml>') {
+        if ('<xml>' == substr($sendRes, 0, 5)) {
             $sendData = Tool::xmlToArray($sendRes);
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];

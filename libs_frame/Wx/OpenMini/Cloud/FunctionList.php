@@ -5,6 +5,7 @@
  * Date: 18-9-13
  * Time: 上午12:17
  */
+
 namespace Wx\OpenMini\Cloud;
 
 use SyConstant\ErrorCode;
@@ -18,21 +19,25 @@ class FunctionList extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 环境id
+     *
      * @var string
      */
     private $env = '';
     /**
      * 偏移量
+     *
      * @var int
      */
     private $offset = 0;
     /**
      * 每页限制
+     *
      * @var int
      */
     private $limit = 0;
@@ -54,7 +59,6 @@ class FunctionList extends WxBaseOpenMini
     }
 
     /**
-     * @param string $env
      * @throws \SyException\Wx\WxOpenException
      */
     public function setEnv(string $env)
@@ -67,7 +71,6 @@ class FunctionList extends WxBaseOpenMini
     }
 
     /**
-     * @param int $offset
      * @throws \SyException\Wx\WxOpenException
      */
     public function setOffset(int $offset)
@@ -80,7 +83,6 @@ class FunctionList extends WxBaseOpenMini
     }
 
     /**
-     * @param int $limit
      * @throws \SyException\Wx\WxOpenException
      */
     public function setLimit(int $limit)
@@ -92,7 +94,7 @@ class FunctionList extends WxBaseOpenMini
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['env'])) {
             throw new WxOpenException('环境id不能为空', ErrorCode::COMMON_PARAM_ERROR);
@@ -108,7 +110,7 @@ class FunctionList extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

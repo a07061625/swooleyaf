@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class MassGet extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 消息ID
+     *
      * @var string
      */
     private $msg_id = '';
@@ -40,7 +43,6 @@ class MassGet extends WxBaseAccount
     }
 
     /**
-     * @param string $msgId
      * @throws \SyException\Wx\WxException
      */
     public function setMsgId(string $msgId)
@@ -52,7 +54,7 @@ class MassGet extends WxBaseAccount
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['msg_id'])) {
             throw new WxException('消息ID不能为空', ErrorCode::WX_PARAM_ERROR);

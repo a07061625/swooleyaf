@@ -5,6 +5,7 @@
  * Date: 2018/9/13 0013
  * Time: 8:00
  */
+
 namespace Wx\OpenMini\Code;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class VisitStatusChange extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 访问状态
+     *
      * @var string
      */
     private $visitStatus = '';
@@ -40,19 +43,18 @@ class VisitStatusChange extends WxBaseOpenMini
     }
 
     /**
-     * @param string $visitStatus
      * @throws \SyException\Wx\WxOpenException
      */
     public function setVisitStatus(string $visitStatus)
     {
-        if (in_array($visitStatus, ['close', 'open'], true)) {
+        if (\in_array($visitStatus, ['close', 'open'], true)) {
             $this->reqData['action'] = $visitStatus;
         } else {
             throw new WxOpenException('访问状态不支持', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['action'])) {
             throw new WxOpenException('访问状态不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -68,7 +70,7 @@ class VisitStatusChange extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

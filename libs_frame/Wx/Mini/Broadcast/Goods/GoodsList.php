@@ -5,6 +5,7 @@
  * Date: 2020/6/21 0021
  * Time: 11:46
  */
+
 namespace Wx\Mini\Broadcast\Goods;
 
 use SyConstant\ErrorCode;
@@ -16,27 +17,32 @@ use Wx\WxUtilBase;
 
 /**
  * Class GoodsList
+ *
  * @package Wx\Mini\Broadcast\Goods
  */
 class GoodsList extends WxBaseMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 偏移量
+     *
      * @var int
      */
     private $offset = 0;
     /**
      * 分页大小,默认30,不超过100
+     *
      * @var int
      */
     private $limit = 0;
     /**
      * 商品状态 0：未审核 1：审核中 2：审核通过 3：审核驳回
+     *
      * @var int
      */
     private $status = 0;
@@ -58,7 +64,6 @@ class GoodsList extends WxBaseMini
     }
 
     /**
-     * @param int $offset
      * @throws \SyException\Wx\WxException
      */
     public function setOffset(int $offset)
@@ -71,7 +76,6 @@ class GoodsList extends WxBaseMini
     }
 
     /**
-     * @param int $limit
      * @throws \SyException\Wx\WxException
      */
     public function setLimit(int $limit)
@@ -84,22 +88,21 @@ class GoodsList extends WxBaseMini
     }
 
     /**
-     * @param int $status
      * @throws \SyException\Wx\WxException
      */
     public function setStatus(int $status)
     {
-        if (in_array($status, [0, 1, 2, 3])) {
+        if (\in_array($status, [0, 1, 2, 3])) {
             $this->reqData['status'] = $status;
         } else {
             throw new WxException('商品状态不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $this->reqData['access_token'] = WxUtilAlone::getAccessToken($this->appId);
@@ -108,7 +111,7 @@ class GoodsList extends WxBaseMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

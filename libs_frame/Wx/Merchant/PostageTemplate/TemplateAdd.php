@@ -5,6 +5,7 @@
  * Date: 2018/12/14 0014
  * Time: 16:01
  */
+
 namespace Wx\Merchant\PostageTemplate;
 
 use SyConstant\ErrorCode;
@@ -18,26 +19,31 @@ class TemplateAdd extends WxBaseMerchant
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 模板名称
+     *
      * @var string
      */
     private $Name = '';
     /**
      * 支付方式(0-买家承担运费 1-卖家承担运费)
+     *
      * @var int
      */
     private $Assumer = 0;
     /**
      * 计费单位(0-按件计费 1-按重量计费 2-按体积计费 目前只支持按件计费,默认为0)
+     *
      * @var int
      */
     private $Valuation = 0;
     /**
      * 运费计算列表
+     *
      * @var array
      */
     private $TopFee = [];
@@ -56,12 +62,11 @@ class TemplateAdd extends WxBaseMerchant
     }
 
     /**
-     * @param string $name
      * @throws \SyException\Wx\WxException
      */
     public function setName(string $name)
     {
-        if (strlen($name) == 0) {
+        if (0 == \strlen($name)) {
             $this->reqData['Name'] = $name;
         } else {
             throw new WxException('模板名称不合法', ErrorCode::WX_PARAM_ERROR);
@@ -69,21 +74,17 @@ class TemplateAdd extends WxBaseMerchant
     }
 
     /**
-     * @param int $assumer
      * @throws \SyException\Wx\WxException
      */
     public function setAssumer(int $assumer)
     {
-        if (in_array($assumer, [0, 1], true)) {
+        if (\in_array($assumer, [0, 1], true)) {
             $this->reqData['Assumer'] = $assumer;
         } else {
             throw new WxException('支付方式不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    /**
-     * @param array $feeList
-     */
     public function setTopFee(array $feeList)
     {
         foreach ($feeList as $eFee) {
@@ -94,7 +95,6 @@ class TemplateAdd extends WxBaseMerchant
     }
 
     /**
-     * @param array $feeInfo
      * @throws \SyException\Wx\WxException
      */
     public function addFee(array $feeInfo)
@@ -106,7 +106,7 @@ class TemplateAdd extends WxBaseMerchant
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['Name'])) {
             throw new WxException('模板名称不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -129,7 +129,7 @@ class TemplateAdd extends WxBaseMerchant
         ], JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

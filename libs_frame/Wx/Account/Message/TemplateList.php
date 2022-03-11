@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
@@ -17,6 +18,7 @@ class TemplateList extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
@@ -33,7 +35,7 @@ class TemplateList extends WxBaseAccount
         //do nothing
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $resArr = [
             'code' => 0,

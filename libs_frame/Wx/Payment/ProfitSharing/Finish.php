@@ -5,10 +5,11 @@
  * Date: 2019/5/17 0017
  * Time: 15:55
  */
+
 namespace Wx\Payment\ProfitSharing;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBasePayment;
@@ -19,31 +20,37 @@ class Finish extends WxBasePayment
 {
     /**
      * 商户号
+     *
      * @var string
      */
     private $mch_id = '';
     /**
      * 子商户号
+     *
      * @var string
      */
     private $sub_mch_id = '';
     /**
      * 公众账号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 微信单号
+     *
      * @var string
      */
     private $transaction_id = '';
     /**
      * 商户分账单号
+     *
      * @var string
      */
     private $out_order_no = '';
     /**
      * 分账完结描述
+     *
      * @var string
      */
     private $description = '';
@@ -66,7 +73,6 @@ class Finish extends WxBasePayment
     }
 
     /**
-     * @param string $transactionId
      * @throws \SyException\Wx\WxException
      */
     public function setTransactionId(string $transactionId)
@@ -79,12 +85,11 @@ class Finish extends WxBasePayment
     }
 
     /**
-     * @param string $outOrderNo
      * @throws \SyException\Wx\WxException
      */
     public function setOutOrderNo(string $outOrderNo)
     {
-        if (ctype_digit($outOrderNo) && (strlen($outOrderNo) <= 32)) {
+        if (ctype_digit($outOrderNo) && (\strlen($outOrderNo) <= 32)) {
             $this->reqData['out_order_no'] = $outOrderNo;
         } else {
             throw new WxException('商户分账单号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -92,7 +97,6 @@ class Finish extends WxBasePayment
     }
 
     /**
-     * @param string $description
      * @throws \SyException\Wx\WxException
      */
     public function setDescription(string $description)
@@ -104,7 +108,7 @@ class Finish extends WxBasePayment
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['transaction_id'])) {
             throw new WxException('微信单号不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -118,7 +122,7 @@ class Finish extends WxBasePayment
         $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid'], 'sha256');
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->reqData['appid']);
@@ -138,10 +142,10 @@ class Finish extends WxBasePayment
         fclose($tmpKey);
         fclose($tmpCert);
         $sendData = Tool::xmlToArray($sendRes);
-        if ($sendData['return_code'] == 'FAIL') {
+        if ('FAIL' == $sendData['return_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } elseif ($sendData['result_code'] == 'FAIL') {
+        } elseif ('FAIL' == $sendData['result_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         }

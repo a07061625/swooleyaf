@@ -5,6 +5,7 @@
  * Date: 2019/1/23 0023
  * Time: 8:51
  */
+
 namespace Wx\CorpProvider\GeneralizeCode;
 
 use SyConstant\ErrorCode;
@@ -15,12 +16,14 @@ use Wx\WxUtilBase;
 
 /**
  * 设置通讯录同步完成
+ *
  * @package Wx\CorpProvider\GeneralizeCode
  */
 class ContactSyncSuccess extends WxBaseCorpProvider
 {
     /**
      * 令牌,由查询注册状态接口返回
+     *
      * @var string
      */
     private $access_token = '';
@@ -37,21 +40,20 @@ class ContactSyncSuccess extends WxBaseCorpProvider
     }
 
     /**
-     * @param string $accessToken
      * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setAccessToken(string $accessToken)
     {
-        if (strlen($accessToken) > 0) {
+        if (\strlen($accessToken) > 0) {
             $this->access_token = $accessToken;
         } else {
             throw new WxCorpProviderException('令牌不合法', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
-        if (strlen($this->access_token) == 0) {
+        if (0 == \strlen($this->access_token)) {
             throw new WxCorpProviderException('令牌不能为空', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
 
@@ -62,7 +64,7 @@ class ContactSyncSuccess extends WxBaseCorpProvider
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . $this->access_token;
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXPROVIDER_CORP_GET_ERROR;

@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Corp\Tag;
 
 use SyConstant\ErrorCode;
@@ -16,6 +17,7 @@ use Wx\WxUtilBase;
 
 /**
  * 创建标签
+ *
  * @package Wx\Corp\Tag
  */
 class TagCreate extends WxBaseCorp
@@ -24,11 +26,13 @@ class TagCreate extends WxBaseCorp
 
     /**
      * 名称
+     *
      * @var string
      */
     private $tagname = '';
     /**
      * 标签id
+     *
      * @var int
      */
     private $tagid = 0;
@@ -47,12 +51,11 @@ class TagCreate extends WxBaseCorp
     }
 
     /**
-     * @param string $tagName
      * @throws \SyException\Wx\WxException
      */
     public function setTagName(string $tagName)
     {
-        if (strlen($tagName) > 0) {
+        if (\strlen($tagName) > 0) {
             $this->reqData['tagname'] = mb_substr($tagName, 0, 16);
         } else {
             throw new WxException('名称不合法', ErrorCode::WX_PARAM_ERROR);
@@ -60,7 +63,6 @@ class TagCreate extends WxBaseCorp
     }
 
     /**
-     * @param int $tagId
      * @throws \SyException\Wx\WxException
      */
     public function setTagId(int $tagId)
@@ -72,7 +74,7 @@ class TagCreate extends WxBaseCorp
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['tagname'])) {
             throw new WxException('名称不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -86,7 +88,7 @@ class TagCreate extends WxBaseCorp
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

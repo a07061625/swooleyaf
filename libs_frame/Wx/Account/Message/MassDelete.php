@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
@@ -18,16 +19,19 @@ class MassDelete extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 消息ID
+     *
      * @var string
      */
     private $msg_id = '';
     /**
      * 消息索引
+     *
      * @var int
      */
     private $article_idx = 0;
@@ -46,7 +50,6 @@ class MassDelete extends WxBaseAccount
     }
 
     /**
-     * @param string $msgId
      * @throws \SyException\Wx\WxException
      */
     public function setMsgId(string $msgId)
@@ -59,7 +62,6 @@ class MassDelete extends WxBaseAccount
     }
 
     /**
-     * @param int $articleIdx
      * @throws \SyException\Wx\WxException
      */
     public function setArticleIdx(int $articleIdx)
@@ -71,7 +73,7 @@ class MassDelete extends WxBaseAccount
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['msg_id'])) {
             throw new WxException('消息ID不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -85,7 +87,7 @@ class MassDelete extends WxBaseAccount
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

@@ -5,10 +5,11 @@
  * Date: 18-9-12
  * Time: 下午11:59
  */
+
 namespace Wx\OpenMini\CodeTemplate;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxOpenException;
 use SyTool\Tool;
 use Wx\WxBaseOpenMini;
@@ -19,6 +20,7 @@ class TemplateCodeAdd extends WxBaseOpenMini
 {
     /**
      * 草稿ID
+     *
      * @var string
      */
     private $draftId = '';
@@ -35,19 +37,18 @@ class TemplateCodeAdd extends WxBaseOpenMini
     }
 
     /**
-     * @param string $draftId
      * @throws \SyException\Wx\WxOpenException
      */
     public function setDraftId(string $draftId)
     {
-        if (strlen($draftId) > 0) {
+        if (\strlen($draftId) > 0) {
             $this->reqData['draft_id'] = $draftId;
         } else {
             throw new WxOpenException('草稿ID不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['draft_id'])) {
             throw new WxOpenException('草稿ID不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -63,7 +64,7 @@ class TemplateCodeAdd extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

@@ -5,6 +5,7 @@
  * Date: 18-9-13
  * Time: 上午12:17
  */
+
 namespace Wx\OpenMini\Cloud;
 
 use SyConstant\ErrorCode;
@@ -18,26 +19,31 @@ class FunctionConfigUpload extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 配置类型
+     *
      * @var int
      */
     private $type = 0;
     /**
      * 配置json
+     *
      * @var string
      */
     private $config = '';
     /**
      * 环境id
+     *
      * @var string
      */
     private $env = '';
     /**
      * 云函数名
+     *
      * @var string
      */
     private $function_name = '';
@@ -55,13 +61,11 @@ class FunctionConfigUpload extends WxBaseOpenMini
     }
 
     /**
-     * @param int $type
-     * @param array $config
      * @throws \SyException\Wx\WxOpenException
      */
     public function setTypeAndConfig(int $type, array $config)
     {
-        if (!in_array($type, [1, 2])) {
+        if (!\in_array($type, [1, 2])) {
             throw new WxOpenException('配置类型不合法', ErrorCode::COMMON_PARAM_ERROR);
         }
         if (empty($config)) {
@@ -72,7 +76,6 @@ class FunctionConfigUpload extends WxBaseOpenMini
     }
 
     /**
-     * @param string $env
      * @throws \SyException\Wx\WxOpenException
      */
     public function setEnv(string $env)
@@ -85,7 +88,6 @@ class FunctionConfigUpload extends WxBaseOpenMini
     }
 
     /**
-     * @param string $functionName
      * @throws \SyException\Wx\WxOpenException
      */
     public function setFunctionName(string $functionName)
@@ -97,7 +99,7 @@ class FunctionConfigUpload extends WxBaseOpenMini
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['type'])) {
             throw new WxOpenException('配置类型不能为空', ErrorCode::COMMON_PARAM_ERROR);
@@ -119,7 +121,7 @@ class FunctionConfigUpload extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

@@ -5,6 +5,7 @@
  * Date: 18-9-13
  * Time: 上午12:17
  */
+
 namespace Wx\OpenMini\Cloud;
 
 use SyConstant\ErrorCode;
@@ -18,36 +19,43 @@ class FunctionCodeUpdate extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 代码保护密钥
+     *
      * @var string
      */
     private $CodeSecret = '';
     /**
      * 函数处理方法名
+     *
      * @var string
      */
     private $Handler = '';
     /**
      * 函数名称
+     *
      * @var string
      */
     private $FunctionName = '';
     /**
      * 函数代码zip文件
+     *
      * @var string
      */
     private $ZipFile = '';
     /**
      * 命名空间
+     *
      * @var string
      */
     private $EnvId = '';
     /**
      * 自动安装依赖标识
+     *
      * @var string
      */
     private $InstallDependency = '';
@@ -74,7 +82,6 @@ class FunctionCodeUpdate extends WxBaseOpenMini
     }
 
     /**
-     * @param string $functionName
      * @throws \SyException\Wx\WxOpenException
      */
     public function setFunctionName(string $functionName)
@@ -87,7 +94,6 @@ class FunctionCodeUpdate extends WxBaseOpenMini
     }
 
     /**
-     * @param string $zipFile
      * @throws \SyException\Wx\WxOpenException
      */
     public function setZipFile(string $zipFile)
@@ -100,7 +106,6 @@ class FunctionCodeUpdate extends WxBaseOpenMini
     }
 
     /**
-     * @param string $envId
      * @throws \SyException\Wx\WxOpenException
      */
     public function setEnvId(string $envId)
@@ -113,19 +118,18 @@ class FunctionCodeUpdate extends WxBaseOpenMini
     }
 
     /**
-     * @param string $installDependency
      * @throws \SyException\Wx\WxOpenException
      */
     public function setInstallDependency(string $installDependency)
     {
-        if (in_array($installDependency, ['TRUE', 'FALSE'])) {
+        if (\in_array($installDependency, ['TRUE', 'FALSE'])) {
             $this->reqData['InstallDependency'] = $installDependency;
         } else {
             throw new WxOpenException('自动安装依赖标识不合法', ErrorCode::COMMON_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['FunctionName'])) {
             throw new WxOpenException('函数名称不能为空', ErrorCode::COMMON_PARAM_ERROR);
@@ -156,7 +160,7 @@ class FunctionCodeUpdate extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

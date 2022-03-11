@@ -5,6 +5,7 @@
  * Date: 2020/6/8 0008
  * Time: 21:25
  */
+
 namespace Wx\Mini\Broadcast\Room;
 
 use SyConstant\ErrorCode;
@@ -16,22 +17,26 @@ use Wx\WxUtilBase;
 
 /**
  * Class RoomList
+ *
  * @package Wx\Mini\Broadcast\Room
  */
 class RoomList extends WxBaseMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 起始索引
+     *
      * @var int
      */
     private $start = 0;
     /**
      * 每页数量
+     *
      * @var int
      */
     private $limit = 0;
@@ -53,7 +58,6 @@ class RoomList extends WxBaseMini
     }
 
     /**
-     * @param int $start
      * @throws \SyException\Wx\WxException
      */
     public function setStart(int $start)
@@ -66,7 +70,6 @@ class RoomList extends WxBaseMini
     }
 
     /**
-     * @param int $limit
      * @throws \SyException\Wx\WxException
      */
     public function setLimit(int $limit)
@@ -78,10 +81,10 @@ class RoomList extends WxBaseMini
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->appId);
@@ -90,7 +93,7 @@ class RoomList extends WxBaseMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

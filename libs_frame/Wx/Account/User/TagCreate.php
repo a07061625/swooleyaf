@@ -5,6 +5,7 @@
  * Date: 2018/12/13 0013
  * Time: 15:12
  */
+
 namespace Wx\Account\User;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class TagCreate extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 标签名
+     *
      * @var string
      */
     private $name = '';
@@ -40,12 +43,11 @@ class TagCreate extends WxBaseAccount
     }
 
     /**
-     * @param string $name
      * @throws \SyException\Wx\WxException
      */
     public function setName(string $name)
     {
-        $nameLength = strlen($name);
+        $nameLength = \strlen($name);
         if (($nameLength > 0) && ($nameLength <= 30)) {
             $this->reqData['name'] = $name;
         } else {
@@ -53,7 +55,7 @@ class TagCreate extends WxBaseAccount
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['name'])) {
             throw new WxException('标签名不能为空', ErrorCode::WX_PARAM_ERROR);

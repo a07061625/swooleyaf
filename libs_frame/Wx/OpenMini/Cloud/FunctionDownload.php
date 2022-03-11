@@ -5,6 +5,7 @@
  * Date: 18-9-13
  * Time: 上午12:17
  */
+
 namespace Wx\OpenMini\Cloud;
 
 use SyConstant\ErrorCode;
@@ -18,16 +19,19 @@ class FunctionDownload extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 环境id
+     *
      * @var string
      */
     private $env = '';
     /**
      * 云函数名
+     *
      * @var string
      */
     private $function_name = '';
@@ -45,7 +49,6 @@ class FunctionDownload extends WxBaseOpenMini
     }
 
     /**
-     * @param string $env
      * @throws \SyException\Wx\WxOpenException
      */
     public function setEnv(string $env)
@@ -58,7 +61,6 @@ class FunctionDownload extends WxBaseOpenMini
     }
 
     /**
-     * @param string $functionName
      * @throws \SyException\Wx\WxOpenException
      */
     public function setFunctionName(string $functionName)
@@ -70,7 +72,7 @@ class FunctionDownload extends WxBaseOpenMini
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['env'])) {
             throw new WxOpenException('环境id不能为空', ErrorCode::COMMON_PARAM_ERROR);
@@ -89,7 +91,7 @@ class FunctionDownload extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

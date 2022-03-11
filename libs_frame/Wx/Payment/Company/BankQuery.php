@@ -5,10 +5,11 @@
  * Date: 2018/12/12 0012
  * Time: 17:08
  */
+
 namespace Wx\Payment\Company;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBasePayment;
@@ -19,21 +20,25 @@ class BankQuery extends WxBasePayment
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 商户号
+     *
      * @var string
      */
     private $mch_id = '';
     /**
      * 付款单号
+     *
      * @var string
      */
     private $partner_trade_no = '';
     /**
      * 随机字符串
+     *
      * @var string
      */
     private $nonce_str = '';
@@ -54,19 +59,18 @@ class BankQuery extends WxBasePayment
     }
 
     /**
-     * @param string $partnerTradeNo
      * @throws \SyException\Wx\WxException
      */
     public function setPartnerTradeNo(string $partnerTradeNo)
     {
-        if (ctype_digit($partnerTradeNo) && (strlen($partnerTradeNo) <= 32)) {
+        if (ctype_digit($partnerTradeNo) && (\strlen($partnerTradeNo) <= 32)) {
             $this->reqData['partner_trade_no'] = $partnerTradeNo;
         } else {
             throw new WxException('付款单号不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['partner_trade_no'])) {
             throw new WxException('付款单号不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -94,10 +98,10 @@ class BankQuery extends WxBasePayment
         fclose($tmpKey);
         fclose($tmpCert);
         $sendData = Tool::xmlToArray($sendRes);
-        if ($sendData['return_code'] == 'FAIL') {
+        if ('FAIL' == $sendData['return_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } elseif ($sendData['result_code'] == 'FAIL') {
+        } elseif ('FAIL' == $sendData['result_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         } else {

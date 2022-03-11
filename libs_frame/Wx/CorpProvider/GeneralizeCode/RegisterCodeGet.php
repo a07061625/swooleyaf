@@ -5,6 +5,7 @@
  * Date: 2019/1/23 0023
  * Time: 8:51
  */
+
 namespace Wx\CorpProvider\GeneralizeCode;
 
 use SyConstant\ErrorCode;
@@ -71,13 +72,11 @@ class RegisterCodeGet extends WxBaseCorpProvider
     }
 
     /**
-     * @param string $templateId
-     *
      * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setTemplateId(string $templateId)
     {
-        $length = strlen($templateId);
+        $length = \strlen($templateId);
         if (($length > 0) && ($length <= 128)) {
             $this->reqData['template_id'] = $templateId;
         } else {
@@ -85,24 +84,18 @@ class RegisterCodeGet extends WxBaseCorpProvider
         }
     }
 
-    /**
-     * @param string $corpName
-     */
     public function setCorpName(string $corpName)
     {
-        if (strlen($corpName) > 0) {
+        if (\strlen($corpName) > 0) {
             $this->reqData['corp_name'] = $corpName;
         } else {
             unset($this->reqData['corp_name']);
         }
     }
 
-    /**
-     * @param string $adminName
-     */
     public function setAdminName(string $adminName)
     {
-        if (strlen($adminName) > 0) {
+        if (\strlen($adminName) > 0) {
             $this->reqData['admin_name'] = $adminName;
         } else {
             unset($this->reqData['admin_name']);
@@ -110,13 +103,11 @@ class RegisterCodeGet extends WxBaseCorpProvider
     }
 
     /**
-     * @param string $adminMobile
-     *
      * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setAdminMobile(string $adminMobile)
     {
-        if (ctype_digit($adminMobile) && (strlen($adminMobile) == 11) && ($adminMobile[0] == '1')) {
+        if (ctype_digit($adminMobile) && (11 == \strlen($adminMobile)) && ('1' == $adminMobile[0])) {
             $this->reqData['admin_mobile'] = $adminMobile;
         } else {
             throw new WxCorpProviderException('管理员手机号不合法', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
@@ -124,32 +115,27 @@ class RegisterCodeGet extends WxBaseCorpProvider
     }
 
     /**
-     * @param string $state
-     *
      * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setState(string $state)
     {
-        if (ctype_alnum($state) && (strlen($state) <= 128)) {
+        if (ctype_alnum($state) && (\strlen($state) <= 128)) {
             $this->reqData['state'] = $state;
         } else {
             throw new WxCorpProviderException('自定义状态值不合法', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
     }
 
-    /**
-     * @param string $followUser
-     */
     public function setFollowUser(string $followUser)
     {
-        if (strlen($followUser) > 0) {
+        if (\strlen($followUser) > 0) {
             $this->reqData['follow_user'] = $followUser;
         } else {
             unset($this->reqData['follow_user']);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['template_id'])) {
             throw new WxCorpProviderException('推广包ID不能为空', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
@@ -163,7 +149,7 @@ class RegisterCodeGet extends WxBaseCorpProvider
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXPROVIDER_CORP_POST_ERROR;

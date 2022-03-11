@@ -5,10 +5,11 @@
  * Date: 18-9-11
  * Time: 下午7:35
  */
+
 namespace Wx\Payment\Company;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyLog\Log;
 use SyTool\Tool;
@@ -20,21 +21,25 @@ class Query extends WxBasePayment
 {
     /**
      * 公众账号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 随机字符串
+     *
      * @var string
      */
     private $nonce_str = '';
     /**
      * 商户订单号
+     *
      * @var string
      */
     private $partner_trade_no = '';
     /**
      * 商户号
+     *
      * @var string
      */
     private $mch_id = '';
@@ -55,19 +60,18 @@ class Query extends WxBasePayment
     }
 
     /**
-     * @param string $outTradeNo
      * @throws \SyException\Wx\WxException
      */
     public function setOutTradeNo(string $outTradeNo)
     {
-        if (ctype_digit($outTradeNo) && (strlen($outTradeNo) <= 32)) {
+        if (ctype_digit($outTradeNo) && (\strlen($outTradeNo) <= 32)) {
             $this->reqData['partner_trade_no'] = $outTradeNo;
         } else {
             throw new WxException('商户单号不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['partner_trade_no'])) {
             throw new WxException('商户单号不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -95,11 +99,11 @@ class Query extends WxBasePayment
         fclose($tmpKey);
         fclose($tmpCert);
         $sendData = Tool::xmlToArray($sendRes);
-        if ($sendData['return_code'] == 'FAIL') {
+        if ('FAIL' == $sendData['return_code']) {
             Log::error($sendData['return_msg'], ErrorCode::WX_PARAM_ERROR);
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } elseif ($sendData['result_code'] == 'FAIL') {
+        } elseif ('FAIL' == $sendData['result_code']) {
             Log::error($sendData['err_code_des'], ErrorCode::WX_PARAM_ERROR);
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];

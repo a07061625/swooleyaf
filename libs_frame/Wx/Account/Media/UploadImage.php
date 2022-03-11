@@ -5,6 +5,7 @@
  * Date: 2018/12/13 0013
  * Time: 9:37
  */
+
 namespace Wx\Account\Media;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class UploadImage extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 文件全路径,包括文件名
+     *
      * @var string
      */
     private $file_path = '';
@@ -40,7 +43,6 @@ class UploadImage extends WxBaseAccount
     }
 
     /**
-     * @param string $filePath
      * @throws \SyException\Wx\WxException
      */
     public function setFilePath(string $filePath)
@@ -52,7 +54,7 @@ class UploadImage extends WxBaseAccount
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['media'])) {
             throw new WxException('文件不能为空', ErrorCode::WX_PARAM_ERROR);

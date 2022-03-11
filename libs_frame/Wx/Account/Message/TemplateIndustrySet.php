@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
@@ -18,16 +19,19 @@ class TemplateIndustrySet extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 行业编号1
+     *
      * @var int
      */
     private $industry_id1 = 0;
     /**
      * 行业编号2
+     *
      * @var int
      */
     private $industry_id2 = 0;
@@ -45,7 +49,6 @@ class TemplateIndustrySet extends WxBaseAccount
     }
 
     /**
-     * @param int $industryId1
      * @throws \SyException\Wx\WxException
      */
     public function setIndustryId1(int $industryId1)
@@ -58,7 +61,6 @@ class TemplateIndustrySet extends WxBaseAccount
     }
 
     /**
-     * @param int $industryId2
      * @throws \SyException\Wx\WxException
      */
     public function setIndustryId2(int $industryId2)
@@ -70,7 +72,7 @@ class TemplateIndustrySet extends WxBaseAccount
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['industry_id1'])) {
             throw new WxException('行业编号1不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -87,7 +89,7 @@ class TemplateIndustrySet extends WxBaseAccount
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

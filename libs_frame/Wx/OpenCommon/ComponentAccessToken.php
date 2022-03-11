@@ -5,12 +5,13 @@
  * Date: 18-9-12
  * Time: 下午9:39
  */
+
 namespace Wx\OpenCommon;
 
-use SyConstant\ErrorCode;
-use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
 use SyException\Wx\WxOpenException;
 use SyTool\Tool;
 use Wx\WxBaseOpenCommon;
@@ -20,6 +21,7 @@ class ComponentAccessToken extends WxBaseOpenCommon
 {
     /**
      * 校验令牌
+     *
      * @var string
      */
     private $verifyTicket = '';
@@ -39,19 +41,18 @@ class ComponentAccessToken extends WxBaseOpenCommon
     }
 
     /**
-     * @param string $verifyTicket
      * @throws \SyException\Wx\WxOpenException
      */
     public function setVerifyTicket(string $verifyTicket)
     {
-        if (strlen($verifyTicket) > 0) {
+        if (\strlen($verifyTicket) > 0) {
             $this->reqData['component_verify_ticket'] = $verifyTicket;
         } else {
             throw new WxOpenException('校验令牌不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['component_verify_ticket'])) {
             throw new WxOpenException('校验令牌不能为空', ErrorCode::WXOPEN_PARAM_ERROR);

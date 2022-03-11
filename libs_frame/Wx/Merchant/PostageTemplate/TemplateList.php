@@ -5,6 +5,7 @@
  * Date: 2018/12/14 0014
  * Time: 16:01
  */
+
 namespace Wx\Merchant\PostageTemplate;
 
 use SyConstant\ErrorCode;
@@ -17,6 +18,7 @@ class TemplateList extends WxBaseMerchant
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
@@ -33,7 +35,7 @@ class TemplateList extends WxBaseMerchant
         //do nothing
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $resArr = [
             'code' => 0,
@@ -42,7 +44,7 @@ class TemplateList extends WxBaseMerchant
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilMerchant::getAccessToken($this->appid);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

@@ -5,6 +5,7 @@
  * Date: 2018/9/13 0013
  * Time: 7:34
  */
+
 namespace Wx\OpenMini\Base;
 
 use SyConstant\ErrorCode;
@@ -18,31 +19,37 @@ class AccountHeadImageModify extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 头像素材
+     *
      * @var string
      */
     private $head_img_media_id = '';
     /**
      * 起始点横坐标
+     *
      * @var float
      */
     private $x1 = 0.00;
     /**
      * 起始点纵坐标
+     *
      * @var float
      */
     private $y1 = 0.00;
     /**
      * 截止点横坐标
+     *
      * @var float
      */
     private $x2 = 0.00;
     /**
      * 截止点纵坐标
+     *
      * @var float
      */
     private $y2 = 0.00;
@@ -60,12 +67,11 @@ class AccountHeadImageModify extends WxBaseOpenMini
     }
 
     /**
-     * @param string $headImage
      * @throws \SyException\Wx\WxOpenException
      */
     public function setHeadImgMediaId(string $headImage)
     {
-        if (strlen($headImage) > 0) {
+        if (\strlen($headImage) > 0) {
             $this->reqData['head_img_media_id'] = $headImage;
         } else {
             throw new WxOpenException('头像素材不合法', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -73,7 +79,6 @@ class AccountHeadImageModify extends WxBaseOpenMini
     }
 
     /**
-     * @param float $x1
      * @throws \SyException\Wx\WxOpenException
      */
     public function setX1(float $x1)
@@ -86,7 +91,6 @@ class AccountHeadImageModify extends WxBaseOpenMini
     }
 
     /**
-     * @param float $y1
      * @throws \SyException\Wx\WxOpenException
      */
     public function setY1(float $y1)
@@ -99,7 +103,6 @@ class AccountHeadImageModify extends WxBaseOpenMini
     }
 
     /**
-     * @param float $x2
      * @throws \SyException\Wx\WxOpenException
      */
     public function setX2(float $x2)
@@ -112,7 +115,6 @@ class AccountHeadImageModify extends WxBaseOpenMini
     }
 
     /**
-     * @param float $y2
      * @throws \SyException\Wx\WxOpenException
      */
     public function setY2(float $y2)
@@ -124,7 +126,7 @@ class AccountHeadImageModify extends WxBaseOpenMini
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['head_img_media_id'])) {
             throw new WxOpenException('头像素材不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -152,7 +154,7 @@ class AccountHeadImageModify extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Corp\Message;
 
 use SyConstant\ErrorCode;
@@ -16,6 +17,7 @@ use Wx\WxUtilBase;
 
 /**
  * 修改群聊会话
+ *
  * @package Wx\Corp\Message
  */
 class AppChatUpdate extends WxBaseCorp
@@ -24,26 +26,31 @@ class AppChatUpdate extends WxBaseCorp
 
     /**
      * 群id
+     *
      * @var string
      */
     private $chatid = '';
     /**
      * 群聊名
+     *
      * @var string
      */
     private $name = '';
     /**
      * 群主id
+     *
      * @var string
      */
     private $owner = '';
     /**
      * 添加成员列表
+     *
      * @var array
      */
     private $add_user_list = [];
     /**
      * 踢出成员列表
+     *
      * @var array
      */
     private $del_user_list = [];
@@ -62,12 +69,11 @@ class AppChatUpdate extends WxBaseCorp
     }
 
     /**
-     * @param string $chatId
      * @throws \SyException\Wx\WxException
      */
     public function setChatId(string $chatId)
     {
-        if (ctype_alnum($chatId) && (strlen($chatId) <= 32)) {
+        if (ctype_alnum($chatId) && (\strlen($chatId) <= 32)) {
             $this->reqData['chatid'] = $chatId;
         } else {
             throw new WxException('群id不合法', ErrorCode::WX_PARAM_ERROR);
@@ -75,12 +81,11 @@ class AppChatUpdate extends WxBaseCorp
     }
 
     /**
-     * @param string $name
      * @throws \SyException\Wx\WxException
      */
     public function setName(string $name)
     {
-        if (strlen($name) > 0) {
+        if (\strlen($name) > 0) {
             $this->reqData['name'] = mb_substr($name, 0, 25);
         } else {
             throw new WxException('群聊名不合法', ErrorCode::WX_PARAM_ERROR);
@@ -88,7 +93,6 @@ class AppChatUpdate extends WxBaseCorp
     }
 
     /**
-     * @param string $owner
      * @throws \SyException\Wx\WxException
      */
     public function setOwner(string $owner)
@@ -100,9 +104,6 @@ class AppChatUpdate extends WxBaseCorp
         }
     }
 
-    /**
-     * @param array $addUserList
-     */
     public function setAddUserList(array $addUserList)
     {
         $users = [];
@@ -120,9 +121,6 @@ class AppChatUpdate extends WxBaseCorp
         }
     }
 
-    /**
-     * @param array $delUserList
-     */
     public function setDelUserList(array $delUserList)
     {
         $users = [];
@@ -140,7 +138,7 @@ class AppChatUpdate extends WxBaseCorp
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['chatid'])) {
             throw new WxException('群id不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -154,7 +152,7 @@ class AppChatUpdate extends WxBaseCorp
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

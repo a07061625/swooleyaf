@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Corp\Tag;
 
 use SyConstant\ErrorCode;
@@ -16,6 +17,7 @@ use Wx\WxUtilBase;
 
 /**
  * 删除标签成员
+ *
  * @package Wx\Corp\Tag
  */
 class TagUsersDel extends WxBaseCorp
@@ -24,16 +26,19 @@ class TagUsersDel extends WxBaseCorp
 
     /**
      * 标签id
+     *
      * @var int
      */
     private $tagid = 0;
     /**
      * 成员ID列表
+     *
      * @var array
      */
     private $userlist = [];
     /**
      * 部门ID列表
+     *
      * @var array
      */
     private $partylist = [];
@@ -54,7 +59,6 @@ class TagUsersDel extends WxBaseCorp
     }
 
     /**
-     * @param int $tagId
      * @throws \SyException\Wx\WxException
      */
     public function setTagId(int $tagId)
@@ -67,7 +71,6 @@ class TagUsersDel extends WxBaseCorp
     }
 
     /**
-     * @param array $userList
      * @throws \SyException\Wx\WxException
      */
     public function setUserList(array $userList)
@@ -80,10 +83,11 @@ class TagUsersDel extends WxBaseCorp
             }
         }
 
-        $userNum = count($users);
+        $userNum = \count($users);
         if ($userNum > 1000) {
             throw new WxException('成员ID列表不能超过1000个', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($userNum == 0) {
+        }
+        if (0 == $userNum) {
             throw new WxException('成员ID列表不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -91,26 +95,25 @@ class TagUsersDel extends WxBaseCorp
     }
 
     /**
-     * @param array $partyList
      * @throws \SyException\Wx\WxException
      */
     public function setPartyList(array $partyList)
     {
         $party = [];
         foreach ($partyList as $eParty) {
-            if (is_int($eParty) && ($eParty > 0)) {
+            if (\is_int($eParty) && ($eParty > 0)) {
                 $party[$eParty] = 1;
             }
         }
 
-        if (count($party) > 100) {
+        if (\count($party) > 100) {
             throw new WxException('部门ID列表不能超过1000个', ErrorCode::WX_PARAM_ERROR);
         }
 
         $this->reqData['partylist'] = array_keys($party);
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['tagid'])) {
             throw new WxException('标签id不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -127,7 +130,7 @@ class TagUsersDel extends WxBaseCorp
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

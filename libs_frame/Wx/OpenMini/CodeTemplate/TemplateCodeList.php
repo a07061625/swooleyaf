@@ -5,10 +5,11 @@
  * Date: 18-9-12
  * Time: 下午11:53
  */
+
 namespace Wx\OpenMini\CodeTemplate;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyTool\Tool;
 use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
@@ -27,7 +28,7 @@ class TemplateCodeList extends WxBaseOpenMini
         //do nothing
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $resArr = [
             'code' => 0,
@@ -36,7 +37,7 @@ class TemplateCodeList extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getComponentAccessToken(WxConfigSingleton::getInstance()->getOpenCommonConfig()->getAppId());
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_GET_ERROR;
