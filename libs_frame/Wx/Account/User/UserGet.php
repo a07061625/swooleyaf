@@ -41,6 +41,7 @@ class UserGet extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

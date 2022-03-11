@@ -54,6 +54,7 @@ class PocketQuery extends WxBaseCorp
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

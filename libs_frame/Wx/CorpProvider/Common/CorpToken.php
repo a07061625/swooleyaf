@@ -33,6 +33,7 @@ class CorpToken extends WxBaseCorpProvider
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

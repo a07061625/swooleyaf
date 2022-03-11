@@ -36,6 +36,7 @@ class MassGet extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

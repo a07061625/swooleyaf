@@ -36,6 +36,7 @@ class GroupDel extends WxBaseMerchant
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

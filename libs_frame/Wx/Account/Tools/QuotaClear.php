@@ -38,6 +38,7 @@ class QuotaClear extends WxBaseAccount
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

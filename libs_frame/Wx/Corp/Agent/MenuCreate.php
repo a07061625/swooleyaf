@@ -47,6 +47,7 @@ class MenuCreate extends WxBaseCorp
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

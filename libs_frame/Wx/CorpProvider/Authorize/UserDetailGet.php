@@ -28,6 +28,7 @@ class UserDetailGet extends WxBaseCorpProvider
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

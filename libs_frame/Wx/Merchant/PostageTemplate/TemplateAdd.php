@@ -52,6 +52,7 @@ class TemplateAdd extends WxBaseMerchant
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

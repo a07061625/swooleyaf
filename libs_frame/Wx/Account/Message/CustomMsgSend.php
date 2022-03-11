@@ -86,6 +86,7 @@ class CustomMsgSend extends WxBaseAccount
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

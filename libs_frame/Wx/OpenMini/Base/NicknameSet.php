@@ -51,6 +51,7 @@ class NicknameSet extends WxBaseOpenMini
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

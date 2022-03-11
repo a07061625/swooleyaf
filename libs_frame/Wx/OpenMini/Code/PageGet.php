@@ -30,6 +30,7 @@ class PageGet extends WxBaseOpenMini
 
     public function __clone()
     {
+        //do nothing
     }
 
     public function getDetail() : array

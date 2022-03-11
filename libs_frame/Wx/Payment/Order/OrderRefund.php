@@ -99,6 +99,7 @@ class OrderRefund extends WxBasePayment
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

@@ -25,6 +25,7 @@ class ProviderToken extends WxBaseCorpProvider
 
     private function __clone()
     {
+        //do nothing
     }
 
     public function getDetail(): array

@@ -65,6 +65,7 @@ class FunctionCodeUpdate extends WxBaseOpenMini
 
     public function __clone()
     {
+        //do nothing
     }
 
     public function setCodeSecret()

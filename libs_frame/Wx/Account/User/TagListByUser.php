@@ -40,6 +40,7 @@ class TagListByUser extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

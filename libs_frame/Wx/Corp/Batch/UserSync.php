@@ -49,6 +49,7 @@ class UserSync extends WxBaseCorp
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

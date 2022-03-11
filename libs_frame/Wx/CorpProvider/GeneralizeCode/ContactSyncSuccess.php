@@ -33,6 +33,7 @@ class ContactSyncSuccess extends WxBaseCorpProvider
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

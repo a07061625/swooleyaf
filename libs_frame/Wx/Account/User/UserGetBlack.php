@@ -41,6 +41,7 @@ class UserGetBlack extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

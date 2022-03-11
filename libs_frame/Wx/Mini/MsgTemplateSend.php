@@ -80,6 +80,7 @@ class MsgTemplateSend extends WxBaseMini
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

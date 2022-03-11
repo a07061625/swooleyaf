@@ -52,6 +52,7 @@ class JsConfig extends WxBaseAlone
 
     private function __clone()
     {
+        //do nothing
     }
 
     public function setTimestamp(int $timestamp)

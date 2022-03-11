@@ -33,6 +33,7 @@ class AuthorizerAccessToken extends WxBaseOpenCommon
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

@@ -37,6 +37,7 @@ class ProductListStatus extends WxBaseMerchant
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

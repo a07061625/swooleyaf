@@ -36,6 +36,7 @@ class UploadImage extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

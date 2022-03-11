@@ -47,6 +47,7 @@ class AuthorizerList extends WxBaseOpenCommon
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

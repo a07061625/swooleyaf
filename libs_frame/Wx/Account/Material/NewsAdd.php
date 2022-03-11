@@ -38,6 +38,7 @@ class NewsAdd extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

@@ -102,6 +102,7 @@ class CouponSend extends WxBasePayment
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

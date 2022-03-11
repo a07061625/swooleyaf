@@ -39,6 +39,7 @@ class JsCode2Session extends WxBaseOpenMini
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

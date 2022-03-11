@@ -42,6 +42,7 @@ class MiniFastRegister extends WxBaseOpenAccount
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

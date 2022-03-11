@@ -39,6 +39,7 @@ class UserDeleteBatch extends WxBaseCorp
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

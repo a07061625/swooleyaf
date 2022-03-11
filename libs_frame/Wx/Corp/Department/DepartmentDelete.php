@@ -38,6 +38,7 @@ class DepartmentDelete extends WxBaseCorp
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

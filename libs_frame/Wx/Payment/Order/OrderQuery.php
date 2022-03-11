@@ -60,6 +60,7 @@ class OrderQuery extends WxBasePayment
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

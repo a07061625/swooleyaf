@@ -46,6 +46,7 @@ class SessionClose extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

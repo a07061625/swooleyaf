@@ -143,6 +143,7 @@ class RedPackGroup extends WxBasePayment
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**
