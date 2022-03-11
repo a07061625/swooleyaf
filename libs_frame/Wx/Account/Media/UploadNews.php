@@ -38,6 +38,7 @@ class UploadNews extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

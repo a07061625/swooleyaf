@@ -36,6 +36,7 @@ class UnBlackUsers extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

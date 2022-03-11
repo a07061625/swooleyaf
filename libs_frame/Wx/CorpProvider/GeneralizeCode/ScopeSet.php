@@ -53,6 +53,7 @@ class ScopeSet extends WxBaseCorpProvider
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

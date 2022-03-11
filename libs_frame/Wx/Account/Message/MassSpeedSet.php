@@ -36,6 +36,7 @@ class MassSpeedSet extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

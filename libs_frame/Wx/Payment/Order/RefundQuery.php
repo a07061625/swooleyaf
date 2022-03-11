@@ -80,6 +80,7 @@ class RefundQuery extends WxBasePayment
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

@@ -36,6 +36,7 @@ class DomainWebViewSet extends WxBaseOpenMini
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

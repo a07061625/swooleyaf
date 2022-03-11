@@ -30,6 +30,7 @@ class CodeAuditUndo extends WxBaseOpenMini
 
     public function __clone()
     {
+        //do nothing
     }
 
     public function getDetail() : array

@@ -31,6 +31,7 @@ class TagList extends WxBaseCorp
 
     private function __clone()
     {
+        //do nothing
     }
 
     public function getDetail() : array

@@ -41,6 +41,7 @@ class ConditionalAdd extends WxBaseAccount
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

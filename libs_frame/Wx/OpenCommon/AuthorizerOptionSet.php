@@ -48,6 +48,7 @@ class AuthorizerOptionSet extends WxBaseOpenCommon
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

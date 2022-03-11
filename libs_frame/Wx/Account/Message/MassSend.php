@@ -46,6 +46,7 @@ class MassSend extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

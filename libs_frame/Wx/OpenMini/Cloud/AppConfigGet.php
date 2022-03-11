@@ -36,6 +36,7 @@ class AppConfigGet extends WxBaseOpenMini
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

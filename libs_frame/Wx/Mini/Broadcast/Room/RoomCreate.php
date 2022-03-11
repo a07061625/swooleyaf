@@ -102,6 +102,7 @@ class RoomCreate extends WxBaseMini
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**
@@ -148,11 +149,11 @@ class RoomCreate extends WxBaseMini
         }
 
         $endDiffTime = $endTime - $startTime;
-        if($endDiffTime <= 0){
+        if ($endDiffTime <= 0) {
             throw new WxException('直播结束时间必须大于直播开始时间', ErrorCode::WX_PARAM_ERROR);
-        } elseif($endDiffTime < 1800){
+        } elseif ($endDiffTime < 1800) {
             throw new WxException('直播结束时间必须大于等于直播开始时间30分钟', ErrorCode::WX_PARAM_ERROR);
-        } elseif($endDiffTime > 43200){
+        } elseif ($endDiffTime > 43200) {
             throw new WxException('直播结束时间不能超过直播开始时间12小时', ErrorCode::WX_PARAM_ERROR);
         }
 

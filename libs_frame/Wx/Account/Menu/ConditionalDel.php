@@ -36,6 +36,7 @@ class ConditionalDel extends WxBaseAccount
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

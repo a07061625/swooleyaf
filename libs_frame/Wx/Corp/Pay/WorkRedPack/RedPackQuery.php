@@ -54,6 +54,7 @@ class RedPackQuery extends WxBaseCorp
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

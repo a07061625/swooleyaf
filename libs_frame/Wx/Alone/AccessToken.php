@@ -28,6 +28,7 @@ class AccessToken extends WxBaseAlone
 
     public function __clone()
     {
+        //do nothing
     }
 
     public function getDetail() : array

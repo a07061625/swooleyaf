@@ -40,6 +40,7 @@ class SessionInfoCustom extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

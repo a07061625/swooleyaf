@@ -46,6 +46,7 @@ class NewsUpdate extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

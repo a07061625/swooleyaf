@@ -136,6 +136,7 @@ class UserUpdate extends WxBaseCorp
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

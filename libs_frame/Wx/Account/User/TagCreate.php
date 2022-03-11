@@ -36,6 +36,7 @@ class TagCreate extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

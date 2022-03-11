@@ -73,6 +73,7 @@ class CouponQueryStock extends WxBasePayment
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

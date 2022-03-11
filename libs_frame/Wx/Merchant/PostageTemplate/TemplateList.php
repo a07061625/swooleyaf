@@ -30,6 +30,7 @@ class TemplateList extends WxBaseMerchant
 
     private function __clone()
     {
+        //do nothing
     }
 
     public function getDetail() : array

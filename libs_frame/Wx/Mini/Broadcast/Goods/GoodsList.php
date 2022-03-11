@@ -54,6 +54,7 @@ class GoodsList extends WxBaseMini
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

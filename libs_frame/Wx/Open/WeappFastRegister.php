@@ -60,6 +60,7 @@ class WeappFastRegister extends WxBaseOpen
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

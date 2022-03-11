@@ -41,6 +41,7 @@ class GoodsAudit extends WxBaseMini
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

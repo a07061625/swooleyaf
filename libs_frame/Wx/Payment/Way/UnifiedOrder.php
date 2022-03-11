@@ -216,6 +216,7 @@ class UnifiedOrder extends WxBasePayment
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

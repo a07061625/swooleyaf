@@ -37,6 +37,7 @@ class ShowItemUpdate extends WxBaseOpenMini
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

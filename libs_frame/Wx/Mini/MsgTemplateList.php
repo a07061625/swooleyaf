@@ -50,6 +50,7 @@ class MsgTemplateList extends WxBaseMini
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

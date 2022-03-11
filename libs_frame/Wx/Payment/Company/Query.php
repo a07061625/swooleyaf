@@ -51,6 +51,7 @@ class Query extends WxBasePayment
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

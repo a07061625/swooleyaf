@@ -42,6 +42,7 @@ class MsgTemplateTitleKeywords extends WxBaseMini
 
     public function __clone()
     {
+        //do nothing
     }
 
     /**

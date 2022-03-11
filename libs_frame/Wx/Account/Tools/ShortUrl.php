@@ -52,6 +52,7 @@ class ShortUrl extends WxBaseAccount
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

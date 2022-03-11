@@ -28,6 +28,7 @@ class LoginInfoGet extends WxBaseCorpProvider
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**

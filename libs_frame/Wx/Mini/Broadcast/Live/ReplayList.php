@@ -55,6 +55,7 @@ class ReplayList extends WxBaseMini
 
     private function __clone()
     {
+        //do nothing
     }
 
     /**
