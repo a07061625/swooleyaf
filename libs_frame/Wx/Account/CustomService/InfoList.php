@@ -5,18 +5,20 @@
  * Date: 2018/12/20 0020
  * Time: 10:42
  */
+
 namespace Wx\Account\CustomService;
 
 use SyConstant\ErrorCode;
 use SyTool\Tool;
 use Wx\WxBaseAccount;
-use Wx\WxUtilBase;
 use Wx\WxUtilAlone;
+use Wx\WxUtilBase;
 
 class InfoList extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
@@ -33,10 +35,10 @@ class InfoList extends WxBaseAccount
         //do nothing
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->appid);

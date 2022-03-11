@@ -5,6 +5,7 @@
  * Date: 2018/12/20 0020
  * Time: 10:52
  */
+
 namespace Wx\Account\CustomService;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class AccountDel extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 客服帐号 格式为: 帐号前缀@公众号微信号
+     *
      * @var string
      */
     private $kf_account = '';
@@ -40,12 +43,11 @@ class AccountDel extends WxBaseAccount
     }
 
     /**
-     * @param string $kfAccount
      * @throws \SyException\Wx\WxException
      */
     public function setKfAccount(string $kfAccount)
     {
-        $accountLength = strlen($kfAccount);
+        $accountLength = \strlen($kfAccount);
         if (($accountLength > 0) && ($accountLength <= 30)) {
             $this->reqData['kf_account'] = $kfAccount;
         } else {
@@ -53,7 +55,7 @@ class AccountDel extends WxBaseAccount
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['kf_account'])) {
             throw new WxException('客服帐号不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -66,7 +68,7 @@ class AccountDel extends WxBaseAccount
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAccount::getAccessToken($this->appid) . '&kf_account=' . urlencode($this->reqData['kf_account']);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

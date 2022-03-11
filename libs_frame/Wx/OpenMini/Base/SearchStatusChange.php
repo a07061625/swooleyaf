@@ -5,6 +5,7 @@
  * Date: 2018/9/13 0013
  * Time: 8:43
  */
+
 namespace Wx\OpenMini\Base;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class SearchStatusChange extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 搜索状态
+     *
      * @var int
      */
     private $searchStatus = 0;
@@ -40,19 +43,18 @@ class SearchStatusChange extends WxBaseOpenMini
     }
 
     /**
-     * @param int $searchStatus
      * @throws \SyException\Wx\WxOpenException
      */
     public function setSearchStatus(int $searchStatus)
     {
-        if (in_array($searchStatus, [0, 1], true)) {
+        if (\in_array($searchStatus, [0, 1], true)) {
             $this->reqData['status'] = $searchStatus;
         } else {
             throw new WxOpenException('搜索状态不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['status'])) {
             throw new WxOpenException('搜索状态不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -68,7 +70,7 @@ class SearchStatusChange extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

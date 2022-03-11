@@ -5,6 +5,7 @@
  * Date: 2018/12/13 0013
  * Time: 9:37
  */
+
 namespace Wx\Account\Material;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class NewsAdd extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 文章列表
+     *
      * @var array
      */
     private $articles = [];
@@ -42,14 +45,13 @@ class NewsAdd extends WxBaseAccount
     }
 
     /**
-     * @param array $articles
      * @throws \SyException\Wx\WxException
      */
     public function setArticles(array $articles)
     {
         $trueArticles = [];
         foreach ($articles as $eArticle) {
-            if (is_array($eArticle) && (!empty($eArticle))) {
+            if (\is_array($eArticle) && (!empty($eArticle))) {
                 $trueArticles[] = $eArticle;
             }
         }
@@ -61,7 +63,6 @@ class NewsAdd extends WxBaseAccount
     }
 
     /**
-     * @param array $article
      * @throws \SyException\Wx\WxException
      */
     public function addArticle(array $article)
@@ -73,7 +74,7 @@ class NewsAdd extends WxBaseAccount
         $this->reqData['articles'][] = $article;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (empty($this->reqData['articles'])) {
             throw new WxException('文章不能为空', ErrorCode::WX_PARAM_ERROR);

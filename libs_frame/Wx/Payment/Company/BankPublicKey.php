@@ -5,10 +5,11 @@
  * Date: 2018/12/12 0012
  * Time: 17:08
  */
+
 namespace Wx\Payment\Company;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyTool\Tool;
 use Wx\WxBasePayment;
 use Wx\WxUtilAccount;
@@ -18,21 +19,25 @@ class BankPublicKey extends WxBasePayment
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 商户号
+     *
      * @var string
      */
     private $mch_id = '';
     /**
      * 随机字符串
+     *
      * @var string
      */
     private $nonce_str = '';
     /**
      * 签名类型
+     *
      * @var string
      */
     private $sign_type = '';
@@ -53,7 +58,7 @@ class BankPublicKey extends WxBasePayment
         //do nothing
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->appid);
 
@@ -78,10 +83,10 @@ class BankPublicKey extends WxBasePayment
         fclose($tmpKey);
         fclose($tmpCert);
         $sendData = Tool::xmlToArray($sendRes);
-        if ($sendData['return_code'] == 'FAIL') {
+        if ('FAIL' == $sendData['return_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } elseif ($sendData['result_code'] == 'FAIL') {
+        } elseif ('FAIL' == $sendData['result_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         } else {

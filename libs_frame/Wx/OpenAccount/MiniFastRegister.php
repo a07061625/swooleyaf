@@ -5,6 +5,7 @@
  * Date: 18-9-13
  * Time: 上午12:38
  */
+
 namespace Wx\OpenAccount;
 
 use SyConstant\ErrorCode;
@@ -18,17 +19,20 @@ use Wx\WxUtilOpenBase;
 
 /**
  * 第三方平台复用公众号主体快速注册小程序
+ *
  * @package Wx\OpenAccount
  */
 class MiniFastRegister extends WxBaseOpenAccount
 {
     /**
      * 公众号APPID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 授权凭证
+     *
      * @var string
      */
     private $ticket = '';
@@ -46,19 +50,18 @@ class MiniFastRegister extends WxBaseOpenAccount
     }
 
     /**
-     * @param string $ticket
      * @throws \SyException\Wx\WxOpenException
      */
     public function setTicket(string $ticket)
     {
-        if (strlen($ticket) > 0) {
+        if (\strlen($ticket) > 0) {
             $this->reqData['ticket'] = $ticket;
         } else {
             throw new WxOpenException('授权凭证不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['ticket'])) {
             throw new WxOpenException('授权凭证不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -74,7 +77,7 @@ class MiniFastRegister extends WxBaseOpenAccount
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             ProjectWxTool::handleAppAuthForOpen(Project::WX_COMPONENT_AUTHORIZER_OPTION_TYPE_AUTHORIZED, [
                 'AuthorizerAppid' => $sendData['appid'],
                 'AuthorizationCode' => $sendData['authorization_code'],

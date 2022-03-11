@@ -1,8 +1,9 @@
 <?php
+
 namespace Wx\CorpProvider\Common;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxCorpProviderException;
 use SyTool\Tool;
 use Wx\WxBaseCorpProvider;
@@ -10,6 +11,7 @@ use Wx\WxUtilBase;
 
 /**
  * 获取服务商凭证
+ *
  * @package Wx\CorpProvider\Common
  */
 class ProviderToken extends WxBaseCorpProvider
@@ -34,9 +36,10 @@ class ProviderToken extends WxBaseCorpProvider
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if (!is_array($sendData)) {
+        if (!\is_array($sendData)) {
             throw new WxCorpProviderException('获取服务商凭证出错', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
-        } elseif (!isset($sendData['provider_access_token'])) {
+        }
+        if (!isset($sendData['provider_access_token'])) {
             throw new WxCorpProviderException($sendData['errmsg'], ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
 

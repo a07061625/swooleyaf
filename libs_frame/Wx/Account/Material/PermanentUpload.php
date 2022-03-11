@@ -5,6 +5,7 @@
  * Date: 2018/12/13 0013
  * Time: 9:37
  */
+
 namespace Wx\Account\Material;
 
 use SyConstant\ErrorCode;
@@ -18,16 +19,19 @@ class PermanentUpload extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 文件信息
+     *
      * @var string
      */
     private $file_info = '';
     /**
      * 文件全路径,包括文件名
+     *
      * @var string
      */
     private $file_path = '';
@@ -49,7 +53,6 @@ class PermanentUpload extends WxBaseAccount
     }
 
     /**
-     * @param array $fileInfo
      * @throws \SyException\Wx\WxException
      */
     public function setFileInfo(array $fileInfo)
@@ -62,7 +65,6 @@ class PermanentUpload extends WxBaseAccount
     }
 
     /**
-     * @param string $filePath
      * @throws \SyException\Wx\WxException
      */
     public function setFilePath(string $filePath)
@@ -74,7 +76,7 @@ class PermanentUpload extends WxBaseAccount
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['description'])) {
             throw new WxException('文件信息不能为空', ErrorCode::WX_PARAM_ERROR);

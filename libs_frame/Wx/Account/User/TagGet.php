@@ -5,6 +5,7 @@
  * Date: 2018/12/13 0013
  * Time: 15:12
  */
+
 namespace Wx\Account\User;
 
 use SyConstant\ErrorCode;
@@ -17,6 +18,7 @@ class TagGet extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
@@ -33,7 +35,7 @@ class TagGet extends WxBaseAccount
         //do nothing
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $resArr = [
             'code' => 0,

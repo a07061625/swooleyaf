@@ -5,6 +5,7 @@
  * Date: 2018/9/13 0013
  * Time: 7:21
  */
+
 namespace Wx\OpenMini\Category;
 
 use SyConstant\ErrorCode;
@@ -16,22 +17,26 @@ use Wx\WxUtilOpenBase;
 
 /**
  * 删除类目
+ *
  * @package Wx\OpenMini
  */
 class CategoryDelete extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 一级类目ID
+     *
      * @var int
      */
     private $first = 0;
     /**
      * 二级类目ID
+     *
      * @var int
      */
     private $second = 0;
@@ -49,7 +54,6 @@ class CategoryDelete extends WxBaseOpenMini
     }
 
     /**
-     * @param int $first
      * @throws \SyException\Wx\WxOpenException
      */
     public function setFirst(int $first)
@@ -62,7 +66,6 @@ class CategoryDelete extends WxBaseOpenMini
     }
 
     /**
-     * @param int $second
      * @throws \SyException\Wx\WxOpenException
      */
     public function setSecond(int $second)
@@ -74,7 +77,7 @@ class CategoryDelete extends WxBaseOpenMini
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['first'])) {
             throw new WxOpenException('一级类目ID不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -91,7 +94,7 @@ class CategoryDelete extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

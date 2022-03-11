@@ -5,6 +5,7 @@
  * Date: 2018/9/11 0011
  * Time: 10:39
  */
+
 namespace Wx\Corp\Common;
 
 use SyConstant\ErrorCode;
@@ -17,6 +18,7 @@ class JsTicket extends WxBaseCorp
 {
     /**
      * 令牌
+     *
      * @var string
      */
     private $accessToken = '';
@@ -33,19 +35,18 @@ class JsTicket extends WxBaseCorp
     }
 
     /**
-     * @param string $accessToken
      * @throws \SyException\Wx\WxException
      */
     public function setAccessToken(string $accessToken)
     {
-        if (strlen($accessToken) > 0) {
+        if (\strlen($accessToken) > 0) {
             $this->reqData['access_token'] = $accessToken;
         } else {
             throw new WxException('令牌不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['access_token'])) {
             throw new WxException('令牌不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -54,9 +55,10 @@ class JsTicket extends WxBaseCorp
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if (!is_array($sendData)) {
+        if (!\is_array($sendData)) {
             throw new WxException('获取js ticket出错', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($sendData['errcode'] > 0) {
+        }
+        if ($sendData['errcode'] > 0) {
             throw new WxException($sendData['errmsg'], ErrorCode::WX_PARAM_ERROR);
         }
 

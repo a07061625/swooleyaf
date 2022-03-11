@@ -5,6 +5,7 @@
  * Date: 2018/12/13 0013
  * Time: 15:12
  */
+
 namespace Wx\Account\User;
 
 use SyConstant\ErrorCode;
@@ -18,16 +19,19 @@ class TagUpdate extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 标签ID
+     *
      * @var int
      */
     private $id = 0;
     /**
      * 标签名
+     *
      * @var string
      */
     private $name = '';
@@ -45,7 +49,6 @@ class TagUpdate extends WxBaseAccount
     }
 
     /**
-     * @param int $id
      * @throws \SyException\Wx\WxException
      */
     public function setId(int $id)
@@ -58,12 +61,11 @@ class TagUpdate extends WxBaseAccount
     }
 
     /**
-     * @param string $name
      * @throws \SyException\Wx\WxException
      */
     public function setName(string $name)
     {
-        $nameLength = strlen($name);
+        $nameLength = \strlen($name);
         if (($nameLength > 0) && ($nameLength <= 30)) {
             $this->reqData['name'] = $name;
         } else {
@@ -71,7 +73,7 @@ class TagUpdate extends WxBaseAccount
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['id'])) {
             throw new WxException('标签ID不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -90,7 +92,7 @@ class TagUpdate extends WxBaseAccount
         ], JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

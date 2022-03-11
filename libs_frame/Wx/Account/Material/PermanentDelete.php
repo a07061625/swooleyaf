@@ -5,6 +5,7 @@
  * Date: 2018/12/13 0013
  * Time: 9:37
  */
+
 namespace Wx\Account\Material;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class PermanentDelete extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 媒体文件ID
+     *
      * @var string
      */
     private $media_id = '';
@@ -41,19 +44,18 @@ class PermanentDelete extends WxBaseAccount
     }
 
     /**
-     * @param string $mediaId
      * @throws \SyException\Wx\WxException
      */
     public function setMediaId(string $mediaId)
     {
-        if (strlen($mediaId) > 0) {
+        if (\strlen($mediaId) > 0) {
             $this->reqData['media_id'] = $mediaId;
         } else {
             throw new WxException('媒体文件ID不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['media_id'])) {
             throw new WxException('媒体文件ID不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -67,7 +69,7 @@ class PermanentDelete extends WxBaseAccount
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

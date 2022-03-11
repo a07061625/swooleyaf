@@ -5,6 +5,7 @@
  * Date: 2018/9/13 0013
  * Time: 7:21
  */
+
 namespace Wx\OpenMini\Base;
 
 use SyConstant\ErrorCode;
@@ -18,16 +19,19 @@ class ShowItemList extends WxBaseOpenMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 页数
+     *
      * @var int
      */
     private $page = 0;
     /**
      * 每页记录数
+     *
      * @var int
      */
     private $num = 0;
@@ -47,7 +51,6 @@ class ShowItemList extends WxBaseOpenMini
     }
 
     /**
-     * @param int $page
      * @throws \SyException\Wx\WxOpenException
      */
     public function setPage(int $page)
@@ -60,7 +63,6 @@ class ShowItemList extends WxBaseOpenMini
     }
 
     /**
-     * @param int $num
      * @throws \SyException\Wx\WxOpenException
      */
     public function setNum(int $num)
@@ -72,7 +74,7 @@ class ShowItemList extends WxBaseOpenMini
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $resArr = [
             'code' => 0,
@@ -82,7 +84,7 @@ class ShowItemList extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_GET_ERROR;

@@ -5,18 +5,20 @@
  * Date: 2018/9/12 0012
  * Time: 15:43
  */
+
 namespace Wx\Account\Menu;
 
 use SyConstant\ErrorCode;
 use SyTool\Tool;
 use Wx\WxBaseAccount;
-use Wx\WxUtilBase;
 use Wx\WxUtilAlone;
+use Wx\WxUtilBase;
 
 class MenuDelete extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
@@ -33,16 +35,16 @@ class MenuDelete extends WxBaseAccount
         //do nothing
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->appid);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

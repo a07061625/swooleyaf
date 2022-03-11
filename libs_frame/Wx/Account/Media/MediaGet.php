@@ -5,6 +5,7 @@
  * Date: 2018/12/13 0013
  * Time: 9:37
  */
+
 namespace Wx\Account\Media;
 
 use SyConstant\ErrorCode;
@@ -18,16 +19,19 @@ class MediaGet extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 输出目录
+     *
      * @var string
      */
     private $output_dir = '';
     /**
      * 媒体文件ID
+     *
      * @var string
      */
     private $media_id = '';
@@ -35,7 +39,7 @@ class MediaGet extends WxBaseAccount
     public function __construct(string $appId, string $protocol = 'https')
     {
         parent::__construct();
-        if (!in_array($protocol, ['http', 'https'], true)) {
+        if (!\in_array($protocol, ['http', 'https'], true)) {
             throw new WxException('协议不支持', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -49,32 +53,30 @@ class MediaGet extends WxBaseAccount
     }
 
     /**
-     * @param string $outputDir
      * @throws \SyException\Wx\WxException
      */
     public function setOutputDir(string $outputDir)
     {
-        if (is_dir($outputDir) && is_writeable($outputDir)) {
-            $this->reqData['output_dir'] = substr($outputDir, -1) == '/' ? $outputDir : $outputDir . '/';
+        if (is_dir($outputDir) && is_writable($outputDir)) {
+            $this->reqData['output_dir'] = '/' == substr($outputDir, -1) ? $outputDir : $outputDir . '/';
         } else {
             throw new WxException('输出目录不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
     /**
-     * @param string $mediaId
      * @throws \SyException\Wx\WxException
      */
     public function setMediaId(string $mediaId)
     {
-        if (strlen($mediaId) > 0) {
+        if (\strlen($mediaId) > 0) {
             $this->reqData['media_id'] = $mediaId;
         } else {
             throw new WxException('媒体文件ID不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['output_dir'])) {
             throw new WxException('输出目录不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -91,7 +93,7 @@ class MediaGet extends WxBaseAccount
         $this->curlConfigs[CURLOPT_TIMEOUT_MS] = 3000;
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if (!is_array($sendData)) {
+        if (!\is_array($sendData)) {
             $fileName = $this->reqData['output_dir'] . $this->reqData['media_id'];
             file_put_contents($fileName, $sendRes);
             $resArr['data'] = [

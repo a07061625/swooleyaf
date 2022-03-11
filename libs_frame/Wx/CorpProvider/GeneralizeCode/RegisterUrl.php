@@ -5,6 +5,7 @@
  * Date: 2019/1/23 0023
  * Time: 8:51
  */
+
 namespace Wx\CorpProvider\GeneralizeCode;
 
 use SyConstant\ErrorCode;
@@ -13,12 +14,14 @@ use Wx\WxBaseCorpProvider;
 
 /**
  * 获取推广注册链接
+ *
  * @package Wx\CorpProvider\GeneralizeCode
  */
 class RegisterUrl extends WxBaseCorpProvider
 {
     /**
      * 注册码
+     *
      * @var string
      */
     private $register_code = '';
@@ -34,19 +37,18 @@ class RegisterUrl extends WxBaseCorpProvider
     }
 
     /**
-     * @param string $registerCode
      * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setRegisterCode(string $registerCode)
     {
-        if (strlen($registerCode) > 0) {
+        if (\strlen($registerCode) > 0) {
             $this->reqData['register_code'] = $registerCode;
         } else {
             throw new WxCorpProviderException('注册码不合法', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['register_code'])) {
             throw new WxCorpProviderException('注册码不能为空', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);

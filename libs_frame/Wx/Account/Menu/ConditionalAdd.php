@@ -5,29 +5,33 @@
  * Date: 2018/9/12 0012
  * Time: 15:43
  */
+
 namespace Wx\Account\Menu;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseAccount;
-use Wx\WxUtilBase;
 use Wx\WxUtilAlone;
+use Wx\WxUtilBase;
 
 class ConditionalAdd extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 一级菜单列表
+     *
      * @var array
      */
     private $button = [];
     /**
      * 菜单匹配规则
+     *
      * @var array
      */
     private $matchrule = [];
@@ -45,12 +49,11 @@ class ConditionalAdd extends WxBaseAccount
     }
 
     /**
-     * @param array $button
      * @throws \SyException\Wx\WxException
      */
     public function addButton(array $button)
     {
-        if (count($this->button) >= 3) {
+        if (\count($this->button) >= 3) {
             throw new WxException('菜单数量不能超过3个', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -58,7 +61,6 @@ class ConditionalAdd extends WxBaseAccount
     }
 
     /**
-     * @param array $matchRule
      * @throws \SyException\Wx\WxException
      */
     public function setMatchRule(array $matchRule)
@@ -70,7 +72,7 @@ class ConditionalAdd extends WxBaseAccount
         $this->reqData['matchrule'] = $matchRule;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['matchrule'])) {
             throw new WxException('菜单匹配规则不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -81,7 +83,7 @@ class ConditionalAdd extends WxBaseAccount
         $this->reqData['button'] = $this->button;
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->appid);

@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Corp\User;
 
 use SyConstant\ErrorCode;
@@ -16,6 +17,7 @@ use Wx\WxUtilBase;
 
 /**
  * user id转openid
+ *
  * @package Wx\Corp\User
  */
 class UserIdToOpenId extends WxBaseCorp
@@ -24,6 +26,7 @@ class UserIdToOpenId extends WxBaseCorp
 
     /**
      * 用户ID
+     *
      * @var string
      */
     private $userid = '';
@@ -42,7 +45,6 @@ class UserIdToOpenId extends WxBaseCorp
     }
 
     /**
-     * @param string $userId
      * @throws \SyException\Wx\WxException
      */
     public function setUserId(string $userId)
@@ -54,7 +56,7 @@ class UserIdToOpenId extends WxBaseCorp
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['userid'])) {
             throw new WxException('用户ID不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -68,7 +70,7 @@ class UserIdToOpenId extends WxBaseCorp
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

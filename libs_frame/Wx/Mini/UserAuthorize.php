@@ -5,10 +5,11 @@
  * Date: 2018/9/12 0012
  * Time: 17:05
  */
+
 namespace Wx\Mini;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseMini;
@@ -37,26 +38,25 @@ class UserAuthorize extends WxBaseMini
     }
 
     /**
-     * @param string $code
      * @throws \SyException\Wx\WxException
      */
     public function setCode(string $code)
     {
-        if (strlen($code) > 0) {
+        if (\strlen($code) > 0) {
             $this->reqData['js_code'] = $code;
         } else {
             throw new WxException('授权码不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['js_code'])) {
             throw new WxException('授权码不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);

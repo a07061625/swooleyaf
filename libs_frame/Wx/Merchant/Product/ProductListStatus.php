@@ -5,6 +5,7 @@
  * Date: 2018/12/14 0014
  * Time: 16:01
  */
+
 namespace Wx\Merchant\Product;
 
 use SyConstant\ErrorCode;
@@ -18,11 +19,13 @@ class ProductListStatus extends WxBaseMerchant
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 商品状态(0-全部 1-上架 2-下架)
+     *
      * @var int
      */
     private $status = 0;
@@ -41,19 +44,18 @@ class ProductListStatus extends WxBaseMerchant
     }
 
     /**
-     * @param int $status
      * @throws \SyException\Wx\WxException
      */
     public function setStatus(int $status)
     {
-        if (in_array($status, [0, 1, 2], true)) {
+        if (\in_array($status, [0, 1, 2], true)) {
             $this->reqData['status'] = $status;
         } else {
             throw new WxException('商品状态不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['status'])) {
             throw new WxException('商品状态不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -67,7 +69,7 @@ class ProductListStatus extends WxBaseMerchant
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

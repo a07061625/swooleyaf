@@ -5,10 +5,11 @@
  * Date: 2019/1/24 0024
  * Time: 16:29
  */
+
 namespace Wx\Corp\Agent;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseCorp;
@@ -17,6 +18,7 @@ use Wx\WxUtilBase;
 
 /**
  * 创建菜单
+ *
  * @package Wx\Corp\Agent
  */
 class MenuCreate extends WxBaseCorp
@@ -25,11 +27,13 @@ class MenuCreate extends WxBaseCorp
 
     /**
      * 应用ID
+     *
      * @var string
      */
     private $agentid = '';
     /**
      * 菜单列表
+     *
      * @var array
      */
     private $button = [];
@@ -51,7 +55,6 @@ class MenuCreate extends WxBaseCorp
     }
 
     /**
-     * @param array $buttonInfo
      * @throws \SyException\Wx\WxException
      */
     public function addButton(array $buttonInfo)
@@ -63,7 +66,7 @@ class MenuCreate extends WxBaseCorp
         $this->reqData['button'][] = $buttonInfo;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (empty($this->reqData['button'])) {
             throw new WxException('菜单列表不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -80,7 +83,7 @@ class MenuCreate extends WxBaseCorp
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

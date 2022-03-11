@@ -5,10 +5,11 @@
  * Date: 2019/8/1 0001
  * Time: 9:00
  */
+
 namespace Wx\Alone;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseAlone;
@@ -20,31 +21,37 @@ class CardExtConfig extends WxBaseAlone
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 卡券列表
+     *
      * @var array
      */
     private $card_list = [];
     /**
      * 时间戳
+     *
      * @var int
      */
     private $timestamp = 0;
     /**
      * 随机字符串
+     *
      * @var string
      */
     private $nonce_str = '';
     /**
      * 平台类型 shop：公众号 openshop：第三方平台代理公众号
+     *
      * @var string
      */
     private $platType = '';
     /**
      * JS签名标识,true:需要JS签名 false:不需要JS签名
+     *
      * @var bool
      */
     private $needJs = false;
@@ -64,29 +71,26 @@ class CardExtConfig extends WxBaseAlone
         //do nothing
     }
 
-    /**
-     * @param array $cardList
-     */
     public function setCardList(array $cardList)
     {
         foreach ($cardList as $eCardInfo) {
-            $cardId = is_string($eCardInfo['card_id']) && (strlen($eCardInfo['card_id']) > 0) ? $eCardInfo['card_id'] : '';
-            if (strlen($cardId) > 0) {
+            $cardId = \is_string($eCardInfo['card_id']) && (\strlen($eCardInfo['card_id']) > 0) ? $eCardInfo['card_id'] : '';
+            if (\strlen($cardId) > 0) {
                 $this->card_list[$cardId] = [
                     'code' => '',
                     'openid' => '',
                     'outer_str' => '',
                 ];
-                if (is_string($eCardInfo['code']) && (strlen($eCardInfo['code']) > 0)) {
+                if (\is_string($eCardInfo['code']) && (\strlen($eCardInfo['code']) > 0)) {
                     $this->card_list[$cardId]['code'] = $eCardInfo['code'];
                 }
-                if (is_string($eCardInfo['openid']) && (strlen($eCardInfo['openid']) > 0)) {
+                if (\is_string($eCardInfo['openid']) && (\strlen($eCardInfo['openid']) > 0)) {
                     $this->card_list[$cardId]['openid'] = $eCardInfo['openid'];
                 }
-                if (is_string($eCardInfo['outer_str']) && (strlen($eCardInfo['outer_str']) > 0)) {
+                if (\is_string($eCardInfo['outer_str']) && (\strlen($eCardInfo['outer_str']) > 0)) {
                     $this->card_list[$cardId]['outer_str'] = $eCardInfo['outer_str'];
                 }
-                if (is_int($eCardInfo['fixed_begintimestamp']) && ($eCardInfo['fixed_begintimestamp'] > 0)) {
+                if (\is_int($eCardInfo['fixed_begintimestamp']) && ($eCardInfo['fixed_begintimestamp'] > 0)) {
                     $this->card_list[$cardId]['fixed_begintimestamp'] = (string)$eCardInfo['fixed_begintimestamp'];
                 }
             }
@@ -95,31 +99,29 @@ class CardExtConfig extends WxBaseAlone
 
     /**
      * @param string $platType 平台类型 shop：公众号 openshop：第三方平台代理公众号
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setPlatType(string $platType)
     {
-        if (in_array($platType, [WxUtilBase::PLAT_TYPE_SHOP, WxUtilBase::PLAT_TYPE_OPEN_SHOP], true)) {
+        if (\in_array($platType, [WxUtilBase::PLAT_TYPE_SHOP, WxUtilBase::PLAT_TYPE_OPEN_SHOP], true)) {
             $this->platType = $platType;
         } else {
             throw new WxException('平台类型不支持', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    /**
-     * @param bool $needJs
-     */
     public function setNeedJs(bool $needJs)
     {
         $this->needJs = $needJs;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (empty($this->card_list)) {
             throw new WxException('卡券列表不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if ($this->platType == WxUtilBase::PLAT_TYPE_SHOP) { //公众号获取card_ticket
+        if (WxUtilBase::PLAT_TYPE_SHOP == $this->platType) { //公众号获取card_ticket
             $ticket = WxUtilAlone::getCardTicket($this->appid);
         } else { //第三方平台获取card_ticket
             $ticket = WxUtilOpenBase::getAuthorizerCardTicket($this->appid);

@@ -5,6 +5,7 @@
  * Date: 2018/9/11 0011
  * Time: 11:14
  */
+
 namespace Wx\Payment\Way;
 
 use SyConstant\ErrorCode;
@@ -54,13 +55,11 @@ class JsPayConfig extends WxBasePayment
     }
 
     /**
-     * @param string $timeStamp
-     *
      * @throws \SyException\Wx\WxException
      */
     public function setTimeStamp(string $timeStamp)
     {
-        if (ctype_digit($timeStamp) && ($timeStamp[0] != '0')) {
+        if (ctype_digit($timeStamp) && ('0' != $timeStamp[0])) {
             $this->reqData['timeStamp'] = $timeStamp;
         } else {
             throw new WxException('时间戳不合法', ErrorCode::WX_PARAM_ERROR);
@@ -68,20 +67,18 @@ class JsPayConfig extends WxBasePayment
     }
 
     /**
-     * @param string $package
-     *
      * @throws \SyException\Wx\WxException
      */
     public function setPackage(string $package)
     {
-        if (ctype_alnum($package) && (strlen($package) <= 64)) {
+        if (ctype_alnum($package) && (\strlen($package) <= 64)) {
             $this->reqData['package'] = 'prepay_id=' . $package;
         } else {
             throw new WxException('预支付交易会话标识不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['timeStamp'])) {
             throw new WxException('时间戳不能为空', ErrorCode::WX_PARAM_ERROR);

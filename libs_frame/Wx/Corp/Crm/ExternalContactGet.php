@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Corp\Crm;
 
 use SyConstant\ErrorCode;
@@ -16,6 +17,7 @@ use Wx\WxUtilBase;
 
 /**
  * 获取外部联系人详情
+ *
  * @package Wx\Corp\Crm
  */
 class ExternalContactGet extends WxBaseCorp
@@ -24,6 +26,7 @@ class ExternalContactGet extends WxBaseCorp
 
     /**
      * 外部联系人用户ID
+     *
      * @var string
      */
     private $external_userid = '';
@@ -42,7 +45,6 @@ class ExternalContactGet extends WxBaseCorp
     }
 
     /**
-     * @param string $externalUserId
      * @throws \SyException\Wx\WxException
      */
     public function setExternalUserId(string $externalUserId)
@@ -54,7 +56,7 @@ class ExternalContactGet extends WxBaseCorp
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['external_userid'])) {
             throw new WxException('外部联系人用户ID不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -68,7 +70,7 @@ class ExternalContactGet extends WxBaseCorp
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

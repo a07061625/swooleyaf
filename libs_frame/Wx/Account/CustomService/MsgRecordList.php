@@ -5,6 +5,7 @@
  * Date: 2018/12/20 0020
  * Time: 10:52
  */
+
 namespace Wx\Account\CustomService;
 
 use SyConstant\ErrorCode;
@@ -18,26 +19,31 @@ class MsgRecordList extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 起始时间
+     *
      * @var int
      */
     private $starttime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $endtime = 0;
     /**
      * 消息id
+     *
      * @var int
      */
     private $msgid = 0;
     /**
      * 条数
+     *
      * @var int
      */
     private $number = 0;
@@ -57,19 +63,20 @@ class MsgRecordList extends WxBaseAccount
     }
 
     /**
-     * @param int $startTime
-     * @param int $endTime
      * @throws \SyException\Wx\WxException
      */
     public function setTime(int $startTime, int $endTime)
     {
         if ($startTime <= 0) {
             throw new WxException('起始时间不合法', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($endTime <= 0) {
+        }
+        if ($endTime <= 0) {
             throw new WxException('结束时间不合法', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($startTime >= $endTime) {
+        }
+        if ($startTime >= $endTime) {
             throw new WxException('起始时间必须小于结束时间', ErrorCode::WX_PARAM_ERROR);
-        } elseif (($endTime - $startTime) > 86400) {
+        }
+        if (($endTime - $startTime) > 86400) {
             throw new WxException('结束时间不能超过起始时间24小时', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -78,7 +85,6 @@ class MsgRecordList extends WxBaseAccount
     }
 
     /**
-     * @param int $msgId
      * @throws \SyException\Wx\WxException
      */
     public function setMsgid(int $msgId)
@@ -91,7 +97,6 @@ class MsgRecordList extends WxBaseAccount
     }
 
     /**
-     * @param int $number
      * @throws \SyException\Wx\WxException
      */
     public function setNumber(int $number)
@@ -103,7 +108,7 @@ class MsgRecordList extends WxBaseAccount
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['starttime'])) {
             throw new WxException('起始时间不能为空', ErrorCode::WX_PARAM_ERROR);

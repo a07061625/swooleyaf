@@ -1,4 +1,5 @@
 <?php
+
 namespace Wx\Corp\Authorize;
 
 use SyConstant\ErrorCode;
@@ -10,6 +11,7 @@ use Wx\WxUtilBase;
 
 /**
  * 获取访问用户身份
+ *
  * @package Wx\Corp\Authorize
  */
 class UserInfoGet extends WxBaseCorp
@@ -18,6 +20,7 @@ class UserInfoGet extends WxBaseCorp
 
     /**
      * 授权码
+     *
      * @var string
      */
     private $code = '';
@@ -36,12 +39,11 @@ class UserInfoGet extends WxBaseCorp
     }
 
     /**
-     * @param string $code
      * @throws \SyException\Wx\WxException
      */
     public function setCode(string $code)
     {
-        if (strlen($code) > 0) {
+        if (\strlen($code) > 0) {
             $this->reqData['code'] = $code;
         } else {
             throw new WxException('授权码不合法', ErrorCode::WX_PARAM_ERROR);
@@ -62,7 +64,7 @@ class UserInfoGet extends WxBaseCorp
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

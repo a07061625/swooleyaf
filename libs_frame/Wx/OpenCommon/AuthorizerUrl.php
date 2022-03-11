@@ -5,10 +5,11 @@
  * Date: 18-9-12
  * Time: 下午10:25
  */
+
 namespace Wx\OpenCommon;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyLog\Log;
 use SyTool\Tool;
 use Wx\WxBaseOpenCommon;
@@ -38,7 +39,7 @@ class AuthorizerUrl extends WxBaseOpenCommon
         //do nothing
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getComponentAccessToken($this->reqData['component_appid']);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
@@ -52,11 +53,11 @@ class AuthorizerUrl extends WxBaseOpenCommon
                     'redirect_uri' => $this->urlAuthCallback,
                 ]),
             ];
-        } else {
-            Log::error('wxopen get auth url error:' . $sendRes, ErrorCode::WXOPEN_POST_ERROR);
-            return [
-                'url' => '',
-            ];
         }
+        Log::error('wxopen get auth url error:' . $sendRes, ErrorCode::WXOPEN_POST_ERROR);
+
+        return [
+            'url' => '',
+        ];
     }
 }

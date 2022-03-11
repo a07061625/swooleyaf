@@ -5,10 +5,11 @@
  * Date: 2018/9/11 0011
  * Time: 11:37
  */
+
 namespace Wx\Payment\Way;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\Account\Tools\ShortUrl;
@@ -19,21 +20,25 @@ class PayNativePre extends WxBasePayment
 {
     /**
      * 商户号
+     *
      * @var string
      */
     private $mch_id = '';
     /**
      * 当前时间戳
+     *
      * @var int
      */
     private $time_stamp = 0;
     /**
      * 随机字符串，不长于32位
+     *
      * @var string
      */
     private $nonce_str = '';
     /**
      * 商户定义的商品id
+     *
      * @var string
      */
     private $product_id = '';
@@ -54,12 +59,11 @@ class PayNativePre extends WxBasePayment
     }
 
     /**
-     * @param string $productId
      * @throws \SyException\Wx\WxException
      */
     public function setProductId(string $productId)
     {
-        if (ctype_alnum($productId) && (strlen($productId) <= 32)) {
+        if (ctype_alnum($productId) && (\strlen($productId) <= 32)) {
             $this->reqData['product_id'] = $productId;
         } else {
             throw  new WxException('商品ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -68,10 +72,10 @@ class PayNativePre extends WxBasePayment
 
     /**
      * 获取预支付订单详情
-     * @return array
+     *
      * @throws \SyException\Wx\WxException
      */
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['product_id'])) {
             throw  new WxException('商品ID不能为空', ErrorCode::WX_PARAM_ERROR);

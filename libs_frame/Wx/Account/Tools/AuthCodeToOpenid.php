@@ -5,6 +5,7 @@
  * Date: 2018/12/12 0012
  * Time: 9:43
  */
+
 namespace Wx\Account\Tools;
 
 use DesignPatterns\Singletons\WxConfigSingleton;
@@ -58,20 +59,18 @@ class AuthCodeToOpenid extends WxBaseAccount
     }
 
     /**
-     * @param string $authCode
-     *
      * @throws \SyException\Wx\WxException
      */
     public function setAuthCode(string $authCode)
     {
-        if (ctype_digit($authCode) && (strlen($authCode) == 18) && ($authCode[0] == '1')) {
+        if (ctype_digit($authCode) && (18 == \strlen($authCode)) && ('1' == $authCode[0])) {
             $this->reqData['auth_code'] = $authCode;
         } else {
             throw new WxException('授权码不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['auth_code'])) {
             throw new WxException('授权码不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -79,17 +78,17 @@ class AuthCodeToOpenid extends WxBaseAccount
         $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid']);
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::arrayToXml($this->reqData);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::xmlToArray($sendRes);
-        if ($sendData['return_code'] == 'FAIL') {
+        if ('FAIL' == $sendData['return_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } elseif ($sendData['result_code'] == 'FAIL') {
+        } elseif ('FAIL' == $sendData['result_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code'];
         } else {

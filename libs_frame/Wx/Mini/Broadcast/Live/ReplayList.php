@@ -5,6 +5,7 @@
  * Date: 2020/6/8 0008
  * Time: 21:40
  */
+
 namespace Wx\Mini\Broadcast\Live;
 
 use SyConstant\ErrorCode;
@@ -16,27 +17,32 @@ use Wx\WxUtilBase;
 
 /**
  * Class ReplayList
+ *
  * @package Wx\Mini\Broadcast\Live
  */
 class ReplayList extends WxBaseMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 直播间ID
+     *
      * @var int
      */
     private $room_id = 0;
     /**
      * 起始索引
+     *
      * @var int
      */
     private $start = 0;
     /**
      * 每页数量
+     *
      * @var int
      */
     private $limit = 0;
@@ -59,7 +65,6 @@ class ReplayList extends WxBaseMini
     }
 
     /**
-     * @param int $roomId
      * @throws \SyException\Wx\WxException
      */
     public function setRoomId(int $roomId)
@@ -72,7 +77,6 @@ class ReplayList extends WxBaseMini
     }
 
     /**
-     * @param int $start
      * @throws \SyException\Wx\WxException
      */
     public function setStart(int $start)
@@ -85,7 +89,6 @@ class ReplayList extends WxBaseMini
     }
 
     /**
-     * @param int $limit
      * @throws \SyException\Wx\WxException
      */
     public function setLimit(int $limit)
@@ -97,14 +100,14 @@ class ReplayList extends WxBaseMini
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['room_id'])) {
             throw new WxException('直播间ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->appId);
@@ -113,7 +116,7 @@ class ReplayList extends WxBaseMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

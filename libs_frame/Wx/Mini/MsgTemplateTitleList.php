@@ -5,35 +5,40 @@
  * Date: 2018/9/12 0012
  * Time: 17:45
  */
+
 namespace Wx\Mini;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseMini;
-use Wx\WxUtilBase;
 use Wx\WxUtilAlone;
+use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
 class MsgTemplateTitleList extends WxBaseMini
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 位移
+     *
      * @var int
      */
     private $offset = 0;
     /**
      * 记录数
+     *
      * @var int
      */
     private $count = 0;
     /**
      * 平台类型
+     *
      * @var string
      */
     private $platType = '';
@@ -55,8 +60,6 @@ class MsgTemplateTitleList extends WxBaseMini
 
     /**
      * 设置范围
-     * @param int $page
-     * @param int $limit
      */
     public function setRange(int $page, int $limit)
     {
@@ -66,25 +69,24 @@ class MsgTemplateTitleList extends WxBaseMini
     }
 
     /**
-     * @param string $platType
      * @throws \SyException\Wx\WxException
      */
     public function setPlatType(string $platType)
     {
-        if (in_array($platType, [WxUtilBase::PLAT_TYPE_MINI, WxUtilBase::PLAT_TYPE_OPEN_MINI], true)) {
+        if (\in_array($platType, [WxUtilBase::PLAT_TYPE_MINI, WxUtilBase::PLAT_TYPE_OPEN_MINI], true)) {
             $this->platType = $platType;
         } else {
             throw new WxException('平台类型不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
-        if ($this->platType == WxUtilBase::PLAT_TYPE_MINI) {
+        if (WxUtilBase::PLAT_TYPE_MINI == $this->platType) {
             $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->appId);
         } else {
             $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getAuthorizerAccessToken($this->appId);

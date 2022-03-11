@@ -5,10 +5,11 @@
  * Date: 18-9-12
  * Time: 上午1:32
  */
+
 namespace Wx\Account\Authorize;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseAccount;
@@ -16,12 +17,14 @@ use Wx\WxUtilBase;
 
 /**
  * 网站应用获取用户信息
+ *
  * @package Wx\Account\Authorize
  */
 class WebUserInfo extends WxBaseAccount
 {
     /**
      * 授权码
+     *
      * @var string
      */
     private $code = '';
@@ -42,26 +45,25 @@ class WebUserInfo extends WxBaseAccount
     }
 
     /**
-     * @param string $code
      * @throws \SyException\Wx\WxException
      */
     public function setCode(string $code)
     {
-        if (strlen($code) > 0) {
+        if (\strlen($code) > 0) {
             $this->reqData['code'] = $code;
         } else {
             throw new WxException('授权码不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['code'])) {
             throw new WxException('授权码不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);

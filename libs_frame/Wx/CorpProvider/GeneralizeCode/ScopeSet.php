@@ -5,6 +5,7 @@
  * Date: 2019/1/23 0023
  * Time: 8:51
  */
+
 namespace Wx\CorpProvider\GeneralizeCode;
 
 use SyConstant\ErrorCode;
@@ -15,32 +16,38 @@ use Wx\WxUtilBase;
 
 /**
  * 设置授权应用可见范围
+ *
  * @package Wx\CorpProvider\GeneralizeCode
  */
 class ScopeSet extends WxBaseCorpProvider
 {
     /**
      * 令牌,由查询注册状态接口返回
+     *
      * @var string
      */
     private $access_token = '';
     /**
      * 应用ID
+     *
      * @var int
      */
     private $agentid = 0;
     /**
      * 应用成员可见范围
+     *
      * @var array
      */
     private $allow_user = [];
     /**
      * 应用部门可见范围
+     *
      * @var array
      */
     private $allow_party = [];
     /**
      * 应用标签可见范围
+     *
      * @var array
      */
     private $allow_tag = [];
@@ -57,12 +64,11 @@ class ScopeSet extends WxBaseCorpProvider
     }
 
     /**
-     * @param string $accessToken
      * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setAccessToken(string $accessToken)
     {
-        if (strlen($accessToken) > 0) {
+        if (\strlen($accessToken) > 0) {
             $this->access_token = $accessToken;
         } else {
             throw new WxCorpProviderException('令牌不合法', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
@@ -70,7 +76,6 @@ class ScopeSet extends WxBaseCorpProvider
     }
 
     /**
-     * @param int $agentId
      * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setAgentId(int $agentId)
@@ -82,14 +87,11 @@ class ScopeSet extends WxBaseCorpProvider
         }
     }
 
-    /**
-     * @param array $allowUser
-     */
     public function setAllowUser(array $allowUser)
     {
         $userList = [];
         foreach ($allowUser as $eUser) {
-            if (is_string($eUser) && (strlen($eUser) > 0)) {
+            if (\is_string($eUser) && (\strlen($eUser) > 0)) {
                 $userList[$eUser] = 1;
             }
         }
@@ -101,14 +103,11 @@ class ScopeSet extends WxBaseCorpProvider
         }
     }
 
-    /**
-     * @param array $allowParty
-     */
     public function setAllowParty(array $allowParty)
     {
         $partyList = [];
         foreach ($allowParty as $eParty) {
-            if (is_int($eParty) && ($eParty > 0)) {
+            if (\is_int($eParty) && ($eParty > 0)) {
                 $partyList[$eParty] = 1;
             }
         }
@@ -120,14 +119,11 @@ class ScopeSet extends WxBaseCorpProvider
         }
     }
 
-    /**
-     * @param array $allowTag
-     */
     public function setAllowTag(array $allowTag)
     {
         $tagList = [];
         foreach ($allowTag as $eTag) {
-            if (is_int($eTag) && ($eTag > 0)) {
+            if (\is_int($eTag) && ($eTag > 0)) {
                 $tagList[$eTag] = 1;
             }
         }
@@ -139,9 +135,9 @@ class ScopeSet extends WxBaseCorpProvider
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
-        if (strlen($this->access_token) == 0) {
+        if (0 == \strlen($this->access_token)) {
             throw new WxCorpProviderException('令牌不能为空', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
         if (!isset($this->reqData['agentid'])) {
@@ -156,7 +152,7 @@ class ScopeSet extends WxBaseCorpProvider
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXPROVIDER_CORP_POST_ERROR;

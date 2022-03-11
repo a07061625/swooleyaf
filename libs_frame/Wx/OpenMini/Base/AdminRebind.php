@@ -5,10 +5,11 @@
  * Date: 18-9-13
  * Time: 上午12:38
  */
+
 namespace Wx\OpenMini\Base;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxOpenException;
 use SyTool\Tool;
 use Wx\WxBaseOpenMini;
@@ -19,6 +20,7 @@ class AdminRebind extends WxBaseOpenMini
 {
     /**
      * 任务ID
+     *
      * @var string
      */
     private $taskId = '';
@@ -35,19 +37,18 @@ class AdminRebind extends WxBaseOpenMini
     }
 
     /**
-     * @param string $taskId
      * @throws \SyException\Wx\WxOpenException
      */
     public function setTaskId(string $taskId)
     {
-        if (strlen($taskId) > 0) {
+        if (\strlen($taskId) > 0) {
             $this->reqData['taskid'] = $taskId;
         } else {
             throw new WxOpenException('任务ID不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['taskid'])) {
             throw new WxOpenException('任务ID不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -63,7 +64,7 @@ class AdminRebind extends WxBaseOpenMini
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

@@ -5,6 +5,7 @@
  * Date: 2018/12/13 0013
  * Time: 9:37
  */
+
 namespace Wx\Account\Media;
 
 use SyConstant\ErrorCode;
@@ -18,21 +19,25 @@ class UploadVideo extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 媒体ID
+     *
      * @var string
      */
     private $media_id = '';
     /**
      * 视频标题
+     *
      * @var string
      */
     private $title = '';
     /**
      * 视频描述
+     *
      * @var string
      */
     private $description = '';
@@ -51,12 +56,11 @@ class UploadVideo extends WxBaseAccount
     }
 
     /**
-     * @param string $mediaId
      * @throws \SyException\Wx\WxException
      */
     public function setMediaId(string $mediaId)
     {
-        if (strlen($mediaId) > 0) {
+        if (\strlen($mediaId) > 0) {
             $this->reqData['media_id'] = $mediaId;
         } else {
             throw new WxException('媒体ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -64,27 +68,23 @@ class UploadVideo extends WxBaseAccount
     }
 
     /**
-     * @param string $title
      * @throws \SyException\Wx\WxException
      */
     public function setTitle(string $title)
     {
-        if (strlen($title) > 0) {
+        if (\strlen($title) > 0) {
             $this->reqData['title'] = $title;
         } else {
             throw new WxException('视频标题不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    /**
-     * @param string $description
-     */
     public function setDescription(string $description)
     {
         $this->reqData['description'] = $description;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['media_id'])) {
             throw new WxException('媒体ID不能为空', ErrorCode::WX_PARAM_ERROR);

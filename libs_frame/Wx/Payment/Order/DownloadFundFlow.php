@@ -5,10 +5,11 @@
  * Date: 2018/12/12 0012
  * Time: 9:43
  */
+
 namespace Wx\Payment\Order;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBasePayment;
@@ -23,46 +24,55 @@ class DownloadFundFlow extends WxBasePayment
 
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 商户号
+     *
      * @var string
      */
     private $mch_id = '';
     /**
      * 随机字符串
+     *
      * @var string
      */
     private $nonce_str = '';
     /**
      * 签名类型
+     *
      * @var string
      */
     private $sign_type = '';
     /**
      * 资金账单日期
+     *
      * @var string
      */
     private $bill_date = '';
     /**
      * 资金账户类型
+     *
      * @var string
      */
     private $account_type = '';
     /**
      * 压缩账单
+     *
      * @var string
      */
     private $tar_type = '';
     /**
      * 输出文件全名
+     *
      * @var string
      */
     private $output_file = '';
     /**
      * 资金账户类型列表
+     *
      * @var array
      */
     private static $totalAccountType = [
@@ -89,12 +99,11 @@ class DownloadFundFlow extends WxBasePayment
     }
 
     /**
-     * @param string $billDate
      * @throws \SyException\Wx\WxException
      */
     public function setBillDate(string $billDate)
     {
-        if (ctype_digit($billDate) && (strlen($billDate) == 8)) {
+        if (ctype_digit($billDate) && (8 == \strlen($billDate))) {
             $this->reqData['bill_date'] = $billDate;
         } else {
             throw new WxException('资金账单日期不合法', ErrorCode::WX_PARAM_ERROR);
@@ -102,7 +111,6 @@ class DownloadFundFlow extends WxBasePayment
     }
 
     /**
-     * @param string $accountType
      * @throws \SyException\Wx\WxException
      */
     public function setAccountType(string $accountType)
@@ -114,17 +122,14 @@ class DownloadFundFlow extends WxBasePayment
         }
     }
 
-    /**
-     * @param string $outputFile
-     */
     public function setOutputFile(string $outputFile)
     {
-        if (strlen($outputFile) > 0) {
+        if (\strlen($outputFile) > 0) {
             $this->output_file = $outputFile;
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['bill_date'])) {
             throw new WxException('资金账单日期不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -132,13 +137,13 @@ class DownloadFundFlow extends WxBasePayment
         if (!isset($this->reqData['account_type'])) {
             throw new WxException('资金账户类型不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if (strlen($this->output_file) == 0) {
+        if (0 == \strlen($this->output_file)) {
             throw new WxException('输出文件不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid'], 'sha256');
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->reqData['appid']);
@@ -157,10 +162,10 @@ class DownloadFundFlow extends WxBasePayment
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         fclose($tmpKey);
         fclose($tmpCert);
-        if (substr($sendRes, 0, 5) == '<xml>') {
+        if ('<xml>' == substr($sendRes, 0, 5)) {
             $sendData = Tool::xmlToArray($sendRes);
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
-            $resArr['message'] = $sendData['return_code'] == 'FAIL' ? $sendData['return_msg'] : $sendData['err_code_des'];
+            $resArr['message'] = 'FAIL' == $sendData['return_code'] ? $sendData['return_msg'] : $sendData['err_code_des'];
         } else {
             file_put_contents($this->output_file, $sendRes);
 

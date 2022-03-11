@@ -1,4 +1,5 @@
 <?php
+
 namespace Wx\CorpProvider\Common;
 
 use SyConstant\ErrorCode;
@@ -10,12 +11,14 @@ use Wx\WxUtilCorpProvider;
 
 /**
  * 获取企业永久授权码
+ *
  * @package Wx\CorpProvider\Common
  */
 class PermanentCode extends WxBaseCorpProvider
 {
     /**
      * 临时授权码
+     *
      * @var string
      */
     private $auth_code = '';
@@ -32,12 +35,11 @@ class PermanentCode extends WxBaseCorpProvider
     }
 
     /**
-     * @param string $authCode
      * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setAuthCode(string $authCode)
     {
-        if (strlen($authCode) > 0) {
+        if (\strlen($authCode) > 0) {
             $this->reqData['auth_code'] = $authCode;
         } else {
             throw new WxCorpProviderException('临时授权码不合法', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
@@ -58,7 +60,7 @@ class PermanentCode extends WxBaseCorpProvider
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXPROVIDER_CORP_POST_ERROR;

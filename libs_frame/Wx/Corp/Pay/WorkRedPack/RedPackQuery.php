@@ -5,10 +5,11 @@
  * Date: 2018/9/11 0011
  * Time: 17:32
  */
+
 namespace Wx\Corp\Pay\WorkRedPack;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseCorp;
@@ -17,27 +18,32 @@ use Wx\WxUtilCorp;
 
 /**
  * 查询红包记录
+ *
  * @package Wx\Corp\Pay\WorkRedPack
  */
 class RedPackQuery extends WxBaseCorp
 {
     /**
      * 随机字符串
+     *
      * @var string
      */
     private $nonce_str = '';
     /**
      * 商户订单号
+     *
      * @var string
      */
     private $mch_billno = '';
     /**
      * 商户号
+     *
      * @var string
      */
     private $mch_id = '';
     /**
      * 企业ID
+     *
      * @var string
      */
     private $appid = '';
@@ -58,19 +64,18 @@ class RedPackQuery extends WxBaseCorp
     }
 
     /**
-     * @param string $mchBillNo
      * @throws \SyException\Wx\WxException
      */
     public function setMchBillNo(string $mchBillNo)
     {
-        if (ctype_alnum($mchBillNo) && (strlen($mchBillNo) <= 32)) {
+        if (ctype_alnum($mchBillNo) && (\strlen($mchBillNo) <= 32)) {
             $this->reqData['mch_billno'] = $mchBillNo;
         } else {
             throw new WxException('商户订单号不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['mch_billno'])) {
             throw new WxException('商户订单号不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -80,7 +85,7 @@ class RedPackQuery extends WxBaseCorp
         $this->reqData['sign'] = WxUtilCorp::createWxSign($this->reqData, $corpConfig->getPayKey());
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $tmpKey = tmpfile();
@@ -99,10 +104,10 @@ class RedPackQuery extends WxBaseCorp
         fclose($tmpKey);
         fclose($tmpCert);
         $sendData = Tool::xmlToArray($sendRes);
-        if ($sendData['return_code'] == 'FAIL') {
+        if ('FAIL' == $sendData['return_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } elseif ($sendData['result_code'] == 'FAIL') {
+        } elseif ('FAIL' == $sendData['result_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         } else {
