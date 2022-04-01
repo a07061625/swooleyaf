@@ -1,4 +1,5 @@
 <?php
+
 namespace SyNanoId;
 
 interface CoreInterface
@@ -10,9 +11,8 @@ interface CoreInterface
      * Secure random string generator with custom alphabet.
      * Alphabet must contain 256 symbols or less. Otherwise, the generator
      * will not be secure.
-     * @param GeneratorInterface $generator
+     *
      * @param string $alphabet
-     * @param integer $size
      */
-    public function random(GeneratorInterface $generator, int $size, $alphabet = CoreInterface::SAFE_SYMBOLS);
+    public function random(GeneratorInterface $generator, int $size, $alphabet = self::SAFE_SYMBOLS);
 }

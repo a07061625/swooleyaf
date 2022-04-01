@@ -1,14 +1,16 @@
 <?php
+
 namespace SyNanoId;
 
 class Generator implements GeneratorInterface
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
+     *
      * @throws \Exception
      */
     public function random(int $size)
     {
-        return unpack('C*', \random_bytes($size));
+        return unpack('C*', random_bytes($size));
     }
 }

@@ -1,15 +1,17 @@
 <?php
+
 namespace SyNanoId;
 
 class Core implements CoreInterface
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
+     *
      * @see https://github.com/ai/nanoid/blob/master/async/index.browser.js#L4
      */
-    public function random(GeneratorInterface $generator, int $size, $alphabet = CoreInterface::SAFE_SYMBOLS) : string
+    public function random(GeneratorInterface $generator, int $size, $alphabet = CoreInterface::SAFE_SYMBOLS): string
     {
-        $len = strlen($alphabet);
+        $len = \strlen($alphabet);
         $mask = (2 << (int)(log($len - 1) / M_LN2)) - 1;
         $step = (int)ceil(1.6 * $mask * $size / $len);
         $id = '';
@@ -21,7 +23,7 @@ class Core implements CoreInterface
                 $byte &= $mask;
                 if (isset($alphabet[$byte])) {
                     $id .= $alphabet[$byte];
-                    if (strlen($id) === $size) {
+                    if (\strlen($id) === $size) {
                         return $id;
                     }
                 }
