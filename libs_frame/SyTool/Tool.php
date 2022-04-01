@@ -131,8 +131,8 @@ class Tool
     {
         if ('redis' == $createType) {
             $num = CacheSimpleFactory::getRedisInstance()->incr(Project::DATA_KEY_CACHE_UNIQUE_ID);
-            if (\is_int($extendInfo['num_length']) && ($extendInfo['num_length'] < 0)) {
-                $numLength = $extendInfo['num_length'];
+            if (\is_int($extendInfo['num_length']) && ($extendInfo['num_length'] > 0)) {
+                $numLength = -1 * $extendInfo['num_length'];
             } else {
                 $numLength = -8;
             }
@@ -141,8 +141,8 @@ class Tool
         }
         if ('swoole' == $createType) {
             $arr = BaseServer::getUniqueNum();
-            if (\is_int($extendInfo['num_length']) && ($extendInfo['num_length'] < 0)) {
-                $numLength = $extendInfo['num_length'];
+            if (\is_int($extendInfo['num_length']) && ($extendInfo['num_length'] > 0)) {
+                $numLength = -1 * $extendInfo['num_length'];
             } else {
                 $numLength = -8;
             }
