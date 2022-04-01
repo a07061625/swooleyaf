@@ -119,22 +119,51 @@ class Tool
         0x44, 0x84, 0x85, 0x45, 0x87, 0x47, 0x46, 0x86,
         0x82, 0x42, 0x43, 0x83, 0x41, 0x81, 0x80, 0x40,
     ];
+    private static $nanoClient = null;
 
     /**
      * 生成唯一ID
      *
-     * @param string $createType 生成类型,可选值:redis(默认) swoole
+     * @param string $createType 生成类型,可选值:redis(默认) swoole nano
+     * @param array  $extendInfo 扩展信息数组
      */
-    public static function createUniqueId(string $createType = 'redis'): string
+    public static function createUniqueId(string $createType = 'redis', array $extendInfo = []): string
     {
         if ('redis' == $createType) {
             $num = CacheSimpleFactory::getRedisInstance()->incr(Project::DATA_KEY_CACHE_UNIQUE_ID);
+            if (\is_int($extendInfo['num_length']) && ($extendInfo['num_length'] < 0)) {
+                $numLength = $extendInfo['num_length'];
+            } else {
+                $numLength = -8;
+            }
 
-            return date('YmdHis') . substr($num, -8);
+            return date('YmdHis') . substr($num, $numLength);
         }
-        $arr = BaseServer::getUniqueNum();
+        if ('swoole' == $createType) {
+            $arr = BaseServer::getUniqueNum();
+            if (\is_int($extendInfo['num_length']) && ($extendInfo['num_length'] < 0)) {
+                $numLength = $extendInfo['num_length'];
+            } else {
+                $numLength = -8;
+            }
 
-        return $arr['token'] . date('YmdHis') . substr((string)$arr['unique_num'], -8);
+            return $arr['token'] . date('YmdHis') . substr((string)$arr['unique_num'], $numLength);
+        }
+        if (null === self::$nanoClient) {
+            self::$nanoClient = new \SyNanoId\Client();
+        }
+        if (\is_string($extendInfo['chars']) && (\strlen($extendInfo['chars']) > 0)) {
+            $totalChars = $extendInfo['chars'];
+        } else {
+            $totalChars = '23456789abcdefghijkmnpqrstuvwxyz';
+        }
+        if (\is_int($extendInfo['length']) && ($extendInfo['length'] > 0)) {
+            $totalLength = $extendInfo['length'];
+        } else {
+            $totalLength = 16;
+        }
+
+        return self::$nanoClient->formatedId($totalChars, $totalLength);
     }
 
     /**
