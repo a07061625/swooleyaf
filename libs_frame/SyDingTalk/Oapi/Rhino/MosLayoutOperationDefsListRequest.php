@@ -1,0 +1,145 @@
+<?php
+
+namespace SyDingTalk\Oapi\Rhino;
+
+use SyDingTalk\BaseRequest;
+use SyDingTalk\RequestCheckUtil;
+
+/**
+ * dingtalk API: dingtalk.oapi.rhino.mos.layout.operationdefs.list request
+ *
+ * @author auto create
+ *
+ * @since 1.0, 2020.04.23
+ */
+class MosLayoutOperationDefsListRequest extends BaseRequest
+{
+    /**
+     * 版本：如果为空，查生效版本；不为空，查指定版本
+     */
+    private $flowVersion;
+    /**
+     * 是否需要分配信息
+     */
+    private $needAssignInfo;
+    /**
+     * 工序唯一ID
+     */
+    private $operationUids;
+    /**
+     * 订单ID
+     */
+    private $orderId;
+    /**
+     * 租户ID
+     */
+    private $tenantId;
+    /**
+     * 查询暂存版本
+     */
+    private $tmpSave;
+    /**
+     * 用户ID
+     */
+    private $userid;
+
+    public function setFlowVersion($flowVersion)
+    {
+        $this->flowVersion = $flowVersion;
+        $this->apiParas['flow_version'] = $flowVersion;
+    }
+
+    public function getFlowVersion()
+    {
+        return $this->flowVersion;
+    }
+
+    public function setNeedAssignInfo($needAssignInfo)
+    {
+        $this->needAssignInfo = $needAssignInfo;
+        $this->apiParas['need_assignInfo'] = $needAssignInfo;
+    }
+
+    public function getNeedAssignInfo()
+    {
+        return $this->needAssignInfo;
+    }
+
+    public function setOperationUids($operationUids)
+    {
+        $this->operationUids = $operationUids;
+        $this->apiParas['operation_uids'] = $operationUids;
+    }
+
+    public function getOperationUids()
+    {
+        return $this->operationUids;
+    }
+
+    public function setOrderId($orderId)
+    {
+        $this->orderId = $orderId;
+        $this->apiParas['order_id'] = $orderId;
+    }
+
+    public function getOrderId()
+    {
+        return $this->orderId;
+    }
+
+    public function setTenantId($tenantId)
+    {
+        $this->tenantId = $tenantId;
+        $this->apiParas['tenant_id'] = $tenantId;
+    }
+
+    public function getTenantId()
+    {
+        return $this->tenantId;
+    }
+
+    public function setTmpSave($tmpSave)
+    {
+        $this->tmpSave = $tmpSave;
+        $this->apiParas['tmp_save'] = $tmpSave;
+    }
+
+    public function getTmpSave()
+    {
+        return $this->tmpSave;
+    }
+
+    public function setUserid($userid)
+    {
+        $this->userid = $userid;
+        $this->apiParas['userid'] = $userid;
+    }
+
+    public function getUserid()
+    {
+        return $this->userid;
+    }
+
+    public function getApiMethodName(): string
+    {
+        return 'dingtalk.oapi.rhino.mos.layout.operationdefs.list';
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function check()
+    {
+        RequestCheckUtil::checkNotNull($this->needAssignInfo, 'needAssignInfo');
+        RequestCheckUtil::checkNotNull($this->operationUids, 'operationUids');
+        RequestCheckUtil::checkMaxListSize($this->operationUids, 2000, 'operationUids');
+        RequestCheckUtil::checkNotNull($this->orderId, 'orderId');
+        RequestCheckUtil::checkNotNull($this->tenantId, 'tenantId');
+    }
+
+    public function putOtherTextParam($key, $value)
+    {
+        $this->apiParas[$key] = $value;
+        $this->{$key} = $value;
+    }
+}
