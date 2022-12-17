@@ -60,7 +60,7 @@ class CertList extends WxBasePayment
                 'body' => '',
                 'mch_private_key' => $accountConfig->getSslKey(),
                 'merchant_id' => $accountConfig->getPayMchId(),
-                'serial_no' => $accountConfig->getSslSerialNo(),
+                'serial_no' => $accountConfig->getV3SerialNo(),
             ]),
             'Accept: application/json',
             'User-Agent: ' . $accountConfig->getPayMchId(),

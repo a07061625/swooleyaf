@@ -89,12 +89,47 @@ class WxConfigAccount
     private $sslKey = '';
 
     /**
-     * CERT PEM证书序列号
+     * API V3 密钥
+     * @var string
+     */
+    private $v3Key = '';
+
+    /**
+     * API V3 PEM证书序列号
      * 获取方式: openssl x509 -in 1900009191_20180326_cert.pem -noout -serial
      *
      * @var string
      */
-    private $sslSerialNo = '';
+    private $v3SerialNo = '';
+
+    /**
+     * API V3 PEM证书算法
+     * 获取方式: https://myssl.com/cert_decode.html
+     *
+     * @var string
+     */
+    private $v3Algorithm = '';
+
+    /**
+     * API V3 PEM证书随机字符串
+     *
+     * @var string
+     */
+    private $v3Nonce = '';
+
+    /**
+     * API V3 PEM证书关联数据
+     *
+     * @var string
+     */
+    private $v3AssociatedData = '';
+
+    /**
+     * API V3 PEM证书密文
+     *
+     * @var string
+     */
+    private $v3CipherText = '';
 
     /**
      * 企业付款银行卡公钥内容
@@ -288,21 +323,110 @@ class WxConfigAccount
         $this->sslKey = $sslKey;
     }
 
-    public function getSslSerialNo(): string
+    /**
+     * @return string
+     */
+    public function getV3Key() : string
     {
-        return $this->sslSerialNo;
+        return $this->v3Key;
     }
 
     /**
+     * @param string $v3Key
      * @throws \SyException\Wx\WxException
      */
-    public function setSslSerialNo(string $sslSerialNo)
+    public function setV3Key(string $v3Key)
     {
-        if (ctype_alnum($sslSerialNo)) {
-            $this->sslSerialNo = $sslSerialNo;
+        if (strlen($v3Key) == 32) {
+            $this->v3Key = $v3Key;
+        } else {
+            throw new WxException('V3密钥不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getV3SerialNo() : string
+    {
+        return $this->v3SerialNo;
+    }
+
+    /**
+     * @param string $v3SerialNo
+     * @throws \SyException\Wx\WxException
+     */
+    public function setV3SerialNo(string $v3SerialNo)
+    {
+        if (ctype_alnum($v3SerialNo)) {
+            $this->v3SerialNo = $v3SerialNo;
         } else {
             throw new WxException('证书序列号不合法', ErrorCode::WX_PARAM_ERROR);
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getV3Algorithm() : string
+    {
+        return $this->v3Algorithm;
+    }
+
+    /**
+     * @param string $v3Algorithm
+     */
+    public function setV3Algorithm(string $v3Algorithm)
+    {
+        $this->v3Algorithm = $v3Algorithm;
+    }
+
+    /**
+     * @return string
+     */
+    public function getV3Nonce() : string
+    {
+        return $this->v3Nonce;
+    }
+
+    /**
+     * @param string $v3Nonce
+     */
+    public function setV3Nonce(string $v3Nonce)
+    {
+        $this->v3Nonce = $v3Nonce;
+    }
+
+    /**
+     * @return string
+     */
+    public function getV3AssociatedData() : string
+    {
+        return $this->v3AssociatedData;
+    }
+
+    /**
+     * @param string $v3AssociatedData
+     */
+    public function setV3AssociatedData(string $v3AssociatedData)
+    {
+        $this->v3AssociatedData = $v3AssociatedData;
+    }
+
+    /**
+     * @return string
+     */
+    public function getV3CipherText() : string
+    {
+        return $this->v3CipherText;
+    }
+
+    /**
+     * @param string $v3CipherText
+     */
+    public function setV3CipherText(string $v3CipherText)
+    {
+        $this->v3CipherText = $v3CipherText;
     }
 
     public function getSslCompanyBank(): string

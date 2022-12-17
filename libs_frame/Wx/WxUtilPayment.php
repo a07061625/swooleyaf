@@ -125,10 +125,16 @@ abstract class WxUtilPayment extends WxUtilBase
 
     /**
      * 生成V3请求头认证令牌
+     * 支付深度链接,参考连接: https://www.cnblogs.com/txw1958/p/wxpayv3_h5.html
      */
     public static function createV3Token(array $data): string
     {
-        $message = $data['request_method'] . "\n" . $data['request_url'] . "\n" . $data['timestamp'] . "\n" . $data['nonce'] . "\n" . $data['body'] . "\n";
+        $urlInfo = parse_url($data['request_url']);
+        $message = $data['request_method'] . "\n" . $urlInfo['path'];
+        if (!empty($urlInfo['query'])) {
+            $message .= '?' . $urlInfo['query'];
+        }
+        $message .= "\n" . $data['timestamp'] . "\n" . $data['nonce'] . "\n" . $data['body'] . "\n";
         openssl_sign($message, $rawSign, $data['mch_private_key'], 'sha256WithRSAEncryption');
         $sign = base64_encode($rawSign);
 
@@ -139,5 +145,46 @@ abstract class WxUtilPayment extends WxUtilBase
                . '",signature="' . $sign . '"';
     }
 
-    //todo: 支付深度链接,参考连接: https://www.cnblogs.com/txw1958/p/wxpayv3_h5.html
+    /**
+     * v3加密,要求PHP7.1+
+     * @param string $clearText 明文
+     * @param string $publicKey 公钥文件内容,可能是api或者平台的公钥证书内容
+     * @return string
+     * @throws \SyException\Wx\WxException
+     */
+    public static function v3Encrypt(string $clearText, string $publicKey): string
+    {
+        $cipherText = '';
+        if (openssl_public_encrypt($clearText, $cipherText, $publicKey, OPENSSL_PKCS1_OAEP_PADDING)) {
+            return base64_encode($cipherText);
+        }
+
+        throw new WxException('V3加密失败', ErrorCode::WX_PARAM_ERROR);
+    }
+
+    /**
+     * v3解密,要求PHP7.1+
+     * 注: 后面两个参数相关内容可参考接口 https://api.mch.weixin.qq.com/v3/certificates的返回数据
+     * @param string $sign 加密后的密文
+     * @param string $aesKey V3密钥
+     * @param string $associatedData 证书associated_data
+     * @param string $nonce 证书随机字符串
+     * @return bool|string
+     * @throws \SyException\Wx\WxException
+     */
+    public static function v3Decrypt(string $sign, string $aesKey, string $associatedData, string $nonce)
+    {
+        if (strlen($aesKey) != 32) {
+            throw new WxException('V3密钥不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+
+        $cipherText = base64_decode($sign, true);
+        if (strlen($cipherText) <= 16) {
+            return false;
+        }
+
+        $ctext = substr($cipherText, 0, -16);
+        $authTag = substr($cipherText, -16);
+        return openssl_decrypt($ctext, 'aes-256-gcm', $aesKey, OPENSSL_RAW_DATA, $nonce, $authTag, $associatedData);
+    }
 }
