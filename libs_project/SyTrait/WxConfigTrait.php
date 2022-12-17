@@ -48,7 +48,12 @@ trait WxConfigTrait
             $accountConfig->setPayAuthUrl($wxDefaultConfig['url']['auth']['default']);
             $accountConfig->setSslCert((string)$configInfo['payssl_cert']);
             $accountConfig->setSslKey((string)$configInfo['payssl_key']);
-            $accountConfig->setSslSerialNo((string)$configInfo['payssl_serialno']);
+            $accountConfig->setV3Key((string)$configInfo['v3_key']);
+            $accountConfig->setV3SerialNo((string)$configInfo['v3_serialno']);
+            $accountConfig->setV3Algorithm((string)$configInfo['v3_algorithm']);
+            $accountConfig->setV3AssociatedData((string)$configInfo['v3_associateddata']);
+            $accountConfig->setV3Nonce((string)$configInfo['v3_nonce']);
+            $accountConfig->setV3CipherText((string)$configInfo['v3_ciphertext']);
             $accountConfig->setSslCompanyBank((string)$configInfo['payssl_companybank']);
             $accountConfig->setMerchantAppId((string)$configInfo['merchant_appid']);
             if (is_array($templates)) {
