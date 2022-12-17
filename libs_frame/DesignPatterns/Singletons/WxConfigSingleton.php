@@ -55,10 +55,12 @@ class WxConfigSingleton
 
     private function __construct()
     {
+        //null
     }
 
     private function __clone()
     {
+        //null
     }
 
     /**
@@ -77,7 +79,7 @@ class WxConfigSingleton
      * 获取开放平台公共配置
      * @return \Wx\WxConfigOpenCommon
      */
-    public function getOpenCommonConfig()
+    public function getOpenCommonConfig() : WxConfigOpenCommon
     {
         if (is_null($this->openCommonConfig)) {
             $configs = Tool::getConfig('wx.' . SY_ENV . SY_PROJECT);
@@ -106,7 +108,7 @@ class WxConfigSingleton
      * 获取企业服务商公共配置
      * @return \Wx\WxConfigCorpProvider
      */
-    public function getCorpProviderConfig()
+    public function getCorpProviderConfig() : WxConfigCorpProvider
     {
         if (is_null($this->corpProviderConfig)) {
             $configs = Tool::getConfig('wx.' . SY_ENV . SY_PROJECT);
@@ -129,7 +131,7 @@ class WxConfigSingleton
      * 获取所有的账号配置
      * @return array
      */
-    public function getAccountConfigs()
+    public function getAccountConfigs() : array
     {
         return $this->accountConfigs;
     }
@@ -139,7 +141,7 @@ class WxConfigSingleton
      * @param string $appId
      * @return \Wx\WxConfigAccount|null
      */
-    private function getLocalAccountConfig(string $appId)
+    private function getLocalAccountConfig(string $appId) : ?\Wx\WxConfigAccount
     {
         $nowTime = Tool::getNowTime();
         if ($this->accountClearTime < $nowTime) {
@@ -165,13 +167,11 @@ class WxConfigSingleton
      * @return \Wx\WxConfigAccount
      * @throws \SyException\Wx\WxException
      */
-    public function getAccountConfig(string $appId)
+    public function getAccountConfig(string $appId) : \Wx\WxConfigAccount
     {
         $nowTime = Tool::getNowTime();
         $accountConfig = $this->getLocalAccountConfig($appId);
-        if (is_null($accountConfig)) {
-            $accountConfig = $this->refreshAccountConfig($appId);
-        } elseif ($accountConfig->getExpireTime() < $nowTime) {
+        if (is_null($accountConfig) || ($accountConfig->getExpireTime() < $nowTime)) {
             $accountConfig = $this->refreshAccountConfig($appId);
         }
 
@@ -195,7 +195,7 @@ class WxConfigSingleton
      * 获取所有的企业配置
      * @return array
      */
-    public function getCorpConfigs()
+    public function getCorpConfigs() : array
     {
         return $this->corpConfigs;
     }
@@ -205,7 +205,7 @@ class WxConfigSingleton
      * @param string $corpId
      * @return \Wx\WxConfigCorp|null
      */
-    private function getLocalCorpConfig(string $corpId)
+    private function getLocalCorpConfig(string $corpId) : ?\Wx\WxConfigCorp
     {
         $nowTime = Tool::getNowTime();
         if ($this->corpClearTime < $nowTime) {
@@ -231,13 +231,11 @@ class WxConfigSingleton
      * @return \Wx\WxConfigCorp
      * @throws \SyException\Wx\WxCorpProviderException
      */
-    public function getCorpConfig(string $corpId)
+    public function getCorpConfig(string $corpId) : \Wx\WxConfigCorp
     {
         $nowTime = Tool::getNowTime();
         $corpConfig = $this->getLocalCorpConfig($corpId);
-        if (is_null($corpConfig)) {
-            $corpConfig = $this->refreshCorpConfig($corpId);
-        } elseif ($corpConfig->getExpireTime() < $nowTime) {
+        if (is_null($corpConfig) || ($corpConfig->getExpireTime() < $nowTime)) {
             $corpConfig = $this->refreshCorpConfig($corpId);
         }
 
