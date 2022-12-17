@@ -55,6 +55,12 @@ final class SyFrameLoader
      * @var bool
      */
     private $alibabaCloudStatus = true;
+    /**
+     * DingTalk未初始化标识 true：未初始化 false：已初始化
+     *
+     * @var bool
+     */
+    private $dingTalkStatus = true;
 
     private function __construct()
     {
@@ -70,6 +76,7 @@ final class SyFrameLoader
             'ClickHouseDB' => 'preHandleClickHouse',
             'GuzzleHttp' => 'preHandleGuzzleHttp',
             'AlibabaCloud' => 'preHandleAlibabaCloud',
+            'SyDingTalk' => 'preHandleDingTalk',
         ];
 
         $this->smartyRootClasses = [
@@ -80,6 +87,7 @@ final class SyFrameLoader
 
     private function __clone()
     {
+        //null
     }
 
     /**
@@ -247,6 +255,19 @@ final class SyFrameLoader
 
         return SY_FRAME_LIBS_ROOT . $className . '.php';
     }
+
+    private function preHandleDingTalk(string $className): string
+    {
+        if ($this->dingTalkStatus) {
+            define('TOP_SDK_WORK_DIR', '/tmp/');
+            //开发程序的时候设为true,以免缓存造成你的代码修改了不生效
+            //设定为false,能提高运行速度(对应的代价就是你下次升级程序时要清一下缓存)
+            define('TOP_SDK_DEV_MODE', true);
+            $this->dingTalkStatus = false;
+        }
+
+        return SY_FRAME_LIBS_ROOT . $className . '.php';
+    }
 }
 
 final class SyProjectLoader
@@ -258,6 +279,7 @@ final class SyProjectLoader
 
     private function __construct()
     {
+        //null
     }
 
     /**
