@@ -137,9 +137,9 @@ abstract class WxUtilPayment extends WxUtilBase
         openssl_sign($message, $rawSign, $data['mch_private_key'], 'sha256WithRSAEncryption');
         $sign = base64_encode($rawSign);
         return 'mchid="' . $data['merchant_id']
+               . '",serial_no="' . $data['serial_no']
                . '",nonce_str="' . $data['nonce']
                . '",timestamp="' . $data['timestamp']
-               . '",serial_no="' . $data['serial_no']
                . '",signature="' . $sign . '"';
     }
 
