@@ -90,6 +90,7 @@ class WxConfigAccount
 
     /**
      * API V3 密钥
+     *
      * @var string
      */
     private $v3Key = '';
@@ -323,37 +324,29 @@ class WxConfigAccount
         $this->sslKey = $sslKey;
     }
 
-    /**
-     * @return string
-     */
-    public function getV3Key() : string
+    public function getV3Key(): string
     {
         return $this->v3Key;
     }
 
     /**
-     * @param string $v3Key
      * @throws \SyException\Wx\WxException
      */
     public function setV3Key(string $v3Key)
     {
-        if (strlen($v3Key) == 32) {
+        if (32 == \strlen($v3Key)) {
             $this->v3Key = $v3Key;
         } else {
             throw new WxException('V3密钥不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getV3SerialNo() : string
+    public function getV3SerialNo(): string
     {
         return $this->v3SerialNo;
     }
 
     /**
-     * @param string $v3SerialNo
      * @throws \SyException\Wx\WxException
      */
     public function setV3SerialNo(string $v3SerialNo)
@@ -365,65 +358,41 @@ class WxConfigAccount
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getV3Algorithm() : string
+    public function getV3Algorithm(): string
     {
         return $this->v3Algorithm;
     }
 
-    /**
-     * @param string $v3Algorithm
-     */
     public function setV3Algorithm(string $v3Algorithm)
     {
         $this->v3Algorithm = $v3Algorithm;
     }
 
-    /**
-     * @return string
-     */
-    public function getV3Nonce() : string
+    public function getV3Nonce(): string
     {
         return $this->v3Nonce;
     }
 
-    /**
-     * @param string $v3Nonce
-     */
     public function setV3Nonce(string $v3Nonce)
     {
         $this->v3Nonce = $v3Nonce;
     }
 
-    /**
-     * @return string
-     */
-    public function getV3AssociatedData() : string
+    public function getV3AssociatedData(): string
     {
         return $this->v3AssociatedData;
     }
 
-    /**
-     * @param string $v3AssociatedData
-     */
     public function setV3AssociatedData(string $v3AssociatedData)
     {
         $this->v3AssociatedData = $v3AssociatedData;
     }
 
-    /**
-     * @return string
-     */
-    public function getV3CipherText() : string
+    public function getV3CipherText(): string
     {
         return $this->v3CipherText;
     }
 
-    /**
-     * @param string $v3CipherText
-     */
     public function setV3CipherText(string $v3CipherText)
     {
         $this->v3CipherText = $v3CipherText;

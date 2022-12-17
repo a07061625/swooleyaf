@@ -5,6 +5,7 @@
  * Date: 2019/1/21 0021
  * Time: 8:49
  */
+
 namespace SyTrait;
 
 use Factories\SyTaskMysqlFactory;
@@ -17,8 +18,6 @@ trait WxConfigTrait
 {
     /**
      * 更新账号配置
-     *
-     * @param string $appId
      *
      * @return \Wx\WxConfigAccount
      */
@@ -37,7 +36,7 @@ trait WxConfigTrait
             $accountConfig->setValid(false);
         } else {
             $wxDefaultConfig = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.wx');
-            $templates = strlen($configInfo['app_templates']) > 0 ? Tool::jsonDecode($configInfo['app_templates']) : [];
+            $templates = \strlen($configInfo['app_templates']) > 0 ? Tool::jsonDecode($configInfo['app_templates']) : [];
             $accountConfig->setValid(true);
             $accountConfig->setClientIp((string)$configInfo['app_clientip']);
             $accountConfig->setOriginId((string)$configInfo['origin_id']);
@@ -56,7 +55,7 @@ trait WxConfigTrait
             $accountConfig->setV3CipherText((string)$configInfo['v3_ciphertext']);
             $accountConfig->setSslCompanyBank((string)$configInfo['payssl_companybank']);
             $accountConfig->setMerchantAppId((string)$configInfo['merchant_appid']);
-            if (is_array($templates)) {
+            if (\is_array($templates)) {
                 $accountConfig->setTemplates($templates);
             }
         }
@@ -67,8 +66,6 @@ trait WxConfigTrait
 
     /**
      * 更新企业微信配置
-     *
-     * @param string $corpId
      *
      * @return \Wx\WxConfigCorp
      */
@@ -87,7 +84,7 @@ trait WxConfigTrait
             $corpConfig->setValid(false);
         } else {
             $wxCorpDefaultConfig = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.wxcorp');
-            $agents = strlen($configInfo['corp_agents']) > 0 ? Tool::jsonDecode($configInfo['corp_agents']) : [];
+            $agents = \strlen($configInfo['corp_agents']) > 0 ? Tool::jsonDecode($configInfo['corp_agents']) : [];
             $corpConfig->setValid(true);
             $corpConfig->setClientIp((string)$configInfo['corp_clientip']);
             $corpConfig->setPayMchId((string)$configInfo['pay_mchid']);
