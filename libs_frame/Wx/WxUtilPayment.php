@@ -147,9 +147,10 @@ abstract class WxUtilPayment extends WxUtilBase
 
     /**
      * v3加密,要求PHP7.1+
+     *
      * @param string $clearText 明文
      * @param string $publicKey 公钥文件内容,可能是api或者平台的公钥证书内容
-     * @return string
+     *
      * @throws \SyException\Wx\WxException
      */
     public static function v3Encrypt(string $clearText, string $publicKey): string
@@ -165,26 +166,30 @@ abstract class WxUtilPayment extends WxUtilBase
     /**
      * v3解密,要求PHP7.1+
      * 注: 后面两个参数相关内容可参考接口 https://api.mch.weixin.qq.com/v3/certificates的返回数据
-     * @param string $sign 加密后的密文
-     * @param string $aesKey V3密钥
+     *
+     * @param string $sign           加密后的密文
+     * @param string $aesKey         V3密钥
      * @param string $associatedData 证书associated_data
-     * @param string $nonce 证书随机字符串
+     * @param string $nonce          证书随机字符串
+     *
      * @return bool|string
+     *
      * @throws \SyException\Wx\WxException
      */
     public static function v3Decrypt(string $sign, string $aesKey, string $associatedData, string $nonce)
     {
-        if (strlen($aesKey) != 32) {
+        if (32 != \strlen($aesKey)) {
             throw new WxException('V3密钥不合法', ErrorCode::WX_PARAM_ERROR);
         }
 
         $cipherText = base64_decode($sign, true);
-        if (strlen($cipherText) <= 16) {
+        if (\strlen($cipherText) <= 16) {
             return false;
         }
 
         $ctext = substr($cipherText, 0, -16);
         $authTag = substr($cipherText, -16);
+
         return openssl_decrypt($ctext, 'aes-256-gcm', $aesKey, OPENSSL_RAW_DATA, $nonce, $authTag, $associatedData);
     }
 }
