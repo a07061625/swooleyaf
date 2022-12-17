@@ -297,7 +297,7 @@ class ErrorCode
     const MQTT_CONNECTION_ERROR = 108800;
     const MQTT_AUTH_ERROR = 108801;
 
-    //抖音错误,取值范围:109000-109100
+    //抖音错误,取值范围:109000-109199
     const DOUYIN_PARAM_ERROR = 109000;
     const DOUYIN_REQ_ERROR = 109001;
     const DOUYIN_OAUTH_PARAM_ERROR = 109010;
