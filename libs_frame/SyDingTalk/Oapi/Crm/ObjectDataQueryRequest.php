@@ -7,36 +7,38 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.crm.objectdata.query request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.03.11
  */
 class ObjectDataQueryRequest extends BaseRequest
 {
     /**
      * 用户ID
-     **/
+     */
     private $currentOperatorUserid;
     /**
      * 分页游标
-     **/
+     */
     private $cursor;
     /**
      * 表单code
-     **/
+     */
     private $name;
     /**
      * 分页大小
-     **/
+     */
     private $pageSize;
     /**
      * 查询条件
-     **/
+     */
     private $queryDsl;
 
     public function setCurrentOperatorUserid($currentOperatorUserid)
     {
         $this->currentOperatorUserid = $currentOperatorUserid;
-        $this->apiParas["current_operator_userid"] = $currentOperatorUserid;
+        $this->apiParas['current_operator_userid'] = $currentOperatorUserid;
     }
 
     public function getCurrentOperatorUserid()
@@ -47,7 +49,7 @@ class ObjectDataQueryRequest extends BaseRequest
     public function setCursor($cursor)
     {
         $this->cursor = $cursor;
-        $this->apiParas["cursor"] = $cursor;
+        $this->apiParas['cursor'] = $cursor;
     }
 
     public function getCursor()
@@ -58,7 +60,7 @@ class ObjectDataQueryRequest extends BaseRequest
     public function setName($name)
     {
         $this->name = $name;
-        $this->apiParas["name"] = $name;
+        $this->apiParas['name'] = $name;
     }
 
     public function getName()
@@ -69,7 +71,7 @@ class ObjectDataQueryRequest extends BaseRequest
     public function setPageSize($pageSize)
     {
         $this->pageSize = $pageSize;
-        $this->apiParas["page_size"] = $pageSize;
+        $this->apiParas['page_size'] = $pageSize;
     }
 
     public function getPageSize()
@@ -80,7 +82,7 @@ class ObjectDataQueryRequest extends BaseRequest
     public function setQueryDsl($queryDsl)
     {
         $this->queryDsl = $queryDsl;
-        $this->apiParas["query_dsl"] = $queryDsl;
+        $this->apiParas['query_dsl'] = $queryDsl;
     }
 
     public function getQueryDsl()
@@ -88,9 +90,9 @@ class ObjectDataQueryRequest extends BaseRequest
         return $this->queryDsl;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.crm.objectdata.query";
+        return 'dingtalk.oapi.crm.objectdata.query';
     }
 
     /**
@@ -98,13 +100,13 @@ class ObjectDataQueryRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->name, "name");
-        RequestCheckUtil::checkNotNull($this->pageSize, "pageSize");
+        RequestCheckUtil::checkNotNull($this->name, 'name');
+        RequestCheckUtil::checkNotNull($this->pageSize, 'pageSize');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

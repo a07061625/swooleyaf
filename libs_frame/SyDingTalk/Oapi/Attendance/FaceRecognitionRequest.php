@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.attendance.face.recognition request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.11.19
  */
 class FaceRecognitionRequest extends BaseRequest
 {
     /**
      * 钉钉mediaId
-     **/
+     */
     private $mediaId;
 
     public function setMediaId($mediaId)
     {
         $this->mediaId = $mediaId;
-        $this->apiParas["media_id"] = $mediaId;
+        $this->apiParas['media_id'] = $mediaId;
     }
 
     public function getMediaId()
@@ -28,9 +30,9 @@ class FaceRecognitionRequest extends BaseRequest
         return $this->mediaId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.attendance.face.recognition";
+        return 'dingtalk.oapi.attendance.face.recognition';
     }
 
     /**
@@ -38,12 +40,12 @@ class FaceRecognitionRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->mediaId, "mediaId");
+        RequestCheckUtil::checkNotNull($this->mediaId, 'mediaId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

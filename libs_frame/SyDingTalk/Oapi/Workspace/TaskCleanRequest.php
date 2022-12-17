@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.workspace.task.clean request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.12.23
  */
 class TaskCleanRequest extends BaseRequest
 {
     /**
      * 微应用agentId
-     **/
+     */
     private $agentid;
     /**
      * 企业corpId
-     **/
+     */
     private $corpId;
     /**
      * 操作者id
-     **/
+     */
     private $operatorUserid;
 
     public function setAgentid($agentid)
     {
         $this->agentid = $agentid;
-        $this->apiParas["agentid"] = $agentid;
+        $this->apiParas['agentid'] = $agentid;
     }
 
     public function getAgentid()
@@ -39,7 +41,7 @@ class TaskCleanRequest extends BaseRequest
     public function setCorpId($corpId)
     {
         $this->corpId = $corpId;
-        $this->apiParas["corp_id"] = $corpId;
+        $this->apiParas['corp_id'] = $corpId;
     }
 
     public function getCorpId()
@@ -50,7 +52,7 @@ class TaskCleanRequest extends BaseRequest
     public function setOperatorUserid($operatorUserid)
     {
         $this->operatorUserid = $operatorUserid;
-        $this->apiParas["operator_userid"] = $operatorUserid;
+        $this->apiParas['operator_userid'] = $operatorUserid;
     }
 
     public function getOperatorUserid()
@@ -58,9 +60,9 @@ class TaskCleanRequest extends BaseRequest
         return $this->operatorUserid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.workspace.task.clean";
+        return 'dingtalk.oapi.workspace.task.clean';
     }
 
     /**
@@ -68,12 +70,12 @@ class TaskCleanRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->corpId, "corpId");
+        RequestCheckUtil::checkNotNull($this->corpId, 'corpId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

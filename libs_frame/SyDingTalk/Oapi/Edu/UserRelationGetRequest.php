@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.edu.user.relation.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.01.29
  */
 class UserRelationGetRequest extends BaseRequest
 {
     /**
      * 班级id
-     **/
+     */
     private $classId;
     /**
      * 监护人id
-     **/
+     */
     private $fromUserid;
 
     public function setClassId($classId)
     {
         $this->classId = $classId;
-        $this->apiParas["class_id"] = $classId;
+        $this->apiParas['class_id'] = $classId;
     }
 
     public function getClassId()
@@ -35,7 +37,7 @@ class UserRelationGetRequest extends BaseRequest
     public function setFromUserid($fromUserid)
     {
         $this->fromUserid = $fromUserid;
-        $this->apiParas["from_userid"] = $fromUserid;
+        $this->apiParas['from_userid'] = $fromUserid;
     }
 
     public function getFromUserid()
@@ -43,9 +45,9 @@ class UserRelationGetRequest extends BaseRequest
         return $this->fromUserid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.edu.user.relation.get";
+        return 'dingtalk.oapi.edu.user.relation.get';
     }
 
     /**
@@ -53,13 +55,13 @@ class UserRelationGetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->classId, "classId");
-        RequestCheckUtil::checkNotNull($this->fromUserid, "fromUserid");
+        RequestCheckUtil::checkNotNull($this->classId, 'classId');
+        RequestCheckUtil::checkNotNull($this->fromUserid, 'fromUserid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

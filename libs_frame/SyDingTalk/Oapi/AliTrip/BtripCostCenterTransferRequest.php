@@ -6,20 +6,22 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.alitrip.btrip.cost.center.transfer request
+ *
  * @author auto create
+ *
  * @since 1.0, 2018.08.07
  */
 class BtripCostCenterTransferRequest extends BaseRequest
 {
     /**
      * 请求对象
-     **/
+     */
     private $rq;
 
     public function setRq($rq)
     {
         $this->rq = $rq;
-        $this->apiParas["rq"] = $rq;
+        $this->apiParas['rq'] = $rq;
     }
 
     public function getRq()
@@ -27,14 +29,14 @@ class BtripCostCenterTransferRequest extends BaseRequest
         return $this->rq;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.alitrip.btrip.cost.center.transfer";
+        return 'dingtalk.oapi.alitrip.btrip.cost.center.transfer';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

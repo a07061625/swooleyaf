@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.edu.grade.query request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.10.28
  */
 class GradeQueryRequest extends BaseRequest
 {
     /**
      * 校区id
-     **/
+     */
     private $campusId;
     /**
      * 钉钉企业管理员
-     **/
+     */
     private $operator;
     /**
      * 学段id
-     **/
+     */
     private $periodId;
 
     public function setCampusId($campusId)
     {
         $this->campusId = $campusId;
-        $this->apiParas["campus_id"] = $campusId;
+        $this->apiParas['campus_id'] = $campusId;
     }
 
     public function getCampusId()
@@ -39,7 +41,7 @@ class GradeQueryRequest extends BaseRequest
     public function setOperator($operator)
     {
         $this->operator = $operator;
-        $this->apiParas["operator"] = $operator;
+        $this->apiParas['operator'] = $operator;
     }
 
     public function getOperator()
@@ -50,7 +52,7 @@ class GradeQueryRequest extends BaseRequest
     public function setPeriodId($periodId)
     {
         $this->periodId = $periodId;
-        $this->apiParas["period_id"] = $periodId;
+        $this->apiParas['period_id'] = $periodId;
     }
 
     public function getPeriodId()
@@ -58,9 +60,9 @@ class GradeQueryRequest extends BaseRequest
         return $this->periodId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.edu.grade.query";
+        return 'dingtalk.oapi.edu.grade.query';
     }
 
     /**
@@ -68,12 +70,12 @@ class GradeQueryRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->operator, "operator");
+        RequestCheckUtil::checkNotNull($this->operator, 'operator');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

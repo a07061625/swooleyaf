@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.edu.homework.comment.tips.delete request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.11.03
  */
 class HomeworkCommentTipsDeleteRequest extends BaseRequest
 {
     /**
      * 业务编码
-     **/
+     */
     private $bizCode;
     /**
      * 评语ID列表
-     **/
+     */
     private $tipIds;
     /**
      * 老师userid
-     **/
+     */
     private $userid;
 
     public function setBizCode($bizCode)
     {
         $this->bizCode = $bizCode;
-        $this->apiParas["biz_code"] = $bizCode;
+        $this->apiParas['biz_code'] = $bizCode;
     }
 
     public function getBizCode()
@@ -39,7 +41,7 @@ class HomeworkCommentTipsDeleteRequest extends BaseRequest
     public function setTipIds($tipIds)
     {
         $this->tipIds = $tipIds;
-        $this->apiParas["tip_ids"] = $tipIds;
+        $this->apiParas['tip_ids'] = $tipIds;
     }
 
     public function getTipIds()
@@ -50,7 +52,7 @@ class HomeworkCommentTipsDeleteRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -58,9 +60,9 @@ class HomeworkCommentTipsDeleteRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.edu.homework.comment.tips.delete";
+        return 'dingtalk.oapi.edu.homework.comment.tips.delete';
     }
 
     /**
@@ -68,12 +70,12 @@ class HomeworkCommentTipsDeleteRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkMaxListSize($this->tipIds, 999, "tipIds");
+        RequestCheckUtil::checkMaxListSize($this->tipIds, 999, 'tipIds');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

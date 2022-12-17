@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.conference.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.01
  */
 class GetRequest extends BaseRequest
 {
     /**
      * 会务Id
-     **/
+     */
     private $conferenceId;
 
     public function setConferenceId($conferenceId)
     {
         $this->conferenceId = $conferenceId;
-        $this->apiParas["conference_id"] = $conferenceId;
+        $this->apiParas['conference_id'] = $conferenceId;
     }
 
     public function getConferenceId()
@@ -28,9 +30,9 @@ class GetRequest extends BaseRequest
         return $this->conferenceId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.conference.get";
+        return 'dingtalk.oapi.conference.get';
     }
 
     /**
@@ -38,12 +40,12 @@ class GetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->conferenceId, "conferenceId");
+        RequestCheckUtil::checkNotNull($this->conferenceId, 'conferenceId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

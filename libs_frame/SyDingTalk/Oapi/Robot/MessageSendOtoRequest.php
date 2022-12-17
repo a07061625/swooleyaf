@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.robot.message.sendoto request
+ *
  * @author auto create
+ *
  * @since 1.0, 2022.03.30
  */
 class MessageSendOtoRequest extends BaseRequest
 {
     /**
      * 申请到的企业机器人唯一标识符
-     **/
+     */
     private $chatbotId;
     /**
      * 申请到的消息模板唯一标识符
-     **/
+     */
     private $msgKey;
     /**
      * 消息模板中，变量本次替换的值
-     **/
+     */
     private $msgParam;
     /**
      * 员工的userid
-     **/
+     */
     private $staffId;
 
     public function setChatbotId($chatbotId)
     {
         $this->chatbotId = $chatbotId;
-        $this->apiParas["chatbot_id"] = $chatbotId;
+        $this->apiParas['chatbot_id'] = $chatbotId;
     }
 
     public function getChatbotId()
@@ -43,7 +45,7 @@ class MessageSendOtoRequest extends BaseRequest
     public function setMsgKey($msgKey)
     {
         $this->msgKey = $msgKey;
-        $this->apiParas["msg_key"] = $msgKey;
+        $this->apiParas['msg_key'] = $msgKey;
     }
 
     public function getMsgKey()
@@ -54,7 +56,7 @@ class MessageSendOtoRequest extends BaseRequest
     public function setMsgParam($msgParam)
     {
         $this->msgParam = $msgParam;
-        $this->apiParas["msg_param"] = $msgParam;
+        $this->apiParas['msg_param'] = $msgParam;
     }
 
     public function getMsgParam()
@@ -65,7 +67,7 @@ class MessageSendOtoRequest extends BaseRequest
     public function setStaffId($staffId)
     {
         $this->staffId = $staffId;
-        $this->apiParas["staff_id"] = $staffId;
+        $this->apiParas['staff_id'] = $staffId;
     }
 
     public function getStaffId()
@@ -73,9 +75,9 @@ class MessageSendOtoRequest extends BaseRequest
         return $this->staffId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.robot.message.sendoto";
+        return 'dingtalk.oapi.robot.message.sendoto';
     }
 
     /**
@@ -83,15 +85,15 @@ class MessageSendOtoRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->chatbotId, "chatbotId");
-        RequestCheckUtil::checkNotNull($this->msgKey, "msgKey");
-        RequestCheckUtil::checkNotNull($this->msgParam, "msgParam");
-        RequestCheckUtil::checkNotNull($this->staffId, "staffId");
+        RequestCheckUtil::checkNotNull($this->chatbotId, 'chatbotId');
+        RequestCheckUtil::checkNotNull($this->msgKey, 'msgKey');
+        RequestCheckUtil::checkNotNull($this->msgParam, 'msgParam');
+        RequestCheckUtil::checkNotNull($this->staffId, 'staffId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

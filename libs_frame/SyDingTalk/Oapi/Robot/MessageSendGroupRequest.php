@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.robot.message.sendgroup request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.03.03
  */
 class MessageSendGroupRequest extends BaseRequest
 {
     /**
      * 申请到的消息模板唯一标识符
-     **/
+     */
     private $msgKey;
     /**
      * 消息模板中，变量本次替换的值
-     **/
+     */
     private $msgParam;
     /**
      * 群机器人webhook中的token
-     **/
+     */
     private $token;
 
     public function setMsgKey($msgKey)
     {
         $this->msgKey = $msgKey;
-        $this->apiParas["msg_key"] = $msgKey;
+        $this->apiParas['msg_key'] = $msgKey;
     }
 
     public function getMsgKey()
@@ -39,7 +41,7 @@ class MessageSendGroupRequest extends BaseRequest
     public function setMsgParam($msgParam)
     {
         $this->msgParam = $msgParam;
-        $this->apiParas["msg_param"] = $msgParam;
+        $this->apiParas['msg_param'] = $msgParam;
     }
 
     public function getMsgParam()
@@ -50,7 +52,7 @@ class MessageSendGroupRequest extends BaseRequest
     public function setToken($token)
     {
         $this->token = $token;
-        $this->apiParas["token"] = $token;
+        $this->apiParas['token'] = $token;
     }
 
     public function getToken()
@@ -58,9 +60,9 @@ class MessageSendGroupRequest extends BaseRequest
         return $this->token;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.robot.message.sendgroup";
+        return 'dingtalk.oapi.robot.message.sendgroup';
     }
 
     /**
@@ -68,14 +70,14 @@ class MessageSendGroupRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->msgKey, "msgKey");
-        RequestCheckUtil::checkNotNull($this->msgParam, "msgParam");
-        RequestCheckUtil::checkNotNull($this->token, "token");
+        RequestCheckUtil::checkNotNull($this->msgKey, 'msgKey');
+        RequestCheckUtil::checkNotNull($this->msgParam, 'msgParam');
+        RequestCheckUtil::checkNotNull($this->token, 'token');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

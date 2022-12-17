@@ -6,32 +6,34 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.file.upload.chunk request
+ *
  * @author auto create
+ *
  * @since 1.0, 2018.07.25
  */
 class UploadChunkRequest extends BaseRequest
 {
     /**
      * 微应用的agentId
-     **/
+     */
     private $agentId;
     /**
      * 文件块号，从1开始计数
-     **/
+     */
     private $chunkSequence;
     /**
      * 文件内容
-     **/
+     */
     private $file;
     /**
      * 上传事务id 需要utf-8 urlEncode
-     **/
+     */
     private $uploadId;
 
     public function setAgentId($agentId)
     {
         $this->agentId = $agentId;
-        $this->apiParas["agent_id"] = $agentId;
+        $this->apiParas['agent_id'] = $agentId;
     }
 
     public function getAgentId()
@@ -42,7 +44,7 @@ class UploadChunkRequest extends BaseRequest
     public function setChunkSequence($chunkSequence)
     {
         $this->chunkSequence = $chunkSequence;
-        $this->apiParas["chunk_sequence"] = $chunkSequence;
+        $this->apiParas['chunk_sequence'] = $chunkSequence;
     }
 
     public function getChunkSequence()
@@ -53,7 +55,7 @@ class UploadChunkRequest extends BaseRequest
     public function setFile($file)
     {
         $this->file = $file;
-        $this->apiParas["file"] = $file;
+        $this->apiParas['file'] = $file;
     }
 
     public function getFile()
@@ -64,7 +66,7 @@ class UploadChunkRequest extends BaseRequest
     public function setUploadId($uploadId)
     {
         $this->uploadId = $uploadId;
-        $this->apiParas["upload_id"] = $uploadId;
+        $this->apiParas['upload_id'] = $uploadId;
     }
 
     public function getUploadId()
@@ -72,14 +74,14 @@ class UploadChunkRequest extends BaseRequest
         return $this->uploadId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.file.upload.chunk";
+        return 'dingtalk.oapi.file.upload.chunk';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

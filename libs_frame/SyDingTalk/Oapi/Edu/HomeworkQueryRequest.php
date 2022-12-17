@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.edu.homework.query request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.04.28
  */
 class HomeworkQueryRequest extends BaseRequest
 {
     /**
      * 业务编码
-     **/
+     */
     private $bizCode;
     /**
      * 作业ID
-     **/
+     */
     private $hwId;
 
     public function setBizCode($bizCode)
     {
         $this->bizCode = $bizCode;
-        $this->apiParas["biz_code"] = $bizCode;
+        $this->apiParas['biz_code'] = $bizCode;
     }
 
     public function getBizCode()
@@ -35,7 +37,7 @@ class HomeworkQueryRequest extends BaseRequest
     public function setHwId($hwId)
     {
         $this->hwId = $hwId;
-        $this->apiParas["hw_id"] = $hwId;
+        $this->apiParas['hw_id'] = $hwId;
     }
 
     public function getHwId()
@@ -43,9 +45,9 @@ class HomeworkQueryRequest extends BaseRequest
         return $this->hwId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.edu.homework.query";
+        return 'dingtalk.oapi.edu.homework.query';
     }
 
     /**
@@ -53,13 +55,13 @@ class HomeworkQueryRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->bizCode, "bizCode");
-        RequestCheckUtil::checkNotNull($this->hwId, "hwId");
+        RequestCheckUtil::checkNotNull($this->bizCode, 'bizCode');
+        RequestCheckUtil::checkNotNull($this->hwId, 'hwId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

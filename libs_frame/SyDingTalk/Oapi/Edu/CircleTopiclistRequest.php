@@ -6,28 +6,30 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.edu.circle.topiclist request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.11.02
  */
 class CircleTopiclistRequest extends BaseRequest
 {
     /**
      * 1
-     **/
+     */
     private $bizType;
     /**
      * 1
-     **/
+     */
     private $classId;
     /**
      * 1
-     **/
+     */
     private $userid;
 
     public function setBizType($bizType)
     {
         $this->bizType = $bizType;
-        $this->apiParas["biz_type"] = $bizType;
+        $this->apiParas['biz_type'] = $bizType;
     }
 
     public function getBizType()
@@ -38,7 +40,7 @@ class CircleTopiclistRequest extends BaseRequest
     public function setClassId($classId)
     {
         $this->classId = $classId;
-        $this->apiParas["class_id"] = $classId;
+        $this->apiParas['class_id'] = $classId;
     }
 
     public function getClassId()
@@ -49,7 +51,7 @@ class CircleTopiclistRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -57,14 +59,14 @@ class CircleTopiclistRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.edu.circle.topiclist";
+        return 'dingtalk.oapi.edu.circle.topiclist';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

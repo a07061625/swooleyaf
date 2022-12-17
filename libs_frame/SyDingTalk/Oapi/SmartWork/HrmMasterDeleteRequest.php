@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.smartwork.hrm.master.delete request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.01.06
  */
 class HrmMasterDeleteRequest extends BaseRequest
 {
     /**
      * 业务数据
-     **/
+     */
     private $bizData;
     /**
      * 业务方id(由系统统一分配)
-     **/
+     */
     private $tenantid;
 
     public function setBizData($bizData)
     {
         $this->bizData = $bizData;
-        $this->apiParas["biz_data"] = $bizData;
+        $this->apiParas['biz_data'] = $bizData;
     }
 
     public function getBizData()
@@ -35,7 +37,7 @@ class HrmMasterDeleteRequest extends BaseRequest
     public function setTenantid($tenantid)
     {
         $this->tenantid = $tenantid;
-        $this->apiParas["tenantid"] = $tenantid;
+        $this->apiParas['tenantid'] = $tenantid;
     }
 
     public function getTenantid()
@@ -43,9 +45,9 @@ class HrmMasterDeleteRequest extends BaseRequest
         return $this->tenantid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.smartwork.hrm.master.delete";
+        return 'dingtalk.oapi.smartwork.hrm.master.delete';
     }
 
     /**
@@ -53,12 +55,12 @@ class HrmMasterDeleteRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->tenantid, "tenantid");
+        RequestCheckUtil::checkNotNull($this->tenantid, 'tenantid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

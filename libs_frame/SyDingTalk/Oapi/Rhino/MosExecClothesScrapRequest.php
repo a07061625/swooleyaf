@@ -7,36 +7,38 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.rhino.mos.exec.clothes.scrap request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.07.03
  */
 class MosExecClothesScrapRequest extends BaseRequest
 {
     /**
      * 衣服ID列表
-     **/
+     */
     private $entityIds;
     /**
      * 扩展属性
-     **/
+     */
     private $extProperties;
     /**
      * 订单ID
-     **/
+     */
     private $orderId;
     /**
      * 租户ID
-     **/
+     */
     private $tenantId;
     /**
      * 业务参数[这里先预留],这里是用户ID,比如钉钉用户ID
-     **/
+     */
     private $userid;
 
     public function setEntityIds($entityIds)
     {
         $this->entityIds = $entityIds;
-        $this->apiParas["entity_ids"] = $entityIds;
+        $this->apiParas['entity_ids'] = $entityIds;
     }
 
     public function getEntityIds()
@@ -47,7 +49,7 @@ class MosExecClothesScrapRequest extends BaseRequest
     public function setExtProperties($extProperties)
     {
         $this->extProperties = $extProperties;
-        $this->apiParas["ext_properties"] = $extProperties;
+        $this->apiParas['ext_properties'] = $extProperties;
     }
 
     public function getExtProperties()
@@ -58,7 +60,7 @@ class MosExecClothesScrapRequest extends BaseRequest
     public function setOrderId($orderId)
     {
         $this->orderId = $orderId;
-        $this->apiParas["order_id"] = $orderId;
+        $this->apiParas['order_id'] = $orderId;
     }
 
     public function getOrderId()
@@ -69,7 +71,7 @@ class MosExecClothesScrapRequest extends BaseRequest
     public function setTenantId($tenantId)
     {
         $this->tenantId = $tenantId;
-        $this->apiParas["tenant_id"] = $tenantId;
+        $this->apiParas['tenant_id'] = $tenantId;
     }
 
     public function getTenantId()
@@ -80,7 +82,7 @@ class MosExecClothesScrapRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -88,9 +90,9 @@ class MosExecClothesScrapRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.rhino.mos.exec.clothes.scrap";
+        return 'dingtalk.oapi.rhino.mos.exec.clothes.scrap';
     }
 
     /**
@@ -98,14 +100,14 @@ class MosExecClothesScrapRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->entityIds, "entityIds");
-        RequestCheckUtil::checkMaxListSize($this->entityIds, 500, "entityIds");
-        RequestCheckUtil::checkNotNull($this->tenantId, "tenantId");
+        RequestCheckUtil::checkNotNull($this->entityIds, 'entityIds');
+        RequestCheckUtil::checkMaxListSize($this->entityIds, 500, 'entityIds');
+        RequestCheckUtil::checkNotNull($this->tenantId, 'tenantId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

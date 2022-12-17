@@ -6,20 +6,22 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.process.instance.terminate request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.09.09
  */
 class InstanceTerminateRequest extends BaseRequest
 {
     /**
      * 终止审批请求
-     **/
+     */
     private $request;
 
     public function setRequest($request)
     {
         $this->request = $request;
-        $this->apiParas["request"] = $request;
+        $this->apiParas['request'] = $request;
     }
 
     public function getRequest()
@@ -27,14 +29,14 @@ class InstanceTerminateRequest extends BaseRequest
         return $this->request;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.process.instance.terminate";
+        return 'dingtalk.oapi.process.instance.terminate';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

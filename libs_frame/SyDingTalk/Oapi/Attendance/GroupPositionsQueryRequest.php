@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.attendance.group.positions.query request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.09.24
  */
 class GroupPositionsQueryRequest extends BaseRequest
 {
     /**
      * 上一批次的最后一个id，默认空
-     **/
+     */
     private $cursor;
     /**
      * 考勤组id
-     **/
+     */
     private $groupKey;
     /**
      * 操作人userId
-     **/
+     */
     private $opUserid;
     /**
      * 分页大小
-     **/
+     */
     private $size;
 
     public function setCursor($cursor)
     {
         $this->cursor = $cursor;
-        $this->apiParas["cursor"] = $cursor;
+        $this->apiParas['cursor'] = $cursor;
     }
 
     public function getCursor()
@@ -43,7 +45,7 @@ class GroupPositionsQueryRequest extends BaseRequest
     public function setGroupKey($groupKey)
     {
         $this->groupKey = $groupKey;
-        $this->apiParas["group_key"] = $groupKey;
+        $this->apiParas['group_key'] = $groupKey;
     }
 
     public function getGroupKey()
@@ -54,7 +56,7 @@ class GroupPositionsQueryRequest extends BaseRequest
     public function setOpUserid($opUserid)
     {
         $this->opUserid = $opUserid;
-        $this->apiParas["op_userid"] = $opUserid;
+        $this->apiParas['op_userid'] = $opUserid;
     }
 
     public function getOpUserid()
@@ -65,7 +67,7 @@ class GroupPositionsQueryRequest extends BaseRequest
     public function setSize($size)
     {
         $this->size = $size;
-        $this->apiParas["size"] = $size;
+        $this->apiParas['size'] = $size;
     }
 
     public function getSize()
@@ -73,9 +75,9 @@ class GroupPositionsQueryRequest extends BaseRequest
         return $this->size;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.attendance.group.positions.query";
+        return 'dingtalk.oapi.attendance.group.positions.query';
     }
 
     /**
@@ -83,12 +85,12 @@ class GroupPositionsQueryRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->groupKey, "groupKey");
+        RequestCheckUtil::checkNotNull($this->groupKey, 'groupKey');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

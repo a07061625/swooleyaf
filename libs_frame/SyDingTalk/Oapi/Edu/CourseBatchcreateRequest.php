@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.edu.course.batchcreate request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.05.27
  */
 class CourseBatchcreateRequest extends BaseRequest
 {
     /**
      * course_infos
-     **/
+     */
     private $courseInfos;
     /**
      * 当前用户ID
-     **/
+     */
     private $opUserid;
 
     public function setCourseInfos($courseInfos)
     {
         $this->courseInfos = $courseInfos;
-        $this->apiParas["course_infos"] = $courseInfos;
+        $this->apiParas['course_infos'] = $courseInfos;
     }
 
     public function getCourseInfos()
@@ -35,7 +37,7 @@ class CourseBatchcreateRequest extends BaseRequest
     public function setOpUserid($opUserid)
     {
         $this->opUserid = $opUserid;
-        $this->apiParas["op_userid"] = $opUserid;
+        $this->apiParas['op_userid'] = $opUserid;
     }
 
     public function getOpUserid()
@@ -43,9 +45,9 @@ class CourseBatchcreateRequest extends BaseRequest
         return $this->opUserid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.edu.course.batchcreate";
+        return 'dingtalk.oapi.edu.course.batchcreate';
     }
 
     /**
@@ -53,12 +55,12 @@ class CourseBatchcreateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->opUserid, "opUserid");
+        RequestCheckUtil::checkNotNull($this->opUserid, 'opUserid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

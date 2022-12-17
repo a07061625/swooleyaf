@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.crm.app.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.09.24
  */
 class AppGetRequest extends BaseRequest
 {
     /**
      * 业务表示,crm颁发或者申请
-     **/
+     */
     private $bizKey;
 
     public function setBizKey($bizKey)
     {
         $this->bizKey = $bizKey;
-        $this->apiParas["biz_key"] = $bizKey;
+        $this->apiParas['biz_key'] = $bizKey;
     }
 
     public function getBizKey()
@@ -28,9 +30,9 @@ class AppGetRequest extends BaseRequest
         return $this->bizKey;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.crm.app.get";
+        return 'dingtalk.oapi.crm.app.get';
     }
 
     /**
@@ -38,12 +40,12 @@ class AppGetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->bizKey, "bizKey");
+        RequestCheckUtil::checkNotNull($this->bizKey, 'bizKey');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

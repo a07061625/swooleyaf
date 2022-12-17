@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.rhino.mos.layout.operationdefs.listsimple request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.04.22
  */
 class MosLayoutOperationDefsListSimpleRequest extends BaseRequest
 {
     /**
      * 工序唯一ID
-     **/
+     */
     private $operationUids;
     /**
      * 订单ID
-     **/
+     */
     private $orderId;
     /**
      * 租户ID
-     **/
+     */
     private $tenantId;
     /**
      * 用户ID
-     **/
+     */
     private $userid;
 
     public function setOperationUids($operationUids)
     {
         $this->operationUids = $operationUids;
-        $this->apiParas["operation_uids"] = $operationUids;
+        $this->apiParas['operation_uids'] = $operationUids;
     }
 
     public function getOperationUids()
@@ -43,7 +45,7 @@ class MosLayoutOperationDefsListSimpleRequest extends BaseRequest
     public function setOrderId($orderId)
     {
         $this->orderId = $orderId;
-        $this->apiParas["order_id"] = $orderId;
+        $this->apiParas['order_id'] = $orderId;
     }
 
     public function getOrderId()
@@ -54,7 +56,7 @@ class MosLayoutOperationDefsListSimpleRequest extends BaseRequest
     public function setTenantId($tenantId)
     {
         $this->tenantId = $tenantId;
-        $this->apiParas["tenant_id"] = $tenantId;
+        $this->apiParas['tenant_id'] = $tenantId;
     }
 
     public function getTenantId()
@@ -65,7 +67,7 @@ class MosLayoutOperationDefsListSimpleRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -73,9 +75,9 @@ class MosLayoutOperationDefsListSimpleRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.rhino.mos.layout.operationdefs.listsimple";
+        return 'dingtalk.oapi.rhino.mos.layout.operationdefs.listsimple';
     }
 
     /**
@@ -83,14 +85,14 @@ class MosLayoutOperationDefsListSimpleRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->operationUids, "operationUids");
-        RequestCheckUtil::checkMaxListSize($this->operationUids, 2000, "operationUids");
-        RequestCheckUtil::checkNotNull($this->tenantId, "tenantId");
+        RequestCheckUtil::checkNotNull($this->operationUids, 'operationUids');
+        RequestCheckUtil::checkMaxListSize($this->operationUids, 2000, 'operationUids');
+        RequestCheckUtil::checkNotNull($this->tenantId, 'tenantId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

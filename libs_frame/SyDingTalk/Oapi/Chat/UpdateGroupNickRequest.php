@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.chat.updategroupnick request
+ *
  * @author auto create
+ *
  * @since 1.0, 2018.07.25
  */
 class UpdateGroupNickRequest extends BaseRequest
 {
     /**
      * chatid
-     **/
+     */
     private $chatid;
     /**
      * 群昵称
-     **/
+     */
     private $groupNick;
     /**
      * 用户userid
-     **/
+     */
     private $userid;
 
     public function setChatid($chatid)
     {
         $this->chatid = $chatid;
-        $this->apiParas["chatid"] = $chatid;
+        $this->apiParas['chatid'] = $chatid;
     }
 
     public function getChatid()
@@ -39,7 +41,7 @@ class UpdateGroupNickRequest extends BaseRequest
     public function setGroupNick($groupNick)
     {
         $this->groupNick = $groupNick;
-        $this->apiParas["group_nick"] = $groupNick;
+        $this->apiParas['group_nick'] = $groupNick;
     }
 
     public function getGroupNick()
@@ -50,7 +52,7 @@ class UpdateGroupNickRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -58,9 +60,9 @@ class UpdateGroupNickRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.chat.updategroupnick";
+        return 'dingtalk.oapi.chat.updategroupnick';
     }
 
     /**
@@ -68,14 +70,14 @@ class UpdateGroupNickRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->chatid, "chatid");
-        RequestCheckUtil::checkNotNull($this->groupNick, "groupNick");
-        RequestCheckUtil::checkNotNull($this->userid, "userid");
+        RequestCheckUtil::checkNotNull($this->chatid, 'chatid');
+        RequestCheckUtil::checkNotNull($this->groupNick, 'groupNick');
+        RequestCheckUtil::checkNotNull($this->userid, 'userid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

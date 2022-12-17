@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.workbench.shortcut.delete request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.09.21
  */
 class ShortcutDeleteRequest extends BaseRequest
 {
     /**
      * 应用ID
-     **/
+     */
     private $appId;
     /**
      * 系统交互唯一流水号(ISV维度下不可重复)
-     **/
+     */
     private $bizNo;
 
     public function setAppId($appId)
     {
         $this->appId = $appId;
-        $this->apiParas["app_id"] = $appId;
+        $this->apiParas['app_id'] = $appId;
     }
 
     public function getAppId()
@@ -35,7 +37,7 @@ class ShortcutDeleteRequest extends BaseRequest
     public function setBizNo($bizNo)
     {
         $this->bizNo = $bizNo;
-        $this->apiParas["biz_no"] = $bizNo;
+        $this->apiParas['biz_no'] = $bizNo;
     }
 
     public function getBizNo()
@@ -43,9 +45,9 @@ class ShortcutDeleteRequest extends BaseRequest
         return $this->bizNo;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.workbench.shortcut.delete";
+        return 'dingtalk.oapi.workbench.shortcut.delete';
     }
 
     /**
@@ -53,13 +55,13 @@ class ShortcutDeleteRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->appId, "appId");
-        RequestCheckUtil::checkNotNull($this->bizNo, "bizNo");
+        RequestCheckUtil::checkNotNull($this->appId, 'appId');
+        RequestCheckUtil::checkNotNull($this->bizNo, 'bizNo');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

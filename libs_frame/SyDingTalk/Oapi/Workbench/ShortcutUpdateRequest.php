@@ -7,40 +7,42 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.workbench.shortcut.update request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.01
  */
 class ShortcutUpdateRequest extends BaseRequest
 {
     /**
      * 应用ID
-     **/
+     */
     private $appId;
     /**
      * 系统交互唯一业务单号
-     **/
+     */
     private $bizNo;
     /**
      * 图标Url
-     **/
+     */
     private $icon;
     /**
      * 快捷方式名称
-     **/
+     */
     private $name;
     /**
      * PC端快捷方式跳转地址
-     **/
+     */
     private $pcShortcutUri;
     /**
      * 快捷方式跳转地址(移动端地址-默认地址)
-     **/
+     */
     private $shortcutUri;
 
     public function setAppId($appId)
     {
         $this->appId = $appId;
-        $this->apiParas["app_id"] = $appId;
+        $this->apiParas['app_id'] = $appId;
     }
 
     public function getAppId()
@@ -51,7 +53,7 @@ class ShortcutUpdateRequest extends BaseRequest
     public function setBizNo($bizNo)
     {
         $this->bizNo = $bizNo;
-        $this->apiParas["biz_no"] = $bizNo;
+        $this->apiParas['biz_no'] = $bizNo;
     }
 
     public function getBizNo()
@@ -62,7 +64,7 @@ class ShortcutUpdateRequest extends BaseRequest
     public function setIcon($icon)
     {
         $this->icon = $icon;
-        $this->apiParas["icon"] = $icon;
+        $this->apiParas['icon'] = $icon;
     }
 
     public function getIcon()
@@ -73,7 +75,7 @@ class ShortcutUpdateRequest extends BaseRequest
     public function setName($name)
     {
         $this->name = $name;
-        $this->apiParas["name"] = $name;
+        $this->apiParas['name'] = $name;
     }
 
     public function getName()
@@ -84,7 +86,7 @@ class ShortcutUpdateRequest extends BaseRequest
     public function setPcShortcutUri($pcShortcutUri)
     {
         $this->pcShortcutUri = $pcShortcutUri;
-        $this->apiParas["pc_shortcut_uri"] = $pcShortcutUri;
+        $this->apiParas['pc_shortcut_uri'] = $pcShortcutUri;
     }
 
     public function getPcShortcutUri()
@@ -95,7 +97,7 @@ class ShortcutUpdateRequest extends BaseRequest
     public function setShortcutUri($shortcutUri)
     {
         $this->shortcutUri = $shortcutUri;
-        $this->apiParas["shortcut_uri"] = $shortcutUri;
+        $this->apiParas['shortcut_uri'] = $shortcutUri;
     }
 
     public function getShortcutUri()
@@ -103,9 +105,9 @@ class ShortcutUpdateRequest extends BaseRequest
         return $this->shortcutUri;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.workbench.shortcut.update";
+        return 'dingtalk.oapi.workbench.shortcut.update';
     }
 
     /**
@@ -113,13 +115,13 @@ class ShortcutUpdateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->appId, "appId");
-        RequestCheckUtil::checkNotNull($this->bizNo, "bizNo");
+        RequestCheckUtil::checkNotNull($this->appId, 'appId');
+        RequestCheckUtil::checkNotNull($this->bizNo, 'bizNo');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

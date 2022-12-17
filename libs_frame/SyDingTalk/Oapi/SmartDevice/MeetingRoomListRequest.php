@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.smartdevice.meetingroom.list request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.12.16
  */
 class MeetingRoomListRequest extends BaseRequest
 {
     /**
      * 如果为null,那么就从头开始查询.
-     **/
+     */
     private $cursor;
     /**
      * 最大500
-     **/
+     */
     private $size;
 
     public function setCursor($cursor)
     {
         $this->cursor = $cursor;
-        $this->apiParas["cursor"] = $cursor;
+        $this->apiParas['cursor'] = $cursor;
     }
 
     public function getCursor()
@@ -35,7 +37,7 @@ class MeetingRoomListRequest extends BaseRequest
     public function setSize($size)
     {
         $this->size = $size;
-        $this->apiParas["size"] = $size;
+        $this->apiParas['size'] = $size;
     }
 
     public function getSize()
@@ -43,9 +45,9 @@ class MeetingRoomListRequest extends BaseRequest
         return $this->size;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.smartdevice.meetingroom.list";
+        return 'dingtalk.oapi.smartdevice.meetingroom.list';
     }
 
     /**
@@ -53,12 +55,12 @@ class MeetingRoomListRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->size, "size");
+        RequestCheckUtil::checkNotNull($this->size, 'size');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

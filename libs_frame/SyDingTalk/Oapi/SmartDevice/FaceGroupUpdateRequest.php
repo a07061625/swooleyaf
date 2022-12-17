@@ -7,44 +7,46 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.smartdevice.facegroup.update request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.01
  */
 class FaceGroupUpdateRequest extends BaseRequest
 {
     /**
      * M2上的定制UI
-     **/
+     */
     private $bgImgUrl;
     /**
      * 业务id
-     **/
+     */
     private $bizId;
     /**
      * 结束时间
-     **/
+     */
     private $endTime;
     /**
      * 识别成功后的问候语
-     **/
+     */
     private $greetingMsg;
     /**
      * 开始时间
-     **/
+     */
     private $startTime;
     /**
      * 识别组启用状态：1-已启用；2未启用；
-     **/
+     */
     private $status;
     /**
      * 识别组的标题
-     **/
+     */
     private $title;
 
     public function setBgImgUrl($bgImgUrl)
     {
         $this->bgImgUrl = $bgImgUrl;
-        $this->apiParas["bg_img_url"] = $bgImgUrl;
+        $this->apiParas['bg_img_url'] = $bgImgUrl;
     }
 
     public function getBgImgUrl()
@@ -55,7 +57,7 @@ class FaceGroupUpdateRequest extends BaseRequest
     public function setBizId($bizId)
     {
         $this->bizId = $bizId;
-        $this->apiParas["biz_id"] = $bizId;
+        $this->apiParas['biz_id'] = $bizId;
     }
 
     public function getBizId()
@@ -66,7 +68,7 @@ class FaceGroupUpdateRequest extends BaseRequest
     public function setEndTime($endTime)
     {
         $this->endTime = $endTime;
-        $this->apiParas["end_time"] = $endTime;
+        $this->apiParas['end_time'] = $endTime;
     }
 
     public function getEndTime()
@@ -77,7 +79,7 @@ class FaceGroupUpdateRequest extends BaseRequest
     public function setGreetingMsg($greetingMsg)
     {
         $this->greetingMsg = $greetingMsg;
-        $this->apiParas["greeting_msg"] = $greetingMsg;
+        $this->apiParas['greeting_msg'] = $greetingMsg;
     }
 
     public function getGreetingMsg()
@@ -88,7 +90,7 @@ class FaceGroupUpdateRequest extends BaseRequest
     public function setStartTime($startTime)
     {
         $this->startTime = $startTime;
-        $this->apiParas["start_time"] = $startTime;
+        $this->apiParas['start_time'] = $startTime;
     }
 
     public function getStartTime()
@@ -99,7 +101,7 @@ class FaceGroupUpdateRequest extends BaseRequest
     public function setStatus($status)
     {
         $this->status = $status;
-        $this->apiParas["status"] = $status;
+        $this->apiParas['status'] = $status;
     }
 
     public function getStatus()
@@ -110,7 +112,7 @@ class FaceGroupUpdateRequest extends BaseRequest
     public function setTitle($title)
     {
         $this->title = $title;
-        $this->apiParas["title"] = $title;
+        $this->apiParas['title'] = $title;
     }
 
     public function getTitle()
@@ -118,9 +120,9 @@ class FaceGroupUpdateRequest extends BaseRequest
         return $this->title;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.smartdevice.facegroup.update";
+        return 'dingtalk.oapi.smartdevice.facegroup.update';
     }
 
     /**
@@ -128,22 +130,22 @@ class FaceGroupUpdateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkMaxLength($this->bgImgUrl, 512, "bgImgUrl");
-        RequestCheckUtil::checkNotNull($this->bizId, "bizId");
-        RequestCheckUtil::checkMaxLength($this->bizId, 23, "bizId");
-        RequestCheckUtil::checkNotNull($this->endTime, "endTime");
-        RequestCheckUtil::checkMaxLength($this->greetingMsg, 16, "greetingMsg");
-        RequestCheckUtil::checkNotNull($this->startTime, "startTime");
-        RequestCheckUtil::checkNotNull($this->status, "status");
-        RequestCheckUtil::checkMaxValue($this->status, 2, "status");
-        RequestCheckUtil::checkMinValue($this->status, 1, "status");
-        RequestCheckUtil::checkNotNull($this->title, "title");
-        RequestCheckUtil::checkMaxLength($this->title, 32, "title");
+        RequestCheckUtil::checkMaxLength($this->bgImgUrl, 512, 'bgImgUrl');
+        RequestCheckUtil::checkNotNull($this->bizId, 'bizId');
+        RequestCheckUtil::checkMaxLength($this->bizId, 23, 'bizId');
+        RequestCheckUtil::checkNotNull($this->endTime, 'endTime');
+        RequestCheckUtil::checkMaxLength($this->greetingMsg, 16, 'greetingMsg');
+        RequestCheckUtil::checkNotNull($this->startTime, 'startTime');
+        RequestCheckUtil::checkNotNull($this->status, 'status');
+        RequestCheckUtil::checkMaxValue($this->status, 2, 'status');
+        RequestCheckUtil::checkMinValue($this->status, 1, 'status');
+        RequestCheckUtil::checkNotNull($this->title, 'title');
+        RequestCheckUtil::checkMaxLength($this->title, 32, 'title');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

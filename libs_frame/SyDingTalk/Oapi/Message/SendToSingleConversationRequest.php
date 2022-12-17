@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.message.send_to_single_conversation request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.01
  */
 class SendToSingleConversationRequest extends BaseRequest
 {
     /**
      * 推送消息内容
-     **/
+     */
     private $msg;
     /**
      * 接收者userId
-     **/
+     */
     private $receiverUserid;
     /**
      * 发送者userId
-     **/
+     */
     private $senderUserid;
 
     public function setMsg($msg)
     {
         $this->msg = $msg;
-        $this->apiParas["msg"] = $msg;
+        $this->apiParas['msg'] = $msg;
     }
 
     public function getMsg()
@@ -39,7 +41,7 @@ class SendToSingleConversationRequest extends BaseRequest
     public function setReceiverUserid($receiverUserid)
     {
         $this->receiverUserid = $receiverUserid;
-        $this->apiParas["receiver_userid"] = $receiverUserid;
+        $this->apiParas['receiver_userid'] = $receiverUserid;
     }
 
     public function getReceiverUserid()
@@ -50,7 +52,7 @@ class SendToSingleConversationRequest extends BaseRequest
     public function setSenderUserid($senderUserid)
     {
         $this->senderUserid = $senderUserid;
-        $this->apiParas["sender_userid"] = $senderUserid;
+        $this->apiParas['sender_userid'] = $senderUserid;
     }
 
     public function getSenderUserid()
@@ -58,9 +60,9 @@ class SendToSingleConversationRequest extends BaseRequest
         return $this->senderUserid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.message.send_to_single_conversation";
+        return 'dingtalk.oapi.message.send_to_single_conversation';
     }
 
     /**
@@ -68,13 +70,13 @@ class SendToSingleConversationRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->receiverUserid, "receiverUserid");
-        RequestCheckUtil::checkNotNull($this->senderUserid, "senderUserid");
+        RequestCheckUtil::checkNotNull($this->receiverUserid, 'receiverUserid');
+        RequestCheckUtil::checkNotNull($this->senderUserid, 'senderUserid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

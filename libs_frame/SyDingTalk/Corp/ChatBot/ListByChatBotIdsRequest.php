@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.corp.chatbot.listbychatbotids request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.09.18
  */
 class ListByChatBotIdsRequest extends BaseRequest
 {
     /**
      * chatbotId列表
-     **/
+     */
     private $chatbotIds;
 
     public function setChatbotIds($chatbotIds)
     {
         $this->chatbotIds = $chatbotIds;
-        $this->apiParas["chatbot_ids"] = $chatbotIds;
+        $this->apiParas['chatbot_ids'] = $chatbotIds;
     }
 
     public function getChatbotIds()
@@ -28,9 +30,9 @@ class ListByChatBotIdsRequest extends BaseRequest
         return $this->chatbotIds;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.corp.chatbot.listbychatbotids";
+        return 'dingtalk.corp.chatbot.listbychatbotids';
     }
 
     /**
@@ -38,13 +40,13 @@ class ListByChatBotIdsRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->chatbotIds, "chatbotIds");
-        RequestCheckUtil::checkMaxListSize($this->chatbotIds, 20, "chatbotIds");
+        RequestCheckUtil::checkNotNull($this->chatbotIds, 'chatbotIds');
+        RequestCheckUtil::checkMaxListSize($this->chatbotIds, 20, 'chatbotIds');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

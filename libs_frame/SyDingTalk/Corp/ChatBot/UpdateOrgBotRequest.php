@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.corp.chatbot.updateorgbot request
+ *
  * @author auto create
+ *
  * @since 1.0, 2018.07.25
  */
 class UpdateOrgBotRequest extends BaseRequest
 {
     /**
      * 创建时返回的机器人Id
-     **/
+     */
     private $chatbotId;
     /**
      * 头像的mediaId
-     **/
+     */
     private $icon;
     /**
      * 机器人名字
-     **/
+     */
     private $name;
 
     public function setChatbotId($chatbotId)
     {
         $this->chatbotId = $chatbotId;
-        $this->apiParas["chatbot_id"] = $chatbotId;
+        $this->apiParas['chatbot_id'] = $chatbotId;
     }
 
     public function getChatbotId()
@@ -39,7 +41,7 @@ class UpdateOrgBotRequest extends BaseRequest
     public function setIcon($icon)
     {
         $this->icon = $icon;
-        $this->apiParas["icon"] = $icon;
+        $this->apiParas['icon'] = $icon;
     }
 
     public function getIcon()
@@ -50,7 +52,7 @@ class UpdateOrgBotRequest extends BaseRequest
     public function setName($name)
     {
         $this->name = $name;
-        $this->apiParas["name"] = $name;
+        $this->apiParas['name'] = $name;
     }
 
     public function getName()
@@ -58,9 +60,9 @@ class UpdateOrgBotRequest extends BaseRequest
         return $this->name;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.corp.chatbot.updateorgbot";
+        return 'dingtalk.corp.chatbot.updateorgbot';
     }
 
     /**
@@ -68,14 +70,14 @@ class UpdateOrgBotRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->chatbotId, "chatbotId");
-        RequestCheckUtil::checkNotNull($this->icon, "icon");
-        RequestCheckUtil::checkNotNull($this->name, "name");
+        RequestCheckUtil::checkNotNull($this->chatbotId, 'chatbotId');
+        RequestCheckUtil::checkNotNull($this->icon, 'icon');
+        RequestCheckUtil::checkNotNull($this->name, 'name');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

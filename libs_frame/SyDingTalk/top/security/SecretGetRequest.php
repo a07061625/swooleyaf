@@ -2,13 +2,13 @@
 
 class TopSecretGetRequest
 {
-    private $apiParas = array();
-    
+    private $apiParas = [];
+
     public function getApiMethodName()
     {
-        return "taobao.top.secret.get";
+        return 'taobao.top.secret.get';
     }
-    
+
     public function getApiParas()
     {
         return $this->apiParas;
@@ -28,14 +28,14 @@ class TopSecretGetRequest
     {
         $this->apiParas['secret_version'] = $version;
     }
-    
+
     public function check()
     {
     }
-    
+
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

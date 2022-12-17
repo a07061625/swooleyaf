@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.attendance.getAttendUpdateData request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.01
  */
 class GetAttendUpdateDataRequest extends BaseRequest
 {
     /**
      * 用户id
-     **/
+     */
     private $userid;
     /**
      * 工作日
-     **/
+     */
     private $workDate;
 
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -35,7 +37,7 @@ class GetAttendUpdateDataRequest extends BaseRequest
     public function setWorkDate($workDate)
     {
         $this->workDate = $workDate;
-        $this->apiParas["work_date"] = $workDate;
+        $this->apiParas['work_date'] = $workDate;
     }
 
     public function getWorkDate()
@@ -43,9 +45,9 @@ class GetAttendUpdateDataRequest extends BaseRequest
         return $this->workDate;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.attendance.getAttendUpdateData";
+        return 'dingtalk.oapi.attendance.getAttendUpdateData';
     }
 
     /**
@@ -53,13 +55,13 @@ class GetAttendUpdateDataRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->userid, "userid");
-        RequestCheckUtil::checkNotNull($this->workDate, "workDate");
+        RequestCheckUtil::checkNotNull($this->userid, 'userid');
+        RequestCheckUtil::checkNotNull($this->workDate, 'workDate');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

@@ -6,32 +6,34 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.service.get_agent request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.12.16
  */
 class GetAgentRequest extends BaseRequest
 {
     /**
      * 授权企业方应用id
-     **/
+     */
     private $agentid;
     /**
      * 授权企业方corpid
-     **/
+     */
     private $authCorpid;
     /**
      * 永久授权码
-     **/
+     */
     private $permanentCode;
     /**
      * 应用套件key
-     **/
+     */
     private $suiteKey;
 
     public function setAgentid($agentid)
     {
         $this->agentid = $agentid;
-        $this->apiParas["agentid"] = $agentid;
+        $this->apiParas['agentid'] = $agentid;
     }
 
     public function getAgentid()
@@ -42,7 +44,7 @@ class GetAgentRequest extends BaseRequest
     public function setAuthCorpid($authCorpid)
     {
         $this->authCorpid = $authCorpid;
-        $this->apiParas["auth_corpid"] = $authCorpid;
+        $this->apiParas['auth_corpid'] = $authCorpid;
     }
 
     public function getAuthCorpid()
@@ -53,7 +55,7 @@ class GetAgentRequest extends BaseRequest
     public function setPermanentCode($permanentCode)
     {
         $this->permanentCode = $permanentCode;
-        $this->apiParas["permanent_code"] = $permanentCode;
+        $this->apiParas['permanent_code'] = $permanentCode;
     }
 
     public function getPermanentCode()
@@ -64,7 +66,7 @@ class GetAgentRequest extends BaseRequest
     public function setSuiteKey($suiteKey)
     {
         $this->suiteKey = $suiteKey;
-        $this->apiParas["suite_key"] = $suiteKey;
+        $this->apiParas['suite_key'] = $suiteKey;
     }
 
     public function getSuiteKey()
@@ -72,14 +74,14 @@ class GetAgentRequest extends BaseRequest
         return $this->suiteKey;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.service.get_agent";
+        return 'dingtalk.oapi.service.get_agent';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

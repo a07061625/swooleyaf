@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.blackboard.category.list request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.07.29
  */
 class CategoryListRequest extends BaseRequest
 {
     /**
      * 操作人userId(必须是公告管理员)
-     **/
+     */
     private $operationUserid;
 
     public function setOperationUserid($operationUserid)
     {
         $this->operationUserid = $operationUserid;
-        $this->apiParas["operation_userid"] = $operationUserid;
+        $this->apiParas['operation_userid'] = $operationUserid;
     }
 
     public function getOperationUserid()
@@ -28,9 +30,9 @@ class CategoryListRequest extends BaseRequest
         return $this->operationUserid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.blackboard.category.list";
+        return 'dingtalk.oapi.blackboard.category.list';
     }
 
     /**
@@ -38,12 +40,12 @@ class CategoryListRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->operationUserid, "operationUserid");
+        RequestCheckUtil::checkNotNull($this->operationUserid, 'operationUserid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

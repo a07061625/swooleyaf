@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.org.setshortcut request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.03
  */
 class SetShortcutRequest extends BaseRequest
 {
     /**
      * 微应用实例id列表
-     **/
+     */
     private $agentIds;
 
     public function setAgentIds($agentIds)
     {
         $this->agentIds = $agentIds;
-        $this->apiParas["agentIds"] = $agentIds;
+        $this->apiParas['agentIds'] = $agentIds;
     }
 
     public function getAgentIds()
@@ -28,9 +30,9 @@ class SetShortcutRequest extends BaseRequest
         return $this->agentIds;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.org.setshortcut";
+        return 'dingtalk.oapi.org.setshortcut';
     }
 
     /**
@@ -38,12 +40,12 @@ class SetShortcutRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkMaxListSize($this->agentIds, 20, "agentIds");
+        RequestCheckUtil::checkMaxListSize($this->agentIds, 20, 'agentIds');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

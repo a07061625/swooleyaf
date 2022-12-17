@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.industry.department.list request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.08.05
  */
 class DepartmentListRequest extends BaseRequest
 {
     /**
      * 游标，不传默认1
-     **/
+     */
     private $cursor;
     /**
      * 部门ID
-     **/
+     */
     private $deptId;
     /**
      * 大小
-     **/
+     */
     private $size;
 
     public function setCursor($cursor)
     {
         $this->cursor = $cursor;
-        $this->apiParas["cursor"] = $cursor;
+        $this->apiParas['cursor'] = $cursor;
     }
 
     public function getCursor()
@@ -39,7 +41,7 @@ class DepartmentListRequest extends BaseRequest
     public function setDeptId($deptId)
     {
         $this->deptId = $deptId;
-        $this->apiParas["dept_id"] = $deptId;
+        $this->apiParas['dept_id'] = $deptId;
     }
 
     public function getDeptId()
@@ -50,7 +52,7 @@ class DepartmentListRequest extends BaseRequest
     public function setSize($size)
     {
         $this->size = $size;
-        $this->apiParas["size"] = $size;
+        $this->apiParas['size'] = $size;
     }
 
     public function getSize()
@@ -58,9 +60,9 @@ class DepartmentListRequest extends BaseRequest
         return $this->size;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.industry.department.list";
+        return 'dingtalk.oapi.industry.department.list';
     }
 
     /**
@@ -68,13 +70,13 @@ class DepartmentListRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->deptId, "deptId");
-        RequestCheckUtil::checkNotNull($this->size, "size");
+        RequestCheckUtil::checkNotNull($this->deptId, 'deptId');
+        RequestCheckUtil::checkNotNull($this->size, 'size');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

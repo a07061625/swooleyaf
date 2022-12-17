@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.attendance.group.member.update request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.08.16
  */
 class GroupMemberUpdateRequest extends BaseRequest
 {
     /**
      * 考勤组id
-     **/
+     */
     private $groupId;
     /**
      * 操作人userId
-     **/
+     */
     private $opUserId;
     /**
      * 0表示从今天开始排班，1表示从明天
-     **/
+     */
     private $scheduleFlag;
     /**
      * 更新入参
-     **/
+     */
     private $updateParam;
 
     public function setGroupId($groupId)
     {
         $this->groupId = $groupId;
-        $this->apiParas["group_id"] = $groupId;
+        $this->apiParas['group_id'] = $groupId;
     }
 
     public function getGroupId()
@@ -43,7 +45,7 @@ class GroupMemberUpdateRequest extends BaseRequest
     public function setOpUserId($opUserId)
     {
         $this->opUserId = $opUserId;
-        $this->apiParas["op_user_id"] = $opUserId;
+        $this->apiParas['op_user_id'] = $opUserId;
     }
 
     public function getOpUserId()
@@ -54,7 +56,7 @@ class GroupMemberUpdateRequest extends BaseRequest
     public function setScheduleFlag($scheduleFlag)
     {
         $this->scheduleFlag = $scheduleFlag;
-        $this->apiParas["schedule_flag"] = $scheduleFlag;
+        $this->apiParas['schedule_flag'] = $scheduleFlag;
     }
 
     public function getScheduleFlag()
@@ -65,7 +67,7 @@ class GroupMemberUpdateRequest extends BaseRequest
     public function setUpdateParam($updateParam)
     {
         $this->updateParam = $updateParam;
-        $this->apiParas["update_param"] = $updateParam;
+        $this->apiParas['update_param'] = $updateParam;
     }
 
     public function getUpdateParam()
@@ -73,9 +75,9 @@ class GroupMemberUpdateRequest extends BaseRequest
         return $this->updateParam;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.attendance.group.member.update";
+        return 'dingtalk.oapi.attendance.group.member.update';
     }
 
     /**
@@ -83,14 +85,14 @@ class GroupMemberUpdateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->groupId, "groupId");
-        RequestCheckUtil::checkNotNull($this->opUserId, "opUserId");
-        RequestCheckUtil::checkNotNull($this->scheduleFlag, "scheduleFlag");
+        RequestCheckUtil::checkNotNull($this->groupId, 'groupId');
+        RequestCheckUtil::checkNotNull($this->opUserId, 'opUserId');
+        RequestCheckUtil::checkNotNull($this->scheduleFlag, 'scheduleFlag');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

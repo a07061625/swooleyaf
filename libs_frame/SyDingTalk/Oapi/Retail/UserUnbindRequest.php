@@ -6,32 +6,34 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.retail.user.unbind request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.03.09
  */
 class UserUnbindRequest extends BaseRequest
 {
     /**
      * 中心组织下唯一Id
-     **/
+     */
     private $associateUnionId;
     /**
      * 业务身份
-     **/
+     */
     private $channel;
     /**
      * 主帐号ID
-     **/
+     */
     private $outerId;
     /**
      * 子帐号ID
-     **/
+     */
     private $subOuterId;
 
     public function setAssociateUnionId($associateUnionId)
     {
         $this->associateUnionId = $associateUnionId;
-        $this->apiParas["associate_union_id"] = $associateUnionId;
+        $this->apiParas['associate_union_id'] = $associateUnionId;
     }
 
     public function getAssociateUnionId()
@@ -42,7 +44,7 @@ class UserUnbindRequest extends BaseRequest
     public function setChannel($channel)
     {
         $this->channel = $channel;
-        $this->apiParas["channel"] = $channel;
+        $this->apiParas['channel'] = $channel;
     }
 
     public function getChannel()
@@ -53,7 +55,7 @@ class UserUnbindRequest extends BaseRequest
     public function setOuterId($outerId)
     {
         $this->outerId = $outerId;
-        $this->apiParas["outer_id"] = $outerId;
+        $this->apiParas['outer_id'] = $outerId;
     }
 
     public function getOuterId()
@@ -64,7 +66,7 @@ class UserUnbindRequest extends BaseRequest
     public function setSubOuterId($subOuterId)
     {
         $this->subOuterId = $subOuterId;
-        $this->apiParas["sub_outer_id"] = $subOuterId;
+        $this->apiParas['sub_outer_id'] = $subOuterId;
     }
 
     public function getSubOuterId()
@@ -72,14 +74,14 @@ class UserUnbindRequest extends BaseRequest
         return $this->subOuterId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.retail.user.unbind";
+        return 'dingtalk.oapi.retail.user.unbind';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

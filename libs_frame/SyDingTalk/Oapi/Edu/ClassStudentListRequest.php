@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.edu.class.student.list request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.02.18
  */
 class ClassStudentListRequest extends BaseRequest
 {
     /**
      * 班级ID
-     **/
+     */
     private $classId;
     /**
      * corpId
-     **/
+     */
     private $corpId;
     /**
      * 学生入参
-     **/
+     */
     private $studentParam;
     /**
      * 用户ID
-     **/
+     */
     private $userid;
 
     public function setClassId($classId)
     {
         $this->classId = $classId;
-        $this->apiParas["class_id"] = $classId;
+        $this->apiParas['class_id'] = $classId;
     }
 
     public function getClassId()
@@ -43,7 +45,7 @@ class ClassStudentListRequest extends BaseRequest
     public function setCorpId($corpId)
     {
         $this->corpId = $corpId;
-        $this->apiParas["corp_id"] = $corpId;
+        $this->apiParas['corp_id'] = $corpId;
     }
 
     public function getCorpId()
@@ -54,7 +56,7 @@ class ClassStudentListRequest extends BaseRequest
     public function setStudentParam($studentParam)
     {
         $this->studentParam = $studentParam;
-        $this->apiParas["student_param"] = $studentParam;
+        $this->apiParas['student_param'] = $studentParam;
     }
 
     public function getStudentParam()
@@ -65,7 +67,7 @@ class ClassStudentListRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -73,9 +75,9 @@ class ClassStudentListRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.edu.class.student.list";
+        return 'dingtalk.oapi.edu.class.student.list';
     }
 
     /**
@@ -83,13 +85,13 @@ class ClassStudentListRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->classId, "classId");
-        RequestCheckUtil::checkNotNull($this->userid, "userid");
+        RequestCheckUtil::checkNotNull($this->classId, 'classId');
+        RequestCheckUtil::checkNotNull($this->userid, 'userid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

@@ -7,36 +7,38 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.robot.intelligent.message.send request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.11.09
  */
 class IntelligentMessageSendRequest extends BaseRequest
 {
     /**
      * at人的unionId列表
-     **/
+     */
     private $atUnionIds;
     /**
      * 申请到的消息模板唯一标识符
-     **/
+     */
     private $msgKey;
     /**
      * 消息模板中，变量本次替换的值
-     **/
+     */
     private $msgParam;
     /**
      * 开放的群ID
-     **/
+     */
     private $openConversationId;
     /**
      * 消息接收者的unionId列表，如果不传则表示群全员可见
-     **/
+     */
     private $receiverUnionIds;
 
     public function setAtUnionIds($atUnionIds)
     {
         $this->atUnionIds = $atUnionIds;
-        $this->apiParas["at_union_ids"] = $atUnionIds;
+        $this->apiParas['at_union_ids'] = $atUnionIds;
     }
 
     public function getAtUnionIds()
@@ -47,7 +49,7 @@ class IntelligentMessageSendRequest extends BaseRequest
     public function setMsgKey($msgKey)
     {
         $this->msgKey = $msgKey;
-        $this->apiParas["msg_key"] = $msgKey;
+        $this->apiParas['msg_key'] = $msgKey;
     }
 
     public function getMsgKey()
@@ -58,7 +60,7 @@ class IntelligentMessageSendRequest extends BaseRequest
     public function setMsgParam($msgParam)
     {
         $this->msgParam = $msgParam;
-        $this->apiParas["msg_param"] = $msgParam;
+        $this->apiParas['msg_param'] = $msgParam;
     }
 
     public function getMsgParam()
@@ -69,7 +71,7 @@ class IntelligentMessageSendRequest extends BaseRequest
     public function setOpenConversationId($openConversationId)
     {
         $this->openConversationId = $openConversationId;
-        $this->apiParas["open_conversation_id"] = $openConversationId;
+        $this->apiParas['open_conversation_id'] = $openConversationId;
     }
 
     public function getOpenConversationId()
@@ -80,7 +82,7 @@ class IntelligentMessageSendRequest extends BaseRequest
     public function setReceiverUnionIds($receiverUnionIds)
     {
         $this->receiverUnionIds = $receiverUnionIds;
-        $this->apiParas["receiver_union_ids"] = $receiverUnionIds;
+        $this->apiParas['receiver_union_ids'] = $receiverUnionIds;
     }
 
     public function getReceiverUnionIds()
@@ -88,9 +90,9 @@ class IntelligentMessageSendRequest extends BaseRequest
         return $this->receiverUnionIds;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.robot.intelligent.message.send";
+        return 'dingtalk.oapi.robot.intelligent.message.send';
     }
 
     /**
@@ -98,16 +100,16 @@ class IntelligentMessageSendRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkMaxListSize($this->atUnionIds, 999, "atUnionIds");
-        RequestCheckUtil::checkNotNull($this->msgKey, "msgKey");
-        RequestCheckUtil::checkNotNull($this->msgParam, "msgParam");
-        RequestCheckUtil::checkNotNull($this->openConversationId, "openConversationId");
-        RequestCheckUtil::checkMaxListSize($this->receiverUnionIds, 999, "receiverUnionIds");
+        RequestCheckUtil::checkMaxListSize($this->atUnionIds, 999, 'atUnionIds');
+        RequestCheckUtil::checkNotNull($this->msgKey, 'msgKey');
+        RequestCheckUtil::checkNotNull($this->msgParam, 'msgParam');
+        RequestCheckUtil::checkNotNull($this->openConversationId, 'openConversationId');
+        RequestCheckUtil::checkMaxListSize($this->receiverUnionIds, 999, 'receiverUnionIds');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

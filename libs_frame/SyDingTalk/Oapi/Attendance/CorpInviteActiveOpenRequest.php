@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.attendance.corp.inviteactive.open request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.01
  */
 class CorpInviteActiveOpenRequest extends BaseRequest
 {
     /**
      * 姓名
-     **/
+     */
     private $adminName;
     /**
      * 手机号
-     **/
+     */
     private $adminPhone;
 
     public function setAdminName($adminName)
     {
         $this->adminName = $adminName;
-        $this->apiParas["admin_name"] = $adminName;
+        $this->apiParas['admin_name'] = $adminName;
     }
 
     public function getAdminName()
@@ -35,7 +37,7 @@ class CorpInviteActiveOpenRequest extends BaseRequest
     public function setAdminPhone($adminPhone)
     {
         $this->adminPhone = $adminPhone;
-        $this->apiParas["admin_phone"] = $adminPhone;
+        $this->apiParas['admin_phone'] = $adminPhone;
     }
 
     public function getAdminPhone()
@@ -43,9 +45,9 @@ class CorpInviteActiveOpenRequest extends BaseRequest
         return $this->adminPhone;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.attendance.corp.inviteactive.open";
+        return 'dingtalk.oapi.attendance.corp.inviteactive.open';
     }
 
     /**
@@ -53,13 +55,13 @@ class CorpInviteActiveOpenRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->adminName, "adminName");
-        RequestCheckUtil::checkNotNull($this->adminPhone, "adminPhone");
+        RequestCheckUtil::checkNotNull($this->adminName, 'adminName');
+        RequestCheckUtil::checkNotNull($this->adminPhone, 'adminPhone');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

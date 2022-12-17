@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.medal.corpmedal.query request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.05.20
  */
 class CorpMedalQueryRequest extends BaseRequest
 {
     /**
      * 勋章模板ID列表
-     **/
+     */
     private $templateIds;
     /**
      * 员工ID
-     **/
+     */
     private $userid;
 
     public function setTemplateIds($templateIds)
     {
         $this->templateIds = $templateIds;
-        $this->apiParas["template_ids"] = $templateIds;
+        $this->apiParas['template_ids'] = $templateIds;
     }
 
     public function getTemplateIds()
@@ -35,7 +37,7 @@ class CorpMedalQueryRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -43,9 +45,9 @@ class CorpMedalQueryRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.medal.corpmedal.query";
+        return 'dingtalk.oapi.medal.corpmedal.query';
     }
 
     /**
@@ -53,13 +55,13 @@ class CorpMedalQueryRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkMaxListSize($this->templateIds, 10, "templateIds");
-        RequestCheckUtil::checkNotNull($this->userid, "userid");
+        RequestCheckUtil::checkMaxListSize($this->templateIds, 10, 'templateIds');
+        RequestCheckUtil::checkNotNull($this->userid, 'userid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

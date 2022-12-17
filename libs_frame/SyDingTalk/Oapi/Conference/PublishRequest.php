@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.conference.publish request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.01
  */
 class PublishRequest extends BaseRequest
 {
     /**
      * 会务id
-     **/
+     */
     private $conferenceId;
     /**
      * 操作用户id
-     **/
+     */
     private $userid;
 
     public function setConferenceId($conferenceId)
     {
         $this->conferenceId = $conferenceId;
-        $this->apiParas["conference_id"] = $conferenceId;
+        $this->apiParas['conference_id'] = $conferenceId;
     }
 
     public function getConferenceId()
@@ -35,7 +37,7 @@ class PublishRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -43,9 +45,9 @@ class PublishRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.conference.publish";
+        return 'dingtalk.oapi.conference.publish';
     }
 
     /**
@@ -53,13 +55,13 @@ class PublishRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->conferenceId, "conferenceId");
-        RequestCheckUtil::checkNotNull($this->userid, "userid");
+        RequestCheckUtil::checkNotNull($this->conferenceId, 'conferenceId');
+        RequestCheckUtil::checkNotNull($this->userid, 'userid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

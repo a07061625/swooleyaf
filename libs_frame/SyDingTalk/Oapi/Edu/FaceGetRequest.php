@@ -6,24 +6,26 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.edu.face.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.11.14
  */
 class FaceGetRequest extends BaseRequest
 {
     /**
      * 班级id
-     **/
+     */
     private $classId;
     /**
      * 员工id
-     **/
+     */
     private $userid;
 
     public function setClassId($classId)
     {
         $this->classId = $classId;
-        $this->apiParas["class_id"] = $classId;
+        $this->apiParas['class_id'] = $classId;
     }
 
     public function getClassId()
@@ -34,7 +36,7 @@ class FaceGetRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -42,14 +44,14 @@ class FaceGetRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.edu.face.get";
+        return 'dingtalk.oapi.edu.face.get';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

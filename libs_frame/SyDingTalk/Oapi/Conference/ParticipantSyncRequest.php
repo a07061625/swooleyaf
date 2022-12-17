@@ -7,40 +7,42 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.conference.participant.sync request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.03
  */
 class ParticipantSyncRequest extends BaseRequest
 {
     /**
      * 全量同步id，第一批上传时为空，后续批次需要带上
-     **/
+     */
     private $batchId;
     /**
      * 标识批次，从1递增
-     **/
+     */
     private $batchIndex;
     /**
      * 会务id
-     **/
+     */
     private $conferenceId;
     /**
      * 是否最后一批
-     **/
+     */
     private $isFinished;
     /**
      * 参会人员id列表
-     **/
+     */
     private $participantUseridList;
     /**
      * 操作用户id
-     **/
+     */
     private $userid;
 
     public function setBatchId($batchId)
     {
         $this->batchId = $batchId;
-        $this->apiParas["batch_id"] = $batchId;
+        $this->apiParas['batch_id'] = $batchId;
     }
 
     public function getBatchId()
@@ -51,7 +53,7 @@ class ParticipantSyncRequest extends BaseRequest
     public function setBatchIndex($batchIndex)
     {
         $this->batchIndex = $batchIndex;
-        $this->apiParas["batch_index"] = $batchIndex;
+        $this->apiParas['batch_index'] = $batchIndex;
     }
 
     public function getBatchIndex()
@@ -62,7 +64,7 @@ class ParticipantSyncRequest extends BaseRequest
     public function setConferenceId($conferenceId)
     {
         $this->conferenceId = $conferenceId;
-        $this->apiParas["conference_id"] = $conferenceId;
+        $this->apiParas['conference_id'] = $conferenceId;
     }
 
     public function getConferenceId()
@@ -73,7 +75,7 @@ class ParticipantSyncRequest extends BaseRequest
     public function setIsFinished($isFinished)
     {
         $this->isFinished = $isFinished;
-        $this->apiParas["is_finished"] = $isFinished;
+        $this->apiParas['is_finished'] = $isFinished;
     }
 
     public function getIsFinished()
@@ -84,7 +86,7 @@ class ParticipantSyncRequest extends BaseRequest
     public function setParticipantUseridList($participantUseridList)
     {
         $this->participantUseridList = $participantUseridList;
-        $this->apiParas["participant_userid_list"] = $participantUseridList;
+        $this->apiParas['participant_userid_list'] = $participantUseridList;
     }
 
     public function getParticipantUseridList()
@@ -95,7 +97,7 @@ class ParticipantSyncRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -103,9 +105,9 @@ class ParticipantSyncRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.conference.participant.sync";
+        return 'dingtalk.oapi.conference.participant.sync';
     }
 
     /**
@@ -113,17 +115,17 @@ class ParticipantSyncRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->batchIndex, "batchIndex");
-        RequestCheckUtil::checkNotNull($this->conferenceId, "conferenceId");
-        RequestCheckUtil::checkNotNull($this->isFinished, "isFinished");
-        RequestCheckUtil::checkNotNull($this->participantUseridList, "participantUseridList");
-        RequestCheckUtil::checkMaxListSize($this->participantUseridList, 1000, "participantUseridList");
-        RequestCheckUtil::checkNotNull($this->userid, "userid");
+        RequestCheckUtil::checkNotNull($this->batchIndex, 'batchIndex');
+        RequestCheckUtil::checkNotNull($this->conferenceId, 'conferenceId');
+        RequestCheckUtil::checkNotNull($this->isFinished, 'isFinished');
+        RequestCheckUtil::checkNotNull($this->participantUseridList, 'participantUseridList');
+        RequestCheckUtil::checkMaxListSize($this->participantUseridList, 1000, 'participantUseridList');
+        RequestCheckUtil::checkNotNull($this->userid, 'userid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

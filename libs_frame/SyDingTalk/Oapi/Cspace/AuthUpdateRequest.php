@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.cspace.auth.update request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.10.08
  */
 class AuthUpdateRequest extends BaseRequest
 {
     /**
      * 微应用的agentId
-     **/
+     */
     private $agentId;
     /**
      * 授权码有效期，单位为日，为空则表示永久授权
-     **/
+     */
     private $duration;
     /**
      * isv授权码
-     **/
+     */
     private $isvCode;
 
     public function setAgentId($agentId)
     {
         $this->agentId = $agentId;
-        $this->apiParas["agent_id"] = $agentId;
+        $this->apiParas['agent_id'] = $agentId;
     }
 
     public function getAgentId()
@@ -39,7 +41,7 @@ class AuthUpdateRequest extends BaseRequest
     public function setDuration($duration)
     {
         $this->duration = $duration;
-        $this->apiParas["duration"] = $duration;
+        $this->apiParas['duration'] = $duration;
     }
 
     public function getDuration()
@@ -50,7 +52,7 @@ class AuthUpdateRequest extends BaseRequest
     public function setIsvCode($isvCode)
     {
         $this->isvCode = $isvCode;
-        $this->apiParas["isv_code"] = $isvCode;
+        $this->apiParas['isv_code'] = $isvCode;
     }
 
     public function getIsvCode()
@@ -58,9 +60,9 @@ class AuthUpdateRequest extends BaseRequest
         return $this->isvCode;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.cspace.auth.update";
+        return 'dingtalk.oapi.cspace.auth.update';
     }
 
     /**
@@ -68,13 +70,13 @@ class AuthUpdateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->agentId, "agentId");
-        RequestCheckUtil::checkNotNull($this->isvCode, "isvCode");
+        RequestCheckUtil::checkNotNull($this->agentId, 'agentId');
+        RequestCheckUtil::checkNotNull($this->isvCode, 'isvCode');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

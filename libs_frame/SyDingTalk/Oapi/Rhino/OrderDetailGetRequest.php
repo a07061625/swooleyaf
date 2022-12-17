@@ -6,20 +6,22 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.rhino.order.detail.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.04.20
  */
 class OrderDetailGetRequest extends BaseRequest
 {
     /**
      * 请求体
-     **/
+     */
     private $req;
 
     public function setReq($req)
     {
         $this->req = $req;
-        $this->apiParas["req"] = $req;
+        $this->apiParas['req'] = $req;
     }
 
     public function getReq()
@@ -27,14 +29,14 @@ class OrderDetailGetRequest extends BaseRequest
         return $this->req;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.rhino.order.detail.get";
+        return 'dingtalk.oapi.rhino.order.detail.get';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

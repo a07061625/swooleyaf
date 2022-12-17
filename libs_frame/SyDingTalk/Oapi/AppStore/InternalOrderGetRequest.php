@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.appstore.internal.order.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.03.16
  */
 class InternalOrderGetRequest extends BaseRequest
 {
     /**
      * 内购商品订单号
-     **/
+     */
     private $bizOrderId;
 
     public function setBizOrderId($bizOrderId)
     {
         $this->bizOrderId = $bizOrderId;
-        $this->apiParas["biz_order_id"] = $bizOrderId;
+        $this->apiParas['biz_order_id'] = $bizOrderId;
     }
 
     public function getBizOrderId()
@@ -28,9 +30,9 @@ class InternalOrderGetRequest extends BaseRequest
         return $this->bizOrderId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.appstore.internal.order.get";
+        return 'dingtalk.oapi.appstore.internal.order.get';
     }
 
     /**
@@ -38,12 +40,12 @@ class InternalOrderGetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->bizOrderId, "bizOrderId");
+        RequestCheckUtil::checkNotNull($this->bizOrderId, 'bizOrderId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

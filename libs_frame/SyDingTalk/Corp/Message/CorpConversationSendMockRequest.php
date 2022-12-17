@@ -7,36 +7,38 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.corp.message.corpconversation.sendmock request
+ *
  * @author auto create
+ *
  * @since 1.0, 2018.07.25
  */
 class CorpConversationSendMockRequest extends BaseRequest
 {
     /**
      * 消息体
-     **/
+     */
     private $message;
     /**
      * 消息类型
-     **/
+     */
     private $messageType;
     /**
      * 微应用agentId
-     **/
+     */
     private $microappAgentId;
     /**
      * 消息接收者部门列表
-     **/
+     */
     private $toParty;
     /**
      * 消息接收者userid列表
-     **/
+     */
     private $toUser;
 
     public function setMessage($message)
     {
         $this->message = $message;
-        $this->apiParas["message"] = $message;
+        $this->apiParas['message'] = $message;
     }
 
     public function getMessage()
@@ -47,7 +49,7 @@ class CorpConversationSendMockRequest extends BaseRequest
     public function setMessageType($messageType)
     {
         $this->messageType = $messageType;
-        $this->apiParas["message_type"] = $messageType;
+        $this->apiParas['message_type'] = $messageType;
     }
 
     public function getMessageType()
@@ -58,7 +60,7 @@ class CorpConversationSendMockRequest extends BaseRequest
     public function setMicroappAgentId($microappAgentId)
     {
         $this->microappAgentId = $microappAgentId;
-        $this->apiParas["microapp_agent_id"] = $microappAgentId;
+        $this->apiParas['microapp_agent_id'] = $microappAgentId;
     }
 
     public function getMicroappAgentId()
@@ -69,7 +71,7 @@ class CorpConversationSendMockRequest extends BaseRequest
     public function setToParty($toParty)
     {
         $this->toParty = $toParty;
-        $this->apiParas["to_party"] = $toParty;
+        $this->apiParas['to_party'] = $toParty;
     }
 
     public function getToParty()
@@ -80,7 +82,7 @@ class CorpConversationSendMockRequest extends BaseRequest
     public function setToUser($toUser)
     {
         $this->toUser = $toUser;
-        $this->apiParas["to_user"] = $toUser;
+        $this->apiParas['to_user'] = $toUser;
     }
 
     public function getToUser()
@@ -88,9 +90,9 @@ class CorpConversationSendMockRequest extends BaseRequest
         return $this->toUser;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.corp.message.corpconversation.sendmock";
+        return 'dingtalk.corp.message.corpconversation.sendmock';
     }
 
     /**
@@ -98,18 +100,18 @@ class CorpConversationSendMockRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->message, "message");
-        RequestCheckUtil::checkNotNull($this->messageType, "messageType");
-        RequestCheckUtil::checkNotNull($this->microappAgentId, "microappAgentId");
-        RequestCheckUtil::checkNotNull($this->toParty, "toParty");
-        RequestCheckUtil::checkMaxListSize($this->toParty, 20, "toParty");
-        RequestCheckUtil::checkNotNull($this->toUser, "toUser");
-        RequestCheckUtil::checkMaxListSize($this->toUser, 20, "toUser");
+        RequestCheckUtil::checkNotNull($this->message, 'message');
+        RequestCheckUtil::checkNotNull($this->messageType, 'messageType');
+        RequestCheckUtil::checkNotNull($this->microappAgentId, 'microappAgentId');
+        RequestCheckUtil::checkNotNull($this->toParty, 'toParty');
+        RequestCheckUtil::checkMaxListSize($this->toParty, 20, 'toParty');
+        RequestCheckUtil::checkNotNull($this->toUser, 'toUser');
+        RequestCheckUtil::checkMaxListSize($this->toUser, 20, 'toUser');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

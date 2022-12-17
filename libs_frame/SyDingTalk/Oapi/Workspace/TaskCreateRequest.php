@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.workspace.task.create request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.01.20
  */
 class TaskCreateRequest extends BaseRequest
 {
     /**
      * 微应用agentId
-     **/
+     */
     private $microappAgentId;
     /**
      * 操作者id
-     **/
+     */
     private $operatorUserid;
     /**
      * 请求入参
-     **/
+     */
     private $task;
 
     public function setMicroappAgentId($microappAgentId)
     {
         $this->microappAgentId = $microappAgentId;
-        $this->apiParas["microapp_agent_id"] = $microappAgentId;
+        $this->apiParas['microapp_agent_id'] = $microappAgentId;
     }
 
     public function getMicroappAgentId()
@@ -39,7 +41,7 @@ class TaskCreateRequest extends BaseRequest
     public function setOperatorUserid($operatorUserid)
     {
         $this->operatorUserid = $operatorUserid;
-        $this->apiParas["operator_userid"] = $operatorUserid;
+        $this->apiParas['operator_userid'] = $operatorUserid;
     }
 
     public function getOperatorUserid()
@@ -50,7 +52,7 @@ class TaskCreateRequest extends BaseRequest
     public function setTask($task)
     {
         $this->task = $task;
-        $this->apiParas["task"] = $task;
+        $this->apiParas['task'] = $task;
     }
 
     public function getTask()
@@ -58,9 +60,9 @@ class TaskCreateRequest extends BaseRequest
         return $this->task;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.workspace.task.create";
+        return 'dingtalk.oapi.workspace.task.create';
     }
 
     /**
@@ -68,12 +70,12 @@ class TaskCreateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->operatorUserid, "operatorUserid");
+        RequestCheckUtil::checkNotNull($this->operatorUserid, 'operatorUserid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

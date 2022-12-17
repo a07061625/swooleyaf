@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.chatbot.pictureurl.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.09.25
  */
 class PictureUrlGetRequest extends BaseRequest
 {
     /**
      * 图片临时下载码
-     **/
+     */
     private $downloadCode;
 
     public function setDownloadCode($downloadCode)
     {
         $this->downloadCode = $downloadCode;
-        $this->apiParas["download_code"] = $downloadCode;
+        $this->apiParas['download_code'] = $downloadCode;
     }
 
     public function getDownloadCode()
@@ -28,9 +30,9 @@ class PictureUrlGetRequest extends BaseRequest
         return $this->downloadCode;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.chatbot.pictureurl.get";
+        return 'dingtalk.oapi.chatbot.pictureurl.get';
     }
 
     /**
@@ -38,13 +40,13 @@ class PictureUrlGetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->downloadCode, "downloadCode");
-        RequestCheckUtil::checkMaxLength($this->downloadCode, 4000, "downloadCode");
+        RequestCheckUtil::checkNotNull($this->downloadCode, 'downloadCode');
+        RequestCheckUtil::checkMaxLength($this->downloadCode, 4000, 'downloadCode');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

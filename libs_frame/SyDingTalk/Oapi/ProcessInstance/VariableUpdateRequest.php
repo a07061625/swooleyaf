@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.processinstance.variable.update request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.04.13
  */
 class VariableUpdateRequest extends BaseRequest
 {
     /**
      * 审批实例id
-     **/
+     */
     private $processInstanceId;
     /**
      * 备注
-     **/
+     */
     private $remark;
     /**
      * 变量列表
-     **/
+     */
     private $variables;
 
     public function setProcessInstanceId($processInstanceId)
     {
         $this->processInstanceId = $processInstanceId;
-        $this->apiParas["process_instance_id"] = $processInstanceId;
+        $this->apiParas['process_instance_id'] = $processInstanceId;
     }
 
     public function getProcessInstanceId()
@@ -39,7 +41,7 @@ class VariableUpdateRequest extends BaseRequest
     public function setRemark($remark)
     {
         $this->remark = $remark;
-        $this->apiParas["remark"] = $remark;
+        $this->apiParas['remark'] = $remark;
     }
 
     public function getRemark()
@@ -50,7 +52,7 @@ class VariableUpdateRequest extends BaseRequest
     public function setVariables($variables)
     {
         $this->variables = $variables;
-        $this->apiParas["variables"] = $variables;
+        $this->apiParas['variables'] = $variables;
     }
 
     public function getVariables()
@@ -58,9 +60,9 @@ class VariableUpdateRequest extends BaseRequest
         return $this->variables;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.processinstance.variable.update";
+        return 'dingtalk.oapi.processinstance.variable.update';
     }
 
     /**
@@ -68,12 +70,12 @@ class VariableUpdateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->processInstanceId, "processInstanceId");
+        RequestCheckUtil::checkNotNull($this->processInstanceId, 'processInstanceId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

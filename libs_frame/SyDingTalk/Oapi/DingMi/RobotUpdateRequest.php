@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.dingmi.robot.update request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.01.26
  */
 class RobotUpdateRequest extends BaseRequest
 {
     /**
      * 服务号(1) | 群(2)
-     **/
+     */
     private $type;
     /**
      * 系统自动生成
-     **/
+     */
     private $updateBotModel;
 
     public function setType($type)
     {
         $this->type = $type;
-        $this->apiParas["type"] = $type;
+        $this->apiParas['type'] = $type;
     }
 
     public function getType()
@@ -35,7 +37,7 @@ class RobotUpdateRequest extends BaseRequest
     public function setUpdateBotModel($updateBotModel)
     {
         $this->updateBotModel = $updateBotModel;
-        $this->apiParas["update_bot_model"] = $updateBotModel;
+        $this->apiParas['update_bot_model'] = $updateBotModel;
     }
 
     public function getUpdateBotModel()
@@ -43,9 +45,9 @@ class RobotUpdateRequest extends BaseRequest
         return $this->updateBotModel;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.dingmi.robot.update";
+        return 'dingtalk.oapi.dingmi.robot.update';
     }
 
     /**
@@ -53,12 +55,12 @@ class RobotUpdateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->type, "type");
+        RequestCheckUtil::checkNotNull($this->type, 'type');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

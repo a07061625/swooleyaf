@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.edu.period.create request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.05.31
  */
 class PeriodCreateRequest extends BaseRequest
 {
     /**
      * 学段信息
-     **/
+     */
     private $openPeriod;
     /**
      * 钉钉管理员
-     **/
+     */
     private $operator;
     /**
      * 校区id
-     **/
+     */
     private $superId;
 
     public function setOpenPeriod($openPeriod)
     {
         $this->openPeriod = $openPeriod;
-        $this->apiParas["open_period"] = $openPeriod;
+        $this->apiParas['open_period'] = $openPeriod;
     }
 
     public function getOpenPeriod()
@@ -39,7 +41,7 @@ class PeriodCreateRequest extends BaseRequest
     public function setOperator($operator)
     {
         $this->operator = $operator;
-        $this->apiParas["operator"] = $operator;
+        $this->apiParas['operator'] = $operator;
     }
 
     public function getOperator()
@@ -50,7 +52,7 @@ class PeriodCreateRequest extends BaseRequest
     public function setSuperId($superId)
     {
         $this->superId = $superId;
-        $this->apiParas["super_id"] = $superId;
+        $this->apiParas['super_id'] = $superId;
     }
 
     public function getSuperId()
@@ -58,9 +60,9 @@ class PeriodCreateRequest extends BaseRequest
         return $this->superId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.edu.period.create";
+        return 'dingtalk.oapi.edu.period.create';
     }
 
     /**
@@ -68,13 +70,13 @@ class PeriodCreateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->operator, "operator");
-        RequestCheckUtil::checkNotNull($this->superId, "superId");
+        RequestCheckUtil::checkNotNull($this->operator, 'operator');
+        RequestCheckUtil::checkNotNull($this->superId, 'superId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

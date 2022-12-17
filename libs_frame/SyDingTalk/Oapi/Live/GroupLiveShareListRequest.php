@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.live.grouplive.sharelist request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.10.26
  */
 class GroupLiveShareListRequest extends BaseRequest
 {
     /**
      * 群id
-     **/
+     */
     private $cid;
     /**
      * 直播uuid
-     **/
+     */
     private $liveUuid;
 
     public function setCid($cid)
     {
         $this->cid = $cid;
-        $this->apiParas["cid"] = $cid;
+        $this->apiParas['cid'] = $cid;
     }
 
     public function getCid()
@@ -35,7 +37,7 @@ class GroupLiveShareListRequest extends BaseRequest
     public function setLiveUuid($liveUuid)
     {
         $this->liveUuid = $liveUuid;
-        $this->apiParas["live_uuid"] = $liveUuid;
+        $this->apiParas['live_uuid'] = $liveUuid;
     }
 
     public function getLiveUuid()
@@ -43,9 +45,9 @@ class GroupLiveShareListRequest extends BaseRequest
         return $this->liveUuid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.live.grouplive.sharelist";
+        return 'dingtalk.oapi.live.grouplive.sharelist';
     }
 
     /**
@@ -53,13 +55,13 @@ class GroupLiveShareListRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->cid, "cid");
-        RequestCheckUtil::checkNotNull($this->liveUuid, "liveUuid");
+        RequestCheckUtil::checkNotNull($this->cid, 'cid');
+        RequestCheckUtil::checkNotNull($this->liveUuid, 'liveUuid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.attendance.advanced.service.unbind request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.12.20
  */
 class AdvancedServiceUnbindRequest extends BaseRequest
 {
     /**
      * 实体id
-     **/
+     */
     private $entityId;
     /**
      * 实体类型，目前支持user,group,corp
-     **/
+     */
     private $entityType;
     /**
      * 操作者userid
-     **/
+     */
     private $opUserid;
     /**
      * 服务id
-     **/
+     */
     private $serviceId;
 
     public function setEntityId($entityId)
     {
         $this->entityId = $entityId;
-        $this->apiParas["entity_id"] = $entityId;
+        $this->apiParas['entity_id'] = $entityId;
     }
 
     public function getEntityId()
@@ -43,7 +45,7 @@ class AdvancedServiceUnbindRequest extends BaseRequest
     public function setEntityType($entityType)
     {
         $this->entityType = $entityType;
-        $this->apiParas["entity_type"] = $entityType;
+        $this->apiParas['entity_type'] = $entityType;
     }
 
     public function getEntityType()
@@ -54,7 +56,7 @@ class AdvancedServiceUnbindRequest extends BaseRequest
     public function setOpUserid($opUserid)
     {
         $this->opUserid = $opUserid;
-        $this->apiParas["op_userid"] = $opUserid;
+        $this->apiParas['op_userid'] = $opUserid;
     }
 
     public function getOpUserid()
@@ -65,7 +67,7 @@ class AdvancedServiceUnbindRequest extends BaseRequest
     public function setServiceId($serviceId)
     {
         $this->serviceId = $serviceId;
-        $this->apiParas["service_id"] = $serviceId;
+        $this->apiParas['service_id'] = $serviceId;
     }
 
     public function getServiceId()
@@ -73,9 +75,9 @@ class AdvancedServiceUnbindRequest extends BaseRequest
         return $this->serviceId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.attendance.advanced.service.unbind";
+        return 'dingtalk.oapi.attendance.advanced.service.unbind';
     }
 
     /**
@@ -83,15 +85,15 @@ class AdvancedServiceUnbindRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->entityId, "entityId");
-        RequestCheckUtil::checkNotNull($this->entityType, "entityType");
-        RequestCheckUtil::checkNotNull($this->opUserid, "opUserid");
-        RequestCheckUtil::checkNotNull($this->serviceId, "serviceId");
+        RequestCheckUtil::checkNotNull($this->entityId, 'entityId');
+        RequestCheckUtil::checkNotNull($this->entityType, 'entityType');
+        RequestCheckUtil::checkNotNull($this->opUserid, 'opUserid');
+        RequestCheckUtil::checkNotNull($this->serviceId, 'serviceId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

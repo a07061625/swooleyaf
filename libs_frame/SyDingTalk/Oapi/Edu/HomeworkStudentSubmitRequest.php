@@ -7,64 +7,66 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.edu.homework.student.submit request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.04.28
  */
 class HomeworkStudentSubmitRequest extends BaseRequest
 {
     /**
      * 属性参数
-     **/
+     */
     private $attributes;
     /**
      * 业务编码
-     **/
+     */
     private $bizCode;
     /**
      * 班级ID
-     **/
+     */
     private $classId;
     /**
      * 内容
-     **/
+     */
     private $content;
     /**
      * 作业ID
-     **/
+     */
     private $hwId;
     /**
      * 视频地址
-     **/
+     */
     private $media;
     /**
      * 图片地址
-     **/
+     */
     private $photo;
     /**
      * 学生ID
-     **/
+     */
     private $studentId;
     /**
      * 学生姓名
-     **/
+     */
     private $studentName;
     /**
      * 提交人ID
-     **/
+     */
     private $submitorId;
     /**
      * 标题
-     **/
+     */
     private $title;
     /**
      * 音频地址
-     **/
+     */
     private $video;
 
     public function setAttributes($attributes)
     {
         $this->attributes = $attributes;
-        $this->apiParas["attributes"] = $attributes;
+        $this->apiParas['attributes'] = $attributes;
     }
 
     public function getAttributes()
@@ -75,7 +77,7 @@ class HomeworkStudentSubmitRequest extends BaseRequest
     public function setBizCode($bizCode)
     {
         $this->bizCode = $bizCode;
-        $this->apiParas["biz_code"] = $bizCode;
+        $this->apiParas['biz_code'] = $bizCode;
     }
 
     public function getBizCode()
@@ -86,7 +88,7 @@ class HomeworkStudentSubmitRequest extends BaseRequest
     public function setClassId($classId)
     {
         $this->classId = $classId;
-        $this->apiParas["class_id"] = $classId;
+        $this->apiParas['class_id'] = $classId;
     }
 
     public function getClassId()
@@ -97,7 +99,7 @@ class HomeworkStudentSubmitRequest extends BaseRequest
     public function setContent($content)
     {
         $this->content = $content;
-        $this->apiParas["content"] = $content;
+        $this->apiParas['content'] = $content;
     }
 
     public function getContent()
@@ -108,7 +110,7 @@ class HomeworkStudentSubmitRequest extends BaseRequest
     public function setHwId($hwId)
     {
         $this->hwId = $hwId;
-        $this->apiParas["hw_id"] = $hwId;
+        $this->apiParas['hw_id'] = $hwId;
     }
 
     public function getHwId()
@@ -119,7 +121,7 @@ class HomeworkStudentSubmitRequest extends BaseRequest
     public function setMedia($media)
     {
         $this->media = $media;
-        $this->apiParas["media"] = $media;
+        $this->apiParas['media'] = $media;
     }
 
     public function getMedia()
@@ -130,7 +132,7 @@ class HomeworkStudentSubmitRequest extends BaseRequest
     public function setPhoto($photo)
     {
         $this->photo = $photo;
-        $this->apiParas["photo"] = $photo;
+        $this->apiParas['photo'] = $photo;
     }
 
     public function getPhoto()
@@ -141,7 +143,7 @@ class HomeworkStudentSubmitRequest extends BaseRequest
     public function setStudentId($studentId)
     {
         $this->studentId = $studentId;
-        $this->apiParas["student_id"] = $studentId;
+        $this->apiParas['student_id'] = $studentId;
     }
 
     public function getStudentId()
@@ -152,7 +154,7 @@ class HomeworkStudentSubmitRequest extends BaseRequest
     public function setStudentName($studentName)
     {
         $this->studentName = $studentName;
-        $this->apiParas["student_name"] = $studentName;
+        $this->apiParas['student_name'] = $studentName;
     }
 
     public function getStudentName()
@@ -163,7 +165,7 @@ class HomeworkStudentSubmitRequest extends BaseRequest
     public function setSubmitorId($submitorId)
     {
         $this->submitorId = $submitorId;
-        $this->apiParas["submitor_id"] = $submitorId;
+        $this->apiParas['submitor_id'] = $submitorId;
     }
 
     public function getSubmitorId()
@@ -174,7 +176,7 @@ class HomeworkStudentSubmitRequest extends BaseRequest
     public function setTitle($title)
     {
         $this->title = $title;
-        $this->apiParas["title"] = $title;
+        $this->apiParas['title'] = $title;
     }
 
     public function getTitle()
@@ -185,7 +187,7 @@ class HomeworkStudentSubmitRequest extends BaseRequest
     public function setVideo($video)
     {
         $this->video = $video;
-        $this->apiParas["video"] = $video;
+        $this->apiParas['video'] = $video;
     }
 
     public function getVideo()
@@ -193,9 +195,9 @@ class HomeworkStudentSubmitRequest extends BaseRequest
         return $this->video;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.edu.homework.student.submit";
+        return 'dingtalk.oapi.edu.homework.student.submit';
     }
 
     /**
@@ -203,17 +205,17 @@ class HomeworkStudentSubmitRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->bizCode, "bizCode");
-        RequestCheckUtil::checkNotNull($this->classId, "classId");
-        RequestCheckUtil::checkNotNull($this->hwId, "hwId");
-        RequestCheckUtil::checkNotNull($this->studentId, "studentId");
-        RequestCheckUtil::checkNotNull($this->studentName, "studentName");
-        RequestCheckUtil::checkNotNull($this->submitorId, "submitorId");
+        RequestCheckUtil::checkNotNull($this->bizCode, 'bizCode');
+        RequestCheckUtil::checkNotNull($this->classId, 'classId');
+        RequestCheckUtil::checkNotNull($this->hwId, 'hwId');
+        RequestCheckUtil::checkNotNull($this->studentId, 'studentId');
+        RequestCheckUtil::checkNotNull($this->studentName, 'studentName');
+        RequestCheckUtil::checkNotNull($this->submitorId, 'submitorId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

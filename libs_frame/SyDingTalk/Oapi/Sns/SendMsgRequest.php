@@ -6,24 +6,26 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.sns.send_msg request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.01
  */
 class SendMsgRequest extends BaseRequest
 {
     /**
      * form表单提交成功后获取的formId
-     **/
+     */
     private $code;
     /**
      * 消息内容
-     **/
+     */
     private $msg;
 
     public function setCode($code)
     {
         $this->code = $code;
-        $this->apiParas["code"] = $code;
+        $this->apiParas['code'] = $code;
     }
 
     public function getCode()
@@ -34,7 +36,7 @@ class SendMsgRequest extends BaseRequest
     public function setMsg($msg)
     {
         $this->msg = $msg;
-        $this->apiParas["msg"] = $msg;
+        $this->apiParas['msg'] = $msg;
     }
 
     public function getMsg()
@@ -42,14 +44,14 @@ class SendMsgRequest extends BaseRequest
         return $this->msg;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.sns.send_msg";
+        return 'dingtalk.oapi.sns.send_msg';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

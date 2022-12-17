@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.process.template.save request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.01
  */
 class TemplateSaveRequest extends BaseRequest
 {
     /**
      * 字体
-     **/
+     */
     private $font;
     /**
      * 流程编码
-     **/
+     */
     private $processCode;
     /**
      * vm文件
-     **/
+     */
     private $vm;
 
     public function setFont($font)
     {
         $this->font = $font;
-        $this->apiParas["font"] = $font;
+        $this->apiParas['font'] = $font;
     }
 
     public function getFont()
@@ -39,7 +41,7 @@ class TemplateSaveRequest extends BaseRequest
     public function setProcessCode($processCode)
     {
         $this->processCode = $processCode;
-        $this->apiParas["process_code"] = $processCode;
+        $this->apiParas['process_code'] = $processCode;
     }
 
     public function getProcessCode()
@@ -50,7 +52,7 @@ class TemplateSaveRequest extends BaseRequest
     public function setVm($vm)
     {
         $this->vm = $vm;
-        $this->apiParas["vm"] = $vm;
+        $this->apiParas['vm'] = $vm;
     }
 
     public function getVm()
@@ -58,9 +60,9 @@ class TemplateSaveRequest extends BaseRequest
         return $this->vm;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.process.template.save";
+        return 'dingtalk.oapi.process.template.save';
     }
 
     /**
@@ -68,14 +70,14 @@ class TemplateSaveRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->font, "font");
-        RequestCheckUtil::checkNotNull($this->processCode, "processCode");
-        RequestCheckUtil::checkNotNull($this->vm, "vm");
+        RequestCheckUtil::checkNotNull($this->font, 'font');
+        RequestCheckUtil::checkNotNull($this->processCode, 'processCode');
+        RequestCheckUtil::checkNotNull($this->vm, 'vm');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

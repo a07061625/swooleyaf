@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.mpdev.accesskey.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.10.15
  */
 class AccessKeyGetRequest extends BaseRequest
 {
     /**
      * 小程序ID
-     **/
+     */
     private $miniappId;
 
     public function setMiniappId($miniappId)
     {
         $this->miniappId = $miniappId;
-        $this->apiParas["miniapp_id"] = $miniappId;
+        $this->apiParas['miniapp_id'] = $miniappId;
     }
 
     public function getMiniappId()
@@ -28,9 +30,9 @@ class AccessKeyGetRequest extends BaseRequest
         return $this->miniappId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.mpdev.accesskey.get";
+        return 'dingtalk.oapi.mpdev.accesskey.get';
     }
 
     /**
@@ -38,12 +40,12 @@ class AccessKeyGetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->miniappId, "miniappId");
+        RequestCheckUtil::checkNotNull($this->miniappId, 'miniappId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

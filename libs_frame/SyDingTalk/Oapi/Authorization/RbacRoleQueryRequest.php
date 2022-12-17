@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.authorization.rbac.role.query request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.02.01
  */
 class RbacRoleQueryRequest extends BaseRequest
 {
     /**
      * 微应用agenId,需要联系权限平台配置
-     **/
+     */
     private $agentId;
     /**
      * 管理组id
-     **/
+     */
     private $openRoleIds;
 
     public function setAgentId($agentId)
     {
         $this->agentId = $agentId;
-        $this->apiParas["agent_id"] = $agentId;
+        $this->apiParas['agent_id'] = $agentId;
     }
 
     public function getAgentId()
@@ -35,7 +37,7 @@ class RbacRoleQueryRequest extends BaseRequest
     public function setOpenRoleIds($openRoleIds)
     {
         $this->openRoleIds = $openRoleIds;
-        $this->apiParas["open_role_ids"] = $openRoleIds;
+        $this->apiParas['open_role_ids'] = $openRoleIds;
     }
 
     public function getOpenRoleIds()
@@ -43,9 +45,9 @@ class RbacRoleQueryRequest extends BaseRequest
         return $this->openRoleIds;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.authorization.rbac.role.query";
+        return 'dingtalk.oapi.authorization.rbac.role.query';
     }
 
     /**
@@ -53,14 +55,14 @@ class RbacRoleQueryRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->agentId, "agentId");
-        RequestCheckUtil::checkNotNull($this->openRoleIds, "openRoleIds");
-        RequestCheckUtil::checkMaxListSize($this->openRoleIds, 999, "openRoleIds");
+        RequestCheckUtil::checkNotNull($this->agentId, 'agentId');
+        RequestCheckUtil::checkNotNull($this->openRoleIds, 'openRoleIds');
+        RequestCheckUtil::checkMaxListSize($this->openRoleIds, 999, 'openRoleIds');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

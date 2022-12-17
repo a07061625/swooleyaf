@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.chat.get.cid request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.08.15
  */
 class GetCidRequest extends BaseRequest
 {
     /**
      * 会话Id
-     **/
+     */
     private $chatid;
 
     public function setChatid($chatid)
     {
         $this->chatid = $chatid;
-        $this->apiParas["chatid"] = $chatid;
+        $this->apiParas['chatid'] = $chatid;
     }
 
     public function getChatid()
@@ -28,9 +30,9 @@ class GetCidRequest extends BaseRequest
         return $this->chatid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.chat.get.cid";
+        return 'dingtalk.oapi.chat.get.cid';
     }
 
     /**
@@ -38,12 +40,12 @@ class GetCidRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->chatid, "chatid");
+        RequestCheckUtil::checkNotNull($this->chatid, 'chatid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

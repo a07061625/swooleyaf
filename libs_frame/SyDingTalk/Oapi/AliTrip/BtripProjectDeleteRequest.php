@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.alitrip.btrip.project.delete request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.11.30
  */
 class BtripProjectDeleteRequest extends BaseRequest
 {
     /**
      * 企业id
-     **/
+     */
     private $corpid;
     /**
      * 第三方项目ID
-     **/
+     */
     private $thirdPartId;
 
     public function setCorpid($corpid)
     {
         $this->corpid = $corpid;
-        $this->apiParas["corpid"] = $corpid;
+        $this->apiParas['corpid'] = $corpid;
     }
 
     public function getCorpid()
@@ -35,7 +37,7 @@ class BtripProjectDeleteRequest extends BaseRequest
     public function setThirdPartId($thirdPartId)
     {
         $this->thirdPartId = $thirdPartId;
-        $this->apiParas["third_part_id"] = $thirdPartId;
+        $this->apiParas['third_part_id'] = $thirdPartId;
     }
 
     public function getThirdPartId()
@@ -43,9 +45,9 @@ class BtripProjectDeleteRequest extends BaseRequest
         return $this->thirdPartId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.alitrip.btrip.project.delete";
+        return 'dingtalk.oapi.alitrip.btrip.project.delete';
     }
 
     /**
@@ -53,13 +55,13 @@ class BtripProjectDeleteRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->corpid, "corpid");
-        RequestCheckUtil::checkNotNull($this->thirdPartId, "thirdPartId");
+        RequestCheckUtil::checkNotNull($this->corpid, 'corpid');
+        RequestCheckUtil::checkNotNull($this->thirdPartId, 'thirdPartId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

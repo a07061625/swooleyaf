@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.corp.role.removerolesforemps request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.03
  */
 class RemoveRolesForEmpsRequest extends BaseRequest
 {
     /**
      * 角色标签id
-     **/
+     */
     private $roleidList;
     /**
      * 用户userId
-     **/
+     */
     private $useridList;
 
     public function setRoleidList($roleidList)
     {
         $this->roleidList = $roleidList;
-        $this->apiParas["roleid_list"] = $roleidList;
+        $this->apiParas['roleid_list'] = $roleidList;
     }
 
     public function getRoleidList()
@@ -35,7 +37,7 @@ class RemoveRolesForEmpsRequest extends BaseRequest
     public function setUseridList($useridList)
     {
         $this->useridList = $useridList;
-        $this->apiParas["userid_list"] = $useridList;
+        $this->apiParas['userid_list'] = $useridList;
     }
 
     public function getUseridList()
@@ -43,9 +45,9 @@ class RemoveRolesForEmpsRequest extends BaseRequest
         return $this->useridList;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.corp.role.removerolesforemps";
+        return 'dingtalk.corp.role.removerolesforemps';
     }
 
     /**
@@ -53,15 +55,15 @@ class RemoveRolesForEmpsRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->roleidList, "roleidList");
-        RequestCheckUtil::checkMaxListSize($this->roleidList, 20, "roleidList");
-        RequestCheckUtil::checkNotNull($this->useridList, "useridList");
-        RequestCheckUtil::checkMaxListSize($this->useridList, 100, "useridList");
+        RequestCheckUtil::checkNotNull($this->roleidList, 'roleidList');
+        RequestCheckUtil::checkMaxListSize($this->roleidList, 20, 'roleidList');
+        RequestCheckUtil::checkNotNull($this->useridList, 'useridList');
+        RequestCheckUtil::checkMaxListSize($this->useridList, 100, 'useridList');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

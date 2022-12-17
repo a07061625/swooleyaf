@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.attendance.shift.delete request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.08.26
  */
 class ShiftDeleteRequest extends BaseRequest
 {
     /**
      * 操作人
-     **/
+     */
     private $opUserId;
     /**
      * 班次id
-     **/
+     */
     private $shiftId;
 
     public function setOpUserId($opUserId)
     {
         $this->opUserId = $opUserId;
-        $this->apiParas["op_user_id"] = $opUserId;
+        $this->apiParas['op_user_id'] = $opUserId;
     }
 
     public function getOpUserId()
@@ -35,7 +37,7 @@ class ShiftDeleteRequest extends BaseRequest
     public function setShiftId($shiftId)
     {
         $this->shiftId = $shiftId;
-        $this->apiParas["shift_id"] = $shiftId;
+        $this->apiParas['shift_id'] = $shiftId;
     }
 
     public function getShiftId()
@@ -43,9 +45,9 @@ class ShiftDeleteRequest extends BaseRequest
         return $this->shiftId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.attendance.shift.delete";
+        return 'dingtalk.oapi.attendance.shift.delete';
     }
 
     /**
@@ -53,13 +55,13 @@ class ShiftDeleteRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->opUserId, "opUserId");
-        RequestCheckUtil::checkNotNull($this->shiftId, "shiftId");
+        RequestCheckUtil::checkNotNull($this->opUserId, 'opUserId');
+        RequestCheckUtil::checkNotNull($this->shiftId, 'shiftId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

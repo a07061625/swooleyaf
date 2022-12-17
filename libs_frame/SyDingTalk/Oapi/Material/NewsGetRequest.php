@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.material.news.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.04
  */
 class NewsGetRequest extends BaseRequest
 {
     /**
      * 消息卡片素材id
-     **/
+     */
     private $mediaId;
     /**
      * 服务号的unionid
-     **/
+     */
     private $unionid;
 
     public function setMediaId($mediaId)
     {
         $this->mediaId = $mediaId;
-        $this->apiParas["media_id"] = $mediaId;
+        $this->apiParas['media_id'] = $mediaId;
     }
 
     public function getMediaId()
@@ -35,7 +37,7 @@ class NewsGetRequest extends BaseRequest
     public function setUnionid($unionid)
     {
         $this->unionid = $unionid;
-        $this->apiParas["unionid"] = $unionid;
+        $this->apiParas['unionid'] = $unionid;
     }
 
     public function getUnionid()
@@ -43,9 +45,9 @@ class NewsGetRequest extends BaseRequest
         return $this->unionid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.material.news.get";
+        return 'dingtalk.oapi.material.news.get';
     }
 
     /**
@@ -53,13 +55,13 @@ class NewsGetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->mediaId, "mediaId");
-        RequestCheckUtil::checkNotNull($this->unionid, "unionid");
+        RequestCheckUtil::checkNotNull($this->mediaId, 'mediaId');
+        RequestCheckUtil::checkNotNull($this->unionid, 'unionid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

@@ -5,7 +5,7 @@ namespace SyDingTalk;
 class ApplicationVar
 {
     public $save_file;
-    public $application = null;
+    public $application;
     public $app_data = '';
     public $__writed = false;
 
@@ -15,9 +15,19 @@ class ApplicationVar
         $this->application = [];
     }
 
+    public function __writeToFile()
+    {
+        $fp = @fopen($this->save_file, 'w');
+        if (flock($fp, LOCK_EX | LOCK_NB)) {
+            @fwrite($fp, $this->app_data);
+            flock($fp, LOCK_UN);
+        }
+        @fclose($fp);
+    }
+
     public function setValue($var_name, $var_value)
     {
-        if (!is_string($var_name) || empty($var_name)) {
+        if (!\is_string($var_name) || empty($var_name)) {
             return false;
         }
 
@@ -37,15 +47,5 @@ class ApplicationVar
         }
 
         return @unserialize(@file_get_contents($this->save_file));
-    }
-
-    public function __writeToFile()
-    {
-        $fp = @fopen($this->save_file, "w");
-        if (flock($fp, LOCK_EX | LOCK_NB)) {
-            @fwrite($fp, $this->app_data);
-            flock($fp, LOCK_UN);
-        }
-        @fclose($fp);
     }
 }

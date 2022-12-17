@@ -6,8 +6,8 @@
 
     class SecretCounterUtil
     {
-        private $topClient ;
-        private $cacheClient = null;
+        private $topClient;
+        private $cacheClient;
 
         private $counterMap;
 
@@ -15,21 +15,19 @@
         {
             $this->topClient = $client;
 
-            $counterMap = array();
+            $counterMap = [];
         }
 
-        /*
-        * 如果不走缓存模式，析构即调用API回传统计信息
-        */
+        // 如果不走缓存模式，析构即调用API回传统计信息
         public function __destruct()
         {
-            if ($this->cacheClient == null) {
+            if (null == $this->cacheClient) {
             }
         }
 
         public function report($session)
         {
-            $request = new TopSdkFeedbackUploadRequest;
+            $request = new TopSdkFeedbackUploadRequest();
         }
 
         public function setCacheClient($cache)
@@ -40,56 +38,56 @@
         public function incrDecrypt($delt, $session, $type)
         {
             $item = getItem($session);
-            if ($item == null) {
+            if (null == $item) {
                 $item = new SecretCounter();
                 putItem($session, $item);
             }
 
-            if ($type == "nick") {
-                $item->$decryptNickNum += $delt;
-            } elseif ($type == "receiver_name") {
-                $item->$decryptReceiverNameNum += $delt ;
-            } elseif ($type == "phone") {
-                $item->$decryptPhoneNum += $delt ;
-            } elseif ($type == "simple") {
-                $item->$decryptSimpleNum += $delt ;
+            if ('nick' == $type) {
+                $item->{$decryptNickNum} += $delt;
+            } elseif ('receiver_name' == $type) {
+                $item->{$decryptReceiverNameNum} += $delt;
+            } elseif ('phone' == $type) {
+                $item->{$decryptPhoneNum} += $delt;
+            } elseif ('simple' == $type) {
+                $item->{$decryptSimpleNum} += $delt;
             }
         }
 
         public function incrEncrypt($delt, $session, $type)
         {
             $item = getItem($session);
-            if ($item == null) {
+            if (null == $item) {
                 $item = new SecretCounter();
                 putItem($session, $item);
             }
 
-            if ($type == "nick") {
-                $item->$encryptNickNum += $delt ;
-            } elseif ($type == "receiver_name") {
-                $item->$encryptReceiverNameNum += $delt ;
-            } elseif ($type == "phone") {
-                $item->$encryptPhoneNum += $delt ;
-            } elseif ($type == "simple") {
-                $item->$encryptSimpleNum += $delt ;
+            if ('nick' == $type) {
+                $item->{$encryptNickNum} += $delt;
+            } elseif ('receiver_name' == $type) {
+                $item->{$encryptReceiverNameNum} += $delt;
+            } elseif ('phone' == $type) {
+                $item->{$encryptPhoneNum} += $delt;
+            } elseif ('simple' == $type) {
+                $item->{$encryptSimpleNum} += $delt;
             }
         }
 
         public function getItem($session)
         {
-            if ($this->cacheClient == null) {
+            if (null == $this->cacheClient) {
                 return $counterMap[$session];
-            } else {
-                return $this->cacheClient->getCache('s_'.$session);
             }
+
+            return $this->cacheClient->getCache('s_' . $session);
         }
 
         public function putItem($session, $item)
         {
-            if ($this->cacheClient == null) {
+            if (null == $this->cacheClient) {
                 $counterMap[$session] = $item;
             } else {
-                $this->cacheClient->setCache('s_'.$session, $item);
+                $this->cacheClient->setCache('s_' . $session, $item);
             }
         }
     }

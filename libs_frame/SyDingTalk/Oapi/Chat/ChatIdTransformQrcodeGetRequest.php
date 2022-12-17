@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.chat.chatid.transformqrcode.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.10.12
  */
 class ChatIdTransformQrcodeGetRequest extends BaseRequest
 {
     /**
      * 群二维码的url
-     **/
+     */
     private $groupUrl;
 
     public function setGroupUrl($groupUrl)
     {
         $this->groupUrl = $groupUrl;
-        $this->apiParas["group_url"] = $groupUrl;
+        $this->apiParas['group_url'] = $groupUrl;
     }
 
     public function getGroupUrl()
@@ -28,9 +30,9 @@ class ChatIdTransformQrcodeGetRequest extends BaseRequest
         return $this->groupUrl;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.chat.chatid.transformqrcode.get";
+        return 'dingtalk.oapi.chat.chatid.transformqrcode.get';
     }
 
     /**
@@ -38,12 +40,12 @@ class ChatIdTransformQrcodeGetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->groupUrl, "groupUrl");
+        RequestCheckUtil::checkNotNull($this->groupUrl, 'groupUrl');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

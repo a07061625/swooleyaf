@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.rhino.transport.maplocation.query request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.11.30
  */
 class TransportMaplocationQueryRequest extends BaseRequest
 {
     /**
      * 是否获取配置信息
-     **/
+     */
     private $includeConfig;
     /**
      * poiCode list
-     **/
+     */
     private $poiCodeList;
     /**
      * 租户id
-     **/
+     */
     private $tenantId;
     /**
      * 业务参数[这里先预留],这里是用户ID,比如钉钉用户ID
-     **/
+     */
     private $userid;
 
     public function setIncludeConfig($includeConfig)
     {
         $this->includeConfig = $includeConfig;
-        $this->apiParas["include_config"] = $includeConfig;
+        $this->apiParas['include_config'] = $includeConfig;
     }
 
     public function getIncludeConfig()
@@ -43,7 +45,7 @@ class TransportMaplocationQueryRequest extends BaseRequest
     public function setPoiCodeList($poiCodeList)
     {
         $this->poiCodeList = $poiCodeList;
-        $this->apiParas["poi_code_list"] = $poiCodeList;
+        $this->apiParas['poi_code_list'] = $poiCodeList;
     }
 
     public function getPoiCodeList()
@@ -54,7 +56,7 @@ class TransportMaplocationQueryRequest extends BaseRequest
     public function setTenantId($tenantId)
     {
         $this->tenantId = $tenantId;
-        $this->apiParas["tenant_id"] = $tenantId;
+        $this->apiParas['tenant_id'] = $tenantId;
     }
 
     public function getTenantId()
@@ -65,7 +67,7 @@ class TransportMaplocationQueryRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -73,9 +75,9 @@ class TransportMaplocationQueryRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.rhino.transport.maplocation.query";
+        return 'dingtalk.oapi.rhino.transport.maplocation.query';
     }
 
     /**
@@ -83,14 +85,14 @@ class TransportMaplocationQueryRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->poiCodeList, "poiCodeList");
-        RequestCheckUtil::checkMaxListSize($this->poiCodeList, 20, "poiCodeList");
-        RequestCheckUtil::checkNotNull($this->tenantId, "tenantId");
+        RequestCheckUtil::checkNotNull($this->poiCodeList, 'poiCodeList');
+        RequestCheckUtil::checkMaxListSize($this->poiCodeList, 20, 'poiCodeList');
+        RequestCheckUtil::checkNotNull($this->tenantId, 'tenantId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

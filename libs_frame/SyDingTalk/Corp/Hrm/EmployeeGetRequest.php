@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.corp.hrm.employee.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.03
  */
 class EmployeeGetRequest extends BaseRequest
 {
     /**
      * 查询用户userid
-     **/
+     */
     private $userid;
 
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -28,9 +30,9 @@ class EmployeeGetRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.corp.hrm.employee.get";
+        return 'dingtalk.corp.hrm.employee.get';
     }
 
     /**
@@ -38,12 +40,12 @@ class EmployeeGetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->userid, "userid");
+        RequestCheckUtil::checkNotNull($this->userid, 'userid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

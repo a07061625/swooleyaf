@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.workspace.task.update request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.01.20
  */
 class TaskUpdateRequest extends BaseRequest
 {
     /**
      * 微应用agentId
-     **/
+     */
     private $microappAgentId;
     /**
      * 操作者id
-     **/
+     */
     private $operatorUserid;
     /**
      * 请求入参
-     **/
+     */
     private $task;
     /**
      * 任务ID
-     **/
+     */
     private $taskId;
 
     public function setMicroappAgentId($microappAgentId)
     {
         $this->microappAgentId = $microappAgentId;
-        $this->apiParas["microapp_agent_id"] = $microappAgentId;
+        $this->apiParas['microapp_agent_id'] = $microappAgentId;
     }
 
     public function getMicroappAgentId()
@@ -43,7 +45,7 @@ class TaskUpdateRequest extends BaseRequest
     public function setOperatorUserid($operatorUserid)
     {
         $this->operatorUserid = $operatorUserid;
-        $this->apiParas["operator_userid"] = $operatorUserid;
+        $this->apiParas['operator_userid'] = $operatorUserid;
     }
 
     public function getOperatorUserid()
@@ -54,7 +56,7 @@ class TaskUpdateRequest extends BaseRequest
     public function setTask($task)
     {
         $this->task = $task;
-        $this->apiParas["task"] = $task;
+        $this->apiParas['task'] = $task;
     }
 
     public function getTask()
@@ -65,7 +67,7 @@ class TaskUpdateRequest extends BaseRequest
     public function setTaskId($taskId)
     {
         $this->taskId = $taskId;
-        $this->apiParas["task_id"] = $taskId;
+        $this->apiParas['task_id'] = $taskId;
     }
 
     public function getTaskId()
@@ -73,9 +75,9 @@ class TaskUpdateRequest extends BaseRequest
         return $this->taskId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.workspace.task.update";
+        return 'dingtalk.oapi.workspace.task.update';
     }
 
     /**
@@ -83,12 +85,12 @@ class TaskUpdateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->taskId, "taskId");
+        RequestCheckUtil::checkNotNull($this->taskId, 'taskId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

@@ -6,24 +6,26 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.attendance.group.update request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.04.09
  */
 class GroupUpdateRequest extends BaseRequest
 {
     /**
      * 考勤组
-     **/
+     */
     private $group;
     /**
      * 操作人userId
-     **/
+     */
     private $opUserid;
 
     public function setGroup($group)
     {
         $this->group = $group;
-        $this->apiParas["group"] = $group;
+        $this->apiParas['group'] = $group;
     }
 
     public function getGroup()
@@ -34,7 +36,7 @@ class GroupUpdateRequest extends BaseRequest
     public function setOpUserid($opUserid)
     {
         $this->opUserid = $opUserid;
-        $this->apiParas["op_userid"] = $opUserid;
+        $this->apiParas['op_userid'] = $opUserid;
     }
 
     public function getOpUserid()
@@ -42,14 +44,14 @@ class GroupUpdateRequest extends BaseRequest
         return $this->opUserid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.attendance.group.update";
+        return 'dingtalk.oapi.attendance.group.update';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

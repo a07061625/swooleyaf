@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.crm.objectdata.customer.list request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.01.28
  */
 class ObjectDataCustomerListRequest extends BaseRequest
 {
     /**
      * 操作人用户ID
-     **/
+     */
     private $currentOperatorUserid;
     /**
      * 数据ID列表
-     **/
+     */
     private $dataIdList;
 
     public function setCurrentOperatorUserid($currentOperatorUserid)
     {
         $this->currentOperatorUserid = $currentOperatorUserid;
-        $this->apiParas["current_operator_userid"] = $currentOperatorUserid;
+        $this->apiParas['current_operator_userid'] = $currentOperatorUserid;
     }
 
     public function getCurrentOperatorUserid()
@@ -35,7 +37,7 @@ class ObjectDataCustomerListRequest extends BaseRequest
     public function setDataIdList($dataIdList)
     {
         $this->dataIdList = $dataIdList;
-        $this->apiParas["data_id_list"] = $dataIdList;
+        $this->apiParas['data_id_list'] = $dataIdList;
     }
 
     public function getDataIdList()
@@ -43,9 +45,9 @@ class ObjectDataCustomerListRequest extends BaseRequest
         return $this->dataIdList;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.crm.objectdata.customer.list";
+        return 'dingtalk.oapi.crm.objectdata.customer.list';
     }
 
     /**
@@ -53,13 +55,13 @@ class ObjectDataCustomerListRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->dataIdList, "dataIdList");
-        RequestCheckUtil::checkMaxListSize($this->dataIdList, 100, "dataIdList");
+        RequestCheckUtil::checkNotNull($this->dataIdList, 'dataIdList');
+        RequestCheckUtil::checkMaxListSize($this->dataIdList, 100, 'dataIdList');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

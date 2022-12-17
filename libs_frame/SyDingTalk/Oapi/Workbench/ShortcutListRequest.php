@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.workbench.shortcut.list request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.01
  */
 class ShortcutListRequest extends BaseRequest
 {
     /**
      * ISV微应用id
-     **/
+     */
     private $appId;
     /**
      * 当前页码
-     **/
+     */
     private $pageIndex;
     /**
      * 每页记录数
-     **/
+     */
     private $pageSize;
 
     public function setAppId($appId)
     {
         $this->appId = $appId;
-        $this->apiParas["app_id"] = $appId;
+        $this->apiParas['app_id'] = $appId;
     }
 
     public function getAppId()
@@ -39,7 +41,7 @@ class ShortcutListRequest extends BaseRequest
     public function setPageIndex($pageIndex)
     {
         $this->pageIndex = $pageIndex;
-        $this->apiParas["page_index"] = $pageIndex;
+        $this->apiParas['page_index'] = $pageIndex;
     }
 
     public function getPageIndex()
@@ -50,7 +52,7 @@ class ShortcutListRequest extends BaseRequest
     public function setPageSize($pageSize)
     {
         $this->pageSize = $pageSize;
-        $this->apiParas["page_size"] = $pageSize;
+        $this->apiParas['page_size'] = $pageSize;
     }
 
     public function getPageSize()
@@ -58,9 +60,9 @@ class ShortcutListRequest extends BaseRequest
         return $this->pageSize;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.workbench.shortcut.list";
+        return 'dingtalk.oapi.workbench.shortcut.list';
     }
 
     /**
@@ -68,12 +70,12 @@ class ShortcutListRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->appId, "appId");
+        RequestCheckUtil::checkNotNull($this->appId, 'appId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

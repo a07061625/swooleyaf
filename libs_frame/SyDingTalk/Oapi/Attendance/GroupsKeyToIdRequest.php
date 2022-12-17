@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.attendance.groups.keytoid request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.02.23
  */
 class GroupsKeyToIdRequest extends BaseRequest
 {
     /**
      * groupKey
-     **/
+     */
     private $groupKey;
     /**
      * 操作人的userId
-     **/
+     */
     private $opUserId;
 
     public function setGroupKey($groupKey)
     {
         $this->groupKey = $groupKey;
-        $this->apiParas["group_key"] = $groupKey;
+        $this->apiParas['group_key'] = $groupKey;
     }
 
     public function getGroupKey()
@@ -35,7 +37,7 @@ class GroupsKeyToIdRequest extends BaseRequest
     public function setOpUserId($opUserId)
     {
         $this->opUserId = $opUserId;
-        $this->apiParas["op_user_id"] = $opUserId;
+        $this->apiParas['op_user_id'] = $opUserId;
     }
 
     public function getOpUserId()
@@ -43,9 +45,9 @@ class GroupsKeyToIdRequest extends BaseRequest
         return $this->opUserId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.attendance.groups.keytoid";
+        return 'dingtalk.oapi.attendance.groups.keytoid';
     }
 
     /**
@@ -53,13 +55,13 @@ class GroupsKeyToIdRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->groupKey, "groupKey");
-        RequestCheckUtil::checkNotNull($this->opUserId, "opUserId");
+        RequestCheckUtil::checkNotNull($this->groupKey, 'groupKey');
+        RequestCheckUtil::checkNotNull($this->opUserId, 'opUserId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

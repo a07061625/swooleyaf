@@ -7,92 +7,94 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.im.chat.scenegroup.update request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.09.22
  */
 class ChatSceneGroupUpdateRequest extends BaseRequest
 {
     /**
      * 禁止群成员私聊 若开启，普通群成员之间不能够加好友、单聊，且部分功能使用受限（管理员与非管理员之间不受影响）0-不开启，1-开启
-     **/
+     */
     private $addFriendForbidden;
     /**
      * 群日历 若开启，群内容非好友/同事的成员可相互发起钉钉日程 0-不开启，1-开启
-     **/
+     */
     private $allMembersCanCreateCalendar;
     /**
      * 群会议 若开启，群内任意成员可发起视频和语音会议 0-不开启，1-开启
-     **/
+     */
     private $allMembersCanCreateMcsConf;
     /**
      * 群禁言，0-默认，不禁言，1-全员禁言
-     **/
+     */
     private $chatBannedType;
     /**
      * 禁止发送群邮件 若开启，群内成员不可再对本群发送群邮件 0-不开启，1-开启
-     **/
+     */
     private $groupEmailDisabled;
     /**
      * 群直播 若开启，群内任意成员可发起群直播 0-不开启，1-开启
-     **/
+     */
     private $groupLiveSwitch;
     /**
      * 群头像mediaId
-     **/
+     */
     private $icon;
     /**
      * 管理类型，0-默认，所有人可管理，1-仅群主可管理
-     **/
+     */
     private $managementType;
     /**
      * 禁止非管理员向管理员发起单聊 若开启，非管理员不能向管理员发起单聊 0-不开启，1-开启
-     **/
+     */
     private $membersToAdminChat;
     /**
      * @all 权限，0-默认，所有人，1-仅群主可@all
-     **/
+     */
     private $mentionAllAuthority;
     /**
      * 仅群主和管理员可在群内发DING  0-不开启，1-开启
-     **/
+     */
     private $onlyAdminCanDing;
     /**
      * 仅群主和管理员可置顶群消息 0-不开启，1-开启
-     **/
+     */
     private $onlyAdminCanSetMsgTop;
     /**
      * 群id
-     **/
+     */
     private $openConversationId;
     /**
      * 群主userid
-     **/
+     */
     private $ownerUserId;
     /**
      * 自定义群插件是否需要群主和管理员审批0-不需要审批，1-需要审批
-     **/
+     */
     private $pluginCustomizeVerify;
     /**
      * 群可搜索，0-默认，不可搜索，1-可搜索
-     **/
+     */
     private $searchable;
     /**
      * 新成员是否可查看聊天历史消息，0-默认，否，1-是
-     **/
+     */
     private $showHistoryType;
     /**
      * 群名称
-     **/
+     */
     private $title;
     /**
      * 入群验证，0：不入群验证（默认） 1：入群验证
-     **/
+     */
     private $validationType;
 
     public function setAddFriendForbidden($addFriendForbidden)
     {
         $this->addFriendForbidden = $addFriendForbidden;
-        $this->apiParas["add_friend_forbidden"] = $addFriendForbidden;
+        $this->apiParas['add_friend_forbidden'] = $addFriendForbidden;
     }
 
     public function getAddFriendForbidden()
@@ -103,7 +105,7 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
     public function setAllMembersCanCreateCalendar($allMembersCanCreateCalendar)
     {
         $this->allMembersCanCreateCalendar = $allMembersCanCreateCalendar;
-        $this->apiParas["all_members_can_create_calendar"] = $allMembersCanCreateCalendar;
+        $this->apiParas['all_members_can_create_calendar'] = $allMembersCanCreateCalendar;
     }
 
     public function getAllMembersCanCreateCalendar()
@@ -114,7 +116,7 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
     public function setAllMembersCanCreateMcsConf($allMembersCanCreateMcsConf)
     {
         $this->allMembersCanCreateMcsConf = $allMembersCanCreateMcsConf;
-        $this->apiParas["all_members_can_create_mcs_conf"] = $allMembersCanCreateMcsConf;
+        $this->apiParas['all_members_can_create_mcs_conf'] = $allMembersCanCreateMcsConf;
     }
 
     public function getAllMembersCanCreateMcsConf()
@@ -125,7 +127,7 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
     public function setChatBannedType($chatBannedType)
     {
         $this->chatBannedType = $chatBannedType;
-        $this->apiParas["chat_banned_type"] = $chatBannedType;
+        $this->apiParas['chat_banned_type'] = $chatBannedType;
     }
 
     public function getChatBannedType()
@@ -136,7 +138,7 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
     public function setGroupEmailDisabled($groupEmailDisabled)
     {
         $this->groupEmailDisabled = $groupEmailDisabled;
-        $this->apiParas["group_email_disabled"] = $groupEmailDisabled;
+        $this->apiParas['group_email_disabled'] = $groupEmailDisabled;
     }
 
     public function getGroupEmailDisabled()
@@ -147,7 +149,7 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
     public function setGroupLiveSwitch($groupLiveSwitch)
     {
         $this->groupLiveSwitch = $groupLiveSwitch;
-        $this->apiParas["group_live_switch"] = $groupLiveSwitch;
+        $this->apiParas['group_live_switch'] = $groupLiveSwitch;
     }
 
     public function getGroupLiveSwitch()
@@ -158,7 +160,7 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
     public function setIcon($icon)
     {
         $this->icon = $icon;
-        $this->apiParas["icon"] = $icon;
+        $this->apiParas['icon'] = $icon;
     }
 
     public function getIcon()
@@ -169,7 +171,7 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
     public function setManagementType($managementType)
     {
         $this->managementType = $managementType;
-        $this->apiParas["management_type"] = $managementType;
+        $this->apiParas['management_type'] = $managementType;
     }
 
     public function getManagementType()
@@ -180,7 +182,7 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
     public function setMembersToAdminChat($membersToAdminChat)
     {
         $this->membersToAdminChat = $membersToAdminChat;
-        $this->apiParas["members_to_admin_chat"] = $membersToAdminChat;
+        $this->apiParas['members_to_admin_chat'] = $membersToAdminChat;
     }
 
     public function getMembersToAdminChat()
@@ -191,7 +193,7 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
     public function setMentionAllAuthority($mentionAllAuthority)
     {
         $this->mentionAllAuthority = $mentionAllAuthority;
-        $this->apiParas["mention_all_authority"] = $mentionAllAuthority;
+        $this->apiParas['mention_all_authority'] = $mentionAllAuthority;
     }
 
     public function getMentionAllAuthority()
@@ -202,7 +204,7 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
     public function setOnlyAdminCanDing($onlyAdminCanDing)
     {
         $this->onlyAdminCanDing = $onlyAdminCanDing;
-        $this->apiParas["only_admin_can_ding"] = $onlyAdminCanDing;
+        $this->apiParas['only_admin_can_ding'] = $onlyAdminCanDing;
     }
 
     public function getOnlyAdminCanDing()
@@ -213,7 +215,7 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
     public function setOnlyAdminCanSetMsgTop($onlyAdminCanSetMsgTop)
     {
         $this->onlyAdminCanSetMsgTop = $onlyAdminCanSetMsgTop;
-        $this->apiParas["only_admin_can_set_msg_top"] = $onlyAdminCanSetMsgTop;
+        $this->apiParas['only_admin_can_set_msg_top'] = $onlyAdminCanSetMsgTop;
     }
 
     public function getOnlyAdminCanSetMsgTop()
@@ -224,7 +226,7 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
     public function setOpenConversationId($openConversationId)
     {
         $this->openConversationId = $openConversationId;
-        $this->apiParas["open_conversation_id"] = $openConversationId;
+        $this->apiParas['open_conversation_id'] = $openConversationId;
     }
 
     public function getOpenConversationId()
@@ -235,7 +237,7 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
     public function setOwnerUserId($ownerUserId)
     {
         $this->ownerUserId = $ownerUserId;
-        $this->apiParas["owner_user_id"] = $ownerUserId;
+        $this->apiParas['owner_user_id'] = $ownerUserId;
     }
 
     public function getOwnerUserId()
@@ -246,7 +248,7 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
     public function setPluginCustomizeVerify($pluginCustomizeVerify)
     {
         $this->pluginCustomizeVerify = $pluginCustomizeVerify;
-        $this->apiParas["plugin_customize_verify"] = $pluginCustomizeVerify;
+        $this->apiParas['plugin_customize_verify'] = $pluginCustomizeVerify;
     }
 
     public function getPluginCustomizeVerify()
@@ -257,7 +259,7 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
     public function setSearchable($searchable)
     {
         $this->searchable = $searchable;
-        $this->apiParas["searchable"] = $searchable;
+        $this->apiParas['searchable'] = $searchable;
     }
 
     public function getSearchable()
@@ -268,7 +270,7 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
     public function setShowHistoryType($showHistoryType)
     {
         $this->showHistoryType = $showHistoryType;
-        $this->apiParas["show_history_type"] = $showHistoryType;
+        $this->apiParas['show_history_type'] = $showHistoryType;
     }
 
     public function getShowHistoryType()
@@ -279,7 +281,7 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
     public function setTitle($title)
     {
         $this->title = $title;
-        $this->apiParas["title"] = $title;
+        $this->apiParas['title'] = $title;
     }
 
     public function getTitle()
@@ -290,7 +292,7 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
     public function setValidationType($validationType)
     {
         $this->validationType = $validationType;
-        $this->apiParas["validation_type"] = $validationType;
+        $this->apiParas['validation_type'] = $validationType;
     }
 
     public function getValidationType()
@@ -298,9 +300,9 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
         return $this->validationType;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.im.chat.scenegroup.update";
+        return 'dingtalk.oapi.im.chat.scenegroup.update';
     }
 
     /**
@@ -308,12 +310,12 @@ class ChatSceneGroupUpdateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->openConversationId, "openConversationId");
+        RequestCheckUtil::checkNotNull($this->openConversationId, 'openConversationId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

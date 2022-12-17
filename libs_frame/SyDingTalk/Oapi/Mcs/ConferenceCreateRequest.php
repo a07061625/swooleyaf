@@ -7,36 +7,38 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.mcs.conference.create request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.01.06
  */
 class ConferenceCreateRequest extends BaseRequest
 {
     /**
      * 由MCS颁发给调用三方的使用凭证
-     **/
+     */
     private $bizKey;
     /**
      * 是否推送通话记录
-     **/
+     */
     private $isPushRecord;
     /**
      * 倾向发起地 目前支持 CN-HZ/CN-HK/CN-BJ
-     **/
+     */
     private $preferenceRegion;
     /**
      * 视频会议从创建之时起的最多保留时间
-     **/
+     */
     private $roomValidTime;
     /**
      * 视频会议标题
-     **/
+     */
     private $title;
 
     public function setBizKey($bizKey)
     {
         $this->bizKey = $bizKey;
-        $this->apiParas["biz_key"] = $bizKey;
+        $this->apiParas['biz_key'] = $bizKey;
     }
 
     public function getBizKey()
@@ -47,7 +49,7 @@ class ConferenceCreateRequest extends BaseRequest
     public function setIsPushRecord($isPushRecord)
     {
         $this->isPushRecord = $isPushRecord;
-        $this->apiParas["is_push_record"] = $isPushRecord;
+        $this->apiParas['is_push_record'] = $isPushRecord;
     }
 
     public function getIsPushRecord()
@@ -58,7 +60,7 @@ class ConferenceCreateRequest extends BaseRequest
     public function setPreferenceRegion($preferenceRegion)
     {
         $this->preferenceRegion = $preferenceRegion;
-        $this->apiParas["preference_region"] = $preferenceRegion;
+        $this->apiParas['preference_region'] = $preferenceRegion;
     }
 
     public function getPreferenceRegion()
@@ -69,7 +71,7 @@ class ConferenceCreateRequest extends BaseRequest
     public function setRoomValidTime($roomValidTime)
     {
         $this->roomValidTime = $roomValidTime;
-        $this->apiParas["room_valid_time"] = $roomValidTime;
+        $this->apiParas['room_valid_time'] = $roomValidTime;
     }
 
     public function getRoomValidTime()
@@ -80,7 +82,7 @@ class ConferenceCreateRequest extends BaseRequest
     public function setTitle($title)
     {
         $this->title = $title;
-        $this->apiParas["title"] = $title;
+        $this->apiParas['title'] = $title;
     }
 
     public function getTitle()
@@ -88,9 +90,9 @@ class ConferenceCreateRequest extends BaseRequest
         return $this->title;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.mcs.conference.create";
+        return 'dingtalk.oapi.mcs.conference.create';
     }
 
     /**
@@ -98,14 +100,14 @@ class ConferenceCreateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->bizKey, "bizKey");
-        RequestCheckUtil::checkNotNull($this->roomValidTime, "roomValidTime");
-        RequestCheckUtil::checkNotNull($this->title, "title");
+        RequestCheckUtil::checkNotNull($this->bizKey, 'bizKey');
+        RequestCheckUtil::checkNotNull($this->roomValidTime, 'roomValidTime');
+        RequestCheckUtil::checkNotNull($this->title, 'title');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

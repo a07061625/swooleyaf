@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.smartwork.hrm.roster.meta.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.02.19
  */
 class HrmRosterMetaGetRequest extends BaseRequest
 {
     /**
      * 微应用在企业的AgentId
-     **/
+     */
     private $agentid;
 
     public function setAgentid($agentid)
     {
         $this->agentid = $agentid;
-        $this->apiParas["agentid"] = $agentid;
+        $this->apiParas['agentid'] = $agentid;
     }
 
     public function getAgentid()
@@ -28,9 +30,9 @@ class HrmRosterMetaGetRequest extends BaseRequest
         return $this->agentid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.smartwork.hrm.roster.meta.get";
+        return 'dingtalk.oapi.smartwork.hrm.roster.meta.get';
     }
 
     /**
@@ -38,12 +40,12 @@ class HrmRosterMetaGetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->agentid, "agentid");
+        RequestCheckUtil::checkNotNull($this->agentid, 'agentid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

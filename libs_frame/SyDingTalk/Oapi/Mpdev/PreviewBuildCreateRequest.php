@@ -7,84 +7,86 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.mpdev.previewbuild.create request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.08.17
  */
 class PreviewBuildCreateRequest extends BaseRequest
 {
     /**
      * SDK构建脚本版本
-     **/
+     */
     private $buildScriptVersion;
     /**
      * 远程调试的channel
-     **/
+     */
     private $channel;
     /**
      * scheme中corpId值
-     **/
+     */
     private $corpid;
     /**
      * 开启tabBar
-     **/
+     */
     private $enableTabbar;
     /**
      * 忽略http安全域名检查
-     **/
+     */
     private $ignoreHttpReqPermission;
     /**
      * 忽略web-view安全域名检查
-     **/
+     */
     private $ignoreWebviewDomainCheck;
     /**
      * 远程调试模式
-     **/
+     */
     private $isRemoteDebug;
     /**
      * remoteX远程调试模式
-     **/
+     */
     private $isRemoteX;
     /**
      * 包默认主页
-     **/
+     */
     private $mainPage;
     /**
      * 小程序ID
-     **/
+     */
     private $miniappId;
     /**
      * 预览上传包地址
-     **/
+     */
     private $packageKey;
     /**
      * scheme page参数
-     **/
+     */
     private $page;
     /**
      * 插件预览包地址
-     **/
+     */
     private $pluginPackageKey;
     /**
      * 静态插件信息
-     **/
+     */
     private $pluginRefs;
     /**
      * scheme query参数
-     **/
+     */
     private $query;
     /**
      * 分包数据
-     **/
+     */
     private $subPackages;
     /**
      * 远程调试tyroid
-     **/
+     */
     private $tyroid;
 
     public function setBuildScriptVersion($buildScriptVersion)
     {
         $this->buildScriptVersion = $buildScriptVersion;
-        $this->apiParas["build_script_version"] = $buildScriptVersion;
+        $this->apiParas['build_script_version'] = $buildScriptVersion;
     }
 
     public function getBuildScriptVersion()
@@ -95,7 +97,7 @@ class PreviewBuildCreateRequest extends BaseRequest
     public function setChannel($channel)
     {
         $this->channel = $channel;
-        $this->apiParas["channel"] = $channel;
+        $this->apiParas['channel'] = $channel;
     }
 
     public function getChannel()
@@ -106,7 +108,7 @@ class PreviewBuildCreateRequest extends BaseRequest
     public function setCorpid($corpid)
     {
         $this->corpid = $corpid;
-        $this->apiParas["corpid"] = $corpid;
+        $this->apiParas['corpid'] = $corpid;
     }
 
     public function getCorpid()
@@ -117,7 +119,7 @@ class PreviewBuildCreateRequest extends BaseRequest
     public function setEnableTabbar($enableTabbar)
     {
         $this->enableTabbar = $enableTabbar;
-        $this->apiParas["enable_tabbar"] = $enableTabbar;
+        $this->apiParas['enable_tabbar'] = $enableTabbar;
     }
 
     public function getEnableTabbar()
@@ -128,7 +130,7 @@ class PreviewBuildCreateRequest extends BaseRequest
     public function setIgnoreHttpReqPermission($ignoreHttpReqPermission)
     {
         $this->ignoreHttpReqPermission = $ignoreHttpReqPermission;
-        $this->apiParas["ignore_http_req_permission"] = $ignoreHttpReqPermission;
+        $this->apiParas['ignore_http_req_permission'] = $ignoreHttpReqPermission;
     }
 
     public function getIgnoreHttpReqPermission()
@@ -139,7 +141,7 @@ class PreviewBuildCreateRequest extends BaseRequest
     public function setIgnoreWebviewDomainCheck($ignoreWebviewDomainCheck)
     {
         $this->ignoreWebviewDomainCheck = $ignoreWebviewDomainCheck;
-        $this->apiParas["ignore_webview_domain_check"] = $ignoreWebviewDomainCheck;
+        $this->apiParas['ignore_webview_domain_check'] = $ignoreWebviewDomainCheck;
     }
 
     public function getIgnoreWebviewDomainCheck()
@@ -150,7 +152,7 @@ class PreviewBuildCreateRequest extends BaseRequest
     public function setIsRemoteDebug($isRemoteDebug)
     {
         $this->isRemoteDebug = $isRemoteDebug;
-        $this->apiParas["is_remote_debug"] = $isRemoteDebug;
+        $this->apiParas['is_remote_debug'] = $isRemoteDebug;
     }
 
     public function getIsRemoteDebug()
@@ -161,7 +163,7 @@ class PreviewBuildCreateRequest extends BaseRequest
     public function setIsRemoteX($isRemoteX)
     {
         $this->isRemoteX = $isRemoteX;
-        $this->apiParas["is_remote_x"] = $isRemoteX;
+        $this->apiParas['is_remote_x'] = $isRemoteX;
     }
 
     public function getIsRemoteX()
@@ -172,7 +174,7 @@ class PreviewBuildCreateRequest extends BaseRequest
     public function setMainPage($mainPage)
     {
         $this->mainPage = $mainPage;
-        $this->apiParas["main_page"] = $mainPage;
+        $this->apiParas['main_page'] = $mainPage;
     }
 
     public function getMainPage()
@@ -183,7 +185,7 @@ class PreviewBuildCreateRequest extends BaseRequest
     public function setMiniappId($miniappId)
     {
         $this->miniappId = $miniappId;
-        $this->apiParas["miniapp_id"] = $miniappId;
+        $this->apiParas['miniapp_id'] = $miniappId;
     }
 
     public function getMiniappId()
@@ -194,7 +196,7 @@ class PreviewBuildCreateRequest extends BaseRequest
     public function setPackageKey($packageKey)
     {
         $this->packageKey = $packageKey;
-        $this->apiParas["package_key"] = $packageKey;
+        $this->apiParas['package_key'] = $packageKey;
     }
 
     public function getPackageKey()
@@ -205,7 +207,7 @@ class PreviewBuildCreateRequest extends BaseRequest
     public function setPage($page)
     {
         $this->page = $page;
-        $this->apiParas["page"] = $page;
+        $this->apiParas['page'] = $page;
     }
 
     public function getPage()
@@ -216,7 +218,7 @@ class PreviewBuildCreateRequest extends BaseRequest
     public function setPluginPackageKey($pluginPackageKey)
     {
         $this->pluginPackageKey = $pluginPackageKey;
-        $this->apiParas["plugin_package_key"] = $pluginPackageKey;
+        $this->apiParas['plugin_package_key'] = $pluginPackageKey;
     }
 
     public function getPluginPackageKey()
@@ -227,7 +229,7 @@ class PreviewBuildCreateRequest extends BaseRequest
     public function setPluginRefs($pluginRefs)
     {
         $this->pluginRefs = $pluginRefs;
-        $this->apiParas["plugin_refs"] = $pluginRefs;
+        $this->apiParas['plugin_refs'] = $pluginRefs;
     }
 
     public function getPluginRefs()
@@ -238,7 +240,7 @@ class PreviewBuildCreateRequest extends BaseRequest
     public function setQuery($query)
     {
         $this->query = $query;
-        $this->apiParas["query"] = $query;
+        $this->apiParas['query'] = $query;
     }
 
     public function getQuery()
@@ -249,7 +251,7 @@ class PreviewBuildCreateRequest extends BaseRequest
     public function setSubPackages($subPackages)
     {
         $this->subPackages = $subPackages;
-        $this->apiParas["sub_packages"] = $subPackages;
+        $this->apiParas['sub_packages'] = $subPackages;
     }
 
     public function getSubPackages()
@@ -260,7 +262,7 @@ class PreviewBuildCreateRequest extends BaseRequest
     public function setTyroid($tyroid)
     {
         $this->tyroid = $tyroid;
-        $this->apiParas["tyroid"] = $tyroid;
+        $this->apiParas['tyroid'] = $tyroid;
     }
 
     public function getTyroid()
@@ -268,9 +270,9 @@ class PreviewBuildCreateRequest extends BaseRequest
         return $this->tyroid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.mpdev.previewbuild.create";
+        return 'dingtalk.oapi.mpdev.previewbuild.create';
     }
 
     /**
@@ -278,16 +280,16 @@ class PreviewBuildCreateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->enableTabbar, "enableTabbar");
-        RequestCheckUtil::checkNotNull($this->mainPage, "mainPage");
-        RequestCheckUtil::checkNotNull($this->miniappId, "miniappId");
-        RequestCheckUtil::checkNotNull($this->packageKey, "packageKey");
-        RequestCheckUtil::checkNotNull($this->pluginPackageKey, "pluginPackageKey");
+        RequestCheckUtil::checkNotNull($this->enableTabbar, 'enableTabbar');
+        RequestCheckUtil::checkNotNull($this->mainPage, 'mainPage');
+        RequestCheckUtil::checkNotNull($this->miniappId, 'miniappId');
+        RequestCheckUtil::checkNotNull($this->packageKey, 'packageKey');
+        RequestCheckUtil::checkNotNull($this->pluginPackageKey, 'pluginPackageKey');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

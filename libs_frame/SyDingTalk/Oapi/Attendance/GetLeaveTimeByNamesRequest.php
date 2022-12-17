@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.attendance.getleavetimebynames request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.10.21
  */
 class GetLeaveTimeByNamesRequest extends BaseRequest
 {
     /**
      * 开始时间
-     **/
+     */
     private $fromDate;
     /**
      * 假期名称
-     **/
+     */
     private $leaveNames;
     /**
      * 结束时间
-     **/
+     */
     private $toDate;
     /**
      * 用户的userId
-     **/
+     */
     private $userid;
 
     public function setFromDate($fromDate)
     {
         $this->fromDate = $fromDate;
-        $this->apiParas["from_date"] = $fromDate;
+        $this->apiParas['from_date'] = $fromDate;
     }
 
     public function getFromDate()
@@ -43,7 +45,7 @@ class GetLeaveTimeByNamesRequest extends BaseRequest
     public function setLeaveNames($leaveNames)
     {
         $this->leaveNames = $leaveNames;
-        $this->apiParas["leave_names"] = $leaveNames;
+        $this->apiParas['leave_names'] = $leaveNames;
     }
 
     public function getLeaveNames()
@@ -54,7 +56,7 @@ class GetLeaveTimeByNamesRequest extends BaseRequest
     public function setToDate($toDate)
     {
         $this->toDate = $toDate;
-        $this->apiParas["to_date"] = $toDate;
+        $this->apiParas['to_date'] = $toDate;
     }
 
     public function getToDate()
@@ -65,7 +67,7 @@ class GetLeaveTimeByNamesRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -73,9 +75,9 @@ class GetLeaveTimeByNamesRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.attendance.getleavetimebynames";
+        return 'dingtalk.oapi.attendance.getleavetimebynames';
     }
 
     /**
@@ -83,12 +85,12 @@ class GetLeaveTimeByNamesRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkMaxListSize($this->leaveNames, 20, "leaveNames");
+        RequestCheckUtil::checkMaxListSize($this->leaveNames, 20, 'leaveNames');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

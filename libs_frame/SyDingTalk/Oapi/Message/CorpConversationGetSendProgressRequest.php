@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.message.corpconversation.getsendprogress request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.03
  */
 class CorpConversationGetSendProgressRequest extends BaseRequest
 {
     /**
      * 发送消息时使用的微应用的id
-     **/
+     */
     private $agentId;
     /**
      * 发送消息时钉钉返回的任务id
-     **/
+     */
     private $taskId;
 
     public function setAgentId($agentId)
     {
         $this->agentId = $agentId;
-        $this->apiParas["agent_id"] = $agentId;
+        $this->apiParas['agent_id'] = $agentId;
     }
 
     public function getAgentId()
@@ -35,7 +37,7 @@ class CorpConversationGetSendProgressRequest extends BaseRequest
     public function setTaskId($taskId)
     {
         $this->taskId = $taskId;
-        $this->apiParas["task_id"] = $taskId;
+        $this->apiParas['task_id'] = $taskId;
     }
 
     public function getTaskId()
@@ -43,9 +45,9 @@ class CorpConversationGetSendProgressRequest extends BaseRequest
         return $this->taskId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.message.corpconversation.getsendprogress";
+        return 'dingtalk.oapi.message.corpconversation.getsendprogress';
     }
 
     /**
@@ -53,13 +55,13 @@ class CorpConversationGetSendProgressRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->agentId, "agentId");
-        RequestCheckUtil::checkNotNull($this->taskId, "taskId");
+        RequestCheckUtil::checkNotNull($this->agentId, 'agentId');
+        RequestCheckUtil::checkNotNull($this->taskId, 'taskId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

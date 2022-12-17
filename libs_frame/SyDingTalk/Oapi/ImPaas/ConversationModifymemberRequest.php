@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.impaas.conversation.modifymember request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.03
  */
 class ConversationModifymemberRequest extends BaseRequest
 {
     /**
      * 渠道
-     **/
+     */
     private $channel;
     /**
      * 群ID
-     **/
+     */
     private $chatid;
     /**
      * 会员ID列表
-     **/
+     */
     private $memberidList;
     /**
      * 1 添加 2 删除
-     **/
+     */
     private $type;
 
     public function setChannel($channel)
     {
         $this->channel = $channel;
-        $this->apiParas["channel"] = $channel;
+        $this->apiParas['channel'] = $channel;
     }
 
     public function getChannel()
@@ -43,7 +45,7 @@ class ConversationModifymemberRequest extends BaseRequest
     public function setChatid($chatid)
     {
         $this->chatid = $chatid;
-        $this->apiParas["chatid"] = $chatid;
+        $this->apiParas['chatid'] = $chatid;
     }
 
     public function getChatid()
@@ -54,7 +56,7 @@ class ConversationModifymemberRequest extends BaseRequest
     public function setMemberidList($memberidList)
     {
         $this->memberidList = $memberidList;
-        $this->apiParas["memberid_list"] = $memberidList;
+        $this->apiParas['memberid_list'] = $memberidList;
     }
 
     public function getMemberidList()
@@ -65,7 +67,7 @@ class ConversationModifymemberRequest extends BaseRequest
     public function setType($type)
     {
         $this->type = $type;
-        $this->apiParas["type"] = $type;
+        $this->apiParas['type'] = $type;
     }
 
     public function getType()
@@ -73,9 +75,9 @@ class ConversationModifymemberRequest extends BaseRequest
         return $this->type;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.impaas.conversation.modifymember";
+        return 'dingtalk.oapi.impaas.conversation.modifymember';
     }
 
     /**
@@ -83,16 +85,16 @@ class ConversationModifymemberRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->channel, "channel");
-        RequestCheckUtil::checkNotNull($this->chatid, "chatid");
-        RequestCheckUtil::checkNotNull($this->memberidList, "memberidList");
-        RequestCheckUtil::checkMaxListSize($this->memberidList, 500, "memberidList");
-        RequestCheckUtil::checkNotNull($this->type, "type");
+        RequestCheckUtil::checkNotNull($this->channel, 'channel');
+        RequestCheckUtil::checkNotNull($this->chatid, 'chatid');
+        RequestCheckUtil::checkNotNull($this->memberidList, 'memberidList');
+        RequestCheckUtil::checkMaxListSize($this->memberidList, 500, 'memberidList');
+        RequestCheckUtil::checkNotNull($this->type, 'type');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

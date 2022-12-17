@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.finance.faceVerification.query request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.01.26
  */
 class FaceVerificationQueryRequest extends BaseRequest
 {
     /**
      * 人脸识别业务编码
-     **/
+     */
     private $businessId;
     /**
      * 身份证号
-     **/
+     */
     private $idCardNo;
     /**
      * 人脸识别请求编码
-     **/
+     */
     private $requestCode;
     /**
      * 手机号
-     **/
+     */
     private $userMobile;
 
     public function setBusinessId($businessId)
     {
         $this->businessId = $businessId;
-        $this->apiParas["business_id"] = $businessId;
+        $this->apiParas['business_id'] = $businessId;
     }
 
     public function getBusinessId()
@@ -43,7 +45,7 @@ class FaceVerificationQueryRequest extends BaseRequest
     public function setIdCardNo($idCardNo)
     {
         $this->idCardNo = $idCardNo;
-        $this->apiParas["id_card_no"] = $idCardNo;
+        $this->apiParas['id_card_no'] = $idCardNo;
     }
 
     public function getIdCardNo()
@@ -54,7 +56,7 @@ class FaceVerificationQueryRequest extends BaseRequest
     public function setRequestCode($requestCode)
     {
         $this->requestCode = $requestCode;
-        $this->apiParas["request_code"] = $requestCode;
+        $this->apiParas['request_code'] = $requestCode;
     }
 
     public function getRequestCode()
@@ -65,7 +67,7 @@ class FaceVerificationQueryRequest extends BaseRequest
     public function setUserMobile($userMobile)
     {
         $this->userMobile = $userMobile;
-        $this->apiParas["user_mobile"] = $userMobile;
+        $this->apiParas['user_mobile'] = $userMobile;
     }
 
     public function getUserMobile()
@@ -73,9 +75,9 @@ class FaceVerificationQueryRequest extends BaseRequest
         return $this->userMobile;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.finance.faceVerification.query";
+        return 'dingtalk.oapi.finance.faceVerification.query';
     }
 
     /**
@@ -83,15 +85,15 @@ class FaceVerificationQueryRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->businessId, "businessId");
-        RequestCheckUtil::checkNotNull($this->idCardNo, "idCardNo");
-        RequestCheckUtil::checkNotNull($this->requestCode, "requestCode");
-        RequestCheckUtil::checkNotNull($this->userMobile, "userMobile");
+        RequestCheckUtil::checkNotNull($this->businessId, 'businessId');
+        RequestCheckUtil::checkNotNull($this->idCardNo, 'idCardNo');
+        RequestCheckUtil::checkNotNull($this->requestCode, 'requestCode');
+        RequestCheckUtil::checkNotNull($this->userMobile, 'userMobile');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

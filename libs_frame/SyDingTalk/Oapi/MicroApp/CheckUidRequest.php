@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.microapp.checkuid request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.11.17
  */
 class CheckUidRequest extends BaseRequest
 {
     /**
      * 企业微应用id
-     **/
+     */
     private $agentid;
     /**
      * 员工id
-     **/
+     */
     private $userid;
 
     public function setAgentid($agentid)
     {
         $this->agentid = $agentid;
-        $this->apiParas["agentid"] = $agentid;
+        $this->apiParas['agentid'] = $agentid;
     }
 
     public function getAgentid()
@@ -35,7 +37,7 @@ class CheckUidRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -43,9 +45,9 @@ class CheckUidRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.microapp.checkuid";
+        return 'dingtalk.oapi.microapp.checkuid';
     }
 
     /**
@@ -53,13 +55,13 @@ class CheckUidRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->agentid, "agentid");
-        RequestCheckUtil::checkNotNull($this->userid, "userid");
+        RequestCheckUtil::checkNotNull($this->agentid, 'agentid');
+        RequestCheckUtil::checkNotNull($this->userid, 'userid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

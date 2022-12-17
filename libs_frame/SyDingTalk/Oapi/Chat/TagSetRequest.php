@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.chat.tag.set request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.10.31
  */
 class TagSetRequest extends BaseRequest
 {
     /**
      * 内部群的id
-     **/
+     */
     private $chatid;
     /**
      * 群标签的类型。1表示经销群；2表示销管群
-     **/
+     */
     private $groupTag;
 
     public function setChatid($chatid)
     {
         $this->chatid = $chatid;
-        $this->apiParas["chatid"] = $chatid;
+        $this->apiParas['chatid'] = $chatid;
     }
 
     public function getChatid()
@@ -35,7 +37,7 @@ class TagSetRequest extends BaseRequest
     public function setGroupTag($groupTag)
     {
         $this->groupTag = $groupTag;
-        $this->apiParas["group_tag"] = $groupTag;
+        $this->apiParas['group_tag'] = $groupTag;
     }
 
     public function getGroupTag()
@@ -43,9 +45,9 @@ class TagSetRequest extends BaseRequest
         return $this->groupTag;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.chat.tag.set";
+        return 'dingtalk.oapi.chat.tag.set';
     }
 
     /**
@@ -53,13 +55,13 @@ class TagSetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->chatid, "chatid");
-        RequestCheckUtil::checkNotNull($this->groupTag, "groupTag");
+        RequestCheckUtil::checkNotNull($this->chatid, 'chatid');
+        RequestCheckUtil::checkNotNull($this->groupTag, 'groupTag');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

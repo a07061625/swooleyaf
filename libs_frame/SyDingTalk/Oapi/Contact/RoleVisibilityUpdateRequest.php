@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.contact.rolevisibility.update request
+ *
  * @author auto create
+ *
  * @since 1.0, 2022.02.17
  */
 class RoleVisibilityUpdateRequest extends BaseRequest
 {
     /**
      * 权限设置列表
-     **/
+     */
     private $permissions;
     /**
      * 角色id
-     **/
+     */
     private $roleId;
 
     public function setPermissions($permissions)
     {
         $this->permissions = $permissions;
-        $this->apiParas["permissions"] = $permissions;
+        $this->apiParas['permissions'] = $permissions;
     }
 
     public function getPermissions()
@@ -35,7 +37,7 @@ class RoleVisibilityUpdateRequest extends BaseRequest
     public function setRoleId($roleId)
     {
         $this->roleId = $roleId;
-        $this->apiParas["role_id"] = $roleId;
+        $this->apiParas['role_id'] = $roleId;
     }
 
     public function getRoleId()
@@ -43,9 +45,9 @@ class RoleVisibilityUpdateRequest extends BaseRequest
         return $this->roleId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.contact.rolevisibility.update";
+        return 'dingtalk.oapi.contact.rolevisibility.update';
     }
 
     /**
@@ -53,12 +55,12 @@ class RoleVisibilityUpdateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->roleId, "roleId");
+        RequestCheckUtil::checkNotNull($this->roleId, 'roleId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

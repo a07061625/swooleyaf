@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.industry.user.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.09.16
  */
 class UserGetRequest extends BaseRequest
 {
     /**
      * 部门id
-     **/
+     */
     private $deptId;
     /**
      * 员工id
-     **/
+     */
     private $userid;
 
     public function setDeptId($deptId)
     {
         $this->deptId = $deptId;
-        $this->apiParas["dept_id"] = $deptId;
+        $this->apiParas['dept_id'] = $deptId;
     }
 
     public function getDeptId()
@@ -35,7 +37,7 @@ class UserGetRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -43,9 +45,9 @@ class UserGetRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.industry.user.get";
+        return 'dingtalk.oapi.industry.user.get';
     }
 
     /**
@@ -53,13 +55,13 @@ class UserGetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->deptId, "deptId");
-        RequestCheckUtil::checkNotNull($this->userid, "userid");
+        RequestCheckUtil::checkNotNull($this->deptId, 'deptId');
+        RequestCheckUtil::checkNotNull($this->userid, 'userid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

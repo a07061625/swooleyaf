@@ -7,44 +7,46 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.serviceaccount.update request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.04
  */
 class UpdateRequest extends BaseRequest
 {
     /**
      * 头像图片mediaId
-     **/
+     */
     private $avatarMediaId;
     /**
      * 机器人管理列表中的简介，最多60个字符
-     **/
+     */
     private $brief;
     /**
      * 机器人主页中的服务号功能简介，最多200个字符
-     **/
+     */
     private $desc;
     /**
      * 服务号名称
-     **/
+     */
     private $name;
     /**
      * 机器人主页中，消息预览图片的mediaId
-     **/
+     */
     private $previewMediaId;
     /**
      * normal-正常，disabled-删除
-     **/
+     */
     private $status;
     /**
      * 服务号的unionid
-     **/
+     */
     private $unionid;
 
     public function setAvatarMediaId($avatarMediaId)
     {
         $this->avatarMediaId = $avatarMediaId;
-        $this->apiParas["avatar_media_id"] = $avatarMediaId;
+        $this->apiParas['avatar_media_id'] = $avatarMediaId;
     }
 
     public function getAvatarMediaId()
@@ -55,7 +57,7 @@ class UpdateRequest extends BaseRequest
     public function setBrief($brief)
     {
         $this->brief = $brief;
-        $this->apiParas["brief"] = $brief;
+        $this->apiParas['brief'] = $brief;
     }
 
     public function getBrief()
@@ -66,7 +68,7 @@ class UpdateRequest extends BaseRequest
     public function setDesc($desc)
     {
         $this->desc = $desc;
-        $this->apiParas["desc"] = $desc;
+        $this->apiParas['desc'] = $desc;
     }
 
     public function getDesc()
@@ -77,7 +79,7 @@ class UpdateRequest extends BaseRequest
     public function setName($name)
     {
         $this->name = $name;
-        $this->apiParas["name"] = $name;
+        $this->apiParas['name'] = $name;
     }
 
     public function getName()
@@ -88,7 +90,7 @@ class UpdateRequest extends BaseRequest
     public function setPreviewMediaId($previewMediaId)
     {
         $this->previewMediaId = $previewMediaId;
-        $this->apiParas["preview_media_id"] = $previewMediaId;
+        $this->apiParas['preview_media_id'] = $previewMediaId;
     }
 
     public function getPreviewMediaId()
@@ -99,7 +101,7 @@ class UpdateRequest extends BaseRequest
     public function setStatus($status)
     {
         $this->status = $status;
-        $this->apiParas["status"] = $status;
+        $this->apiParas['status'] = $status;
     }
 
     public function getStatus()
@@ -110,7 +112,7 @@ class UpdateRequest extends BaseRequest
     public function setUnionid($unionid)
     {
         $this->unionid = $unionid;
-        $this->apiParas["unionid"] = $unionid;
+        $this->apiParas['unionid'] = $unionid;
     }
 
     public function getUnionid()
@@ -118,9 +120,9 @@ class UpdateRequest extends BaseRequest
         return $this->unionid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.serviceaccount.update";
+        return 'dingtalk.oapi.serviceaccount.update';
     }
 
     /**
@@ -128,15 +130,15 @@ class UpdateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkMaxLength($this->brief, 60, "brief");
-        RequestCheckUtil::checkMaxLength($this->desc, 200, "desc");
-        RequestCheckUtil::checkMaxLength($this->name, 30, "name");
-        RequestCheckUtil::checkNotNull($this->unionid, "unionid");
+        RequestCheckUtil::checkMaxLength($this->brief, 60, 'brief');
+        RequestCheckUtil::checkMaxLength($this->desc, 200, 'desc');
+        RequestCheckUtil::checkMaxLength($this->name, 30, 'name');
+        RequestCheckUtil::checkNotNull($this->unionid, 'unionid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

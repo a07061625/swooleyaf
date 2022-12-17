@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.pbp.instance.disable request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.01.19
  */
 class InstanceDisableRequest extends BaseRequest
 {
     /**
      * 业务唯一标识
-     **/
+     */
     private $bizId;
     /**
      * 业务实例唯一标识
-     **/
+     */
     private $bizInstId;
 
     public function setBizId($bizId)
     {
         $this->bizId = $bizId;
-        $this->apiParas["biz_id"] = $bizId;
+        $this->apiParas['biz_id'] = $bizId;
     }
 
     public function getBizId()
@@ -35,7 +37,7 @@ class InstanceDisableRequest extends BaseRequest
     public function setBizInstId($bizInstId)
     {
         $this->bizInstId = $bizInstId;
-        $this->apiParas["biz_inst_id"] = $bizInstId;
+        $this->apiParas['biz_inst_id'] = $bizInstId;
     }
 
     public function getBizInstId()
@@ -43,9 +45,9 @@ class InstanceDisableRequest extends BaseRequest
         return $this->bizInstId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.pbp.instance.disable";
+        return 'dingtalk.oapi.pbp.instance.disable';
     }
 
     /**
@@ -53,12 +55,12 @@ class InstanceDisableRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->bizInstId, "bizInstId");
+        RequestCheckUtil::checkNotNull($this->bizInstId, 'bizInstId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

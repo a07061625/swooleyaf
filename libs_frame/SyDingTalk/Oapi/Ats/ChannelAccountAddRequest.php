@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.ats.channel.account.add request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.08.19
  */
 class ChannelAccountAddRequest extends BaseRequest
 {
     /**
      * 招聘业务码
-     **/
+     */
     private $bizCode;
     /**
      * 渠道用户唯一标识
-     **/
+     */
     private $channelUserIdentify;
     /**
      * 钉钉用户userId
-     **/
+     */
     private $userid;
 
     public function setBizCode($bizCode)
     {
         $this->bizCode = $bizCode;
-        $this->apiParas["biz_code"] = $bizCode;
+        $this->apiParas['biz_code'] = $bizCode;
     }
 
     public function getBizCode()
@@ -39,7 +41,7 @@ class ChannelAccountAddRequest extends BaseRequest
     public function setChannelUserIdentify($channelUserIdentify)
     {
         $this->channelUserIdentify = $channelUserIdentify;
-        $this->apiParas["channel_user_identify"] = $channelUserIdentify;
+        $this->apiParas['channel_user_identify'] = $channelUserIdentify;
     }
 
     public function getChannelUserIdentify()
@@ -50,7 +52,7 @@ class ChannelAccountAddRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -58,9 +60,9 @@ class ChannelAccountAddRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.ats.channel.account.add";
+        return 'dingtalk.oapi.ats.channel.account.add';
     }
 
     /**
@@ -68,14 +70,14 @@ class ChannelAccountAddRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->bizCode, "bizCode");
-        RequestCheckUtil::checkNotNull($this->channelUserIdentify, "channelUserIdentify");
-        RequestCheckUtil::checkNotNull($this->userid, "userid");
+        RequestCheckUtil::checkNotNull($this->bizCode, 'bizCode');
+        RequestCheckUtil::checkNotNull($this->channelUserIdentify, 'channelUserIdentify');
+        RequestCheckUtil::checkNotNull($this->userid, 'userid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

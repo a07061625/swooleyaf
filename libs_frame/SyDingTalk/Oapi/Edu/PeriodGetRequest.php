@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.edu.period.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.09
  */
 class PeriodGetRequest extends BaseRequest
 {
     /**
      * 学段ID
-     **/
+     */
     private $periodId;
 
     public function setPeriodId($periodId)
     {
         $this->periodId = $periodId;
-        $this->apiParas["period_id"] = $periodId;
+        $this->apiParas['period_id'] = $periodId;
     }
 
     public function getPeriodId()
@@ -28,9 +30,9 @@ class PeriodGetRequest extends BaseRequest
         return $this->periodId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.edu.period.get";
+        return 'dingtalk.oapi.edu.period.get';
     }
 
     /**
@@ -38,12 +40,12 @@ class PeriodGetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->periodId, "periodId");
+        RequestCheckUtil::checkNotNull($this->periodId, 'periodId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.dingpay.order.terminate request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.01
  */
 class OrderTerminateRequest extends BaseRequest
 {
     /**
      * 扩展信息
-     **/
+     */
     private $extension;
     /**
      * 操作者员工号
-     **/
+     */
     private $operator;
     /**
      * dingpay单号列表
-     **/
+     */
     private $orderNos;
     /**
      * 中止原因
-     **/
+     */
     private $reason;
 
     public function setExtension($extension)
     {
         $this->extension = $extension;
-        $this->apiParas["extension"] = $extension;
+        $this->apiParas['extension'] = $extension;
     }
 
     public function getExtension()
@@ -43,7 +45,7 @@ class OrderTerminateRequest extends BaseRequest
     public function setOperator($operator)
     {
         $this->operator = $operator;
-        $this->apiParas["operator"] = $operator;
+        $this->apiParas['operator'] = $operator;
     }
 
     public function getOperator()
@@ -54,7 +56,7 @@ class OrderTerminateRequest extends BaseRequest
     public function setOrderNos($orderNos)
     {
         $this->orderNos = $orderNos;
-        $this->apiParas["order_nos"] = $orderNos;
+        $this->apiParas['order_nos'] = $orderNos;
     }
 
     public function getOrderNos()
@@ -65,7 +67,7 @@ class OrderTerminateRequest extends BaseRequest
     public function setReason($reason)
     {
         $this->reason = $reason;
-        $this->apiParas["reason"] = $reason;
+        $this->apiParas['reason'] = $reason;
     }
 
     public function getReason()
@@ -73,9 +75,9 @@ class OrderTerminateRequest extends BaseRequest
         return $this->reason;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.dingpay.order.terminate";
+        return 'dingtalk.oapi.dingpay.order.terminate';
     }
 
     /**
@@ -83,15 +85,15 @@ class OrderTerminateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->operator, "operator");
-        RequestCheckUtil::checkNotNull($this->orderNos, "orderNos");
-        RequestCheckUtil::checkMaxListSize($this->orderNos, 20, "orderNos");
-        RequestCheckUtil::checkNotNull($this->reason, "reason");
+        RequestCheckUtil::checkNotNull($this->operator, 'operator');
+        RequestCheckUtil::checkNotNull($this->orderNos, 'orderNos');
+        RequestCheckUtil::checkMaxListSize($this->orderNos, 20, 'orderNos');
+        RequestCheckUtil::checkNotNull($this->reason, 'reason');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.mpdev.previewbuild.status.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.10.15
  */
 class PreviewBuildStatusGetRequest extends BaseRequest
 {
     /**
      * 小程序ID
-     **/
+     */
     private $miniappId;
     /**
      * 任务ID
-     **/
+     */
     private $taskId;
 
     public function setMiniappId($miniappId)
     {
         $this->miniappId = $miniappId;
-        $this->apiParas["miniapp_id"] = $miniappId;
+        $this->apiParas['miniapp_id'] = $miniappId;
     }
 
     public function getMiniappId()
@@ -35,7 +37,7 @@ class PreviewBuildStatusGetRequest extends BaseRequest
     public function setTaskId($taskId)
     {
         $this->taskId = $taskId;
-        $this->apiParas["task_id"] = $taskId;
+        $this->apiParas['task_id'] = $taskId;
     }
 
     public function getTaskId()
@@ -43,9 +45,9 @@ class PreviewBuildStatusGetRequest extends BaseRequest
         return $this->taskId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.mpdev.previewbuild.status.get";
+        return 'dingtalk.oapi.mpdev.previewbuild.status.get';
     }
 
     /**
@@ -53,13 +55,13 @@ class PreviewBuildStatusGetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->miniappId, "miniappId");
-        RequestCheckUtil::checkNotNull($this->taskId, "taskId");
+        RequestCheckUtil::checkNotNull($this->miniappId, 'miniappId');
+        RequestCheckUtil::checkNotNull($this->taskId, 'taskId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

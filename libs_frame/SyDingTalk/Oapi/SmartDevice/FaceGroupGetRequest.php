@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.smartdevice.facegroup.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.01
  */
 class FaceGroupGetRequest extends BaseRequest
 {
     /**
      * 业务id
-     **/
+     */
     private $bizId;
 
     public function setBizId($bizId)
     {
         $this->bizId = $bizId;
-        $this->apiParas["biz_id"] = $bizId;
+        $this->apiParas['biz_id'] = $bizId;
     }
 
     public function getBizId()
@@ -28,9 +30,9 @@ class FaceGroupGetRequest extends BaseRequest
         return $this->bizId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.smartdevice.facegroup.get";
+        return 'dingtalk.oapi.smartdevice.facegroup.get';
     }
 
     /**
@@ -38,13 +40,13 @@ class FaceGroupGetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->bizId, "bizId");
-        RequestCheckUtil::checkMaxLength($this->bizId, 23, "bizId");
+        RequestCheckUtil::checkNotNull($this->bizId, 'bizId');
+        RequestCheckUtil::checkMaxLength($this->bizId, 23, 'bizId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

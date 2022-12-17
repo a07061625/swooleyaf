@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.attendance.group.wifis.remove request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.04.09
  */
 class GroupWifisRemoveRequest extends BaseRequest
 {
     /**
      * 考勤组id
-     **/
+     */
     private $groupKey;
     /**
      * 操作人userId
-     **/
+     */
     private $opUserid;
     /**
      * wifiKeyList
-     **/
+     */
     private $wifiKeyList;
 
     public function setGroupKey($groupKey)
     {
         $this->groupKey = $groupKey;
-        $this->apiParas["group_key"] = $groupKey;
+        $this->apiParas['group_key'] = $groupKey;
     }
 
     public function getGroupKey()
@@ -39,7 +41,7 @@ class GroupWifisRemoveRequest extends BaseRequest
     public function setOpUserid($opUserid)
     {
         $this->opUserid = $opUserid;
-        $this->apiParas["op_userid"] = $opUserid;
+        $this->apiParas['op_userid'] = $opUserid;
     }
 
     public function getOpUserid()
@@ -50,7 +52,7 @@ class GroupWifisRemoveRequest extends BaseRequest
     public function setWifiKeyList($wifiKeyList)
     {
         $this->wifiKeyList = $wifiKeyList;
-        $this->apiParas["wifi_key_list"] = $wifiKeyList;
+        $this->apiParas['wifi_key_list'] = $wifiKeyList;
     }
 
     public function getWifiKeyList()
@@ -58,9 +60,9 @@ class GroupWifisRemoveRequest extends BaseRequest
         return $this->wifiKeyList;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.attendance.group.wifis.remove";
+        return 'dingtalk.oapi.attendance.group.wifis.remove';
     }
 
     /**
@@ -68,14 +70,14 @@ class GroupWifisRemoveRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->groupKey, "groupKey");
-        RequestCheckUtil::checkNotNull($this->wifiKeyList, "wifiKeyList");
-        RequestCheckUtil::checkMaxListSize($this->wifiKeyList, 100, "wifiKeyList");
+        RequestCheckUtil::checkNotNull($this->groupKey, 'groupKey');
+        RequestCheckUtil::checkNotNull($this->wifiKeyList, 'wifiKeyList');
+        RequestCheckUtil::checkMaxListSize($this->wifiKeyList, 100, 'wifiKeyList');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.hrm.employee.delresumerecord request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.03
  */
 class EmployeeDelResumeRecordRequest extends BaseRequest
 {
     /**
      * 成长记录唯一标识
-     **/
+     */
     private $resumeId;
     /**
      * 员工userid
-     **/
+     */
     private $userid;
 
     public function setResumeId($resumeId)
     {
         $this->resumeId = $resumeId;
-        $this->apiParas["resume_id"] = $resumeId;
+        $this->apiParas['resume_id'] = $resumeId;
     }
 
     public function getResumeId()
@@ -35,7 +37,7 @@ class EmployeeDelResumeRecordRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -43,9 +45,9 @@ class EmployeeDelResumeRecordRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.hrm.employee.delresumerecord";
+        return 'dingtalk.oapi.hrm.employee.delresumerecord';
     }
 
     /**
@@ -53,13 +55,13 @@ class EmployeeDelResumeRecordRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->resumeId, "resumeId");
-        RequestCheckUtil::checkNotNull($this->userid, "userid");
+        RequestCheckUtil::checkNotNull($this->resumeId, 'resumeId');
+        RequestCheckUtil::checkNotNull($this->userid, 'userid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

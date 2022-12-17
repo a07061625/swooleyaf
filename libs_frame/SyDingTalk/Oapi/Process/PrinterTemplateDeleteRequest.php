@@ -6,20 +6,22 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.process.printer.template.delete request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.10.11
  */
 class PrinterTemplateDeleteRequest extends BaseRequest
 {
     /**
      * 请求对象
-     **/
+     */
     private $request;
 
     public function setRequest($request)
     {
         $this->request = $request;
-        $this->apiParas["request"] = $request;
+        $this->apiParas['request'] = $request;
     }
 
     public function getRequest()
@@ -27,14 +29,14 @@ class PrinterTemplateDeleteRequest extends BaseRequest
         return $this->request;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.process.printer.template.delete";
+        return 'dingtalk.oapi.process.printer.template.delete';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

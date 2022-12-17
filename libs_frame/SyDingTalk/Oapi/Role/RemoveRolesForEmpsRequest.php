@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.role.removerolesforemps request
+ *
  * @author auto create
+ *
  * @since 1.0, 2018.07.25
  */
 class RemoveRolesForEmpsRequest extends BaseRequest
 {
     /**
      * 角色标签id
-     **/
+     */
     private $roleIds;
     /**
      * 用户userId
-     **/
+     */
     private $userIds;
 
     public function setRoleIds($roleIds)
     {
         $this->roleIds = $roleIds;
-        $this->apiParas["roleIds"] = $roleIds;
+        $this->apiParas['roleIds'] = $roleIds;
     }
 
     public function getRoleIds()
@@ -35,7 +37,7 @@ class RemoveRolesForEmpsRequest extends BaseRequest
     public function setUserIds($userIds)
     {
         $this->userIds = $userIds;
-        $this->apiParas["userIds"] = $userIds;
+        $this->apiParas['userIds'] = $userIds;
     }
 
     public function getUserIds()
@@ -43,9 +45,9 @@ class RemoveRolesForEmpsRequest extends BaseRequest
         return $this->userIds;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.role.removerolesforemps";
+        return 'dingtalk.oapi.role.removerolesforemps';
     }
 
     /**
@@ -53,15 +55,15 @@ class RemoveRolesForEmpsRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->roleIds, "roleIds");
-        RequestCheckUtil::checkMaxListSize($this->roleIds, 20, "roleIds");
-        RequestCheckUtil::checkNotNull($this->userIds, "userIds");
-        RequestCheckUtil::checkMaxListSize($this->userIds, 100, "userIds");
+        RequestCheckUtil::checkNotNull($this->roleIds, 'roleIds');
+        RequestCheckUtil::checkMaxListSize($this->roleIds, 20, 'roleIds');
+        RequestCheckUtil::checkNotNull($this->userIds, 'userIds');
+        RequestCheckUtil::checkMaxListSize($this->userIds, 100, 'userIds');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

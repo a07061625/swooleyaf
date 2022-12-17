@@ -6,40 +6,42 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.edu.homework.student.comment.delete request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.04.29
  */
 class HomeworkStudentCommentDeleteRequest extends BaseRequest
 {
     /**
      * 业务编码
-     **/
+     */
     private $bizCode;
     /**
      * 班级ID
-     **/
+     */
     private $classId;
     /**
      * 评论ID
-     **/
+     */
     private $commentId;
     /**
      * 作业ID
-     **/
+     */
     private $hwId;
     /**
      * 学生ID
-     **/
+     */
     private $studentId;
     /**
      * 老师UserID
-     **/
+     */
     private $teacherUserid;
 
     public function setBizCode($bizCode)
     {
         $this->bizCode = $bizCode;
-        $this->apiParas["biz_code"] = $bizCode;
+        $this->apiParas['biz_code'] = $bizCode;
     }
 
     public function getBizCode()
@@ -50,7 +52,7 @@ class HomeworkStudentCommentDeleteRequest extends BaseRequest
     public function setClassId($classId)
     {
         $this->classId = $classId;
-        $this->apiParas["class_id"] = $classId;
+        $this->apiParas['class_id'] = $classId;
     }
 
     public function getClassId()
@@ -61,7 +63,7 @@ class HomeworkStudentCommentDeleteRequest extends BaseRequest
     public function setCommentId($commentId)
     {
         $this->commentId = $commentId;
-        $this->apiParas["comment_id"] = $commentId;
+        $this->apiParas['comment_id'] = $commentId;
     }
 
     public function getCommentId()
@@ -72,7 +74,7 @@ class HomeworkStudentCommentDeleteRequest extends BaseRequest
     public function setHwId($hwId)
     {
         $this->hwId = $hwId;
-        $this->apiParas["hw_id"] = $hwId;
+        $this->apiParas['hw_id'] = $hwId;
     }
 
     public function getHwId()
@@ -83,7 +85,7 @@ class HomeworkStudentCommentDeleteRequest extends BaseRequest
     public function setStudentId($studentId)
     {
         $this->studentId = $studentId;
-        $this->apiParas["student_id"] = $studentId;
+        $this->apiParas['student_id'] = $studentId;
     }
 
     public function getStudentId()
@@ -94,7 +96,7 @@ class HomeworkStudentCommentDeleteRequest extends BaseRequest
     public function setTeacherUserid($teacherUserid)
     {
         $this->teacherUserid = $teacherUserid;
-        $this->apiParas["teacher_userid"] = $teacherUserid;
+        $this->apiParas['teacher_userid'] = $teacherUserid;
     }
 
     public function getTeacherUserid()
@@ -102,14 +104,14 @@ class HomeworkStudentCommentDeleteRequest extends BaseRequest
         return $this->teacherUserid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.edu.homework.student.comment.delete";
+        return 'dingtalk.oapi.edu.homework.student.comment.delete';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

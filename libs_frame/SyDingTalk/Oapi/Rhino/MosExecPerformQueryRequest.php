@@ -7,52 +7,54 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.rhino.mos.exec.perform.query request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.07.03
  */
 class MosExecPerformQueryRequest extends BaseRequest
 {
     /**
      * 生效条件
-     **/
+     */
     private $activeCondition;
     /**
      * 实体ID列表
-     **/
+     */
     private $entityIds;
     /**
      * 实体类型
-     **/
+     */
     private $entityType;
     /**
      * 工序列表
-     **/
+     */
     private $operationUids;
     /**
      * 订单ID
-     **/
+     */
     private $orderId;
     /**
      * 执行状态
-     **/
+     */
     private $performStatusList;
     /**
      * 租户ID
-     **/
+     */
     private $tenantId;
     /**
      * 业务参数[这里先预留],这里是用户ID,比如钉钉用户ID
-     **/
+     */
     private $userid;
     /**
      * 执行工位列表
-     **/
+     */
     private $workstationCodes;
 
     public function setActiveCondition($activeCondition)
     {
         $this->activeCondition = $activeCondition;
-        $this->apiParas["active_condition"] = $activeCondition;
+        $this->apiParas['active_condition'] = $activeCondition;
     }
 
     public function getActiveCondition()
@@ -63,7 +65,7 @@ class MosExecPerformQueryRequest extends BaseRequest
     public function setEntityIds($entityIds)
     {
         $this->entityIds = $entityIds;
-        $this->apiParas["entity_ids"] = $entityIds;
+        $this->apiParas['entity_ids'] = $entityIds;
     }
 
     public function getEntityIds()
@@ -74,7 +76,7 @@ class MosExecPerformQueryRequest extends BaseRequest
     public function setEntityType($entityType)
     {
         $this->entityType = $entityType;
-        $this->apiParas["entity_type"] = $entityType;
+        $this->apiParas['entity_type'] = $entityType;
     }
 
     public function getEntityType()
@@ -85,7 +87,7 @@ class MosExecPerformQueryRequest extends BaseRequest
     public function setOperationUids($operationUids)
     {
         $this->operationUids = $operationUids;
-        $this->apiParas["operation_uids"] = $operationUids;
+        $this->apiParas['operation_uids'] = $operationUids;
     }
 
     public function getOperationUids()
@@ -96,7 +98,7 @@ class MosExecPerformQueryRequest extends BaseRequest
     public function setOrderId($orderId)
     {
         $this->orderId = $orderId;
-        $this->apiParas["order_id"] = $orderId;
+        $this->apiParas['order_id'] = $orderId;
     }
 
     public function getOrderId()
@@ -107,7 +109,7 @@ class MosExecPerformQueryRequest extends BaseRequest
     public function setPerformStatusList($performStatusList)
     {
         $this->performStatusList = $performStatusList;
-        $this->apiParas["perform_status_list"] = $performStatusList;
+        $this->apiParas['perform_status_list'] = $performStatusList;
     }
 
     public function getPerformStatusList()
@@ -118,7 +120,7 @@ class MosExecPerformQueryRequest extends BaseRequest
     public function setTenantId($tenantId)
     {
         $this->tenantId = $tenantId;
-        $this->apiParas["tenant_id"] = $tenantId;
+        $this->apiParas['tenant_id'] = $tenantId;
     }
 
     public function getTenantId()
@@ -129,7 +131,7 @@ class MosExecPerformQueryRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -140,7 +142,7 @@ class MosExecPerformQueryRequest extends BaseRequest
     public function setWorkstationCodes($workstationCodes)
     {
         $this->workstationCodes = $workstationCodes;
-        $this->apiParas["workstation_codes"] = $workstationCodes;
+        $this->apiParas['workstation_codes'] = $workstationCodes;
     }
 
     public function getWorkstationCodes()
@@ -148,9 +150,9 @@ class MosExecPerformQueryRequest extends BaseRequest
         return $this->workstationCodes;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.rhino.mos.exec.perform.query";
+        return 'dingtalk.oapi.rhino.mos.exec.perform.query';
     }
 
     /**
@@ -158,17 +160,17 @@ class MosExecPerformQueryRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkMaxListSize($this->entityIds, 500, "entityIds");
-        RequestCheckUtil::checkNotNull($this->entityType, "entityType");
-        RequestCheckUtil::checkMaxListSize($this->operationUids, 500, "operationUids");
-        RequestCheckUtil::checkMaxListSize($this->performStatusList, 20, "performStatusList");
-        RequestCheckUtil::checkNotNull($this->tenantId, "tenantId");
-        RequestCheckUtil::checkMaxListSize($this->workstationCodes, 20, "workstationCodes");
+        RequestCheckUtil::checkMaxListSize($this->entityIds, 500, 'entityIds');
+        RequestCheckUtil::checkNotNull($this->entityType, 'entityType');
+        RequestCheckUtil::checkMaxListSize($this->operationUids, 500, 'operationUids');
+        RequestCheckUtil::checkMaxListSize($this->performStatusList, 20, 'performStatusList');
+        RequestCheckUtil::checkNotNull($this->tenantId, 'tenantId');
+        RequestCheckUtil::checkMaxListSize($this->workstationCodes, 20, 'workstationCodes');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

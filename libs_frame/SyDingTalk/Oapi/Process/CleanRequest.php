@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.process.clean request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.12.26
  */
 class CleanRequest extends BaseRequest
 {
     /**
      * 企业id
-     **/
+     */
     private $corpid;
     /**
      * 模板唯一码
-     **/
+     */
     private $processCode;
 
     public function setCorpid($corpid)
     {
         $this->corpid = $corpid;
-        $this->apiParas["corpid"] = $corpid;
+        $this->apiParas['corpid'] = $corpid;
     }
 
     public function getCorpid()
@@ -35,7 +37,7 @@ class CleanRequest extends BaseRequest
     public function setProcessCode($processCode)
     {
         $this->processCode = $processCode;
-        $this->apiParas["process_code"] = $processCode;
+        $this->apiParas['process_code'] = $processCode;
     }
 
     public function getProcessCode()
@@ -43,9 +45,9 @@ class CleanRequest extends BaseRequest
         return $this->processCode;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.process.clean";
+        return 'dingtalk.oapi.process.clean';
     }
 
     /**
@@ -53,12 +55,12 @@ class CleanRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->processCode, "processCode");
+        RequestCheckUtil::checkNotNull($this->processCode, 'processCode');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

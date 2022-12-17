@@ -6,20 +6,22 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.rhino.mos.space.device.check.out request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.03.07
  */
 class MosSpaceDeviceCheckOutRequest extends BaseRequest
 {
     /**
      * param_prod_workstation_device_batch_check_req
-     **/
+     */
     private $request;
 
     public function setRequest($request)
     {
         $this->request = $request;
-        $this->apiParas["request"] = $request;
+        $this->apiParas['request'] = $request;
     }
 
     public function getRequest()
@@ -27,14 +29,14 @@ class MosSpaceDeviceCheckOutRequest extends BaseRequest
         return $this->request;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.rhino.mos.space.device.check.out";
+        return 'dingtalk.oapi.rhino.mos.space.device.check.out';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

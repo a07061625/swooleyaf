@@ -6,20 +6,22 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.process.workrecord.batchupdate request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.10.24
  */
 class WorkRecordBatchUpdateRequest extends BaseRequest
 {
     /**
      * 请求
-     **/
+     */
     private $request;
 
     public function setRequest($request)
     {
         $this->request = $request;
-        $this->apiParas["request"] = $request;
+        $this->apiParas['request'] = $request;
     }
 
     public function getRequest()
@@ -27,14 +29,14 @@ class WorkRecordBatchUpdateRequest extends BaseRequest
         return $this->request;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.process.workrecord.batchupdate";
+        return 'dingtalk.oapi.process.workrecord.batchupdate';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

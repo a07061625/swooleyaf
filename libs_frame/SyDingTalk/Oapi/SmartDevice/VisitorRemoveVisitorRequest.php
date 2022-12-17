@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.smartdevice.visitor.removevisitor request
+ *
  * @author auto create
+ *
  * @since 1.0, 2018.07.25
  */
 class VisitorRemoveVisitorRequest extends BaseRequest
 {
     /**
      * 预约编号
-     **/
+     */
     private $reservationId;
 
     public function setReservationId($reservationId)
     {
         $this->reservationId = $reservationId;
-        $this->apiParas["reservation_id"] = $reservationId;
+        $this->apiParas['reservation_id'] = $reservationId;
     }
 
     public function getReservationId()
@@ -28,9 +30,9 @@ class VisitorRemoveVisitorRequest extends BaseRequest
         return $this->reservationId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.smartdevice.visitor.removevisitor";
+        return 'dingtalk.oapi.smartdevice.visitor.removevisitor';
     }
 
     /**
@@ -38,12 +40,12 @@ class VisitorRemoveVisitorRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->reservationId, "reservationId");
+        RequestCheckUtil::checkNotNull($this->reservationId, 'reservationId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

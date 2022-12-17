@@ -6,20 +6,22 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.rhino.mos.exec.clothes.batch.unscrap request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.07.14
  */
 class MosExecClothesBatchUnscrapRequest extends BaseRequest
 {
     /**
      * 入参
-     **/
+     */
     private $batchClothesPerformReq;
 
     public function setBatchClothesPerformReq($batchClothesPerformReq)
     {
         $this->batchClothesPerformReq = $batchClothesPerformReq;
-        $this->apiParas["batch_clothes_perform_req"] = $batchClothesPerformReq;
+        $this->apiParas['batch_clothes_perform_req'] = $batchClothesPerformReq;
     }
 
     public function getBatchClothesPerformReq()
@@ -27,14 +29,14 @@ class MosExecClothesBatchUnscrapRequest extends BaseRequest
         return $this->batchClothesPerformReq;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.rhino.mos.exec.clothes.batch.unscrap";
+        return 'dingtalk.oapi.rhino.mos.exec.clothes.batch.unscrap';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

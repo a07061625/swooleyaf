@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.inspect.feedback.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.01.14
  */
 class FeedbackGetRequest extends BaseRequest
 {
     /**
      * 表单标识（传空值，暂时保留）
-     **/
+     */
     private $formId;
     /**
      * 巡店任务唯一标识
-     **/
+     */
     private $taskId;
 
     public function setFormId($formId)
     {
         $this->formId = $formId;
-        $this->apiParas["form_id"] = $formId;
+        $this->apiParas['form_id'] = $formId;
     }
 
     public function getFormId()
@@ -35,7 +37,7 @@ class FeedbackGetRequest extends BaseRequest
     public function setTaskId($taskId)
     {
         $this->taskId = $taskId;
-        $this->apiParas["task_id"] = $taskId;
+        $this->apiParas['task_id'] = $taskId;
     }
 
     public function getTaskId()
@@ -43,9 +45,9 @@ class FeedbackGetRequest extends BaseRequest
         return $this->taskId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.inspect.feedback.get";
+        return 'dingtalk.oapi.inspect.feedback.get';
     }
 
     /**
@@ -53,12 +55,12 @@ class FeedbackGetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->taskId, "taskId");
+        RequestCheckUtil::checkNotNull($this->taskId, 'taskId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

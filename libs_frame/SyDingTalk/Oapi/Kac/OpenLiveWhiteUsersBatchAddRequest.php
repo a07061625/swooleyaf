@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.kac.openlive.white_users.batch_add request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.03.17
  */
 class OpenLiveWhiteUsersBatchAddRequest extends BaseRequest
 {
     /**
      * 直播id
-     **/
+     */
     private $liveId;
     /**
      * 员工id列表
-     **/
+     */
     private $userIds;
 
     public function setLiveId($liveId)
     {
         $this->liveId = $liveId;
-        $this->apiParas["live_id"] = $liveId;
+        $this->apiParas['live_id'] = $liveId;
     }
 
     public function getLiveId()
@@ -35,7 +37,7 @@ class OpenLiveWhiteUsersBatchAddRequest extends BaseRequest
     public function setUserIds($userIds)
     {
         $this->userIds = $userIds;
-        $this->apiParas["user_ids"] = $userIds;
+        $this->apiParas['user_ids'] = $userIds;
     }
 
     public function getUserIds()
@@ -43,9 +45,9 @@ class OpenLiveWhiteUsersBatchAddRequest extends BaseRequest
         return $this->userIds;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.kac.openlive.white_users.batch_add";
+        return 'dingtalk.oapi.kac.openlive.white_users.batch_add';
     }
 
     /**
@@ -53,14 +55,14 @@ class OpenLiveWhiteUsersBatchAddRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->liveId, "liveId");
-        RequestCheckUtil::checkNotNull($this->userIds, "userIds");
-        RequestCheckUtil::checkMaxListSize($this->userIds, 999, "userIds");
+        RequestCheckUtil::checkNotNull($this->liveId, 'liveId');
+        RequestCheckUtil::checkNotNull($this->userIds, 'userIds');
+        RequestCheckUtil::checkMaxListSize($this->userIds, 999, 'userIds');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

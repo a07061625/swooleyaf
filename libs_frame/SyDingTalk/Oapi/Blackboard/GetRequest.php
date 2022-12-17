@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.blackboard.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2022.03.09
  */
 class GetRequest extends BaseRequest
 {
     /**
      * 公告id
-     **/
+     */
     private $blackboardId;
     /**
      * 操作人userId
-     **/
+     */
     private $operationUserid;
 
     public function setBlackboardId($blackboardId)
     {
         $this->blackboardId = $blackboardId;
-        $this->apiParas["blackboard_id"] = $blackboardId;
+        $this->apiParas['blackboard_id'] = $blackboardId;
     }
 
     public function getBlackboardId()
@@ -35,7 +37,7 @@ class GetRequest extends BaseRequest
     public function setOperationUserid($operationUserid)
     {
         $this->operationUserid = $operationUserid;
-        $this->apiParas["operation_userid"] = $operationUserid;
+        $this->apiParas['operation_userid'] = $operationUserid;
     }
 
     public function getOperationUserid()
@@ -43,9 +45,9 @@ class GetRequest extends BaseRequest
         return $this->operationUserid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.blackboard.get";
+        return 'dingtalk.oapi.blackboard.get';
     }
 
     /**
@@ -53,13 +55,13 @@ class GetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->blackboardId, "blackboardId");
-        RequestCheckUtil::checkNotNull($this->operationUserid, "operationUserid");
+        RequestCheckUtil::checkNotNull($this->blackboardId, 'blackboardId');
+        RequestCheckUtil::checkNotNull($this->operationUserid, 'operationUserid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

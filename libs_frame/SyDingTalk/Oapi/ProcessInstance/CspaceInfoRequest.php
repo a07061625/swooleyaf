@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.processinstance.cspace.info request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.12.20
  */
 class CspaceInfoRequest extends BaseRequest
 {
     /**
      * 企业应用标识(ISV调用必须设置)
-     **/
+     */
     private $agentId;
     /**
      * 用户id
-     **/
+     */
     private $userId;
 
     public function setAgentId($agentId)
     {
         $this->agentId = $agentId;
-        $this->apiParas["agent_id"] = $agentId;
+        $this->apiParas['agent_id'] = $agentId;
     }
 
     public function getAgentId()
@@ -35,7 +37,7 @@ class CspaceInfoRequest extends BaseRequest
     public function setUserId($userId)
     {
         $this->userId = $userId;
-        $this->apiParas["user_id"] = $userId;
+        $this->apiParas['user_id'] = $userId;
     }
 
     public function getUserId()
@@ -43,9 +45,9 @@ class CspaceInfoRequest extends BaseRequest
         return $this->userId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.processinstance.cspace.info";
+        return 'dingtalk.oapi.processinstance.cspace.info';
     }
 
     /**
@@ -53,12 +55,12 @@ class CspaceInfoRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->userId, "userId");
+        RequestCheckUtil::checkNotNull($this->userId, 'userId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.edu.class.list request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.01
  */
 class ClassListRequest extends BaseRequest
 {
     /**
      * 年级ID
-     **/
+     */
     private $gradeId;
     /**
      * 分页页数
-     **/
+     */
     private $pageNo;
     /**
      * 分页每页大小
-     **/
+     */
     private $pageSize;
 
     public function setGradeId($gradeId)
     {
         $this->gradeId = $gradeId;
-        $this->apiParas["grade_id"] = $gradeId;
+        $this->apiParas['grade_id'] = $gradeId;
     }
 
     public function getGradeId()
@@ -39,7 +41,7 @@ class ClassListRequest extends BaseRequest
     public function setPageNo($pageNo)
     {
         $this->pageNo = $pageNo;
-        $this->apiParas["page_no"] = $pageNo;
+        $this->apiParas['page_no'] = $pageNo;
     }
 
     public function getPageNo()
@@ -50,7 +52,7 @@ class ClassListRequest extends BaseRequest
     public function setPageSize($pageSize)
     {
         $this->pageSize = $pageSize;
-        $this->apiParas["page_size"] = $pageSize;
+        $this->apiParas['page_size'] = $pageSize;
     }
 
     public function getPageSize()
@@ -58,9 +60,9 @@ class ClassListRequest extends BaseRequest
         return $this->pageSize;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.edu.class.list";
+        return 'dingtalk.oapi.edu.class.list';
     }
 
     /**
@@ -68,14 +70,14 @@ class ClassListRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->gradeId, "gradeId");
-        RequestCheckUtil::checkNotNull($this->pageNo, "pageNo");
-        RequestCheckUtil::checkNotNull($this->pageSize, "pageSize");
+        RequestCheckUtil::checkNotNull($this->gradeId, 'gradeId');
+        RequestCheckUtil::checkNotNull($this->pageNo, 'pageNo');
+        RequestCheckUtil::checkNotNull($this->pageSize, 'pageSize');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

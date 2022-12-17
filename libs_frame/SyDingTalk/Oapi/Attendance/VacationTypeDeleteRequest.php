@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.attendance.vacation.type.delete request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.01
  */
 class VacationTypeDeleteRequest extends BaseRequest
 {
     /**
      * 假期类型唯一标识
-     **/
+     */
     private $leaveCode;
     /**
      * 操作员ID
-     **/
+     */
     private $opUserid;
 
     public function setLeaveCode($leaveCode)
     {
         $this->leaveCode = $leaveCode;
-        $this->apiParas["leave_code"] = $leaveCode;
+        $this->apiParas['leave_code'] = $leaveCode;
     }
 
     public function getLeaveCode()
@@ -35,7 +37,7 @@ class VacationTypeDeleteRequest extends BaseRequest
     public function setOpUserid($opUserid)
     {
         $this->opUserid = $opUserid;
-        $this->apiParas["op_userid"] = $opUserid;
+        $this->apiParas['op_userid'] = $opUserid;
     }
 
     public function getOpUserid()
@@ -43,9 +45,9 @@ class VacationTypeDeleteRequest extends BaseRequest
         return $this->opUserid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.attendance.vacation.type.delete";
+        return 'dingtalk.oapi.attendance.vacation.type.delete';
     }
 
     /**
@@ -53,13 +55,13 @@ class VacationTypeDeleteRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->leaveCode, "leaveCode");
-        RequestCheckUtil::checkNotNull($this->opUserid, "opUserid");
+        RequestCheckUtil::checkNotNull($this->leaveCode, 'leaveCode');
+        RequestCheckUtil::checkNotNull($this->opUserid, 'opUserid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.ats.evaluate.jobmatch.cancel request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.07.31
  */
 class EvaluateJobMatchCancelRequest extends BaseRequest
 {
     /**
      * 招聘业务标识
-     **/
+     */
     private $bizCode;
     /**
      * 请求扩展字段
-     **/
+     */
     private $extData;
     /**
      * 外部测评系统测评id，全局唯一
-     **/
+     */
     private $outerEvaluateId;
 
     public function setBizCode($bizCode)
     {
         $this->bizCode = $bizCode;
-        $this->apiParas["biz_code"] = $bizCode;
+        $this->apiParas['biz_code'] = $bizCode;
     }
 
     public function getBizCode()
@@ -39,7 +41,7 @@ class EvaluateJobMatchCancelRequest extends BaseRequest
     public function setExtData($extData)
     {
         $this->extData = $extData;
-        $this->apiParas["ext_data"] = $extData;
+        $this->apiParas['ext_data'] = $extData;
     }
 
     public function getExtData()
@@ -50,7 +52,7 @@ class EvaluateJobMatchCancelRequest extends BaseRequest
     public function setOuterEvaluateId($outerEvaluateId)
     {
         $this->outerEvaluateId = $outerEvaluateId;
-        $this->apiParas["outer_evaluate_id"] = $outerEvaluateId;
+        $this->apiParas['outer_evaluate_id'] = $outerEvaluateId;
     }
 
     public function getOuterEvaluateId()
@@ -58,9 +60,9 @@ class EvaluateJobMatchCancelRequest extends BaseRequest
         return $this->outerEvaluateId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.ats.evaluate.jobmatch.cancel";
+        return 'dingtalk.oapi.ats.evaluate.jobmatch.cancel';
     }
 
     /**
@@ -68,14 +70,14 @@ class EvaluateJobMatchCancelRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->bizCode, "bizCode");
-        RequestCheckUtil::checkNotNull($this->extData, "extData");
-        RequestCheckUtil::checkNotNull($this->outerEvaluateId, "outerEvaluateId");
+        RequestCheckUtil::checkNotNull($this->bizCode, 'bizCode');
+        RequestCheckUtil::checkNotNull($this->extData, 'extData');
+        RequestCheckUtil::checkNotNull($this->outerEvaluateId, 'outerEvaluateId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

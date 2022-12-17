@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.attendance.schedule.shift.listbydays request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.08.06
  */
 class ScheduleShiftListByDaysRequest extends BaseRequest
 {
     /**
      * 开始日期
-     **/
+     */
     private $fromDateTime;
     /**
      * 操作者userId
-     **/
+     */
     private $opUserId;
     /**
      * 结束日期
-     **/
+     */
     private $toDateTime;
     /**
      * 人员userIds
-     **/
+     */
     private $userids;
 
     public function setFromDateTime($fromDateTime)
     {
         $this->fromDateTime = $fromDateTime;
-        $this->apiParas["from_date_time"] = $fromDateTime;
+        $this->apiParas['from_date_time'] = $fromDateTime;
     }
 
     public function getFromDateTime()
@@ -43,7 +45,7 @@ class ScheduleShiftListByDaysRequest extends BaseRequest
     public function setOpUserId($opUserId)
     {
         $this->opUserId = $opUserId;
-        $this->apiParas["op_user_id"] = $opUserId;
+        $this->apiParas['op_user_id'] = $opUserId;
     }
 
     public function getOpUserId()
@@ -54,7 +56,7 @@ class ScheduleShiftListByDaysRequest extends BaseRequest
     public function setToDateTime($toDateTime)
     {
         $this->toDateTime = $toDateTime;
-        $this->apiParas["to_date_time"] = $toDateTime;
+        $this->apiParas['to_date_time'] = $toDateTime;
     }
 
     public function getToDateTime()
@@ -65,7 +67,7 @@ class ScheduleShiftListByDaysRequest extends BaseRequest
     public function setUserids($userids)
     {
         $this->userids = $userids;
-        $this->apiParas["userids"] = $userids;
+        $this->apiParas['userids'] = $userids;
     }
 
     public function getUserids()
@@ -73,9 +75,9 @@ class ScheduleShiftListByDaysRequest extends BaseRequest
         return $this->userids;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.attendance.schedule.shift.listbydays";
+        return 'dingtalk.oapi.attendance.schedule.shift.listbydays';
     }
 
     /**
@@ -83,16 +85,16 @@ class ScheduleShiftListByDaysRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->fromDateTime, "fromDateTime");
-        RequestCheckUtil::checkNotNull($this->opUserId, "opUserId");
-        RequestCheckUtil::checkNotNull($this->toDateTime, "toDateTime");
-        RequestCheckUtil::checkNotNull($this->userids, "userids");
-        RequestCheckUtil::checkMaxListSize($this->userids, 20, "userids");
+        RequestCheckUtil::checkNotNull($this->fromDateTime, 'fromDateTime');
+        RequestCheckUtil::checkNotNull($this->opUserId, 'opUserId');
+        RequestCheckUtil::checkNotNull($this->toDateTime, 'toDateTime');
+        RequestCheckUtil::checkNotNull($this->userids, 'userids');
+        RequestCheckUtil::checkMaxListSize($this->userids, 20, 'userids');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

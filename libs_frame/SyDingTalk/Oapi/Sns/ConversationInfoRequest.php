@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.sns.conversation.info request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.10.15
  */
 class ConversationInfoRequest extends BaseRequest
 {
     /**
      * 会话ID
-     **/
+     */
     private $openConversationId;
 
     public function setOpenConversationId($openConversationId)
     {
         $this->openConversationId = $openConversationId;
-        $this->apiParas["open_conversation_id"] = $openConversationId;
+        $this->apiParas['open_conversation_id'] = $openConversationId;
     }
 
     public function getOpenConversationId()
@@ -28,9 +30,9 @@ class ConversationInfoRequest extends BaseRequest
         return $this->openConversationId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.sns.conversation.info";
+        return 'dingtalk.oapi.sns.conversation.info';
     }
 
     /**
@@ -38,12 +40,12 @@ class ConversationInfoRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->openConversationId, "openConversationId");
+        RequestCheckUtil::checkNotNull($this->openConversationId, 'openConversationId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

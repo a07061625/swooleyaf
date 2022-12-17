@@ -7,40 +7,42 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.report.simplelist request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.12.18
  */
 class SimpleListRequest extends BaseRequest
 {
     /**
      * 查询游标，初始传入0，后续从上一次的返回值中获取
-     **/
+     */
     private $cursor;
     /**
      * 查询截止时间
-     **/
+     */
     private $endTime;
     /**
      * 每页数据量
-     **/
+     */
     private $size;
     /**
      * 查询起始时间
-     **/
+     */
     private $startTime;
     /**
      * 要查询的模板名称
-     **/
+     */
     private $templateName;
     /**
      * 员工的userid
-     **/
+     */
     private $userid;
 
     public function setCursor($cursor)
     {
         $this->cursor = $cursor;
-        $this->apiParas["cursor"] = $cursor;
+        $this->apiParas['cursor'] = $cursor;
     }
 
     public function getCursor()
@@ -51,7 +53,7 @@ class SimpleListRequest extends BaseRequest
     public function setEndTime($endTime)
     {
         $this->endTime = $endTime;
-        $this->apiParas["end_time"] = $endTime;
+        $this->apiParas['end_time'] = $endTime;
     }
 
     public function getEndTime()
@@ -62,7 +64,7 @@ class SimpleListRequest extends BaseRequest
     public function setSize($size)
     {
         $this->size = $size;
-        $this->apiParas["size"] = $size;
+        $this->apiParas['size'] = $size;
     }
 
     public function getSize()
@@ -73,7 +75,7 @@ class SimpleListRequest extends BaseRequest
     public function setStartTime($startTime)
     {
         $this->startTime = $startTime;
-        $this->apiParas["start_time"] = $startTime;
+        $this->apiParas['start_time'] = $startTime;
     }
 
     public function getStartTime()
@@ -84,7 +86,7 @@ class SimpleListRequest extends BaseRequest
     public function setTemplateName($templateName)
     {
         $this->templateName = $templateName;
-        $this->apiParas["template_name"] = $templateName;
+        $this->apiParas['template_name'] = $templateName;
     }
 
     public function getTemplateName()
@@ -95,7 +97,7 @@ class SimpleListRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -103,9 +105,9 @@ class SimpleListRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.report.simplelist";
+        return 'dingtalk.oapi.report.simplelist';
     }
 
     /**
@@ -113,15 +115,15 @@ class SimpleListRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->cursor, "cursor");
-        RequestCheckUtil::checkNotNull($this->endTime, "endTime");
-        RequestCheckUtil::checkNotNull($this->size, "size");
-        RequestCheckUtil::checkNotNull($this->startTime, "startTime");
+        RequestCheckUtil::checkNotNull($this->cursor, 'cursor');
+        RequestCheckUtil::checkNotNull($this->endTime, 'endTime');
+        RequestCheckUtil::checkNotNull($this->size, 'size');
+        RequestCheckUtil::checkNotNull($this->startTime, 'startTime');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

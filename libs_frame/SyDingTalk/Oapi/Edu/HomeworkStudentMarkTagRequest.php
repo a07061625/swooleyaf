@@ -6,48 +6,50 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.edu.homework.student.mark.tag request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.11.03
  */
 class HomeworkStudentMarkTagRequest extends BaseRequest
 {
     /**
      * 业务编码
-     **/
+     */
     private $bizCode;
     /**
      * 班级ID
-     **/
+     */
     private $classId;
     /**
      * 作业ID
-     **/
+     */
     private $hwId;
     /**
      * 学生userid
-     **/
+     */
     private $studentId;
     /**
      * 学生姓名
-     **/
+     */
     private $studentName;
     /**
      * 作业标记：优秀、良好、差
-     **/
+     */
     private $tag;
     /**
      * 老师userid
-     **/
+     */
     private $teacherId;
     /**
      * 文本内容
-     **/
+     */
     private $text;
 
     public function setBizCode($bizCode)
     {
         $this->bizCode = $bizCode;
-        $this->apiParas["biz_code"] = $bizCode;
+        $this->apiParas['biz_code'] = $bizCode;
     }
 
     public function getBizCode()
@@ -58,7 +60,7 @@ class HomeworkStudentMarkTagRequest extends BaseRequest
     public function setClassId($classId)
     {
         $this->classId = $classId;
-        $this->apiParas["class_id"] = $classId;
+        $this->apiParas['class_id'] = $classId;
     }
 
     public function getClassId()
@@ -69,7 +71,7 @@ class HomeworkStudentMarkTagRequest extends BaseRequest
     public function setHwId($hwId)
     {
         $this->hwId = $hwId;
-        $this->apiParas["hw_id"] = $hwId;
+        $this->apiParas['hw_id'] = $hwId;
     }
 
     public function getHwId()
@@ -80,7 +82,7 @@ class HomeworkStudentMarkTagRequest extends BaseRequest
     public function setStudentId($studentId)
     {
         $this->studentId = $studentId;
-        $this->apiParas["student_id"] = $studentId;
+        $this->apiParas['student_id'] = $studentId;
     }
 
     public function getStudentId()
@@ -91,7 +93,7 @@ class HomeworkStudentMarkTagRequest extends BaseRequest
     public function setStudentName($studentName)
     {
         $this->studentName = $studentName;
-        $this->apiParas["student_name"] = $studentName;
+        $this->apiParas['student_name'] = $studentName;
     }
 
     public function getStudentName()
@@ -102,7 +104,7 @@ class HomeworkStudentMarkTagRequest extends BaseRequest
     public function setTag($tag)
     {
         $this->tag = $tag;
-        $this->apiParas["tag"] = $tag;
+        $this->apiParas['tag'] = $tag;
     }
 
     public function getTag()
@@ -113,7 +115,7 @@ class HomeworkStudentMarkTagRequest extends BaseRequest
     public function setTeacherId($teacherId)
     {
         $this->teacherId = $teacherId;
-        $this->apiParas["teacher_id"] = $teacherId;
+        $this->apiParas['teacher_id'] = $teacherId;
     }
 
     public function getTeacherId()
@@ -124,7 +126,7 @@ class HomeworkStudentMarkTagRequest extends BaseRequest
     public function setText($text)
     {
         $this->text = $text;
-        $this->apiParas["text"] = $text;
+        $this->apiParas['text'] = $text;
     }
 
     public function getText()
@@ -132,14 +134,14 @@ class HomeworkStudentMarkTagRequest extends BaseRequest
         return $this->text;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.edu.homework.student.mark.tag";
+        return 'dingtalk.oapi.edu.homework.student.mark.tag';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.ccoservice.servicegroup.updateservicetime request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.03
  */
 class ServiceGroupUpdateServiceTimeRequest extends BaseRequest
 {
     /**
      * 服务结束时间
-     **/
+     */
     private $endTime;
     /**
      * 群加密id
-     **/
+     */
     private $openConversationId;
     /**
      * 服务开始时间
-     **/
+     */
     private $startTime;
     /**
      * 日期类型,0-工作日;1-每日;99-端上不显示
-     **/
+     */
     private $timeType;
 
     public function setEndTime($endTime)
     {
         $this->endTime = $endTime;
-        $this->apiParas["end_time"] = $endTime;
+        $this->apiParas['end_time'] = $endTime;
     }
 
     public function getEndTime()
@@ -43,7 +45,7 @@ class ServiceGroupUpdateServiceTimeRequest extends BaseRequest
     public function setOpenConversationId($openConversationId)
     {
         $this->openConversationId = $openConversationId;
-        $this->apiParas["open_conversation_id"] = $openConversationId;
+        $this->apiParas['open_conversation_id'] = $openConversationId;
     }
 
     public function getOpenConversationId()
@@ -54,7 +56,7 @@ class ServiceGroupUpdateServiceTimeRequest extends BaseRequest
     public function setStartTime($startTime)
     {
         $this->startTime = $startTime;
-        $this->apiParas["start_time"] = $startTime;
+        $this->apiParas['start_time'] = $startTime;
     }
 
     public function getStartTime()
@@ -65,7 +67,7 @@ class ServiceGroupUpdateServiceTimeRequest extends BaseRequest
     public function setTimeType($timeType)
     {
         $this->timeType = $timeType;
-        $this->apiParas["time_type"] = $timeType;
+        $this->apiParas['time_type'] = $timeType;
     }
 
     public function getTimeType()
@@ -73,9 +75,9 @@ class ServiceGroupUpdateServiceTimeRequest extends BaseRequest
         return $this->timeType;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.ccoservice.servicegroup.updateservicetime";
+        return 'dingtalk.oapi.ccoservice.servicegroup.updateservicetime';
     }
 
     /**
@@ -83,14 +85,14 @@ class ServiceGroupUpdateServiceTimeRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->endTime, "endTime");
-        RequestCheckUtil::checkNotNull($this->openConversationId, "openConversationId");
-        RequestCheckUtil::checkNotNull($this->startTime, "startTime");
+        RequestCheckUtil::checkNotNull($this->endTime, 'endTime');
+        RequestCheckUtil::checkNotNull($this->openConversationId, 'openConversationId');
+        RequestCheckUtil::checkNotNull($this->startTime, 'startTime');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

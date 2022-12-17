@@ -1,14 +1,14 @@
 <?php
 /**
-* yac实现cache
-*/
+ * yac实现cache
+ */
 class YacCache implements iCache
 {
     public $isEnable = true;
 
     public function __construct()
     {
-        if (!extension_loaded("yac")) {
+        if (!extension_loaded('yac')) {
             $this->isEnable = false;
         }
     }
@@ -18,10 +18,10 @@ class YacCache implements iCache
         $key = md5($key);
         if ($this->isEnable) {
             $yac = new Yac();
+
             return $yac->get($key);
-        } else {
-            echo "yac is not enable ,skip getCache";
         }
+        echo 'yac is not enable ,skip getCache';
     }
 
     public function setCache($key, $var)
@@ -31,7 +31,7 @@ class YacCache implements iCache
             $yac = new Yac();
             $yac->set($key, $var);
         } else {
-            echo "yac is not enable ,skip setCache";
+            echo 'yac is not enable ,skip setCache';
         }
     }
 }

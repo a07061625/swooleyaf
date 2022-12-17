@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.rhino.mos.exec.clothes.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.06.24
  */
 class MosExecClothesGetRequest extends BaseRequest
 {
     /**
      * 衣服ID列表
-     **/
+     */
     private $entityIds;
     /**
      * 订单ID
-     **/
+     */
     private $orderId;
     /**
      * 租户ID
-     **/
+     */
     private $tenantId;
     /**
      * 业务参数[这里先预留],这里是用户ID,比如钉钉用户ID
-     **/
+     */
     private $userid;
 
     public function setEntityIds($entityIds)
     {
         $this->entityIds = $entityIds;
-        $this->apiParas["entity_ids"] = $entityIds;
+        $this->apiParas['entity_ids'] = $entityIds;
     }
 
     public function getEntityIds()
@@ -43,7 +45,7 @@ class MosExecClothesGetRequest extends BaseRequest
     public function setOrderId($orderId)
     {
         $this->orderId = $orderId;
-        $this->apiParas["order_id"] = $orderId;
+        $this->apiParas['order_id'] = $orderId;
     }
 
     public function getOrderId()
@@ -54,7 +56,7 @@ class MosExecClothesGetRequest extends BaseRequest
     public function setTenantId($tenantId)
     {
         $this->tenantId = $tenantId;
-        $this->apiParas["tenant_id"] = $tenantId;
+        $this->apiParas['tenant_id'] = $tenantId;
     }
 
     public function getTenantId()
@@ -65,7 +67,7 @@ class MosExecClothesGetRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -73,9 +75,9 @@ class MosExecClothesGetRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.rhino.mos.exec.clothes.get";
+        return 'dingtalk.oapi.rhino.mos.exec.clothes.get';
     }
 
     /**
@@ -83,14 +85,14 @@ class MosExecClothesGetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->entityIds, "entityIds");
-        RequestCheckUtil::checkMaxListSize($this->entityIds, 500, "entityIds");
-        RequestCheckUtil::checkNotNull($this->tenantId, "tenantId");
+        RequestCheckUtil::checkNotNull($this->entityIds, 'entityIds');
+        RequestCheckUtil::checkMaxListSize($this->entityIds, 500, 'entityIds');
+        RequestCheckUtil::checkNotNull($this->tenantId, 'tenantId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

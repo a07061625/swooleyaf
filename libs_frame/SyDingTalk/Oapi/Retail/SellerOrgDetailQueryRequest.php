@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.retail.seller.orgdetail.query request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.01.07
  */
 class SellerOrgDetailQueryRequest extends BaseRequest
 {
     /**
      * staffId
-     **/
+     */
     private $userid;
 
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -28,9 +30,9 @@ class SellerOrgDetailQueryRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.retail.seller.orgdetail.query";
+        return 'dingtalk.oapi.retail.seller.orgdetail.query';
     }
 
     /**
@@ -38,12 +40,12 @@ class SellerOrgDetailQueryRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->userid, "userid");
+        RequestCheckUtil::checkNotNull($this->userid, 'userid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

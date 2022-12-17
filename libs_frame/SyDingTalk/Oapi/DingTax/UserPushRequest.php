@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.dingtax.user.push request
+ *
  * @author auto create
+ *
  * @since 1.0, 2022.03.02
  */
 class UserPushRequest extends BaseRequest
 {
     /**
      * 运营区域
-     **/
+     */
     private $sourceRegion;
     /**
      * 运营数据
-     **/
+     */
     private $userInfoList;
 
     public function setSourceRegion($sourceRegion)
     {
         $this->sourceRegion = $sourceRegion;
-        $this->apiParas["source_region"] = $sourceRegion;
+        $this->apiParas['source_region'] = $sourceRegion;
     }
 
     public function getSourceRegion()
@@ -35,7 +37,7 @@ class UserPushRequest extends BaseRequest
     public function setUserInfoList($userInfoList)
     {
         $this->userInfoList = $userInfoList;
-        $this->apiParas["user_info_list"] = $userInfoList;
+        $this->apiParas['user_info_list'] = $userInfoList;
     }
 
     public function getUserInfoList()
@@ -43,9 +45,9 @@ class UserPushRequest extends BaseRequest
         return $this->userInfoList;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.dingtax.user.push";
+        return 'dingtalk.oapi.dingtax.user.push';
     }
 
     /**
@@ -53,12 +55,12 @@ class UserPushRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->sourceRegion, "sourceRegion");
+        RequestCheckUtil::checkNotNull($this->sourceRegion, 'sourceRegion');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

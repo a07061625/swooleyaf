@@ -7,36 +7,38 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.rhino.mos.exec.perform.context.add request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.07.22
  */
 class MosExecPerformContextAddRequest extends BaseRequest
 {
     /**
      * 上下文
-     **/
+     */
     private $context;
     /**
      * 工序执行记录ID列表
-     **/
+     */
     private $operationRecordIds;
     /**
      * 订单ID
-     **/
+     */
     private $orderId;
     /**
      * 租户ID
-     **/
+     */
     private $tenantId;
     /**
      * 业务参数，先预留ID
-     **/
+     */
     private $userid;
 
     public function setContext($context)
     {
         $this->context = $context;
-        $this->apiParas["context"] = $context;
+        $this->apiParas['context'] = $context;
     }
 
     public function getContext()
@@ -47,7 +49,7 @@ class MosExecPerformContextAddRequest extends BaseRequest
     public function setOperationRecordIds($operationRecordIds)
     {
         $this->operationRecordIds = $operationRecordIds;
-        $this->apiParas["operation_record_ids"] = $operationRecordIds;
+        $this->apiParas['operation_record_ids'] = $operationRecordIds;
     }
 
     public function getOperationRecordIds()
@@ -58,7 +60,7 @@ class MosExecPerformContextAddRequest extends BaseRequest
     public function setOrderId($orderId)
     {
         $this->orderId = $orderId;
-        $this->apiParas["order_id"] = $orderId;
+        $this->apiParas['order_id'] = $orderId;
     }
 
     public function getOrderId()
@@ -69,7 +71,7 @@ class MosExecPerformContextAddRequest extends BaseRequest
     public function setTenantId($tenantId)
     {
         $this->tenantId = $tenantId;
-        $this->apiParas["tenant_id"] = $tenantId;
+        $this->apiParas['tenant_id'] = $tenantId;
     }
 
     public function getTenantId()
@@ -80,7 +82,7 @@ class MosExecPerformContextAddRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -88,9 +90,9 @@ class MosExecPerformContextAddRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.rhino.mos.exec.perform.context.add";
+        return 'dingtalk.oapi.rhino.mos.exec.perform.context.add';
     }
 
     /**
@@ -98,15 +100,15 @@ class MosExecPerformContextAddRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->context, "context");
-        RequestCheckUtil::checkNotNull($this->operationRecordIds, "operationRecordIds");
-        RequestCheckUtil::checkMaxListSize($this->operationRecordIds, 100, "operationRecordIds");
-        RequestCheckUtil::checkNotNull($this->tenantId, "tenantId");
+        RequestCheckUtil::checkNotNull($this->context, 'context');
+        RequestCheckUtil::checkNotNull($this->operationRecordIds, 'operationRecordIds');
+        RequestCheckUtil::checkMaxListSize($this->operationRecordIds, 100, 'operationRecordIds');
+        RequestCheckUtil::checkNotNull($this->tenantId, 'tenantId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.im.chat.servicegroup.upgrade request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.17
  */
 class ChatServiceGroupUpgradeRequest extends BaseRequest
 {
     /**
      * 开放的chatId
-     **/
+     */
     private $chatId;
 
     public function setChatId($chatId)
     {
         $this->chatId = $chatId;
-        $this->apiParas["chat_id"] = $chatId;
+        $this->apiParas['chat_id'] = $chatId;
     }
 
     public function getChatId()
@@ -28,9 +30,9 @@ class ChatServiceGroupUpgradeRequest extends BaseRequest
         return $this->chatId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.im.chat.servicegroup.upgrade";
+        return 'dingtalk.oapi.im.chat.servicegroup.upgrade';
     }
 
     /**
@@ -38,13 +40,13 @@ class ChatServiceGroupUpgradeRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->chatId, "chatId");
-        RequestCheckUtil::checkMaxLength($this->chatId, 128, "chatId");
+        RequestCheckUtil::checkNotNull($this->chatId, 'chatId');
+        RequestCheckUtil::checkMaxLength($this->chatId, 128, 'chatId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

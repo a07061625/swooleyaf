@@ -7,44 +7,46 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.mpdev.build.create request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.10.15
  */
 class BuildCreateRequest extends BaseRequest
 {
     /**
      * 是否开启TabBar
-     **/
+     */
     private $enableTabbar;
     /**
      * 小程序默认首页
-     **/
+     */
     private $mainPage;
     /**
      * 小程序ID
-     **/
+     */
     private $miniappId;
     /**
      * 上传包Key
-     **/
+     */
     private $packageKey;
     /**
      * 上传包MD5
-     **/
+     */
     private $packageMd5;
     /**
      * 小程序版本号
-     **/
+     */
     private $packageVersion;
     /**
      * 静态插件信息
-     **/
+     */
     private $pluginRefs;
 
     public function setEnableTabbar($enableTabbar)
     {
         $this->enableTabbar = $enableTabbar;
-        $this->apiParas["enable_tabbar"] = $enableTabbar;
+        $this->apiParas['enable_tabbar'] = $enableTabbar;
     }
 
     public function getEnableTabbar()
@@ -55,7 +57,7 @@ class BuildCreateRequest extends BaseRequest
     public function setMainPage($mainPage)
     {
         $this->mainPage = $mainPage;
-        $this->apiParas["main_page"] = $mainPage;
+        $this->apiParas['main_page'] = $mainPage;
     }
 
     public function getMainPage()
@@ -66,7 +68,7 @@ class BuildCreateRequest extends BaseRequest
     public function setMiniappId($miniappId)
     {
         $this->miniappId = $miniappId;
-        $this->apiParas["miniapp_id"] = $miniappId;
+        $this->apiParas['miniapp_id'] = $miniappId;
     }
 
     public function getMiniappId()
@@ -77,7 +79,7 @@ class BuildCreateRequest extends BaseRequest
     public function setPackageKey($packageKey)
     {
         $this->packageKey = $packageKey;
-        $this->apiParas["package_key"] = $packageKey;
+        $this->apiParas['package_key'] = $packageKey;
     }
 
     public function getPackageKey()
@@ -88,7 +90,7 @@ class BuildCreateRequest extends BaseRequest
     public function setPackageMd5($packageMd5)
     {
         $this->packageMd5 = $packageMd5;
-        $this->apiParas["package_md5"] = $packageMd5;
+        $this->apiParas['package_md5'] = $packageMd5;
     }
 
     public function getPackageMd5()
@@ -99,7 +101,7 @@ class BuildCreateRequest extends BaseRequest
     public function setPackageVersion($packageVersion)
     {
         $this->packageVersion = $packageVersion;
-        $this->apiParas["package_version"] = $packageVersion;
+        $this->apiParas['package_version'] = $packageVersion;
     }
 
     public function getPackageVersion()
@@ -110,7 +112,7 @@ class BuildCreateRequest extends BaseRequest
     public function setPluginRefs($pluginRefs)
     {
         $this->pluginRefs = $pluginRefs;
-        $this->apiParas["plugin_refs"] = $pluginRefs;
+        $this->apiParas['plugin_refs'] = $pluginRefs;
     }
 
     public function getPluginRefs()
@@ -118,9 +120,9 @@ class BuildCreateRequest extends BaseRequest
         return $this->pluginRefs;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.mpdev.build.create";
+        return 'dingtalk.oapi.mpdev.build.create';
     }
 
     /**
@@ -128,16 +130,16 @@ class BuildCreateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->enableTabbar, "enableTabbar");
-        RequestCheckUtil::checkNotNull($this->mainPage, "mainPage");
-        RequestCheckUtil::checkNotNull($this->miniappId, "miniappId");
-        RequestCheckUtil::checkNotNull($this->packageKey, "packageKey");
-        RequestCheckUtil::checkNotNull($this->packageMd5, "packageMd5");
+        RequestCheckUtil::checkNotNull($this->enableTabbar, 'enableTabbar');
+        RequestCheckUtil::checkNotNull($this->mainPage, 'mainPage');
+        RequestCheckUtil::checkNotNull($this->miniappId, 'miniappId');
+        RequestCheckUtil::checkNotNull($this->packageKey, 'packageKey');
+        RequestCheckUtil::checkNotNull($this->packageMd5, 'packageMd5');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

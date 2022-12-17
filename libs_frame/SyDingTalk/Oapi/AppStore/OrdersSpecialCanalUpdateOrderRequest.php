@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.appstore.orders.special_canal.update_order request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.10.12
  */
 class OrdersSpecialCanalUpdateOrderRequest extends BaseRequest
 {
     /**
      * 钉钉订单id
-     **/
+     */
     private $dingOrderId;
     /**
      * 状态。已支付是3，已完成是4，已取消是1
-     **/
+     */
     private $status;
 
     public function setDingOrderId($dingOrderId)
     {
         $this->dingOrderId = $dingOrderId;
-        $this->apiParas["ding_order_id"] = $dingOrderId;
+        $this->apiParas['ding_order_id'] = $dingOrderId;
     }
 
     public function getDingOrderId()
@@ -35,7 +37,7 @@ class OrdersSpecialCanalUpdateOrderRequest extends BaseRequest
     public function setStatus($status)
     {
         $this->status = $status;
-        $this->apiParas["status"] = $status;
+        $this->apiParas['status'] = $status;
     }
 
     public function getStatus()
@@ -43,9 +45,9 @@ class OrdersSpecialCanalUpdateOrderRequest extends BaseRequest
         return $this->status;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.appstore.orders.special_canal.update_order";
+        return 'dingtalk.oapi.appstore.orders.special_canal.update_order';
     }
 
     /**
@@ -53,13 +55,13 @@ class OrdersSpecialCanalUpdateOrderRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->dingOrderId, "dingOrderId");
-        RequestCheckUtil::checkNotNull($this->status, "status");
+        RequestCheckUtil::checkNotNull($this->dingOrderId, 'dingOrderId');
+        RequestCheckUtil::checkNotNull($this->status, 'status');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

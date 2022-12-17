@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.edu.subject.create request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.10.14
  */
 class SubjectCreateRequest extends BaseRequest
 {
     /**
      * 操作人userId
-     **/
+     */
     private $operatorUserid;
     /**
      * 学段编码
-     **/
+     */
     private $periodCode;
     /**
      * 学科编码
-     **/
+     */
     private $subjectCode;
     /**
      * 学科名称
-     **/
+     */
     private $subjectName;
 
     public function setOperatorUserid($operatorUserid)
     {
         $this->operatorUserid = $operatorUserid;
-        $this->apiParas["operator_userid"] = $operatorUserid;
+        $this->apiParas['operator_userid'] = $operatorUserid;
     }
 
     public function getOperatorUserid()
@@ -43,7 +45,7 @@ class SubjectCreateRequest extends BaseRequest
     public function setPeriodCode($periodCode)
     {
         $this->periodCode = $periodCode;
-        $this->apiParas["period_code"] = $periodCode;
+        $this->apiParas['period_code'] = $periodCode;
     }
 
     public function getPeriodCode()
@@ -54,7 +56,7 @@ class SubjectCreateRequest extends BaseRequest
     public function setSubjectCode($subjectCode)
     {
         $this->subjectCode = $subjectCode;
-        $this->apiParas["subject_code"] = $subjectCode;
+        $this->apiParas['subject_code'] = $subjectCode;
     }
 
     public function getSubjectCode()
@@ -65,7 +67,7 @@ class SubjectCreateRequest extends BaseRequest
     public function setSubjectName($subjectName)
     {
         $this->subjectName = $subjectName;
-        $this->apiParas["subject_name"] = $subjectName;
+        $this->apiParas['subject_name'] = $subjectName;
     }
 
     public function getSubjectName()
@@ -73,9 +75,9 @@ class SubjectCreateRequest extends BaseRequest
         return $this->subjectName;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.edu.subject.create";
+        return 'dingtalk.oapi.edu.subject.create';
     }
 
     /**
@@ -83,15 +85,15 @@ class SubjectCreateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->operatorUserid, "operatorUserid");
-        RequestCheckUtil::checkNotNull($this->periodCode, "periodCode");
-        RequestCheckUtil::checkNotNull($this->subjectCode, "subjectCode");
-        RequestCheckUtil::checkNotNull($this->subjectName, "subjectName");
+        RequestCheckUtil::checkNotNull($this->operatorUserid, 'operatorUserid');
+        RequestCheckUtil::checkNotNull($this->periodCode, 'periodCode');
+        RequestCheckUtil::checkNotNull($this->subjectCode, 'subjectCode');
+        RequestCheckUtil::checkNotNull($this->subjectName, 'subjectName');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

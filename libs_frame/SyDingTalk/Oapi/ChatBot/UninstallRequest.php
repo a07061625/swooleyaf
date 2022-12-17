@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.chatbot.uninstall request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.11.25
  */
 class UninstallRequest extends BaseRequest
 {
     /**
      * 机器人id(钉钉分配)
-     **/
+     */
     private $chatbotId;
 
     public function setChatbotId($chatbotId)
     {
         $this->chatbotId = $chatbotId;
-        $this->apiParas["chatbot_id"] = $chatbotId;
+        $this->apiParas['chatbot_id'] = $chatbotId;
     }
 
     public function getChatbotId()
@@ -28,9 +30,9 @@ class UninstallRequest extends BaseRequest
         return $this->chatbotId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.chatbot.uninstall";
+        return 'dingtalk.oapi.chatbot.uninstall';
     }
 
     /**
@@ -38,12 +40,12 @@ class UninstallRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->chatbotId, "chatbotId");
+        RequestCheckUtil::checkNotNull($this->chatbotId, 'chatbotId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

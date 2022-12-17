@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.crm.objectdata.list request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.01.28
  */
 class ObjectDataListRequest extends BaseRequest
 {
     /**
      * 操作人用户ID
-     **/
+     */
     private $currentOperatorUserid;
     /**
      * 数据ID列表
-     **/
+     */
     private $dataIdList;
     /**
      * 表单名称
-     **/
+     */
     private $name;
 
     public function setCurrentOperatorUserid($currentOperatorUserid)
     {
         $this->currentOperatorUserid = $currentOperatorUserid;
-        $this->apiParas["current_operator_userid"] = $currentOperatorUserid;
+        $this->apiParas['current_operator_userid'] = $currentOperatorUserid;
     }
 
     public function getCurrentOperatorUserid()
@@ -39,7 +41,7 @@ class ObjectDataListRequest extends BaseRequest
     public function setDataIdList($dataIdList)
     {
         $this->dataIdList = $dataIdList;
-        $this->apiParas["data_id_list"] = $dataIdList;
+        $this->apiParas['data_id_list'] = $dataIdList;
     }
 
     public function getDataIdList()
@@ -50,7 +52,7 @@ class ObjectDataListRequest extends BaseRequest
     public function setName($name)
     {
         $this->name = $name;
-        $this->apiParas["name"] = $name;
+        $this->apiParas['name'] = $name;
     }
 
     public function getName()
@@ -58,9 +60,9 @@ class ObjectDataListRequest extends BaseRequest
         return $this->name;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.crm.objectdata.list";
+        return 'dingtalk.oapi.crm.objectdata.list';
     }
 
     /**
@@ -68,14 +70,14 @@ class ObjectDataListRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->dataIdList, "dataIdList");
-        RequestCheckUtil::checkMaxListSize($this->dataIdList, 100, "dataIdList");
-        RequestCheckUtil::checkNotNull($this->name, "name");
+        RequestCheckUtil::checkNotNull($this->dataIdList, 'dataIdList');
+        RequestCheckUtil::checkMaxListSize($this->dataIdList, 100, 'dataIdList');
+        RequestCheckUtil::checkNotNull($this->name, 'name');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

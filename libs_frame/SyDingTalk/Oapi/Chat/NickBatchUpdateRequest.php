@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.chat.nick.batchupdate request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.08.01
  */
 class NickBatchUpdateRequest extends BaseRequest
 {
     /**
      * 会话id
-     **/
+     */
     private $chatid;
     /**
      * userId和nick的模型
-     **/
+     */
     private $userNickModel;
 
     public function setChatid($chatid)
     {
         $this->chatid = $chatid;
-        $this->apiParas["chatid"] = $chatid;
+        $this->apiParas['chatid'] = $chatid;
     }
 
     public function getChatid()
@@ -35,7 +37,7 @@ class NickBatchUpdateRequest extends BaseRequest
     public function setUserNickModel($userNickModel)
     {
         $this->userNickModel = $userNickModel;
-        $this->apiParas["user_nick_model"] = $userNickModel;
+        $this->apiParas['user_nick_model'] = $userNickModel;
     }
 
     public function getUserNickModel()
@@ -43,9 +45,9 @@ class NickBatchUpdateRequest extends BaseRequest
         return $this->userNickModel;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.chat.nick.batchupdate";
+        return 'dingtalk.oapi.chat.nick.batchupdate';
     }
 
     /**
@@ -53,12 +55,12 @@ class NickBatchUpdateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->chatid, "chatid");
+        RequestCheckUtil::checkNotNull($this->chatid, 'chatid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

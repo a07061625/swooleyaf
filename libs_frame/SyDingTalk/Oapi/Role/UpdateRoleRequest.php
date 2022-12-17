@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.role.update_role request
+ *
  * @author auto create
+ *
  * @since 1.0, 2022.04.12
  */
 class UpdateRoleRequest extends BaseRequest
 {
     /**
      * 角色id
-     **/
+     */
     private $roleId;
     /**
      * 角色名称
-     **/
+     */
     private $roleName;
 
     public function setRoleId($roleId)
     {
         $this->roleId = $roleId;
-        $this->apiParas["roleId"] = $roleId;
+        $this->apiParas['roleId'] = $roleId;
     }
 
     public function getRoleId()
@@ -35,7 +37,7 @@ class UpdateRoleRequest extends BaseRequest
     public function setRoleName($roleName)
     {
         $this->roleName = $roleName;
-        $this->apiParas["roleName"] = $roleName;
+        $this->apiParas['roleName'] = $roleName;
     }
 
     public function getRoleName()
@@ -43,9 +45,9 @@ class UpdateRoleRequest extends BaseRequest
         return $this->roleName;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.role.update_role";
+        return 'dingtalk.oapi.role.update_role';
     }
 
     /**
@@ -53,13 +55,13 @@ class UpdateRoleRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->roleId, "roleId");
-        RequestCheckUtil::checkNotNull($this->roleName, "roleName");
+        RequestCheckUtil::checkNotNull($this->roleId, 'roleId');
+        RequestCheckUtil::checkNotNull($this->roleName, 'roleName');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

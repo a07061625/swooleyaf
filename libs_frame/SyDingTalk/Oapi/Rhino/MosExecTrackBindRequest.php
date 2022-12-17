@@ -7,48 +7,50 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.rhino.mos.exec.track.bind request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.07.16
  */
 class MosExecTrackBindRequest extends BaseRequest
 {
     /**
      * 实体ID列表
-     **/
+     */
     private $entities;
     /**
      * 实体类型
-     **/
+     */
     private $entityType;
     /**
      * 订单ID
-     **/
+     */
     private $orderId;
     /**
      * 租户ID
-     **/
+     */
     private $tenantId;
     /**
      * 追踪ID
-     **/
+     */
     private $trackId;
     /**
      * 追踪类型，吊挂或才RF
-     **/
+     */
     private $trackType;
     /**
      * 系统参数
-     **/
+     */
     private $userid;
     /**
      * 工位
-     **/
+     */
     private $workstationCode;
 
     public function setEntities($entities)
     {
         $this->entities = $entities;
-        $this->apiParas["entities"] = $entities;
+        $this->apiParas['entities'] = $entities;
     }
 
     public function getEntities()
@@ -59,7 +61,7 @@ class MosExecTrackBindRequest extends BaseRequest
     public function setEntityType($entityType)
     {
         $this->entityType = $entityType;
-        $this->apiParas["entity_type"] = $entityType;
+        $this->apiParas['entity_type'] = $entityType;
     }
 
     public function getEntityType()
@@ -70,7 +72,7 @@ class MosExecTrackBindRequest extends BaseRequest
     public function setOrderId($orderId)
     {
         $this->orderId = $orderId;
-        $this->apiParas["order_id"] = $orderId;
+        $this->apiParas['order_id'] = $orderId;
     }
 
     public function getOrderId()
@@ -81,7 +83,7 @@ class MosExecTrackBindRequest extends BaseRequest
     public function setTenantId($tenantId)
     {
         $this->tenantId = $tenantId;
-        $this->apiParas["tenant_id"] = $tenantId;
+        $this->apiParas['tenant_id'] = $tenantId;
     }
 
     public function getTenantId()
@@ -92,7 +94,7 @@ class MosExecTrackBindRequest extends BaseRequest
     public function setTrackId($trackId)
     {
         $this->trackId = $trackId;
-        $this->apiParas["track_id"] = $trackId;
+        $this->apiParas['track_id'] = $trackId;
     }
 
     public function getTrackId()
@@ -103,7 +105,7 @@ class MosExecTrackBindRequest extends BaseRequest
     public function setTrackType($trackType)
     {
         $this->trackType = $trackType;
-        $this->apiParas["track_type"] = $trackType;
+        $this->apiParas['track_type'] = $trackType;
     }
 
     public function getTrackType()
@@ -114,7 +116,7 @@ class MosExecTrackBindRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -125,7 +127,7 @@ class MosExecTrackBindRequest extends BaseRequest
     public function setWorkstationCode($workstationCode)
     {
         $this->workstationCode = $workstationCode;
-        $this->apiParas["workstation_code"] = $workstationCode;
+        $this->apiParas['workstation_code'] = $workstationCode;
     }
 
     public function getWorkstationCode()
@@ -133,9 +135,9 @@ class MosExecTrackBindRequest extends BaseRequest
         return $this->workstationCode;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.rhino.mos.exec.track.bind";
+        return 'dingtalk.oapi.rhino.mos.exec.track.bind';
     }
 
     /**
@@ -143,17 +145,17 @@ class MosExecTrackBindRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->entities, "entities");
-        RequestCheckUtil::checkMaxListSize($this->entities, 500, "entities");
-        RequestCheckUtil::checkNotNull($this->entityType, "entityType");
-        RequestCheckUtil::checkNotNull($this->tenantId, "tenantId");
-        RequestCheckUtil::checkNotNull($this->trackId, "trackId");
-        RequestCheckUtil::checkNotNull($this->trackType, "trackType");
+        RequestCheckUtil::checkNotNull($this->entities, 'entities');
+        RequestCheckUtil::checkMaxListSize($this->entities, 500, 'entities');
+        RequestCheckUtil::checkNotNull($this->entityType, 'entityType');
+        RequestCheckUtil::checkNotNull($this->tenantId, 'tenantId');
+        RequestCheckUtil::checkNotNull($this->trackId, 'trackId');
+        RequestCheckUtil::checkNotNull($this->trackType, 'trackType');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

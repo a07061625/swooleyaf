@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.smartdevice.devicemember.removeall request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.08.08
  */
 class DeviceMemberRemoveAllRequest extends BaseRequest
 {
     /**
      * 设备id
-     **/
+     */
     private $deviceId;
 
     public function setDeviceId($deviceId)
     {
         $this->deviceId = $deviceId;
-        $this->apiParas["device_id"] = $deviceId;
+        $this->apiParas['device_id'] = $deviceId;
     }
 
     public function getDeviceId()
@@ -28,9 +30,9 @@ class DeviceMemberRemoveAllRequest extends BaseRequest
         return $this->deviceId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.smartdevice.devicemember.removeall";
+        return 'dingtalk.oapi.smartdevice.devicemember.removeall';
     }
 
     /**
@@ -38,12 +40,12 @@ class DeviceMemberRemoveAllRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->deviceId, "deviceId");
+        RequestCheckUtil::checkNotNull($this->deviceId, 'deviceId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

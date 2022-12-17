@@ -6,20 +6,22 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.rhino.sales.order.custom.info.status.change request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.08.04
  */
 class SalesOrderCustomInfoStatusChangeRequest extends BaseRequest
 {
     /**
      * 请求提体
-     **/
+     */
     private $salesOrderCustomInfoChangeReq;
 
     public function setSalesOrderCustomInfoChangeReq($salesOrderCustomInfoChangeReq)
     {
         $this->salesOrderCustomInfoChangeReq = $salesOrderCustomInfoChangeReq;
-        $this->apiParas["sales_order_custom_info_change_req"] = $salesOrderCustomInfoChangeReq;
+        $this->apiParas['sales_order_custom_info_change_req'] = $salesOrderCustomInfoChangeReq;
     }
 
     public function getSalesOrderCustomInfoChangeReq()
@@ -27,14 +29,14 @@ class SalesOrderCustomInfoStatusChangeRequest extends BaseRequest
         return $this->salesOrderCustomInfoChangeReq;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.rhino.sales.order.custom.info.status.change";
+        return 'dingtalk.oapi.rhino.sales.order.custom.info.status.change';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

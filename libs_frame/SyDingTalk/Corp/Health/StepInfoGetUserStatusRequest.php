@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.corp.health.stepinfo.getuserstatus request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.03
  */
 class StepInfoGetUserStatusRequest extends BaseRequest
 {
     /**
      * 用户id
-     **/
+     */
     private $userid;
 
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -28,9 +30,9 @@ class StepInfoGetUserStatusRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.corp.health.stepinfo.getuserstatus";
+        return 'dingtalk.corp.health.stepinfo.getuserstatus';
     }
 
     /**
@@ -38,12 +40,12 @@ class StepInfoGetUserStatusRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->userid, "userid");
+        RequestCheckUtil::checkNotNull($this->userid, 'userid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

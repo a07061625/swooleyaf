@@ -6,20 +6,22 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.report.getunreadcount request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.03
  */
 class GetUnreadCountRequest extends BaseRequest
 {
     /**
      * 员工id
-     **/
+     */
     private $userid;
 
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -27,14 +29,14 @@ class GetUnreadCountRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.report.getunreadcount";
+        return 'dingtalk.oapi.report.getunreadcount';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

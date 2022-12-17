@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.attendance.getcolumnval request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.10.21
  */
 class GetColumnValRequest extends BaseRequest
 {
     /**
      * 列id，多值用英文逗号分隔
-     **/
+     */
     private $columnIdList;
     /**
      * 开始时间
-     **/
+     */
     private $fromDate;
     /**
      * 结束时间
-     **/
+     */
     private $toDate;
     /**
      * 用户的userId
-     **/
+     */
     private $userid;
 
     public function setColumnIdList($columnIdList)
     {
         $this->columnIdList = $columnIdList;
-        $this->apiParas["column_id_list"] = $columnIdList;
+        $this->apiParas['column_id_list'] = $columnIdList;
     }
 
     public function getColumnIdList()
@@ -43,7 +45,7 @@ class GetColumnValRequest extends BaseRequest
     public function setFromDate($fromDate)
     {
         $this->fromDate = $fromDate;
-        $this->apiParas["from_date"] = $fromDate;
+        $this->apiParas['from_date'] = $fromDate;
     }
 
     public function getFromDate()
@@ -54,7 +56,7 @@ class GetColumnValRequest extends BaseRequest
     public function setToDate($toDate)
     {
         $this->toDate = $toDate;
-        $this->apiParas["to_date"] = $toDate;
+        $this->apiParas['to_date'] = $toDate;
     }
 
     public function getToDate()
@@ -65,7 +67,7 @@ class GetColumnValRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -73,9 +75,9 @@ class GetColumnValRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.attendance.getcolumnval";
+        return 'dingtalk.oapi.attendance.getcolumnval';
     }
 
     /**
@@ -83,12 +85,12 @@ class GetColumnValRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkMaxListSize($this->columnIdList, 20, "columnIdList");
+        RequestCheckUtil::checkMaxListSize($this->columnIdList, 20, 'columnIdList');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

@@ -30,19 +30,19 @@
 
         public $lastUploadTime;
 
-        public function toLogString()
-        {
-            return $this->session.','.$this->encryptPhoneNum.','.$this->encryptNickNum.','
-                  .$this->encryptReceiverNameNum.','.$this->encryptSimpleNum.','.$this->encryptSearchNum.','
-                  .$this->decryptPhoneNum.','.$this->decryptNickNum.','.$this->decryptReceiverNameNum.','
-                  .$this->decryptSimpleNum.','.$this->decryptSearchNum.','.$this->searchPhoneNum.','
-                  .$this->searchNickNum.','.$this->searchReceiverNameNum.','.$this->searchSimpleNum.','
-                  .$this->searchSearchNum ;
-        }
-
         public function __construct()
         {
             $this->lastUploadTime = time();
+        }
+
+        public function toLogString()
+        {
+            return $this->session . ',' . $this->encryptPhoneNum . ',' . $this->encryptNickNum . ','
+                  . $this->encryptReceiverNameNum . ',' . $this->encryptSimpleNum . ',' . $this->encryptSearchNum . ','
+                  . $this->decryptPhoneNum . ',' . $this->decryptNickNum . ',' . $this->decryptReceiverNameNum . ','
+                  . $this->decryptSimpleNum . ',' . $this->decryptSearchNum . ',' . $this->searchPhoneNum . ','
+                  . $this->searchNickNum . ',' . $this->searchReceiverNameNum . ',' . $this->searchSimpleNum . ','
+                  . $this->searchSearchNum;
         }
     }
 

@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.attendance.corp.confirm request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.01
  */
 class CorpConfirmRequest extends BaseRequest
 {
     /**
      * 企业id
-     **/
+     */
     private $corpId;
     /**
      * 企业明细
-     **/
+     */
     private $corpList;
 
     public function setCorpId($corpId)
     {
         $this->corpId = $corpId;
-        $this->apiParas["corp_id"] = $corpId;
+        $this->apiParas['corp_id'] = $corpId;
     }
 
     public function getCorpId()
@@ -35,7 +37,7 @@ class CorpConfirmRequest extends BaseRequest
     public function setCorpList($corpList)
     {
         $this->corpList = $corpList;
-        $this->apiParas["corp_list"] = $corpList;
+        $this->apiParas['corp_list'] = $corpList;
     }
 
     public function getCorpList()
@@ -43,9 +45,9 @@ class CorpConfirmRequest extends BaseRequest
         return $this->corpList;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.attendance.corp.confirm";
+        return 'dingtalk.oapi.attendance.corp.confirm';
     }
 
     /**
@@ -53,12 +55,12 @@ class CorpConfirmRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->corpId, "corpId");
+        RequestCheckUtil::checkNotNull($this->corpId, 'corpId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

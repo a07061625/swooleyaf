@@ -6,28 +6,30 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.impaas.conversaion.changegroupowner request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.03
  */
 class ConversaionChangegroupownerRequest extends BaseRequest
 {
     /**
      * 应用channel
-     **/
+     */
     private $channel;
     /**
      * 钉钉会话id
-     **/
+     */
     private $chatid;
     /**
      * 员工id
-     **/
+     */
     private $userid;
 
     public function setChannel($channel)
     {
         $this->channel = $channel;
-        $this->apiParas["channel"] = $channel;
+        $this->apiParas['channel'] = $channel;
     }
 
     public function getChannel()
@@ -38,7 +40,7 @@ class ConversaionChangegroupownerRequest extends BaseRequest
     public function setChatid($chatid)
     {
         $this->chatid = $chatid;
-        $this->apiParas["chatid"] = $chatid;
+        $this->apiParas['chatid'] = $chatid;
     }
 
     public function getChatid()
@@ -49,7 +51,7 @@ class ConversaionChangegroupownerRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -57,14 +59,14 @@ class ConversaionChangegroupownerRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.impaas.conversaion.changegroupowner";
+        return 'dingtalk.oapi.impaas.conversaion.changegroupowner';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.v2.department.delete request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.09.29
  */
 class DeleteRequest extends BaseRequest
 {
     /**
      * 部门id (注：不能删除根部门；当部门里有员工，或者部门的子部门里有员工，也不能删除)
-     **/
+     */
     private $deptId;
 
     public function setDeptId($deptId)
     {
         $this->deptId = $deptId;
-        $this->apiParas["dept_id"] = $deptId;
+        $this->apiParas['dept_id'] = $deptId;
     }
 
     public function getDeptId()
@@ -28,9 +30,9 @@ class DeleteRequest extends BaseRequest
         return $this->deptId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.v2.department.delete";
+        return 'dingtalk.oapi.v2.department.delete';
     }
 
     /**
@@ -38,12 +40,12 @@ class DeleteRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->deptId, "deptId");
+        RequestCheckUtil::checkNotNull($this->deptId, 'deptId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

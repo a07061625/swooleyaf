@@ -7,48 +7,50 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.smartwork.bpms.processinstance.create request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.03
  */
 class ProcessInstanceCreateRequest extends BaseRequest
 {
     /**
      * 企业微应用标识
-     **/
+     */
     private $agentId;
     /**
      * 审批人userid列表
-     **/
+     */
     private $approvers;
     /**
      * 抄送人userid列表
-     **/
+     */
     private $ccList;
     /**
      * 抄送时间,分为（START,FINISH,START_FINISH）
-     **/
+     */
     private $ccPosition;
     /**
      * 发起人所在的部门
-     **/
+     */
     private $deptId;
     /**
      * 审批流表单参数
-     **/
+     */
     private $formComponentValues;
     /**
      * 审批实例发起人的userid
-     **/
+     */
     private $originatorUserId;
     /**
      * 审批流的唯一码
-     **/
+     */
     private $processCode;
 
     public function setAgentId($agentId)
     {
         $this->agentId = $agentId;
-        $this->apiParas["agent_id"] = $agentId;
+        $this->apiParas['agent_id'] = $agentId;
     }
 
     public function getAgentId()
@@ -59,7 +61,7 @@ class ProcessInstanceCreateRequest extends BaseRequest
     public function setApprovers($approvers)
     {
         $this->approvers = $approvers;
-        $this->apiParas["approvers"] = $approvers;
+        $this->apiParas['approvers'] = $approvers;
     }
 
     public function getApprovers()
@@ -70,7 +72,7 @@ class ProcessInstanceCreateRequest extends BaseRequest
     public function setCcList($ccList)
     {
         $this->ccList = $ccList;
-        $this->apiParas["cc_list"] = $ccList;
+        $this->apiParas['cc_list'] = $ccList;
     }
 
     public function getCcList()
@@ -81,7 +83,7 @@ class ProcessInstanceCreateRequest extends BaseRequest
     public function setCcPosition($ccPosition)
     {
         $this->ccPosition = $ccPosition;
-        $this->apiParas["cc_position"] = $ccPosition;
+        $this->apiParas['cc_position'] = $ccPosition;
     }
 
     public function getCcPosition()
@@ -92,7 +94,7 @@ class ProcessInstanceCreateRequest extends BaseRequest
     public function setDeptId($deptId)
     {
         $this->deptId = $deptId;
-        $this->apiParas["dept_id"] = $deptId;
+        $this->apiParas['dept_id'] = $deptId;
     }
 
     public function getDeptId()
@@ -103,7 +105,7 @@ class ProcessInstanceCreateRequest extends BaseRequest
     public function setFormComponentValues($formComponentValues)
     {
         $this->formComponentValues = $formComponentValues;
-        $this->apiParas["form_component_values"] = $formComponentValues;
+        $this->apiParas['form_component_values'] = $formComponentValues;
     }
 
     public function getFormComponentValues()
@@ -114,7 +116,7 @@ class ProcessInstanceCreateRequest extends BaseRequest
     public function setOriginatorUserId($originatorUserId)
     {
         $this->originatorUserId = $originatorUserId;
-        $this->apiParas["originator_user_id"] = $originatorUserId;
+        $this->apiParas['originator_user_id'] = $originatorUserId;
     }
 
     public function getOriginatorUserId()
@@ -125,7 +127,7 @@ class ProcessInstanceCreateRequest extends BaseRequest
     public function setProcessCode($processCode)
     {
         $this->processCode = $processCode;
-        $this->apiParas["process_code"] = $processCode;
+        $this->apiParas['process_code'] = $processCode;
     }
 
     public function getProcessCode()
@@ -133,9 +135,9 @@ class ProcessInstanceCreateRequest extends BaseRequest
         return $this->processCode;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.smartwork.bpms.processinstance.create";
+        return 'dingtalk.smartwork.bpms.processinstance.create';
     }
 
     /**
@@ -143,17 +145,17 @@ class ProcessInstanceCreateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->approvers, "approvers");
-        RequestCheckUtil::checkMaxListSize($this->approvers, 20, "approvers");
-        RequestCheckUtil::checkMaxListSize($this->ccList, 20, "ccList");
-        RequestCheckUtil::checkNotNull($this->deptId, "deptId");
-        RequestCheckUtil::checkNotNull($this->originatorUserId, "originatorUserId");
-        RequestCheckUtil::checkNotNull($this->processCode, "processCode");
+        RequestCheckUtil::checkNotNull($this->approvers, 'approvers');
+        RequestCheckUtil::checkMaxListSize($this->approvers, 20, 'approvers');
+        RequestCheckUtil::checkMaxListSize($this->ccList, 20, 'ccList');
+        RequestCheckUtil::checkNotNull($this->deptId, 'deptId');
+        RequestCheckUtil::checkNotNull($this->originatorUserId, 'originatorUserId');
+        RequestCheckUtil::checkNotNull($this->processCode, 'processCode');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

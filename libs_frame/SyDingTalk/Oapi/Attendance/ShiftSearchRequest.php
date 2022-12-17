@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.attendance.shift.search request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.31
  */
 class ShiftSearchRequest extends BaseRequest
 {
     /**
      * 操作者userId
-     **/
+     */
     private $opUserId;
     /**
      * 班次名称
-     **/
+     */
     private $shiftName;
 
     public function setOpUserId($opUserId)
     {
         $this->opUserId = $opUserId;
-        $this->apiParas["op_user_id"] = $opUserId;
+        $this->apiParas['op_user_id'] = $opUserId;
     }
 
     public function getOpUserId()
@@ -35,7 +37,7 @@ class ShiftSearchRequest extends BaseRequest
     public function setShiftName($shiftName)
     {
         $this->shiftName = $shiftName;
-        $this->apiParas["shift_name"] = $shiftName;
+        $this->apiParas['shift_name'] = $shiftName;
     }
 
     public function getShiftName()
@@ -43,9 +45,9 @@ class ShiftSearchRequest extends BaseRequest
         return $this->shiftName;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.attendance.shift.search";
+        return 'dingtalk.oapi.attendance.shift.search';
     }
 
     /**
@@ -53,13 +55,13 @@ class ShiftSearchRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->opUserId, "opUserId");
-        RequestCheckUtil::checkNotNull($this->shiftName, "shiftName");
+        RequestCheckUtil::checkNotNull($this->opUserId, 'opUserId');
+        RequestCheckUtil::checkNotNull($this->shiftName, 'shiftName');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

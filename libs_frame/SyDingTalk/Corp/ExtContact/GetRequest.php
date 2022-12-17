@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.corp.extcontact.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.03
  */
 class GetRequest extends BaseRequest
 {
     /**
      * userId
-     **/
+     */
     private $userId;
 
     public function setUserId($userId)
     {
         $this->userId = $userId;
-        $this->apiParas["user_id"] = $userId;
+        $this->apiParas['user_id'] = $userId;
     }
 
     public function getUserId()
@@ -28,9 +30,9 @@ class GetRequest extends BaseRequest
         return $this->userId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.corp.extcontact.get";
+        return 'dingtalk.corp.extcontact.get';
     }
 
     /**
@@ -38,12 +40,12 @@ class GetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->userId, "userId");
+        RequestCheckUtil::checkNotNull($this->userId, 'userId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

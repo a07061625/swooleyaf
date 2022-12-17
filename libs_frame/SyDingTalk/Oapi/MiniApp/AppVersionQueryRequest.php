@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.miniapp.appversion.query request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.07.28
  */
 class AppVersionQueryRequest extends BaseRequest
 {
     /**
      * 查询参数
-     **/
+     */
     private $modelKey;
 
     public function setModelKey($modelKey)
     {
         $this->modelKey = $modelKey;
-        $this->apiParas["model_key"] = $modelKey;
+        $this->apiParas['model_key'] = $modelKey;
     }
 
     public function getModelKey()
@@ -28,9 +30,9 @@ class AppVersionQueryRequest extends BaseRequest
         return $this->modelKey;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.miniapp.appversion.query";
+        return 'dingtalk.oapi.miniapp.appversion.query';
     }
 
     /**
@@ -38,12 +40,12 @@ class AppVersionQueryRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->modelKey, "modelKey");
+        RequestCheckUtil::checkNotNull($this->modelKey, 'modelKey');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

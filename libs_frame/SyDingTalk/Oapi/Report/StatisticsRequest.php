@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.report.statistics request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.06.19
  */
 class StatisticsRequest extends BaseRequest
 {
     /**
      * 日志id
-     **/
+     */
     private $reportId;
 
     public function setReportId($reportId)
     {
         $this->reportId = $reportId;
-        $this->apiParas["report_id"] = $reportId;
+        $this->apiParas['report_id'] = $reportId;
     }
 
     public function getReportId()
@@ -28,9 +30,9 @@ class StatisticsRequest extends BaseRequest
         return $this->reportId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.report.statistics";
+        return 'dingtalk.oapi.report.statistics';
     }
 
     /**
@@ -38,12 +40,12 @@ class StatisticsRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->reportId, "reportId");
+        RequestCheckUtil::checkNotNull($this->reportId, 'reportId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

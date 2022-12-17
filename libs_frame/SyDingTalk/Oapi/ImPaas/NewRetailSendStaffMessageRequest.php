@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.impaas.newretail.sendstaffmessage request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.03
  */
 class NewRetailSendStaffMessageRequest extends BaseRequest
 {
     /**
      * 消息体
-     **/
+     */
     private $content;
     /**
      * 0系统消息
-     **/
+     */
     private $msgType;
     /**
      * 系统账号
-     **/
+     */
     private $sender;
     /**
      * 用账号列表
-     **/
+     */
     private $useridList;
 
     public function setContent($content)
     {
         $this->content = $content;
-        $this->apiParas["content"] = $content;
+        $this->apiParas['content'] = $content;
     }
 
     public function getContent()
@@ -43,7 +45,7 @@ class NewRetailSendStaffMessageRequest extends BaseRequest
     public function setMsgType($msgType)
     {
         $this->msgType = $msgType;
-        $this->apiParas["msg_type"] = $msgType;
+        $this->apiParas['msg_type'] = $msgType;
     }
 
     public function getMsgType()
@@ -54,7 +56,7 @@ class NewRetailSendStaffMessageRequest extends BaseRequest
     public function setSender($sender)
     {
         $this->sender = $sender;
-        $this->apiParas["sender"] = $sender;
+        $this->apiParas['sender'] = $sender;
     }
 
     public function getSender()
@@ -65,7 +67,7 @@ class NewRetailSendStaffMessageRequest extends BaseRequest
     public function setUseridList($useridList)
     {
         $this->useridList = $useridList;
-        $this->apiParas["userid_list"] = $useridList;
+        $this->apiParas['userid_list'] = $useridList;
     }
 
     public function getUseridList()
@@ -73,9 +75,9 @@ class NewRetailSendStaffMessageRequest extends BaseRequest
         return $this->useridList;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.impaas.newretail.sendstaffmessage";
+        return 'dingtalk.oapi.impaas.newretail.sendstaffmessage';
     }
 
     /**
@@ -83,12 +85,12 @@ class NewRetailSendStaffMessageRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkMaxListSize($this->useridList, 100, "useridList");
+        RequestCheckUtil::checkMaxListSize($this->useridList, 100, 'useridList');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

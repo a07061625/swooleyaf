@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.edu.homework.user.role.query request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.07.09
  */
 class HomeworkUserRoleQueryRequest extends BaseRequest
 {
     /**
      * 业务编码
-     **/
+     */
     private $bizCode;
     /**
      * 班级ID
-     **/
+     */
     private $classId;
     /**
      * 用户ID
-     **/
+     */
     private $userid;
 
     public function setBizCode($bizCode)
     {
         $this->bizCode = $bizCode;
-        $this->apiParas["biz_code"] = $bizCode;
+        $this->apiParas['biz_code'] = $bizCode;
     }
 
     public function getBizCode()
@@ -39,7 +41,7 @@ class HomeworkUserRoleQueryRequest extends BaseRequest
     public function setClassId($classId)
     {
         $this->classId = $classId;
-        $this->apiParas["class_id"] = $classId;
+        $this->apiParas['class_id'] = $classId;
     }
 
     public function getClassId()
@@ -50,7 +52,7 @@ class HomeworkUserRoleQueryRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -58,9 +60,9 @@ class HomeworkUserRoleQueryRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.edu.homework.user.role.query";
+        return 'dingtalk.oapi.edu.homework.user.role.query';
     }
 
     /**
@@ -68,13 +70,13 @@ class HomeworkUserRoleQueryRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->bizCode, "bizCode");
-        RequestCheckUtil::checkNotNull($this->userid, "userid");
+        RequestCheckUtil::checkNotNull($this->bizCode, 'bizCode');
+        RequestCheckUtil::checkNotNull($this->userid, 'userid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

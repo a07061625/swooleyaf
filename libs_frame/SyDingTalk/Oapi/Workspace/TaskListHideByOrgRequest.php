@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.workspace.tasklist.hidebyorg request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.01.04
  */
 class TaskListHideByOrgRequest extends BaseRequest
 {
     /**
      * 微应用agentId
-     **/
+     */
     private $microappAgentId;
     /**
      * 操作者id
-     **/
+     */
     private $operatorUserid;
     /**
      * 用户id
-     **/
+     */
     private $userid;
 
     public function setMicroappAgentId($microappAgentId)
     {
         $this->microappAgentId = $microappAgentId;
-        $this->apiParas["microapp_agent_id"] = $microappAgentId;
+        $this->apiParas['microapp_agent_id'] = $microappAgentId;
     }
 
     public function getMicroappAgentId()
@@ -39,7 +41,7 @@ class TaskListHideByOrgRequest extends BaseRequest
     public function setOperatorUserid($operatorUserid)
     {
         $this->operatorUserid = $operatorUserid;
-        $this->apiParas["operator_userid"] = $operatorUserid;
+        $this->apiParas['operator_userid'] = $operatorUserid;
     }
 
     public function getOperatorUserid()
@@ -50,7 +52,7 @@ class TaskListHideByOrgRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -58,9 +60,9 @@ class TaskListHideByOrgRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.workspace.tasklist.hidebyorg";
+        return 'dingtalk.oapi.workspace.tasklist.hidebyorg';
     }
 
     /**
@@ -68,13 +70,13 @@ class TaskListHideByOrgRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->operatorUserid, "operatorUserid");
-        RequestCheckUtil::checkNotNull($this->userid, "userid");
+        RequestCheckUtil::checkNotNull($this->operatorUserid, 'operatorUserid');
+        RequestCheckUtil::checkNotNull($this->userid, 'userid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

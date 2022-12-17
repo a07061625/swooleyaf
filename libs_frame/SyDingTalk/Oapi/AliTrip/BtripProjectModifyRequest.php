@@ -6,20 +6,22 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.alitrip.btrip.project.modify request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.11.30
  */
 class BtripProjectModifyRequest extends BaseRequest
 {
     /**
      * 入参
-     **/
+     */
     private $request;
 
     public function setRequest($request)
     {
         $this->request = $request;
-        $this->apiParas["request"] = $request;
+        $this->apiParas['request'] = $request;
     }
 
     public function getRequest()
@@ -27,14 +29,14 @@ class BtripProjectModifyRequest extends BaseRequest
         return $this->request;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.alitrip.btrip.project.modify";
+        return 'dingtalk.oapi.alitrip.btrip.project.modify';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

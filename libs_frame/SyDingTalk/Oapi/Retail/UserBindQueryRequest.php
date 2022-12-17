@@ -6,24 +6,26 @@ use SyDingTalk\BaseRequest;
 
 /**
  * dingtalk API: dingtalk.oapi.retail.user.bindquery request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.03.09
  */
 class UserBindQueryRequest extends BaseRequest
 {
     /**
      * 虚拟组织下的唯一ID
-     **/
+     */
     private $associateUnionId;
     /**
      * 业务身份
-     **/
+     */
     private $channel;
 
     public function setAssociateUnionId($associateUnionId)
     {
         $this->associateUnionId = $associateUnionId;
-        $this->apiParas["associate_union_id"] = $associateUnionId;
+        $this->apiParas['associate_union_id'] = $associateUnionId;
     }
 
     public function getAssociateUnionId()
@@ -34,7 +36,7 @@ class UserBindQueryRequest extends BaseRequest
     public function setChannel($channel)
     {
         $this->channel = $channel;
-        $this->apiParas["channel"] = $channel;
+        $this->apiParas['channel'] = $channel;
     }
 
     public function getChannel()
@@ -42,14 +44,14 @@ class UserBindQueryRequest extends BaseRequest
         return $this->channel;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.retail.user.bindquery";
+        return 'dingtalk.oapi.retail.user.bindquery';
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.smartwork.hrm.organization.dept.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.02.19
  */
 class HrmOrganizationDeptGetRequest extends BaseRequest
 {
     /**
      * 部门ID
-     **/
+     */
     private $deptId;
     /**
      * 字段 code 列表
-     **/
+     */
     private $fieldCodeList;
 
     public function setDeptId($deptId)
     {
         $this->deptId = $deptId;
-        $this->apiParas["dept_id"] = $deptId;
+        $this->apiParas['dept_id'] = $deptId;
     }
 
     public function getDeptId()
@@ -35,7 +37,7 @@ class HrmOrganizationDeptGetRequest extends BaseRequest
     public function setFieldCodeList($fieldCodeList)
     {
         $this->fieldCodeList = $fieldCodeList;
-        $this->apiParas["field_code_list"] = $fieldCodeList;
+        $this->apiParas['field_code_list'] = $fieldCodeList;
     }
 
     public function getFieldCodeList()
@@ -43,9 +45,9 @@ class HrmOrganizationDeptGetRequest extends BaseRequest
         return $this->fieldCodeList;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.smartwork.hrm.organization.dept.get";
+        return 'dingtalk.oapi.smartwork.hrm.organization.dept.get';
     }
 
     /**
@@ -53,14 +55,14 @@ class HrmOrganizationDeptGetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->deptId, "deptId");
-        RequestCheckUtil::checkNotNull($this->fieldCodeList, "fieldCodeList");
-        RequestCheckUtil::checkMaxListSize($this->fieldCodeList, 999, "fieldCodeList");
+        RequestCheckUtil::checkNotNull($this->deptId, 'deptId');
+        RequestCheckUtil::checkNotNull($this->fieldCodeList, 'fieldCodeList');
+        RequestCheckUtil::checkMaxListSize($this->fieldCodeList, 999, 'fieldCodeList');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

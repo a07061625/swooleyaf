@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.edu.student.list request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.06.09
  */
 class StudentListRequest extends BaseRequest
 {
     /**
      * 班级ID
-     **/
+     */
     private $classId;
     /**
      * 页码
-     **/
+     */
     private $pageNo;
     /**
      * 每页大小
-     **/
+     */
     private $pageSize;
 
     public function setClassId($classId)
     {
         $this->classId = $classId;
-        $this->apiParas["class_id"] = $classId;
+        $this->apiParas['class_id'] = $classId;
     }
 
     public function getClassId()
@@ -39,7 +41,7 @@ class StudentListRequest extends BaseRequest
     public function setPageNo($pageNo)
     {
         $this->pageNo = $pageNo;
-        $this->apiParas["page_no"] = $pageNo;
+        $this->apiParas['page_no'] = $pageNo;
     }
 
     public function getPageNo()
@@ -50,7 +52,7 @@ class StudentListRequest extends BaseRequest
     public function setPageSize($pageSize)
     {
         $this->pageSize = $pageSize;
-        $this->apiParas["page_size"] = $pageSize;
+        $this->apiParas['page_size'] = $pageSize;
     }
 
     public function getPageSize()
@@ -58,9 +60,9 @@ class StudentListRequest extends BaseRequest
         return $this->pageSize;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.edu.student.list";
+        return 'dingtalk.oapi.edu.student.list';
     }
 
     /**
@@ -68,14 +70,14 @@ class StudentListRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->classId, "classId");
-        RequestCheckUtil::checkNotNull($this->pageNo, "pageNo");
-        RequestCheckUtil::checkNotNull($this->pageSize, "pageSize");
+        RequestCheckUtil::checkNotNull($this->classId, 'classId');
+        RequestCheckUtil::checkNotNull($this->pageNo, 'pageNo');
+        RequestCheckUtil::checkNotNull($this->pageSize, 'pageSize');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.smartdevice.devicemember.sync request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.08.13
  */
 class DeviceMemberSyncRequest extends BaseRequest
 {
     /**
      * 需新增的userIds（与del_userids必填其一）
-     **/
+     */
     private $addUserids;
     /**
      * 需移除的userIds（与add_userids必填其一）
-     **/
+     */
     private $delUserids;
     /**
      * 设备id
-     **/
+     */
     private $deviceId;
 
     public function setAddUserids($addUserids)
     {
         $this->addUserids = $addUserids;
-        $this->apiParas["add_userids"] = $addUserids;
+        $this->apiParas['add_userids'] = $addUserids;
     }
 
     public function getAddUserids()
@@ -39,7 +41,7 @@ class DeviceMemberSyncRequest extends BaseRequest
     public function setDelUserids($delUserids)
     {
         $this->delUserids = $delUserids;
-        $this->apiParas["del_userids"] = $delUserids;
+        $this->apiParas['del_userids'] = $delUserids;
     }
 
     public function getDelUserids()
@@ -50,7 +52,7 @@ class DeviceMemberSyncRequest extends BaseRequest
     public function setDeviceId($deviceId)
     {
         $this->deviceId = $deviceId;
-        $this->apiParas["device_id"] = $deviceId;
+        $this->apiParas['device_id'] = $deviceId;
     }
 
     public function getDeviceId()
@@ -58,9 +60,9 @@ class DeviceMemberSyncRequest extends BaseRequest
         return $this->deviceId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.smartdevice.devicemember.sync";
+        return 'dingtalk.oapi.smartdevice.devicemember.sync';
     }
 
     /**
@@ -68,14 +70,14 @@ class DeviceMemberSyncRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkMaxListSize($this->addUserids, 200, "addUserids");
-        RequestCheckUtil::checkMaxListSize($this->delUserids, 200, "delUserids");
-        RequestCheckUtil::checkNotNull($this->deviceId, "deviceId");
+        RequestCheckUtil::checkMaxListSize($this->addUserids, 200, 'addUserids');
+        RequestCheckUtil::checkMaxListSize($this->delUserids, 200, 'delUserids');
+        RequestCheckUtil::checkNotNull($this->deviceId, 'deviceId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

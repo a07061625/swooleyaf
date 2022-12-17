@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.process.template.manage.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.12.14
  */
 class TemplateManageGetRequest extends BaseRequest
 {
     /**
      * 应用id
-     **/
+     */
     private $appUuid;
     /**
      * 用户id
-     **/
+     */
     private $userid;
 
     public function setAppUuid($appUuid)
     {
         $this->appUuid = $appUuid;
-        $this->apiParas["app_uuid"] = $appUuid;
+        $this->apiParas['app_uuid'] = $appUuid;
     }
 
     public function getAppUuid()
@@ -35,7 +37,7 @@ class TemplateManageGetRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -43,9 +45,9 @@ class TemplateManageGetRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.process.template.manage.get";
+        return 'dingtalk.oapi.process.template.manage.get';
     }
 
     /**
@@ -53,12 +55,12 @@ class TemplateManageGetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->userid, "userid");
+        RequestCheckUtil::checkNotNull($this->userid, 'userid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

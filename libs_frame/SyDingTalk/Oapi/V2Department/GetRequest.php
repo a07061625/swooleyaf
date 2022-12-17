@@ -7,24 +7,26 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.v2.department.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.08.25
  */
 class GetRequest extends BaseRequest
 {
     /**
      * 部门id，根部门ID为1
-     **/
+     */
     private $deptId;
     /**
      * 通讯录语言（默认zh_CN）
-     **/
+     */
     private $language;
 
     public function setDeptId($deptId)
     {
         $this->deptId = $deptId;
-        $this->apiParas["dept_id"] = $deptId;
+        $this->apiParas['dept_id'] = $deptId;
     }
 
     public function getDeptId()
@@ -35,7 +37,7 @@ class GetRequest extends BaseRequest
     public function setLanguage($language)
     {
         $this->language = $language;
-        $this->apiParas["language"] = $language;
+        $this->apiParas['language'] = $language;
     }
 
     public function getLanguage()
@@ -43,9 +45,9 @@ class GetRequest extends BaseRequest
         return $this->language;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.v2.department.get";
+        return 'dingtalk.oapi.v2.department.get';
     }
 
     /**
@@ -53,12 +55,12 @@ class GetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->deptId, "deptId");
+        RequestCheckUtil::checkNotNull($this->deptId, 'deptId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

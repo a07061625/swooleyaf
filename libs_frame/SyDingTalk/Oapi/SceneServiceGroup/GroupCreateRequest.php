@@ -7,48 +7,50 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.sceneservicegroup.group.create request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.04.13
  */
 class GroupCreateRequest extends BaseRequest
 {
     /**
      * 业务关联
-     **/
+     */
     private $bizid;
     /**
      * 群名称
-     **/
+     */
     private $groupName;
     /**
      * 群标签
-     **/
+     */
     private $groupTagNames;
     /**
      * 标签列表
-     **/
+     */
     private $groupTagids;
     /**
      * 成员员工列表
-     **/
+     */
     private $memberStaffids;
     /**
      * 服务群群组ID
-     **/
+     */
     private $openGroupsetid;
     /**
      * 服务群团队ID
-     **/
+     */
     private $openTeamid;
     /**
      * 群主员工id
-     **/
+     */
     private $ownerStaffId;
 
     public function setBizid($bizid)
     {
         $this->bizid = $bizid;
-        $this->apiParas["bizid"] = $bizid;
+        $this->apiParas['bizid'] = $bizid;
     }
 
     public function getBizid()
@@ -59,7 +61,7 @@ class GroupCreateRequest extends BaseRequest
     public function setGroupName($groupName)
     {
         $this->groupName = $groupName;
-        $this->apiParas["group_name"] = $groupName;
+        $this->apiParas['group_name'] = $groupName;
     }
 
     public function getGroupName()
@@ -70,7 +72,7 @@ class GroupCreateRequest extends BaseRequest
     public function setGroupTagNames($groupTagNames)
     {
         $this->groupTagNames = $groupTagNames;
-        $this->apiParas["group_tag_names"] = $groupTagNames;
+        $this->apiParas['group_tag_names'] = $groupTagNames;
     }
 
     public function getGroupTagNames()
@@ -81,7 +83,7 @@ class GroupCreateRequest extends BaseRequest
     public function setGroupTagids($groupTagids)
     {
         $this->groupTagids = $groupTagids;
-        $this->apiParas["group_tagids"] = $groupTagids;
+        $this->apiParas['group_tagids'] = $groupTagids;
     }
 
     public function getGroupTagids()
@@ -92,7 +94,7 @@ class GroupCreateRequest extends BaseRequest
     public function setMemberStaffids($memberStaffids)
     {
         $this->memberStaffids = $memberStaffids;
-        $this->apiParas["member_staffids"] = $memberStaffids;
+        $this->apiParas['member_staffids'] = $memberStaffids;
     }
 
     public function getMemberStaffids()
@@ -103,7 +105,7 @@ class GroupCreateRequest extends BaseRequest
     public function setOpenGroupsetid($openGroupsetid)
     {
         $this->openGroupsetid = $openGroupsetid;
-        $this->apiParas["open_groupsetid"] = $openGroupsetid;
+        $this->apiParas['open_groupsetid'] = $openGroupsetid;
     }
 
     public function getOpenGroupsetid()
@@ -114,7 +116,7 @@ class GroupCreateRequest extends BaseRequest
     public function setOpenTeamid($openTeamid)
     {
         $this->openTeamid = $openTeamid;
-        $this->apiParas["open_teamid"] = $openTeamid;
+        $this->apiParas['open_teamid'] = $openTeamid;
     }
 
     public function getOpenTeamid()
@@ -125,7 +127,7 @@ class GroupCreateRequest extends BaseRequest
     public function setOwnerStaffId($ownerStaffId)
     {
         $this->ownerStaffId = $ownerStaffId;
-        $this->apiParas["owner_staffId"] = $ownerStaffId;
+        $this->apiParas['owner_staffId'] = $ownerStaffId;
     }
 
     public function getOwnerStaffId()
@@ -133,9 +135,9 @@ class GroupCreateRequest extends BaseRequest
         return $this->ownerStaffId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.sceneservicegroup.group.create";
+        return 'dingtalk.oapi.sceneservicegroup.group.create';
     }
 
     /**
@@ -143,18 +145,18 @@ class GroupCreateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->groupName, "groupName");
-        RequestCheckUtil::checkMaxListSize($this->groupTagNames, 999, "groupTagNames");
-        RequestCheckUtil::checkMaxListSize($this->groupTagids, 999, "groupTagids");
-        RequestCheckUtil::checkMaxListSize($this->memberStaffids, 999, "memberStaffids");
-        RequestCheckUtil::checkNotNull($this->openGroupsetid, "openGroupsetid");
-        RequestCheckUtil::checkNotNull($this->openTeamid, "openTeamid");
-        RequestCheckUtil::checkNotNull($this->ownerStaffId, "ownerStaffId");
+        RequestCheckUtil::checkNotNull($this->groupName, 'groupName');
+        RequestCheckUtil::checkMaxListSize($this->groupTagNames, 999, 'groupTagNames');
+        RequestCheckUtil::checkMaxListSize($this->groupTagids, 999, 'groupTagids');
+        RequestCheckUtil::checkMaxListSize($this->memberStaffids, 999, 'memberStaffids');
+        RequestCheckUtil::checkNotNull($this->openGroupsetid, 'openGroupsetid');
+        RequestCheckUtil::checkNotNull($this->openTeamid, 'openTeamid');
+        RequestCheckUtil::checkNotNull($this->ownerStaffId, 'ownerStaffId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

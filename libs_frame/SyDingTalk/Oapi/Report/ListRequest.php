@@ -7,48 +7,50 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.report.list request
+ *
  * @author auto create
+ *
  * @since 1.0, 2020.08.24
  */
 class ListRequest extends BaseRequest
 {
     /**
      * 查询游标，初始传入0，后续从上一次的返回值中获取
-     **/
+     */
     private $cursor;
     /**
      * 查询的日志创建的结束时间
-     **/
+     */
     private $endTime;
     /**
      * 查询的日志修改的结束时间
-     **/
+     */
     private $modifiedEndTime;
     /**
      * 查询的日志修改的开始时间
-     **/
+     */
     private $modifiedStartTime;
     /**
      * 每页数据量
-     **/
+     */
     private $size;
     /**
      * 查询的日志创建的开始时间
-     **/
+     */
     private $startTime;
     /**
      * 要查询的模板名称
-     **/
+     */
     private $templateName;
     /**
      * 员工的userid
-     **/
+     */
     private $userid;
 
     public function setCursor($cursor)
     {
         $this->cursor = $cursor;
-        $this->apiParas["cursor"] = $cursor;
+        $this->apiParas['cursor'] = $cursor;
     }
 
     public function getCursor()
@@ -59,7 +61,7 @@ class ListRequest extends BaseRequest
     public function setEndTime($endTime)
     {
         $this->endTime = $endTime;
-        $this->apiParas["end_time"] = $endTime;
+        $this->apiParas['end_time'] = $endTime;
     }
 
     public function getEndTime()
@@ -70,7 +72,7 @@ class ListRequest extends BaseRequest
     public function setModifiedEndTime($modifiedEndTime)
     {
         $this->modifiedEndTime = $modifiedEndTime;
-        $this->apiParas["modified_end_time"] = $modifiedEndTime;
+        $this->apiParas['modified_end_time'] = $modifiedEndTime;
     }
 
     public function getModifiedEndTime()
@@ -81,7 +83,7 @@ class ListRequest extends BaseRequest
     public function setModifiedStartTime($modifiedStartTime)
     {
         $this->modifiedStartTime = $modifiedStartTime;
-        $this->apiParas["modified_start_time"] = $modifiedStartTime;
+        $this->apiParas['modified_start_time'] = $modifiedStartTime;
     }
 
     public function getModifiedStartTime()
@@ -92,7 +94,7 @@ class ListRequest extends BaseRequest
     public function setSize($size)
     {
         $this->size = $size;
-        $this->apiParas["size"] = $size;
+        $this->apiParas['size'] = $size;
     }
 
     public function getSize()
@@ -103,7 +105,7 @@ class ListRequest extends BaseRequest
     public function setStartTime($startTime)
     {
         $this->startTime = $startTime;
-        $this->apiParas["start_time"] = $startTime;
+        $this->apiParas['start_time'] = $startTime;
     }
 
     public function getStartTime()
@@ -114,7 +116,7 @@ class ListRequest extends BaseRequest
     public function setTemplateName($templateName)
     {
         $this->templateName = $templateName;
-        $this->apiParas["template_name"] = $templateName;
+        $this->apiParas['template_name'] = $templateName;
     }
 
     public function getTemplateName()
@@ -125,7 +127,7 @@ class ListRequest extends BaseRequest
     public function setUserid($userid)
     {
         $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
     }
 
     public function getUserid()
@@ -133,9 +135,9 @@ class ListRequest extends BaseRequest
         return $this->userid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.report.list";
+        return 'dingtalk.oapi.report.list';
     }
 
     /**
@@ -143,15 +145,15 @@ class ListRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->cursor, "cursor");
-        RequestCheckUtil::checkNotNull($this->endTime, "endTime");
-        RequestCheckUtil::checkNotNull($this->size, "size");
-        RequestCheckUtil::checkNotNull($this->startTime, "startTime");
+        RequestCheckUtil::checkNotNull($this->cursor, 'cursor');
+        RequestCheckUtil::checkNotNull($this->endTime, 'endTime');
+        RequestCheckUtil::checkNotNull($this->size, 'size');
+        RequestCheckUtil::checkNotNull($this->startTime, 'startTime');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

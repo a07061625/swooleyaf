@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.workspace.task.migrate request
+ *
  * @author auto create
+ *
  * @since 1.0, 2022.01.19
  */
 class TaskMigrateRequest extends BaseRequest
 {
     /**
      * 微应用agentId
-     **/
+     */
     private $agentid;
     /**
      * 操作者id
-     **/
+     */
     private $operatorUserid;
     /**
      * 请求入参
-     **/
+     */
     private $task;
 
     public function setAgentid($agentid)
     {
         $this->agentid = $agentid;
-        $this->apiParas["agentid"] = $agentid;
+        $this->apiParas['agentid'] = $agentid;
     }
 
     public function getAgentid()
@@ -39,7 +41,7 @@ class TaskMigrateRequest extends BaseRequest
     public function setOperatorUserid($operatorUserid)
     {
         $this->operatorUserid = $operatorUserid;
-        $this->apiParas["operator_userid"] = $operatorUserid;
+        $this->apiParas['operator_userid'] = $operatorUserid;
     }
 
     public function getOperatorUserid()
@@ -50,7 +52,7 @@ class TaskMigrateRequest extends BaseRequest
     public function setTask($task)
     {
         $this->task = $task;
-        $this->apiParas["task"] = $task;
+        $this->apiParas['task'] = $task;
     }
 
     public function getTask()
@@ -58,9 +60,9 @@ class TaskMigrateRequest extends BaseRequest
         return $this->task;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.workspace.task.migrate";
+        return 'dingtalk.oapi.workspace.task.migrate';
     }
 
     /**
@@ -68,12 +70,12 @@ class TaskMigrateRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->operatorUserid, "operatorUserid");
+        RequestCheckUtil::checkNotNull($this->operatorUserid, 'operatorUserid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

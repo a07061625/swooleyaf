@@ -7,20 +7,22 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.sceneservicegroup.group.get request
+ *
  * @author auto create
+ *
  * @since 1.0, 2021.09.08
  */
 class GroupGetRequest extends BaseRequest
 {
     /**
      * 开放群ID
-     **/
+     */
     private $openConversationid;
 
     public function setOpenConversationid($openConversationid)
     {
         $this->openConversationid = $openConversationid;
-        $this->apiParas["open_conversationid"] = $openConversationid;
+        $this->apiParas['open_conversationid'] = $openConversationid;
     }
 
     public function getOpenConversationid()
@@ -28,9 +30,9 @@ class GroupGetRequest extends BaseRequest
         return $this->openConversationid;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.sceneservicegroup.group.get";
+        return 'dingtalk.oapi.sceneservicegroup.group.get';
     }
 
     /**
@@ -38,12 +40,12 @@ class GroupGetRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->openConversationid, "openConversationid");
+        RequestCheckUtil::checkNotNull($this->openConversationid, 'openConversationid');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

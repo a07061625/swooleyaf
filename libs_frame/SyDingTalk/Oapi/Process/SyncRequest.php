@@ -7,36 +7,38 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.process.sync request
+ *
  * @author auto create
+ *
  * @since 1.0, 2018.07.25
  */
 class SyncRequest extends BaseRequest
 {
     /**
      * 企业微应用标识
-     **/
+     */
     private $agentId;
     /**
      * 业务分类标识（建议采用JAVA包名的命名方式,如:com.alibaba）
-     **/
+     */
     private $bizCategoryId;
     /**
      * 审批流名称
-     **/
+     */
     private $processName;
     /**
      * 源审批流的唯一码
-     **/
+     */
     private $srcProcessCode;
     /**
      * 目标审批流的唯一码
-     **/
+     */
     private $targetProcessCode;
 
     public function setAgentId($agentId)
     {
         $this->agentId = $agentId;
-        $this->apiParas["agent_id"] = $agentId;
+        $this->apiParas['agent_id'] = $agentId;
     }
 
     public function getAgentId()
@@ -47,7 +49,7 @@ class SyncRequest extends BaseRequest
     public function setBizCategoryId($bizCategoryId)
     {
         $this->bizCategoryId = $bizCategoryId;
-        $this->apiParas["biz_category_id"] = $bizCategoryId;
+        $this->apiParas['biz_category_id'] = $bizCategoryId;
     }
 
     public function getBizCategoryId()
@@ -58,7 +60,7 @@ class SyncRequest extends BaseRequest
     public function setProcessName($processName)
     {
         $this->processName = $processName;
-        $this->apiParas["process_name"] = $processName;
+        $this->apiParas['process_name'] = $processName;
     }
 
     public function getProcessName()
@@ -69,7 +71,7 @@ class SyncRequest extends BaseRequest
     public function setSrcProcessCode($srcProcessCode)
     {
         $this->srcProcessCode = $srcProcessCode;
-        $this->apiParas["src_process_code"] = $srcProcessCode;
+        $this->apiParas['src_process_code'] = $srcProcessCode;
     }
 
     public function getSrcProcessCode()
@@ -80,7 +82,7 @@ class SyncRequest extends BaseRequest
     public function setTargetProcessCode($targetProcessCode)
     {
         $this->targetProcessCode = $targetProcessCode;
-        $this->apiParas["target_process_code"] = $targetProcessCode;
+        $this->apiParas['target_process_code'] = $targetProcessCode;
     }
 
     public function getTargetProcessCode()
@@ -88,9 +90,9 @@ class SyncRequest extends BaseRequest
         return $this->targetProcessCode;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.process.sync";
+        return 'dingtalk.oapi.process.sync';
     }
 
     /**
@@ -98,16 +100,16 @@ class SyncRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->agentId, "agentId");
-        RequestCheckUtil::checkMaxLength($this->bizCategoryId, 64, "bizCategoryId");
-        RequestCheckUtil::checkMaxLength($this->processName, 64, "processName");
-        RequestCheckUtil::checkNotNull($this->srcProcessCode, "srcProcessCode");
-        RequestCheckUtil::checkNotNull($this->targetProcessCode, "targetProcessCode");
+        RequestCheckUtil::checkNotNull($this->agentId, 'agentId');
+        RequestCheckUtil::checkMaxLength($this->bizCategoryId, 64, 'bizCategoryId');
+        RequestCheckUtil::checkMaxLength($this->processName, 64, 'processName');
+        RequestCheckUtil::checkNotNull($this->srcProcessCode, 'srcProcessCode');
+        RequestCheckUtil::checkNotNull($this->targetProcessCode, 'targetProcessCode');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

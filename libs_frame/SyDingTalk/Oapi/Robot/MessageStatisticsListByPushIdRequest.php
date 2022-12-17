@@ -7,32 +7,34 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.robot.message.statistics.listbypushid request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.01
  */
 class MessageStatisticsListByPushIdRequest extends BaseRequest
 {
     /**
      * 群Id列表
-     **/
+     */
     private $conversationIds;
     /**
      * 当前页码
-     **/
+     */
     private $page;
     /**
      * 分页大小
-     **/
+     */
     private $pageSize;
     /**
      * 机器人消息推送Id
-     **/
+     */
     private $pushId;
 
     public function setConversationIds($conversationIds)
     {
         $this->conversationIds = $conversationIds;
-        $this->apiParas["conversation_ids"] = $conversationIds;
+        $this->apiParas['conversation_ids'] = $conversationIds;
     }
 
     public function getConversationIds()
@@ -43,7 +45,7 @@ class MessageStatisticsListByPushIdRequest extends BaseRequest
     public function setPage($page)
     {
         $this->page = $page;
-        $this->apiParas["page"] = $page;
+        $this->apiParas['page'] = $page;
     }
 
     public function getPage()
@@ -54,7 +56,7 @@ class MessageStatisticsListByPushIdRequest extends BaseRequest
     public function setPageSize($pageSize)
     {
         $this->pageSize = $pageSize;
-        $this->apiParas["page_size"] = $pageSize;
+        $this->apiParas['page_size'] = $pageSize;
     }
 
     public function getPageSize()
@@ -65,7 +67,7 @@ class MessageStatisticsListByPushIdRequest extends BaseRequest
     public function setPushId($pushId)
     {
         $this->pushId = $pushId;
-        $this->apiParas["push_id"] = $pushId;
+        $this->apiParas['push_id'] = $pushId;
     }
 
     public function getPushId()
@@ -73,9 +75,9 @@ class MessageStatisticsListByPushIdRequest extends BaseRequest
         return $this->pushId;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.robot.message.statistics.listbypushid";
+        return 'dingtalk.oapi.robot.message.statistics.listbypushid';
     }
 
     /**
@@ -83,16 +85,16 @@ class MessageStatisticsListByPushIdRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->conversationIds, "conversationIds");
-        RequestCheckUtil::checkMaxListSize($this->conversationIds, 20, "conversationIds");
-        RequestCheckUtil::checkNotNull($this->page, "page");
-        RequestCheckUtil::checkNotNull($this->pageSize, "pageSize");
-        RequestCheckUtil::checkNotNull($this->pushId, "pushId");
+        RequestCheckUtil::checkNotNull($this->conversationIds, 'conversationIds');
+        RequestCheckUtil::checkMaxListSize($this->conversationIds, 20, 'conversationIds');
+        RequestCheckUtil::checkNotNull($this->page, 'page');
+        RequestCheckUtil::checkNotNull($this->pageSize, 'pageSize');
+        RequestCheckUtil::checkNotNull($this->pushId, 'pushId');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

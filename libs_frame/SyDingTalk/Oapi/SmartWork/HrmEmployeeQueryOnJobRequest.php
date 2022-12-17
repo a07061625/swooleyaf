@@ -7,28 +7,30 @@ use SyDingTalk\RequestCheckUtil;
 
 /**
  * dingtalk API: dingtalk.oapi.smartwork.hrm.employee.queryonjob request
+ *
  * @author auto create
+ *
  * @since 1.0, 2019.07.01
  */
 class HrmEmployeeQueryOnJobRequest extends BaseRequest
 {
     /**
      * 分页起始值，默认0开始
-     **/
+     */
     private $offset;
     /**
      * 分页大小，最大50
-     **/
+     */
     private $size;
     /**
      * 在职员工子状态筛选。2，试用期；3，正式；5，待离职；-1，无状态
-     **/
+     */
     private $statusList;
 
     public function setOffset($offset)
     {
         $this->offset = $offset;
-        $this->apiParas["offset"] = $offset;
+        $this->apiParas['offset'] = $offset;
     }
 
     public function getOffset()
@@ -39,7 +41,7 @@ class HrmEmployeeQueryOnJobRequest extends BaseRequest
     public function setSize($size)
     {
         $this->size = $size;
-        $this->apiParas["size"] = $size;
+        $this->apiParas['size'] = $size;
     }
 
     public function getSize()
@@ -50,7 +52,7 @@ class HrmEmployeeQueryOnJobRequest extends BaseRequest
     public function setStatusList($statusList)
     {
         $this->statusList = $statusList;
-        $this->apiParas["status_list"] = $statusList;
+        $this->apiParas['status_list'] = $statusList;
     }
 
     public function getStatusList()
@@ -58,9 +60,9 @@ class HrmEmployeeQueryOnJobRequest extends BaseRequest
         return $this->statusList;
     }
 
-    public function getApiMethodName() : string
+    public function getApiMethodName(): string
     {
-        return "dingtalk.oapi.smartwork.hrm.employee.queryonjob";
+        return 'dingtalk.oapi.smartwork.hrm.employee.queryonjob';
     }
 
     /**
@@ -68,18 +70,18 @@ class HrmEmployeeQueryOnJobRequest extends BaseRequest
      */
     public function check()
     {
-        RequestCheckUtil::checkNotNull($this->offset, "offset");
-        RequestCheckUtil::checkMinValue($this->offset, 0, "offset");
-        RequestCheckUtil::checkNotNull($this->size, "size");
-        RequestCheckUtil::checkMaxValue($this->size, 50, "size");
-        RequestCheckUtil::checkMinValue($this->size, 1, "size");
-        RequestCheckUtil::checkNotNull($this->statusList, "statusList");
-        RequestCheckUtil::checkMaxListSize($this->statusList, 20, "statusList");
+        RequestCheckUtil::checkNotNull($this->offset, 'offset');
+        RequestCheckUtil::checkMinValue($this->offset, 0, 'offset');
+        RequestCheckUtil::checkNotNull($this->size, 'size');
+        RequestCheckUtil::checkMaxValue($this->size, 50, 'size');
+        RequestCheckUtil::checkMinValue($this->size, 1, 'size');
+        RequestCheckUtil::checkNotNull($this->statusList, 'statusList');
+        RequestCheckUtil::checkMaxListSize($this->statusList, 20, 'statusList');
     }
 
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }

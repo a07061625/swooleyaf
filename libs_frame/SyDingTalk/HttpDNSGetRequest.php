@@ -8,7 +8,7 @@ class HttpDNSGetRequest
 
     public function getApiMethodName()
     {
-        return "taobao.httpdns.get";
+        return 'taobao.httpdns.get';
     }
 
     public function getApiParas()
@@ -24,6 +24,6 @@ class HttpDNSGetRequest
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 }
