@@ -5,6 +5,7 @@
  * Date: 2017/6/17 0017
  * Time: 11:18
  */
+
 namespace DesignPatterns\Singletons;
 
 use SyConstant\ErrorCode;
@@ -24,31 +25,37 @@ class WxConfigSingleton
 
     /**
      * 开放平台公共配置
+     *
      * @var \Wx\WxConfigOpenCommon
      */
-    private $openCommonConfig = null;
+    private $openCommonConfig;
     /**
      * 企业服务商公共配置
+     *
      * @var \Wx\WxConfigCorpProvider
      */
-    private $corpProviderConfig = null;
+    private $corpProviderConfig;
     /**
      * 账号配置列表
+     *
      * @var array
      */
     private $accountConfigs = [];
     /**
      * 账号配置清理时间戳
+     *
      * @var int
      */
     private $accountClearTime = 0;
     /**
      * 企业配置列表
+     *
      * @var array
      */
     private $corpConfigs = [];
     /**
      * 企业配置清理时间戳
+     *
      * @var int
      */
     private $corpClearTime = 0;
@@ -68,7 +75,7 @@ class WxConfigSingleton
      */
     public static function getInstance()
     {
-        if (is_null(self::$instance)) {
+        if (null === self::$instance) {
             self::$instance = new self();
         }
 
@@ -77,11 +84,10 @@ class WxConfigSingleton
 
     /**
      * 获取开放平台公共配置
-     * @return \Wx\WxConfigOpenCommon
      */
-    public function getOpenCommonConfig() : WxConfigOpenCommon
+    public function getOpenCommonConfig(): WxConfigOpenCommon
     {
-        if (is_null($this->openCommonConfig)) {
+        if (null === $this->openCommonConfig) {
             $configs = Tool::getConfig('wx.' . SY_ENV . SY_PROJECT);
             $openCommonConfig = new WxConfigOpenCommon();
             $openCommonConfig->setExpireComponentAccessToken((int)Tool::getArrayVal($configs, 'open.expire.component.accesstoken', 0, true));
@@ -106,11 +112,10 @@ class WxConfigSingleton
 
     /**
      * 获取企业服务商公共配置
-     * @return \Wx\WxConfigCorpProvider
      */
-    public function getCorpProviderConfig() : WxConfigCorpProvider
+    public function getCorpProviderConfig(): WxConfigCorpProvider
     {
-        if (is_null($this->corpProviderConfig)) {
+        if (null === $this->corpProviderConfig) {
             $configs = Tool::getConfig('wx.' . SY_ENV . SY_PROJECT);
             $corpProviderConfig = new WxConfigCorpProvider();
             $corpProviderConfig->setCorpId((string)Tool::getArrayVal($configs, 'provider.corp.id', '', true));
@@ -129,19 +134,84 @@ class WxConfigSingleton
 
     /**
      * 获取所有的账号配置
-     * @return array
      */
-    public function getAccountConfigs() : array
+    public function getAccountConfigs(): array
     {
         return $this->accountConfigs;
     }
 
     /**
-     * 获取本地账号配置
-     * @param string $appId
-     * @return \Wx\WxConfigAccount|null
+     * 获取账号配置
+     *
+     * @return \Wx\WxConfigAccount
+     *
+     * @throws \SyException\Wx\WxException
      */
-    private function getLocalAccountConfig(string $appId) : ?\Wx\WxConfigAccount
+    public function getAccountConfig(string $appId): ?\Wx\WxConfigAccount
+    {
+        $nowTime = Tool::getNowTime();
+        $accountConfig = $this->getLocalAccountConfig($appId);
+        if (null === $accountConfig || ($accountConfig->getExpireTime() < $nowTime)) {
+            $accountConfig = $this->refreshAccountConfig($appId);
+        }
+
+        if ($accountConfig->isValid()) {
+            return $accountConfig;
+        }
+
+        throw new WxException('账号配置不存在', ErrorCode::WX_PARAM_ERROR);
+    }
+
+    /**
+     * 移除账号配置
+     */
+    public function removeAccountConfig(string $appId)
+    {
+        unset($this->accountConfigs[$appId]);
+    }
+
+    /**
+     * 获取所有的企业配置
+     */
+    public function getCorpConfigs(): array
+    {
+        return $this->corpConfigs;
+    }
+
+    /**
+     * 获取企业配置
+     *
+     * @return \Wx\WxConfigCorp
+     *
+     * @throws \SyException\Wx\WxCorpProviderException
+     */
+    public function getCorpConfig(string $corpId): ?\Wx\WxConfigCorp
+    {
+        $nowTime = Tool::getNowTime();
+        $corpConfig = $this->getLocalCorpConfig($corpId);
+        if (null === $corpConfig || ($corpConfig->getExpireTime() < $nowTime)) {
+            $corpConfig = $this->refreshCorpConfig($corpId);
+        }
+
+        if ($corpConfig->isValid()) {
+            return $corpConfig;
+        }
+
+        throw new WxCorpProviderException('企业配置不存在', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
+    }
+
+    /**
+     * 移除企业配置
+     */
+    public function removeCorpConfig(string $corpId)
+    {
+        unset($this->corpConfigs[$corpId]);
+    }
+
+    /**
+     * 获取本地账号配置
+     */
+    private function getLocalAccountConfig(string $appId): ?\Wx\WxConfigAccount
     {
         $nowTime = Tool::getNowTime();
         if ($this->accountClearTime < $nowTime) {
@@ -162,50 +232,9 @@ class WxConfigSingleton
     }
 
     /**
-     * 获取账号配置
-     * @param string $appId
-     * @return \Wx\WxConfigAccount
-     * @throws \SyException\Wx\WxException
-     */
-    public function getAccountConfig(string $appId) : ?\Wx\WxConfigAccount
-    {
-        $nowTime = Tool::getNowTime();
-        $accountConfig = $this->getLocalAccountConfig($appId);
-        if (is_null($accountConfig) || ($accountConfig->getExpireTime() < $nowTime)) {
-            $accountConfig = $this->refreshAccountConfig($appId);
-        }
-
-        if ($accountConfig->isValid()) {
-            return $accountConfig;
-        } else {
-            throw new WxException('账号配置不存在', ErrorCode::WX_PARAM_ERROR);
-        }
-    }
-
-    /**
-     * 移除账号配置
-     * @param string $appId
-     */
-    public function removeAccountConfig(string $appId)
-    {
-        unset($this->accountConfigs[$appId]);
-    }
-
-    /**
-     * 获取所有的企业配置
-     * @return array
-     */
-    public function getCorpConfigs() : array
-    {
-        return $this->corpConfigs;
-    }
-
-    /**
      * 获取本地企业配置
-     * @param string $corpId
-     * @return \Wx\WxConfigCorp|null
      */
-    private function getLocalCorpConfig(string $corpId) : ?\Wx\WxConfigCorp
+    private function getLocalCorpConfig(string $corpId): ?\Wx\WxConfigCorp
     {
         $nowTime = Tool::getNowTime();
         if ($this->corpClearTime < $nowTime) {
@@ -223,35 +252,5 @@ class WxConfigSingleton
         }
 
         return Tool::getArrayVal($this->corpConfigs, $corpId, null);
-    }
-
-    /**
-     * 获取企业配置
-     * @param string $corpId
-     * @return \Wx\WxConfigCorp
-     * @throws \SyException\Wx\WxCorpProviderException
-     */
-    public function getCorpConfig(string $corpId) : ?\Wx\WxConfigCorp
-    {
-        $nowTime = Tool::getNowTime();
-        $corpConfig = $this->getLocalCorpConfig($corpId);
-        if (is_null($corpConfig) || ($corpConfig->getExpireTime() < $nowTime)) {
-            $corpConfig = $this->refreshCorpConfig($corpId);
-        }
-
-        if ($corpConfig->isValid()) {
-            return $corpConfig;
-        } else {
-            throw new WxCorpProviderException('企业配置不存在', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
-        }
-    }
-
-    /**
-     * 移除企业配置
-     * @param string $corpId
-     */
-    public function removeCorpConfig(string $corpId)
-    {
-        unset($this->corpConfigs[$corpId]);
     }
 }
