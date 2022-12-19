@@ -37,12 +37,13 @@ abstract class WxUtilBase
 
     /**
      * 发送post请求
-     *
-     * @return mixed
-     *
+     * @param array $curlConfig
+     * @param int $returnType
+     * @return array|mixed
+     * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
-    public static function sendPostReq(array $curlConfig)
+    public static function sendPostReq(array $curlConfig, int $returnType = 1)
     {
         $curlConfig[CURLOPT_POST] = true;
         $curlConfig[CURLOPT_RETURNTRANSFER] = true;
@@ -58,9 +59,17 @@ abstract class WxUtilBase
         if (!isset($curlConfig[CURLOPT_SSL_VERIFYHOST])) {
             $curlConfig[CURLOPT_SSL_VERIFYHOST] = 2;
         }
-        $sendRes = Tool::sendCurlReq($curlConfig);
-        if (0 == $sendRes['res_no']) {
-            return $sendRes['res_content'];
+
+        if ($returnType == 1) {
+            $sendRes = Tool::sendCurlReq($curlConfig);
+            if (0 == $sendRes['res_no']) {
+                return $sendRes['res_content'];
+            }
+        } else {
+            $sendRes = Tool::sendCurlReq($curlConfig, Tool::CURL_RSP_HEAD_TYPE_HTTP);
+            if (0 == $sendRes['res_no']) {
+                return $sendRes;
+            }
         }
 
         throw new WxException('curl出错，错误码=' . $sendRes['res_no'], ErrorCode::WX_POST_ERROR);
