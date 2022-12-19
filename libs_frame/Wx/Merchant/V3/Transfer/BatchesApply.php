@@ -5,6 +5,7 @@
  * Date: 2022/12/19
  * Time: 19:49
  */
+
 namespace Wx\Merchant\V3\Transfer;
 
 use SyConstant\ErrorCode;
@@ -15,42 +16,50 @@ use Wx\WxUtilBase;
 
 /**
  * Class BatchesApply
+ *
  * @package Wx\Merchant\V3\Transfer
  */
 class BatchesApply extends WxBaseMerchantV3
 {
     /**
      * 商家批次单号
+     *
      * @var string
      */
     private $out_batch_no = '';
     /**
      * 批量转账的名称
+     *
      * @var string
      */
     private $batch_name = '';
     /**
      * 转账说明
+     *
      * @var string
      */
     private $batch_remark = '';
     /**
      * 转账金额,单位为分
+     *
      * @var int
      */
     private $total_amount = 0;
     /**
      * 转账总笔数
+     *
      * @var int
      */
     private $total_num = 0;
     /**
      * 明细列表
+     *
      * @var array
      */
     private $transfer_detail_list = [];
     /**
      * 转账场景ID
+     *
      * @var string
      */
     private $transfer_scene_id = '';
@@ -76,7 +85,6 @@ class BatchesApply extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $outBatchNo
      * @throws \SyException\Wx\WxException
      */
     public function setOutBatchNo(string $outBatchNo)
@@ -89,15 +97,15 @@ class BatchesApply extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $batchName
      * @throws \SyException\Wx\WxException
      */
     public function setBatchName(string $batchName)
     {
         $trueName = trim($batchName);
-        if (strlen($trueName) == 0) {
+        if (0 == \strlen($trueName)) {
             throw new WxException('批量转账名称不能为空', ErrorCode::WX_PARAM_ERROR);
-        } elseif (strlen($trueName) > 32) {
+        }
+        if (\strlen($trueName) > 32) {
             throw new WxException('批量转账名称不合法', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -105,7 +113,6 @@ class BatchesApply extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $batchRemark
      * @throws \SyException\Wx\WxException
      */
     public function setBatchRemark(string $batchRemark)
@@ -118,30 +125,26 @@ class BatchesApply extends WxBaseMerchantV3
         }
     }
 
-    /**
-     * @param array $transferDetailList
-     */
     public function setTransferDetailList(array $transferDetailList)
     {
         $this->reqData['total_amount'] = 0;
         $this->reqData['total_num'] = 0;
         $this->reqData['transfer_detail_list'] = [];
         foreach ($transferDetailList as $detailInfo) {
-            if (!is_array($detailInfo)) {
+            if (!\is_array($detailInfo)) {
                 continue;
             }
 
             $nowAmount = Tool::getArrayVal($detailInfo, 'transfer_amount', 0);
-            if (is_int($nowAmount) && ($nowAmount > 0)) {
+            if (\is_int($nowAmount) && ($nowAmount > 0)) {
                 $this->reqData['total_amount'] += $nowAmount;
-                $this->reqData['total_num'] += 1;
+                ++$this->reqData['total_num'];
                 array_push($this->reqData['transfer_detail_list'], $detailInfo);
             }
         }
     }
 
     /**
-     * @param string $transferSceneId
      * @throws \SyException\Wx\WxException
      */
     public function setTransferSceneId(string $transferSceneId)
@@ -157,7 +160,7 @@ class BatchesApply extends WxBaseMerchantV3
     /**
      * @throws \SyException\Wx\WxException
      */
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['out_batch_no'])) {
             throw new WxException('商家批次单号不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -167,7 +170,8 @@ class BatchesApply extends WxBaseMerchantV3
         }
         if ($this->reqData['total_num'] <= 0) {
             throw new WxException('明细列表不能为空', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($this->reqData['total_num'] > 1000) {
+        }
+        if ($this->reqData['total_num'] > 1000) {
             throw new WxException('明细列表不能超过1000个', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -179,11 +183,11 @@ class BatchesApply extends WxBaseMerchantV3
         $this->setHeadAuth();
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs, 2);
-        if ($sendRes['res_code'] == 200) {
+        if (200 == $sendRes['res_code']) {
             $resArr['data'] = Tool::jsonDecode($sendRes['res_content']);
         } else {
             $resArr['code'] = $sendRes['res_code'];
-            $resArr['msg'] = strlen($sendRes['res_content']) > 0 ? $sendRes['res_content'] : '微信请求出错~';
+            $resArr['msg'] = \strlen($sendRes['res_content']) > 0 ? $sendRes['res_content'] : '微信请求出错~';
         }
 
         return $resArr;

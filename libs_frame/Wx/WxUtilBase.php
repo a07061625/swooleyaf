@@ -37,9 +37,9 @@ abstract class WxUtilBase
 
     /**
      * 发送post请求
-     * @param array $curlConfig
-     * @param int $returnType
+     *
      * @return array|mixed
+     *
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
@@ -60,7 +60,7 @@ abstract class WxUtilBase
             $curlConfig[CURLOPT_SSL_VERIFYHOST] = 2;
         }
 
-        if ($returnType == 1) {
+        if (1 == $returnType) {
             $sendRes = Tool::sendCurlReq($curlConfig);
             if (0 == $sendRes['res_no']) {
                 return $sendRes['res_content'];
