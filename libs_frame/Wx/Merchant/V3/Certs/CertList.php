@@ -34,7 +34,6 @@ class CertList extends WxBaseMerchantV3
     }
 
     /**
-     * @return array
      * @throws \SyException\Wx\WxException
      */
     public function getDetail(): array
