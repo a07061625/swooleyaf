@@ -5,6 +5,7 @@
  * Date: 2018/9/11 0011
  * Time: 8:55
  */
+
 namespace Wx;
 
 use SyConstant\ErrorCode;
@@ -37,9 +38,9 @@ abstract class WxUtilBase
 
     /**
      * 发送post请求
-     * @param array $curlConfig
-     * @param int $returnType
+     *
      * @return array|mixed
+     *
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
@@ -60,7 +61,7 @@ abstract class WxUtilBase
             $curlConfig[CURLOPT_SSL_VERIFYHOST] = 2;
         }
 
-        if ($returnType == 1) {
+        if (1 == $returnType) {
             $sendRes = Tool::sendCurlReq($curlConfig);
             if (0 == $sendRes['res_no']) {
                 return $sendRes['res_content'];
@@ -71,18 +72,19 @@ abstract class WxUtilBase
                 return $sendRes;
             }
         }
-        
-        if ($sendRes['res_no'] == 0) {
+
+        if (0 == $sendRes['res_no']) {
             return $sendRes['res_content'];
-        } else {
-            throw new WxException('curl出错，错误码=' . $sendRes['res_no'], ErrorCode::WX_POST_ERROR);
         }
+
+        throw new WxException('curl出错，错误码=' . $sendRes['res_no'], ErrorCode::WX_POST_ERROR);
     }
 
     /**
      * 发送get请求
-     * @param array $curlConfig
+     *
      * @return mixed
+     *
      * @throws \SyException\Wx\WxException
      */
     public static function sendGetReq(array $curlConfig)
@@ -95,26 +97,27 @@ abstract class WxUtilBase
             $curlConfig[CURLOPT_TIMEOUT_MS] = 2000;
         }
         $sendRes = Tool::sendCurlReq($curlConfig);
-        if ($sendRes['res_no'] == 0) {
+        if (0 == $sendRes['res_no']) {
             return $sendRes['res_content'];
-        } else {
-            throw new WxException('curl出错，错误码=' . $sendRes['res_no'], ErrorCode::WX_GET_ERROR);
         }
+
+        throw new WxException('curl出错，错误码=' . $sendRes['res_no'], ErrorCode::WX_GET_ERROR);
     }
 
     /**
      * 用SHA1算法生成安全签名
-     * @param string $token 票据
-     * @param string $timestamp 时间戳
-     * @param string $nonce 随机字符串
+     *
+     * @param string $token      票据
+     * @param string $timestamp  时间戳
+     * @param string $nonce      随机字符串
      * @param string $encryptMsg 密文消息
-     * @return string
      */
-    protected static function getSha1Val(string $token, string $timestamp, string $nonce, string $encryptMsg) : string
+    protected static function getSha1Val(string $token, string $timestamp, string $nonce, string $encryptMsg): string
     {
         $saveArr = [$token, $timestamp, $nonce, $encryptMsg];
         sort($saveArr, SORT_STRING);
         $needStr = implode('', $saveArr);
+
         return sha1($needStr);
     }
 }
