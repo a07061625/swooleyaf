@@ -9,7 +9,6 @@
 namespace Wx\Merchant\V3\Certs;
 
 use DesignPatterns\Singletons\WxConfigSingleton;
-use SyTool\Tool;
 use Wx\WxBaseMerchantV3;
 use Wx\WxUtilBase;
 
@@ -34,6 +33,8 @@ class CertList extends WxBaseMerchantV3
     }
 
     /**
+     * @return array
+     * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
     public function getDetail(): array
@@ -43,11 +44,8 @@ class CertList extends WxBaseMerchantV3
 
         $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->appId);
         array_push($this->curlConfigs[CURLOPT_HTTPHEADER], 'User-Agent: ' . $accountConfig->getPayMchId());
-        $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
+        $sendRes = WxUtilBase::sendGetReq($this->curlConfigs, 2);
 
-        return [
-            'code' => 0,
-            'data' => Tool::jsonDecode($sendRes),
-        ];
+        return $this->handleRespJson($sendRes);
     }
 }

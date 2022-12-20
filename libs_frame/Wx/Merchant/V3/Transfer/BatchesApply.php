@@ -69,8 +69,7 @@ class BatchesApply extends WxBaseMerchantV3
         parent::__construct($appId);
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/v3/transfer/batches';
         $this->reqMethod = self::REQUEST_METHOD_POST;
-        array_push($this->curlConfigs[CURLOPT_HTTPHEADER], 'Content-Type: application/json');
-        array_push($this->curlConfigs[CURLOPT_HTTPHEADER], 'Accept: application/json');
+        $this->setHeadJson();
         $this->reqData['appid'] = $appId;
         $this->reqData['batch_remark'] = '';
         $this->reqData['total_amount'] = 0;
@@ -89,7 +88,7 @@ class BatchesApply extends WxBaseMerchantV3
      */
     public function setOutBatchNo(string $outBatchNo)
     {
-        if (ctype_digit($outBatchNo) && (\strlen($outBatchNo) <= 32)) {
+        if (ctype_alnum($outBatchNo) && (\strlen($outBatchNo) <= 32)) {
             $this->reqData['out_batch_no'] = $outBatchNo;
         } else {
             throw new WxException('商家批次单号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -158,6 +157,7 @@ class BatchesApply extends WxBaseMerchantV3
     }
 
     /**
+     * @return array
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
@@ -176,21 +176,11 @@ class BatchesApply extends WxBaseMerchantV3
             throw new WxException('明细列表不能超过1000个', ErrorCode::WX_PARAM_ERROR);
         }
 
-        $resArr = [
-            'code' => 0,
-        ];
-
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl;
         $this->setHeadAuth();
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs, 2);
-        if (200 == $sendRes['res_code']) {
-            $resArr['data'] = Tool::jsonDecode($sendRes['res_content']);
-        } else {
-            $resArr['code'] = $sendRes['res_code'];
-            $resArr['msg'] = \strlen($sendRes['res_content']) > 0 ? $sendRes['res_content'] : '微信请求出错~';
-        }
 
-        return $resArr;
+        return $this->handleRespJson($sendRes);
     }
 }
