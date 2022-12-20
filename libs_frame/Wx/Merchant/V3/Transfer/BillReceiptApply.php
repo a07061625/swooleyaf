@@ -23,6 +23,7 @@ class BillReceiptApply extends WxBaseMerchantV3
 {
     /**
      * 商家批次单号
+     *
      * @var string
      */
     private $out_batch_no = '';
@@ -41,7 +42,6 @@ class BillReceiptApply extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $outBatchNo
      * @throws \SyException\Wx\WxException
      */
     public function setOutBatchNo(string $outBatchNo)
@@ -54,7 +54,6 @@ class BillReceiptApply extends WxBaseMerchantV3
     }
 
     /**
-     * @return array
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */

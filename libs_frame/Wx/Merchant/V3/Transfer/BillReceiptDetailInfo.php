@@ -22,16 +22,19 @@ class BillReceiptDetailInfo extends WxBaseMerchantV3
 {
     /**
      * 受理类型
+     *
      * @var string
      */
     private $accept_type = '';
     /**
      * 转账批次单号
+     *
      * @var string
      */
     private $out_batch_no = '';
     /**
      * 转账明细单号
+     *
      * @var string
      */
     private $out_detail_no = '';
@@ -51,12 +54,11 @@ class BillReceiptDetailInfo extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $acceptType
      * @throws \SyException\Wx\WxException
      */
     public function setAcceptType(string $acceptType)
     {
-        if (in_array($acceptType, ['BATCH_TRANSFER', 'TRANSFER_TO_POCKET', 'TRANSFER_TO_BANK'])) {
+        if (\in_array($acceptType, ['BATCH_TRANSFER', 'TRANSFER_TO_POCKET', 'TRANSFER_TO_BANK'])) {
             $this->reqData['accept_type'] = $acceptType;
         } else {
             throw new WxException('受理类型不支持', ErrorCode::WX_PARAM_ERROR);
@@ -64,7 +66,6 @@ class BillReceiptDetailInfo extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $outBatchNo
      * @throws \SyException\Wx\WxException
      */
     public function setOutBatchNo(string $outBatchNo)
@@ -77,7 +78,6 @@ class BillReceiptDetailInfo extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $outDetailNo
      * @throws \SyException\Wx\WxException
      */
     public function setOutDetailNo(string $outDetailNo)
@@ -90,7 +90,6 @@ class BillReceiptDetailInfo extends WxBaseMerchantV3
     }
 
     /**
-     * @return array
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
@@ -98,8 +97,9 @@ class BillReceiptDetailInfo extends WxBaseMerchantV3
     {
         if (!isset($this->reqData['accept_type'])) {
             throw new WxException('受理类型不能为空', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($this->reqData['accept_type'] == 'BATCH_TRANSFER') {
-            if (strlen($this->reqData['out_batch_no']) == 0) {
+        }
+        if ('BATCH_TRANSFER' == $this->reqData['accept_type']) {
+            if (0 == \strlen($this->reqData['out_batch_no'])) {
                 throw new WxException('转账批次单号不能为空', ErrorCode::WX_PARAM_ERROR);
             }
         } else {
