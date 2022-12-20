@@ -36,37 +36,6 @@ abstract class WxUtilBase
     ];
 
     /**
-     * 发送curl请求
-     * @param array $curlConfig
-     * @param int $returnType
-     * @return array|mixed
-     * @throws \SyException\Common\CheckException
-     * @throws \SyException\Wx\WxException
-     */
-    private static function sendCurlReq(array $curlConfig, int $returnType)
-    {
-        if (1 == $returnType) {
-            $sendRes = Tool::sendCurlReq($curlConfig);
-            if (0 == $sendRes['res_no']) {
-                return $sendRes['res_content'];
-            }
-        } else {
-            $sendRes = Tool::sendCurlReq($curlConfig, Tool::CURL_RSP_HEAD_TYPE_HTTP);
-            if (0 == $sendRes['res_no']) {
-                return $sendRes;
-            }
-        }
-
-        if (array_key_exists(CURLOPT_POST, $curlConfig)) {
-            $errCode = ErrorCode::WX_POST_ERROR;
-        } else {
-            $errCode = ErrorCode::WX_GET_ERROR;
-        }
-
-        throw new WxException('curl出错，错误码=' . $sendRes['res_no'], $errCode);
-    }
-
-    /**
      * 发送post请求
      *
      * @return array|mixed
@@ -96,9 +65,9 @@ abstract class WxUtilBase
 
     /**
      * 发送get请求
-     * @param array $curlConfig
-     * @param int $returnType
+     *
      * @return array|mixed
+     *
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
@@ -130,5 +99,36 @@ abstract class WxUtilBase
         $needStr = implode('', $saveArr);
 
         return sha1($needStr);
+    }
+
+    /**
+     * 发送curl请求
+     *
+     * @return array|mixed
+     *
+     * @throws \SyException\Common\CheckException
+     * @throws \SyException\Wx\WxException
+     */
+    private static function sendCurlReq(array $curlConfig, int $returnType)
+    {
+        if (1 == $returnType) {
+            $sendRes = Tool::sendCurlReq($curlConfig);
+            if (0 == $sendRes['res_no']) {
+                return $sendRes['res_content'];
+            }
+        } else {
+            $sendRes = Tool::sendCurlReq($curlConfig, Tool::CURL_RSP_HEAD_TYPE_HTTP);
+            if (0 == $sendRes['res_no']) {
+                return $sendRes;
+            }
+        }
+
+        if (\array_key_exists(CURLOPT_POST, $curlConfig)) {
+            $errCode = ErrorCode::WX_POST_ERROR;
+        } else {
+            $errCode = ErrorCode::WX_GET_ERROR;
+        }
+
+        throw new WxException('curl出错，错误码=' . $sendRes['res_no'], $errCode);
     }
 }

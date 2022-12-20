@@ -9,7 +9,6 @@
 namespace Wx\Merchant\V3\Certs;
 
 use DesignPatterns\Singletons\WxConfigSingleton;
-use SyTool\Tool;
 use Wx\WxBaseMerchantV3;
 use Wx\WxUtilBase;
 
@@ -34,7 +33,6 @@ class CertList extends WxBaseMerchantV3
     }
 
     /**
-     * @return array
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */

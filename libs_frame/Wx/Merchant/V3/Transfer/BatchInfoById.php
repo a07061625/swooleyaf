@@ -5,6 +5,7 @@
  * Date: 2022/12/20
  * Time: 11:24
  */
+
 namespace Wx\Merchant\V3\Transfer;
 
 use SyConstant\ErrorCode;
@@ -14,32 +15,38 @@ use Wx\WxUtilBase;
 
 /**
  * Class BatchInfoById
+ *
  * @package Wx\Merchant\V3\Transfer
  */
 class BatchInfoById extends WxBaseMerchantV3
 {
     /**
      * 微信批次单号
+     *
      * @var string
      */
     private $batch_id = '';
     /**
      * 是否查询指定状态
+     *
      * @var bool
      */
     private $need_query_detail = false;
     /**
      * 起始位置
+     *
      * @var int
      */
     private $offset = 0;
     /**
      * 最大明细条数
+     *
      * @var int
      */
     private $limit = 0;
     /**
      * 转账明细单状态
+     *
      * @var string
      */
     private $detail_status = '';
@@ -60,7 +67,6 @@ class BatchInfoById extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $batchId
      * @throws \SyException\Wx\WxException
      */
     public function setBatchId(string $batchId)
@@ -72,9 +78,6 @@ class BatchInfoById extends WxBaseMerchantV3
         }
     }
 
-    /**
-     * @param bool $queryDetailStatus
-     */
     public function setNeedQueryDetail(bool $queryDetailStatus)
     {
         if ($queryDetailStatus) {
@@ -85,7 +88,6 @@ class BatchInfoById extends WxBaseMerchantV3
     }
 
     /**
-     * @param int $offset
      * @throws \SyException\Wx\WxException
      */
     public function setOffset(int $offset)
@@ -98,26 +100,25 @@ class BatchInfoById extends WxBaseMerchantV3
     }
 
     /**
-     * @param int $limit
      * @throws \SyException\Wx\WxException
      */
     public function setLimit(int $limit)
     {
         if ($limit <= 0) {
             throw new WxException('最大明细条数必须大于0', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($limit > 100) {
+        }
+        if ($limit > 100) {
             throw new WxException('最大明细条数不能大于100', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['limit'] = $limit;
     }
 
     /**
-     * @param string $detailStatus
      * @throws \SyException\Wx\WxException
      */
     public function setDetailStatus(string $detailStatus)
     {
-        if (in_array($detailStatus, ['ALL', 'SUCCESS', 'FAIL'])) {
+        if (\in_array($detailStatus, ['ALL', 'SUCCESS', 'FAIL'])) {
             $this->reqData['detail_status'] = $detailStatus;
         } else {
             throw new WxException('转账明细单状态不支持', ErrorCode::WX_PARAM_ERROR);
@@ -125,13 +126,12 @@ class BatchInfoById extends WxBaseMerchantV3
     }
 
     /**
-     * @return array
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
-    public function getDetail() : array
+    public function getDetail(): array
     {
-        if (strlen($this->batch_id) == 0) {
+        if (0 == \strlen($this->batch_id)) {
             throw new WxException('微信批次单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 

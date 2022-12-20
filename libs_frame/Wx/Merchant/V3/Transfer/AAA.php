@@ -5,12 +5,14 @@
  * Date: 2022/12/20
  * Time: 11:24
  */
+
 namespace Wx\Merchant\V3\Transfer;
 
 use Wx\WxBaseMerchantV3;
 
 /**
  * Class AAA
+ *
  * @package Wx\Merchant\V3\Transfer
  */
 class AAA extends WxBaseMerchantV3
@@ -26,7 +28,7 @@ class AAA extends WxBaseMerchantV3
         //do nothing
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $sendRes = [
             'code' => 0,

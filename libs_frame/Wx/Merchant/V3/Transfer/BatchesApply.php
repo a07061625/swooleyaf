@@ -157,7 +157,6 @@ class BatchesApply extends WxBaseMerchantV3
     }
 
     /**
-     * @return array
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
@@ -180,7 +179,7 @@ class BatchesApply extends WxBaseMerchantV3
         $this->setHeadAuth();
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs, 2);
-        
+
         return $this->handleRespJson($sendRes);
     }
 }
