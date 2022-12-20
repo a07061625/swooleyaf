@@ -22,11 +22,13 @@ class BatchDetailInfoByNo extends WxBaseMerchantV3
 {
     /**
      * 商家批次单号
+     *
      * @var string
      */
     private $out_batch_no = '';
     /**
      * 商家明细单号
+     *
      * @var string
      */
     private $out_detail_no = '';
@@ -44,7 +46,6 @@ class BatchDetailInfoByNo extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $outBatchNo
      * @throws \SyException\Wx\WxException
      */
     public function setOutBatchNo(string $outBatchNo)
@@ -57,7 +58,6 @@ class BatchDetailInfoByNo extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $outDetailNo
      * @throws \SyException\Wx\WxException
      */
     public function setOutDetailNo(string $outDetailNo)
@@ -70,16 +70,15 @@ class BatchDetailInfoByNo extends WxBaseMerchantV3
     }
 
     /**
-     * @return array
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
     public function getDetail(): array
     {
-        if (strlen($this->out_batch_no) == 0) {
+        if (0 == \strlen($this->out_batch_no)) {
             throw new WxException('商家批次单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if (strlen($this->out_detail_no) == 0) {
+        if (0 == \strlen($this->out_detail_no)) {
             throw new WxException('商家明细单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
