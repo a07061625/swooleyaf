@@ -5,7 +5,6 @@
  * Date: 2018/9/11 0011
  * Time: 8:52
  */
-
 namespace Wx;
 
 use DesignPatterns\Singletons\WxConfigSingleton;
@@ -13,10 +12,6 @@ use SyTool\Tool;
 
 abstract class WxBaseMerchantV3 extends WxBase
 {
-    const REQUEST_METHOD_GET = 'GET';
-    const REQUEST_METHOD_POST = 'POST';
-    const REQUEST_METHOD_PUT = 'PUT';
-    const REQUEST_METHOD_DELETE = 'DELETE';
     /**
      * 商户号ID
      *
@@ -25,10 +20,14 @@ abstract class WxBaseMerchantV3 extends WxBase
     protected $appId = '';
     /**
      * 请求方式
-     *
      * @var string
      */
     protected $reqMethod = '';
+
+    const REQUEST_METHOD_GET = 'GET';
+    const REQUEST_METHOD_POST = 'POST';
+    const REQUEST_METHOD_PUT = 'PUT';
+    const REQUEST_METHOD_DELETE = 'DELETE';
 
     public function __construct(string $appId)
     {
@@ -38,11 +37,12 @@ abstract class WxBaseMerchantV3 extends WxBase
     }
 
     /**
+     * @return array
      * @throws \SyException\Wx\WxException
      */
     protected function setHeadAuth(): array
     {
-        if (\in_array($this->reqMethod, [self::REQUEST_METHOD_POST, self::REQUEST_METHOD_PUT])) {
+        if (in_array($this->reqMethod, [self::REQUEST_METHOD_POST, self::REQUEST_METHOD_PUT])) {
             $bodyStr = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         } else {
             $bodyStr = '';
@@ -67,5 +67,31 @@ abstract class WxBaseMerchantV3 extends WxBase
             'now_time' => $nowTime,
             'nonce_tag' => $nonceStr,
         ];
+    }
+
+    protected function setHeadJson()
+    {
+        array_push($this->curlConfigs[CURLOPT_HTTPHEADER], 'Content-Type: application/json');
+        array_push($this->curlConfigs[CURLOPT_HTTPHEADER], 'Accept: application/json');
+    }
+
+    /**
+     * @param array $reqResult
+     * @return array
+     */
+    protected function handleRespJson(array $reqResult): array
+    {
+        $handleRes = [
+            'code' => 0,
+        ];
+
+        if (200 == $reqResult['res_code']) {
+            $handleRes['data'] = Tool::jsonDecode($reqResult['res_content']);
+        } else {
+            $handleRes['code'] = $reqResult['res_code'];
+            $handleRes['msg'] = \strlen($reqResult['res_content']) > 0 ? $reqResult['res_content'] : '微信请求出错~';
+        }
+
+        return $handleRes;
     }
 }
