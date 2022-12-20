@@ -22,11 +22,13 @@ class BatchDetailInfoById extends WxBaseMerchantV3
 {
     /**
      * 微信批次单号
+     *
      * @var string
      */
     private $batch_id = '';
     /**
      * 微信明细单号
+     *
      * @var string
      */
     private $detail_id = '';
@@ -44,7 +46,6 @@ class BatchDetailInfoById extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $batchId
      * @throws \SyException\Wx\WxException
      */
     public function setBatchId(string $batchId)
@@ -57,7 +58,6 @@ class BatchDetailInfoById extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $detailId
      * @throws \SyException\Wx\WxException
      */
     public function setDetailId(string $detailId)
@@ -70,16 +70,15 @@ class BatchDetailInfoById extends WxBaseMerchantV3
     }
 
     /**
-     * @return array
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
     public function getDetail(): array
     {
-        if (strlen($this->batch_id) == 0) {
+        if (0 == \strlen($this->batch_id)) {
             throw new WxException('微信批次单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if (strlen($this->detail_id) == 0) {
+        if (0 == \strlen($this->detail_id)) {
             throw new WxException('微信明细单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 

@@ -22,10 +22,11 @@ class BillReceiptInfo extends WxBaseMerchantV3
 {
     /**
      * 商家批次单号
+     *
      * @var string
      */
     private $out_batch_no = '';
-    
+
     public function __construct(string $appId)
     {
         parent::__construct($appId);
@@ -39,7 +40,6 @@ class BillReceiptInfo extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $outBatchNo
      * @throws \SyException\Wx\WxException
      */
     public function setOutBatchNo(string $outBatchNo)
@@ -52,13 +52,12 @@ class BillReceiptInfo extends WxBaseMerchantV3
     }
 
     /**
-     * @return array
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
     public function getDetail(): array
     {
-        if (strlen($this->out_batch_no) == 0) {
+        if (0 == \strlen($this->out_batch_no)) {
             throw new WxException('商家批次单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
