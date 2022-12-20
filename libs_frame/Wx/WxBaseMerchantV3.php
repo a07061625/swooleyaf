@@ -68,4 +68,30 @@ abstract class WxBaseMerchantV3 extends WxBase
             'nonce_tag' => $nonceStr,
         ];
     }
+
+    protected function setHeadJson()
+    {
+        array_push($this->curlConfigs[CURLOPT_HTTPHEADER], 'Content-Type: application/json');
+        array_push($this->curlConfigs[CURLOPT_HTTPHEADER], 'Accept: application/json');
+    }
+
+    /**
+     * @param array $reqResult
+     * @return array
+     */
+    protected function handleRespJson(array $reqResult): array
+    {
+        $handleRes = [
+            'code' => 0,
+        ];
+
+        if (200 == $reqResult['res_code']) {
+            $handleRes['data'] = Tool::jsonDecode($reqResult['res_content']);
+        } else {
+            $handleRes['code'] = $reqResult['res_code'];
+            $handleRes['msg'] = \strlen($reqResult['res_content']) > 0 ? $reqResult['res_content'] : '微信请求出错~';
+        }
+        
+        return $handleRes;
+    }
 }

@@ -36,6 +36,37 @@ abstract class WxUtilBase
     ];
 
     /**
+     * 发送curl请求
+     * @param array $curlConfig
+     * @param int $returnType
+     * @return array|mixed
+     * @throws \SyException\Common\CheckException
+     * @throws \SyException\Wx\WxException
+     */
+    private static function sendCurlReq(array $curlConfig, int $returnType)
+    {
+        if (1 == $returnType) {
+            $sendRes = Tool::sendCurlReq($curlConfig);
+            if (0 == $sendRes['res_no']) {
+                return $sendRes['res_content'];
+            }
+        } else {
+            $sendRes = Tool::sendCurlReq($curlConfig, Tool::CURL_RSP_HEAD_TYPE_HTTP);
+            if (0 == $sendRes['res_no']) {
+                return $sendRes;
+            }
+        }
+
+        if (array_key_exists(CURLOPT_POST, $curlConfig)) {
+            $errCode = ErrorCode::WX_POST_ERROR;
+        } else {
+            $errCode = ErrorCode::WX_GET_ERROR;
+        }
+
+        throw new WxException('curl出错，错误码=' . $sendRes['res_no'], $errCode);
+    }
+
+    /**
      * 发送post请求
      *
      * @return array|mixed
@@ -60,29 +91,18 @@ abstract class WxUtilBase
             $curlConfig[CURLOPT_SSL_VERIFYHOST] = 2;
         }
 
-        if (1 == $returnType) {
-            $sendRes = Tool::sendCurlReq($curlConfig);
-            if (0 == $sendRes['res_no']) {
-                return $sendRes['res_content'];
-            }
-        } else {
-            $sendRes = Tool::sendCurlReq($curlConfig, Tool::CURL_RSP_HEAD_TYPE_HTTP);
-            if (0 == $sendRes['res_no']) {
-                return $sendRes;
-            }
-        }
-
-        throw new WxException('curl出错，错误码=' . $sendRes['res_no'], ErrorCode::WX_POST_ERROR);
+        return self::sendCurlReq($curlConfig, $returnType);
     }
 
     /**
      * 发送get请求
-     *
-     * @return mixed
-     *
+     * @param array $curlConfig
+     * @param int $returnType
+     * @return array|mixed
+     * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
-    public static function sendGetReq(array $curlConfig)
+    public static function sendGetReq(array $curlConfig, int $returnType = 1)
     {
         $curlConfig[CURLOPT_SSL_VERIFYPEER] = false;
         $curlConfig[CURLOPT_SSL_VERIFYHOST] = false;
@@ -91,12 +111,8 @@ abstract class WxUtilBase
         if (!isset($curlConfig[CURLOPT_TIMEOUT_MS])) {
             $curlConfig[CURLOPT_TIMEOUT_MS] = 2000;
         }
-        $sendRes = Tool::sendCurlReq($curlConfig);
-        if (0 == $sendRes['res_no']) {
-            return $sendRes['res_content'];
-        }
 
-        throw new WxException('curl出错，错误码=' . $sendRes['res_no'], ErrorCode::WX_GET_ERROR);
+        return self::sendCurlReq($curlConfig, $returnType);
     }
 
     /**
