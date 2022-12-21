@@ -5,6 +5,7 @@
  * Date: 2022/12/21
  * Time: 15:30
  */
+
 namespace Wx\Merchant\V3\ProfitSharing;
 
 use SyConstant\ErrorCode;
@@ -14,12 +15,14 @@ use Wx\WxUtilBase;
 
 /**
  * Class BillList
+ *
  * @package Wx\Merchant\V3\ProfitSharing
  */
 class BillList extends WxBaseMerchantV3
 {
     /**
      * 账单日期,格式yyyy-MM-DD
+     *
      * @var string
      */
     private $bill_date = '';
@@ -37,12 +40,11 @@ class BillList extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $billDate
      * @throws \SyException\Wx\WxException
      */
     public function setBillDate(string $billDate)
     {
-        if (\strlen($billDate) == 10) {
+        if (10 == \strlen($billDate)) {
             $this->reqData['bill_date'] = $billDate;
         } else {
             throw new WxException('账单日期不合法', ErrorCode::WX_PARAM_ERROR);
@@ -50,21 +52,20 @@ class BillList extends WxBaseMerchantV3
     }
 
     /**
-     * @return array
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['bill_date'])) {
             throw new WxException('账单日期不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        
+
         $this->curlConfigs[CURLOPT_URL] = 'https://api.mch.weixin.qq.com/v3/profitsharing/bills?'
                                          . http_build_query($this->reqData);
         $this->setHeadAuth();
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs, 2);
-        
+
         return $this->handleRespJson($sendRes);
     }
 }

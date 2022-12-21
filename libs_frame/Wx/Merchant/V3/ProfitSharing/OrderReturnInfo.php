@@ -5,6 +5,7 @@
  * Date: 2022/12/21
  * Time: 15:30
  */
+
 namespace Wx\Merchant\V3\ProfitSharing;
 
 use SyConstant\ErrorCode;
@@ -14,21 +15,24 @@ use Wx\WxUtilBase;
 
 /**
  * Class OrderReturnInfo
+ *
  * @package Wx\Merchant\V3\ProfitSharing
  */
 class OrderReturnInfo extends WxBaseMerchantV3
 {
     /**
      * 商户回退单号
+     *
      * @var string
      */
     private $out_return_no = '';
     /**
      * 商户分账单号
+     *
      * @var string
      */
     private $out_order_no = '';
-    
+
     public function __construct(string $appId)
     {
         parent::__construct($appId);
@@ -42,7 +46,6 @@ class OrderReturnInfo extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $outReturnNo
      * @throws \SyException\Wx\WxException
      */
     public function setOutReturnNo(string $outReturnNo)
@@ -55,7 +58,6 @@ class OrderReturnInfo extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $outOrderNo
      * @throws \SyException\Wx\WxException
      */
     public function setOutOrderNo(string $outOrderNo)
@@ -68,13 +70,12 @@ class OrderReturnInfo extends WxBaseMerchantV3
     }
 
     /**
-     * @return array
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
-    public function getDetail() : array
+    public function getDetail(): array
     {
-        if (strlen($this->out_return_no) == 0) {
+        if (0 == \strlen($this->out_return_no)) {
             throw new WxException('商户回退单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         if (!isset($this->reqData['out_order_no'])) {
@@ -86,7 +87,7 @@ class OrderReturnInfo extends WxBaseMerchantV3
                                           . '?' . http_build_query($this->reqData);
         $this->setHeadAuth();
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs, 2);
-        
+
         return $this->handleRespJson($sendRes);
     }
 }
