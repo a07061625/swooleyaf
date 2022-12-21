@@ -5,6 +5,7 @@
  * Date: 2022/12/21
  * Time: 15:30
  */
+
 namespace Wx\Merchant\V3\ProfitSharing;
 
 use SyConstant\ErrorCode;
@@ -15,22 +16,26 @@ use Wx\WxUtilBase;
 
 /**
  * Class OrderUnfreeze
+ *
  * @package Wx\Merchant\V3\ProfitSharing
  */
 class OrderUnfreeze extends WxBaseMerchantV3
 {
     /**
      * 微信订单号
+     *
      * @var string
      */
     private $transaction_id = '';
     /**
      * 商户分账单号
+     *
      * @var string
      */
     private $out_order_no = '';
     /**
      * 分账描述
+     *
      * @var string
      */
     private $description = '';
@@ -49,7 +54,6 @@ class OrderUnfreeze extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $transactionId
      * @throws \SyException\Wx\WxException
      */
     public function setTransactionId(string $transactionId)
@@ -62,7 +66,6 @@ class OrderUnfreeze extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $outOrderNo
      * @throws \SyException\Wx\WxException
      */
     public function setOutOrderNo(string $outOrderNo)
@@ -75,16 +78,16 @@ class OrderUnfreeze extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $description
      * @throws \SyException\Wx\WxException
      */
     public function setDescription(string $description)
     {
         $trueDesc = trim($description);
-        $descLength = strlen($trueDesc);
-        if ($descLength == 0) {
+        $descLength = \strlen($trueDesc);
+        if (0 == $descLength) {
             throw new WxException('分账描述不能为空', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($descLength > 80) {
+        }
+        if ($descLength > 80) {
             throw new WxException('分账描述不能超过80个字节', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -92,11 +95,10 @@ class OrderUnfreeze extends WxBaseMerchantV3
     }
 
     /**
-     * @return array
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['transaction_id'])) {
             throw new WxException('微信订单号不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -112,7 +114,7 @@ class OrderUnfreeze extends WxBaseMerchantV3
         $this->setHeadAuth();
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs, 2);
-        
+
         return $this->handleRespJson($sendRes);
     }
 }

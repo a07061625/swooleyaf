@@ -5,6 +5,7 @@
  * Date: 2022/12/21
  * Time: 15:30
  */
+
 namespace Wx\Merchant\V3\ProfitSharing;
 
 use SyConstant\ErrorCode;
@@ -15,17 +16,20 @@ use Wx\WxUtilBase;
 
 /**
  * Class ReceiverDelete
+ *
  * @package Wx\Merchant\V3\ProfitSharing
  */
 class ReceiverDelete extends WxBaseMerchantV3
 {
     /**
      * 分账接收方类型
+     *
      * @var string
      */
     private $type = '';
     /**
      * 分账接收方账号
+     *
      * @var string
      */
     private $account = '';
@@ -45,12 +49,11 @@ class ReceiverDelete extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $type
      * @throws \SyException\Wx\WxException
      */
     public function setType(string $type)
     {
-        if (in_array($type, ['MERCHANT_ID', 'PERSONAL_OPENID'])) {
+        if (\in_array($type, ['MERCHANT_ID', 'PERSONAL_OPENID'])) {
             $this->reqData['type'] = $type;
         } else {
             throw new WxException('分账接收方类型不支持', ErrorCode::WX_PARAM_ERROR);
@@ -58,15 +61,15 @@ class ReceiverDelete extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $account
      * @throws \SyException\Wx\WxException
      */
     public function setAccount(string $account)
     {
-        $accountLength = strlen($account);
+        $accountLength = \strlen($account);
         if ($accountLength <= 0) {
             throw new WxException('分账接收方账号不能为空', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($accountLength > 64) {
+        }
+        if ($accountLength > 64) {
             throw new WxException('分账接收方账号长度不能超过64个字节', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -74,11 +77,10 @@ class ReceiverDelete extends WxBaseMerchantV3
     }
 
     /**
-     * @return array
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['type'])) {
             throw new WxException('分账接收方类型不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -91,7 +93,7 @@ class ReceiverDelete extends WxBaseMerchantV3
         $this->setHeadAuth();
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs, 2);
-        
+
         return $this->handleRespJson($sendRes);
     }
 }
