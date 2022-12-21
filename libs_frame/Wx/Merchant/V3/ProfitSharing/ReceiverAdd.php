@@ -5,6 +5,7 @@
  * Date: 2022/12/21
  * Time: 15:30
  */
+
 namespace Wx\Merchant\V3\ProfitSharing;
 
 use SyConstant\ErrorCode;
@@ -16,32 +17,38 @@ use Wx\WxUtilPayment;
 
 /**
  * Class ReceiverAdd
+ *
  * @package Wx\Merchant\V3\ProfitSharing
  */
 class ReceiverAdd extends WxBaseMerchantV3
 {
     /**
      * 分账接收方类型
+     *
      * @var string
      */
     private $type = '';
     /**
      * 分账接收方账号
+     *
      * @var string
      */
     private $account = '';
     /**
      * 分账接收方姓名
+     *
      * @var string
      */
     private $name = '';
     /**
      * 关系类型
+     *
      * @var string
      */
     private $relation_type = '';
     /**
      * 自定义分账关系
+     *
      * @var string
      */
     private $custom_relation = '';
@@ -63,24 +70,25 @@ class ReceiverAdd extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $type
-     * @param string $name
      * @param string $v3PublicKey V3平台证书公钥
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setTypeAndName(string $type, string $name, string $v3PublicKey)
     {
-        if (!in_array($type, ['MERCHANT_ID', 'PERSONAL_OPENID'])) {
+        if (!\in_array($type, ['MERCHANT_ID', 'PERSONAL_OPENID'])) {
             throw new WxException('分账接收方类型不支持', ErrorCode::WX_PARAM_ERROR);
         }
 
         $trueName = trim($name);
-        $nameLength = strlen($trueName);
+        $nameLength = \strlen($trueName);
         if ($nameLength > 1024) {
             throw new WxException('分账接收方姓名长度不能超过1024个字节', ErrorCode::WX_PARAM_ERROR);
-        } elseif (($nameLength == 0) && ($type == 'MERCHANT_ID')) {
+        }
+        if ((0 == $nameLength) && ('MERCHANT_ID' == $type)) {
             throw new WxException('商户全称不能为空', ErrorCode::WX_PARAM_ERROR);
-        } elseif (($nameLength > 0) && (strlen($v3PublicKey) == 0)) {
+        }
+        if (($nameLength > 0) && (0 == \strlen($v3PublicKey))) {
             throw new WxException('V3平台证书公钥不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -93,28 +101,27 @@ class ReceiverAdd extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $account
      * @throws \SyException\Wx\WxException
      */
     public function setAccount(string $account)
     {
-        $accountLength = strlen($account);
+        $accountLength = \strlen($account);
         if ($accountLength <= 0) {
             throw new WxException('分账接收方账号不能为空', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($accountLength > 64) {
+        }
+        if ($accountLength > 64) {
             throw new WxException('分账接收方账号长度不能超过64个字节', ErrorCode::WX_PARAM_ERROR);
         }
-        
+
         $this->reqData['account'] = $account;
     }
 
     /**
-     * @param string $relationType
      * @throws \SyException\Wx\WxException
      */
     public function setRelationType(string $relationType)
     {
-        if (in_array($relationType, [
+        if (\in_array($relationType, [
             'STORE',
             'STAFF',
             'STORE_OWNER',
@@ -133,15 +140,15 @@ class ReceiverAdd extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $customRelation
      * @throws \SyException\Wx\WxException
      */
     public function setCustomRelation(string $customRelation)
     {
-        $relationLength = strlen($customRelation);
+        $relationLength = \strlen($customRelation);
         if ($relationLength > 10) {
             throw new WxException('自定义分账关系长度不能超过10个字节', ErrorCode::WX_PARAM_ERROR);
-        } elseif (($relationLength == 0) && ($this->reqData['relation_type'] == 'CUSTOM')) {
+        }
+        if ((0 == $relationLength) && ('CUSTOM' == $this->reqData['relation_type'])) {
             throw new WxException('自定义分账关系不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -149,11 +156,10 @@ class ReceiverAdd extends WxBaseMerchantV3
     }
 
     /**
-     * @return array
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['type'])) {
             throw new WxException('分账接收方类型不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -161,9 +167,10 @@ class ReceiverAdd extends WxBaseMerchantV3
         if (!isset($this->reqData['account'])) {
             throw new WxException('分账接收方账号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if (strlen($this->reqData['relation_type']) == 0) {
+        if (0 == \strlen($this->reqData['relation_type'])) {
             throw new WxException('关系类型不能为空', ErrorCode::WX_PARAM_ERROR);
-        } elseif (($this->reqData['relation_type'] == 'CUSTOM') && (strlen($this->reqData['custom_relation']) == 0)) {
+        }
+        if (('CUSTOM' == $this->reqData['relation_type']) && (0 == \strlen($this->reqData['custom_relation']))) {
             throw new WxException('自定义分账关系不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -171,7 +178,7 @@ class ReceiverAdd extends WxBaseMerchantV3
         $this->setHeadAuth();
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs, 2);
-        
+
         return $this->handleRespJson($sendRes);
     }
 }

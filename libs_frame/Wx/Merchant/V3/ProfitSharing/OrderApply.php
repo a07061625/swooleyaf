@@ -5,6 +5,7 @@
  * Date: 2022/12/21
  * Time: 15:30
  */
+
 namespace Wx\Merchant\V3\ProfitSharing;
 
 use SyConstant\ErrorCode;
@@ -15,27 +16,32 @@ use Wx\WxUtilBase;
 
 /**
  * Class OrderApply
+ *
  * @package Wx\Merchant\V3\ProfitSharing
  */
 class OrderApply extends WxBaseMerchantV3
 {
     /**
      * 微信订单号
+     *
      * @var string
      */
     private $transaction_id = '';
     /**
      * 商户分账单号
+     *
      * @var string
      */
     private $out_order_no = '';
     /**
      * 分账接收方列表
+     *
      * @var array
      */
     private $receivers = [];
     /**
      * 解冻剩余未分资金状态
+     *
      * @var bool
      */
     private $unfreeze_unsplit = false;
@@ -56,7 +62,6 @@ class OrderApply extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $transactionId
      * @throws \SyException\Wx\WxException
      */
     public function setTransactionId(string $transactionId)
@@ -69,7 +74,6 @@ class OrderApply extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $outOrderNo
      * @throws \SyException\Wx\WxException
      */
     public function setOutOrderNo(string $outOrderNo)
@@ -82,7 +86,6 @@ class OrderApply extends WxBaseMerchantV3
     }
 
     /**
-     * @param array $receivers
      * @throws \SyException\Wx\WxException
      */
     public function setReceivers(array $receivers)
@@ -90,33 +93,30 @@ class OrderApply extends WxBaseMerchantV3
         $this->receivers = $receivers;
         $this->reqData['receivers'] = [];
         foreach ($receivers as $receiverInfo) {
-            if (is_array($receiverInfo)&& is_string($receiverInfo['account'])) {
+            if (\is_array($receiverInfo) && \is_string($receiverInfo['account'])) {
                 array_push($this->reqData['receivers'], $receiverInfo);
             }
         }
 
-        $receiversNum = count($this->reqData['receivers']);
-        if ($receiversNum == 0) {
+        $receiversNum = \count($this->reqData['receivers']);
+        if (0 == $receiversNum) {
             throw new WxException('分账接收方不能为空', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($receiversNum > 50) {
+        }
+        if ($receiversNum > 50) {
             throw new WxException('分账接收方不能超过50个', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    /**
-     * @param bool $unfreezeUnSplitStatus
-     */
     public function setUnfreezeUnSplit(bool $unfreezeUnSplitStatus)
     {
         $this->reqData['unfreeze_unsplit'] = $unfreezeUnSplitStatus;
     }
 
     /**
-     * @return array
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['transaction_id'])) {
             throw new WxException('微信订单号不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -124,7 +124,7 @@ class OrderApply extends WxBaseMerchantV3
         if (!isset($this->reqData['out_order_no'])) {
             throw new WxException('商户分账单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if (count($this->reqData['receivers']) == 0) {
+        if (0 == \count($this->reqData['receivers'])) {
             throw new WxException('分账接收方不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         if (!isset($this->reqData['unfreeze_unsplit'])) {
@@ -135,7 +135,7 @@ class OrderApply extends WxBaseMerchantV3
         $this->setHeadAuth();
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs, 2);
-        
+
         return $this->handleRespJson($sendRes);
     }
 }

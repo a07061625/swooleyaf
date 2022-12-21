@@ -5,6 +5,7 @@
  * Date: 2022/12/21
  * Time: 15:30
  */
+
 namespace Wx\Merchant\V3\ProfitSharing;
 
 use SyConstant\ErrorCode;
@@ -15,37 +16,44 @@ use Wx\WxUtilBase;
 
 /**
  * Class OrderReturn
+ *
  * @package Wx\Merchant\V3\ProfitSharing
  */
 class OrderReturn extends WxBaseMerchantV3
 {
     /**
      * 微信分账单号
+     *
      * @var string
      */
     private $order_id = '';
     /**
      * 商户分账单号
+     *
      * @var string
      */
     private $out_order_no = '';
     /**
      * 商户回退单号
+     *
      * @var string
      */
     private $out_return_no = '';
     /**
      * 回退商户号
+     *
      * @var string
      */
     private $return_mchid = '';
     /**
      * 回退金额
+     *
      * @var int
      */
     private $amount = 0;
     /**
      * 回退描述
+     *
      * @var string
      */
     private $description = '';
@@ -66,7 +74,6 @@ class OrderReturn extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $orderId
      * @throws \SyException\Wx\WxException
      */
     public function setOrderId(string $orderId)
@@ -79,7 +86,6 @@ class OrderReturn extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $outOrderNo
      * @throws \SyException\Wx\WxException
      */
     public function setOutOrderNo(string $outOrderNo)
@@ -92,7 +98,6 @@ class OrderReturn extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $outReturnNo
      * @throws \SyException\Wx\WxException
      */
     public function setOutReturnNo(string $outReturnNo)
@@ -105,7 +110,6 @@ class OrderReturn extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $returnMchId
      * @throws \SyException\Wx\WxException
      */
     public function setReturnMchId(string $returnMchId)
@@ -118,7 +122,6 @@ class OrderReturn extends WxBaseMerchantV3
     }
 
     /**
-     * @param int $amount
      * @throws \SyException\Wx\WxException
      */
     public function setAmount(int $amount)
@@ -131,16 +134,16 @@ class OrderReturn extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $description
      * @throws \SyException\Wx\WxException
      */
     public function setDescription(string $description)
     {
         $trueDesc = trim($description);
-        $descLength = strlen($trueDesc);
-        if ($descLength == 0) {
+        $descLength = \strlen($trueDesc);
+        if (0 == $descLength) {
             throw new WxException('回退描述不能为空', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($descLength > 80) {
+        }
+        if ($descLength > 80) {
             throw new WxException('回退描述不能超过80个字节', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -148,13 +151,12 @@ class OrderReturn extends WxBaseMerchantV3
     }
 
     /**
-     * @return array
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
-    public function getDetail() : array
+    public function getDetail(): array
     {
-        if ((strlen($this->reqData['order_id']) == 0) && (strlen($this->reqData['out_order_no']) == 0)) {
+        if ((0 == \strlen($this->reqData['order_id'])) && (0 == \strlen($this->reqData['out_order_no']))) {
             throw new WxException('微信分账单号和商户分账单号不能都为空', ErrorCode::WX_PARAM_ERROR);
         }
         if (!isset($this->reqData['out_return_no'])) {
@@ -174,7 +176,7 @@ class OrderReturn extends WxBaseMerchantV3
         $this->setHeadAuth();
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs, 2);
-        
+
         return $this->handleRespJson($sendRes);
     }
 }

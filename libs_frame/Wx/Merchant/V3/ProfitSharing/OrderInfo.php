@@ -5,6 +5,7 @@
  * Date: 2022/12/21
  * Time: 15:30
  */
+
 namespace Wx\Merchant\V3\ProfitSharing;
 
 use SyConstant\ErrorCode;
@@ -14,17 +15,20 @@ use Wx\WxUtilBase;
 
 /**
  * Class OrderInfo
+ *
  * @package Wx\Merchant\V3\ProfitSharing
  */
 class OrderInfo extends WxBaseMerchantV3
 {
     /**
      * 微信订单号
+     *
      * @var string
      */
     private $transaction_id = '';
     /**
      * 商户分账单号
+     *
      * @var string
      */
     private $out_order_no = '';
@@ -42,7 +46,6 @@ class OrderInfo extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $transactionId
      * @throws \SyException\Wx\WxException
      */
     public function setTransactionId(string $transactionId)
@@ -55,7 +58,6 @@ class OrderInfo extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $outOrderNo
      * @throws \SyException\Wx\WxException
      */
     public function setOutOrderNo(string $outOrderNo)
@@ -68,16 +70,15 @@ class OrderInfo extends WxBaseMerchantV3
     }
 
     /**
-     * @return array
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['transaction_id'])) {
             throw new WxException('微信订单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if (strlen($this->out_order_no) == 0) {
+        if (0 == \strlen($this->out_order_no)) {
             throw new WxException('商户分账单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -85,7 +86,7 @@ class OrderInfo extends WxBaseMerchantV3
                                           . '?' . http_build_query($this->reqData);
         $this->setHeadAuth();
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs, 2);
-        
+
         return $this->handleRespJson($sendRes);
     }
 }
