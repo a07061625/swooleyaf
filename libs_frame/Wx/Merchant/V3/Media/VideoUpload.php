@@ -5,6 +5,7 @@
  * Date: 2022/12/22
  * Time: 11:04
  */
+
 namespace Wx\Merchant\V3\Media;
 
 use SyConstant\ErrorCode;
@@ -14,6 +15,7 @@ use Wx\WxUtilBase;
 
 /**
  * Class VideoUpload
+ *
  * @package Wx\Merchant\V3\Media
  */
 class VideoUpload extends WxBaseMerchantV3
@@ -24,7 +26,7 @@ class VideoUpload extends WxBaseMerchantV3
      * @var string
      */
     private $file_path = '';
-    
+
     public function __construct(string $appId)
     {
         parent::__construct($appId);
@@ -40,7 +42,6 @@ class VideoUpload extends WxBaseMerchantV3
     }
 
     /**
-     * @param string $filePath
      * @throws \SyException\Wx\WxException
      */
     public function setFilePath(string $filePath)
@@ -58,11 +59,10 @@ class VideoUpload extends WxBaseMerchantV3
     }
 
     /**
-     * @return array
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Wx\WxException
      */
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['file'])) {
             throw new WxException('文件不能为空', ErrorCode::WX_PARAM_ERROR);
